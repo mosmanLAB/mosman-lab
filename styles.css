@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #0b0f1a;
+  color: #f1f5f9;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 400;
+  color: #94a3b8;
+  margin-top: 0;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 24px;
+  border-radius: 10px;
+  background-color: #38bdf8;
+  color: #020617;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #0ea5e9;
+}
+
+footer {
+  margin-top: 80px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.btn {
+  display: flex;              /* <- troquei aqui */
+  width: fit-content;         /* garante que o botão não ocupe a linha inteira */
+  align-items: center;
+  justify-content: center;
+
+  margin: 30px auto 0 auto;   /* centraliza */
+  padding: 14px 26px;
+  border-radius: 10px;
+
+  background-color: #25D366;  /* WhatsApp */
+  color: #020617;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #1ebe5d;
+}
+
