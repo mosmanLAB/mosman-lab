@@ -53,35 +53,21 @@ nav {
 .nav-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px;
+  justify-content: center;
+  padding: 12px 24px;
   border-bottom: 1px solid var(--border);
 }
 .nav-logo {
   font-family: 'Lora', serif;
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--black);
   text-decoration: none;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
-.nav-wpp {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--green);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 50px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.15s;
+.nav-logo strong {
+  font-weight: 700;
 }
-.nav-wpp:hover { background: var(--green-dark); }
 .nav-links {
   display: flex;
   align-items: center;
