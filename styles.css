@@ -1,74 +1,162 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #0b0f1a;
-  color: #f1f5f9;
-}
-
-.container {
-  max-width: 700px;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #222;
+  background: #fff;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 40px 24px 80px;
 }
 
-h1 {
-  font-size: 2.8rem;
+/* NAV */
+nav {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 48px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+nav a { color: #0050cc; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+nav a.active { font-weight: bold; color: #222; }
+.nav-logo { font-weight: bold; color: #222; margin-right: auto; font-size: 16px; }
+
+/* URGENCY */
+.urgency {
+  background: #0050cc;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: -40px -24px 40px;
+}
+
+/* HEADINGS */
+h1 { font-size: 2rem; margin-bottom: 8px; line-height: 1.2; }
+h2 { font-size: 1.5rem; margin: 40px 0 12px; border-bottom: 2px solid #0050cc; padding-bottom: 6px; }
+h3 { font-size: 1.1rem; margin: 28px 0 8px; }
+
+/* PARAGRAPHS */
+p { margin-bottom: 16px; }
+
+/* SECTIONS */
+.section { margin-bottom: 48px; }
+
+/* DEPOIMENTO TRECHO */
+.dep-trecho {
+  border-left: 3px solid #0050cc;
+  padding: 12px 20px;
+  margin: 20px 0;
+  background: #f5f8ff;
+}
+.dep-trecho .titulo {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #0050cc;
+  margin-bottom: 6px;
+}
+.dep-trecho blockquote { font-style: italic; margin-bottom: 6px; }
+.dep-trecho .autor { font-family: Arial, sans-serif; font-size: 13px; color: #555; }
+
+/* DEPOIMENTO COMPLETO */
+.dep-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+.dep-card .autor { font-family: Arial, sans-serif; font-size: 13px; color: #555; margin-top: 12px; font-style: normal; }
+
+/* VIDEO */
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
-
-h2 {
-  font-weight: 400;
-  color: #94a3b8;
-  margin-top: 0;
+.video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
 }
+.video-label { font-family: Arial, sans-serif; font-size: 13px; color: #555; margin-bottom: 24px; }
 
-p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #cbd5e1;
-}
+/* TABELA */
+table { width: 100%; border-collapse: collapse; margin: 16px 0 32px; font-size: 15px; }
+th { background: #0050cc; color: #fff; padding: 10px 12px; text-align: left; font-family: Arial, sans-serif; font-size: 13px; }
+td { padding: 9px 12px; border-bottom: 1px solid #eee; }
+tr:nth-child(even) td { background: #f9f9f9; }
+tr.recesso td { background: #fff8e1; color: #888; font-style: italic; }
 
+/* TURMAS */
+.turmas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 32px; }
+.turma-card { border: 1px solid #ddd; border-radius: 6px; padding: 20px; }
+.turma-card.online { border-color: #0050cc; background: #f5f8ff; }
+.turma-tipo { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.turma-tipo.presencial { color: #333; }
+.turma-tipo.online { color: #0050cc; }
+.turma-nome { font-weight: bold; font-size: 1rem; margin-bottom: 10px; }
+.turma-info { font-family: Arial, sans-serif; font-size: 13px; color: #555; margin-bottom: 4px; }
+
+/* PRECOS */
+.precos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 32px; }
+.preco-card { border: 1px solid #ddd; border-radius: 6px; padding: 24px; }
+.preco-card.destaque { border-color: #0050cc; background: #f5f8ff; }
+.preco-quando { font-family: Arial, sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #888; margin-bottom: 8px; }
+.preco-valor { font-size: 2rem; font-weight: bold; line-height: 1; margin-bottom: 4px; }
+.preco-parcela { font-family: Arial, sans-serif; font-size: 13px; color: #555; }
+.preco-matricula { font-family: Arial, sans-serif; font-size: 12px; color: #888; margin-top: 4px; }
+.preco-economia { display: inline-block; background: #00a86b; color: #fff; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; padding: 3px 10px; border-radius: 3px; margin-top: 10px; }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid #eee; padding: 16px 0; }
+.faq-pergunta { font-weight: bold; font-size: 1rem; margin-bottom: 8px; }
+.faq-resposta { color: #444; }
+.faq-resposta p { margin-bottom: 10px; }
+.faq-resposta p:last-child { margin-bottom: 0; }
+
+/* CTA */
+.cta-box { background: #f0f4ff; border: 1px solid #0050cc; border-radius: 6px; padding: 32px; text-align: center; margin: 48px 0; }
+.cta-box h2 { border: none; margin-top: 0; }
 .btn {
   display: inline-block;
-  margin-top: 30px;
-  padding: 14px 24px;
-  border-radius: 10px;
-  background-color: #38bdf8;
-  color: #020617;
+  background: #25D366;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 4px;
   text-decoration: none;
-  font-weight: 600;
+  margin-top: 16px;
 }
+.btn:hover { opacity: .9; }
 
-.btn:hover {
-  background-color: #0ea5e9;
+/* FOOTER */
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; font-size: 13px; color: #888; text-align: center; }
+
+/* CREDENCIAL */
+.credencial { padding-left: 16px; border-left: 3px solid #0050cc; margin: 8px 0; font-size: 15px; }
+
+/* DETALHES CURSO */
+.curso-detalhes { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 20px 0 32px; text-align: center; }
+.detalhe-item { border: 1px solid #ddd; border-radius: 6px; padding: 16px 8px; }
+.detalhe-num { font-size: 1.5rem; font-weight: bold; color: #0050cc; }
+.detalhe-label { font-family: Arial, sans-serif; font-size: 12px; color: #888; margin-top: 4px; }
+
+@media (max-width: 600px) {
+  .turmas-grid { grid-template-columns: 1fr; }
+  .precos { grid-template-columns: 1fr; }
+  .curso-detalhes { grid-template-columns: repeat(2,1fr); }
 }
-
-footer {
-  margin-top: 80px;
-  font-size: 0.9rem;
-  color: #64748b;
-}
-
-.btn {
-  display: flex;              /* <- troquei aqui */
-  width: fit-content;         /* garante que o botão não ocupe a linha inteira */
-  align-items: center;
-  justify-content: center;
-
-  margin: 30px auto 0 auto;   /* centraliza */
-  padding: 14px 26px;
-  border-radius: 10px;
-
-  background-color: #25D366;  /* WhatsApp */
-  color: #020617;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.05rem;
-
-  transition: background-color 0.2s ease;
-}
-
-.btn:hover {
-  background-color: #1ebe5d;
-}
-
