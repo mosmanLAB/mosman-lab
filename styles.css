@@ -269,15 +269,15 @@ nav a.active { color: var(--black); font-weight: 600; }
 
 /* ── DEP CARD COMPLETO (página depoimentos) ── */
 .dep-card {
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px 32px;
   margin-bottom: 20px;
-  background: rgba(255,255,255,0.05);
+  background: #fff;
 }
-.dep-card p { font-size: 0.95rem; line-height: 1.78; margin-bottom: 12px; color: rgba(255,255,255,0.72); }
+.dep-card p { font-size: 0.95rem; line-height: 1.78; margin-bottom: 12px; color: var(--mid); }
 .dep-card p:last-child { margin-bottom: 0; }
-.dep-card .autor { font-size: 0.82rem; color: #6ee7b7; font-weight: 600; margin-top: 16px; display: block; font-style: normal; }
+.dep-card .autor { font-size: 0.82rem; color: var(--green-dark); font-weight: 600; margin-top: 16px; display: block; font-style: normal; }
 
 /* ── TURMAS ── */
 .turmas-grid {
