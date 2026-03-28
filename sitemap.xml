@@ -1,30 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Páginas principais -->
   <url>
-    <loc>https://mosmanlab.github.io/mosman-lab/index.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mosmanlab.com.br/</loc>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://mosmanlab.github.io/mosman-lab/turma-maio-2026.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mosmanlab.com.br/turma-maio-2026.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://mosmanlab.github.io/mosman-lab/depoimentos.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://mosmanlab.com.br/depoimentos.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://mosmanlab.github.io/mosman-lab/professor.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://mosmanlab.com.br/professor.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://mosmanlab.com.br/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mosmanlab.com.br/blog/eletrificacao-economia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Simulações -->
+  <url>
+    <loc>https://mosmanlab.com.br/simulacoes/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mosmanlab.com.br/simulacoes/energia-solar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mosmanlab.com.br/simulacoes/curva-iv-solar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mosmanlab.com.br/simulacoes/energia-eolica.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mosmanlab.com.br/simulacoes/hidroeletrica.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Simulação interativa de Energia Eólica e Limite de Betz — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman.">
+<link rel="canonical" href="https://mosmanlab.com.br/simulacoes/energia-eolica.html">
+<link rel="stylesheet" href="../styles.css">
+<title>Energia Eólica — MosmanLAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
+  --border:rgba(255,255,255,0.08);
+  --A:#58a6ff;--G:#3fb950;--O:#f78166;--P:#d2a8ff;--AM:#e3b341;
+  --txt:#e6edf3;--muted:#8b949e;--dim:#484f58;--r:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;}
+
+/* ── MAIN ── */
+main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
+
+/* ── HERO ── */
+.hero{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.hero-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--G);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;}
+.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--G);}
+.hero h1{font-family:'Lora',serif;font-size:2.1rem;font-weight:600;line-height:1.25;margin-bottom:.5rem;}
+.hero .lead{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:620px;}
+
+/* ── TEORIA ── */
+.theory-block{margin-bottom:2.2rem;}
+.theory-block h2{font-family:'Lora',serif;font-size:1.25rem;font-weight:600;color:var(--txt);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.theory-block h2::before{content:'';display:inline-block;width:4px;height:20px;background:var(--A);border-radius:2px;flex-shrink:0;}
+.theory-text{font-size:.88rem;line-height:1.95;color:#cdd9e5;margin-bottom:1rem;}
+.theory-text p{margin-bottom:.9rem;}
+.theory-text p:last-child{margin-bottom:0;}
+.theory-text strong{color:#79c0ff;font-weight:500;}
+.theory-text em{font-family:'Lora',serif;font-style:italic;color:var(--txt);}
+.theory-text .num{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--AM);background:rgba(227,179,65,.1);padding:1px 6px;border-radius:4px;}
+
+/* ── EXPRESSÃO CENTRAL ── */
+.eq-destaque{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--AM);border-radius:var(--r);padding:1.4rem 1.8rem;margin:1.4rem 0;text-align:center;}
+.eq-destaque .eq-main{font-family:'DM Mono',monospace;font-size:1.35rem;color:var(--AM);letter-spacing:.04em;margin-bottom:.6rem;}
+.eq-destaque .eq-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem;margin-top:.5rem;}
+.eq-destaque .eq-legend span{font-size:.75rem;color:var(--muted);font-family:'DM Mono',monospace;}
+.eq-destaque .eq-legend span strong{color:var(--AM);}
+
+/* ── BETZ DESTAQUE ── */
+.betz-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--G);border-radius:var(--r);padding:1.2rem 1.6rem;margin:1.4rem 0;display:flex;align-items:flex-start;gap:1.4rem;}
+.betz-card .betz-num{font-family:'DM Mono',monospace;font-size:2rem;color:var(--G);white-space:nowrap;line-height:1;}
+.betz-card .betz-txt{font-size:.84rem;color:var(--muted);line-height:1.7;}
+.betz-card .betz-txt strong{color:var(--G);font-weight:500;}
+
+.eq-inline{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.55rem 1rem;margin:.7rem 0;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--G);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+.eq-inline span{color:var(--muted);font-size:.72rem;}
+
+/* ── FATOS ── */
+.fact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:1.2rem 0;}
+.fact{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:4px;}
+.fact .fnum{font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:400;color:var(--A);}
+.fact .flbl{font-size:.75rem;color:var(--muted);line-height:1.4;}
+
+/* ── SIM BOX ── */
+.sim-section{margin-bottom:1rem;}
+.sim-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--A);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;}
+.sim-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.sim-box canvas{display:block;width:100%;background:var(--bg2);border-bottom:1px solid var(--border);}
+.sim-controls{padding:1rem 1.2rem;}
+.ctrl-row{display:flex;align-items:center;gap:8px;margin:6px 0;}
+.ctrl-row label{font-size:.75rem;color:var(--muted);min-width:210px;flex-shrink:0;}
+.ctrl-row input[type=range]{flex:1;min-width:0;accent-color:var(--A);}
+.ctrl-row .vout{font-family:'DM Mono',monospace;font-size:.75rem;color:#79c0ff;min-width:80px;text-align:right;white-space:nowrap;}
+.sec-lbl{font-size:.68rem;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:10px 0 3px;}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0;}
+.metric{background:var(--bg3);border-radius:8px;padding:9px 11px;}
+.metric .ml{font-size:.62rem;color:var(--dim);margin-bottom:2px;}
+.metric .mv{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--txt);}
+.info-row{margin:8px 0 0;font-size:.72rem;color:var(--muted);line-height:1.8;min-height:14px;}
+
+/* barra Betz */
+.betz-bar-wrap{display:flex;align-items:center;gap:10px;margin:10px 0 4px;padding:8px 12px;border-radius:var(--r);border:.5px solid var(--border);background:var(--bg3);}
+.betz-bar-bg{flex:1;height:12px;background:var(--bg);border-radius:6px;overflow:hidden;position:relative;}
+.betz-bar-betz{position:absolute;left:0;top:0;height:100%;width:59.3%;background:rgba(63,185,80,0.2);border-right:2px solid #3fb950;}
+.betz-bar-eta{position:absolute;left:0;top:0;height:100%;border-radius:6px;transition:width .3s;}
+.betz-lbl{font-size:.68rem;font-family:'DM Mono',monospace;white-space:nowrap;color:var(--muted);}
+
+.sep{height:1px;background:var(--border);margin:2rem 0;}
+
+/* ── MOBILE ── */
+@media(max-width:640px){
+  main{padding:1rem .9rem 4rem;}
+  .hero h1{font-size:1.5rem;}
+  .hero .lead{font-size:.85rem;}
+  .theory-text{font-size:.83rem;}
+  .eq-destaque .eq-main{font-size:1.05rem;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .ctrl-row{flex-wrap:wrap;}
+  .ctrl-row label{min-width:100%;font-size:.72rem;}
+  .betz-card{flex-direction:column;gap:.6rem;}
+  .betz-card .betz-num{font-size:1.6rem;}
+}
+@media(max-width:900px){
+  main{padding:2rem 1.8rem 5rem;}
+}
+</style>
+<link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="Simulação interativa de Energia Eólica — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman, mestre em Física pela USP.">
+  <link rel="canonical" href="https://mosmanlab.com.br/simulacoes/energia-eolica.html">
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a href="../blog/">Blog</a>
+    <a class="active" href="index.html">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+
+
+
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="hero-tag">Energia — Simulação 10</div>
+    <h1>Energia Eólica</h1>
+    <p class="lead">Como o vento movimenta turbinas e gera eletricidade — e por que a potência disponível cresce com o <em>cubo</em> da velocidade do vento.</p>
+  </div>
+
+  <!-- TEORIA -->
+  <div class="theory-block" id="teoria">
+    <h2>O vento como fonte de energia</h2>
+    <div class="theory-text">
+      <p>O vento nada mais é do que ar em movimento. E ar em movimento carrega energia cinética — aquela mesma energia que você estudou na fórmula <em>E_c = ½mv²</em>. Uma turbina eólica é essencialmente uma máquina que capta parte dessa energia cinética e a converte em energia elétrica.</p>
+      <p>O Brasil possui um dos melhores recursos eólicos do mundo, especialmente no <strong>Nordeste</strong>, onde ventos alísios sopram de forma constante e com velocidades médias acima de <span class="num">8 m/s</span> ao longo de quase todo o ano. Estados como Ceará, Rio Grande do Norte e Bahia concentram a maior parte da capacidade instalada do país. Em 2023, a energia eólica respondeu por cerca de <span class="num">12%</span> de toda a eletricidade gerada no Brasil — e esse número cresce a cada ano.</p>
+      <p>Diferente das usinas hidrelétricas, que dependem de rios e reservatórios, as turbinas eólicas podem ser instaladas em terra (<em>onshore</em>) ou no mar (<em>offshore</em>), aproveitando ventos ainda mais intensos e constantes. A instalação offshore está chegando ao Brasil, abrindo uma nova fronteira para a geração limpa de energia.</p>
+    </div>
+
+    <div class="fact-grid">
+      <div class="fact">
+        <span class="fnum">~12%</span>
+        <span class="flbl">da energia elétrica brasileira gerada por turbinas eólicas em 2023</span>
+      </div>
+      <div class="fact">
+        <span class="fnum">30 GW</span>
+        <span class="flbl">capacidade instalada eólica no Brasil — entre os 10 maiores do mundo</span>
+      </div>
+      <div class="fact">
+        <span class="fnum">15 MW</span>
+        <span class="flbl">potência das maiores turbinas offshore atuais (Vestas V236, pás de 115 m)</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Uma turbina eólica moderna possui três pás conectadas a um cubo central (o <em>rotor</em>), que gira movido pelo vento. O eixo do rotor aciona um gerador elétrico dentro da nacele — a carcaça no topo da torre. Um sistema de controle orienta a nacele para sempre enfrentar o vento (<em>yaw control</em>) e ajusta o ângulo das pás (<em>pitch control</em>) para extrair a máxima energia sem sobrecarregar o equipamento.</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- EXPRESSÃO -->
+  <div class="theory-block" id="expressao">
+    <h2>A expressão da potência eólica</h2>
+    <div class="theory-text">
+      <p>Considere um cilindro de ar de seção transversal <em>A</em> (a área varrida pelas pás) se movendo com velocidade <em>v</em>. Em um segundo, passa pelo rotor um volume de ar igual a <em>A·v</em>, com massa <em>m = ρ·A·v</em> (ρ é a densidade do ar, aproximadamente <span class="num">1,225 kg/m³</span> ao nível do mar). A energia cinética desse volume de ar é:</p>
+    </div>
+
+    <div class="eq-inline">
+      E_c = ½·m·v² = ½·(ρ·A·v)·v² = ½·ρ·A·v³
+      <span>energia cinética por segundo = potência disponível no vento</span>
+    </div>
+
+    <div class="theory-text">
+      <p>A área varrida pelas pás é um círculo de raio R (o comprimento de cada pá): <em>A = π·R²</em>. Incluindo o rendimento η da turbina, a potência elétrica gerada é:</p>
+    </div>
+
+    <div class="eq-destaque">
+      <div class="eq-main">P = η · ½ · ρ · π · R² · v³</div>
+      <div class="eq-legend">
+        <span><strong>P</strong> = potência elétrica gerada (W ou MW)</span>
+        <span><strong>η</strong> = rendimento da turbina (0 a 0,593)</span>
+        <span><strong>ρ</strong> = densidade do ar ≈ 1,225 kg/m³</span>
+        <span><strong>R</strong> = raio das pás (m)</span>
+        <span><strong>v</strong> = velocidade do vento (m/s)</span>
+        <span><strong>A = π·R²</strong> = área varrida pelo rotor</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Duas conclusões fundamentais saltam dessa equação:</p>
+      <p><strong>1. A potência varia com o cubo da velocidade.</strong> Se o vento dobra de 5 m/s para 10 m/s, a potência disponível aumenta <span class="num">8 vezes</span> (2³ = 8). Por isso a escolha do local de instalação — onde os ventos são mais fortes — é decisiva para a viabilidade econômica de um parque eólico.</p>
+      <p><strong>2. A potência cresce com o quadrado do raio.</strong> Dobrar o comprimento das pás quadruplica a área varrida e, portanto, a potência. É por isso que as turbinas modernas têm pás cada vez maiores — as da Vestas V236 medem <span class="num">115 metros</span> cada, varrendo uma área equivalente a mais de 4 campos de futebol.</p>
+    </div>
+
+    <div class="eq-inline" style="color:var(--P);">
+      P ∝ R²  e  P ∝ v³
+      <span>dobrar R → P aumenta 4×  ·  dobrar v → P aumenta 8×</span>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- BETZ -->
+  <div class="theory-block" id="betz">
+    <h2>O limite de Betz</h2>
+    <div class="theory-text">
+      <p>Há um limite físico fundamental para a eficiência de qualquer turbina eólica. Se a turbina absorvesse <em>toda</em> a energia cinética do vento, o ar ficaria completamente parado após passar pelas pás — e ar parado não consegue sair, bloqueando a entrada de novo ar. Se a turbina não absorvesse nada, o vento passaria sem interação. O ótimo está no meio.</p>
+      <p>Em 1919, o físico alemão <strong>Albert Betz</strong> demonstrou matematicamente que a fração máxima da energia do vento que uma turbina pode capturar é:</p>
+    </div>
+
+    <div class="betz-card">
+      <div class="betz-num">16/27</div>
+      <div class="betz-txt">
+        <strong>Limite de Betz ≈ 59,3%</strong><br>
+        Nenhuma turbina de eixo horizontal pode converter mais do que 59,3% da energia cinética do vento em energia mecânica, independentemente de seu design. Esse resultado vem da mecânica dos fluidos e é uma lei física, não uma limitação tecnológica. Turbinas modernas chegam a <strong>45–50%</strong> de rendimento, muito próximas do limite teórico.
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Na prática, o rendimento real de uma turbina ainda é reduzido por perdas mecânicas na caixa de engrenagens, perdas elétricas no gerador, turbulência criada pelas próprias pás e limitações aerodinâmicas do perfil das pás. Por isso, ao usar a fórmula da potência, o rendimento η deve ser sempre menor que <span class="num">0,593</span> — o slider da simulação abaixo está limitado a esse valor máximo.</p>
+    </div>
+
+    <div class="eq-inline">
+      η_max = 16/27 ≈ 0,593 = 59,3%
+      <span>·</span>
+      η_real ≈ 45 a 50% nas melhores turbinas modernas
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- SIMULAÇÃO -->
+  <div class="sim-section" id="simulacao">
+    <div class="sim-tag">Simulação interativa</div>
+    <div class="sim-box">
+      <canvas id="cv-wind"></canvas>
+      <div class="sim-controls">
+        <div class="ctrl-row"><label>Raio da pá  R (m)</label><input type="range" id="rr" min="5" max="120" value="50" step="1"><span class="vout" id="o-r">50 m</span></div>
+        <div class="ctrl-row"><label>Velocidade do vento  v (m/s)</label><input type="range" id="vv" min="1" max="30" value="12" step="0.5"><span class="vout" id="o-v">12.0 m/s</span></div>
+        <div class="ctrl-row"><label>Rendimento  η (%)</label><input type="range" id="eta" min="5" max="59" value="45" step="1"><span class="vout" id="o-eta">45 %</span></div>
+
+        <!-- barra de Betz -->
+        <div class="betz-bar-wrap">
+          <span class="betz-lbl">η</span>
+          <div class="betz-bar-bg">
+            <div class="betz-bar-betz"></div>
+            <div class="betz-bar-eta" id="betz-fill"></div>
+          </div>
+          <span class="betz-lbl" id="betz-pct">45%</span>
+          <span class="betz-lbl" style="color:#3fb950;">limite Betz 59,3%</span>
+        </div>
+
+        <div class="sec-lbl">Comparativo de potência</div>
+        <canvas id="cv-bar" style="border:none;border-top:.5px solid var(--border);"></canvas>
+
+        <div class="metrics">
+          <div class="metric"><div class="ml">Potência no vento</div><div class="mv" id="cv-pv">—</div></div>
+          <div class="metric"><div class="ml">Potência elétrica</div><div class="mv" id="cv-pe">—</div></div>
+          <div class="metric"><div class="ml">Área varrida</div><div class="mv" id="cv-ar">—</div></div>
+          <div class="metric"><div class="ml">Energia/dia</div><div class="mv" id="cv-ed">—</div></div>
+        </div>
+        <div class="info-row" id="info"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const RHO_AR=1.225, BETZ=16/27;
+
+/* scroll spy */
+const anchors=['hero','teoria','expressao','betz','simulacao'];
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let cur='hero';
+  anchors.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=120)cur=id;});
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+function dk(){return window.matchMedia('(prefers-color-scheme:dark)').matches;}
+function co(){const d=dk();return{
+  sky1:  d?'#0d1117':'#c9e8f5',sky2:d?'#161b22':'#e8f4fb',
+  ground:d?'#1a2a0a':'#4a7c2a',groundL:d?'#2a3a1a':'#5a9c3a',
+  hill:  d?'#152010':'#3d6b1a',
+  tower: d?'#8b949e':'#6a737d',towerL:d?'#c2c0b6':'#9aa0a6',
+  blade: d?'#c2c0b6':'#4a5568',
+  hub:   d?'#e6edf3':'#2d3748',
+  sweep: d?'rgba(88,166,255,0.10)':'rgba(74,144,217,0.12)',
+  sweepB:d?'rgba(88,166,255,0.35)':'rgba(74,144,217,0.4)',
+  wind:  d?'rgba(88,166,255,0.55)':'rgba(74,144,217,0.65)',
+  muted: d?'#7d8590':'#6b6a65',txt:d?'#c2c0b6':'#3d3d3a',
+  grid:  d?'rgba(255,255,255,0.05)':'rgba(0,0,0,0.05)',
+  ax:    d?'rgba(255,255,255,0.18)':'rgba(0,0,0,0.15)',
+  barV:  '#58a6ff',barE:'#3fb950',barB:d?'rgba(63,185,80,0.3)':'rgba(63,185,80,0.25)',
+  betz:  '#3fb950',sun:d?null:'#ffd700',
+};}
+function gv(id){return+document.getElementById(id).value;}
+
+function setupCanvas(cv,cssH){
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.clientWidth||480;
+  cv.width=Math.round(W*dpr); cv.height=Math.round(cssH*dpr);
+  cv.style.width=W+'px'; cv.style.height=cssH+'px';
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  return{ctx,W,H:cssH};
+}
+
+let angle=0, raf=null;
+
+function drawWind(ang){
+  const {ctx,W,H}=setupCanvas(document.getElementById('cv-wind'),300);
+  const c=co();
+  const R=gv('rr'), vw=gv('vv'), eta=gv('eta')/100;
+  ctx.clearRect(0,0,W,H);
+
+  // céu
+  const skyG=ctx.createLinearGradient(0,0,0,H*0.72);
+  skyG.addColorStop(0,c.sky1); skyG.addColorStop(1,c.sky2);
+  ctx.fillStyle=skyG; ctx.fillRect(0,0,W,H*0.72);
+
+  // sol
+  if(c.sun){
+    ctx.fillStyle=c.sun; ctx.globalAlpha=0.8;
+    ctx.beginPath(); ctx.arc(W*0.84,H*0.1,H*0.052,0,Math.PI*2); ctx.fill();
+    ctx.globalAlpha=1;
+  }
+
+  // colinas
+  ctx.fillStyle=c.hill;
+  ctx.beginPath();
+  ctx.moveTo(0,H*0.72);
+  ctx.quadraticCurveTo(W*0.2,H*0.56,W*0.4,H*0.68);
+  ctx.quadraticCurveTo(W*0.6,H*0.58,W*0.8,H*0.65);
+  ctx.quadraticCurveTo(W*0.9,H*0.62,W,H*0.68);
+  ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath(); ctx.fill();
+
+  // chão
+  ctx.fillStyle=c.ground; ctx.fillRect(0,H*0.72,W,H*0.28);
+  ctx.fillStyle=c.groundL;
+  for(let i=0;i<6;i++){ctx.beginPath();ctx.ellipse(W*(0.1+i*0.15),H*0.74,W*0.05,H*0.012,0,0,Math.PI*2);ctx.fill();}
+
+  // ── proporções visuais ──
+  const maxRvis=H*0.37;
+  const Rvis=Math.min(R/120,1)*maxRvis;
+  const groundY=H*0.72;
+  const towerH=Math.max(Rvis*1.05, H*0.18);
+  const HX=W*0.52, HY=groundY-towerH;
+
+  // área varrida
+  ctx.fillStyle=c.sweep;
+  ctx.beginPath(); ctx.arc(HX,HY,Rvis,0,Math.PI*2); ctx.fill();
+  ctx.strokeStyle=c.sweepB; ctx.lineWidth=1.5; ctx.setLineDash([4,4]);
+  ctx.beginPath(); ctx.arc(HX,HY,Rvis,0,Math.PI*2); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // setas de vento
+  const nA=4;
+  for(let i=0;i<nA;i++){
+    const ay=HY-Rvis*0.6+i*(Rvis*1.2/(nA-1));
+    const ax=W*0.04, alen=W*0.09*(0.55+vw/30*0.45);
+    ctx.strokeStyle=c.wind; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(ax+alen,ay); ctx.stroke();
+    ctx.fillStyle=c.wind; ctx.beginPath();
+    ctx.moveTo(ax+alen,ay); ctx.lineTo(ax+alen-8,ay-4); ctx.lineTo(ax+alen-8,ay+4);
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.fillStyle=c.wind; ctx.font=`bold ${Math.max(9,W*0.018)}px 'DM Sans',sans-serif`;
+  ctx.textAlign='left'; ctx.fillText('v = '+vw.toFixed(1)+' m/s',W*0.04,HY-Rvis*0.6-10);
+
+  // torre
+  const tW=Math.max(6,Rvis*0.07);
+  const tGrad=ctx.createLinearGradient(HX-tW,0,HX+tW,0);
+  tGrad.addColorStop(0,c.tower); tGrad.addColorStop(0.4,c.towerL); tGrad.addColorStop(1,c.tower);
+  ctx.fillStyle=tGrad;
+  ctx.beginPath();
+  ctx.moveTo(HX-tW,groundY); ctx.lineTo(HX-tW*0.4,HY);
+  ctx.lineTo(HX+tW*0.4,HY); ctx.lineTo(HX+tW,groundY);
+  ctx.closePath(); ctx.fill();
+
+  // pás
+  const nBlades=3;
+  for(let i=0;i<nBlades;i++){
+    const a=ang+i*(Math.PI*2/nBlades);
+    ctx.save(); ctx.translate(HX,HY); ctx.rotate(a);
+    // sombra
+    ctx.fillStyle='rgba(0,0,0,0.08)';
+    ctx.beginPath();
+    ctx.moveTo(-Rvis*0.04,0);
+    ctx.quadraticCurveTo(-Rvis*0.06,Rvis*0.5,0,Rvis*0.97);
+    ctx.quadraticCurveTo(Rvis*0.06,Rvis*0.5,Rvis*0.04,0);
+    ctx.closePath(); ctx.fill();
+    // pá
+    const bG=ctx.createLinearGradient(-Rvis*0.04,0,Rvis*0.04,0);
+    bG.addColorStop(0,c.tower); bG.addColorStop(0.4,c.towerL); bG.addColorStop(1,c.tower);
+    ctx.fillStyle=bG;
+    ctx.beginPath();
+    ctx.moveTo(-Rvis*0.03,0);
+    ctx.quadraticCurveTo(-Rvis*0.05,Rvis*0.5,0,Rvis*0.95);
+    ctx.quadraticCurveTo(Rvis*0.05,Rvis*0.5,Rvis*0.03,0);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
+  // hub
+  const hubR=Math.max(5,Rvis*0.06);
+  const hubG=ctx.createRadialGradient(HX-hubR*0.3,HY-hubR*0.3,hubR*0.1,HX,HY,hubR);
+  hubG.addColorStop(0,c.towerL); hubG.addColorStop(1,c.tower);
+  ctx.fillStyle=hubG;
+  ctx.beginPath(); ctx.arc(HX,HY,hubR,0,Math.PI*2); ctx.fill();
+
+  // cota R
+  ctx.strokeStyle=c.muted; ctx.lineWidth=0.8; ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(HX,HY); ctx.lineTo(HX+Rvis,HY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle=c.txt; ctx.font=`bold ${Math.max(9,W*0.019)}px 'DM Mono',monospace`;
+  ctx.textAlign='center'; ctx.fillText('R = '+R+' m',HX+Rvis/2,HY-10);
+
+  // potência
+  const Ph=0.5*RHO_AR*Math.PI*R*R*Math.pow(vw,3)/1e6;
+  const Pe=eta*Ph;
+  ctx.fillStyle='#3fb950'; ctx.font=`bold ${Math.max(10,W*0.022)}px 'DM Sans',sans-serif`;
+  ctx.textAlign='center';
+  ctx.fillText(Pe>=1?Pe.toFixed(2)+' MW':(Pe*1000).toFixed(0)+' kW',HX,HY-Rvis-14);
+}
+
+function drawBar(){
+  const {ctx,W,H}=setupCanvas(document.getElementById('cv-bar'),140);
+  const c=co();
+  ctx.clearRect(0,0,W,H);
+  const R=gv('rr'),vw=gv('vv'),eta=gv('eta')/100;
+  const Ph=0.5*RHO_AR*Math.PI*R*R*Math.pow(vw,3)/1e6;
+  const PeBetz=BETZ*Ph, Pe=eta*Ph, Pp=Ph-Pe;
+  const PL=62,PR=20,PT=18,PB=32,cw=W-PL-PR,ch=H-PT-PB;
+  const maxP=Ph*1.2||1;
+  const ty=v=>PT+ch-(v/maxP)*ch;
+
+  ctx.strokeStyle=c.grid; ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const gy=PT+i*(ch/4);ctx.beginPath();ctx.moveTo(PL,gy);ctx.lineTo(PL+cw,gy);ctx.stroke();}
+  ctx.strokeStyle=c.ax; ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(PL,PT);ctx.lineTo(PL,PT+ch);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(PL,PT+ch);ctx.lineTo(PL+cw,PT+ch);ctx.stroke();
+
+  // linha Betz
+  const yBetz=ty(PeBetz);
+  ctx.strokeStyle=c.betz; ctx.lineWidth=1.2; ctx.setLineDash([5,4]);
+  ctx.beginPath(); ctx.moveTo(PL,yBetz); ctx.lineTo(PL+cw,yBetz); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle=c.betz; ctx.font=`9px 'DM Mono',monospace`; ctx.textAlign='left';
+  ctx.fillText('Betz = '+PeBetz.toFixed(2)+'MW',PL+3,yBetz-5);
+
+  const bars=[
+    {label:'P_vento',  val:Ph,    col:c.barV},
+    {label:'P_Betz',   val:PeBetz,col:c.barB},
+    {label:'P_elét.',  val:Pe,    col:c.barE},
+    {label:'Perdas',   val:Pp,    col:'#f78166'},
+  ];
+  const bw=cw/(bars.length*2);
+  bars.forEach((b,i)=>{
+    const x=PL+bw*0.5+i*(bw*2);
+    const bh=Math.max(0,(b.val/maxP)*ch);
+    const by=PT+ch-bh;
+    ctx.fillStyle=b.col;
+    ctx.beginPath(); ctx.roundRect(x,by,bw,bh,3); ctx.fill();
+    const labCol=typeof b.col==='string'&&b.col.includes('rgba')?c.betz:b.col;
+    ctx.fillStyle=labCol; ctx.font=`bold 9px 'DM Mono',monospace`; ctx.textAlign='center';
+    if(bh>12) ctx.fillText(b.val.toFixed(2),x+bw/2,by-5);
+    ctx.fillStyle=c.muted; ctx.font=`9px 'DM Sans',sans-serif`;
+    ctx.fillText(b.label,x+bw/2,PT+ch+14);
+  });
+  ctx.fillStyle=c.muted; ctx.font=`9px 'DM Mono',monospace`; ctx.textAlign='right';
+  for(let i=0;i<=4;i++) ctx.fillText((maxP*i/4).toFixed(2)+'MW',PL-3,PT+ch-i*(ch/4)+3);
+}
+
+function updateMetrics(){
+  const R=gv('rr'),vw=gv('vv'),eta=gv('eta')/100;
+  document.getElementById('o-r').textContent=R+' m';
+  document.getElementById('o-v').textContent=vw.toFixed(1)+' m/s';
+  document.getElementById('o-eta').textContent=(eta*100).toFixed(0)+' %';
+  const A=Math.PI*R*R;
+  const Ph=0.5*RHO_AR*A*Math.pow(vw,3)/1e6;
+  const Pe=eta*Ph, Ed=Pe*24;
+  function fmt(v){return v>=1000?(v/1000).toFixed(2)+' GW':v>=1?v.toFixed(2)+' MW':(v*1000).toFixed(1)+' kW';}
+  function fmtE(v){return v>=1000?(v/1000).toFixed(1)+' GWh':v.toFixed(1)+' MWh';}
+  function fmtA(v){return v>=1e6?(v/1e6).toFixed(2)+' km²':(v/1e4).toFixed(2)+' ha';}
+  document.getElementById('cv-pv').textContent=fmt(Ph);
+  document.getElementById('cv-pe').textContent=fmt(Pe);
+  document.getElementById('cv-ar').textContent=fmtA(A);
+  document.getElementById('cv-ed').textContent=fmtE(Ed);
+
+  const pct=(eta*100).toFixed(0);
+  const color=eta/BETZ>0.95?'#f78166':eta/BETZ>0.75?'#e3b341':'#3fb950';
+  document.getElementById('betz-fill').style.width=pct+'%';
+  document.getElementById('betz-fill').style.background=color;
+  document.getElementById('betz-pct').textContent=pct+'%';
+  document.getElementById('betz-pct').style.color=color;
+
+  let ref='';
+  if(R<20)      ref='turbina de pequeno porte / microeólica';
+  else if(R<60) ref='turbina onshore típica (ex. Vestas V90)';
+  else if(R<90) ref='turbina offshore moderna (ex. Siemens SG 5.0)';
+  else          ref='turbina gigante offshore (ex. Vestas V236 — 15 MW)';
+
+  document.getElementById('info').innerHTML=
+    `<strong>P = η · ½ · ρ · π · R² · v³</strong> &nbsp;·&nbsp; `+
+    `Limite de Betz = 16/27 ≈ 59,3% &nbsp;·&nbsp; `+
+    `η/η_Betz = ${(eta/BETZ*100).toFixed(1)}% do limite teórico &nbsp;·&nbsp; `+
+    `<em>${ref}</em>`;
+}
+
+// animação do rotor
+function animate(){
+  const vw=gv('vv'), R=gv('rr');
+  const rpm=Math.max(1,(vw*7*60)/(2*Math.PI*R));
+  angle+=rpm*Math.PI*2/60/60;
+  drawWind(angle);
+  drawBar();
+  updateMetrics();
+  raf=requestAnimationFrame(animate);
+}
+
+['rr','vv','eta'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{}));
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{drawWind(angle);drawBar();});
+window.addEventListener('resize',()=>{drawWind(angle);drawBar();});
+
+if(raf) cancelAnimationFrame(raf);
+animate();
+</script>
+
+<section style="background:#f8f8f8; padding:40px 20px; text-align:center; margin-top:60px;">
+  <p style="font-family:'DM Sans',sans-serif; color:#555; font-size:0.95rem; margin-bottom:16px;">
+    Quer dominar a Física para o vestibular com esse nível de profundidade?
+  </p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:12px 28px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif;">
+    Conhecer a Turma de Maio 2026
+  </a>
+</section>
+
+
+<section style="background:#f0f9f4; padding:48px 24px; text-align:center; margin-top:60px; border-top:1px solid #e8e8e8;">
+  <p style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:#888; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; margin-bottom:8px;">MosmanLAB</p>
+  <p style="font-family:'Lora',serif; font-size:1.4rem; font-weight:600; color:#111; margin-bottom:8px; line-height:1.3;">Quer dominar a Física para o vestibular?</p>
+  <p style="font-size:0.92rem; color:#666; max-width:480px; margin:0 auto 24px; line-height:1.6;">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:13px 30px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif; font-size:0.92rem;">
+    Conhecer a Turma de Maio 2026 →
+  </a>
+</section>
+</body>
+</html>

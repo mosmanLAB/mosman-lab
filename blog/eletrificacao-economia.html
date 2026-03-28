@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Eletrificação da Economia | Blog de Energia — MosmanLAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0f1c2e;
+      --blue:   #2563eb;
+      --green:  #16a34a;
+      --green-light: #f0fdf4;
+      --text:   #374151;
+      --muted:  #6b7280;
+      --border: #e5e7eb;
+      --bg:     #ffffff;
+      --bg2:    #f9fafb;
+      --red:    #dc2626;
+      --amber:  #d97706;
+      --purple: #7c3aed;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── BARRA TOPO ── */
+    .topbar {
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .01em;
+    }
+    .topbar a { color: #fff; text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 60px;
+    }
+    .logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+    .logo strong { font-weight: 700; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--navy); text-decoration: none;
+      opacity: .7; transition: opacity .15s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+
+    /* ── HERO ARTIGO ── */
+    .article-hero {
+      background: var(--navy);
+      color: #fff;
+      padding: 80px 5% 60px;
+      text-align: center;
+    }
+    .article-tag {
+      display: inline-block;
+      background: rgba(37,99,235,.3);
+      color: #93c5fd;
+      border: 1px solid rgba(147,197,253,.3);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+    .article-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 760px;
+      margin: 0 auto 16px;
+      color: #fff;
+    }
+    .article-hero .lead {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 640px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .article-meta {
+      font-size: 13px;
+      color: #64748b;
+      display: flex; gap: 20px; justify-content: center;
+      flex-wrap: wrap;
+    }
+    .article-meta span::before { content: '· '; }
+    .article-meta span:first-child::before { content: ''; }
+
+    /* ── CORPO DO ARTIGO ── */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .article-body h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 52px 0 16px;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 32px 0 10px;
+    }
+    .article-body p {
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .article-body strong { color: var(--navy); font-weight: 600; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: #eff6ff;
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 15px;
+      color: #1e40af;
+      line-height: 1.6;
+    }
+    .callout.green {
+      border-color: var(--green);
+      background: var(--green-light);
+      color: #166534;
+    }
+    .callout.amber {
+      border-color: var(--amber);
+      background: #fffbeb;
+      color: #92400e;
+    }
+    .callout.navy {
+      border-color: var(--navy);
+      background: #f1f5f9;
+      color: var(--navy);
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .num.blue   { color: var(--blue); }
+    .stat-card .num.green  { color: var(--green); }
+    .stat-card .num.amber  { color: var(--amber); }
+    .stat-card .num.purple { color: var(--purple); }
+    .stat-card .label { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* ── GRÁFICOS ── */
+    .chart-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .chart-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .chart-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .chart-wrap { position: relative; width: 100%; }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      margin-top: 12px;
+    }
+    .leg-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--muted);
+    }
+    .leg-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+    /* ── TABELA COMPARAÇÃO ── */
+    .comparison-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px; margin: 24px 0;
+    }
+    .comparison-table th {
+      text-align: left; padding: 10px 14px;
+      background: var(--navy); color: #fff;
+      font-weight: 600; font-size: 12px;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+    .comparison-table th:not(:first-child) { text-align: right; }
+    .comparison-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .comparison-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+    .comparison-table tr:nth-child(even) td { background: var(--bg2); }
+    .comparison-table tr.highlight td { background: #eff6ff; font-weight: 600; color: var(--navy); }
+    .comparison-table tr.highlight td:first-child::before { content: '★ '; color: var(--blue); }
+
+    /* ── DECOMP BAR ── */
+    .decomp-bar {
+      border-radius: 8px; overflow: hidden;
+      height: 44px; display: flex;
+      margin: 20px 0 8px;
+    }
+    .decomp-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 600; color: #fff;
+      transition: flex .5s ease;
+      white-space: nowrap; overflow: hidden;
+    }
+    .decomp-legend {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 24px;
+    }
+    .decomp-leg-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; color: var(--muted);
+    }
+    .decomp-dot {
+      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ── CONCLUSÃO ── */
+    .conclusion-box {
+      background: var(--navy);
+      color: #e2e8f0;
+      border-radius: 16px;
+      padding: 40px;
+      margin: 48px 0;
+    }
+    .conclusion-box h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: #fff; margin-bottom: 16px;
+    }
+    .conclusion-box p { margin-bottom: 14px; line-height: 1.65; }
+    .conclusion-box ul { padding-left: 20px; }
+    .conclusion-box li { margin-bottom: 8px; line-height: 1.6; }
+    .conclusion-box strong { color: #93c5fd; }
+
+    /* ── FONTES ── */
+    .sources {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 48px;
+    }
+    .sources h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .sources ul { list-style: none; padding: 0; }
+    .sources li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .sources li:last-child { border-bottom: none; }
+    .sources a { color: var(--blue); text-decoration: none; }
+    .sources a:hover { text-decoration: underline; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--navy);
+      color: #64748b;
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 13px;
+    }
+    footer a { color: #94a3b8; }
+    footer .footer-logo {
+      font-size: 18px; font-weight: 400;
+      color: #e2e8f0; margin-bottom: 8px;
+      display: block;
+    }
+    footer .footer-logo strong { font-weight: 700; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .article-body { padding: 32px 16px 60px; }
+      .conclusion-box { padding: 28px 20px; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="A eletrificação da economia — análise de 25 anos de dados sobre Brasil e o mundo. Por Prof. Edson Mosman, IEE-USP. MosmanLAB.">
+  <link rel="canonical" href="https://mosmanlab.com.br/blog/eletrificacao-economia.html">
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- BARRA TOPO -->
+
+
+<!-- NAV -->
+
+
+<!-- HERO -->
+<header class="article-hero">
+  <div class="article-tag">Energia &amp; Transição</div>
+  <h1>A Eletrificação da Economia: por que apenas 17% da energia vira eletricidade — e o que isso significa para o clima</h1>
+  <p class="lead">Uma análise de 25 anos de dados globais mostra que a eletricidade ainda é uma fração pequena da matriz energética mundial — e por que aumentar essa fatia é a chave da descarbonização.</p>
+  <div class="article-meta">
+    <span>Edson Mosman, Laura Melo Andrade, Lucas de Oliveira Silva</span>
+    <span>IEE – USP · PEN5039</span>
+    <span>Março de 2026</span>
+  </div>
+</header>
+
+<!-- CORPO -->
+<article class="article-body">
+
+  <p>Quando falamos em "transição energética", a palavra <strong>eletricidade</strong> aparece com frequência. Mas há uma pergunta fundamental que raramente é feita com clareza: <em>qual é, afinal, a participação da eletricidade dentro da matriz energética total?</em></p>
+
+  <p>A resposta surpreende muita gente: em 2024, apenas <strong>17,5% da energia primária consumida no mundo se converteu em eletricidade</strong>. O Brasil está um pouco acima, com 19,0%. Os outros 80% são usados de outras formas — como calor industrial, combustível de transporte ou simplesmente perdidos como resíduo térmico nas usinas.</p>
+
+  <p>Este artigo analisa essa proporção em detalhe, usando dados reais de 2000 a 2024 do <em>Our World in Data</em> e do Banco Mundial, e discute por que entender esse número é essencial para qualquer análise séria sobre descarbonização.</p>
+
+  <!-- STAT CARDS -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num blue">17,5%</div>
+      <div class="label">Mundo — eletricidade na<br>energia primária (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num green">19,0%</div>
+      <div class="label">Brasil — eletricidade na<br>energia primária (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">+3,7 p.p.</div>
+      <div class="label">Crescimento mundial<br>de 2000 a 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="num purple">27,3%</div>
+      <div class="label">Noruega — líder global<br>em eletrificação (2022)</div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 1 -->
+  <h2>Uma tendência que cresce — mas devagar</h2>
+
+  <p>O primeiro dado relevante é que a participação da eletricidade na matriz energética total vem crescendo de forma consistente desde 2000 — mas em ritmo lento. O mundo saiu de 13,8% em 2000 para 17,5% em 2024, um avanço de apenas 3,7 pontos percentuais em 24 anos.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Participação da eletricidade na energia primária — 2000 a 2024</div>
+    <div class="chart-sub">% da energia primária total convertida em eletricidade · Brasil vs Mundo</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c1"></canvas></div>
+    <div class="legend">
+      <span class="leg-item"><span class="leg-sq" style="background:#2563eb"></span>Brasil</span>
+      <span class="leg-item"><span class="leg-sq" style="background:#dc2626"></span>Mundo (tracejado)</span>
+    </div>
+  </div>
+
+  <p>O Brasil segue trajetória similar, com uma vantagem consistente sobre a média mundial ao longo de todo o período. Em 2024, o país atingiu 19,0% — o maior valor histórico da série. Essa diferença positiva em relação ao mundo reflete a expansão recente de energia solar e eólica no mix elétrico brasileiro.</p>
+
+  <div class="callout">
+    <strong>Por que o crescimento é lento?</strong> Porque a eletricidade ainda não entrou de forma massiva nos dois maiores consumidores de energia: o <strong>transporte</strong> (dominado por motores a combustão) e a <strong>indústria pesada</strong> (que usa calor direto de combustíveis fósseis para processos como fundição e produção de cimento). A eletrificação desses dois setores é o próximo grande desafio.
+  </div>
+
+  <!-- GRÁFICO 2 — COMPARAÇÃO INTERNACIONAL -->
+  <h2>Onde o Brasil se situa no mundo</h2>
+
+  <p>A comparação entre países revela perfis muito distintos de eletrificação. A tabela abaixo reúne as principais economias de referência com dados de 2022:</p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Energia primária (TWh)</th>
+        <th>Eletricidade (TWh)</th>
+        <th>% elétrica</th>
+        <th>Renováveis %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Noruega</td><td>534</td><td>145</td><td>27,3%</td><td>69,6%</td></tr>
+      <tr><td>França</td><td>2.306</td><td>468</td><td>20,3%</td><td>13,7%</td></tr>
+      <tr><td>China</td><td>44.516</td><td>8.849</td><td>19,9%</td><td>15,2%</td></tr>
+      <tr class="highlight"><td>Brasil</td><td>3.732</td><td>677</td><td>18,1%</td><td>47,7%</td></tr>
+      <tr><td>Índia</td><td>10.059</td><td>1.806</td><td>18,0%</td><td>9,4%</td></tr>
+      <tr><td>África do Sul</td><td>1.346</td><td>239</td><td>17,7%</td><td>3,6%</td></tr>
+      <tr><td>Alemanha</td><td>3.455</td><td>567</td><td>16,4%</td><td>20,3%</td></tr>
+      <tr><td>EUA</td><td>26.513</td><td>4.287</td><td>16,2%</td><td>10,9%</td></tr>
+      <tr><td>Argentina</td><td>1.001</td><td>146</td><td>14,5%</td><td>12,0%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="chart-block">
+    <div class="chart-title">% da eletricidade na energia primária — comparação internacional (2022)</div>
+    <div class="chart-sub">Brasil destacado em azul · Noruega como referência de eletrificação avançada</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O <strong>Brasil ocupa uma posição intermediária e favorável</strong> nessa comparação: está acima de EUA, Alemanha e Argentina, e próximo de China e Índia. O destaque vai para a Noruega, com 27,3% — resultado de décadas de eletrificação do aquecimento residencial e, mais recentemente, da adoção massiva de veículos elétricos.</p>
+
+  <p>O caso francês (20,3%) merece atenção: sua elevada participação elétrica é impulsionada pelo <strong>nuclear</strong>, que responde por quase 68% da geração elétrica do país — conferindo-lhe uma matriz de baixíssimo carbono, mas com dependência concentrada em urânio importado. É um modelo radicalmente diferente do brasileiro.</p>
+
+  <!-- DECOMPOSIÇÃO BRASIL -->
+  <h2>Para onde vai a energia que o Brasil consome</h2>
+
+  <p>Para entender por que apenas 18% da energia primária brasileira vira eletricidade, é preciso olhar para onde os outros 82% são direcionados.</p>
+
+  <div class="chart-wrap" style="margin-bottom:8px">
+    <div class="decomp-bar">
+      <div class="decomp-seg" style="flex:18.1;background:#2563eb">Elétrica<br>18,1%</div>
+      <div class="decomp-seg" style="flex:37.3;background:#dc2626">Petróleo direto<br>37,3%</div>
+      <div class="decomp-seg" style="flex:8.6; background:#d97706">Gás<br>8,6%</div>
+      <div class="decomp-seg" style="flex:6.5; background:#16a34a">Biocomb.<br>6,5%</div>
+      <div class="decomp-seg" style="flex:4.4; background:#1f2937">Carvão<br>4,4%</div>
+      <div class="decomp-seg" style="flex:25.1;background:#9ca3af">Outros<br>25,1%</div>
+    </div>
+  </div>
+  <div class="decomp-legend">
+    <span class="decomp-leg-item"><span class="decomp-dot" style="background:#2563eb"></span>Eletricidade (18,1%)</span>
+    <span class="decomp-leg-item"><span class="decomp-dot" style="background:#dc2626"></span>Petróleo direto — transporte (37,3%)</span>
+    <span class="decomp-leg-item"><span class="decomp-dot" style="background:#d97706"></span>Gás natural — indústria e calor (8,6%)</span>
+    <span class="decomp-leg-item"><span class="decomp-dot" style="background:#16a34a"></span>Biocombustíveis — etanol/biodiesel (6,5%)</span>
+    <span class="decomp-leg-item"><span class="decomp-dot" style="background:#1f2937"></span>Carvão — siderurgia (4,4%)</span>
+    <span class="decomp-leg-item"><span class="decomp-dot" style="background:#9ca3af"></span>Outros / perdas (25,1%)</span>
+  </div>
+
+  <div class="chart-block">
+    <div class="chart-title">Brasil 2022 — decomposição do consumo de energia primária (3.732 TWh = 100%)</div>
+    <div class="chart-sub">O petróleo consumido diretamente no transporte é, sozinho, o dobro de toda a eletricidade gerada</div>
+    <div class="chart-wrap" style="height:220px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>O dado mais revelador é o do <strong>petróleo consumido diretamente</strong>: 37,3% de toda a energia primária brasileira vai para motores a combustão — caminhões, carros, aviões, navios. Esse único setor consome o dobro de toda a eletricidade gerada no país. Se o transporte brasileiro fosse progressivamente eletrificado, com carros e caminhões elétricos alimentados pela matriz renovável nacional, o impacto climático seria imenso.</p>
+
+  <!-- GRÁFICO 4 — VOLUME ABSOLUTO -->
+  <h2>O crescimento absoluto da eletrificação no Brasil</h2>
+
+  <p>Embora a participação percentual da eletricidade na matriz seja relativamente estável, o volume absoluto cresceu significativamente. O Brasil gerou 746 TWh de eletricidade em 2024, contra 349 TWh em 2000 — um aumento de mais de 113%.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Volume de energia elétrica vs não-elétrica — Brasil (2000–2024)</div>
+    <div class="chart-sub">TWh · área empilhada · a eletricidade cresce mais rápido que a base total</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c4"></canvas></div>
+    <div class="legend">
+      <span class="leg-item"><span class="leg-sq" style="background:#2563eb"></span>Eletricidade (TWh)</span>
+      <span class="leg-item"><span class="leg-sq" style="background:#e5e7eb"></span>Energia não-elétrica (TWh)</span>
+    </div>
+  </div>
+
+  <p>O gráfico evidencia que a energia não-elétrica — dominada por combustíveis fósseis e biocombustíveis — ainda cresce em termos absolutos. O Brasil consome mais energia total a cada ano, e parte desse crescimento ainda é fóssil. A boa notícia é que a fatia elétrica cresce em ritmo ligeiramente mais rápido, elevando gradualmente o percentual da eletricidade no mix.</p>
+
+  <!-- GRÁFICO MUNDO -->
+  <h2>O cenário global: uma eletrificação ainda embrionária</h2>
+
+  <p>No mundo, a situação é ainda mais dependente de combustíveis fósseis. Em 2024, a eletricidade respondeu por 17,5% da energia primária global — subindo lentamente desde os 13,8% de 2000. O volume absoluto de eletricidade gerada no mundo quase dobrou (de 15.279 TWh para 30.938 TWh), mas a energia total também cresceu muito, diluindo o impacto percentual.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Participação da eletricidade na matriz — Brasil vs Mundo (2000–2024)</div>
+    <div class="chart-sub">Tendência de lenta eletrificação em ambos · Brasil consistentemente acima da média global</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c5"></canvas></div>
+    <div class="legend">
+      <span class="leg-item"><span class="leg-sq" style="background:#2563eb"></span>Brasil</span>
+      <span class="leg-item"><span class="leg-sq" style="background:#dc2626"></span>Mundo</span>
+    </div>
+  </div>
+
+  <div class="callout amber">
+    <strong>A contradição central da transição energética:</strong> as energias renováveis (solar e eólica) só produzem <em>eletricidade</em> — mas a maior parte da demanda de energia no mundo não é elétrica. Isso significa que instalar mais painéis solares e turbinas eólicas, por si só, não descarboniza o transporte nem a indústria pesada. A eletrificação desses setores é o elo que falta.
+  </div>
+
+  <!-- CASO NORUEGA -->
+  <h2>A Noruega como modelo: o que significa eletrificar de verdade</h2>
+
+  <p>Com 27,3% da energia primária convertida em eletricidade, a <strong>Noruega</strong> está em outro patamar. O país chega a essa marca porque eletrificou progressivamente o aquecimento residencial (quase todas as casas usam bombas de calor ou resistência elétrica), tem uma das maiores frotas de veículos elétricos per capita do mundo, e conta com 70% do mix primário baseado em hidroeletricidade.</p>
+
+  <p>Esse modelo mostra que <strong>chegar a 25–30% de eletricidade na matriz é tecnicamente viável</strong> — mas exige mudança profunda no transporte e no aquecimento, não apenas na geração.</p>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusion-box">
+    <h2>O que os dados revelam</h2>
+    <p>Os 25 anos de dados analisados permitem três conclusões centrais:</p>
+    <ul>
+      <li><strong>A eletrificação é a chave, mas ainda é minoritária.</strong> No Brasil e no mundo, menos de 20% da energia primária vira eletricidade. Os 80% restantes — especialmente o transporte e a indústria — continuam dependentes de combustíveis fósseis e biomassa.</li>
+      <li><strong>O Brasil tem uma vantagem estrutural única.</strong> Com quase 48% de renováveis na matriz primária e ~85% de eletricidade de baixo carbono, o país está bem posicionado para se beneficiar da eletrificação: cada carro elétrico que circula no Brasil já roda com energia muito mais limpa do que na maioria dos países.</li>
+      <li><strong>O gargalo não é a geração — é o uso final.</strong> O petróleo consumido diretamente no transporte brasileiro (37% da energia primária) é o dobro de toda a eletricidade gerada. Eletrificar o transporte é, portanto, o maior alavancador de descarbonização disponível para o Brasil neste momento.</li>
+    </ul>
+  </div>
+
+  <!-- FONTES -->
+  <div class="sources">
+    <h4>Fontes e referências</h4>
+    <ul>
+      <li>
+        <strong>Our World in Data (OWID)</strong> — CO₂ and Greenhouse Gas Emissions; Energy Mix; Primary Energy Consumption.
+        Hannah Ritchie, Pablo Rosado, Max Roser (2024).
+        <a href="https://ourworldindata.org/energy" target="_blank">ourworldindata.org/energy</a>
+      </li>
+      <li>
+        <strong>Global Carbon Project</strong> — CO₂ emissions dataset via OWID.
+        Friedlingstein et al. (2023). <em>Global Carbon Budget 2023</em>.
+        Earth System Science Data.
+      </li>
+      <li>
+        <strong>Energy Institute</strong> — Statistical Review of World Energy (2024).
+        Dados de consumo energético por fonte e país, via OWID.
+        <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a>
+      </li>
+      <li>
+        <strong>World Bank — World Development Indicators</strong> — PIB (PPP e nominal), população, indicadores socioeconômicos.
+        <a href="https://databank.worldbank.org/source/world-development-indicators" target="_blank">databank.worldbank.org</a>
+      </li>
+      <li>
+        <strong>United Nations Population Division</strong> — World Population Prospects (2024).
+        Via Our World in Data.
+        <a href="https://population.un.org/wpp/" target="_blank">population.un.org</a>
+      </li>
+      <li>
+        <strong>IEA — International Energy Agency</strong> — World Energy Balances (2024).
+        Dados de referência para balanços energéticos nacionais.
+        <a href="https://www.iea.org/data-and-statistics" target="_blank">iea.org</a>
+      </li>
+      <li>
+        <strong>Artigo produzido no âmbito da disciplina PEN5039</strong> — IEE–USP (Instituto de Energia e Ambiente, Universidade de São Paulo).
+        Docente responsável: Prof. Edmilson Moutinho dos Santos.
+        Autores: Edson Mosman, Laura Melo Andrade, Lucas de Oliveira Silva. Março de 2026.
+      </li>
+    </ul>
+  </div>
+
+</article>
+
+<!-- RODAPÉ -->
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<!-- SCRIPTS DOS GRÁFICOS -->
+<script>
+const anos = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const lbls = anos.map(String);
+const pctBr = [14.8,14.3,14.7,15.3,15.5,15.7,15.9,15.8,15.8,15.9,16.2,16.0,16.2,16.3,16.5,16.4,16.8,16.9,17.2,17.8,18.4,18.3,18.1,18.4,19.0];
+const pctWd = [13.8,13.9,14.1,14.1,14.1,14.2,14.3,14.5,14.6,14.8,15.0,15.2,15.3,15.5,15.7,15.8,16.0,16.1,16.4,16.4,16.9,17.0,17.1,17.2,17.5];
+const elecBr= [349,329,346,364,388,403,419,445,463,466,516,532,553,571,591,581,579,589,601,633,629,656,677,708,746];
+const naoBr = [2015,1976,2006,2022,2116,2166,2222,2365,2473,2459,2673,2785,2856,2930,2985,2954,2873,2888,2885,2934,2794,2925,3055,3146,3173];
+
+const gc = 'rgba(0,0,0,.06)';
+const tc = '#9ca3af';
+
+const base = (yMin,yMax,suf='%') => ({
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{display:false}},
+  scales:{
+    x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+    y:{ticks:{font:{size:11},color:tc,callback:v=>v+suf},grid:{color:gc},min:yMin,max:yMax}
+  }
+});
+
+// C1 — % eletrificação linha
+new Chart(document.getElementById('c1'),{
+  type:'line',
+  data:{labels:lbls,datasets:[
+    {data:pctBr,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.1)',
+     fill:true,tension:.35,pointRadius:0,borderWidth:2.5},
+    {data:pctWd,borderColor:'#dc2626',tension:.35,pointRadius:0,
+     borderWidth:2,borderDash:[6,4]}
+  ]},
+  options:base(13,20.5)
+});
+
+// C2 — comparação internacional barra horizontal
+new Chart(document.getElementById('c2'),{
+  type:'bar',
+  data:{
+    labels:['Noruega','França','China','Brasil','Índia','África do Sul','Alemanha','EUA','Argentina'],
+    datasets:[{
+      data:[27.3,20.3,19.9,18.1,18.0,17.7,16.4,16.2,14.5],
+      backgroundColor:['#16a34a','#7c3aed','#dc2626','#2563eb',
+                        '#d97706','#6b7280','#6b7280','#6b7280','#6b7280'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    indexAxis:'y',
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}},
+      y:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// C3 — decomposição Brasil barra horizontal empilhada
+new Chart(document.getElementById('c3'),{
+  type:'bar',
+  data:{
+    labels:['Brasil 2022'],
+    datasets:[
+      {label:'Eletricidade',    data:[18.1],backgroundColor:'#2563eb'},
+      {label:'Petróleo direto', data:[37.3],backgroundColor:'#dc2626'},
+      {label:'Gás natural',     data:[8.6], backgroundColor:'#d97706'},
+      {label:'Biocombustíveis', data:[6.5], backgroundColor:'#16a34a'},
+      {label:'Carvão',          data:[4.4], backgroundColor:'#1f2937'},
+      {label:'Outros',          data:[25.1],backgroundColor:'#d1d5db'},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    indexAxis:'y',
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},
+         grid:{color:gc},stacked:true,max:100},
+      y:{ticks:{font:{size:11},color:'#374151'},
+         grid:{display:false},stacked:true}
+    }
+  }
+});
+
+// C4 — área empilhada Brasil absoluto
+new Chart(document.getElementById('c4'),{
+  type:'line',
+  data:{labels:lbls,datasets:[
+    {label:'Não-elétrica',data:naoBr,
+     backgroundColor:'rgba(229,231,235,.7)',borderColor:'rgba(156,163,175,.8)',
+     fill:true,tension:.3,pointRadius:0,borderWidth:1},
+    {label:'Elétrica',data:elecBr,
+     backgroundColor:'rgba(37,99,235,.45)',borderColor:'#2563eb',
+     fill:true,tension:.3,pointRadius:0,borderWidth:2},
+  ]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v.toLocaleString('pt-BR')+' TWh'},
+         grid:{color:gc}}
+    }
+  }
+});
+
+// C5 — comparação % ambos com área
+new Chart(document.getElementById('c5'),{
+  type:'line',
+  data:{labels:lbls,datasets:[
+    {data:pctBr,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',
+     fill:true,tension:.35,pointRadius:2,pointBackgroundColor:'#2563eb',
+     borderWidth:2.5,pointRadius:0},
+    {data:pctWd,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.06)',
+     fill:true,tension:.35,borderWidth:2,borderDash:[6,4],pointRadius:0}
+  ]},
+  options:base(13,20.5)
+});
+</script>
+</body>
+</html>

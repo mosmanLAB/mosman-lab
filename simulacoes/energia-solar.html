@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Energia Solar Fotovoltaica — MosmanLAB</title>
+<meta name="description" content="Simulação interativa de Energia Solar Fotovoltaica com posição real do sol sobre Tupã-SP — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman.">
+<link rel="canonical" href="https://mosmanlab.com.br/simulacoes/energia-solar.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
+  --border:rgba(255,255,255,0.08);
+  --A:#58a6ff;--G:#3fb950;--O:#f78166;--P:#d2a8ff;--AM:#e3b341;
+  --txt:#e6edf3;--muted:#8b949e;--dim:#484f58;--r:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;}
+main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
+.hero{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.hero-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--G);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;}
+.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--G);}
+.hero h1{font-family:'Lora',serif;font-size:2.1rem;font-weight:600;line-height:1.25;margin-bottom:.5rem;}
+.hero .lead{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:620px;}
+.theory-block{margin-bottom:2.2rem;}
+.theory-block h2{font-family:'Lora',serif;font-size:1.25rem;font-weight:600;color:var(--txt);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.theory-block h2::before{content:'';display:inline-block;width:4px;height:20px;background:var(--A);border-radius:2px;flex-shrink:0;}
+.theory-text{font-size:.88rem;line-height:1.95;color:#cdd9e5;margin-bottom:1rem;}
+.theory-text p{margin-bottom:.9rem;}
+.theory-text p:last-child{margin-bottom:0;}
+.theory-text strong{color:#79c0ff;font-weight:500;}
+.theory-text em{font-family:'Lora',serif;font-style:italic;color:var(--txt);}
+.theory-text .num{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--AM);background:rgba(227,179,65,.1);padding:1px 6px;border-radius:4px;}
+.eq-destaque{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--AM);border-radius:var(--r);padding:1.4rem 1.8rem;margin:1.4rem 0;text-align:center;}
+.eq-destaque .eq-main{font-family:'DM Mono',monospace;font-size:1.35rem;color:var(--AM);letter-spacing:.04em;margin-bottom:.6rem;}
+.eq-destaque .eq-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem;margin-top:.5rem;}
+.eq-destaque .eq-legend span{font-size:.75rem;color:var(--muted);font-family:'DM Mono',monospace;}
+.eq-destaque .eq-legend span strong{color:var(--AM);}
+.eq-inline{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.55rem 1rem;margin:.7rem 0;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--G);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+.eq-inline span{color:var(--muted);font-size:.72rem;}
+.fact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:1.2rem 0;}
+.fact{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:4px;}
+.fact .fnum{font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:400;color:var(--A);}
+.fact .flbl{font-size:.75rem;color:var(--muted);line-height:1.4;}
+.sim-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--A);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;}
+.sim-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.sim-box canvas{display:block;width:100%;background:var(--bg2);border-bottom:1px solid var(--border);}
+.sim-controls{padding:1rem 1.2rem;}
+.ctrl-row{display:flex;align-items:center;gap:8px;margin:6px 0;}
+.ctrl-row label{font-size:.75rem;color:var(--muted);min-width:210px;flex-shrink:0;}
+.ctrl-row input[type=range]{flex:1;min-width:0;accent-color:var(--A);}
+.ctrl-row .vout{font-family:'DM Mono',monospace;font-size:.75rem;color:#79c0ff;min-width:80px;text-align:right;white-space:nowrap;}
+.sec-lbl{font-size:.68rem;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:10px 0 3px;}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0;}
+.metric{background:var(--bg3);border-radius:8px;padding:9px 11px;}
+.metric .ml{font-size:.62rem;color:var(--dim);margin-bottom:2px;}
+.metric .mv{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--txt);}
+.info-row{margin:8px 0 0;font-size:.72rem;color:var(--muted);line-height:1.8;}
+.sep{height:1px;background:var(--border);margin:2rem 0;}
+@media(max-width:640px){
+  main{padding:1rem .9rem 4rem;}
+  .hero h1{font-size:1.5rem;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .ctrl-row{flex-wrap:wrap;}
+  .ctrl-row label{min-width:100%;font-size:.72rem;}
+}
+@media(max-width:900px){main{padding:2rem 1.8rem 5rem;}}
+</style>
+<link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="Simulação interativa de Energia Solar Fotovoltaica — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman, mestre em Física pela USP.">
+  <link rel="canonical" href="https://mosmanlab.com.br/simulacoes/energia-solar.html">
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a href="../blog/">Blog</a>
+    <a class="active" href="index.html">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+
+
+
+<main>
+
+  <div class="hero">
+    <div class="hero-tag">Energia — Simulação 11</div>
+    <h1>Energia Solar Fotovoltaica</h1>
+    <p class="lead">Como a luz do sol é convertida diretamente em eletricidade — e como a posição do sol no céu ao longo do dia determina o quanto de energia seus painéis conseguem captar.</p>
+  </div>
+
+  <div class="theory-block" id="teoria">
+    <h2>O sol como fonte inesgotável de energia</h2>
+    <div class="theory-text">
+      <p>O sol irradia uma quantidade colossal de energia em todas as direções. A fração dessa energia que chega à superfície da Terra — chamada de <strong>irradiância solar</strong> — é de aproximadamente <span class="num">1 361 W/m²</span> fora da atmosfera (a chamada <em>constante solar</em>). Ao atravessar a atmosfera, parte dessa energia é absorvida e espalhada, chegando ao solo com valores menores, que dependem do ângulo do sol, da espessura da atmosfera percorrida e das condições climáticas.</p>
+      <p>O Brasil recebe uma das maiores irradiâncias solares do mundo. O interior do Nordeste e do Centro-Oeste registra médias anuais superiores a <span class="num">5,5 kWh/m²/dia</span>, tornando o país um dos melhores locais do planeta para geração solar. A <strong>energia solar fotovoltaica</strong> — que converte a luz diretamente em corrente elétrica usando semicondutores — cresceu de forma explosiva no Brasil nos últimos anos, já ultrapassando <span class="num">40 GW</span> de capacidade instalada.</p>
+    </div>
+
+    <div class="fact-grid">
+      <div class="fact">
+        <span class="fnum">+40 GW</span>
+        <span class="flbl">capacidade solar instalada no Brasil em 2024 — 4º maior do mundo</span>
+      </div>
+      <div class="fact">
+        <span class="fnum">~15%</span>
+        <span class="flbl">da energia elétrica brasileira gerada por painéis solares em 2024</span>
+      </div>
+      <div class="fact">
+        <span class="fnum">24%</span>
+        <span class="flbl">eficiência máxima de painéis comerciais modernos de silício monocristalino</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Um painel solar fotovoltaico é formado por <strong>células solares</strong>, cada uma feita de material semicondutor (normalmente silício). Quando fótons de luz atingem a célula, eles transferem energia aos elétrons, arrancando-os de suas posições e gerando uma corrente elétrica — o chamado <strong>efeito fotovoltaico</strong>, descoberto por Edmond Becquerel em 1839 e explicado por Einstein em 1905 (trabalho que lhe rendeu o Prêmio Nobel de Física em 1921).</p>
+      <p>A quantidade de energia gerada depende de três fatores principais: a <strong>irradiância</strong> que chega ao painel (W/m²), a <strong>área total</strong> dos painéis (m²) e o <strong>rendimento</strong> η das células, que indica qual fração da energia luminosa é convertida em energia elétrica.</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="theory-block" id="expressao">
+    <h2>A expressão da potência solar</h2>
+    <div class="theory-text">
+      <p>A potência elétrica gerada por um conjunto de painéis solares é diretamente proporcional à irradiância incidente e à área dos painéis:</p>
+    </div>
+
+    <div class="eq-destaque">
+      <div class="eq-main">P = G · A · η</div>
+      <div class="eq-legend">
+        <span><strong>P</strong> = potência elétrica gerada (W ou kW)</span>
+        <span><strong>G</strong> = irradiância solar incidente no plano do painel (W/m²)</span>
+        <span><strong>A</strong> = área total dos painéis (m²)</span>
+        <span><strong>η</strong> = rendimento (eficiência) das células fotovoltaicas</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>A irradiância G não é constante ao longo do dia — ela depende do <strong>ângulo de elevação do sol</strong> no céu. Quando o sol está baixo (amanhecer ou entardecer), os raios percorrem uma camada mais espessa de atmosfera e chegam mais oblíquos ao painel, reduzindo G. Ao meio-dia solar, o sol atinge sua máxima elevação e G é máxima.</p>
+      <p>A <strong>inclinação do painel</strong> (ângulo β em relação ao horizontal) também é crucial. No hemisfério sul, os painéis devem ser voltados para o <strong>norte geográfico</strong> e inclinados em um ângulo próximo à latitude local para maximizar a captação anual. Para Tupã-SP, a latitude é aproximadamente <span class="num">22°S</span>, portanto a inclinação ótima é em torno de β ≈ 22°.</p>
+    </div>
+
+    <div class="eq-inline">
+      β_ótimo ≈ |latitude| <span>·</span> Tupã-SP: lat = 21,9°S → β ≈ 22° <span>·</span> painéis voltados para norte
+    </div>
+
+    <div class="theory-text">
+      <p>A <strong>massa de ar</strong> (AM) é um conceito importante: representa quantas vezes a espessura normal da atmosfera os raios solares atravessam. Ao nível do mar com o sol a pino, AM = 1. Quanto mais oblíquo o sol, maior a massa de ar e maior a absorção. A irradiância direta no solo segue aproximadamente a lei empírica:</p>
+    </div>
+
+    <div class="eq-inline">
+      G_direta ≈ 1361 × 0,7^(AM^0,678) <span>·</span> AM = 1/sen(α) <span>α = elevação solar</span>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="sim-tag">Simulação interativa — Tupã-SP (21,9°S · 50,5°W)</div>
+  <div class="sim-box">
+    <canvas id="cv-solar"></canvas>
+    <div class="sim-controls">
+      <div class="ctrl-row"><label>Área dos painéis  A (m²)</label><input type="range" id="area" min="1" max="500" value="40" step="1"><span class="vout" id="o-a">40 m²</span></div>
+      <div class="ctrl-row"><label>Inclinação do painel  β (°)</label><input type="range" id="beta" min="0" max="90" value="22" step="1"><span class="vout" id="o-b">22°</span></div>
+      <div class="ctrl-row"><label>Rendimento  η (%)</label><input type="range" id="eta" min="5" max="24" value="18" step="1"><span class="vout" id="o-eta">18 %</span></div>
+      <div class="ctrl-row"><label>Horário (h)</label><input type="range" id="hora" min="0" max="23.9" value="12" step="0.1"><span class="vout" id="o-hora">12:00</span></div>
+      <div class="sec-lbl">Irradiância ao longo do dia</div>
+      <canvas id="cv-curve" style="border:none;border-top:.5px solid var(--border);"></canvas>
+      <div class="metrics">
+        <div class="metric"><div class="ml">Irradiância incidente</div><div class="mv" id="cv-irr">—</div></div>
+        <div class="metric"><div class="ml">Potência gerada</div><div class="mv" id="cv-pot">—</div></div>
+        <div class="metric"><div class="ml">Ângulo solar (alt.)</div><div class="mv" id="cv-ang">—</div></div>
+        <div class="metric"><div class="ml">Energia no dia</div><div class="mv" id="cv-ed">—</div></div>
+      </div>
+      <div class="info-row" id="info"></div>
+    </div>
+  </div>
+
+</main>
+
+<section style="background:#f8f8f8; padding:40px 20px; text-align:center; margin-top:60px;">
+  <p style="font-family:'DM Sans',sans-serif; color:#555; font-size:0.95rem; margin-bottom:16px;">
+    Quer dominar a Física para o vestibular com esse nível de profundidade?
+  </p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:12px 28px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif;">
+    Conhecer a Turma de Maio 2026
+  </a>
+</section>
+
+<script>
+const LAT_DEG=-21.934, LAT=-21.934*Math.PI/180, LON_DEG=-50.515, UTC_OFF=-3, DAY_OF_YEAR=355;
+const G_SC=1361;
+function toRad(d){return d*Math.PI/180;}
+function toDeg(r){return r*180/Math.PI;}
+function solarGeometry(hora){
+  const B=toRad(360*(DAY_OF_YEAR-81)/364);
+  const decl=toRad(23.45*Math.sin(B));
+  const EoT=9.87*Math.sin(2*B)-7.53*Math.cos(B)-1.5*Math.sin(B);
+  const TC=4*(LON_DEG-15*UTC_OFF)+EoT;
+  const HRA=toRad(15*(hora-12)+TC/4);
+  const sinAlt=Math.sin(LAT)*Math.sin(decl)+Math.cos(LAT)*Math.cos(decl)*Math.cos(HRA);
+  const alt=Math.asin(Math.max(-1,Math.min(1,sinAlt)));
+  const cosAz=(Math.sin(decl)-Math.sin(LAT)*sinAlt)/(Math.cos(LAT)*Math.cos(alt)+1e-9);
+  const az=HRA>0?2*Math.PI-Math.acos(Math.max(-1,Math.min(1,cosAz))):Math.acos(Math.max(-1,Math.min(1,cosAz)));
+  return{alt,az,decl};
+}
+function irradiance(hora,betaDeg){
+  const beta=toRad(betaDeg);
+  const{alt,az}=solarGeometry(hora);
+  if(alt<=0)return 0;
+  const AM=1/(Math.sin(alt)+0.50572*Math.pow(toDeg(alt)+6.07995,-1.6364));
+  const Ib=G_SC*Math.pow(0.7,Math.pow(AM,0.678));
+  const gammaPanel=toRad(180);
+  const cosTheta=Math.sin(alt)*Math.cos(beta)+Math.cos(alt)*Math.sin(beta)*Math.cos(az-gammaPanel);
+  const G_plane=Math.max(0,Ib*Math.max(0,cosTheta));
+  return G_plane+0.1*Ib*(1+Math.cos(beta))/2+0.02*Ib*(1-Math.cos(beta))/2;
+}
+function dailyEnergy(betaDeg){
+  let E=0;const dt=0.25;
+  for(let h=0;h<24;h+=dt)E+=irradiance(h,betaDeg)*dt;
+  return E;
+}
+function dk(){return window.matchMedia('(prefers-color-scheme:dark)').matches;}
+function co(){const d=dk();return{
+  sky1:d?'#0d1117':'#c9e8f5',sky2:d?'#161b22':'#e8f4fb',
+  ground:d?'#1a2a0a':'#4a7c2a',groundL:d?'#2a3a1a':'#5a9c3a',
+  hill:d?'#152010':'#3d6b1a',
+  panel:d?'#1a3a5a':'#1a4a8a',panelL:d?'#2a5a8a':'#2a6aaa',
+  frame:d?'#8b949e':'#555',struct:d?'#555':'#999',
+  sun:'#ffd700',sunGlow:'rgba(255,215,0,0.22)',moon:'#e0e0e0',
+  muted:d?'#7d8590':'#6b6a65',txt:d?'#c2c0b6':'#3d3d3a',
+  grid:d?'rgba(255,255,255,0.05)':'rgba(0,0,0,0.05)',
+  ax:d?'rgba(255,255,255,0.18)':'rgba(0,0,0,0.15)',
+  barG:'#3fb950',curve:'#e3b341',now:'#f78166',
+  house:d?'#2a2a3a':'#c8b89a',houseR:d?'#3a2a2a':'#a0522d',
+  tree:d?'#1a3a1a':'#2d5a27',treeL:d?'#2a5a2a':'#3d7a37',
+};}
+function gv(id){return+document.getElementById(id).value;}
+function setupCanvas(cv,cssH){
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.clientWidth||480;
+  cv.width=Math.round(W*dpr);cv.height=Math.round(cssH*dpr);
+  cv.style.width=W+'px';cv.style.height=cssH+'px';
+  const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+  return{ctx,W,H:cssH};
+}
+function drawScene(){
+  const{ctx,W,H}=setupCanvas(document.getElementById('cv-solar'),300);
+  const c=co();
+  const hora=gv('hora'),beta=gv('beta'),area=gv('area'),eta=gv('eta')/100;
+  const{alt,az}=solarGeometry(hora);
+  const G=irradiance(hora,beta);
+  const P=G*area*eta;
+  ctx.clearRect(0,0,W,H);
+  const groundY=H*0.70;
+  // céu
+  const dayFrac=Math.max(0,Math.min(1,(toDeg(alt)+5)/50));
+  const skyGrad=ctx.createLinearGradient(0,0,0,groundY);
+  if(alt>0){
+    skyGrad.addColorStop(0,dk()?`rgba(10,22,40,${1-dayFrac*0.7})`:`rgba(21,101,192,${0.4+dayFrac*0.6})`);
+    skyGrad.addColorStop(1,dk()?'rgba(26,42,74,1)':'rgba(135,206,235,1)');
+  }else{skyGrad.addColorStop(0,dk()?'#060e18':'#0a0a2a');skyGrad.addColorStop(1,dk()?'#1a0a04':'#1a0a30');}
+  ctx.fillStyle=skyGrad;ctx.fillRect(0,0,W,groundY);
+  // sol/lua
+  const azNorm=(toDeg(az)-90)/180;
+  const sunX=W*(0.08+azNorm*0.84);
+  const altNorm=Math.max(0,Math.min(1,toDeg(alt)/80));
+  const sunY=groundY*(1-altNorm*0.88);
+  if(alt>toRad(-5)){
+    const sunR=Math.max(8,W*0.027);
+    if(alt>0){ctx.fillStyle=c.sunGlow;ctx.beginPath();ctx.arc(sunX,sunY,sunR*2.8,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(255,215,0,0.12)';ctx.beginPath();ctx.arc(sunX,sunY,sunR*4.5,0,Math.PI*2);ctx.fill();}
+    ctx.fillStyle=alt<toRad(5)?'#ffaa00':c.sun;ctx.beginPath();ctx.arc(sunX,sunY,sunR,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='rgba(255,255,200,0.5)';ctx.beginPath();ctx.arc(sunX-sunR*.25,sunY-sunR*.25,sunR*.45,0,Math.PI*2);ctx.fill();
+    const hLabel=Math.floor(hora).toString().padStart(2,'0')+':'+(Math.round((hora%1)*60)).toString().padStart(2,'0');
+    ctx.fillStyle=c.sun;ctx.font=`bold ${Math.max(9,W*0.02)}px 'DM Sans',sans-serif`;ctx.textAlign='center';ctx.fillText(hLabel,sunX,Math.max(14,sunY-Math.max(8,W*0.027)-6));
+  }else{
+    ctx.fillStyle='rgba(200,200,220,0.15)';ctx.beginPath();ctx.arc(sunX,sunY,W*0.022,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=c.moon;ctx.beginPath();ctx.arc(sunX,sunY,W*0.018,0,Math.PI*2);ctx.fill();
+  }
+  if(alt<0){ctx.fillStyle='rgba(255,255,255,0.5)';for(let i=0;i<25;i++){ctx.beginPath();ctx.arc((Math.sin(i*137.5)*.5+.5)*W,(Math.sin(i*97.3)*.5+.5)*groundY*.85,Math.random()*1.4+.3,0,Math.PI*2);ctx.fill();}}
+  // trajetória
+  ctx.strokeStyle='rgba(255,200,0,0.15)';ctx.lineWidth=1.3;ctx.setLineDash([3,5]);
+  ctx.beginPath();let fst=true;
+  for(let h=5;h<=19;h+=.25){const g2=solarGeometry(h);if(g2.alt<0)continue;const azN2=(toDeg(g2.az)-90)/180;const sx2=W*(0.08+azN2*0.84);const sy2=groundY*(1-Math.max(0,Math.min(1,toDeg(g2.alt)/80))*.88);fst?ctx.moveTo(sx2,sy2):ctx.lineTo(sx2,sy2);fst=false;}
+  ctx.stroke();ctx.setLineDash([]);
+  // terreno
+  ctx.fillStyle=c.hill;ctx.beginPath();ctx.moveTo(0,H*0.72);ctx.quadraticCurveTo(W*.2,H*.56,W*.4,H*.68);ctx.quadraticCurveTo(W*.6,H*.58,W*.8,H*.65);ctx.quadraticCurveTo(W*.9,H*.62,W,H*.68);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();
+  ctx.fillStyle=c.ground;ctx.fillRect(0,groundY,W,H-groundY);
+  ctx.fillStyle=c.groundL;for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(W*(.12+i*.18),groundY+5,W*.06,5,0,0,Math.PI*2);ctx.fill();}
+  // casinha
+  const HX=W*.15,HY=groundY,HW=W*.11,HH=H*.12;
+  ctx.fillStyle=c.house;ctx.fillRect(HX-HW/2,HY-HH,HW,HH);
+  ctx.fillStyle=c.houseR;ctx.beginPath();ctx.moveTo(HX-HW/2-3,HY-HH);ctx.lineTo(HX,HY-HH-H*.05);ctx.lineTo(HX+HW/2+3,HY-HH);ctx.closePath();ctx.fill();
+  ctx.fillStyle=c.struct;ctx.fillRect(HX-HW*.11,HY-HH*.38,HW*.22,HH*.38);
+  ctx.fillStyle='rgba(255,220,100,0.5)';ctx.fillRect(HX-HW*.36,HY-HH*.72,HW*.21,HH*.24);ctx.fillRect(HX+HW*.15,HY-HH*.72,HW*.21,HH*.24);
+  // árvores
+  [[W*.04,groundY],[W*.28,groundY],[W*.95,groundY]].forEach(([tx2,ty2])=>{const th=H*.11;ctx.fillStyle=c.struct;ctx.fillRect(tx2-2.5,ty2-th,5,th*.5);ctx.fillStyle=c.tree;ctx.beginPath();ctx.arc(tx2,ty2-th*.7,H*.048,0,Math.PI*2);ctx.fill();ctx.fillStyle=c.treeL;ctx.beginPath();ctx.arc(tx2-4,ty2-th*.75,H*.028,0,Math.PI*2);ctx.fill();});
+  // painel
+  const PX=W*.57,PY=groundY;
+  const PW=Math.min(W*.28,Math.sqrt(area)*3.2);
+  const betaR=toRad(beta);
+  const pdx=PW*Math.cos(betaR),pdy=PW*Math.sin(betaR);
+  ctx.strokeStyle=c.struct;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(PX,PY);ctx.lineTo(PX,PY-pdy*.5-3);ctx.stroke();
+  ctx.fillStyle='rgba(0,0,0,0.12)';ctx.beginPath();ctx.moveTo(PX+3,PY+2);ctx.lineTo(PX+pdx+3,PY-pdy+2);ctx.lineTo(PX+pdx+PW*.04+3,PY-pdy+2);ctx.lineTo(PX+PW*.04+3,PY+2);ctx.closePath();ctx.fill();
+  const pGrad=ctx.createLinearGradient(PX,PY,PX+pdx,PY-pdy);pGrad.addColorStop(0,c.panel);pGrad.addColorStop(.4,c.panelL);pGrad.addColorStop(1,c.panel);
+  ctx.fillStyle=pGrad;ctx.beginPath();ctx.moveTo(PX,PY);ctx.lineTo(PX+pdx,PY-pdy);ctx.lineTo(PX+pdx+PW*.04,PY-pdy+2);ctx.lineTo(PX+PW*.04,PY+2);ctx.closePath();ctx.fill();
+  ctx.strokeStyle='rgba(88,166,255,0.28)';ctx.lineWidth=.7;
+  for(let i=1;i<4;i++){const f=i/4;ctx.beginPath();ctx.moveTo(PX+pdx*f,PY-pdy*f);ctx.lineTo(PX+pdx*f+PW*.04,PY-pdy*f+2);ctx.stroke();}
+  ctx.strokeStyle=c.frame;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(PX,PY);ctx.lineTo(PX+pdx,PY-pdy);ctx.lineTo(PX+pdx+PW*.04,PY-pdy+2);ctx.lineTo(PX+PW*.04,PY+2);ctx.closePath();ctx.stroke();
+  if(G>80){ctx.fillStyle=`rgba(255,220,80,${Math.min(.32,G/1200)})`;ctx.beginPath();ctx.moveTo(PX,PY);ctx.lineTo(PX+pdx,PY-pdy);ctx.lineTo(PX+pdx+PW*.04,PY-pdy+2);ctx.lineTo(PX+PW*.04,PY+2);ctx.closePath();ctx.fill();}
+  // fio para casa
+  ctx.strokeStyle=c.muted;ctx.lineWidth=1;ctx.setLineDash([3,4]);ctx.beginPath();ctx.moveTo(PX,PY-2);ctx.lineTo(HX+HW/2,HY-HH*.6);ctx.stroke();ctx.setLineDash([]);
+  // cota β
+  ctx.strokeStyle=c.muted;ctx.lineWidth=.8;ctx.beginPath();ctx.arc(PX+PW*.04,PY+2,22,toRad(-90),toRad(-90+beta),false);ctx.stroke();
+  ctx.fillStyle=c.txt;ctx.font=`bold ${Math.max(9,W*.019)}px 'DM Mono',monospace`;ctx.textAlign='left';ctx.fillText('β='+beta+'°',PX+PW*.06+24,PY-13);
+  // potência
+  ctx.fillStyle=G>50?'#3fb950':c.muted;ctx.font=`bold ${Math.max(10,W*.022)}px 'DM Sans',sans-serif`;ctx.textAlign='center';
+  ctx.fillText(P>=1000?(P/1000).toFixed(2)+' kW':P.toFixed(0)+' W',PX+pdx/2+4,PY-pdy-15);
+  ctx.fillStyle=c.muted;ctx.font=`${Math.max(9,W*.017)}px 'DM Sans',sans-serif`;ctx.fillText(G.toFixed(0)+' W/m²',PX+pdx/2+4,PY-pdy-4);
+  ctx.fillStyle=c.muted;ctx.font=`${Math.max(8,W*.015)}px 'DM Sans',sans-serif`;ctx.textAlign='right';ctx.fillText('Tupã-SP  21,9°S  50,5°W',W-8,H-5);
+}
+function drawCurve(){
+  const{ctx,W,H}=setupCanvas(document.getElementById('cv-curve'),148);
+  const c=co();ctx.clearRect(0,0,W,H);
+  const beta=gv('beta'),hora=gv('hora');
+  const PL=52,PR=18,PT=16,PB=28,cw=W-PL-PR,ch=H-PT-PB;
+  const tx=h=>PL+(h/24)*cw;
+  const hours=[];let maxG=0;
+  for(let h=0;h<24;h+=.1){const g=irradiance(h,beta);hours.push({h,g});if(g>maxG)maxG=g;}
+  maxG=Math.max(maxG,100);
+  const ty=g=>PT+ch-(g/maxG)*ch;
+  ctx.strokeStyle=c.grid;ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const gy=PT+i*(ch/4);ctx.beginPath();ctx.moveTo(PL,gy);ctx.lineTo(PL+cw,gy);ctx.stroke();}
+  for(let i=0;i<=6;i++){const gx=PL+i*(cw/6);ctx.beginPath();ctx.moveTo(gx,PT);ctx.lineTo(gx,PT+ch);ctx.stroke();}
+  ctx.strokeStyle=c.ax;ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(PL,PT);ctx.lineTo(PL,PT+ch);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(PL,PT+ch);ctx.lineTo(PL+cw,PT+ch);ctx.stroke();
+  ctx.fillStyle='rgba(227,179,65,0.1)';ctx.beginPath();ctx.moveTo(tx(hours[0].h),ty(0));hours.forEach(p=>ctx.lineTo(tx(p.h),ty(p.g)));ctx.lineTo(tx(hours[hours.length-1].h),ty(0));ctx.closePath();ctx.fill();
+  ctx.strokeStyle='#e3b341';ctx.lineWidth=2;ctx.setLineDash([]);ctx.beginPath();let fst=true;hours.forEach(p=>{fst?ctx.moveTo(tx(p.h),ty(p.g)):ctx.lineTo(tx(p.h),ty(p.g));fst=false;});ctx.stroke();
+  const gNow=irradiance(hora,beta);
+  ctx.strokeStyle='#f78166';ctx.lineWidth=1.2;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(tx(hora),PT);ctx.lineTo(tx(hora),PT+ch);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='#f78166';ctx.beginPath();ctx.arc(tx(hora),ty(gNow),4,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=c.muted;ctx.font='9px "DM Mono",monospace';ctx.textAlign='center';
+  for(let h=0;h<=24;h+=4)ctx.fillText(h+'h',tx(h),PT+ch+13);
+  ctx.textAlign='right';for(let i=0;i<=4;i++)ctx.fillText((maxG*i/4).toFixed(0),PL-3,PT+ch-i*(ch/4)+3);
+  ctx.save();ctx.translate(13,PT+ch/2);ctx.rotate(-Math.PI/2);ctx.fillStyle='#e3b341';ctx.font='bold 10px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText('W/m²',0,0);ctx.restore();
+  ctx.fillStyle=c.muted;ctx.font='9px "DM Mono",monospace';ctx.textAlign='center';ctx.fillText('hora local (BRT)',PL+cw/2,PT+ch+25);
+}
+function update(){
+  const hora=gv('hora'),beta=gv('beta'),area=gv('area'),eta=gv('eta')/100;
+  const hh=Math.floor(hora).toString().padStart(2,'0');
+  const mm=(Math.round((hora%1)*60)).toString().padStart(2,'0');
+  document.getElementById('o-a').textContent=area+' m²';
+  document.getElementById('o-b').textContent=beta+'°';
+  document.getElementById('o-eta').textContent=(eta*100).toFixed(0)+' %';
+  document.getElementById('o-hora').textContent=hh+':'+mm;
+  const G=irradiance(hora,beta);
+  const{alt}=solarGeometry(hora);
+  const P=G*area*eta;
+  const Eday=dailyEnergy(beta)*area*eta/1000;
+  document.getElementById('cv-irr').textContent=G.toFixed(1)+' W/m²';
+  document.getElementById('cv-pot').textContent=P>=1000?(P/1000).toFixed(2)+' kW':P.toFixed(0)+' W';
+  document.getElementById('cv-ang').textContent=toDeg(alt).toFixed(1)+'°';
+  document.getElementById('cv-ed').textContent=Eday.toFixed(2)+' kWh';
+  document.getElementById('info').innerHTML=`P = G · A · η &nbsp;·&nbsp; <strong>G = ${G.toFixed(0)} W/m²</strong> &nbsp;·&nbsp; Inclinação ótima ≈ |lat| = <strong>${Math.round(Math.abs(LAT_DEG))}°</strong> &nbsp;·&nbsp; Energia no dia: <strong>${Eday.toFixed(2)} kWh</strong>`;
+  drawScene();drawCurve();
+}
+['area','beta','eta','hora'].forEach(id=>document.getElementById(id).addEventListener('input',update));
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',update);
+window.addEventListener('resize',update);
+update();
+</script>
+
+<section style="background:#f0f9f4; padding:48px 24px; text-align:center; margin-top:60px; border-top:1px solid #e8e8e8;">
+  <p style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:#888; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; margin-bottom:8px;">MosmanLAB</p>
+  <p style="font-family:'Lora',serif; font-size:1.4rem; font-weight:600; color:#111; margin-bottom:8px; line-height:1.3;">Quer dominar a Física para o vestibular?</p>
+  <p style="font-size:0.92rem; color:#666; max-width:480px; margin:0 auto 24px; line-height:1.6;">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:13px 30px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif; font-size:0.92rem;">
+    Conhecer a Turma de Maio 2026 →
+  </a>
+</section>
+</body>
+</html>

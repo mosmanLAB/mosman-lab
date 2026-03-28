@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Curva I×V do Painel Solar — MosmanLAB</title>
+<meta name="description" content="Simulação interativa da curva I×V e P×V de painéis fotovoltaicos com modelo de diodo único — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman.">
+<link rel="canonical" href="https://mosmanlab.com.br/simulacoes/curva-iv-solar.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:rgba(255,255,255,0.08);--A:#58a6ff;--G:#3fb950;--O:#f78166;--P:#d2a8ff;--AM:#e3b341;--txt:#e6edf3;--muted:#8b949e;--dim:#484f58;--r:10px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;}
+main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
+.hero{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.hero-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--G);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;}
+.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--G);}
+.hero h1{font-family:'Lora',serif;font-size:2.1rem;font-weight:600;line-height:1.25;margin-bottom:.5rem;}
+.hero .lead{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:620px;}
+.theory-block{margin-bottom:2.2rem;}
+.theory-block h2{font-family:'Lora',serif;font-size:1.25rem;font-weight:600;color:var(--txt);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.theory-block h2::before{content:'';display:inline-block;width:4px;height:20px;background:var(--A);border-radius:2px;flex-shrink:0;}
+.theory-text{font-size:.88rem;line-height:1.95;color:#cdd9e5;margin-bottom:1rem;}
+.theory-text p{margin-bottom:.9rem;}
+.theory-text p:last-child{margin-bottom:0;}
+.theory-text strong{color:#79c0ff;font-weight:500;}
+.theory-text em{font-family:'Lora',serif;font-style:italic;color:var(--txt);}
+.theory-text .num{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--AM);background:rgba(227,179,65,.1);padding:1px 6px;border-radius:4px;}
+.eq-destaque{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--AM);border-radius:var(--r);padding:1.4rem 1.8rem;margin:1.4rem 0;text-align:center;}
+.eq-destaque .eq-main{font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--AM);letter-spacing:.03em;margin-bottom:.6rem;}
+.eq-destaque .eq-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem;margin-top:.5rem;}
+.eq-destaque .eq-legend span{font-size:.75rem;color:var(--muted);font-family:'DM Mono',monospace;}
+.eq-destaque .eq-legend span strong{color:var(--AM);}
+.eq-inline{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.55rem 1rem;margin:.7rem 0;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--G);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+.eq-inline span{color:var(--muted);font-size:.72rem;}
+.diagram-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.5rem;margin:1.2rem 0;display:flex;gap:1.5rem;align-items:flex-start;}
+.diagram-card .dc-icon{font-size:2.2rem;flex-shrink:0;line-height:1;}
+.diagram-card .dc-txt{font-size:.84rem;color:var(--muted);line-height:1.7;}
+.diagram-card .dc-txt strong{color:var(--txt);font-weight:500;}
+.sim-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--A);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;}
+.sim-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.sim-box canvas{display:block;width:100%;background:var(--bg2);border-bottom:1px solid var(--border);cursor:crosshair;}
+.sim-controls{padding:1rem 1.2rem;}
+.ctrl-row{display:flex;align-items:center;gap:8px;margin:6px 0;}
+.ctrl-row label{font-size:.75rem;color:var(--muted);min-width:200px;flex-shrink:0;}
+.ctrl-row input[type=range]{flex:1;min-width:0;accent-color:var(--A);}
+.ctrl-row .vout{font-family:'DM Mono',monospace;font-size:.75rem;color:#79c0ff;min-width:80px;text-align:right;white-space:nowrap;}
+.sec-lbl{font-size:.68rem;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:10px 0 3px;}
+.trow{display:flex;gap:6px;margin:8px 0 5px;flex-wrap:wrap;align-items:center;}
+.tog{font-size:.7rem;padding:4px 11px;border-radius:20px;border:.5px solid var(--dim);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;}
+.tog.on{background:rgba(88,166,255,.14);color:var(--A);border-color:var(--A);font-weight:500;}
+.tog.anim.on{background:rgba(227,179,65,.14);color:#e3b341;border-color:#e3b341;}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0;}
+.metric{background:var(--bg3);border-radius:8px;padding:9px 11px;}
+.metric .ml{font-size:.62rem;color:var(--dim);margin-bottom:2px;}
+.metric .mv{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--txt);}
+.info-row{margin:8px 0 0;font-size:.72rem;color:var(--muted);line-height:1.8;}
+.sep{height:1px;background:var(--border);margin:2rem 0;}
+@media(max-width:640px){
+  main{padding:1rem .9rem 4rem;}
+  .hero h1{font-size:1.5rem;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .ctrl-row{flex-wrap:wrap;}
+  .ctrl-row label{min-width:100%;font-size:.72rem;}
+  .diagram-card{flex-direction:column;gap:.8rem;}
+}
+@media(max-width:900px){main{padding:2rem 1.8rem 5rem;}}
+</style>
+<link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="Simulação interativa de Curva I×V do Painel Solar — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman, mestre em Física pela USP.">
+  <link rel="canonical" href="https://mosmanlab.com.br/simulacoes/curva-iv-solar.html">
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a href="../blog/">Blog</a>
+    <a class="active" href="index.html">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+
+
+
+<main>
+
+  <div class="hero">
+    <div class="hero-tag">Energia — Simulação 12</div>
+    <h1>Curva I×V do Painel Solar</h1>
+    <p class="lead">O gráfico que todo engenheiro de energia fotovoltaica precisa entender — como a corrente, a tensão e a potência de um painel se relacionam, e onde encontrar o ponto de máxima potência.</p>
+  </div>
+
+  <div class="theory-block">
+    <h2>Por que a curva I×V é tão importante?</h2>
+    <div class="theory-text">
+      <p>Um painel solar não é uma fonte de tensão constante nem uma fonte de corrente constante. Ele é um <strong>dispositivo não linear</strong>: dependendo da carga elétrica conectada a ele, o painel fornece diferentes combinações de tensão (V) e corrente (I). O gráfico que mostra todas essas combinações possíveis é chamado de <strong>curva característica I×V</strong>.</p>
+      <p>Dois pontos extremos definem a curva. No <strong>curto-circuito</strong> (tensão = 0), a corrente é máxima e chamada de corrente de curto-circuito <em>I_sc</em>. No <strong>circuito aberto</strong> (corrente = 0), a tensão é máxima, chamada de tensão de circuito aberto <em>V_oc</em>. Entre esses dois extremos existe um ponto especial chamado <strong>MPP</strong> (<em>Maximum Power Point</em>) onde a potência P = V × I é máxima.</p>
+      <p>Os sistemas fotovoltaicos modernos usam um circuito chamado <strong>MPPT</strong> (<em>Maximum Power Point Tracker</em>) que ajusta continuamente a carga para manter o painel sempre operando nesse ponto ótimo — extraindo o máximo de energia em qualquer condição de luz e temperatura.</p>
+    </div>
+
+    <div class="diagram-card">
+      <div class="dc-icon">⚡</div>
+      <div class="dc-txt">
+        <strong>Ponto de Máxima Potência (MPP)</strong><br>
+        É o ponto da curva I×V onde o produto V × I é máximo. Pode ser visualizado geometricamente como o maior retângulo que cabe sob a curva I×V. O <strong>fator de preenchimento (FF)</strong> mede o quão "quadrada" é a curva — quanto maior o FF, melhor o painel.
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="theory-block">
+    <h2>O modelo do diodo único</h2>
+    <div class="theory-text">
+      <p>Para entender a forma da curva I×V, precisamos olhar para dentro da célula solar. Fisicamente, uma célula fotovoltaica se comporta como uma <strong>fonte de corrente</strong> (a corrente fotogerada <em>I_ph</em>, proporcional à luz) em paralelo com um <strong>diodo</strong> (a junção p-n do semicondutor). O diodo "desvia" parte da corrente internamente, reduzindo a corrente disponível para a carga.</p>
+      <p>O modelo mais utilizado na engenharia é o <strong>modelo de diodo único</strong>, que acrescenta ainda uma resistência série R_s (perdas nos contatos e fios) e uma resistência em paralelo R_sh (correntes de fuga). A equação que descreve a curva é:</p>
+    </div>
+
+    <div class="eq-destaque">
+      <div class="eq-main">I = I_ph − I₀·(e^{q(V+IRs)/nkT} − 1) − (V+IRs)/Rsh</div>
+      <div class="eq-legend">
+        <span><strong>I_ph</strong> = corrente fotogerada ∝ irradiância G</span>
+        <span><strong>I₀</strong> = corrente de saturação do diodo (aumenta com T)</span>
+        <span><strong>n</strong> = fator de idealidade (1 a 2)</span>
+        <span><strong>Rs</strong> = resistência série (Ω) — afeta a inclinação na região de alta tensão</span>
+        <span><strong>Rsh</strong> = resistência shunt (Ω) — afeta a região de baixa tensão</span>
+        <span><strong>kT/q</strong> = tensão térmica ≈ 26 mV a 25°C</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Esta é uma <strong>equação implícita</strong> — I aparece nos dois lados — por isso ela não tem solução analítica simples. Na simulação abaixo, ela é resolvida numericamente pelo <strong>método de Newton-Raphson</strong> para 300 pontos da curva, dando a forma exata da curva I×V.</p>
+      <p>Os efeitos de cada parâmetro são claros no gráfico:</p>
+      <p><strong>Irradiância G</strong> — desloca a curva para cima (I_ph ∝ G). Reduzir G de 1000 para 500 W/m² praticamente corta I_sc ao meio, mas reduz V_oc apenas ligeiramente (variação logarítmica).</p>
+      <p><strong>Temperatura T</strong> — aumentar T reduz V_oc significativamente (cerca de −2 mV/°C para silício) porque I₀ cresce exponencialmente com a temperatura. Por isso painéis ficam menos eficientes em dias muito quentes.</p>
+      <p><strong>Resistência série Rs</strong> — inclina a parte superior direita da curva, reduzindo o FF. Representa perdas nos cabos e contatos.</p>
+      <p><strong>Fator de idealidade n</strong> — próximo de 1 indica diodo ideal; próximo de 2 indica que recombinação na região de depleção domina. Afeta a curvatura na região de transição.</p>
+    </div>
+
+    <div class="eq-inline">
+      FF = P_mpp / (I_sc · V_oc) <span>·</span> FF ideal → 1 <span>·</span> painéis comerciais: FF ≈ 70–85%
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="sim-tag">Simulação interativa — modelo de diodo único</div>
+  <div class="sim-box">
+    <canvas id="cv-iv"></canvas>
+    <div class="sim-controls">
+      <div class="sec-lbl">Parâmetros do painel</div>
+      <div class="ctrl-row"><label>Irradiância  G (W/m²)</label><input type="range" id="GG" min="100" max="1200" value="1000" step="10"><span class="vout" id="o-G">1000 W/m²</span></div>
+      <div class="ctrl-row"><label>Temperatura  T (°C)</label><input type="range" id="TT" min="0" max="80" value="25" step="1"><span class="vout" id="o-T">25 °C</span></div>
+      <div class="ctrl-row"><label>Resistência série  Rs (Ω)</label><input type="range" id="Rs" min="0" max="2" value="0.3" step="0.05"><span class="vout" id="o-Rs">0.30 Ω</span></div>
+      <div class="ctrl-row"><label>Resistência shunt  Rsh (Ω)</label><input type="range" id="Rsh" min="20" max="500" value="200" step="5"><span class="vout" id="o-Rsh">200 Ω</span></div>
+      <div class="ctrl-row"><label>Fator de idealidade  n</label><input type="range" id="nn" min="1" max="2" value="1.3" step="0.05"><span class="vout" id="o-n">1.30</span></div>
+      <div class="trow">
+        <button class="tog on"  id="btn-pv"   onclick="togPV()">P×V</button>
+        <button class="tog on"  id="btn-mpp"  onclick="togMPP()">MPP</button>
+        <button class="tog on"  id="btn-fill" onclick="togFill()">Fator de preenchimento</button>
+        <button class="tog anim" id="btn-anim" onclick="togAnim()">▶ Variar G</button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="ml">I_sc (curto-circuito)</div><div class="mv" id="cv-isc">—</div></div>
+        <div class="metric"><div class="ml">V_oc (circuito aberto)</div><div class="mv" id="cv-voc">—</div></div>
+        <div class="metric"><div class="ml">P_mpp (máx. potência)</div><div class="mv" id="cv-pmpp">—</div></div>
+        <div class="metric"><div class="ml">FF (fator preenchimento)</div><div class="mv" id="cv-ff">—</div></div>
+      </div>
+      <div class="info-row" id="info"></div>
+    </div>
+  </div>
+
+</main>
+
+<section style="background:#f8f8f8; padding:40px 20px; text-align:center; margin-top:60px;">
+  <p style="font-family:'DM Sans',sans-serif; color:#555; font-size:0.95rem; margin-bottom:16px;">
+    Quer dominar a Física para o vestibular com esse nível de profundidade?
+  </p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:12px 28px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif;">
+    Conhecer a Turma de Maio 2026
+  </a>
+</section>
+
+<script>
+const q=1.602e-19,kb=1.381e-23;
+function dk(){return window.matchMedia('(prefers-color-scheme:dark)').matches;}
+function co(){const d=dk();return{
+  ax:d?'rgba(255,255,255,0.20)':'rgba(0,0,0,0.18)',
+  grid:d?'rgba(255,255,255,0.05)':'rgba(0,0,0,0.05)',
+  muted:d?'#7d8590':'#6b6a65',txt:d?'#c2c0b6':'#3d3d3a',
+  IV:'#58a6ff',PV:'#e3b341',mpp:'#3fb950',
+  fill:d?'rgba(63,185,80,0.13)':'rgba(63,185,80,0.12)',
+  fillB:'rgba(63,185,80,0.5)',isc:'#f78166',voc:'#d2a8ff',
+  cur:d?'rgba(255,215,0,1)':'rgba(160,100,0,1)',
+};}
+function gv(id){return+document.getElementById(id).value;}
+function setupCanvas(cv,cssH){
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.clientWidth||480;
+  cv.width=Math.round(W*dpr);cv.height=Math.round(cssH*dpr);
+  cv.style.width=W+'px';cv.style.height=cssH+'px';
+  const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+  return{ctx,W,H:cssH};
+}
+function solveIV(params){
+  const{G,T_K,Rs,Rsh,n}=params;
+  const Iph0=8.5,I0_ref=3e-10,Eg=1.12;
+  const Iph=Iph0*(G/1000);
+  const I0=I0_ref*Math.pow(T_K/298.15,3)*Math.exp(q*Eg/(n*kb)*(1/298.15-1/T_K));
+  const Vt=n*kb*T_K/q;
+  const Voc_est=Vt*Math.log(Iph/I0+1);
+  const pts=[];let Vmpp=-1,Impp=-1,Pmpp=0;
+  for(let i=0;i<=300;i++){
+    const V=Voc_est*i/300;
+    let I=Iph*.9;
+    for(let it=0;it<50;it++){
+      const ea=Math.exp(Math.min((V+I*Rs)/Vt,500));
+      const f=I-Iph+I0*(ea-1)+(V+I*Rs)/Rsh;
+      const df=1+I0*Rs/Vt*ea+Rs/Rsh;
+      const dI=f/df;I-=dI;if(Math.abs(dI)<1e-9)break;
+    }
+    if(I<-.05)break;I=Math.max(0,I);
+    const P=V*I;pts.push({V,I,P});
+    if(P>Pmpp){Pmpp=P;Vmpp=V;Impp=I;}
+  }
+  const Isc=pts[0]?.I||Iph,Voc=pts[pts.length-1]?.V||Voc_est,FF=Pmpp/(Isc*Voc);
+  return{pts,Isc,Voc,Vmpp,Impp,Pmpp,FF};
+}
+let showPV=true,showMPP=true,showFill=true,animOn=false,animRaf=null;
+let animG=1000,animDir=1,hoverV=null;
+window.togPV=()=>{showPV=!showPV;document.getElementById('btn-pv').classList.toggle('on',showPV);draw();}
+window.togMPP=()=>{showMPP=!showMPP;document.getElementById('btn-mpp').classList.toggle('on',showMPP);draw();}
+window.togFill=()=>{showFill=!showFill;document.getElementById('btn-fill').classList.toggle('on',showFill);draw();}
+window.togAnim=()=>{
+  animOn=!animOn;
+  const btn=document.getElementById('btn-anim');
+  btn.classList.toggle('on',animOn);btn.textContent=animOn?'■ Parar':'▶ Variar G';
+  if(animOn)startAnim();else cancelAnimationFrame(animRaf);
+};
+function startAnim(){
+  function step(){
+    if(!animOn)return;
+    animG+=animDir*5;
+    if(animG>=1200){animG=1200;animDir=-1;}
+    if(animG<=100){animG=100;animDir=1;}
+    document.getElementById('GG').value=animG;
+    draw();animRaf=requestAnimationFrame(step);
+  }
+  animRaf=requestAnimationFrame(step);
+}
+const cv=document.getElementById('cv-iv');
+cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();hoverV=e.clientX-r.left;draw();});
+cv.addEventListener('mouseleave',()=>{hoverV=null;draw();});
+cv.addEventListener('touchmove',e=>{e.preventDefault();const r=cv.getBoundingClientRect();hoverV=e.touches[0].clientX-r.left;draw();},{passive:false});
+cv.addEventListener('touchend',()=>{hoverV=null;draw();});
+function draw(){
+  const{ctx,W,H}=setupCanvas(cv,420);
+  const c=co();ctx.clearRect(0,0,W,H);
+  const G=animOn?animG:gv('GG'),T_C=gv('TT'),T_K=T_C+273.15,Rs=gv('Rs'),Rsh=gv('Rsh'),n=gv('nn');
+  document.getElementById('o-G').textContent=G+' W/m²';
+  document.getElementById('o-T').textContent=T_C+' °C';
+  document.getElementById('o-Rs').textContent=Rs.toFixed(2)+' Ω';
+  document.getElementById('o-Rsh').textContent=Rsh+' Ω';
+  document.getElementById('o-n').textContent=n.toFixed(2);
+  const{pts,Isc,Voc,Vmpp,Impp,Pmpp,FF}=solveIV({G,T_K,Rs,Rsh,n});
+  const H1=Math.floor(H*.58),H2=H-H1;
+  const PL=58,PR=18,PT=22,PB=28,cw=W-PL-PR;
+  const ch1=H1-PT-PB,ch2=H2-PT-PB;
+  const maxV=Voc*1.08||1,maxI=Isc*1.12||1,maxP=Pmpp*1.2||1;
+  const tx=v=>PL+(v/maxV)*cw;
+  const ty1=i=>PT+ch1-(i/maxI)*ch1;
+  const ty2=p=>H1+PT+ch2-(p/maxP)*ch2;
+  // painel 1 I×V
+  ctx.strokeStyle=c.grid;ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const gy=PT+i*(ch1/4);ctx.beginPath();ctx.moveTo(PL,gy);ctx.lineTo(PL+cw,gy);ctx.stroke();}
+  for(let i=0;i<=5;i++){const gx=PL+i*(cw/5);ctx.beginPath();ctx.moveTo(gx,PT);ctx.lineTo(gx,PT+ch1);ctx.stroke();}
+  ctx.strokeStyle=c.ax;ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(PL,PT);ctx.lineTo(PL,PT+ch1);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(PL,PT+ch1);ctx.lineTo(PL+cw,PT+ch1);ctx.stroke();
+  if(showFill){
+    ctx.fillStyle=c.fill;ctx.fillRect(tx(0),ty1(Impp),tx(Vmpp)-tx(0),ty1(0)-ty1(Impp));
+    ctx.strokeStyle=c.fillB;ctx.lineWidth=.8;ctx.setLineDash([3,3]);ctx.strokeRect(tx(0),ty1(Impp),tx(Vmpp)-tx(0),ty1(0)-ty1(Impp));ctx.setLineDash([]);
+    ctx.strokeStyle='rgba(88,166,255,0.2)';ctx.lineWidth=.7;ctx.strokeRect(tx(0),ty1(Isc),tx(Voc)-tx(0),ty1(0)-ty1(Isc));
+  }
+  ctx.strokeStyle=c.IV;ctx.lineWidth=2.5;ctx.setLineDash([]);ctx.beginPath();let fst=true;
+  pts.forEach(p=>{fst?ctx.moveTo(tx(p.V),ty1(p.I)):ctx.lineTo(tx(p.V),ty1(p.I));fst=false;});ctx.stroke();
+  ctx.strokeStyle=c.isc;ctx.lineWidth=1;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(PL,ty1(Isc));ctx.lineTo(PL+cw,ty1(Isc));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=c.isc;ctx.font='bold 10px "DM Mono",monospace';ctx.textAlign='left';ctx.fillText('I_sc='+Isc.toFixed(2)+'A',PL+4,ty1(Isc)-12);
+  ctx.strokeStyle=c.voc;ctx.lineWidth=1;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(tx(Voc),PT);ctx.lineTo(tx(Voc),PT+ch1);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=c.voc;ctx.font='bold 10px "DM Mono",monospace';ctx.textAlign='center';ctx.fillText('V_oc='+Voc.toFixed(2)+'V',tx(Voc),PT+4);
+  if(showMPP){
+    ctx.strokeStyle=c.mpp;ctx.lineWidth=1;ctx.setLineDash([4,3]);
+    ctx.beginPath();ctx.moveTo(tx(Vmpp),PT);ctx.lineTo(tx(Vmpp),ty1(Impp));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(PL,ty1(Impp));ctx.lineTo(tx(Vmpp),ty1(Impp));ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=c.mpp;ctx.beginPath();ctx.arc(tx(Vmpp),ty1(Impp),6,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=c.mpp;ctx.font='bold 10px "DM Mono",monospace';ctx.textAlign='left';ctx.fillText('MPP ('+Vmpp.toFixed(2)+'V, '+Impp.toFixed(2)+'A)',tx(Vmpp)+10,ty1(Impp)-8);
+  }
+  ctx.fillStyle=c.muted;ctx.font='9px "DM Mono",monospace';ctx.textAlign='right';
+  for(let i=0;i<=5;i++)ctx.fillText((maxI*i/5).toFixed(1),PL-4,PT+ch1-i*(ch1/5)+3);
+  ctx.save();ctx.translate(13,PT+ch1/2);ctx.rotate(-Math.PI/2);ctx.fillStyle=c.IV;ctx.font='bold 10px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText('I (A)',0,0);ctx.restore();
+  ctx.fillStyle=c.muted;ctx.font='10px "DM Mono",monospace';ctx.textAlign='right';ctx.fillText('G='+G+'W/m²  T='+T_C+'°C',PL+cw,PT+12);
+  // painel 2 P×V
+  if(showPV){
+    ctx.strokeStyle=c.ax;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(PL,H1);ctx.lineTo(PL+cw,H1);ctx.stroke();
+    ctx.strokeStyle=c.grid;ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){const gy=H1+PT+i*(ch2/4);ctx.beginPath();ctx.moveTo(PL,gy);ctx.lineTo(PL+cw,gy);ctx.stroke();}
+    for(let i=0;i<=5;i++){const gx=PL+i*(cw/5);ctx.beginPath();ctx.moveTo(gx,H1+PT);ctx.lineTo(gx,H1+PT+ch2);ctx.stroke();}
+    ctx.strokeStyle=c.ax;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(PL,H1+PT);ctx.lineTo(PL,H1+PT+ch2);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(PL,H1+PT+ch2);ctx.lineTo(PL+cw,H1+PT+ch2);ctx.stroke();
+    ctx.strokeStyle=c.PV;ctx.lineWidth=2.2;ctx.setLineDash([]);ctx.beginPath();fst=true;
+    pts.forEach(p=>{fst?ctx.moveTo(tx(p.V),ty2(p.P)):ctx.lineTo(tx(p.V),ty2(p.P));fst=false;});ctx.stroke();
+    if(showMPP){
+      ctx.strokeStyle=c.mpp;ctx.lineWidth=1;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(tx(Vmpp),H1+PT);ctx.lineTo(tx(Vmpp),ty2(Pmpp));ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle=c.mpp;ctx.beginPath();ctx.arc(tx(Vmpp),ty2(Pmpp),6,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=c.mpp;ctx.font='bold 10px "DM Mono",monospace';ctx.textAlign='left';ctx.fillText('P_mpp='+Pmpp.toFixed(1)+'W',tx(Vmpp)+10,ty2(Pmpp)-8);
+    }
+    ctx.fillStyle=c.muted;ctx.font='9px "DM Mono",monospace';ctx.textAlign='right';
+    for(let i=0;i<=4;i++)ctx.fillText((maxP*i/4).toFixed(0),PL-4,H1+PT+ch2-i*(ch2/4)+3);
+    ctx.save();ctx.translate(13,H1+PT+ch2/2);ctx.rotate(-Math.PI/2);ctx.fillStyle=c.PV;ctx.font='bold 10px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText('P (W)',0,0);ctx.restore();
+  }
+  ctx.fillStyle=c.muted;ctx.font='9px "DM Mono",monospace';ctx.textAlign='center';
+  for(let i=0;i<=5;i++)ctx.fillText((maxV*i/5).toFixed(1),PL+i*(cw/5),H-PB+13);
+  ctx.fillText('V (V)',PL+cw/2,H-6);
+  // cursor
+  if(hoverV!==null){
+    const vReal=Math.max(0,Math.min(maxV,(hoverV-PL)/cw*maxV));
+    const near=pts.reduce((a,b)=>Math.abs(b.V-vReal)<Math.abs(a.V-vReal)?b:a);
+    if(near){
+      const px=tx(near.V);
+      ctx.strokeStyle=c.cur;ctx.lineWidth=1;ctx.globalAlpha=.75;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(px,PT);ctx.lineTo(px,H-PB);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+      ctx.fillStyle=c.cur;ctx.beginPath();ctx.arc(px,ty1(near.I),5,0,Math.PI*2);ctx.fill();
+      if(showPV){ctx.beginPath();ctx.arc(px,ty2(near.P),5,0,Math.PI*2);ctx.fill();}
+      ctx.fillStyle=c.cur;ctx.font='9px "DM Mono",monospace';
+      const tagX=px+6<PL+cw-70?px+6:px-74;ctx.textAlign='left';
+      ctx.fillText('V='+near.V.toFixed(2)+'V',tagX,ty1(near.I)-18);
+      ctx.fillText('I='+near.I.toFixed(3)+'A',tagX,ty1(near.I)-7);
+      if(showPV)ctx.fillText('P='+near.P.toFixed(1)+'W',tagX,ty2(near.P)-7);
+    }
+  }
+  document.getElementById('cv-isc').textContent=Isc.toFixed(3)+' A';
+  document.getElementById('cv-voc').textContent=Voc.toFixed(3)+' V';
+  document.getElementById('cv-pmpp').textContent=Pmpp.toFixed(1)+' W';
+  document.getElementById('cv-ff').textContent=(FF*100).toFixed(1)+' %';
+  document.getElementById('info').innerHTML=`Modelo de diodo único &nbsp;·&nbsp; FF = P_mpp/(I_sc·V_oc) = <strong>${(FF*100).toFixed(1)}%</strong> &nbsp;·&nbsp; I₀(T) ∝ T³·e^(−Eg/nkT) — temperatura reduz V_oc &nbsp;·&nbsp; passe o cursor para ler I, V e P em qualquer ponto`;
+}
+['GG','TT','Rs','Rsh','nn'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{if(!animOn)draw();}));
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',draw);
+window.addEventListener('resize',draw);
+draw();
+</script>
+
+<section style="background:#f0f9f4; padding:48px 24px; text-align:center; margin-top:60px; border-top:1px solid #e8e8e8;">
+  <p style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:#888; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; margin-bottom:8px;">MosmanLAB</p>
+  <p style="font-family:'Lora',serif; font-size:1.4rem; font-weight:600; color:#111; margin-bottom:8px; line-height:1.3;">Quer dominar a Física para o vestibular?</p>
+  <p style="font-size:0.92rem; color:#666; max-width:480px; margin:0 auto 24px; line-height:1.6;">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:13px 30px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif; font-size:0.92rem;">
+    Conhecer a Turma de Maio 2026 →
+  </a>
+</section>
+</body>
+</html>

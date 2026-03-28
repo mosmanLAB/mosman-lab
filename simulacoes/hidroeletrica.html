@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Simulação interativa de Usina Hidrelétrica — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman.">
+<link rel="canonical" href="https://mosmanlab.com.br/simulacoes/hidroeletrica.html">
+<link rel="stylesheet" href="../styles.css">
+<title>Usina Hidrelétrica — MosmanLAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;
+  --bg2:#161b22;
+  --bg3:#21262d;
+  --border:rgba(255,255,255,0.08);
+  --A:#58a6ff;
+  --G:#3fb950;
+  --O:#f78166;
+  --P:#d2a8ff;
+  --AM:#e3b341;
+  --txt:#e6edf3;
+  --muted:#8b949e;
+  --dim:#484f58;
+  --r:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  min-height:100vh;
+}
+
+/* ── MAIN ── */
+main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
+
+/* ── HERO ── */
+.hero{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.hero-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--G);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;}
+.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--G);}
+.hero h1{font-family:'Lora',serif;font-size:2.1rem;font-weight:600;line-height:1.25;margin-bottom:.5rem;color:var(--txt);}
+.hero .lead{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:600px;}
+
+/* ── THEORY ── */
+.theory-block{margin-bottom:2.2rem;}
+.theory-block h2{
+  font-family:'Lora',serif;font-size:1.25rem;font-weight:600;
+  color:var(--txt);margin-bottom:1rem;
+  display:flex;align-items:center;gap:10px;
+}
+.theory-block h2::before{
+  content:'';display:inline-block;width:4px;height:20px;
+  background:var(--A);border-radius:2px;flex-shrink:0;
+}
+.theory-text{
+  font-size:.88rem;line-height:1.95;color:#cdd9e5;
+  margin-bottom:1rem;
+}
+.theory-text p{margin-bottom:.9rem;}
+.theory-text p:last-child{margin-bottom:0;}
+.theory-text strong{color:#79c0ff;font-weight:500;}
+.theory-text em{font-family:'Lora',serif;font-style:italic;color:var(--txt);}
+
+/* destaque numérico inline */
+.theory-text .num{
+  font-family:'DM Mono',monospace;font-size:.82rem;
+  color:var(--AM);background:rgba(227,179,65,.1);
+  padding:1px 6px;border-radius:4px;
+}
+
+/* ── EXPRESSÃO CENTRAL ── */
+.eq-destaque{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-left:3px solid var(--AM);
+  border-radius:var(--r);
+  padding:1.4rem 1.8rem;
+  margin:1.4rem 0;
+  text-align:center;
+}
+.eq-destaque .eq-main{
+  font-family:'DM Mono',monospace;
+  font-size:1.35rem;
+  color:var(--AM);
+  letter-spacing:.04em;
+  margin-bottom:.6rem;
+}
+.eq-destaque .eq-legend{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:.5rem 1.4rem;margin-top:.5rem;
+}
+.eq-destaque .eq-legend span{
+  font-size:.75rem;color:var(--muted);
+  font-family:'DM Mono',monospace;
+}
+.eq-destaque .eq-legend span strong{color:var(--AM);}
+
+/* equação secundária (inline) */
+.eq-inline{
+  background:var(--bg3);border:1px solid var(--border);border-radius:6px;
+  padding:.55rem 1rem;margin:.7rem 0;
+  font-family:'DM Mono',monospace;font-size:.8rem;
+  color:var(--G);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;
+}
+.eq-inline span{color:var(--muted);font-size:.72rem;}
+
+/* ── FATOS BRASIL ── */
+.fact-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;margin:1.2rem 0;
+}
+.fact{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r);padding:1rem 1.1rem;
+  display:flex;flex-direction:column;gap:4px;
+}
+.fact .fnum{
+  font-family:'DM Mono',monospace;font-size:1.4rem;
+  font-weight:400;color:var(--A);
+}
+.fact .flbl{font-size:.75rem;color:var(--muted);line-height:1.4;}
+
+/* ── SIM BOX ── */
+.sim-section{margin-bottom:1rem;}
+.sim-tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--A);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;}
+.sim-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.sim-box canvas{display:block;width:100%;background:var(--bg2);border-bottom:1px solid var(--border);}
+.sim-controls{padding:1rem 1.2rem;}
+
+/* ── CONTROLS ── */
+.ctrl-row{display:flex;align-items:center;gap:8px;margin:6px 0;}
+.ctrl-row label{font-size:.75rem;color:var(--muted);min-width:200px;flex-shrink:0;}
+.ctrl-row input[type=range]{flex:1;min-width:0;accent-color:var(--A);}
+.ctrl-row .vout{font-family:'DM Mono',monospace;font-size:.75rem;color:#79c0ff;min-width:80px;text-align:right;white-space:nowrap;}
+.sec-lbl{font-size:.68rem;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:10px 0 3px;}
+
+/* ── METRICS ── */
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0;}
+.metric{background:var(--bg3);border-radius:8px;padding:9px 11px;}
+.metric .ml{font-size:.62rem;color:var(--dim);margin-bottom:2px;letter-spacing:.03em;}
+.metric .mv{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--txt);}
+.info-row{margin:8px 0 0;font-size:.72rem;color:var(--muted);line-height:1.8;min-height:14px;}
+
+/* ── SEPARADOR ── */
+.sep{height:1px;background:var(--border);margin:2rem 0;}
+
+/* ════════ MOBILE ════════ */
+@media(max-width:640px){
+  main{padding:1rem .9rem 4rem;}
+  .hero h1{font-size:1.5rem;}
+  .hero .lead{font-size:.85rem;}
+  .theory-text{font-size:.83rem;}
+  .eq-destaque .eq-main{font-size:1.05rem;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .ctrl-row{flex-wrap:wrap;}
+  .ctrl-row label{min-width:100%;font-size:.72rem;}
+  .ctrl-row .vout{min-width:58px;}
+}
+@media(max-width:900px){
+  main{padding:2rem 1.8rem 5rem;}
+}
+</style>
+<link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="Simulação interativa de Usina Hidrelétrica — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman, mestre em Física pela USP.">
+  <link rel="canonical" href="https://mosmanlab.com.br/simulacoes/hidroeletrica.html">
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a href="../blog/">Blog</a>
+    <a class="active" href="index.html">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+
+
+
+
+<main>
+
+  <!-- ══ HERO ══ -->
+  <div class="hero" id="hero">
+    <div class="hero-tag">Energia — Simulação 09</div>
+    <h1>Usina Hidrelétrica</h1>
+    <p class="lead">Como a água em queda transforma energia potencial em eletricidade — e por que o Brasil é um dos maiores produtores mundiais de energia hidráulica.</p>
+  </div>
+
+  <!-- ══ TEORIA ══ -->
+  <div class="theory-block" id="teoria">
+    <h2>Hidroeletricidade no Brasil</h2>
+    <div class="theory-text">
+      <p>O Brasil é privilegiado pela natureza: uma rede hidrográfica gigantesca, com rios caudalosos que percorrem grandes desníveis de altitude. Esse conjunto — <strong>muito volume de água</strong> e <strong>muita altura de queda</strong> — é exatamente o que uma usina hidrelétrica precisa para gerar energia elétrica em larga escala.</p>
+      <p>Hoje, as usinas hidrelétricas respondem por cerca de <span class="num">60 a 65%</span> de toda a energia elétrica consumida no Brasil. Isso nos torna um dos países com a matriz elétrica mais limpa e renovável do mundo. Usinas como <strong>Itaipu</strong> (no rio Paraná, entre Brasil e Paraguai), com capacidade instalada de <span class="num">14 000 MW</span>, e <strong>Belo Monte</strong> (no rio Xingu, Pará), com <span class="num">11 233 MW</span>, estão entre as maiores do planeta.</p>
+    </div>
+
+    <!-- fatos numéricos -->
+    <div class="fact-grid">
+      <div class="fact">
+        <span class="fnum">~63%</span>
+        <span class="flbl">da energia elétrica brasileira vem de usinas hidrelétricas</span>
+      </div>
+      <div class="fact">
+        <span class="fnum">14 GW</span>
+        <span class="flbl">potência instalada de Itaipu — a maior do mundo em geração anual</span>
+      </div>
+      <div class="fact">
+        <span class="fnum">+200</span>
+        <span class="flbl">usinas hidrelétricas de grande porte em operação no país</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Uma usina hidrelétrica funciona como uma grande máquina de transformação de energia. A água armazenada no <strong>reservatório</strong> possui energia potencial gravitacional — quanto mais alta e mais pesada, maior essa energia. Quando a água desce pelo <strong>conduto forçado</strong> até a <strong>casa de força</strong>, essa energia potencial se converte em energia cinética. Na casa de força, o jato de água faz girar a <strong>turbina</strong>, que aciona o <strong>gerador</strong> elétrico.</p>
+      <p>No caminho, parte da energia é perdida por atrito, turbulência e calor nos geradores. Por isso falamos em <strong>rendimento</strong> (η) — a fração da energia disponível que realmente se converte em eletricidade. Turbinas modernas do tipo Francis ou Pelton atingem rendimentos entre <span class="num">85%</span> e <span class="num">95%</span>.</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ EXPRESSÃO ══ -->
+  <div class="theory-block" id="expressao">
+    <h2>A expressão da potência hidráulica</h2>
+    <div class="theory-text">
+      <p>Para entender de onde vem a fórmula, basta lembrar da energia potencial gravitacional estudada no ensino médio: <em>E_pot = mgh</em>. Numa usina, a massa de água que chega à turbina a cada segundo é justamente <em>ρ · Q</em> (densidade vezes vazão). A potência — energia por unidade de tempo — disponível no fluxo de água é então:</p>
+    </div>
+
+    <div class="eq-destaque">
+      <div class="eq-main">P = η · ρ · g · Q · H</div>
+      <div class="eq-legend">
+        <span><strong>P</strong> = potência elétrica gerada (W ou MW)</span>
+        <span><strong>η</strong> = rendimento da turbina (adimensional, 0 a 1)</span>
+        <span><strong>ρ</strong> = densidade da água = 1000 kg/m³</span>
+        <span><strong>g</strong> = aceleração da gravidade ≈ 9,8 m/s²</span>
+        <span><strong>Q</strong> = vazão volumétrica (m³/s)</span>
+        <span><strong>H</strong> = altura de queda líquida (m)</span>
+      </div>
+    </div>
+
+    <div class="theory-text">
+      <p>Perceba que a potência cresce <strong>linearmente</strong> tanto com a vazão quanto com a altura. Dobrar a vazão dobra a potência; dobrar a altura também dobra a potência. Esse é o motivo pelo qual as usinas brasileiras buscam rios com grande volume e aproveitam ao máximo o desnível disponível.</p>
+      <p>A expressão sem o rendimento — <em>P_hidráulica = ρ · g · Q · H</em> — representa o total de energia que a água carrega. Com o rendimento η, obtemos a potência elétrica entregue à rede. A diferença <em>P_hidráulica − P_elétrica</em> é dissipada como calor e turbulência.</p>
+    </div>
+
+    <div class="eq-inline">
+      P_hidráulica = ρ · g · Q · H
+      <span>·</span>
+      P_elétrica = η · P_hidráulica
+      <span>·</span>
+      Perdas = (1 − η) · P_hidráulica
+    </div>
+
+    <div class="theory-text">
+      <p>Um exemplo rápido: Itaipu opera com altura de queda de cerca de <span class="num">120 m</span> e vazão total de até <span class="num">12 000 m³/s</span>. Aplicando a fórmula com η = 0,93:</p>
+    </div>
+
+    <div class="eq-inline" style="color:var(--P);">
+      P = 0,93 × 1000 × 9,8 × 12 000 × 120 ≈ 13 100 MW
+      <span>próximo da capacidade nominal de 14 000 MW</span>
+    </div>
+
+    <div class="theory-text">
+      <p>Na simulação abaixo você pode explorar como cada variável afeta a potência gerada, comparar a potência hidráulica bruta com a elétrica líquida e verificar em que faixa de porte uma usina se enquadra.</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══ SIMULAÇÃO ══ -->
+  <div class="sim-section" id="simulacao">
+    <div class="sim-tag">Simulação interativa</div>
+
+    <div class="sim-box">
+      <canvas id="cv-plant"></canvas>
+      <div class="sim-controls">
+        <div class="ctrl-row"><label>Altura de queda  H (m)</label><input type="range" id="hh" min="10" max="300" value="80" step="1"><span class="vout" id="o-h">80 m</span></div>
+        <div class="ctrl-row"><label>Vazão  Q (m³/s)</label><input type="range" id="qq" min="1" max="500" value="100" step="1"><span class="vout" id="o-q">100 m³/s</span></div>
+        <div class="ctrl-row"><label>Rendimento  η (%)</label><input type="range" id="eta" min="10" max="99" value="85" step="1"><span class="vout" id="o-eta">85 %</span></div>
+
+        <div class="sec-lbl">Comparativo de potência</div>
+        <canvas id="cv-bar" style="border:none;border-top:.5px solid var(--border);"></canvas>
+
+        <div class="metrics">
+          <div class="metric"><div class="ml">Potência hidráulica</div><div class="mv" id="cv-ph">—</div></div>
+          <div class="metric"><div class="ml">Potência elétrica</div><div class="mv" id="cv-pe">—</div></div>
+          <div class="metric"><div class="ml">Perdas (1−η)</div><div class="mv" id="cv-pp">—</div></div>
+          <div class="metric"><div class="ml">Energia/dia</div><div class="mv" id="cv-ed">—</div></div>
+        </div>
+        <div class="info-row" id="info"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+/* scroll spy */
+const sections=['hero','teoria','expressao','simulacao'];
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let cur='hero';
+  sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=120)cur=id;});
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+/* ── canvas setup ── */
+const G=9.8, RHO=1000;
+function dk(){return window.matchMedia('(prefers-color-scheme:dark)').matches;}
+function co(){const d=dk();return{
+  water:    d?'#1a4a7a':'#4a90d9',
+  waterL:   d?'rgba(26,74,122,0.5)':'rgba(74,144,217,0.4)',
+  waterFoam:d?'#2a6aaa':'#79c0ff',
+  concrete: d?'#3a3a3a':'#8a8a8a',
+  concreteL:d?'#4a4a4a':'#aaaaaa',
+  earth:    d?'#1a1a12':'#6b5a2a',
+  earthL:   d?'#2a2a1a':'#8b7a3a',
+  turbine:  d?'#d2a8ff':'#8250df',
+  pipe:     d?'#555':'#888',
+  pipeD:    d?'#333':'#bbb',
+  tower:    d?'#f78166':'#d73a49',
+  wire:     d?'#666':'#444',
+  muted:    d?'#7d8590':'#6b6a65',
+  txt:      d?'#c2c0b6':'#3d3d3a',
+  grid:     d?'rgba(255,255,255,0.05)':'rgba(0,0,0,0.05)',
+  ax:       d?'rgba(255,255,255,0.18)':'rgba(0,0,0,0.15)',
+  barH:     '#58a6ff',
+  barE:     '#3fb950',
+  barL:     '#f78166',
+  bg:       d?'#161b22':'#f6f8fa',
+};}
+
+function gv(id){return+document.getElementById(id).value;}
+
+function setupCanvas(cv,cssH){
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.clientWidth||480;
+  cv.width=Math.round(W*dpr); cv.height=Math.round(cssH*dpr);
+  cv.style.width=W+'px'; cv.style.height=cssH+'px';
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  return{ctx,W,H:cssH};
+}
+
+/* ── Desenho da usina ── */
+function drawPlant(){
+  const {ctx,W,H}=setupCanvas(document.getElementById('cv-plant'),300);
+  const c=co();
+  ctx.clearRect(0,0,W,H);
+
+  const H_val=gv('hh'), Q=gv('qq'), eta=gv('eta')/100;
+
+  const DAM_X=W*0.38, DAM_TOP=H*0.08, DAM_BOT=H*0.82, DAM_W=W*0.07;
+  const hFrac=Math.min(H_val/300,1);
+  const waterLevel=DAM_TOP+(1-hFrac)*(DAM_BOT-DAM_TOP)*0.5;
+  const tailLevel=DAM_BOT-H*0.04;
+
+  // terreno
+  ctx.fillStyle=c.earth; ctx.fillRect(0,DAM_BOT,W,H-DAM_BOT);
+
+  // reservatório
+  ctx.fillStyle=c.water;
+  ctx.beginPath();
+  ctx.moveTo(0,waterLevel); ctx.lineTo(DAM_X,waterLevel);
+  ctx.lineTo(DAM_X,DAM_BOT); ctx.lineTo(0,DAM_BOT);
+  ctx.closePath(); ctx.fill();
+
+  // ondulação
+  ctx.strokeStyle=c.waterFoam; ctx.lineWidth=1.2; ctx.setLineDash([]);
+  for(let i=0;i<3;i++){
+    const wy=waterLevel+4+i*6;
+    ctx.beginPath();
+    for(let x=0;x<DAM_X;x+=4){ctx.lineTo(x,wy+Math.sin((x+i*20)*0.15)*1.8);}
+    ctx.stroke();
+  }
+
+  // barragem
+  ctx.fillStyle=c.concrete;
+  ctx.beginPath();
+  ctx.moveTo(DAM_X,DAM_TOP); ctx.lineTo(DAM_X+DAM_W,DAM_TOP+H*0.05);
+  ctx.lineTo(DAM_X+DAM_W,DAM_BOT); ctx.lineTo(DAM_X,DAM_BOT);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle=c.concreteL;
+  for(let y=DAM_TOP+H*0.07;y<DAM_BOT;y+=H*0.07) ctx.fillRect(DAM_X+2,y,DAM_W-4,2);
+
+  // conduto forçado
+  const PIPE_R=W*0.024;
+  const PIPE_X=DAM_X+DAM_W, PIPE_Y=(waterLevel+tailLevel)/2+H*0.04;
+  const TURB_X=DAM_X+DAM_W+W*0.14, TURB_Y=DAM_BOT-H*0.1;
+
+  ctx.strokeStyle=c.pipeD; ctx.lineWidth=PIPE_R*2+4;
+  ctx.beginPath(); ctx.moveTo(PIPE_X,PIPE_Y); ctx.lineTo(TURB_X,TURB_Y); ctx.stroke();
+  ctx.strokeStyle=c.pipe; ctx.lineWidth=PIPE_R*2;
+  ctx.beginPath(); ctx.moveTo(PIPE_X,PIPE_Y); ctx.lineTo(TURB_X,TURB_Y); ctx.stroke();
+  const qFrac=Math.min(Q/500,1);
+  ctx.strokeStyle=`rgba(${dk()?'26,74,122':'74,144,217'},${0.4+qFrac*0.5})`; ctx.lineWidth=PIPE_R*1.3;
+  ctx.beginPath(); ctx.moveTo(PIPE_X,PIPE_Y); ctx.lineTo(TURB_X,TURB_Y); ctx.stroke();
+
+  // casa de força
+  const TH=H*0.13, TW=W*0.11;
+  ctx.fillStyle=c.concreteL;
+  ctx.beginPath(); ctx.roundRect(TURB_X-TW/2,TURB_Y-TH/2,TW,TH,4); ctx.fill();
+  ctx.strokeStyle=c.concrete; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.roundRect(TURB_X-TW/2,TURB_Y-TH/2,TW,TH,4); ctx.stroke();
+
+  // turbina (rotor)
+  const ROT_R=Math.min(TW,TH)*0.3;
+  ctx.save(); ctx.translate(TURB_X,TURB_Y);
+  for(let i=0;i<6;i++){
+    ctx.save(); ctx.rotate((i/6)*Math.PI*2);
+    ctx.fillStyle=c.turbine; ctx.globalAlpha=0.85;
+    ctx.beginPath(); ctx.ellipse(0,-ROT_R*0.58,ROT_R*0.2,ROT_R*0.52,0,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+  ctx.fillStyle=c.concrete; ctx.beginPath(); ctx.arc(0,0,ROT_R*0.2,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle=c.txt; ctx.font=`bold ${Math.max(9,W*0.017)}px 'DM Sans',sans-serif`; ctx.textAlign='center';
+  ctx.fillText('turbina',TURB_X,TURB_Y+TH/2+12);
+
+  // canal de fuga
+  ctx.fillStyle=c.waterL;
+  ctx.beginPath();
+  ctx.moveTo(TURB_X+TW/2,tailLevel); ctx.lineTo(W*0.97,tailLevel);
+  ctx.lineTo(W*0.97,DAM_BOT); ctx.lineTo(TURB_X+TW/2,DAM_BOT);
+  ctx.closePath(); ctx.fill();
+
+  // torre de transmissão
+  const TX=TURB_X+TW/2+W*0.1, TY1=DAM_BOT-H*0.02, TY2=TY1-H*0.22;
+  ctx.strokeStyle=c.tower; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(TX,TY1); ctx.lineTo(TX,TY2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(TX-W*0.03,TY2+H*0.04); ctx.lineTo(TX+W*0.03,TY2+H*0.04); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(TX-W*0.025,TY2+H*0.08); ctx.lineTo(TX+W*0.025,TY2+H*0.08); ctx.stroke();
+  ctx.strokeStyle=c.wire; ctx.lineWidth=1;
+  [[TX-W*0.03,TY2+H*0.04],[TX+W*0.03,TY2+H*0.04],[TX-W*0.025,TY2+H*0.08],[TX+W*0.025,TY2+H*0.08]].forEach(([wx,wy])=>{
+    ctx.beginPath(); ctx.moveTo(wx,wy);
+    ctx.quadraticCurveTo(wx+W*0.06,wy+H*0.04,W*0.97,wy+H*0.02);
+    ctx.stroke();
+  });
+  ctx.fillStyle=c.tower; ctx.font=`bold ${Math.max(8,W*0.015)}px 'DM Sans',sans-serif`; ctx.textAlign='center';
+  ctx.fillText('transmissão',TX,TY1+13);
+
+  // cota H
+  const Ph=RHO*G*Q*H_val/1e6;
+  const Pe=eta*Ph;
+  const cx1=DAM_X-W*0.07;
+  ctx.strokeStyle=c.muted; ctx.lineWidth=0.8; ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(cx1,waterLevel); ctx.lineTo(cx1,tailLevel); ctx.stroke();
+  ctx.setLineDash([]);
+  [[cx1,waterLevel,1],[cx1,tailLevel,-1]].forEach(([x,y,dir])=>{
+    ctx.fillStyle=c.muted; ctx.beginPath();
+    ctx.moveTo(x,y); ctx.lineTo(x-4,y+dir*10); ctx.lineTo(x+4,y+dir*10); ctx.closePath(); ctx.fill();
+  });
+  ctx.fillStyle=c.txt; ctx.font=`bold ${Math.max(9,W*0.019)}px 'DM Mono',monospace`; ctx.textAlign='right';
+  ctx.fillText('H = '+H_val+' m',cx1-6,(waterLevel+tailLevel)/2+4);
+
+  // label Q e potência
+  ctx.fillStyle=c.txt; ctx.font=`bold ${Math.max(9,W*0.018)}px 'DM Mono',monospace`; ctx.textAlign='center';
+  ctx.fillText('Q = '+Q+' m³/s',(PIPE_X+TURB_X)/2,(PIPE_Y+TURB_Y)/2-14);
+  ctx.fillStyle=c.barE; ctx.font=`bold ${Math.max(10,W*0.022)}px 'DM Sans',sans-serif`;
+  ctx.fillText(Pe.toFixed(1)+' MW',TURB_X,TURB_Y-TH/2-10);
+  ctx.fillStyle=c.waterFoam; ctx.font=`${Math.max(9,W*0.017)}px 'DM Sans',sans-serif`; ctx.textAlign='center';
+  ctx.fillText('reservatório',DAM_X/2,waterLevel+20);
+}
+
+/* ── Barras ── */
+function drawBar(){
+  const {ctx,W,H}=setupCanvas(document.getElementById('cv-bar'),140);
+  const c=co();
+  ctx.clearRect(0,0,W,H);
+  const Hv=gv('hh'),Q=gv('qq'),eta=gv('eta')/100;
+  const Ph=RHO*G*Q*Hv/1e6, Pe=eta*Ph, Pp=Ph-Pe;
+  const PL=62,PR=20,PT=18,PB=32,cw=W-PL-PR,ch=H-PT-PB;
+  const maxP=Ph*1.2||1;
+  const ty=v=>PT+ch-(v/maxP)*ch;
+
+  ctx.strokeStyle=c.grid; ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const gy=PT+i*(ch/4);ctx.beginPath();ctx.moveTo(PL,gy);ctx.lineTo(PL+cw,gy);ctx.stroke();}
+  ctx.strokeStyle=c.ax; ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(PL,PT);ctx.lineTo(PL,PT+ch);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(PL,PT+ch);ctx.lineTo(PL+cw,PT+ch);ctx.stroke();
+
+  const bars=[
+    {label:'P_hidráulica',val:Ph,col:c.barH},
+    {label:'P_elétrica',  val:Pe,col:c.barE},
+    {label:'Perdas',      val:Pp,col:c.barL},
+  ];
+  const bw=cw/(bars.length*2);
+  bars.forEach((b,i)=>{
+    const x=PL+bw*0.5+i*(bw*2);
+    const bh=Math.max(0,(b.val/maxP)*ch);
+    const by=PT+ch-bh;
+    ctx.fillStyle=b.col;
+    ctx.beginPath(); ctx.roundRect(x,by,bw,bh,3); ctx.fill();
+    ctx.fillStyle=b.col; ctx.font=`bold 9px 'DM Mono',monospace`; ctx.textAlign='center';
+    if(bh>12) ctx.fillText(b.val.toFixed(1)+'MW',x+bw/2,by-5);
+    ctx.fillStyle=c.muted; ctx.font=`9px 'DM Sans',sans-serif`;
+    ctx.fillText(b.label,x+bw/2,PT+ch+13);
+  });
+  ctx.fillStyle=c.muted; ctx.font=`9px 'DM Mono',monospace`; ctx.textAlign='right';
+  for(let i=0;i<=4;i++) ctx.fillText((maxP*i/4).toFixed(0)+'MW',PL-4,PT+ch-i*(ch/4)+3);
+}
+
+function update(){
+  const H=gv('hh'),Q=gv('qq'),eta=gv('eta')/100;
+  document.getElementById('o-h').textContent=H+' m';
+  document.getElementById('o-q').textContent=Q+' m³/s';
+  document.getElementById('o-eta').textContent=(eta*100).toFixed(0)+' %';
+  const Ph=RHO*G*Q*H/1e6, Pe=eta*Ph, Pp=Ph-Pe, Ed=Pe*24;
+  function fmt(v){return v>=1000?(v/1000).toFixed(2)+' GW':v.toFixed(2)+' MW';}
+  function fmtE(v){return v>=1000?(v/1000).toFixed(1)+' GWh':v.toFixed(1)+' MWh';}
+  document.getElementById('cv-ph').textContent=fmt(Ph);
+  document.getElementById('cv-pe').textContent=fmt(Pe);
+  document.getElementById('cv-pp').textContent=fmt(Pp);
+  document.getElementById('cv-ed').textContent=fmtE(Ed);
+  let ref='';
+  if(Pe<1)        ref='Pequena Central Hidrelétrica (PCH)';
+  else if(Pe<30)  ref='usina de médio porte';
+  else if(Pe<1000)ref='grande usina (faixa de Tucuruí unitário)';
+  else            ref='comparável a Itaipu (~14 000 MW)';
+  document.getElementById('info').innerHTML=
+    `<strong>P = η · ρ · g · Q · H</strong> &nbsp;·&nbsp; `+
+    `P_elétrica = <strong>${fmt(Pe)}</strong> &nbsp;·&nbsp; `+
+    `η = ${(eta*100).toFixed(0)}% &nbsp;·&nbsp; `+
+    `Energia diária: <strong>${fmtE(Ed)}</strong> &nbsp;·&nbsp; `+
+    `<em>${ref}</em>`;
+  drawPlant(); drawBar();
+}
+
+['hh','qq','eta'].forEach(id=>document.getElementById(id).addEventListener('input',update));
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',update);
+window.addEventListener('resize',update);
+update();
+</script>
+
+<section style="background:#f8f8f8; padding:40px 20px; text-align:center; margin-top:60px;">
+  <p style="font-family:'DM Sans',sans-serif; color:#555; font-size:0.95rem; margin-bottom:16px;">
+    Quer dominar a Física para o vestibular com esse nível de profundidade?
+  </p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:12px 28px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif;">
+    Conhecer a Turma de Maio 2026
+  </a>
+</section>
+
+
+<section style="background:#f0f9f4; padding:48px 24px; text-align:center; margin-top:60px; border-top:1px solid #e8e8e8;">
+  <p style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:#888; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; margin-bottom:8px;">MosmanLAB</p>
+  <p style="font-family:'Lora',serif; font-size:1.4rem; font-weight:600; color:#111; margin-bottom:8px; line-height:1.3;">Quer dominar a Física para o vestibular?</p>
+  <p style="font-size:0.92rem; color:#666; max-width:480px; margin:0 auto 24px; line-height:1.6;">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:13px 30px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif; font-size:0.92rem;">
+    Conhecer a Turma de Maio 2026 →
+  </a>
+</section>
+</body>
+</html>

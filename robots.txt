@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mosmanlab.github.io/mosman-lab/sitemap.xml
+Sitemap: https://mosmanlab.com.br/sitemap.xml
