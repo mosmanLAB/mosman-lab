@@ -69,6 +69,65 @@ main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
   .ctrl-row label{min-width:100%;font-size:.72rem;}
 }
 @media(max-width:900px){main{padding:2rem 1.8rem 5rem;}}
+
+/* ── OVERRIDE: tema claro para integração com o site ── */
+:root{
+  --bg:#ffffff; --bg2:#f5f7fa; --bg3:#eef1f5;
+  --border:rgba(0,0,0,0.10);
+  --txt:#1a1a2e; --muted:#555e6e; --dim:#888fa0;
+  --A:#1a4a8a; --G:#1d7a4f; --O:#c0392b;
+  --P:#7b3f00; --AM:#a04000;
+  --r:10px;
+}
+body{ background:#fff; color:#1a1a2e; }
+.theory-text{ color:#374151; }
+.theory-text strong{ color:#1a4a8a; }
+.theory-text em{ color:#111; }
+.eq-destaque{ background:#f5f8ff; border-color:#d0dbf0; }
+.eq-destaque .eq-main{ color:#1a4a8a; }
+.eq-destaque .eq-legend span{ color:#555; }
+.eq-destaque .eq-legend span strong{ color:#1a4a8a; }
+.eq-inline{ background:#f0f4f8; border-color:#dde3ea; color:#1d7a4f; }
+.eq-inline span{ color:#666; }
+.fact{ background:#f5f7fa; border-color:#e0e5ec; }
+.fact .fnum{ color:#1a4a8a; }
+.fact .flbl{ color:#555; }
+.sim-box{ background:#f5f7fa; border-color:#e0e5ec; }
+.sim-box canvas{ background:#f5f7fa; }
+.sim-controls{ background:#fff; }
+.ctrl-row label{ color:#444; }
+.ctrl-row .vout{ color:#1a4a8a; }
+.metric{ background:#eef1f5; }
+.metric .ml{ color:#777; }
+.metric .mv{ color:#1a1a2e; }
+.info-row{ color:#555; }
+.sec-lbl{ color:#666; }
+.nav-section{ color:#999; }
+.nav-footer{ color:#aaa; }
+.hero{ border-bottom-color:#e0e5ec; }
+.hero-tag{ color:#1d7a4f; }
+.theory-block h2::before{ background:#1a4a8a; }
+.sep{ background:#e0e5ec; }
+
+
+/* ── CTA FINAL ── */
+.sim-cta{background:#f0f9f4;padding:48px 24px;text-align:center;border-top:1px solid #e0e0e0;}
+.sim-cta-label{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:#111;margin-bottom:8px;line-height:1.3;}
+.sim-cta-text{font-size:0.9rem;color:#555;max-width:440px;margin:0 auto 22px;line-height:1.6;}
+.sim-cta-btn{display:inline-block;background:#1dbd5c;color:#fff;font-weight:600;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:0.9rem;transition:background .15s;}
+.sim-cta-btn:hover{background:#18a34e;}
+
+/* ── REFERÊNCIAS ── */
+.refs-section{max-width:860px;margin:0 auto;padding:40px 40px 64px;}
+.refs-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:#333;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #e0e0e0;}
+.refs-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+.refs-list li{font-size:0.83rem;color:#555;line-height:1.6;padding-left:16px;border-left:2px solid #e0e0e0;}
+.refs-list li strong{color:#222;}
+.refs-list a{color:#1a4a8a;text-decoration:none;}
+.refs-list a:hover{text-decoration:underline;}
+@media(max-width:768px){.refs-section{padding:32px 20px 48px;}}
+
 </style>
 <link rel="stylesheet" href="../styles.css">
   <meta name="description" content="Simulação interativa de Energia Solar Fotovoltaica — MosmanLAB, curso de Física para vestibular em São Paulo. Prof. Edson Mosman, mestre em Física pela USP.">
@@ -97,7 +156,7 @@ main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
 <main>
 
   <div class="hero">
-    <div class="hero-tag">Energia — Simulação 11</div>
+    <div class="hero-tag">Energia — Simulação</div>
     <h1>Energia Solar Fotovoltaica</h1>
     <p class="lead">Como a luz do sol é convertida diretamente em eletricidade — e como a posição do sol no céu ao longo do dia determina o quanto de energia seus painéis conseguem captar.</p>
   </div>
@@ -190,14 +249,7 @@ main{padding:3rem 3.5rem 6rem;max-width:900px;margin:0 auto;}
 
 </main>
 
-<section style="background:#f8f8f8; padding:40px 20px; text-align:center; margin-top:60px;">
-  <p style="font-family:'DM Sans',sans-serif; color:#555; font-size:0.95rem; margin-bottom:16px;">
-    Quer dominar a Física para o vestibular com esse nível de profundidade?
-  </p>
-  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:12px 28px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif;">
-    Conhecer a Turma de Maio 2026
-  </a>
-</section>
+
 
 <script>
 const LAT_DEG=-21.934, LAT=-21.934*Math.PI/180, LON_DEG=-50.515, UTC_OFF=-3, DAY_OF_YEAR=355;
@@ -383,13 +435,26 @@ window.addEventListener('resize',update);
 update();
 </script>
 
-<section style="background:#f0f9f4; padding:48px 24px; text-align:center; margin-top:60px; border-top:1px solid #e8e8e8;">
-  <p style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:#888; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; margin-bottom:8px;">MosmanLAB</p>
-  <p style="font-family:'Lora',serif; font-size:1.4rem; font-weight:600; color:#111; margin-bottom:8px; line-height:1.3;">Quer dominar a Física para o vestibular?</p>
-  <p style="font-size:0.92rem; color:#666; max-width:480px; margin:0 auto 24px; line-height:1.6;">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
-  <a href="../turma-maio-2026.html" style="display:inline-block; background:#1dbd5c; color:#fff; font-weight:600; padding:13px 30px; border-radius:50px; text-decoration:none; font-family:'DM Sans',sans-serif; font-size:0.92rem;">
-    Conhecer a Turma de Maio 2026 →
-  </a>
+
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<section class="refs-section">
+  <h2 class="refs-title">Referências Bibliográficas</h2>
+  <ul class="refs-list">
+    <li><strong>CRESESB</strong> — Centro de Referência para Energia Solar e Eólica Sérgio Brito. <a href="http://www.cresesb.cepel.br" target="_blank">cresesb.cepel.br</a></li>
+    <li><strong>Atlas Solar Brasileiro</strong> — Instituto Nacional de Pesquisas Espaciais (INPE). <a href="https://labren.ccst.inpe.br" target="_blank">labren.ccst.inpe.br</a></li>
+    <li><strong>EPE</strong> — Empresa de Pesquisa Energética. Balanço Energético Nacional. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+    <li><strong>ANEEL</strong> — Agência Nacional de Energia Elétrica. Dados do setor elétrico. <a href="https://www.aneel.gov.br" target="_blank">aneel.gov.br</a></li>
+    <li><strong>ONS</strong> — Operador Nacional do Sistema Elétrico. <a href="https://www.ons.org.br" target="_blank">ons.org.br</a></li>
+    <li><strong>ABSOLAR</strong> — Associação Brasileira de Energia Solar Fotovoltaica. <a href="https://www.absolar.org.br" target="_blank">absolar.org.br</a></li>
+    <li><strong>ABEEólica</strong> — Associação Brasileira de Energia Eólica. <a href="https://abeeolica.org.br" target="_blank">abeeolica.org.br</a></li>
+    <li><strong>IEA</strong> — International Energy Agency. World Energy Outlook. <a href="https://www.iea.org" target="_blank">iea.org</a></li>
+  </ul>
 </section>
 </body>
 </html>
