@@ -116,4 +116,16 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://mosmanlab.com.br/blog/fontes-energia-primaria-eletricidade-mundo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mosmanlab.com.br/blog/paradoxo-carvao-energia-mundo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
