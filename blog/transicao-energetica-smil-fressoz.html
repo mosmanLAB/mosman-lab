@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Transição Energética: Smil vs Fressoz — Dados que Desafiam o Otimismo | MosmanLAB</title>
+<meta name="description" content="Vaclav Smil e Jean-Baptiste Fressoz são os críticos mais rigorosos da narrativa dominante sobre transição energética. Dados reais de 232 países confirmam: combustíveis fósseis consumiram 71% do crescimento energético global entre 2000 e 2023."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/transicao-energetica-smil-fressoz.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0f0f1a,#1a1a2e,#1a0f2e);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.75rem);font-weight:700;line-height:1.15;max-width:860px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:700px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+
+/* AUTORES */
+.autores-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+.autor-card{border-radius:12px;padding:24px;border:1px solid}
+.card-smil{background:#faf5ff;border-color:#ddd6fe}
+.card-fressoz{background:#fff7ed;border-color:#fed7aa}
+.autor-card h3{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.card-smil h3{color:#6d28d9}.card-fressoz h3{color:#c2410c}
+.autor-card .sub{font-size:.75rem;color:#94a3b8;margin-bottom:14px;font-family:'DM Mono',monospace;letter-spacing:.04em}
+.autor-card ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
+.autor-card li{font-size:.82rem;color:#374151;padding-left:16px;position:relative;line-height:1.55}
+.autor-card li::before{position:absolute;left:0;font-weight:700}
+.card-smil li::before{content:'·';color:#7c3aed}
+.card-fressoz li::before{content:'·';color:#ea580c}
+
+/* CALLOUTS */
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.smil{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.fressoz{border-left:4px solid #ea580c;background:#fff7ed;color:#9a3412}
+.callout.dados{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.verm{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout strong{font-weight:700}
+
+/* CITAÇÕES */
+.citacao{background:#0f1c2e;border-radius:12px;padding:24px 28px;margin:28px 0;position:relative}
+.citacao p{font-family:'Lora',serif;font-style:italic;color:#e2e8f0;font-size:.97rem;line-height:1.75;margin:0 0 10px}
+.citacao .fonte{font-size:.75rem;color:#64748b;font-family:'DM Mono',monospace;letter-spacing:.04em}
+.citacao-smil{border-left:4px solid #a78bfa}
+.citacao-fressoz{border-left:4px solid #fb923c}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+
+/* GRÁFICOS */
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.chart-label-smil{color:#7c3aed;font-weight:600;font-size:.8rem;text-align:right;margin-top:6px;font-family:'DM Mono',monospace}
+.chart-label-fressoz{color:#ea580c;font-weight:600;font-size:.8rem;text-align:right;margin-top:6px;font-family:'DM Mono',monospace}
+
+/* TABELA */
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+tr.smil-row td{background:#faf5ff;font-weight:600}
+tr.fressoz-row td{background:#fff7ed;font-weight:600}
+tr.verde-row td{background:#f0fdf4;color:#15803d;font-weight:600}
+
+/* SÍNTESE */
+.sintese{background:linear-gradient(135deg,#0f0f1a,#1a1a2e);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.sintese h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:24px}
+.sintese-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.sint-item{border-radius:8px;padding:16px}
+.sint-smil{background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25)}
+.sint-fressoz{background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25)}
+.sint-item h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sint-smil h4{color:#a78bfa}.sint-fressoz h4{color:#fb923c}
+.sint-item ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px}
+.sint-item li{font-size:.83rem;color:#cbd5e1;padding-left:14px;position:relative;line-height:1.5}
+.sint-item li::before{position:absolute;left:0;font-weight:700}
+.sint-smil li::before{content:'→';color:#a78bfa}
+.sint-fressoz li::before{content:'→';color:#fb923c}
+.sintese-footer{font-size:.9rem;color:#94a3b8;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;line-height:1.7}
+.sintese-footer strong{color:#fff}
+
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){
+  .autores-grid{grid-template-columns:1fr}
+  .sintese-grid{grid-template-columns:1fr}
+  .article-body{padding:36px 18px 60px}
+  .sintese{padding:24px 18px}
+}
+</style>
+</head>
+<body>
+<div class="urgency">&#9889; Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia · Pensamento Crítico · Dados</div>
+  <h1>Transição Energética: Smil vs Fressoz — Dois Críticos, Uma Questão Incomoda</h1>
+  <p class="hero-lead">Vaclav Smil diz que a transição existe, mas é lenta demais. Jean-Baptiste Fressoz diz que a própria ideia de transição é uma ilusão histórica. Os dados reais de 232 países (2000–2023) dão razão a ambos — de formas diferentes e igualmente perturbadoras.</p>
+  <div class="byline">
+    <span>&#128197; Março 2026</span>
+    <span>&#128104;&#8203;&#127979; Prof. Edson Mosman</span>
+    <span>&#9200; 16 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Há uma narrativa dominante sobre a transição energética que vai mais ou menos assim: solar e eólica estão crescendo exponencialmente, os custos despencaram, os veículos elétricos proliferam, e em 2050 teremos um mundo descarbonizado. É uma narrativa sedutora, sustentada por dados reais de crescimento tecnológico impressionante — e profundamente incompleta.</p>
+
+  <p>Dois intelectuais de peso desafiam essa narrativa com rigor e dados, vindo de perspectivas diferentes. <strong>Vaclav Smil</strong>, cientista de sistemas energéticos, e <strong>Jean-Baptiste Fressoz</strong>, historiador da energia, chegam a conclusões que incomodam tanto os otimistas tecnológicos quanto os defensores do status quo. Este artigo apresenta seus argumentos, os confronta e os testa com dados reais de 232 países entre 2000 e 2023.</p>
+
+  <div class="autores-grid">
+    <div class="autor-card card-smil">
+      <h3>Vaclav Smil</h3>
+      <div class="sub">Cientista · Univ. Manitoba · Checo-canadense · n. 1943</div>
+      <ul>
+        <li>Mais de 40 livros sobre energia, alimentação e ambiente</li>
+        <li>Bill Gates: "o autor que mais admiro"</li>
+        <li>Obra-chave: <em>How the World Really Works</em> (2022)</li>
+        <li>Argumento central: <em>escala e velocidade importam mais do que %, e a física não negocia prazos políticos</em></li>
+        <li>Fósseis ainda sustentam os 4 pilares materiais do mundo: aço, cimento, plástico e amônia</li>
+      </ul>
+    </div>
+    <div class="autor-card card-fressoz">
+      <h3>Jean-Baptiste Fressoz</h3>
+      <div class="sub">Historiador · CNRS/EHESS · Francês · contemporâneo</div>
+      <ul>
+        <li>Especialista em história ambiental e das tecnologias</li>
+        <li>Obra-chave: <em>Sans transition</em> (2024)</li>
+        <li>Argumento central: <em>não houve transições energéticas na história — houve acumulações. O conceito de "transição" é político, não científico</em></li>
+        <li>Renováveis são complementares aos fósseis, não substitutas</li>
+        <li>O "capitalismo verde" não questiona o crescimento — só troca a fonte de energia que o alimenta</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>1. A tese de Fressoz: não existem transições — existem adições</h2>
+
+  <p>O argumento mais provocador de Fressoz em <em>Sans transition</em> é histórico: olhando para o registro empírico dos últimos 200 anos, nunca houve uma substituição de uma fonte energética por outra. O que houve foi sempre a adição de novas fontes ao repertório existente, sem que as anteriores desaparecessem. A lenha não desapareceu com o carvão. O carvão não desapareceu com o petróleo. E o petróleo não está desaparecendo com o solar.</p>
+
+  <div class="citacao citacao-fressoz">
+    <p>"A história da energia não é uma história de transições, mas de acumulações. Cada nova fonte adicionou-se às anteriores sem nunca as substituir verdadeiramente. O carvão continua a crescer. O petróleo continua a crescer. O gás continua a crescer. O que cresce também são as renováveis — sobre essa base fóssil imóvel."</p>
+    <div class="fonte">Jean-Baptiste Fressoz — Sans transition: Une nouvelle histoire de l'énergie (2024)</div>
+  </div>
+
+  <p>Os dados de 232 países entre 2000 e 2023 confirmam essa tese com precisão que chega a ser perturbadora:</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num" style="color:#ea580c">+65%</div>
+      <div class="stat-label">crescimento do carvão em consumo absoluto entre 2000 e 2023 — de 27.023 para 44.611 TWh</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#dc2626">+26%</div>
+      <div class="stat-label">crescimento do petróleo — de 41.119 para 51.821 TWh (2000–2023)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#f97316">+65%</div>
+      <div class="stat-label">crescimento do gás natural — de 23.556 para 38.993 TWh (2000–2023)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#7c3aed">71,4%</div>
+      <div class="stat-label">do crescimento total de energia primária (2000–2023) foi suprido por combustíveis fósseis</div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 1: Consumo absoluto de fósseis 2000-2023 -->
+  <div class="chart-block">
+    <div class="chart-title">Consumo Absoluto de Fontes Energéticas — Global (2000–2023)</div>
+    <div class="chart-sub">TWh · Dados reais de 232 países · Fonte: Energy Institute via Our World in Data · Argumento de Fressoz: nenhuma fonte foi substituída — todas cresceram</div>
+    <div style="height:380px"><canvas id="c1"></canvas></div>
+    <div class="chart-label-fressoz">&#9650; Argumento Fressoz: todas as fontes crescem em termos absolutos — adição, não transição</div>
+  </div>
+
+  <p>O gráfico mostra o que os números percentuais escondem: em 2023, o mundo queimou <strong>64% mais carvão</strong> do que em 2000. Mais petróleo. Mais gás. E também mais eólica e solar — mas as renováveis foram adicionadas <em>sobre</em> um consumo fóssil que não parou de crescer. Fressoz chama isso de "simbiose energética": as renováveis não substituem os fósseis — são construídas com eles.</p>
+
+  <div class="callout fressoz">
+    <strong>A simbiose que Fressoz identifica:</strong> Turbinas eólicas são feitas de aço (fundido com carvão e coque), com pás de fibra de vidro (derivado de petroquímica), assentadas em bases de cimento (produzido com carvão e gás), transportadas por caminhões a diesel, instaladas por guindastes movidos a diesel, conectadas à rede por cabos de cobre extraído com energia fóssil. Solar fotovoltaico exige silício ultrapuro (produção intensiva em energia elétrica ainda majoritariamente fóssil), quadros de alumínio (fundição com energia) e sistemas de armazenamento com minerais extraídos com diesel. As renováveis, por ora, são filhas da era fóssil.
+  </div>
+
+  <!-- GRÁFICO 2: Participação % permanece alta -->
+  <div class="chart-block">
+    <div class="chart-title">Participação dos Combustíveis Fósseis na Energia Primária Global (2000–2023)</div>
+    <div class="chart-sub">% da energia total — 23 anos de dados · Fonte: Energy Institute (dataset 232 países)</div>
+    <div style="height:300px"><canvas id="c2"></canvas></div>
+    <div class="chart-label-fressoz">&#9650; Argumento Fressoz: participação fóssil caiu apenas 4,2 pp em 23 anos — de 83,3% para 79,1%</div>
+  </div>
+
+  <p>A participação dos combustíveis fósseis na energia primária global caiu de 83,3% em 2000 para 79,1% em 2023 — uma queda de 4,2 pontos percentuais em 23 anos. Ao ritmo atual, levaríamos cerca de 250 anos para zerar os fósseis apenas com essa tendência. Fressoz não está sendo pessimista — está sendo matemático.</p>
+
+  <h2>2. A tese de Smil: a física e a escala não negociam com narrativas</h2>
+
+  <p>Smil parte de uma perspectiva diferente, mas igualmente incômoda. Ele não nega que a transição está ocorrendo — ele diz que está ocorrendo <em>lentamente demais</em> para as metas climáticas assumidas, e que a maioria das pessoas não entende a escala física do que seria necessário para descarbonizar a economia global.</p>
+
+  <div class="citacao citacao-smil">
+    <p>"A descarbonização de toda a economia global exigiria substituir, em 25 anos, o equivalente a toda a infraestrutura energética construída pela humanidade em 150 anos. Isso é como dizer que vamos construir em 25 anos tudo o que construímos desde 1850. Quem acredita nisso não entende física, escala ou história."</p>
+    <div class="fonte">Vaclav Smil — How the World Really Works (2022)</div>
+  </div>
+
+  <p>O argumento central de Smil sobre escala pode ser verificado diretamente nos dados. Entre 2000 e 2023, o mundo precisou de 61.245 TWh adicionais de energia primária para sustentar seu crescimento econômico. Desse total, solar e eólica — as grandes esperanças da transição — forneceram:</p>
+
+  <!-- GRÁFICO 3: Decomposição do crescimento energético 2000-2023 -->
+  <div class="chart-block">
+    <div class="chart-title">De Onde Veio o Crescimento Energético Global? (2000–2023)</div>
+    <div class="chart-sub">Decomposição dos +61.245 TWh adicionais por fonte · Fonte: Energy Institute (dataset 232 países)</div>
+    <div style="height:300px"><canvas id="c3"></canvas></div>
+    <div class="chart-label-smil">&#9650; Argumento Smil: fósseis supriram 71,4% do crescimento; solar+eólica supriram apenas 15,5%</div>
+  </div>
+
+  <div class="callout smil">
+    <strong>O problema de escala que Smil descreve:</strong> Solar cresceu 135.000% desde 2000 — de 3 TWh para 3.969 TWh. Em termos percentuais, é espetacular. Mas em termos absolutos, adicionou 3.966 TWh ao sistema em 23 anos. Os fósseis adicionaram 43.727 TWh no mesmo período — onze vezes mais. Celebrar o crescimento percentual das renováveis sem mencionar os números absolutos dos fósseis é como celebrar que um estudante melhorou sua nota de 0,1 para 5 enquanto o líder da turma foi de 8 para 9.
+  </div>
+
+  <h3>Os quatro materiais que Smil chama de intocáveis pelos fósseis</h3>
+
+  <p>Smil tem um argumento específico que vai além da eletricidade: a economia global depende de quatro materiais fundamentais — aço, cimento, plástico e amônia — que são produzidos com combustíveis fósseis como matéria-prima ou como fonte de calor de alta temperatura, e que não têm substitutos renováveis em escala comercial. Juntos, eles produzem a infraestrutura de tudo o que existe — edifícios, estradas, fertilizantes que alimentam o mundo, embalagens.</p>
+
+  <!-- GRÁFICO 4: Quatro materiais -->
+  <div class="chart-block">
+    <div class="chart-title">Os 4 Pilares Materiais da Civilização — Dependência de Fósseis (2023)</div>
+    <div class="chart-sub">Produção anual global e participação dos combustíveis fósseis como insumo · Fonte: Smil (2022) / IEA / USGS</div>
+    <div style="height:320px"><canvas id="c4"></canvas></div>
+    <div class="chart-label-smil">&#9650; Argumento Smil: esses materiais não podem ser decarbonizados com as tecnologias atuais em escala global</div>
+  </div>
+
+  <div class="callout dados">
+    <strong>A amônia como exemplo concreto:</strong> A amônia (NH₃) é o insumo base de todos os fertilizantes nitrogenados. O processo Haber-Bosch, descoberto em 1909, combina N₂ do ar com H₂ derivado do gás natural: N₂ + 3H₂ → 2NH₃. Esse processo consome ~1,8% de toda a energia global e produz ~170 milhões de toneladas de amônia/ano. Os fertilizantes derivados alimentam diretamente cerca de metade da população mundial. Substituir o H₂ de gás natural por H₂ verde (eletrólise com renováveis) exigiria ~6.000 TWh de eletricidade extra anualmente — mais do que toda a capacidade instalada de solar global em 2023.
+  </div>
+
+  <h2>3. O que os dados revelam sobre países que avançaram — e o que isso limita</h2>
+
+  <p>Há um contraponto real ao pessimismo de Smil e Fressoz, e é honesto apresentá-lo: alguns países desenvolvidos demonstraram que é possível reduzir emissões absolutas enquanto mantêm crescimento econômico — o chamado desacoplamento (decoupling). Os dados confirmam essa tendência em certos contextos.</p>
+
+  <!-- GRÁFICO 5: Decoupling países ricos -->
+  <div class="chart-block">
+    <div class="chart-title">Desacoplamento Real: PIB per capita vs CO₂ per capita — Países Selecionados (2000–2023)</div>
+    <div class="chart-sub">Variação % em relação a 2000 · Fonte: Energy Institute / World Bank (dataset 232 países)</div>
+    <div style="height:340px"><canvas id="c5"></canvas></div>
+    <div class="chart-label-verde">&#9650; Contraponto: EUA, Alemanha e Reino Unido reduziram CO₂ absoluto — enquanto cresceram economicamente</div>
+  </div>
+
+  <div class="callout verde">
+    <strong>O que o desacoplamento realmente representa:</strong> EUA: CO₂ caiu de 6.023 para 4.918 Mt (−18%) enquanto o PIB/capita cresceu +123%. Alemanha: CO₂ caiu de 899 para 594 Mt (−34%) com PIB/capita +129%. Reino Unido: CO₂ caiu de 569 para 308 Mt (−46%) com PIB/capita +76%. São vitórias reais — mas correspondem a ~10% da população mundial. China (que adicionou +8.528 Mt de CO₂), Índia (+2.076 Mt) e o resto das economias emergentes mais do que compensaram essas quedas.
+  </div>
+
+  <!-- GRÁFICO 6: China e Índia — renováveis E fósseis crescem juntos -->
+  <div class="chart-block">
+    <div class="chart-title">China e Índia: Renováveis e Fósseis Crescem Simultaneamente (2000–2023)</div>
+    <div class="chart-sub">TWh · Prova empírica do argumento de Fressoz: adição, não substituição · Fonte: Energy Institute (dataset 232 países)</div>
+    <div style="height:360px"><canvas id="c6"></canvas></div>
+    <div class="chart-label-fressoz">&#9650; Argumento Fressoz confirmado: China adicionou 1.425 TWh de solar em 2023 E mais 4.841 TWh de carvão vs 2000</div>
+  </div>
+
+  <p>O gráfico da China e da Índia é o mais poderoso do argumento de Fressoz transformado em dado. A China é simultaneamente o maior instalador de energia solar e eólica do mundo — e o maior consumidor de carvão. Em 2023, adicionou mais de 1.424 TWh de solar (crescimento espetacular) e ao mesmo tempo consumia 25.181 TWh de carvão — 65% a mais do que em 2000. As renováveis não substituíram o carvão chinês — foram instaladas <em>ao lado dele</em>, para atender uma demanda que cresce mais rápido do que qualquer fonte individual consegue suprir.</p>
+
+  <h2>4. Fressoz tem razão no diagnóstico histórico — Smil tem razão na física</h2>
+
+  <p>A leitura mais honesta dos dados leva a uma conclusão que não agrada nem os otimistas nem os pessimistas absolutos: <strong>Fressoz e Smil estão ambos corretos, em planos distintos</strong>.</p>
+
+  <!-- GRÁFICO 7: CO2 global — a linha que não dobrou -->
+  <div class="chart-block">
+    <div class="chart-title">CO₂ Global — A Linha Que Nunca Dobrou (2000–2023)</div>
+    <div class="chart-sub">Mt CO₂ totais · Fonte: Energy Institute / Global Carbon Project (dataset 232 países)</div>
+    <div style="height:300px"><canvas id="c7"></canvas></div>
+    <div class="chart-label-fressoz">&#9650; O CO₂ global cresceu +50% em 23 anos de "transição energética" — de 24.723 para 37.003 Mt</div>
+  </div>
+
+  <div class="callout smil">
+    <strong>O argumento mais forte de Smil em um número:</strong> De 2000 a 2023, solar e eólica cresceram de 89 TWh para 9.584 TWh — um crescimento extraordinário de 10.677%. No mesmo período, as emissões globais de CO₂ cresceram de 24.723 Mt para 37.003 Mt — alta de 50%. O crescimento das renováveis foi real, impressionante — e insuficiente para dobrar a trajetória das emissões. Smil chama isso de "o paradoxo da escala": cada vez mais rápido, sempre atrasado.
+  </div>
+
+  <h2>5. A comparação direta: onde cada autor acerta e onde cada um simplifica</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimensão</th>
+          <th class="c" style="background:#2d1a5e">Smil</th>
+          <th class="c" style="background:#7a2b0c">Fressoz</th>
+          <th class="c">O que os dados dizem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Velocidade da transição</strong></td>
+          <td class="c">Muito lenta para as metas</td>
+          <td class="c">Não há transição, só adição</td>
+          <td class="c">Fósseis: −4 pp em 23 anos. <span style="color:#ea580c">Ambos corretos</span></td>
+        </tr>
+        <tr>
+          <td><strong>Crescimento das renováveis</strong></td>
+          <td class="c">Real mas insuficiente em escala</td>
+          <td class="c">Complementar, não substituta</td>
+          <td class="c">Solar+Eólica: 15,5% do crescimento total. <span style="color:#7c3aed">Smil mais preciso</span></td>
+        </tr>
+        <tr>
+          <td><strong>CO₂ absoluto</strong></td>
+          <td class="c">Continuará crescendo por décadas</td>
+          <td class="c">Crescerá enquanto o crescimento existir</td>
+          <td class="c">+50% em 23 anos. <span style="color:#ea580c">Ambos corretos</span></td>
+        </tr>
+        <tr>
+          <td><strong>Países desenvolvidos</strong></td>
+          <td class="c">Reduziram mas são minoria global</td>
+          <td class="c">Exportaram sua indústria pesada</td>
+          <td class="c">EUA −18%, UK −46% CO₂. <span style="color:#16a34a">Contraponto real</span></td>
+        </tr>
+        <tr>
+          <td><strong>China e Índia</strong></td>
+          <td class="c">Dominarão emissões por décadas</td>
+          <td class="c">Provam que adição é a lógica real</td>
+          <td class="c">China: carvão +65%, solar +∞. <span style="color:#ea580c">Ambos corretos</span></td>
+        </tr>
+        <tr>
+          <td><strong>Materiais (aço, cimento)</strong></td>
+          <td class="c">Impossível descarbonizar até 2050</td>
+          <td class="c">Mencionado mas menos detalhado</td>
+          <td class="c">Processo Haber-Bosch: 1,8% energia global. <span style="color:#7c3aed">Smil mais específico</span></td>
+        </tr>
+        <tr>
+          <td><strong>Solução proposta</strong></td>
+          <td class="c">Realismo, metas mais longas, eficiência</td>
+          <td class="c">Questionamento do crescimento como tal</td>
+          <td class="c">Ambos recusam soluções fáceis</td>
+        </tr>
+        <tr class="fressoz-row">
+          <td><strong>Onde Fressoz é mais forte</strong></td>
+          <td class="c" colspan="3">Diagnóstico histórico: a narrativa de "transição" é uma construção política recente. Os dados confirmam que não há precedente histórico de substituição real de nenhuma fonte energética.</td>
+        </tr>
+        <tr class="smil-row">
+          <td><strong>Onde Smil é mais forte</strong></td>
+          <td class="c" colspan="3">Análise de escala e física dos materiais. Os números absolutos de crescimento e a dependência fóssil da produção industrial são irrefutáveis e precisamente quantificados.</td>
+        </tr>
+        <tr class="verde-row">
+          <td><strong>Onde ambos simplificam</strong></td>
+          <td class="c" colspan="3">O desacoplamento real em países como Alemanha e Reino Unido mostra que a redução absoluta de emissões é possível — mas ambos tendem a minimizar esses casos ao argumentar para o nível global.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GRÁFICO 8: Participação solar+eólica ao longo do tempo -->
+  <div class="chart-block">
+    <div class="chart-title">Solar + Eólica: A Curva Exponencial no Contexto da Energia Primária Total (2000–2023)</div>
+    <div class="chart-sub">% da energia primária global · Fonte: Energy Institute (dataset 232 países) · O crescimento é real — mas parte de base quase zero</div>
+    <div style="height:300px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <p>Este gráfico captura a tensão central do debate. A curva de solar e eólica é real, exponencial e impressionante — saiu de 0,08% para 5,6% da energia primária global em 23 anos. Smil diria: 5,6% em 23 anos não resolve 79% de participação fóssil em qualquer horizonte político realista. Fressoz diria: essa curva está crescendo <em>sobre</em> a base fóssil, não a substituindo.</p>
+
+  <div class="sintese">
+    <h2>Síntese: o que cada visão implica para a ação climática</h2>
+    <div class="sintese-grid">
+      <div class="sint-item sint-smil">
+        <h4>Implicações de Smil</h4>
+        <ul>
+          <li>Metas de 2050 são fisicamente irrealistas como concebidas</li>
+          <li>Precisamos de décadas a mais e muita honestidade sobre custos</li>
+          <li>Eficiência energética é mais urgente do que novas fontes</li>
+          <li>A descarbonização industrial (aço, cimento, amônia) precisa de P&D massivo em tecnologias que ainda não existem em escala</li>
+          <li>Sem ação nos países emergentes (China, Índia), os esforços dos países ricos são simbólicos</li>
+        </ul>
+      </div>
+      <div class="sint-item sint-fressoz">
+        <h4>Implicações de Fressoz</h4>
+        <ul>
+          <li>A narrativa de "transição" encobre a necessidade de questionar o crescimento</li>
+          <li>O capitalismo verde não é uma solução — é uma reformulação do problema</li>
+          <li>Cada nova capacidade renovável instalada é usada para crescer, não para substituir</li>
+          <li>A solução exige redução do consumo energético total, não apenas mudança de fonte</li>
+          <li>A história mostra que energia nunca é "transitada" — é acumulada. Precisamos de uma ruptura sem precedentes históricos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sintese-footer">
+      <strong>O que os dados confirmam de ambos:</strong> O consumo fóssil absoluto cresceu 48% entre 2000 e 2023. As emissões de CO₂ cresceram 50%. Solar e eólica cresceram mais de 10.000% e ainda assim supriram apenas 15,5% do crescimento energético global do período. Esses três números juntos são o retrato mais honesto do estado atual da "transição" energética — e confirmam, cada um à sua maneira, os diagnósticos de Smil e de Fressoz.
+    </div>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Smil, Vaclav</strong> — <em>How the World Really Works: The Science Behind How We Got Here and Where We're Going.</em> Viking, 2022.</li>
+      <li><strong>Smil, Vaclav</strong> — <em>Energy and Civilization: A History.</em> MIT Press, 2017.</li>
+      <li><strong>Smil, Vaclav</strong> — <em>Numbers Don't Lie: 71 Things You Need to Know About the World.</em> Viking, 2020.</li>
+      <li><strong>Fressoz, Jean-Baptiste</strong> — <em>Sans transition: Une nouvelle histoire de l'énergie.</em> Seuil, 2024.</li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy 2024. Via Our World in Data. Dataset de 232 países, 2000–2023. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>Global Carbon Project</strong> — CO₂ Emissions Dataset 2024. <a href="https://globalcarbonproject.org" target="_blank">globalcarbonproject.org</a></li>
+      <li><strong>IEA</strong> — World Energy Outlook 2024. Net Zero by 2050 scenarios. <a href="https://www.iea.org" target="_blank">iea.org</a></li>
+      <li><strong>IEA</strong> — The Role of Critical Materials in Clean Energy Transitions (2021). Dependências materiais das renováveis.</li>
+      <li><strong>IPCC</strong> — AR6, WG III (2022). Mitigação das mudanças climáticas — capítulos de sistemas energéticos e industria.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 &#8594;</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>&#169; 2026 MosmanLAB &#183; Prof. Edson Mosman &#183; <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 &#8212; Sala 171 &#183; Bela Vista &#183; São Paulo &#8212; SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+const anos=Array.from({length:24},(_,i)=>2000+i);
+
+// Dados reais do dataset
+const d={
+  oil: [41119,41403,41669,42533,44257,44754,45116,45739,45306,44220,45740,46136,46857,47373,47720,48629,49647,50500,50904,51044,46394,48970,50567,51821],
+  coal:[27023,27441,28537,31061,33236,35727,37604,39800,40326,39747,41537,43512,43645,44305,44447,43229,42272,42589,43255,42953,41645,43995,44267,44611],
+  gas: [23556,23839,24551,25197,26161,26851,27571,28682,29365,28765,30889,31641,32510,32975,33174,33858,34648,35634,37327,38027,37678,39045,38904,38993],
+  wind:[87,105,143,171,231,280,356,455,583,724,899,1139,1362,1618,1784,2085,2394,2830,3128,3478,3896,4535,5137,5615],
+  sol: [3,4,5,6,8,11,15,21,33,55,88,169,260,352,499,643,813,1101,1412,1722,2084,2553,3201,3969],
+  hyd: [6733,6519,6570,6506,6969,7151,7404,7486,7894,7829,8164,8284,8605,8854,9081,9035,9258,9324,9517,9654,9889,9639,9677,9391],
+  nuc: [7163,7325,7380,7192,7477,7435,7488,7296,7216,7077,7203,6865,6361,6363,6460,6513,6561,6586,6712,6915,6633,6898,6576,6671],
+};
+const co2=[24723,25540,26618,27912,29180,28653,29698,30516,30552,29888,32237,33114,33895,34319,34949,34243,33926,34183,35145,35839,34310,35979,36554,37003];
+
+// C1 — Consumo absoluto de fontes (área empilhada)
+new Chart(document.getElementById('c1'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Carvão',data:d.coal,borderColor:'#374151',backgroundColor:'rgba(55,65,81,.65)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Petróleo',data:d.oil,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Gás',data:d.gas,borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Nuclear',data:d.nuc,borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Hidro',data:d.hyd,borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.65)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Eólica',data:d.wind,borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.75)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Solar',data:d.sol,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.85)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:12}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false},stacked:true},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>(v/1000).toFixed(0)+'k TWh'},grid:{color:gc},stacked:true}
+    }
+  }
+});
+
+// C2 — % fosseis 2000-2023
+const tot=anos.map((_,i)=>d.oil[i]+d.coal[i]+d.gas[i]+d.nuc[i]+d.hyd[i]+d.wind[i]+d.sol[i]);
+const pct_foss=anos.map((_,i)=>(d.oil[i]+d.coal[i]+d.gas[i])/tot[i]*100);
+const pct_ren=anos.map((_,i)=>(d.wind[i]+d.sol[i])/tot[i]*100);
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Fósseis (% energia primária)',data:pct_foss,borderColor:'#dc2626',
+     backgroundColor:'rgba(220,38,38,.08)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5},
+    {label:'Solar + Eólica (% energia primária)',data:pct_ren,borderColor:'#f59e0b',
+     tension:.4,pointRadius:3,borderWidth:2.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:90,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// C3 — Decomposição crescimento energético 2000-2023
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{labels:['Carvão\n+17.589 TWh','Gás\n+15.437 TWh','Petróleo\n+10.701 TWh','Hidro\n+2.657 TWh','Eólica\n+5.528 TWh','Solar\n+3.966 TWh','Nuclear\n−492 TWh'],
+    datasets:[{
+      label:'Contribuição ao crescimento total (TWh)',
+      data:[17589,15437,10701,2657,5528,3966,-492],
+      backgroundColor:['rgba(55,65,81,.8)','rgba(249,115,22,.8)','rgba(220,38,38,.8)',
+        'rgba(59,130,246,.8)','rgba(6,182,212,.8)','rgba(245,158,11,.8)','rgba(124,58,237,.5)'],
+      borderRadius:4
+    }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v.toLocaleString('pt-BR')+' TWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// C4 — 4 materiais de Smil
+new Chart(document.getElementById('c4'),{type:'bar',
+  data:{labels:['Aço','Cimento','Plástico\n(polímeros)','Amônia'],
+    datasets:[
+      {label:'Produção anual global (Mt)',data:[1900,4200,450,185],
+       backgroundColor:'rgba(220,38,38,.15)',borderColor:'rgba(220,38,38,.4)',borderWidth:1,borderRadius:4,yAxisID:'y'},
+      {label:'Dependência de fósseis (%) na produção',data:[89,98,99,99],
+       backgroundColor:['rgba(220,38,38,.75)','rgba(249,115,22,.75)','rgba(245,158,11,.75)','rgba(124,58,237,.75)'],
+       borderRadius:4,yAxisID:'y1'},
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{min:0,max:5000,ticks:{font:{size:11},color:'rgba(220,38,38,.8)',callback:v=>v+' Mt'},grid:{color:gc},
+        title:{display:true,text:'Produção anual (Mt)',color:'rgba(220,38,38,.8)',font:{size:10}}},
+      y1:{min:0,max:105,ticks:{font:{size:11},color:'#7c3aed',callback:v=>v+'%'},grid:{display:false},position:'right',
+        title:{display:true,text:'% dependência de fósseis',color:'#7c3aed',font:{size:10}}}
+    }
+  }
+});
+
+// C5 — Decoupling países ricos
+const paises_dc=['EUA','Alemanha','Reino Unido','França'];
+const gdp_2000=[36330,23926,28384,22398];
+const gdp_2023=[81032,54777,49944,43568];
+const co2_2000=[6023,899,569,407];
+const co2_2023=[4918,594,308,270];
+const gdp_pct=gdp_2000.map((v,i)=>(gdp_2023[i]/v-1)*100);
+const co2_pct=co2_2000.map((v,i)=>(co2_2023[i]/v-1)*100);
+new Chart(document.getElementById('c5'),{type:'bar',
+  data:{labels:paises_dc,datasets:[
+    {label:'Crescimento PIB/capita 2000→2023 (%)',data:gdp_pct,backgroundColor:'rgba(22,163,74,.75)',borderRadius:4},
+    {label:'Variação CO₂ absoluto 2000→2023 (%)',data:co2_pct,backgroundColor:'rgba(59,130,246,.7)',borderRadius:4},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// C6 — China e Índia: carvão e solar juntos
+const anos6=['2000','2010','2023'];
+new Chart(document.getElementById('c6'),{type:'bar',
+  data:{labels:anos6,datasets:[
+    {label:'China — Carvão (TWh)',data:[8211,20341,25181],backgroundColor:'rgba(55,65,81,.8)',borderRadius:3,yAxisID:'y'},
+    {label:'China — Solar+Eólica (TWh)',data:[2,131,3585],backgroundColor:'rgba(245,158,11,.8)',borderRadius:3,yAxisID:'y'},
+    {label:'Índia — Carvão (TWh)',data:[1911,3349,6137],backgroundColor:'rgba(220,38,38,.6)',borderRadius:3,yAxisID:'y1'},
+    {label:'Índia — Solar+Eólica (TWh)',data:[4,51,484],backgroundColor:'rgba(6,182,212,.7)',borderRadius:3,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10.5},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#374151',callback:v=>v.toLocaleString('pt-BR')+' TWh'},grid:{color:gc},
+        title:{display:true,text:'China (TWh)',color:'#374151',font:{size:10}}},
+      y1:{ticks:{font:{size:11},color:'#dc2626',callback:v=>v.toLocaleString('pt-BR')+' TWh'},grid:{display:false},position:'right',
+        title:{display:true,text:'Índia (TWh)',color:'#dc2626',font:{size:10}}}
+    }
+  }
+});
+
+// C7 — CO2 global
+new Chart(document.getElementById('c7'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'CO₂ global (Mt)',data:co2,borderColor:'#dc2626',
+     backgroundColor:'rgba(220,38,38,.1)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5},
+    {label:'Projeção NZE (IEA) — para referência',
+     data:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,35839,33000,28000,22000,18000],
+     borderColor:'#16a34a',borderDash:[5,3],tension:.4,pointRadius:3,borderWidth:2},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:20000,ticks:{font:{size:11},color:tc,callback:v=>(v/1000).toFixed(0)+'k Mt'},grid:{color:gc}}
+    }
+  }
+});
+
+// C8 — Solar+Eólica % da energia primária
+const pct_sw=anos.map((_,i)=>(d.wind[i]+d.sol[i])/tot[i]*100);
+new Chart(document.getElementById('c8'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Solar + Eólica (% energia primária global)',data:pct_sw,
+     borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.12)',fill:true,
+     tension:.4,pointRadius:4,pointBackgroundColor:'#f59e0b',borderWidth:2.5},
+    {label:'Necessário para NZE 2050 (~50%)',data:Array(24).fill(50),
+     borderColor:'#16a34a',borderDash:[4,3],pointRadius:0,borderWidth:1.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:55,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+</script>
+</body>
+</html>
