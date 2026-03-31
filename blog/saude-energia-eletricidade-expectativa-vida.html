@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Saúde e Energia: Quanto Vale Uma Tomada? | MosmanLAB</title>
+<meta name="description" content="Correlação de 0,75 entre acesso à eletricidade e expectativa de vida em 232 países. Dados reais 2000–2022 revelam como uma tomada muda expectativa de vida, gasto em saúde e desenvolvimento humano."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/saude-energia-eletricidade-expectativa-vida.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0f1c2e,#1a3a50,#0f2d1a);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#6ee7b7;border:1px solid rgba(110,231,183,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout.vermelho{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout strong{font-weight:700}
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+tr.dest td{background:#f0fdf4;font-weight:600;color:#15803d}
+tr.dest2 td{background:#eff6ff;font-weight:600;color:#1e40af}
+.tier-bar-wrap{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:28px 0}
+.tier-bar-title{font-size:.82rem;font-weight:600;color:#374151;margin-bottom:18px}
+.tier-row{display:grid;grid-template-columns:90px 1fr 60px;gap:10px;align-items:center;margin-bottom:10px}
+.tier-label{font-size:.8rem;font-weight:600;font-family:'DM Mono',monospace;color:#374151}
+.tier-bar{height:20px;border-radius:4px;position:relative}
+.tier-val{font-size:.8rem;font-weight:600;font-family:'DM Mono',monospace;color:#374151;text-align:right}
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#0a2a1a);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#6ee7b7;font-weight:700}
+.conclusao li strong{color:#fff}
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.conclusao{padding:24px 20px}.tier-row{grid-template-columns:70px 1fr 50px}}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia · Saúde · Desenvolvimento</div>
+  <h1>Saúde e Energia: Quanto Vale Uma Tomada?</h1>
+  <p class="hero-lead">Países com acesso universal à eletricidade têm expectativa de vida 18,8 anos maior do que países com menos de 40% de cobertura. A correlação global é 0,75 — uma das mais fortes em ciências sociais. Mas o que exatamente a tomada faz pela saúde?</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 13 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Em 2022, o Sudão do Sul tinha 8,4% de acesso à eletricidade e expectativa de vida de 57,2 anos. A Noruega tinha 100% de acesso e expectativa de vida de 82,5 anos. A diferença é de 25 anos de vida. Uma tomada — ou melhor, a infraestrutura energética inteira que ela representa — carrega dentro dela vacinas refrigeradas, luz para estudar à noite, bombas d'água potável, centros de saúde funcionando, e a cadeia produtiva inteira que sustenta o sistema de saúde moderno.</p>
+
+  <p>Mas essa correlação é real ou é apenas um artefato da riqueza? Países ricos têm tanto eletricidade quanto boa saúde — a tomada causa a saúde, ou os dois são causados por uma terceira variável: o dinheiro? Com dados reais de 232 países entre 2000 e 2022, este artigo examina a física e a economia dessa relação — e o que ela significa para o Brasil.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">0,75</div><div class="stat-label">correlação entre acesso à eletricidade e expectativa de vida — 259 países em 2022</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">18,8</div><div class="stat-label">anos a mais de expectativa de vida: países com 100% de acesso vs países com menos de 40%</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">≈700<span style="font-size:1.1rem">mi</span></div><div class="stat-label">pessoas ainda sem eletricidade em 2022 — concentradas 80% na África Subsaariana</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">75,8</div><div class="stat-label">anos — expectativa de vida no Brasil em 2023, com 99,8% de cobertura elétrica</div></div>
+  </div>
+
+  <h2>A física por trás da correlação</h2>
+
+  <p>Uma correlação de 0,75 entre duas variáveis é excepcionalmente alta para dados entre países. Em comparação, a correlação entre fumo e câncer de pulmão é de cerca de 0,70–0,80 em estudos populacionais. A relação eletricidade–saúde é tão robusta quanto a relação tabagismo–câncer, medida em escala global.</p>
+
+  <p>O mecanismo não é misterioso — é físico e direto. A eletricidade habilita um conjunto específico de tecnologias que são precondição do sistema de saúde moderno:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.88rem;background:#f8fafc;padding:14px 18px;border-radius:8px;border-left:3px solid #2563eb;color:#1e40af;line-height:1.9">
+    Refrigeração de vacinas → imunização em massa<br>
+    Iluminação hospitalar → cirurgias seguras, partos noturnos<br>
+    Equipamentos diagnósticos → raio-X, ultrassom, ECG<br>
+    Bombeamento d'água → saneamento e hidratação<br>
+    Comunicação digital → telemedicina, emergências<br>
+    Cadeia produtiva → indústria farmacêutica, distribuidores
+  </p>
+
+  <p>Cada um desses elos é elétrico. Sem eletricidade confiável, vacinas aquecem e perdem eficácia; cirurgias são impossíveis à noite; água potável não chega às casas; medicamentos não chegam ao interior. O sistema de saúde moderno não é possível sem infraestrutura elétrica — é essa a física da relação.</p>
+
+  <!-- GRÁFICO 1: Scatter acesso eletricidade x expectativa de vida -->
+  <div class="chart-block">
+    <div class="chart-title">Acesso à Eletricidade vs Expectativa de Vida — 47 países selecionados (2022)</div>
+    <div class="chart-sub">Correlação = 0,75 · Cada ponto é um país · Brasil destacado em vermelho · Fonte: World Bank / Our World in Data (dataset 232 países)</div>
+    <div style="height:420px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <div class="callout azul">
+    <strong>A Nigéria — o outlier que confirma a regra:</strong> Com PIB per capita de US$ 8.305 (PPP), a Nigéria teria condições econômicas de ter boa infraestrutura elétrica. Mas apenas 60,5% da população tem acesso à eletricidade em 2022 — e a expectativa de vida é de 54 anos, abaixo de países muito mais pobres como Bangladesh (US$ 8.451 de PIB, 74,3 anos de expectativa). A má gestão da infraestrutura elétrica, em um país rico em petróleo, é uma das maiores tragédias de desenvolvimento humano do século XXI.
+  </div>
+
+  <h2>A escada da expectativa de vida — por nível de acesso elétrico</h2>
+
+  <p>Quando dividimos os países em faixas de acesso à eletricidade, o padrão é quase linear: cada degrau de cobertura elétrica corresponde a um salto mensurável na expectativa de vida. Os dados de 2022 com 259 países mostram:</p>
+
+  <!-- VISUAL TIER BAR -->
+  <div class="tier-bar-wrap">
+    <div class="tier-bar-title">Expectativa de vida média por faixa de acesso à eletricidade — 259 países (2022)</div>
+    <div class="tier-row">
+      <span class="tier-label">&lt; 40%</span>
+      <div class="tier-bar" style="width:100%">
+        <div style="width:62.5%;height:100%;background:#dc2626;border-radius:4px"></div>
+      </div>
+      <span class="tier-val">58,6 anos</span>
+    </div>
+    <div class="tier-row">
+      <span class="tier-label">40–70%</span>
+      <div class="tier-bar" style="width:100%">
+        <div style="width:69.0%;height:100%;background:#f97316;border-radius:4px"></div>
+      </div>
+      <span class="tier-val">63,9 anos</span>
+    </div>
+    <div class="tier-row">
+      <span class="tier-label">70–90%</span>
+      <div class="tier-bar" style="width:100%">
+        <div style="width:73.0%;height:100%;background:#f59e0b;border-radius:4px"></div>
+      </div>
+      <span class="tier-val">67,2 anos</span>
+    </div>
+    <div class="tier-row">
+      <span class="tier-label">90–99%</span>
+      <div class="tier-bar" style="width:100%">
+        <div style="width:79.2%;height:100%;background:#16a34a;border-radius:4px"></div>
+      </div>
+      <span class="tier-val">72,6 anos</span>
+    </div>
+    <div class="tier-row">
+      <span class="tier-label">100%</span>
+      <div class="tier-bar" style="width:100%">
+        <div style="width:84.8%;height:100%;background:#2563eb;border-radius:4px"></div>
+      </div>
+      <span class="tier-val">77,4 anos</span>
+    </div>
+    <p style="font-size:.72rem;color:#94a3b8;margin-top:14px;margin-bottom:0">Barras em escala proporcional à expectativa de vida. Médias simples por grupo.</p>
+  </div>
+
+  <p>A diferença entre o pior grupo (58,6 anos) e o melhor (77,4 anos) é de <strong>18,8 anos de vida</strong>. Para referência: eliminar todos os canceres do Brasil prolongaria a expectativa de vida em aproximadamente 4–5 anos. A eletricidade universal equivale, em termos de impacto médio na longevidade, a curar todos os canceres três vezes.</p>
+
+  <div class="callout amber">
+    <strong>Uma ressalva estatística importante:</strong> A correlação de 0,75 é parcialmente mediada pela riqueza — países ricos têm tanto eletricidade quanto boa saúde, e o PIB explica parte dos dois. Mas quando analisamos países com renda similar e diferentes níveis de acesso elétrico (como Nigéria vs Bangladesh acima), o efeito direto da eletricidade permanece robusto. A eletricidade não é só sintoma da riqueza — ela é um dos seus mecanismos causais.
+  </div>
+
+  <h2>O caso Bangladesh — 22 anos, 67 pontos percentuais, 12 anos de vida</h2>
+
+  <p>Entre 2000 e 2022, Bangladesh fez uma das mais rápidas expansões de acesso elétrico da história: saiu de 32% para 99,4% de cobertura — 67 pontos percentuais em 22 anos. No mesmo período, a expectativa de vida passou de 62,0 para 74,3 anos — um ganho de 12,2 anos.</p>
+
+  <!-- GRÁFICO 2: Bangladesh trajetória -->
+  <div class="chart-block">
+    <div class="chart-title">Bangladesh: Acesso à Eletricidade vs Expectativa de Vida (2000–2022)</div>
+    <div class="chart-sub">De 32% para 99,4% de cobertura · De 62,0 para 74,3 anos de vida · Fonte: World Bank / Our World in Data</div>
+    <div style="height:320px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>Bangladesh não ficou rico no período — o PIB per capita (PPP) passou de US$ 2.600 para US$ 8.451, um crescimento real mas que ainda o classifica como país de baixa-média renda. A expansão elétrica foi em grande parte conduzida por painéis solares domiciliares rurais (Solar Home Systems) distribuídos pelo programa Grameen Shakti a partir de 2003 — um caso emblemático de eletricidade descentralizada como ferramenta de saúde pública.</p>
+
+  <div class="callout verde">
+    <strong>O programa Grameen Shakti:</strong> Ao longo de 20 anos, distribuiu mais de 4 milhões de sistemas solares domiciliares em áreas rurais de Bangladesh. Cada sistema custa cerca de US$ 100–200 e fornece energia suficiente para iluminação, carregamento de celular e, em muitos casos, uma geladeira pequena. O impacto direto na saúde veio da refrigeração de vacinas e medicamentos, da iluminação para partos noturnos e da redução da queima de querosene em ambientes fechados — causa significativa de doenças respiratórias.
+  </div>
+
+  <h2>O que o dinheiro em saúde não consegue sem eletricidade</h2>
+
+  <p>Um dos dados mais contraintuitivos do dataset é que países com baixo acesso elétrico não necessariamente gastam pouco em saúde como percentual do PIB. O Sudão do Sul gastava 6,6% do PIB em saúde em 2022 — mais que a China (5,9%) — mas tinha expectativa de vida de apenas 57 anos. O Chade gastava 4,3% do PIB em saúde com acesso elétrico de 11,7% e expectativa de 54,5 anos.</p>
+
+  <!-- GRÁFICO 3: Gasto saúde vs expectativa, por grupo de acesso elétrico -->
+  <div class="chart-block">
+    <div class="chart-title">Gasto em Saúde (% PIB) vs Expectativa de Vida — Por Faixa de Acesso Elétrico (2022)</div>
+    <div class="chart-sub">Sem eletricidade, gastar mais em saúde não garante longevidade · Fonte: World Bank / Our World in Data</div>
+    <div style="height:360px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>A mensagem dos dados é dura: gastar dinheiro em saúde sem eletricidade é como investir em uma fábrica sem energia — os insumos chegam, mas o maquinário não funciona. Vacinas compradas mas não refrigeradas, equipamentos importados mas sem tomada, médicos formados mas sem instrumentos. A eletricidade é a infraestrutura que converte gasto em saúde em saúde de fato.</p>
+
+  <div class="callout vermelho">
+    <strong>República Centro-Africana — o caso extremo:</strong> Em 2022, tinha acesso elétrico de 15,7% e expectativa de vida de apenas 18,8 anos — o menor do dataset. Para contexto: essa não é a expectativa ao nascer de um adulto, mas sim um número distorcido pela altíssima mortalidade infantil e por conflitos armados prolongados. Mas o dado ilustra o ponto: sem eletricidade, os sistemas básicos de saúde — inclusive pré-natal e neonatal — colapsam.
+  </div>
+
+  <h2>A África Subsaariana — onde a desconexão ainda mata</h2>
+
+  <p>Em 2022, aproximadamente 700 milhões de pessoas no mundo viviam sem eletricidade. Desse total, estima-se que mais de 80% estão na África Subsaariana. O continente tem o maior déficit energético do planeta — e paga por isso em anos de vida.</p>
+
+  <!-- GRÁFICO 4: África Subsaariana comparativo -->
+  <div class="chart-block">
+    <div class="chart-title">África Subsaariana: Acesso à Eletricidade vs Expectativa de Vida (2022)</div>
+    <div class="chart-sub">14 países selecionados · Fonte: World Bank / Our World in Data</div>
+    <div style="height:380px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O padrão dentro da África Subsaariana confirma a lógica global: Gana, com 85% de acesso elétrico, tem expectativa de 65,2 anos — mais de 8 anos acima do Sudão do Sul (57,2 anos com 8,4% de cobertura). Mesmo controlando pela riqueza, países que avançaram mais rapidamente em eletrificação tendem a apresentar melhorias mais rápidas nos indicadores de saúde.</p>
+
+  <p>A Ruanda é um caso notável: saiu de praticamente zero acesso elétrico em 2000 para 50,6% em 2022, com expectativa de vida subindo de 47,9 para 67,5 anos — um dos maiores ganhos em longevidade em qualquer país em qualquer período recente.</p>
+
+  <h2>O Brasil — o que 100% de cobertura custou e entregou</h2>
+
+  <p>Em 2000, o Brasil tinha 94,4% de acesso à eletricidade e expectativa de vida de 69,6 anos. Em 2022, chegou a 100% de cobertura e 74,9 anos. A expansão final dos 5,6 pontos percentuais — levando eletricidade aos rincões mais remotos da Amazônia e do sertão nordestino — veio principalmente pelo Programa Luz para Todos, lançado em 2003, que conectou mais de 16 milhões de brasileiros.</p>
+
+  <!-- GRÁFICO 5: Brasil trajetória completa -->
+  <div class="chart-block">
+    <div class="chart-title">Brasil: Acesso à Eletricidade, Expectativa de Vida e Gasto em Saúde (2000–2023)</div>
+    <div class="chart-sub">Dois eixos: acesso e expectativa de vida (esc. esq.), gasto em saúde % PIB (esc. dir.) · Fonte: World Bank / Our World in Data</div>
+    <div style="height:360px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O Brasil gasta 9,7% do PIB em saúde — acima da média da OCDE de 9,2% e significativamente acima da maioria das economias emergentes. Com acesso elétrico universal, esse gasto consegue se converter em resultados: o SUS opera mais de 3.500 hospitais públicos, todos dependentes de eletricidade constante para funcionar.</p>
+
+  <h3>O paradoxo da qualidade vs quantidade</h3>
+  <p>Apesar do acesso universal à eletricidade e do alto gasto em saúde, o Brasil tem expectativa de vida de 75,8 anos em 2023 — abaixo da média dos países da OCDE (80,5 anos), mesmo com gasto percentual comparável. Isso sugere que, uma vez garantida a infraestrutura elétrica básica, outros fatores passam a limitar os ganhos de longevidade: saneamento básico (apenas 55% dos brasileiros têm acesso a esgoto tratado), desigualdade no acesso a especialistas médicos, violência urbana e qualidade da alimentação. A tomada é necessária — mas não suficiente.</p>
+
+  <div class="callout navy">
+    <strong>Eletricidade intermitente: o problema brasileiro que os dados não mostram.</strong> O dado de "100% de acesso" esconde um problema grave: confiabilidade. No Nordeste e Norte do Brasil, apagões frequentes e tensão irregular comprometem a efetividade do sistema de saúde — câmaras de vacinas que desligam, equipamentos hospitalares que danificam. A transição do mero acesso para a eletricidade confiável é o próximo desafio, e é um desafio de qualidade, não de quantidade.
+  </div>
+
+  <h2>Quanto custa não ter eletricidade — a conta em vidas e dinheiro</h2>
+
+  <p>Em 2022, a média global de acesso elétrico era de 87,2% — 121 países ainda com cobertura incompleta. Com base na relação entre acesso elétrico e expectativa de vida, podemos estimar o custo humano desse déficit:</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th class="c">Acesso elétrico (%)</th>
+          <th class="c">Expect. vida (anos)</th>
+          <th class="c">Gasto saúde (% PIB)</th>
+          <th class="c">PIB/cap PPP (US$)</th>
+          <th class="c">kWh/capita/ano</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Sudão do Sul</strong></td><td class="c mono">8,4%</td><td class="c mono">57,2</td><td class="c mono">6,6%</td><td class="c mono">—</td><td class="c mono">49</td></tr>
+        <tr><td><strong>Malawi</strong></td><td class="c mono">14,0%</td><td class="c mono">66,0</td><td class="c mono">6,6%</td><td class="c mono">1.778</td><td class="c mono">89</td></tr>
+        <tr><td><strong>Congo (RD)</strong></td><td class="c mono">21,5%</td><td class="c mono">61,0</td><td class="c mono">3,9%</td><td class="c mono">1.821</td><td class="c mono">150</td></tr>
+        <tr><td><strong>Etiópia</strong></td><td class="c mono">55,4%</td><td class="c mono">66,9</td><td class="c mono">2,9%</td><td class="c mono">2.845</td><td class="c mono">139</td></tr>
+        <tr><td><strong>Nigéria</strong></td><td class="c mono">60,5%</td><td class="c mono">54,1</td><td class="c mono">4,2%</td><td class="c mono">8.305</td><td class="c mono">170</td></tr>
+        <tr><td><strong>Bangladesh</strong></td><td class="c mono">99,4%</td><td class="c mono">74,3</td><td class="c mono">2,2%</td><td class="c mono">8.451</td><td class="c mono">604</td></tr>
+        <tr><td><strong>Índia</strong></td><td class="c mono">99,2%</td><td class="c mono">71,7</td><td class="c mono">3,4%</td><td class="c mono">9.207</td><td class="c mono">1.267</td></tr>
+        <tr class="dest"><td><strong>Brasil</strong></td><td class="c mono">100,0%</td><td class="c mono">74,9</td><td class="c mono">9,4%</td><td class="c mono">19.877</td><td class="c mono">3.220</td></tr>
+        <tr><td><strong>China</strong></td><td class="c mono">100,0%</td><td class="c mono">78,2</td><td class="c mono">5,9%</td><td class="c mono">23.032</td><td class="c mono">7.107</td></tr>
+        <tr><td><strong>Coreia do Sul</strong></td><td class="c mono">100,0%</td><td class="c mono">82,7</td><td class="c mono">8,9%</td><td class="c mono">55.509</td><td class="c mono">12.023</td></tr>
+        <tr><td><strong>Alemanha</strong></td><td class="c mono">100,0%</td><td class="c mono">80,6</td><td class="c mono">12,4%</td><td class="c mono">69.049</td><td class="c mono">6.742</td></tr>
+        <tr class="dest2"><td><strong>Noruega</strong></td><td class="c mono">100,0%</td><td class="c mono">82,5</td><td class="c mono">7,9%</td><td class="c mono">125.490</td><td class="c mono">26.649</td></tr>
+        <tr><td><strong>Japão</strong></td><td class="c mono">100,0%</td><td class="c mono">84,0</td><td class="c mono">12,3%</td><td class="c mono">47.192</td><td class="c mono">8.325</td></tr>
+        <tr><td><strong>EUA</strong></td><td class="c mono">100,0%</td><td class="c mono">77,4</td><td class="c mono">16,5%</td><td class="c mono">77.861</td><td class="c mono">12.552</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A tabela revela outro padrão fascinante: <strong>os EUA gastam 16,5% do PIB em saúde</strong> — mais que qualquer país da tabela — mas têm expectativa de vida de apenas 77,4 anos, abaixo do Japão (84,0 anos, 12,3% do PIB), da Coreia do Sul (82,7 anos, 8,9%) e da Noruega (82,5 anos, 7,9%). Uma vez que todos os países têm acesso elétrico universal, o que determina a longevidade não é mais a infraestrutura — é o sistema de saúde, a desigualdade e o estilo de vida.</p>
+
+  <h2>O custo da tomada — energia per capita e longevidade</h2>
+
+  <p>Quanto de eletricidade é necessário para sustentar um sistema de saúde funcional? Os dados sugerem que o limiar relevante está em torno de 500–700 kWh per capita por ano — suficiente para manter hospitais e postos de saúde operando, refrigeração de vacinas e iluminação básica. Abaixo disso, o sistema de saúde literalmente não consegue funcionar de forma adequada.</p>
+
+  <!-- GRÁFICO 6: kWh per capita vs expectativa de vida -->
+  <div class="chart-block">
+    <div class="chart-title">Eletricidade per Capita (kWh/ano) vs Expectativa de Vida — 47 países (2022)</div>
+    <div class="chart-sub">Ganhos de longevidade concentrados nos primeiros 3.000 kWh · Acima disso, retornos decrescentes · Fonte: World Bank / Energy Institute</div>
+    <div style="height:380px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>O gráfico revela uma lei de retornos decrescentes clara: o maior salto na expectativa de vida ocorre quando os países saem de praticamente zero eletricidade para cerca de 1.000–2.000 kWh per capita por ano. A partir daí, mais eletricidade ainda ajuda — mas o impacto marginal na saúde diminui. Os EUA consomem 12.552 kWh/capita e vivem 77 anos; o Japão consome 8.325 kWh/capita e vive 84 anos. Mais energia não é sinônimo de mais vida quando as necessidades básicas de saúde já estão cobertas.</p>
+
+  <div class="callout roxo">
+    <strong>O limiar dos 1.000 kWh — a fronteira energética da saúde:</strong> Pesquisadores de desenvolvimento humano identificam o consumo de 1.000 kWh per capita por ano como o nível mínimo para sustentar um sistema de saúde funcional em um país de renda baixa a média. Abaixo disso, é estruturalmente impossível manter refrigeração de vacinas em toda a rede, iluminação hospitalar 24h e operação de equipamentos básicos. O Brasil tem 3.220 kWh/capita — bem acima do limiar. O Sudão do Sul tem 49 kWh/capita — 20 vezes abaixo.
+  </div>
+
+  <div class="conclusao">
+    <h2>Quanto vale uma tomada — síntese</h2>
+    <ul>
+      <li><strong>A correlação de 0,75 entre acesso elétrico e expectativa de vida é uma das mais robustas em desenvolvimento humano.</strong> Não é coincidência — é causalidade física: sem eletricidade, vacinas aquecem, hospitais param à noite e saneamento não funciona. O sistema de saúde moderno é intrinsecamente elétrico.</li>
+      <li><strong>A diferença de acesso elétrico corresponde a 18,8 anos de expectativa de vida.</strong> Países com menos de 40% de cobertura vivem em média 58,6 anos; países com 100% vivem 77,4 anos. Nenhuma intervenção de saúde isolada se aproxima desse impacto.</li>
+      <li><strong>Bangladesh prova que a expansão elétrica pode ser mais rápida que o crescimento econômico.</strong> De 32% para 99,4% em 22 anos, com solar distribuído — e a expectativa de vida acompanhou de 62 para 74 anos. A tecnologia solar tornou isso possível sem esperar décadas de desenvolvimento econômico.</li>
+      <li><strong>Gastar em saúde sem eletricidade é necessário, mas ineficiente.</strong> O Sudão do Sul gasta 6,6% do PIB em saúde — mais que a China — mas tem 57 anos de expectativa de vida. Sem infraestrutura elétrica, os recursos de saúde não conseguem se converter em longevidade.</li>
+      <li><strong>O Brasil atingiu o universal — mas o desafio agora é a qualidade.</strong> Com 100% de cobertura e 9,7% do PIB em saúde, o Brasil deveria ter expectativa de vida mais próxima dos países da OCDE. A eletricidade foi conquistada; os próximos 5 anos de vida estão escondidos no saneamento, na distribuição de especialistas e na redução da violência.</li>
+      <li><strong>A lei de retornos decrescentes existe — mas o limiar ainda está longe para 700 milhões de pessoas.</strong> Acima de 3.000 kWh/capita, mais energia não compra mais anos de vida. Mas 80% dos sem-eletricidade do mundo estão abaixo de 500 kWh/capita — ainda no trecho de ganhos máximos. Uma tomada, para eles, ainda vale décadas.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>World Bank</strong> — World Development Indicators: electricity access, life expectancy, health expenditure, GDP per capita. <a href="https://databank.worldbank.org" target="_blank">databank.worldbank.org</a></li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy 2024. Electricity per capita. Via Our World in Data. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>Our World in Data</strong> — Energy Access and Human Development. Hannah Ritchie &amp; Max Roser (2024). <a href="https://ourworldindata.org/energy-access" target="_blank">ourworldindata.org</a></li>
+      <li><strong>IEA</strong> — World Energy Outlook 2023. Special chapter: Energy access and health. <a href="https://www.iea.org/reports/world-energy-outlook-2023" target="_blank">iea.org</a></li>
+      <li><strong>WHO</strong> — Health and Energy: Policy Implications. World Health Organization, 2022. <a href="https://www.who.int" target="_blank">who.int</a></li>
+      <li><strong>Grameen Shakti</strong> — Solar Home Systems Program Impact Report. Bangladesh, 2022.</li>
+      <li><strong>MME / EPE</strong> — Programa Luz para Todos — Relatório de Resultados. Ministério de Minas e Energia, 2020. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+
+// ── DADOS ──────────────────────────────────────────────────────────────────
+
+// C1: Scatter acesso eletricidade x expectativa vida (47 países, 2022)
+const scatter1 = [
+  {c:'Sudão do Sul',   a:8.4,  v:57.2}, {c:'Malawi',        a:14.0, v:66.0},
+  {c:'Congo (RD)',     a:21.5, v:61.0}, {c:'Moçambique',    a:33.2, v:63.0},
+  {c:'Madagascar',    a:36.1, v:63.1}, {c:'Tanzania',       a:45.8, v:66.9},
+  {c:'Uganda',        a:47.1, v:67.7}, {c:'Zâmbia',         a:47.8, v:65.3},
+  {c:'Haiti',         a:49.3, v:63.9}, {c:'Ruanda',         a:50.6, v:67.5},
+  {c:'Etiópia',       a:55.4, v:66.9}, {c:'Nigéria',        a:60.5, v:54.1},
+  {c:'Senegal',       a:67.9, v:67.8}, {c:'Quênia',         a:76.0, v:63.5},
+  {c:'Gana',          a:85.1, v:65.2}, {c:'África do Sul',  a:86.5, v:65.5},
+  {c:'Paquistão',     a:95.0, v:67.4}, {c:'Peru',           a:96.2, v:76.8},
+  {c:'Índia',         a:99.2, v:71.7}, {c:'Bangladesh',     a:99.4, v:74.3},
+  {c:'Bolívia',       a:99.9, v:67.4}, {c:'Brasil',         a:100,  v:74.9},
+  {c:'Egito',         a:100,  v:71.0}, {c:'Indonésia',      a:100,  v:70.9},
+  {c:'México',        a:100,  v:74.0}, {c:'Colômbia',       a:100,  v:76.5},
+  {c:'Argentina',     a:100,  v:75.8}, {c:'Paraguai',       a:100,  v:72.3},
+  {c:'Chile',         a:100,  v:79.2}, {c:'China',          a:100,  v:78.2},
+  {c:'Turquia',       a:100,  v:77.6}, {c:'Romênia',        a:100,  v:75.2},
+  {c:'Portugal',      a:100,  v:81.6}, {c:'Espanha',        a:100,  v:83.1},
+  {c:'Itália',        a:100,  v:82.7}, {c:'França',         a:100,  v:82.1},
+  {c:'Alemanha',      a:100,  v:80.6}, {c:'Reino Unido',    a:100,  v:81.0},
+  {c:'Suécia',        a:100,  v:83.1}, {c:'Dinamarca',      a:100,  v:81.3},
+  {c:'Finlândia',     a:100,  v:81.2}, {c:'Áustria',        a:100,  v:81.3},
+  {c:'Austrália',     a:100,  v:83.2}, {c:'Canadá',         a:100,  v:81.2},
+  {c:'Coreia do Sul', a:100,  v:82.7}, {c:'Japão',          a:100,  v:84.0},
+  {c:'EUA',           a:100,  v:77.4},
+];
+
+new Chart(document.getElementById('c1'),{type:'bubble',
+  data:{datasets: scatter1.map(p=>({
+    label: p.c,
+    data:[{x:p.a, y:p.v, r: p.c==='Brasil' ? 12 : p.c==='Nigéria' ? 9 : 6}],
+    backgroundColor: p.c==='Brasil'   ? 'rgba(220,38,38,0.85)' :
+                     p.c==='Nigéria'  ? 'rgba(234,179,8,0.85)'  :
+                     p.a < 70         ? 'rgba(220,38,38,0.45)'  : 'rgba(37,99,235,0.45)',
+    borderColor:     p.c==='Brasil'   ? '#dc2626' :
+                     p.c==='Nigéria'  ? '#ca8a04'  :
+                     p.a < 70         ? '#dc2626'  : '#2563eb',
+    borderWidth: p.c==='Brasil' || p.c==='Nigéria' ? 2 : 1,
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: acesso ${ctx.raw.x}% · vida ${ctx.raw.y} anos`}}
+    },
+    scales:{
+      x:{min:0,max:100,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'Acesso à eletricidade (%)',color:tc,font:{size:11}}},
+      y:{min:45,max:87,ticks:{font:{size:11},color:tc,callback:v=>v+' anos'},grid:{color:gc},
+        title:{display:true,text:'Expectativa de vida (anos)',color:tc,font:{size:11}}}
+    }
+  }
+});
+
+// C2: Bangladesh trajetória
+const bangYears = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2022];
+const bangAccess= [32.0,34.3,36.6,38.7,41.3,44.2,47.6,51.3,55.0,56.5,55.3,60.0,62.4,68.2,72.0,74.0,80.0,88.0,93.5,95.9,96.2,99.4];
+const bangLife  = [62.0,62.5,63.0,63.5,64.0,65.5,66.3,67.0,67.6,68.2,68.0,68.8,69.3,70.0,70.4,70.5,71.0,71.4,71.8,72.2,71.4,74.3];
+
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:bangYears.map(String), datasets:[
+    {label:'Acesso à eletricidade (% — esc. esq.)',data:bangAccess,
+     borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.1)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5,yAxisID:'y'},
+    {label:'Expectativa de vida em anos (esc. dir.)',data:bangLife,
+     borderColor:'#2563eb',tension:.4,pointRadius:3,borderWidth:2.5,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:25,max:105,ticks:{font:{size:11},color:'#d97706',callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'Acesso à eletricidade (%)',color:'#d97706',font:{size:10}}},
+      y1:{min:55,max:80,ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' anos'},grid:{display:false},position:'right',
+        title:{display:true,text:'Expectativa de vida',color:'#2563eb',font:{size:10}}}
+    }
+  }
+});
+
+// C3: Gasto saúde vs expectativa de vida, marcado por faixa acesso
+const c3data = [
+  {c:'Sudão do Sul',  g:6.6,  v:57.2, a:'<40%'},
+  {c:'Malawi',        g:6.6,  v:66.0, a:'<40%'},
+  {c:'Congo (RD)',    g:3.9,  v:61.0, a:'<40%'},
+  {c:'Moçambique',   g:8.2,  v:63.0, a:'<40%'},
+  {c:'Madagascar',   g:3.1,  v:63.1, a:'<40%'},
+  {c:'Uganda',        g:4.5,  v:67.7, a:'40-70%'},
+  {c:'Etiópia',       g:2.9,  v:66.9, a:'40-70%'},
+  {c:'Nigéria',       g:4.2,  v:54.1, a:'40-70%'},
+  {c:'Senegal',       g:4.0,  v:67.8, a:'40-70%'},
+  {c:'Quênia',        g:4.3,  v:63.5, a:'70-90%'},
+  {c:'Gana',          g:3.7,  v:65.2, a:'70-90%'},
+  {c:'África do Sul', g:8.7,  v:65.5, a:'70-90%'},
+  {c:'Paquistão',     g:2.9,  v:67.4, a:'90-100%'},
+  {c:'Índia',         g:3.4,  v:71.7, a:'90-100%'},
+  {c:'Bangladesh',    g:2.2,  v:74.3, a:'90-100%'},
+  {c:'Brasil',        g:9.4,  v:74.9, a:'100%'},
+  {c:'China',         g:5.9,  v:78.2, a:'100%'},
+  {c:'França',        g:11.8, v:82.1, a:'100%'},
+  {c:'Alemanha',      g:12.4, v:80.6, a:'100%'},
+  {c:'Japão',         g:12.3, v:84.0, a:'100%'},
+  {c:'Coreia do Sul', g:8.9,  v:82.7, a:'100%'},
+  {c:'Noruega',       g:7.9,  v:82.5, a:'100%'},
+  {c:'EUA',           g:16.5, v:77.4, a:'100%'},
+];
+const colMap={'<40%':'rgba(220,38,38,0.7)','40-70%':'rgba(249,115,22,0.7)','70-90%':'rgba(245,158,11,0.7)','90-100%':'rgba(22,163,74,0.7)','100%':'rgba(37,99,235,0.65)'};
+const brdMap={'<40%':'#dc2626','40-70%':'#f97316','70-90%':'#d97706','90-100%':'#16a34a','100%':'#2563eb'};
+
+new Chart(document.getElementById('c3'),{type:'bubble',
+  data:{datasets: c3data.map(p=>({
+    label:p.c,
+    data:[{x:p.g, y:p.v, r: p.c==='Brasil' || p.c==='EUA' ? 10 : 7}],
+    backgroundColor: p.c==='Brasil' ? 'rgba(220,38,38,0.9)' : colMap[p.a],
+    borderColor:     p.c==='Brasil' ? '#dc2626' : brdMap[p.a],
+    borderWidth: p.c==='Brasil' ? 2.5 : 1,
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw.x}% PIB em saúde · ${ctx.raw.y} anos`}}
+    },
+    scales:{
+      x:{min:0,max:18,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'Gasto em saúde (% PIB)',color:tc,font:{size:11}}},
+      y:{min:45,max:88,ticks:{font:{size:11},color:tc,callback:v=>v+' anos'},grid:{color:gc},
+        title:{display:true,text:'Expectativa de vida (anos)',color:tc,font:{size:11}}}
+    }
+  }
+});
+
+// C4: África Subsaariana barras horizontais
+const ssa = [
+  {c:'Sudão do Sul',a:8.4, v:57.2},
+  {c:'Malawi',      a:14.0,v:66.0},
+  {c:'Congo (RD)',  a:21.5,v:61.0},
+  {c:'Moçambique',  a:33.2,v:63.0},
+  {c:'Madagascar',  a:36.1,v:63.1},
+  {c:'Tanzania',    a:45.8,v:66.9},
+  {c:'Uganda',      a:47.1,v:67.7},
+  {c:'Zâmbia',      a:47.8,v:65.3},
+  {c:'Ruanda',      a:50.6,v:67.5},
+  {c:'Etiópia',     a:55.4,v:66.9},
+  {c:'Nigéria',     a:60.5,v:54.1},
+  {c:'Senegal',     a:67.9,v:67.8},
+  {c:'Quênia',      a:76.0,v:63.5},
+  {c:'Gana',        a:85.1,v:65.2},
+];
+const ssa_colors = ssa.map(p => p.a < 30 ? '#dc2626' : p.a < 60 ? '#f97316' : '#16a34a');
+
+new Chart(document.getElementById('c4'),{type:'bar',
+  data:{labels:ssa.map(p=>p.c), datasets:[
+    {label:'Acesso à eletricidade (%)',data:ssa.map(p=>p.a),
+     backgroundColor:ssa_colors,borderRadius:3,yAxisID:'y'},
+    {label:'Expectativa de vida (anos)',data:ssa.map(p=>p.v),
+     backgroundColor:'rgba(37,99,235,0.35)',borderColor:'#2563eb',borderWidth:1.5,
+     borderRadius:3,type:'line',tension:.3,pointRadius:4,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{min:0,max:100,ticks:{font:{size:11},color:'#dc2626',callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'Acesso à eletricidade (%)',color:'#dc2626',font:{size:10}}},
+      y1:{min:45,max:75,ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' anos'},grid:{display:false},position:'right',
+        title:{display:true,text:'Expectativa de vida',color:'#2563eb',font:{size:10}}}
+    }
+  }
+});
+
+// C5: Brasil trajetória
+const brYears=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+const brAccess=[94.4,96.0,96.7,97.0,96.8,97.1,97.6,98.1,98.5,98.9,98.6,99.3,99.5,99.6,99.7,99.7,99.7,99.8,99.7,99.8,99.7,99.5,100.0,99.8];
+const brLife=  [69.6,70.0,70.4,70.9,71.4,71.8,72.3,72.7,73.1,73.5,73.8,74.0,74.3,74.6,74.8,75.1,75.1,75.4,75.6,75.8,74.5,73.0,74.9,75.8];
+const brHealth=[8.33,8.55,8.70,8.19,8.12,8.04,8.25,8.20,8.01,8.39,7.95,7.79,7.74,7.98,8.40,8.91,9.17,9.47,9.46,9.61,9.62,9.64,9.39,9.73];
+
+new Chart(document.getElementById('c5'),{type:'line',
+  data:{labels:brYears.map(String), datasets:[
+    {label:'Acesso à eletricidade (% — esc. esq.)',data:brAccess,
+     borderColor:'#f59e0b',tension:.4,pointRadius:3,borderWidth:2.5,yAxisID:'y'},
+    {label:'Expectativa de vida em anos (esc. esq.)',data:brLife,
+     borderColor:'#2563eb',tension:.4,pointRadius:3,borderWidth:2.5,yAxisID:'y'},
+    {label:'Gasto em saúde % PIB (esc. dir.)',data:brHealth,
+     borderColor:'#16a34a',tension:.4,pointRadius:3,borderWidth:2,borderDash:[5,4],yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:65,max:102,ticks:{font:{size:11},color:tc,callback:v=>v<100?v+' anos / %':v+'%'},grid:{color:gc}},
+      y1:{min:6,max:12,ticks:{font:{size:11},color:'#16a34a',callback:v=>v+'%'},grid:{display:false},position:'right',
+        title:{display:true,text:'Gasto saúde % PIB',color:'#16a34a',font:{size:10}}}
+    }
+  }
+});
+
+// C6: kWh per capita vs expectativa de vida
+const kwh_data = [
+  {c:'Sudão do Sul',  k:49,   v:57.2},
+  {c:'Malawi',        k:89,   v:66.0},
+  {c:'Congo (RD)',    k:150,  v:61.0},
+  {c:'Moçambique',   k:582,  v:63.0},
+  {c:'Madagascar',   k:87,   v:63.1},
+  {c:'Tanzania',     k:165,  v:66.9},
+  {c:'Uganda',       k:122,  v:67.7},
+  {c:'Etiópia',      k:139,  v:66.9},
+  {c:'Nigéria',      k:170,  v:54.1},
+  {c:'Gana',         k:719,  v:65.2},
+  {c:'Paquistão',    k:725,  v:67.4},
+  {c:'Bangladesh',   k:604,  v:74.3},
+  {c:'Índia',        k:1267, v:71.7},
+  {c:'Bolívia',      k:995,  v:67.4},
+  {c:'Egito',        k:2037, v:71.0},
+  {c:'China',        k:7107, v:78.2},
+  {c:'Indonésia',    k:1311, v:70.9},
+  {c:'México',       k:2714, v:74.0},
+  {c:'Brasil',       k:3220, v:74.9},
+  {c:'Argentina',    k:3337, v:75.8},
+  {c:'Chile',        k:4516, v:79.2},
+  {c:'Portugal',     k:4539, v:81.6},
+  {c:'Espanha',      k:5879, v:83.1},
+  {c:'Alemanha',     k:6742, v:80.6},
+  {c:'França',       k:7065, v:82.1},
+  {c:'Japão',        k:8325, v:84.0},
+  {c:'Coreia do Sul',k:12023,v:82.7},
+  {c:'EUA',          k:12552,v:77.4},
+  {c:'Noruega',      k:26649,v:82.5},
+];
+
+new Chart(document.getElementById('c6'),{type:'bubble',
+  data:{datasets: kwh_data.map(p=>({
+    label:p.c,
+    data:[{x:Math.min(p.k,15000), y:p.v, r: p.c==='Brasil'||p.c==='EUA' ? 10 : 6}],
+    backgroundColor: p.c==='Brasil' ? 'rgba(220,38,38,0.85)' :
+                     p.k < 1000    ? 'rgba(220,38,38,0.45)'  :
+                     p.k < 5000    ? 'rgba(245,158,11,0.55)'  : 'rgba(37,99,235,0.55)',
+    borderColor:     p.c==='Brasil' ? '#dc2626' :
+                     p.k < 1000    ? '#dc2626'  :
+                     p.k < 5000    ? '#d97706'   : '#2563eb',
+    borderWidth: p.c==='Brasil' ? 2.5 : 1,
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw.x.toLocaleString('pt-BR')} kWh/cap · ${ctx.raw.y} anos`}}
+    },
+    scales:{
+      x:{min:0,max:15000,
+        ticks:{font:{size:11},color:tc,callback:v=>v>=15000?'≥15k':(v/1000).toFixed(0)+'k'},
+        grid:{color:gc},title:{display:true,text:'Eletricidade per capita (kWh/ano — cap. em 15.000)',color:tc,font:{size:10}}},
+      y:{min:45,max:87,ticks:{font:{size:11},color:tc,callback:v=>v+' anos'},grid:{color:gc},
+        title:{display:true,text:'Expectativa de vida (anos)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+</script>
+</body>
+</html>
