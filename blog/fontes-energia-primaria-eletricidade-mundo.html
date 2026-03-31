@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>De Onde Vem a Energia do Mundo? Fontes Primárias e Eletricidade Global | MosmanLAB</title>
+<meta name="description" content="O petróleo lidera a energia primária com 30%. O carvão domina a geração elétrica com 35%. Solar cresceu 1.649 vezes desde 2000. Análise com dados reais de 232 países, 2000–2023."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/fontes-energia-primaria-eletricidade-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0a1628,#1a2a0a,#28180a);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#fde68a;border:1px solid rgba(253,230,138,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+tr.tot td{background:#f0fdf4;font-weight:700;color:#15803d}
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#1a280a);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'\2192';position:absolute;left:0;color:#fbbf24;font-weight:700}
+.conclusao li strong{color:#fff}
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.conclusao{padding:24px 20px}}
+</style>
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+<header class="article-hero">
+  <div class="article-tag">Energia · Dados Globais · Física</div>
+  <h1>De Onde Vem a Energia do Mundo? As Fontes Primárias e a Matriz Elétrica Global</h1>
+  <p class="hero-lead">O petróleo domina a energia primária com 30% — mas quase não aparece na eletricidade (3%). O carvão responde por 35% da geração elétrica global. E a solar cresceu 1.649 vezes desde 2000. Dados reais de 232 países, 2000–2023.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 12 min de leitura</span>
+  </div>
+</header>
+<article class="article-body">
+  <p>Entender de onde vem a energia que move o mundo exige distinguir dois conceitos fundamentais: a <strong>energia primária total</strong> — todo o combustível consumido pela humanidade em todas as suas formas — e a <strong>eletricidade</strong> — apenas a parcela convertida em corrente elétrica. São dois mundos radicalmente diferentes, com fontes dominantes distintas e trajetórias de transformação em velocidades opostas.</p>
+  <p>O petróleo lidera a energia primária porque domina o transporte. Mas nas usinas elétricas, o petróleo quase não aparece — lá o carvão reina absoluto. Com dados reais de 232 países de 2000 a 2023 (Energy Institute via Our World in Data), este artigo mapeia as fontes que movem o mundo.</p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">30,1%</div><div class="stat-label">participação do petróleo na energia primária global — 2022</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#374151">35,4%</div><div class="stat-label">participação do carvão na geração elétrica global — 2022</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#06b6d4">+64%</div><div class="stat-label">crescimento da geração elétrica global entre 2000 e 2023</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#f59e0b">×1.649</div><div class="stat-label">crescimento da solar na geração elétrica desde 2000</div></div>
+  </div>
+  <h2>Parte 1 — Energia Primária: o que realmente move o mundo</h2>
+  <p>Em 2022, o mundo consumiu <strong>168.139 TWh</strong> de energia primária — crescimento de 53% em relação aos 110.032 TWh de 2000. Os combustíveis fósseis respondem por <strong>79,5% do total</strong>: petróleo (30,1%), carvão (26,3%) e gás natural (23,1%). As renováveis modernas somam apenas 5,7%.</p>
+  <div class="chart-block">
+    <div class="chart-title">Matriz de Energia Primária Global — 2022</div>
+    <div class="chart-sub">168.139 TWh totais · Fonte: Energy Institute / Our World in Data (dataset 232 países)</div>
+    <div style="height:320px"><canvas id="c1"></canvas></div>
+  </div>
+  <div class="callout amber">
+    <strong>Por que o petróleo lidera?</strong> Porque domina o transporte — aviação, caminhões, navios e automóveis. Sua densidade energética de 44 MJ/kg e a infraestrutura global construída em um século são vantagens que nenhuma alternativa supera de forma completa. Enquanto o transporte pesado não for eletrificado, o petróleo permanece no topo da energia primária.
+  </div>
+  <div class="chart-block">
+    <div class="chart-title">Evolução da Energia Primária Global por Fonte (2000–2023)</div>
+    <div class="chart-sub">TWh · Área empilhada · Dados reais de 232 países · Fonte: Energy Institute</div>
+    <div style="height:380px"><canvas id="c2"></canvas></div>
+  </div>
+  <p>A evolução histórica mostra crescimento contínuo — interrompido apenas em 2009 (crise financeira) e 2020 (pandemia). O carvão, que parecia em declínio após 2014, voltou a crescer. Solar e eólica crescem exponencialmente, mas ainda partem de uma base pequena em relação ao total.</p>
+  <div class="chart-block">
+    <div class="chart-title">Participação % das Fontes na Energia Primária Global (2000–2023)</div>
+    <div class="chart-sub">Como a composição relativa mudou ao longo do tempo · Fonte: Energy Institute</div>
+    <div style="height:340px"><canvas id="c3"></canvas></div>
+  </div>
+  <p>O petróleo perdeu participação relativa — de 37% em 2000 para 30% em 2022. O gás natural cresceu de 21% para 23%. Solar saiu de 0,003% para 1,9%; eólica de 0,08% para 3,1%. A tendência é clara — mas a base ainda é pequena.</p>
+  <div class="callout azul">
+    <strong>A ilusão do crescimento renovável:</strong> Solar cresceu mais de 1.000 vezes desde 2000 em termos absolutos. Mas a demanda total também cresceu 53%. Como renováveis partem de base quase zero, solar representa 1,9% e eólica 3,1% da energia primária em 2022. A escala do desafio é enorme.
+  </div>
+  <h2>Parte 2 — Eletricidade: outro mundo, outras líderes</h2>
+  <p>A geração elétrica é apenas 20–25% da energia primária total — mas transforma mais rapidamente. O petróleo, que comanda o transporte, quase desaparece na eletricidade (3,1%). O carvão domina a geração elétrica com 35,4%.</p>
+  <div class="chart-block">
+    <div class="chart-title">Matriz de Geração Elétrica Global — 2022</div>
+    <div class="chart-sub">28.911 TWh gerados · Fonte: Energy Institute / Our World in Data (dataset 232 países)</div>
+    <div style="height:320px"><canvas id="c4"></canvas></div>
+  </div>
+  <div class="callout navy">
+    <strong>Por que o petróleo quase não gera eletricidade?</strong> Porque é caro e ineficiente para esse fim. Uma termelétrica a petróleo tem eficiência de 35–40% e custo de combustível alto. O carvão e o gás fazem o mesmo serviço com custo muito menor. O petróleo caiu de 8,7% da eletricidade em 2000 para 3,1% em 2022 — pura lógica econômica.
+  </div>
+  <div class="chart-block">
+    <div class="chart-title">Evolução da Geração Elétrica Global por Fonte (2000–2023)</div>
+    <div class="chart-sub">TWh · Área empilhada · Fonte: Energy Institute via Our World in Data</div>
+    <div style="height:380px"><canvas id="c5"></canvas></div>
+  </div>
+  <p>A geração elétrica cresceu de 15.276 TWh em 2000 para 29.421 TWh em 2023 — quase dobrando. Solar e eólica saíram de 32 TWh (0,2%) para 3.958 TWh (13,5%). É a maior transformação estrutural na história da geração elétrica.</p>
+  <div class="chart-block">
+    <div class="chart-title">Participação % das Fontes na Geração Elétrica Global (2000–2023)</div>
+    <div class="chart-sub">Transformação estrutural da matriz elétrica mundial · Fonte: Energy Institute</div>
+    <div style="height:340px"><canvas id="c6"></canvas></div>
+  </div>
+  <h2>Tabela comparativa: energia primária vs eletricidade (2022)</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th>Fonte</th><th class="c">Energia Primária (TWh)</th><th class="c">% Primária</th>
+        <th class="c">Eletricidade (TWh)</th><th class="c">% Elétrica</th><th class="c">Var. desde 2000</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>Petróleo</strong></td><td class="c mono">50.567</td><td class="c mono">30,1%</td><td class="c mono">888</td><td class="c mono">3,1%</td><td class="c">+23%</td></tr>
+        <tr><td><strong>Carvão</strong></td><td class="c mono">44.267</td><td class="c mono">26,3%</td><td class="c mono">10.237</td><td class="c mono">35,4%</td><td class="c">+64%</td></tr>
+        <tr><td><strong>Gás Natural</strong></td><td class="c mono">38.904</td><td class="c mono">23,1%</td><td class="c mono">6.630</td><td class="c mono">22,9%</td><td class="c">+65%</td></tr>
+        <tr><td><strong>Hidrelétrica</strong></td><td class="c mono">9.677</td><td class="c mono">5,8%</td><td class="c mono">4.322</td><td class="c mono">15,0%</td><td class="c">+44%</td></tr>
+        <tr><td><strong>Nuclear</strong></td><td class="c mono">6.576</td><td class="c mono">3,9%</td><td class="c mono">2.640</td><td class="c mono">9,1%</td><td class="c">−8%</td></tr>
+        <tr><td><strong>Eólica</strong></td><td class="c mono">5.137</td><td class="c mono">3,1%</td><td class="c mono">2.107</td><td class="c mono">7,3%</td><td class="c">+6.670%</td></tr>
+        <tr><td><strong>Solar FV</strong></td><td class="c mono">3.201</td><td class="c mono">1,9%</td><td class="c mono">1.330</td><td class="c mono">4,6%</td><td class="c">+164.900%</td></tr>
+        <tr><td><strong>Biomassa/Outros</strong></td><td class="c mono">1.187</td><td class="c mono">0,7%</td><td class="c mono">670</td><td class="c mono">2,3%</td><td class="c">+872%</td></tr>
+        <tr class="tot"><td><strong>TOTAL</strong></td><td class="c mono">168.139</td><td class="c mono">100%</td><td class="c mono">28.911</td><td class="c mono">100%</td><td class="c">+53% / +89%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h2>O fenômeno exponencial: solar e eólica em escala logarítmica</h2>
+  <div class="chart-block">
+    <div class="chart-title">Solar e Eólica na Geração Elétrica Global — Escala Logarítmica (2000–2023)</div>
+    <div class="chart-sub">TWh · Escala logarítmica revela taxa de crescimento exponencial constante · Fonte: Energy Institute</div>
+    <div style="height:300px"><canvas id="c7"></canvas></div>
+  </div>
+  <p>A escala logarítmica mostra que solar e eólica crescem como uma reta — ou seja, taxa percentual constante (crescimento exponencial). Eólica: +18%/ano em média; Solar: +28%/ano. Se solar mantiver metade dessa taxa até 2030, ultrapassará o carvão como maior fonte de eletricidade global.</p>
+  <div class="callout verde">
+    <strong>A previsão que todos erraram:</strong> Em 2010, a IEA projetou 210 TWh de solar para 2020. A realidade foi 857 TWh — 4 vezes mais. O custo da solar caiu de US$ 445/MWh em 2010 para US$ 43/MWh em 2024 — queda de 90%. A Lei de Swanson continua operando.
+  </div>
+  <div class="conclusao">
+    <h2>O que os dados revelam sobre a energia global</h2>
+    <ul>
+      <li><strong>O petróleo domina a energia primária (30%) porque domina o transporte.</strong> Enquanto aviação, navegação e transporte pesado dependerem de derivados, ele continuará no topo. A chave é eletrificar o transporte.</li>
+      <li><strong>O carvão domina a eletricidade (35%) — o maior problema climático.</strong> Emite 820–1.050 gCO₂/kWh, o dobro do gás e 20 vezes solar. Por que ainda domina? O próximo artigo desta série responde.</li>
+      <li><strong>A transição elétrica está mais avançada do que a energética total.</strong> Renováveis são 29% da eletricidade mas apenas 12% da energia primária. A diferença é o transporte e a indústria, ainda não eletrificados.</li>
+      <li><strong>Solar e eólica demonstraram crescimento exponencial sem precedentes.</strong> De 0,2% para 13,5% da eletricidade em 23 anos. A virada solar sobre o carvão pode ocorrer antes de 2030.</li>
+    </ul>
+  </div>
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy (2024). Via Our World in Data. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>Our World in Data</strong> — Energy Mix, Electricity Mix. Hannah Ritchie, Pablo Rosado, Max Roser. <a href="https://ourworldindata.org/energy" target="_blank">ourworldindata.org</a></li>
+      <li><strong>IEA</strong> — World Energy Outlook 2024. <a href="https://www.iea.org" target="_blank">iea.org</a></li>
+      <li><strong>Global Carbon Project</strong> — CO₂ Emissions Dataset (2024). <a href="https://globalcarbonproject.org" target="_blank">globalcarbonproject.org</a></li>
+    </ul>
+  </div>
+</article>
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+const anos=Array.from({length:24},(_,i)=>2000+i);
+const d={
+  oil:[41119,41403,41669,42533,44257,44754,45116,45739,45306,44220,45740,46136,46857,47373,47720,48629,49647,50500,50904,51044,46394,48970,50567,51821],
+  gas:[23556,23839,24551,25197,26161,26851,27571,28682,29365,28765,30889,31641,32510,32975,33174,33858,34648,35634,37327,38027,37678,39045,38904,38993],
+  coal:[27023,27441,28537,31061,33236,35727,37604,39800,40326,39747,41537,43512,43645,44305,44447,43229,42272,42589,43255,42953,41645,43995,44267,44611],
+  nuc:[7163,7325,7380,7192,7477,7435,7488,7296,7216,7077,7203,6865,6361,6363,6460,6513,6561,6586,6712,6915,6633,6898,6576,6671],
+  hyd:[6733,6519,6570,6506,6969,7151,7404,7486,7894,7829,8164,8284,8605,8854,9081,9035,9258,9324,9517,9654,9889,9639,9677,9391],
+  wind:[87,105,143,171,231,280,356,455,583,724,899,1139,1362,1618,1784,2085,2394,2830,3128,3478,3896,4535,5137,5615],
+  sol:[3,4,5,6,8,11,15,21,33,55,88,169,260,352,499,643,813,1101,1412,1722,2084,2553,3201,3969],
+  bio:[122,121,140,159,192,225,288,388,532,597,675,713,742,813,860,892,932,951,1032,1120,1062,1121,1187,1313],
+};
+const dE={
+  coal:[5806,5887,6141,6571,6793,7163,7563,8047,8069,7946,8453,8905,8954,9417,9599,9278,9323,9650,10028,9821,9432,10149,10237,10360],
+  gas:[2746,2915,3105,3256,3503,3681,3901,4219,4361,4382,4808,4866,5161,5058,5214,5540,5850,5974,6225,6401,6382,6557,6630,6680],
+  oil:[1324,1285,1271,1296,1263,1278,1176,1196,1172,1071,1079,1187,1239,1197,1144,1133,1085,994,908,855,776,842,888,842],
+  nuc:[2540,2613,2655,2601,2719,2727,2762,2703,2695,2657,2726,2610,2432,2449,2499,2533,2571,2594,2659,2754,2648,2762,2640,2647],
+  hyd:[2630,2564,2611,2612,2802,2912,3018,3063,3245,3241,3428,3488,3660,3791,3871,3882,4015,4054,4177,4228,4347,4289,4322,4181],
+  wind:[31,38,52,63,85,104,133,171,221,276,346,440,529,634,706,830,960,1139,1268,1421,1591,1857,2107,2309],
+  sol:[1,1,2,2,3,4,5,7,12,20,32,64,97,132,198,256,328,445,575,705,857,1054,1330,1649],
+  bio:[154,150,163,177,193,213,227,249,266,286,327,345,374,407,443,472,482,508,538,567,602,656,670,680],
+};
+new Chart(document.getElementById('c1'),{type:'doughnut',
+  data:{labels:['Petróleo 30,1%','Carvão 26,3%','Gás Natural 23,1%','Hidrelétrica 5,8%','Nuclear 3,9%','Eólica 3,1%','Solar 1,9%','Biomassa 0,7%'],
+    datasets:[{data:[30.1,26.3,23.1,5.8,3.9,3.1,1.9,0.7],
+      backgroundColor:['#dc2626','#374151','#f97316','#3b82f6','#7c3aed','#06b6d4','#f59e0b','#84cc16'],
+      borderWidth:2,borderColor:'#fff'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:{size:10.5},color:'#374151',boxWidth:14}}}}
+});
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Petróleo',data:d.oil,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Carvão',data:d.coal,borderColor:'#374151',backgroundColor:'rgba(55,65,81,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Gás Natural',data:d.gas,borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Nuclear',data:d.nuc,borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Hidrelétrica',data:d.hyd,borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.65)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Eólica',data:d.wind,borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.75)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Solar',data:d.sol,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.85)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Biomassa',data:d.bio,borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.75)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:12}}},
+    scales:{x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false},stacked:true},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>(v/1000).toFixed(0)+'k TWh'},grid:{color:gc},stacked:true}}
+  }
+});
+const tot_p=anos.map((_,i)=>d.oil[i]+d.gas[i]+d.coal[i]+d.nuc[i]+d.hyd[i]+d.wind[i]+d.sol[i]+d.bio[i]);
+const pP=(arr)=>arr.map((v,i)=>+(v/tot_p[i]*100).toFixed(1));
+new Chart(document.getElementById('c3'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Petróleo',data:pP(d.oil),borderColor:'#dc2626',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Carvão',data:pP(d.coal),borderColor:'#374151',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Gás Natural',data:pP(d.gas),borderColor:'#f97316',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Nuclear',data:pP(d.nuc),borderColor:'#7c3aed',tension:.35,pointRadius:0,borderWidth:1.5,borderDash:[4,3]},
+    {label:'Hidrelétrica',data:pP(d.hyd),borderColor:'#3b82f6',tension:.35,pointRadius:0,borderWidth:1.5,borderDash:[4,3]},
+    {label:'Eólica',data:pP(d.wind),borderColor:'#06b6d4',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Solar',data:pP(d.sol),borderColor:'#f59e0b',tension:.35,pointRadius:0,borderWidth:2},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:12}}},
+    scales:{x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},min:0,max:42}}
+  }
+});
+new Chart(document.getElementById('c4'),{type:'doughnut',
+  data:{labels:['Carvão 35,4%','Gás 22,9%','Hidrelétrica 15,0%','Nuclear 9,1%','Eólica 7,3%','Solar 4,6%','Petróleo 3,1%','Biomassa 2,3%'],
+    datasets:[{data:[35.4,22.9,15.0,9.1,7.3,4.6,3.1,2.3],
+      backgroundColor:['#374151','#f97316','#3b82f6','#7c3aed','#06b6d4','#f59e0b','#dc2626','#84cc16'],
+      borderWidth:2,borderColor:'#fff'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:{size:10.5},color:'#374151',boxWidth:14}}}}
+});
+new Chart(document.getElementById('c5'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Carvão',data:dE.coal,borderColor:'#374151',backgroundColor:'rgba(55,65,81,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Gás',data:dE.gas,borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Hidrelétrica',data:dE.hyd,borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.65)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Nuclear',data:dE.nuc,borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.6)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Eólica',data:dE.wind,borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.75)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Solar',data:dE.sol,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.85)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+    {label:'Petróleo',data:dE.oil,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.55)',fill:true,tension:.3,pointRadius:0,borderWidth:0},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:12}}},
+    scales:{x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false},stacked:true},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>(v/1000).toFixed(0)+'k TWh'},grid:{color:gc},stacked:true}}
+  }
+});
+const tot_e=anos.map((_,i)=>dE.coal[i]+dE.gas[i]+dE.oil[i]+dE.nuc[i]+dE.hyd[i]+dE.wind[i]+dE.sol[i]+dE.bio[i]);
+const pE=(arr)=>arr.map((v,i)=>+(v/tot_e[i]*100).toFixed(1));
+new Chart(document.getElementById('c6'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Carvão',data:pE(dE.coal),borderColor:'#374151',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Gás',data:pE(dE.gas),borderColor:'#f97316',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Hidrelétrica',data:pE(dE.hyd),borderColor:'#3b82f6',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Nuclear',data:pE(dE.nuc),borderColor:'#7c3aed',tension:.35,pointRadius:0,borderWidth:1.5,borderDash:[4,3]},
+    {label:'Eólica',data:pE(dE.wind),borderColor:'#06b6d4',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Solar',data:pE(dE.sol),borderColor:'#f59e0b',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Petróleo',data:pE(dE.oil),borderColor:'#dc2626',tension:.35,pointRadius:0,borderWidth:1.5,borderDash:[3,3]},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:12}}},
+    scales:{x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},min:0,max:42}}
+  }
+});
+new Chart(document.getElementById('c7'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Solar FV (TWh)',data:dE.sol.map(v=>Math.max(v,0.5)),borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.1)',fill:true,tension:.35,pointRadius:3,pointBackgroundColor:'#f59e0b',borderWidth:2.5},
+    {label:'Eólica (TWh)',data:dE.wind,borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.1)',fill:true,tension:.35,pointRadius:3,pointBackgroundColor:'#06b6d4',borderWidth:2.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{type:'logarithmic',ticks:{font:{size:11},color:tc,callback:v=>{
+        const vals=[0.5,1,5,10,50,100,500,1000,2000,3000];
+        return vals.some(x=>Math.abs(v-x)<x*0.1)?Math.round(v)+' TWh':'';
+      }},grid:{color:gc}}}
+  }
+});
+</script>
+</body>
+</html>

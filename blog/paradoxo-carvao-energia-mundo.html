@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>O Paradoxo do Carvão: Por que a Fonte Mais Poluente Ainda Domina a Eletricidade Mundial | MosmanLAB</title>
+<meta name="description" content="O carvão emite 820 gCO₂/kWh — o dobro do gás, 20 vezes a solar. Mesmo assim, responde por 35% da eletricidade global em 2023. Análise com dados reais de China, Índia, Alemanha e África do Sul."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/paradoxo-carvao-energia-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#111111,#1a1a1a,#0f1c2e);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#d1d5db;border:1px solid rgba(209,213,219,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.verm{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#1a1a1a;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+/* RAZÕES */
+.razoes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.razao-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px}
+.razao-card h4{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.razao-card p{font-size:.85rem;color:#374151;margin:0;line-height:1.6}
+/* VEREDICTO */
+.veredicto{background:#1a1a1a;border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.veredicto h2{font-family:'Lora',serif;font-size:1.5rem;color:#fff;margin-bottom:8px}
+.veredicto .sub{font-size:.9rem;color:#94a3b8;margin-bottom:24px}
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.v-item{border-radius:8px;padding:16px}
+.v-declina{background:rgba(22,163,74,.12);border:1px solid rgba(22,163,74,.25)}
+.v-resiste{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.25)}
+.v-item h4{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.v-declina h4{color:#4ade80}.v-resiste h4{color:#f87171}
+.v-item ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px}
+.v-item li{font-size:.82rem;color:#cbd5e1;padding-left:16px;position:relative;line-height:1.5}
+.v-item li::before{position:absolute;left:0;font-weight:700}
+.v-declina li::before{content:'↓';color:#4ade80}
+.v-resiste li::before{content:'→';color:#f87171}
+.conclusao{background:linear-gradient(135deg,#1a1a1a,#0f1c2e);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#9ca3af;font-weight:700}
+.conclusao li strong{color:#fff}
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.razoes-grid{grid-template-columns:1fr}.v-grid{grid-template-columns:1fr}.conclusao{padding:24px 20px}}
+</style>
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia · Clima · Paradoxo</div>
+  <h1>O Paradoxo do Carvão: Por que a Fonte Mais Poluente Ainda Domina a Eletricidade Mundial</h1>
+  <p class="hero-lead">O carvão emite 820–1.050 gCO₂/kWh — o dobro do gás e 20 vezes mais que a solar. Mesmo assim, em 2023 respondeu por 35% da eletricidade global e ainda crescia em termos absolutos. Entender esse paradoxo é entender o maior obstáculo da transição energética.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 13 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Se você pudesse escolher a fonte mais poluente, mais emissora de partículas finas, mais responsável por doenças respiratórias, mais intensiva em CO₂ por unidade de energia gerada — e perguntasse se ela domina a geração elétrica global em 2023 — a resposta intuitiva seria não. Mas a resposta correta é sim.</p>
+
+  <p>O carvão responde por <strong>35,4% de toda a eletricidade gerada no mundo</strong>. Em 2023, gerou 10.360 TWh — mais do que toda a geração somada de hidrelétrica, solar, eólica e nuclear juntas. E em termos absolutos, a geração a carvão em 2023 foi maior do que em 2000. Como isso é possível em um mundo que conhece as consequências climáticas e tem alternativas mais baratas disponíveis? A resposta revela a complexidade real da transição energética.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#374151">35,4%</div><div class="stat-label">participação do carvão na geração elétrica global — 2023</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">820–1.050</div><div class="stat-label">gCO₂/kWh emitidos pela geração a carvão — o maior de todos</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#f97316">+78%</div><div class="stat-label">crescimento da geração a carvão entre 2000 e 2023 em termos absolutos</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#7c3aed">China+Índia</div><div class="stat-label">respondem por 67% de toda a geração a carvão global em 2022</div></div>
+  </div>
+
+  <h2>A física do carvão — por que ele emite tanto</h2>
+
+  <p>O carvão é basicamente carbono. Quando queimado, a reação é fundamentalmente:</p>
+  <p style="font-family:'DM Mono',monospace;font-size:.92rem;background:#1a1a1a;color:#e2e8f0;padding:12px 18px;border-radius:8px;border-left:3px solid #374151">
+    C + O₂ → CO₂ &nbsp;·&nbsp; ΔH = −393 kJ/mol &nbsp;·&nbsp; ~820–1.050 gCO₂/kWh elétrico
+  </p>
+  <p>Compare com o gás natural (CH₄ + 2O₂ → CO₂ + 2H₂O): o gás libera 490 gCO₂/kWh elétrico, pois parte da energia vem da oxidação do hidrogênio em vapor d'água — que não gera CO₂. No carvão, quase tudo é carbono. A eficiência termodinâmica das termelétricas a carvão (38–42%) também é menor do que a das turbinas a gás de ciclo combinado (55–62%), agravando ainda mais o CO₂ por kWh gerado.</p>
+
+  <div class="callout verm">
+    <strong>Comparação direta de emissões por kWh gerado (ciclo de vida):</strong> Carvão: 820–1.050 g · Petróleo: 650–750 g · Gás natural: 490 g · Nuclear: 12 g · Hidrelétrica: 4–30 g · Eólica: 7–15 g · Solar FV: 20–50 g. O carvão emite 70–100 vezes mais CO₂ por kWh do que nuclear, eólica e hidrelétrica. Em nenhuma outra dimensão técnica o carvão tem vantagem sobre seus concorrentes.
+  </div>
+
+  <!-- GRÁFICO 1: CO2 por fonte por kWh -->
+  <div class="chart-block">
+    <div class="chart-title">Emissões de CO₂ por Fonte de Geração Elétrica (gCO₂eq/kWh — ciclo de vida)</div>
+    <div class="chart-sub">Inclui extração, transporte, construção e operação · Fonte: IPCC AR6 (2022)</div>
+    <div style="height:300px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <h2>O crescimento absoluto do carvão — os dados reais</h2>
+
+  <!-- GRÁFICO 2: Geração a carvão global 2000-2023 -->
+  <div class="chart-block">
+    <div class="chart-title">Geração Elétrica a Carvão Global — Total e por Região (2000–2023)</div>
+    <div class="chart-sub">TWh · Dados reais de 232 países · Fonte: Energy Institute via Our World in Data</div>
+    <div style="height:360px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O gráfico revela o núcleo do paradoxo: enquanto EUA e Europa reduziram sistematicamente sua geração a carvão, China e Índia mais do que compensaram essas quedas com crescimento explosivo. Em 2000, a China gerava 1.060 TWh de carvão. Em 2022, gerou 5.415 TWh — crescimento de 410%. A Índia foi de 390 TWh para 1.344 TWh. Esses dois países somados respondem por 67% de toda a geração a carvão global.</p>
+
+  <div class="callout amber">
+    <strong>A aritmética brutal:</strong> Para cada usina a carvão fechada na Alemanha (que gerava ~10 TWh/ano), a China abriu o equivalente a mais de 50 usinas similares nos últimos 20 anos. O carvão alemão caiu de 296 para 180 TWh (−116 TWh). O carvão chinês cresceu de 1.060 para 5.415 TWh (+4.355 TWh). A soma líquida global é de aumento.
+  </div>
+
+  <h2>Por que o carvão ainda domina — as 5 razões</h2>
+
+  <div class="razoes-grid">
+    <div class="razao-card">
+      <h4>🏭 1. Infraestrutura existente</h4>
+      <p>Existem mais de 8.000 usinas a carvão operando no mundo, a maioria com vida útil de 30–40 anos e custos de capital já amortizados. O custo marginal de operação de uma usina já paga é muito baixo — mesmo que o LCOE de nova capacidade renovável seja menor.</p>
+    </div>
+    <div class="razao-card">
+      <h4>💰 2. Custo do capital e desenvolvimento</h4>
+      <p>Para países como Índia, Indonésia, Vietnam e Bangladesh — com 2 bilhões de pessoas ainda sem acesso estável à eletricidade — o carvão oferece geração despachável e barata com financiamento acessível. Alternativas renováveis exigem mais capital inicial e sistemas de armazenamento.</p>
+    </div>
+    <div class="razao-card">
+      <h4>⚡ 3. Despachabilidade — o problema da intermitência</h4>
+      <p>Uma termelétrica a carvão gera eletricidade 24 horas por dia, 7 dias por semana, independente do tempo. Solar só gera de dia; eólica depende do vento. Sem armazenamento adequado, substituir carvão por renováveis exige infraestrutura adicional que muitos países ainda não têm.</p>
+    </div>
+    <div class="razao-card">
+      <h4>🌍 4. Segurança energética</h4>
+      <p>Carvão é uma commodity global disponível em muitos países. Países sem petróleo nem gás mas com carvão (Índia, África do Sul, Polônia) dependem dele para não depender de importações caras. A crise energética europeia de 2022 mostrou o preço da dependência de gás importado.</p>
+    </div>
+    <div class="razao-card">
+      <h4>👷 5. Empregos e política</h4>
+      <p>No mundo há mais de 7 milhões de trabalhadores diretamente empregados na mineração de carvão. Em Polônia, África do Sul e partes dos EUA, o carvão é central para comunidades inteiras. Fechamentos de minas geram resistência política intensa — mesmo com compensação econômica.</p>
+    </div>
+    <div class="razao-card">
+      <h4>📈 6. Crescimento da demanda supera as renováveis</h4>
+      <p>A demanda elétrica global cresceu 64% desde 2000 — quase 13.000 TWh a mais. Solar e eólica cresceram muito, mas a demanda cresceu mais rápido em países como China e Índia. O carvão preencheu parte desse gap — mesmo com renováveis crescendo rapidamente.</p>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 3: Participação % carvão por país -->
+  <div class="chart-block">
+    <div class="chart-title">Participação do Carvão na Geração Elétrica — Países Selecionados (2000 → 2022)</div>
+    <div class="chart-sub">% da geração elétrica total de cada país · Fonte: Energy Institute / Our World in Data</div>
+    <div style="height:360px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <h2>O caso da China — o maior produtor e consumidor do mundo</h2>
+
+  <p>A China é o coração do paradoxo. É o maior emissor de CO₂ do mundo, o maior produtor de carvão — e ao mesmo tempo o maior investidor em energia solar e eólica do planeta. Em 2022, a China instalou mais capacidade solar em um único ano do que os EUA instalaram em toda a sua história até 2019.</p>
+
+  <!-- GRÁFICO 4: China carvão vs renováveis -->
+  <div class="chart-block">
+    <div class="chart-title">China: Geração a Carvão vs Solar + Eólica (TWh) — 2000–2022</div>
+    <div class="chart-sub">A China é ao mesmo tempo o maior usuário de carvão E o maior investidor em renováveis · Fonte: Energy Institute</div>
+    <div style="height:300px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O gráfico mostra o dilema chinês em números: a geração a carvão cresceu de 1.060 para 5.415 TWh — mas a solar+eólica cresceu de quase zero para mais de 1.000 TWh. A China está fazendo as duas coisas ao mesmo tempo: descarbonizando o crescimento marginal com renováveis enquanto mantém o carvão para sustentar a base. Para uma economia que cresceu 13 vezes em PIB per capita desde 2000, isso é politicamente compreensível — mesmo que climaticamente problemático.</p>
+
+  <div class="callout navy">
+    <strong>O argumento histórico da China e da Índia:</strong> Os países ricos usaram carvão por 200 anos para se desenvolver — e acumularam a maior parcela das emissões históricas. China e Índia argumentam que têm o mesmo direito ao desenvolvimento. É um argumento politicamente forte. Os dados de emissões acumuladas dão suporte parcial a essa posição — o que torna a diplomacia climática extremamente complexa.
+  </div>
+
+  <h2>O declínio nos países ricos — o que funcionou</h2>
+
+  <!-- GRÁFICO 5: EUA e Alemanha declínio -->
+  <div class="chart-block">
+    <div class="chart-title">EUA e Alemanha: Declínio do Carvão e Ascensão das Renováveis (2000–2022)</div>
+    <div class="chart-sub">TWh · Dois modelos diferentes de transição · Fonte: Energy Institute / Our World in Data</div>
+    <div style="height:320px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>Os EUA reduziram sua geração a carvão de 1.966 TWh em 2000 para 831 TWh em 2022 — queda de 58%. O principal motor foi econômico: o gás natural de xisto (shale gas) ficou tão barato que tornou o carvão não competitivo em leilões de energia. Não foi política climática — foi mercado. A Alemanha reduziu de 297 para 180 TWh — queda de 39%, impulsionada pela Energiewende (política de transição energética) e pela expansão de eólica offshore e solar.</p>
+
+  <div class="callout verde">
+    <strong>A lição dos EUA:</strong> O carvão americano foi derrubado principalmente pelo gás barato, não por política climática. Quando um substituto mais barato aparece, a transição acontece rapidamente — sem necessidade de regulação. É o argumento mais forte a favor de tornar as renováveis ainda mais baratas: a transição econômica pode superar a resistência política.
+  </div>
+
+  <h2>Tabela: os maiores consumidores de carvão em 2022</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th class="c">Carvão 2022 (TWh elét.)</th>
+          <th class="c">% da matriz elétrica</th>
+          <th class="c">CO₂ gerado (Mt)</th>
+          <th class="c">PIB/capita (USD)</th>
+          <th class="c">Tendência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>China</strong></td><td class="c mono">5.415</td><td class="c mono">55,3%</td><td class="c mono">8.469</td><td class="c mono">12.971</td><td class="c">↗ Cresce</td></tr>
+        <tr><td><strong>Índia</strong></td><td class="c mono">1.344</td><td class="c mono">55,6%</td><td class="c mono">1.856</td><td class="c mono">2.347</td><td class="c">↗↗ Forte alta</td></tr>
+        <tr><td><strong>EUA</strong></td><td class="c mono">832</td><td class="c mono">10,4%</td><td class="c mono">916</td><td class="c mono">76.657</td><td class="c">↘ Caindo</td></tr>
+        <tr><td><strong>Japão</strong></td><td class="c mono">351</td><td class="c mono">27,5%</td><td class="c mono">404</td><td class="c mono">34.066</td><td class="c">↘ Leve queda</td></tr>
+        <tr><td><strong>Indonésia</strong></td><td class="c mono">205</td><td class="c mono">44,2%</td><td class="c mono">405</td><td class="c mono">4.731</td><td class="c">↗↗ Forte alta</td></tr>
+        <tr><td><strong>Coreia do Sul</strong></td><td class="c mono">209</td><td class="c mono">24,2%</td><td class="c mono">273</td><td class="c mono">34.822</td><td class="c">→ Estável</td></tr>
+        <tr><td><strong>África do Sul</strong></td><td class="c mono">202</td><td class="c mono">69,9%</td><td class="c mono">357</td><td class="c mono">6.534</td><td class="c">→ Estável</td></tr>
+        <tr><td><strong>Alemanha</strong></td><td class="c mono">180</td><td class="c mono">18,8%</td><td class="c mono">239</td><td class="c mono">50.507</td><td class="c">↘↘ Queda forte</td></tr>
+        <tr><td><strong>Polônia</strong></td><td class="c mono">125</td><td class="c mono">41,9%</td><td class="c mono">172</td><td class="c mono">18.891</td><td class="c">↘ Caindo lento</td></tr>
+        <tr><td><strong>Vietnam</strong></td><td class="c mono">104</td><td class="c mono">42,1%</td><td class="c mono">177</td><td class="c mono">4.148</td><td class="c">↗ Crescendo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GRÁFICO 6: Carvão vs riqueza scatter -->
+  <div class="chart-block">
+    <div class="chart-title">Participação do Carvão na Matriz Elétrica vs PIB per capita (2022)</div>
+    <div class="chart-sub">Cada ponto é um país com população > 5 milhões · Fonte: Energy Institute / World Bank</div>
+    <div style="height:340px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>O scatter plot revela uma correlação clara mas não absoluta: países mais pobres tendem a ter maior dependência do carvão. Mas há exceções marcantes nos dois sentidos. A África do Sul é pobre para seu uso de carvão (70%). A Alemanha e a Polônia são ricas mas ainda dependentes. Coreia do Sul e Japão são ricas mas ainda usam muito carvão por razões de segurança energética (poucos recursos próprios de renováveis ou gás).</p>
+
+  <div class="veredicto">
+    <h2>O paradoxo em perspectiva</h2>
+    <div class="sub">Por que o carvão declina em alguns lugares e cresce em outros — ao mesmo tempo</div>
+    <div class="v-grid">
+      <div class="v-item v-declina">
+        <h4>↓ Onde o carvão declina</h4>
+        <ul>
+          <li>EUA: gás de xisto derrubou o custo marginal</li>
+          <li>Europa: política climática + renováveis competitivas</li>
+          <li>Austrália: solar barato substitui gradualmente</li>
+          <li>Reino Unido: carvão praticamente zerado em 2023</li>
+          <li>Países nórdicos: hidrelétrica abundante e barata</li>
+        </ul>
+      </div>
+      <div class="v-item v-resiste">
+        <h4>→ Onde o carvão resiste ou cresce</h4>
+        <ul>
+          <li>China: crescimento de demanda supera renováveis</li>
+          <li>Índia: eletrificação de 1,4 bi de pessoas</li>
+          <li>Indonésia e Vietnam: industrialização acelerada</li>
+          <li>África do Sul: sem alternativa barata construída</li>
+          <li>Polônia: empregos mineração e soberania energética</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao">
+    <h2>Por que o carvão ainda domina — e quando isso pode mudar</h2>
+    <ul>
+      <li><strong>O carvão domina porque é o legado de 150 anos de industrialização.</strong> Infraestrutura construída e paga, trabalhadores empregados, cadeias de suprimento estabelecidas. Mudar isso em décadas — não séculos — é o desafio real. A física da transição é clara; a inércia econômica e política é que resiste.</li>
+      <li><strong>China e Índia são a chave — e também o maior obstáculo.</strong> Com 67% do carvão global, esses dois países determinarão se o mundo consegue descarbonizar a eletricidade. A boa notícia: ambos investem em escala massiva em solar e eólica. A má notícia: a demanda cresce mais rápido que as renováveis conseguem suprir.</li>
+      <li><strong>O substituto mais barato é a arma mais eficiente.</strong> O carvão americano foi derrubado pelo gás barato, não por política. Se solar e eólica com armazenamento ficarem mais baratos do que operar usinas existentes a carvão — o que pode acontecer entre 2030 e 2040 nos mercados mais competitivos — o declínio se acelerará sem necessidade de pressão política.</li>
+      <li><strong>O custo externo do carvão é enorme mas está fora da conta.</strong> Se as emissões de CO₂ do carvão fossem precificadas a US$ 50/t, o custo real seria US$ 90–140/MWh — acima do solar (US$ 43/MWh) em qualquer parte do mundo. A precificação de carbono é o instrumento que tornaria a transição economicamente automática.</li>
+      <li><strong>O carvão vai declinar — a questão é a velocidade.</strong> No cenário Net Zero da IEA, o carvão na eletricidade precisa cair 75% até 2030 em relação a 2022. O ritmo atual é muito mais lento. Entre 2022 e 2030, a diferença entre o cenário atual e o Net Zero pode ser equivalente a décadas de aquecimento adicional.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy (2024). Via Our World in Data. Dataset 232 países. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>Our World in Data</strong> — Electricity Mix, CO₂ Emissions. Hannah Ritchie, Pablo Rosado (2024). <a href="https://ourworldindata.org/electricity-mix" target="_blank">ourworldindata.org</a></li>
+      <li><strong>IPCC</strong> — AR6, Working Group III. Table A.III.2: Lifecycle GHG emissions of electricity generation. <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch/ar6</a></li>
+      <li><strong>IEA</strong> — World Energy Outlook 2024. Coal phase-down scenarios. <a href="https://www.iea.org/reports/world-energy-outlook-2024" target="_blank">iea.org</a></li>
+      <li><strong>Global Carbon Project</strong> — CO₂ and Greenhouse Gas Emissions Dataset (2024). <a href="https://globalcarbonproject.org" target="_blank">globalcarbonproject.org</a></li>
+      <li><strong>World Bank</strong> — World Development Indicators. PIB per capita, acesso à eletricidade. <a href="https://databank.worldbank.org" target="_blank">databank.worldbank.org</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+const anos=Array.from({length:23},(_,i)=>2000+i);
+
+// Dados reais do dataset
+const coal_china=[1060,1095,1180,1307,1461,1617,1774,1983,2139,2214,3234,3477,3544,3631,3831,4046,4147,4194,4395,4547,4922,4932,5415];
+const coal_india=[390,401,420,440,462,478,507,543,581,630,643,680,763,836,931,1007,1057,1091,1128,1135,1144,1170,1344];
+const coal_usa= [1966,1901,1898,1972,1995,2013,1986,2015,1994,1757,1847,1892,1514,1581,1624,1352,1247,1206,1146,1051,773,1055,832];
+const coal_eu=  [950,930,920,900,870,855,845,820,790,740,740,720,700,680,660,640,600,570,560,520,440,530,500];
+const coal_other=[640,660,683,953,665,880,958,1077,1166,1105,1029,1036,1077,1144,1143,1183,1272,1390,1416,1368,1153,1340,1481];
+
+// C1 - CO2 por fonte
+new Chart(document.getElementById('c1'),{type:'bar',
+  data:{labels:['Carvão','Petróleo','Gás Natural','Biomassa','Hidrelétrica','Nuclear','Eólica','Solar FV'],
+    datasets:[{
+      label:'gCO₂eq/kWh',
+      data:[820,650,490,230,17,12,11,35],
+      backgroundColor:['#374151','#dc2626','#f97316','#84cc16','#3b82f6','#7c3aed','#06b6d4','#f59e0b'],
+      borderRadius:4
+    }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' g'},grid:{color:gc},
+        title:{display:true,text:'gCO₂eq/kWh',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C2 - Geração carvão por região
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'China',data:coal_china,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.15)',fill:true,tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Índia',data:coal_india,borderColor:'#f97316',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'EUA',data:coal_usa,borderColor:'#3b82f6',tension:.35,pointRadius:0,borderWidth:2,borderDash:[5,3]},
+    {label:'Europa',data:coal_eu,borderColor:'#7c3aed',tension:.35,pointRadius:0,borderWidth:2,borderDash:[5,3]},
+    {label:'Resto do Mundo',data:coal_other,borderColor:'#94a3b8',tension:.35,pointRadius:0,borderWidth:1.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' TWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// C3 - % carvão na matriz elétrica por país
+const paises_l=['China','Índia','Indonésia','Polônia','África do Sul','Vietnam','Coreia do Sul','Alemanha','EUA','Brasil'];
+const pct_2000=[52,55,24,56,73,26,36,29,52,2];
+const pct_2022=[55,56,44,42,70,42,24,19,10,2];
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{labels:paises_l,datasets:[
+    {label:'% carvão na eletricidade — 2000',data:pct_2000,backgroundColor:'rgba(100,116,139,0.6)',borderRadius:3},
+    {label:'% carvão na eletricidade — 2022',data:pct_2022,
+      backgroundColor:pct_2022.map(v=>v>50?'rgba(220,38,38,0.75)':v>25?'rgba(249,115,22,0.75)':'rgba(22,163,74,0.7)'),
+      borderRadius:3},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},max:80}
+    }
+  }
+});
+
+// C4 - China: carvão vs renováveis
+const china_ren_sol=[1,1,1,2,3,4,5,7,9,14,35,60,68,74,96,130,142,160,177,189,261,399,556];
+const china_ren_wind=[5,7,9,11,16,20,31,47,63,113,150,214,257,308,378,421,471,492,540,563,656,713,762];
+new Chart(document.getElementById('c4'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Carvão (TWh)',data:coal_china,borderColor:'#374151',backgroundColor:'rgba(55,65,81,.12)',fill:true,tension:.35,pointRadius:0,borderWidth:2.5,yAxisID:'y'},
+    {label:'Solar (TWh)',data:china_ren_sol,borderColor:'#f59e0b',tension:.35,pointRadius:0,borderWidth:2,yAxisID:'y1'},
+    {label:'Eólica (TWh)',data:china_ren_wind,borderColor:'#06b6d4',tension:.35,pointRadius:0,borderWidth:2,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#374151',callback:v=>v+' TWh'},grid:{color:gc},title:{display:true,text:'Carvão (TWh)',color:'#374151',font:{size:10}}},
+      y1:{ticks:{font:{size:11},color:'#06b6d4',callback:v=>v+' TWh'},grid:{display:false},position:'right',title:{display:true,text:'Solar + Eólica (TWh)',color:'#06b6d4',font:{size:10}}}
+    }
+  }
+});
+
+// C5 - EUA e Alemanha: carvão vs renováveis
+const usa_ren=[130,140,150,155,165,175,195,210,230,270,355,445,530,600,700,750,890,1020,1200,1420,1590,1857,2107];
+const de_coal=[297,290,280,285,290,288,282,275,267,256,262,260,257,251,247,272,258,250,222,213,135,200,180];
+const de_ren=  [16,22,33,42,61,72,84,102,115,105,121,139,150,169,178,195,230,262,307,347,308,349,355];
+new Chart(document.getElementById('c5'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'EUA — Carvão',data:coal_usa,borderColor:'#374151',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'EUA — Solar+Eólica',data:usa_ren,borderColor:'#3b82f6',tension:.35,pointRadius:0,borderWidth:2.5,borderDash:[4,3]},
+    {label:'Alemanha — Carvão',data:de_coal,borderColor:'#dc2626',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Alemanha — Solar+Eólica',data:de_ren,borderColor:'#f59e0b',tension:.35,pointRadius:0,borderWidth:2,borderDash:[4,3]},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' TWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// C6 - Scatter carvão % vs PIB
+const scatter_pts=[
+  {label:'China',x:12971,y:55.3,r:18},{label:'Índia',x:2347,y:55.6,r:14},
+  {label:'Indonésia',x:4731,y:44.2,r:10},{label:'Polônia',x:18891,y:41.9,r:7},
+  {label:'África do Sul',x:6534,y:69.9,r:8},{label:'Vietnam',x:4148,y:42.1,r:8},
+  {label:'Coreia do Sul',x:34822,y:24.2,r:7},{label:'Alemanha',x:50507,y:18.8,r:8},
+  {label:'EUA',x:76657,y:10.4,r:12},{label:'Brasil',x:9281,y:2.0,r:9},
+  {label:'Japão',x:34066,y:27.5,r:9},{label:'Austrália',x:65170,y:26.0,r:7},
+  {label:'França',x:40989,y:1.8,r:6},{label:'Noruega',x:109270,y:0.1,r:5},
+  {label:'Cazaquistão',x:11255,y:70.0,r:6},{label:'Reino Unido',x:45859,y:3.5,r:7},
+];
+new Chart(document.getElementById('c6'),{type:'bubble',
+  data:{datasets:scatter_pts.map(p=>({
+    label:p.label,
+    data:[{x:p.x,y:p.y,r:p.r}],
+    backgroundColor:p.y>50?'rgba(220,38,38,0.65)':p.y>25?'rgba(249,115,22,0.65)':'rgba(22,163,74,0.65)',
+    borderColor:p.y>50?'#dc2626':p.y>25?'#f97316':'#16a34a',
+    borderWidth:1.5
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: PIB $${ctx.parsed.x.toLocaleString()}/cap · Carvão ${ctx.parsed.y}%`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>'$'+(v/1000).toFixed(0)+'k'},grid:{color:gc},
+        title:{display:true,text:'PIB per capita (USD)',color:tc,font:{size:10}}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},min:0,max:80,
+        title:{display:true,text:'% carvão na matriz elétrica',color:tc,font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
