@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>O Brasil Conseguiu Desacoplar Crescimento Econômico de Emissões de CO₂? | MosmanLAB</title>
+<meta name="description" content="Análise de 25 anos de dados: o PIB per capita do Brasil cresceu 174% enquanto o CO₂ per capita subiu apenas 17%. O Brasil é um caso raro de desacoplamento relativo entre crescimento e emissões."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/desacoplamento-pib-co2-brasil.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+
+/* HERO */
+.article-hero{background:linear-gradient(135deg,#0f2027,#1a3a4a,#0f4c2e);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.12);color:#a7f3d0;border:1px solid rgba(167,243,208,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:700;line-height:1.15;max-width:800px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.05rem;color:#94a3b8;max-width:660px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.byline span{display:flex;align-items:center;gap:5px}
+
+/* CORPO */
+.article-body{max-width:780px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.65rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;line-height:1.25}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#0f1c2e;margin:32px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:0.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2.2rem;font-weight:700;line-height:1;margin-bottom:5px}
+.stat-num.verde{color:#16a34a}
+.stat-num.azul{color:#2563eb}
+.stat-num.amber{color:#d97706}
+.stat-num.roxo{color:#7c3aed}
+.stat-label{font-size:12px;color:#64748b;line-height:1.4}
+
+/* CALLOUTS */
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:0.93rem;line-height:1.65}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+
+/* GRÁFICOS */
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff}
+.chart-title{font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.78rem;color:#64748b;margin-bottom:16px}
+.chart-wrap{position:relative}
+
+/* TABELA */
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.87rem}
+th{background:#0f1c2e;color:#fff;padding:11px 16px;text-align:left;font-weight:600;font-size:.78rem;letter-spacing:.04em;white-space:nowrap}
+td{padding:10px 16px;border-bottom:1px solid #f1f5f9;color:#374151}
+tr:last-child td{border-bottom:none}
+tr.destaque td{background:#f0fdf4;font-weight:600;color:#166534}
+tr:nth-child(even) td{background:#fafafa}
+
+/* CONCLUSÃO */
+.conclusao{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:32px 36px;margin:40px 0}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#0f1c2e;margin-bottom:16px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.conclusao li{font-size:.94rem;color:#374151;padding-left:20px;position:relative;line-height:1.6}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#16a34a;font-weight:700}
+
+/* CTA */
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px;line-height:1.3}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem;transition:background .15s}
+.sim-cta-btn:hover{background:#15803d}
+
+/* REFS */
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+.refs-list a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;font-weight:400;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+
+@media(max-width:600px){
+  .article-body{padding:36px 18px 60px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .conclusao{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- URGENCY + NAV -->
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero">
+  <div class="article-tag">Economia · Clima · Dados</div>
+  <h1>O Brasil Conseguiu Desacoplar Crescimento Econômico de Emissões de CO₂?</h1>
+  <p class="hero-lead">Em 25 anos, o PIB per capita brasileiro cresceu 174% em dólares correntes — enquanto o CO₂ por habitante subiu apenas 17%. Isso é desacoplamento? E o que os dados realmente mostram?</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 10 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Uma das questões centrais da transição energética é: é possível crescer economicamente sem aumentar as emissões de CO₂? Essa pergunta tem um nome técnico — <strong>desacoplamento</strong> — e o Brasil oferece um dos casos mais interessantes do mundo para analisá-la.</p>
+
+  <p>Com dados reais de 2000 a 2024 do Global Carbon Project, Energy Institute e World Bank, este artigo examina o que aconteceu com a economia brasileira e suas emissões nas últimas décadas — e o que isso significa para a discussão climática global.</p>
+
+  <!-- NÚMEROS DE IMPACTO -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num verde">+174%</div>
+      <div class="stat-label">crescimento do PIB per capita em USD (2000–2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num amber">+17%</div>
+      <div class="stat-label">crescimento do CO₂ per capita no mesmo período</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num azul">−14%</div>
+      <div class="stat-label">queda na intensidade energética (energia/PIB)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num roxo">50%</div>
+      <div class="stat-label">renováveis na matriz energética em 2024</div>
+    </div>
+  </div>
+
+  <h2>O que é desacoplamento?</h2>
+
+  <p>Desacoplamento é a separação entre crescimento econômico e impacto ambiental. Existem dois tipos:</p>
+
+  <div class="callout azul">
+    <strong>Desacoplamento relativo:</strong> as emissões crescem, mas mais devagar do que o PIB. A intensidade de carbono da economia cai — cada real produzido emite menos CO₂ do que antes. O Brasil se enquadra nessa categoria.
+  </div>
+
+  <div class="callout verde">
+    <strong>Desacoplamento absoluto:</strong> as emissões caem enquanto o PIB cresce. É o cenário ideal para o clima — e muito mais raro. Alguns países da Europa Ocidental chegaram lá nas últimas décadas.
+  </div>
+
+  <p>A diferença importa: no desacoplamento relativo, a economia fica mais limpa por unidade produzida, mas o total de emissões ainda pode crescer se a economia crescer rápido o suficiente.</p>
+
+  <h2>O que os dados do Brasil mostram</h2>
+
+  <p>Entre 2000 e 2022, o PIB per capita brasileiro passou de US$ 3.766 para US$ 9.281 — um crescimento de 146% em valores nominais. Já o CO₂ per capita foi de 1,95 toneladas para 2,28 toneladas — alta de 17%. A intensidade de carbono (CO₂ emitido por dólar de PIB gerado) caiu de 0,196 para 0,151 — uma redução de 23%.</p>
+
+  <!-- GRÁFICO 1: PIB vs CO2 per capita -->
+  <div class="chart-block">
+    <div class="chart-title">PIB per capita vs CO₂ per capita — Brasil (2000–2024)</div>
+    <div class="chart-sub">Eixo esquerdo: PIB per capita (USD) · Eixo direito: CO₂ per capita (t/pessoa) · Fonte: World Bank / Global Carbon Project</div>
+    <div class="chart-wrap" style="height:300px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O gráfico revela um padrão claro: o PIB per capita oscilou bastante — picos em 2011 (US$ 13.396) e 2023 (US$ 10.377) separados pela crise de 2015–2016 e pela pandemia de 2020. Enquanto isso, o CO₂ per capita seguiu uma trajetória muito mais estável, chegando a cair abaixo de 2,0 t em 2020 (ano da pandemia) e se mantendo abaixo de 2,3 t desde 2018.</p>
+
+  <div class="callout verde">
+    <strong>O número mais revelador:</strong> em 2014, o Brasil emitiu 2,78 t de CO₂ por pessoa com PIB per capita de US$ 12.274. Em 2022, emitiu 2,28 t com PIB per capita de US$ 9.281. Ou seja, produziu economicamente menos — mas também emitiu proporcionalmente menos. A economia ficou mais limpa mesmo nos momentos de dificuldade.
+  </div>
+
+  <!-- GRÁFICO 2: Intensidade de carbono -->
+  <div class="chart-block">
+    <div class="chart-title">Intensidade de Carbono da Economia Brasileira (CO₂/PIB)</div>
+    <div class="chart-sub">kg de CO₂ emitido por dólar de PIB gerado · Fonte: Global Carbon Project / World Bank</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>A intensidade de carbono caiu de 0,196 em 2000 para 0,151 em 2022 — uma redução de 23%. Isso significa que a economia brasileira tornou-se significativamente mais eficiente em termos de emissões por unidade de riqueza produzida. Parte dessa melhora vem da expansão dos serviços (menos intensivos em energia) na composição do PIB; parte vem da renovação da matriz energética, especialmente com solar e eólica.</p>
+
+  <h2>Por que o Brasil tem essa vantagem estrutural?</h2>
+
+  <p>O Brasil parte de uma posição rara no mundo: uma matriz energética com forte base hidrelétrica herdada do século XX. Em 2000, já tinha 41% de renováveis — quando a média mundial mal chegava a 14%. Isso criou um ponto de partida favorável que poucos países emergentes têm.</p>
+
+  <!-- GRÁFICO 3: Renováveis e fósseis -->
+  <div class="chart-block">
+    <div class="chart-title">Renováveis vs Fósseis na Matriz Energética Brasileira (2000–2024)</div>
+    <div class="chart-sub">% da energia primária · Fonte: Energy Institute via Our World in Data</div>
+    <div class="chart-wrap" style="height:280px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>O gráfico mostra a trajetória da transição energética brasileira. A participação de renováveis oscilou entre 37% e 50% ao longo do período — dependendo muito das chuvas e do nível dos reservatórios hidrelétricos. A grande novidade dos últimos anos é a <strong>diversificação</strong>: solar e eólica começaram a compensar anos de baixa hidrologia, tornando a matriz mais resiliente.</p>
+
+  <h2>Comparação Internacional: o Brasil no contexto global</h2>
+
+  <p>Para entender o que o desacoplamento brasileiro representa, é preciso compará-lo com outros países em trajetórias distintas de desenvolvimento.</p>
+
+  <!-- TABELA COMPARATIVA -->
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th>CO₂/pessoa 2000</th>
+          <th>CO₂/pessoa 2022</th>
+          <th>Variação</th>
+          <th>PIB/pessoa 2022</th>
+          <th>Renováveis 2022</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>EUA</td><td>21,4 t</td><td>14,8 t</td><td style="color:#16a34a">−31%</td><td>US$ 76.657</td><td>10,9%</td></tr>
+        <tr><td>Alemanha</td><td>11,0 t</td><td>7,9 t</td><td style="color:#16a34a">−28%</td><td>US$ 50.507</td><td>20,3%</td></tr>
+        <tr><td>França</td><td>6,9 t</td><td>4,5 t</td><td style="color:#16a34a">−35%</td><td>US$ 40.989</td><td>13,7%</td></tr>
+        <tr class="destaque"><td>Brasil</td><td>1,96 t</td><td>2,28 t</td><td>+17%</td><td>US$ 9.281</td><td>47,7%</td></tr>
+        <tr><td>China</td><td>2,87 t</td><td>8,22 t</td><td style="color:#dc2626">+186%</td><td>US$ 12.971</td><td>15,2%</td></tr>
+        <tr><td>Índia</td><td>0,93 t</td><td>1,99 t</td><td style="color:#dc2626">+113%</td><td>US$ 2.347</td><td>9,4%</td></tr>
+        <tr><td>Coreia do Sul</td><td>9,41 t</td><td>11,72 t</td><td style="color:#dc2626">+25%</td><td>US$ 34.822</td><td>4,3%</td></tr>
+        <tr><td>África do Sul</td><td>8,02 t</td><td>6,87 t</td><td style="color:#16a34a">−14%</td><td>US$ 6.534</td><td>3,6%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A tabela revela dois grupos opostos. Os países ricos (EUA, Alemanha, França) conseguiram <strong>desacoplamento absoluto</strong> — emissões caindo enquanto o PIB crescia. Isso foi possível pela desindustrialização, expansão de serviços e políticas climáticas ativas. Já China e Índia cresceram rapidamente e suas emissões dispararam — são casos de <strong>acoplamento forte</strong>.</p>
+
+  <p>O Brasil fica numa posição intermediária e interessante: emissões cresceram (+17%), mas muito menos do que o PIB (+174%). E com o menor CO₂ per capita absoluto da tabela — 2,28 t contra 14,8 t dos EUA.</p>
+
+  <!-- GRÁFICO 4: Comparação scatter -->
+  <div class="chart-block">
+    <div class="chart-title">PIB per capita vs CO₂ per capita — 8 países em 3 momentos (2000, 2010, 2022)</div>
+    <div class="chart-sub">Cada país aparece três vezes — a seta indica a direção da trajetória · Fonte: World Bank / GCP</div>
+    <div class="chart-wrap" style="height:340px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <h2>A intensidade energética: fazendo mais com menos</h2>
+
+  <p>Outro indicador-chave é a <strong>intensidade energética</strong> — quanta energia é necessária para gerar cada dólar de PIB. No Brasil, esse número caiu de 1,36 kWh/USD em 2000 para 1,17 kWh/USD em 2022 — uma redução de 14%.</p>
+
+  <p>Isso significa que a economia brasileira ficou mais eficiente energeticamente ao longo do tempo. Parte se explica pela composição do PIB — o setor de serviços cresceu mais do que a indústria pesada. Parte se explica por investimentos em eficiência energética em fábricas, veículos e edifícios.</p>
+
+  <div class="callout amber">
+    <strong>O paradoxo do petróleo:</strong> o Brasil é o 9º maior produtor de petróleo do mundo (1.898 TWh em 2022) — mas tem um dos menores CO₂ per capita entre países com renda similar. Isso porque grande parte do petróleo produzido é exportada, e internamente o país usa hidrelétrica, etanol e energia eólica/solar para seu consumo. Uma combinação singular.
+  </div>
+
+  <h2>O que ainda não está desacoplado</h2>
+
+  <p>Seria ingênuo concluir que o Brasil resolveu o problema. Há pontos críticos onde o acoplamento ainda é forte:</p>
+
+  <h3>Transporte — o grande gargalo</h3>
+  <p>O petróleo consumido diretamente no transporte responde por cerca de 37% da energia primária brasileira — o dobro de toda a eletricidade gerada. Frota de veículos crescendo, caminhões pesados, aviação: esses setores ainda são majoritariamente fósseis. A eletrificação do transporte é o elo que falta.</p>
+
+  <h3>Desmatamento — a emissão que não aparece no CO₂ energético</h3>
+  <p>Os dados analisados neste artigo referem-se às emissões de combustíveis fósseis e indústria. Quando incluímos o desmatamento, o quadro muda significativamente: o Brasil incluindo mudança de uso da terra emitiu 2.082 Mt de CO₂ em 2024 — mais de 4 vezes as emissões energéticas. O desacoplamento do desmatamento ainda é o maior desafio.</p>
+
+  <h3>Crescimento da demanda energética</h3>
+  <p>O consumo de energia per capita subiu de 13.586 kWh em 2000 para 18.486 kWh em 2024 — alta de 36%. Enquanto as renováveis crescem, a demanda também cresce. O desacoplamento absoluto só virá quando as renováveis crescerem mais rápido do que a demanda total.</p>
+
+  <!-- GRÁFICO 5: Energia e CO2 total -->
+  <div class="chart-block">
+    <div class="chart-title">Energia Total Consumida vs CO₂ Total Emitido — Brasil (2000–2024)</div>
+    <div class="chart-sub">TWh de energia primária vs Mt de CO₂ energético · Fonte: Energy Institute / Global Carbon Project</div>
+    <div class="chart-wrap" style="height:280px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    <h2>O que os dados revelam</h2>
+    <ul>
+      <li><strong>Sim, houve desacoplamento relativo.</strong> O PIB per capita cresceu 174% em 25 anos enquanto o CO₂ per capita subiu apenas 17%. A intensidade de carbono caiu 23%. O Brasil ficou economicamente mais limpo por unidade produzida — um resultado relevante para um país em desenvolvimento.</li>
+      <li><strong>Não houve desacoplamento absoluto.</strong> As emissões totais subiram de 340 Mt em 2000 para 483 Mt em 2024. Enquanto o país cresce e a população aumenta, as emissões absolutas acompanham — mesmo que de forma mais lenta do que o PIB.</li>
+      <li><strong>A vantagem estrutural é real mas frágil.</strong> A base hidrelétrica e a expansão de solar e eólica colocam o Brasil numa posição privilegiada. Mas o petróleo no transporte e o desmatamento são os dois gargalos que podem comprometer toda a trajetória de desacoplamento nas próximas décadas.</li>
+    </ul>
+  </div>
+
+  <!-- REFS -->
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Global Carbon Project</strong> — CO₂ and Greenhouse Gas Emissions. Friedlingstein et al. (2024). <a href="https://globalcarbonproject.org" target="_blank">globalcarbonproject.org</a></li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy (2024). Via Our World in Data. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>World Bank — World Development Indicators</strong> — PIB, população, indicadores socioeconômicos. <a href="https://databank.worldbank.org" target="_blank">databank.worldbank.org</a></li>
+      <li><strong>Our World in Data</strong> — Energy Mix, CO₂ Emissions, Economic Growth. Hannah Ritchie, Pablo Rosado, Max Roser (2024). <a href="https://ourworldindata.org/energy" target="_blank">ourworldindata.org</a></li>
+      <li><strong>EPE</strong> — Empresa de Pesquisa Energética. Balanço Energético Nacional 2024. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+      <li><strong>IPCC</strong> — Sixth Assessment Report (AR6). Climate Change 2022: Mitigation of Climate Change. <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<!-- CTA -->
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const anos = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const gdppc = [3766.5,3176.3,2855.9,3090.6,3663.8,4827.8,5934.1,7409.7,8908.3,8678.7,11403.3,13396.6,12521.7,12458.9,12275.0,8936.2,8836.3,10080.5,9300.7,9029.8,7074.2,7972.5,9281.3,10377.6,10310.5];
+const co2pc = [1.955,1.963,1.948,1.908,1.979,1.973,1.976,2.071,2.168,2.029,2.273,2.365,2.527,2.678,2.781,2.619,2.420,2.429,2.312,2.298,2.147,2.370,2.283,2.292,2.278];
+const intens = [0.196,0.194,0.187,0.181,0.177,0.171,0.165,0.162,0.161,0.151,0.156,0.156,0.164,0.171,0.178,0.175,0.168,0.168,0.158,0.156,0.152,0.160,0.151,null,null];
+const renov = [40.9,37.2,38.8,40.4,40.4,41.3,41.1,42.3,41.4,44.2,42.5,42.4,40.3,38.4,37.6,38.7,41.5,41.3,44.1,45.2,47.1,43.7,47.7,49.0,49.6];
+const fossil = [58.3,61.1,59.5,58.0,58.3,57.7,57.4,56.5,57.3,54.7,56.3,56.4,58.5,60.4,61.3,60.2,57.3,57.6,54.7,53.7,51.8,55.3,51.4,50.1,49.4];
+const energia = [2364,2304,2352,2386,2503,2569,2642,2811,2936,2926,3189,3316,3408,3501,3576,3535,3451,3478,3486,3567,3422,3581,3732,3854,3919];
+const co2tot = [340,346,348,345,361,364,369,391,413,390,440,462,497,532,557,528,492,497,477,477,448,497,480,484,483];
+
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+// C1: PIB vs CO2 per capita (dual axis)
+new Chart(document.getElementById('c1'),{
+  type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'PIB per capita (USD)',data:gdppc,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',
+     fill:true,tension:.35,pointRadius:0,borderWidth:2.5,yAxisID:'y'},
+    {label:'CO₂ per capita (t/pessoa)',data:co2pc,borderColor:'#dc2626',
+     tension:.35,pointRadius:0,borderWidth:2.5,borderDash:[6,4],yAxisID:'y1'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151'}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#2563eb',callback:v=>'$'+v.toLocaleString('pt-BR')},grid:{color:gc},title:{display:true,text:'PIB per capita (USD)',color:'#2563eb',font:{size:11}}},
+      y1:{ticks:{font:{size:11},color:'#dc2626',callback:v=>v.toFixed(1)+' t'},grid:{display:false},position:'right',title:{display:true,text:'CO₂/pessoa (t)',color:'#dc2626',font:{size:11}}}
+    }
+  }
+});
+
+// C2: Intensidade de carbono
+new Chart(document.getElementById('c2'),{
+  type:'line',
+  data:{labels:anos.slice(0,23).map(String),datasets:[{
+    data:intens.slice(0,23),
+    borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.08)',
+    fill:true,tension:.35,pointRadius:2,pointBackgroundColor:'#7c3aed',borderWidth:2.5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v.toFixed(3)},grid:{color:gc},
+         title:{display:true,text:'kg CO₂ / USD PIB',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C3: Renováveis vs Fósseis
+new Chart(document.getElementById('c3'),{
+  type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Renováveis (%)',data:renov,borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.12)',
+     fill:true,tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Fósseis (%)',data:fossil,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.06)',
+     fill:true,tension:.35,pointRadius:0,borderWidth:2,borderDash:[5,4]}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151'}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},min:30,max:70}
+    }
+  }
+});
+
+// C4: Scatter PIB vs CO2 — países em 3 momentos
+const paises = [
+  {label:'Brasil',cor:'#16a34a',pts:[{x:3766,y:1.96},{x:11403,y:2.27},{x:9281,y:2.28}]},
+  {label:'EUA',cor:'#2563eb',pts:[{x:36330,y:21.4},{x:48643,y:18.2},{x:76657,y:14.8}]},
+  {label:'Alemanha',cor:'#7c3aed',pts:[{x:23926,y:11.0},{x:42397,y:10.2},{x:50507,y:7.9}]},
+  {label:'China',cor:'#dc2626',pts:[{x:969,y:2.87},{x:4629,y:6.37},{x:12971,y:8.22}]},
+  {label:'Índia',cor:'#d97706',pts:[{x:443,y:0.93},{x:1348,y:1.35},{x:2347,y:1.99}]},
+  {label:'França',cor:'#0891b2',pts:[{x:22341,y:6.85},{x:40695,y:5.95},{x:40989,y:4.46}]},
+];
+new Chart(document.getElementById('c4'),{
+  type:'scatter',
+  data:{datasets:paises.map(p=>({
+    label:p.label,data:p.pts,
+    backgroundColor:p.cor+'cc',borderColor:p.cor,
+    pointRadius:[6,7,9],pointStyle:'circle',showLine:true,
+    borderWidth:1.5,borderDash:[3,3]
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151'}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v.toLocaleString('pt-BR')},grid:{color:gc},
+         title:{display:true,text:'PIB per capita (USD)',color:tc,font:{size:10}}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' t'},grid:{color:gc},
+         title:{display:true,text:'CO₂ per capita (t/pessoa)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C5: Energia total vs CO2 total
+new Chart(document.getElementById('c5'),{
+  type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Energia primária (TWh)',data:energia,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',
+     fill:true,tension:.35,pointRadius:0,borderWidth:2.5,yAxisID:'y'},
+    {label:'CO₂ total (Mt)',data:co2tot,borderColor:'#dc2626',
+     tension:.35,pointRadius:0,borderWidth:2.5,borderDash:[6,4],yAxisID:'y1'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151'}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' TWh'},grid:{color:gc}},
+      y1:{ticks:{font:{size:11},color:'#dc2626',callback:v=>v+' Mt'},grid:{display:false},position:'right'}
+    }
+  }
+});
+</script>
+</body>
+</html>

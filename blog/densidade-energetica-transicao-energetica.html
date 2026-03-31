@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Densidade Energética: O Desafio Físico da Transição para Renováveis | MosmanLAB</title>
+<meta name="description" content="Um dos maiores desafios da transição energética é físico, não político: renováveis têm densidade energética muito menor que fósseis. Tabela completa com dados reais e análise do impacto no Brasil e no mundo."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/densidade-energetica-transicao-energetica.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+
+/* HERO */
+.article-hero{background:linear-gradient(135deg,#1a0a28,#1a1a3e,#2a1a08);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#fca5a5;border:1px solid rgba(252,165,165,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+/* CORPO */
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;line-height:1.25;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+
+/* CALLOUTS */
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.verm{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+
+/* GRÁFICOS */
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+
+/* TABELA DENSIDADE */
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.75rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr.sep td{background:#f8fafc;font-style:italic;font-size:.78rem;color:#94a3b8;padding:6px 14px}
+tr.renovavel td{background:#f0fdf4}
+tr.renovavel td.fonte{font-weight:600;color:#166534}
+tr.fossil td{background:#fff}
+tr.fossil td.fonte{font-weight:600;color:#0f1c2e}
+tr.nuclear-row td{background:#faf5ff}
+tr.nuclear-row td.fonte{font-weight:600;color:#5b21b6}
+.bar-inline{display:flex;align-items:center;gap:6px}
+.bar-mini{height:12px;border-radius:2px;flex-shrink:0}
+.tag-cat{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px}
+.tg-f{background:#f1f5f9;color:#475569}
+.tg-r{background:#dcfce7;color:#15803d}
+.tg-n{background:#ede9fe;color:#5b21b6}
+.tg-h{background:#dbeafe;color:#1d4ed8}
+
+/* COMPARAÇÃO VISUAL */
+.density-compare{margin:28px 0}
+.dc-row{display:flex;align-items:center;gap:12px;margin:6px 0}
+.dc-label{font-size:.8rem;color:#374151;font-weight:500;min-width:180px;text-align:right;flex-shrink:0}
+.dc-track{flex:1;background:#f1f5f9;border-radius:4px;height:24px;overflow:hidden;position:relative}
+.dc-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+.dc-fill span{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:700;color:#fff;white-space:nowrap}
+.dc-unit{font-size:.72rem;color:#94a3b8;min-width:90px}
+
+/* ÁREA */
+.area-box{background:#fff8f0;border:1px solid #fde68a;border-radius:12px;padding:24px 28px;margin:28px 0}
+.area-box h4{font-size:.85rem;font-weight:700;color:#92400e;margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase}
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.area-item{text-align:center;padding:16px;background:#fff;border-radius:8px;border:1px solid #fde68a}
+.area-num{font-family:'Lora',serif;font-size:1.8rem;font-weight:700;color:#92400e;line-height:1;margin-bottom:4px}
+.area-desc{font-size:.78rem;color:#6b7280;line-height:1.4}
+
+/* CONCLUSÃO */
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#1a0f28);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#fbbf24;font-weight:700}
+.conclusao li strong{color:#fff}
+
+/* CTA */
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px;line-height:1.3}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem;transition:background .15s}
+.sim-cta-btn:hover{background:#15803d}
+
+/* REFS */
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+.refs-list a:hover{text-decoration:underline}
+
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+
+@media(max-width:640px){
+  .article-body{padding:36px 18px 60px}
+  .dc-label{min-width:120px;font-size:.73rem}
+  .area-grid{grid-template-columns:1fr}
+  .conclusao{padding:24px 20px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero">
+  <div class="article-tag">Física · Energia · Transição</div>
+  <h1>Densidade Energética: O Desafio Físico que Ninguém Menciona na Transição Energética</h1>
+  <p class="hero-lead">Petróleo concentra 46 MJ/L. Bateria de lítio armazena 2,5 MJ/L. A física não negocia — e migrar para renováveis significa lidar com fontes de energia muito mais diluídas no espaço. Entenda por que isso importa.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 14 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>O debate sobre transição energética costuma focar em custos, políticas, subsídios e emissões. Raramente se fala do obstáculo mais fundamental de todos — um obstáculo que não pode ser resolvido por decreto nem por investimento político: a <strong>física da densidade energética</strong>.</p>
+
+  <p>Combustíveis fósseis são extraordinariamente densos em energia. O petróleo levou a humanidade à civilização industrial porque concentrava, em pequenos volumes, quantidades enormes de energia que a natureza levou milhões de anos para criar. Renováveis, por outro lado, capturam fluxos de energia difusos — o sol que incide sobre uma superfície, o vento que atravessa uma área. A transição energética é, em última análise, uma migração de fontes concentradas para fontes diluídas. E isso tem consequências físicas profundas.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num" style="color:#dc2626">46 MJ/L</div>
+      <div class="stat-label">densidade energética do petróleo (gasolina)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#d97706">2,5 MJ/L</div>
+      <div class="stat-label">densidade energética da bateria de lítio (Li-Ion)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#7c3aed">18×</div>
+      <div class="stat-label">vezes que o petróleo é mais denso que a melhor bateria atual</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#2563eb">W/m²</div>
+      <div class="stat-label">a unidade que explica tudo — potência por área de terra ocupada</div>
+    </div>
+  </div>
+
+  <h2>O que é densidade energética — definição física</h2>
+
+  <p>Densidade energética é a quantidade de energia armazenada ou disponível por unidade de volume ou massa de um material. Existem duas formas de expressá-la:</p>
+
+  <h3>Densidade volumétrica</h3>
+  <p>Energia por litro (MJ/L ou Wh/L). É o que importa para transporte — um carro ou avião tem um tanque de tamanho fixo, e quanto mais energia couber por litro, mais longe ele vai.</p>
+
+  <h3>Densidade gravimétrica (ou específica)</h3>
+  <p>Energia por quilograma (MJ/kg ou Wh/kg). É o que importa para aplicações onde o peso é crítico — aviação, foguetes, eletrônicos portáteis.</p>
+
+  <p>Para fontes de energia que não são armazenadas mas geradas (solar, eólica, hidro), usa-se a <strong>densidade de potência</strong>: Watts por metro quadrado (W/m²) — a potência média gerada por unidade de área de terra ou superfície ocupada pela usina.</p>
+
+  <div class="callout azul">
+    <strong>Por que a densidade importa?</strong> Uma civilização industrial moderna precisa de energia em grande quantidade, de forma contínua, transportável e armazenável. Quanto menor a densidade, maior a infraestrutura necessária — mais área, mais peso, mais material, mais custo — para entregar a mesma quantidade de energia. A física determina o tamanho do desafio.
+  </div>
+
+  <h2>Tabela completa de densidades energéticas</h2>
+
+  <p>A tabela a seguir compila as densidades energéticas (volumétrica e gravimétrica) das principais fontes e vetores de energia — de fósseis a renováveis, passando por nuclear e hidrogênio.</p>
+
+  <!-- TABELA PRINCIPAL -->
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fonte / Vetor de Energia</th>
+          <th class="c">Categoria</th>
+          <th class="c">MJ/kg</th>
+          <th class="c">MJ/L</th>
+          <th class="c">Wh/kg</th>
+          <th class="c">W/m²</th>
+          <th class="c">CO₂ (gCO₂/kWh)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- SEPARADOR FÓSSEIS -->
+        <tr class="sep"><td colspan="7">⬛ COMBUSTÍVEIS FÓSSEIS</td></tr>
+
+        <tr class="fossil">
+          <td class="fonte">Carvão betuminoso</td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono">24–35</td>
+          <td class="c mono">34–50</td>
+          <td class="c mono">6.700–9.700</td>
+          <td class="c mono">—</td>
+          <td class="c mono">820–1.050</td>
+        </tr>
+        <tr class="fossil">
+          <td class="fonte">Petróleo bruto</td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono">42–44</td>
+          <td class="c mono">37–40</td>
+          <td class="c mono">11.600–12.200</td>
+          <td class="c mono">—</td>
+          <td class="c mono">650–750</td>
+        </tr>
+        <tr class="fossil">
+          <td class="fonte"><strong>Gasolina</strong></td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono"><strong>44–46</strong></td>
+          <td class="c mono"><strong>32–34</strong></td>
+          <td class="c mono">12.200–12.800</td>
+          <td class="c mono">—</td>
+          <td class="c mono">240 (combustão direta)</td>
+        </tr>
+        <tr class="fossil">
+          <td class="fonte">Diesel</td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono">43–45</td>
+          <td class="c mono">35–37</td>
+          <td class="c mono">11.900–12.500</td>
+          <td class="c mono">—</td>
+          <td class="c mono">250 (combustão direta)</td>
+        </tr>
+        <tr class="fossil">
+          <td class="fonte">Querosene (Jet A)</td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono">43–44</td>
+          <td class="c mono">33–35</td>
+          <td class="c mono">11.900–12.200</td>
+          <td class="c mono">—</td>
+          <td class="c mono">258</td>
+        </tr>
+        <tr class="fossil">
+          <td class="fonte">Gás natural (GNL)</td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono">38–50</td>
+          <td class="c mono">22–24</td>
+          <td class="c mono">10.500–13.900</td>
+          <td class="c mono">—</td>
+          <td class="c mono">490</td>
+        </tr>
+        <tr class="fossil">
+          <td class="fonte">Gás natural (gasoso, 200 bar)</td>
+          <td class="c"><span class="tag-cat tg-f">Fóssil</span></td>
+          <td class="c mono">38–50</td>
+          <td class="c mono">6–9</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">490</td>
+        </tr>
+
+        <!-- SEPARADOR NUCLEAR -->
+        <tr class="sep"><td colspan="7">⚛️ NUCLEAR</td></tr>
+
+        <tr class="nuclear-row">
+          <td class="fonte">Urânio enriquecido (U-235)</td>
+          <td class="c"><span class="tag-cat tg-n">Nuclear</span></td>
+          <td class="c mono">~3.900.000</td>
+          <td class="c mono">~77.000.000</td>
+          <td class="c mono">~1,1 × 10⁹</td>
+          <td class="c mono">~3.000</td>
+          <td class="c mono">12</td>
+        </tr>
+        <tr class="nuclear-row">
+          <td class="fonte">Usina nuclear (elétrico)</td>
+          <td class="c"><span class="tag-cat tg-n">Nuclear</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">500–2.000</td>
+          <td class="c mono">12</td>
+        </tr>
+
+        <!-- SEPARADOR HIDRO -->
+        <tr class="sep"><td colspan="7">💧 HIDRELÉTRICA</td></tr>
+
+        <tr style="background:#eff6ff">
+          <td class="fonte" style="color:#1d4ed8;font-weight:600">Hidrelétrica (por área do reservatório)</td>
+          <td class="c"><span class="tag-cat tg-h">Hidro</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">0,1–5</td>
+          <td class="c mono">4–30</td>
+        </tr>
+        <tr style="background:#eff6ff">
+          <td class="fonte" style="color:#1d4ed8;font-weight:600">Hidrelétrica a fio d'água</td>
+          <td class="c"><span class="tag-cat tg-h">Hidro</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">5–50</td>
+          <td class="c mono">4–30</td>
+        </tr>
+
+        <!-- SEPARADOR RENOVÁVEIS -->
+        <tr class="sep"><td colspan="7">🌱 FONTES RENOVÁVEIS — GERAÇÃO</td></tr>
+
+        <tr class="renovavel">
+          <td class="fonte">Eólica onshore</td>
+          <td class="c"><span class="tag-cat tg-r">Renovável</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">0,5–1,5</td>
+          <td class="c mono">7–15</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Eólica offshore</td>
+          <td class="c"><span class="tag-cat tg-r">Renovável</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">2–5</td>
+          <td class="c mono">9–15</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Solar FV — painel (pico)</td>
+          <td class="c"><span class="tag-cat tg-r">Renovável</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">170–220 (pico)</td>
+          <td class="c mono">20–50</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte"><strong>Solar FV — usina completa (média)</strong></td>
+          <td class="c"><span class="tag-cat tg-r">Renovável</span></td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+          <td class="c mono"><strong>4–10</strong></td>
+          <td class="c mono">20–50</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Biomassa (madeira seca)</td>
+          <td class="c"><span class="tag-cat tg-r">Renovável</span></td>
+          <td class="c mono">14–18</td>
+          <td class="c mono">9–13</td>
+          <td class="c mono">3.900–5.000</td>
+          <td class="c mono">0,05–0,5</td>
+          <td class="c mono">230 (queima)</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Etanol (cana-de-açúcar)</td>
+          <td class="c"><span class="tag-cat tg-r">Renovável</span></td>
+          <td class="c mono">21–27</td>
+          <td class="c mono">16–18</td>
+          <td class="c mono">5.800–7.500</td>
+          <td class="c mono">0,1–0,5</td>
+          <td class="c mono">30–70 (ciclo vida)</td>
+        </tr>
+
+        <!-- SEPARADOR ARMAZENAMENTO -->
+        <tr class="sep"><td colspan="7">🔋 ARMAZENAMENTO DE ENERGIA</td></tr>
+
+        <tr class="renovavel">
+          <td class="fonte">Bateria Li-Ion (celular/EV)</td>
+          <td class="c"><span class="tag-cat tg-r">Armazen.</span></td>
+          <td class="c mono">0,36–0,90</td>
+          <td class="c mono">0,9–2,5</td>
+          <td class="c mono">100–260</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Bateria sólida (estado sólido, futuro)</td>
+          <td class="c"><span class="tag-cat tg-r">Armazen.</span></td>
+          <td class="c mono">~0,90</td>
+          <td class="c mono">~2,5–4,0</td>
+          <td class="c mono">250–400</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Hidrogênio comprimido (700 bar)</td>
+          <td class="c"><span class="tag-cat tg-r">Armazen.</span></td>
+          <td class="c mono">120</td>
+          <td class="c mono">4,7</td>
+          <td class="c mono">33.000</td>
+          <td class="c mono">—</td>
+          <td class="c mono">0 (verde)</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Hidrogênio líquido (−253°C)</td>
+          <td class="c"><span class="tag-cat tg-r">Armazen.</span></td>
+          <td class="c mono">120</td>
+          <td class="c mono">8,5</td>
+          <td class="c mono">33.000</td>
+          <td class="c mono">—</td>
+          <td class="c mono">0 (verde)</td>
+        </tr>
+        <tr class="renovavel">
+          <td class="fonte">Amônia verde (NH₃)</td>
+          <td class="c"><span class="tag-cat tg-r">Armazen.</span></td>
+          <td class="c mono">18,6</td>
+          <td class="c mono">11,5</td>
+          <td class="c mono">5.167</td>
+          <td class="c mono">—</td>
+          <td class="c mono">0 (verde)</td>
+        </tr>
+        <tr>
+          <td class="fonte">Supercapacitor</td>
+          <td class="c"><span class="tag-cat tg-f">Armazen.</span></td>
+          <td class="c mono">0,001–0,01</td>
+          <td class="c mono">0,003–0,03</td>
+          <td class="c mono">1–10</td>
+          <td class="c mono">—</td>
+          <td class="c mono">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.75rem;color:#94a3b8;margin-top:-16px">Fontes: IPCC AR6, IRENA, IEA, Engineering Toolbox, MacKay (2009), Nature Energy. Valores são médias ou faixas típicas para condições de referência (25°C, 1 atm). CO₂ em gCO₂/kWh inclui ciclo de vida (LCA) exceto onde indicado.</p>
+
+  <h2>A visualização que explica tudo: W/m²</h2>
+
+  <p>Quando comparamos fontes de geração em termos de potência por área ocupada (W/m²), a diferença entre fósseis e renováveis fica ainda mais evidente. Uma termelétrica a carvão concentra toda a geração em pouquíssima área — a mina pode estar longe. Uma fazenda solar precisa de uma área enorme para gerar a mesma potência.</p>
+
+  <!-- GRÁFICO 1: Densidade de potência W/m² -->
+  <div class="chart-block">
+    <div class="chart-title">Densidade de Potência por Tecnologia de Geração (W/m²)</div>
+    <div class="chart-sub">Potência elétrica média gerada por m² de área total ocupada pela usina · Escala logarítmica · Fonte: MacKay (2009), IRENA, IPCC AR6</div>
+    <div style="height:380px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <div class="callout verm">
+    <strong>A conta brutalmente honesta:</strong> Para substituir 1 GW de uma termelétrica a carvão (que ocupa ~1 km² incluindo a área operacional) por energia solar, são necessários ~100–250 km² de painéis — dependendo da irradiação local. No Nordeste do Brasil, com irradiação excelente, o número cai para ~80–120 km². Ainda assim, é uma diferença de duas ordens de grandeza em área necessária.
+  </div>
+
+  <h2>Densidade gravimétrica: o problema do transporte</h2>
+
+  <p>Para o transporte, a densidade gravimétrica (energia por kg) é o que determina a viabilidade. É aqui que a diferença entre fósseis e alternativas renováveis é mais dramática — e onde a transição energética enfrenta seus maiores desafios físicos.</p>
+
+  <!-- COMPARAÇÃO VISUAL GRAVIMÉTRICA -->
+  <div class="chart-block">
+    <div class="chart-title">Densidade Gravimétrica por Fonte/Vetor (MJ/kg) — Escala logarítmica</div>
+    <div class="chart-sub">Quanto mais à direita, mais energia por quilograma · Essencial para aviação, navegação e transporte pesado · Fonte: IRENA, IEA, Engineering Toolbox</div>
+    <div style="height:360px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O gráfico revela por que a aviação é o setor mais difícil de descarbonizar: querosene tem 43 MJ/kg. A melhor bateria Li-Ion disponível hoje tem 0,9 MJ/kg — 48 vezes menos. Um avião de longa distância precisaria de baterias com peso proibitivo. O hidrogênio tem densidade gravimétrica excelente (120 MJ/kg) — o triplo do querosene — mas sua densidade volumétrica é baixíssima quando comprimido, o que exige tanques muito maiores.</p>
+
+  <h3>O caso dos veículos elétricos — onde a bateria funciona</h3>
+  <p>Para automóveis de passeio e veículos urbanos, a bateria Li-Ion é suficiente. Um carro elétrico com bateria de 75 kWh (270 kg de bateria) percorre ~400–500 km. Um carro a gasolina com tanque de 50 litros (37 kg de combustível) percorre distância similar — mas o motor a combustão tem eficiência de 25-35%, enquanto o elétrico chega a 90-95%. Isso compensa parcialmente a diferença de densidade.</p>
+
+  <div class="callout verde">
+    <strong>Onde renováveis e baterias já vencem:</strong> O motor elétrico é 2,5–3 vezes mais eficiente que o a combustão. Isso significa que, para mover um carro, a quantidade de energia necessária cai drasticamente com a eletrificação. Uma bateria com 1/18 da densidade do petróleo ainda consegue propulsionar um veículo leve de forma competitiva — graças à superior eficiência da conversão elétrica.
+  </div>
+
+  <!-- GRÁFICO 3: Comparação bateria vs combustível -->
+  <div class="chart-block">
+    <div class="chart-title">Energia Útil Entregada ao Movimento — Gasolina vs Bateria Li-Ion</div>
+    <div class="chart-sub">Considerando eficiência do motor (gasolina: 30%, elétrico: 92%) · Para 50 L de gasolina vs bateria equivalente em energia · Fonte: US DOE / IRENA</div>
+    <div style="height:300px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <h2>Por que a transição energética é uma migração para fontes mais diluídas</h2>
+
+  <p>A civilização moderna foi construída sobre a extraordinária concentração de energia dos combustíveis fósseis. Um barril de petróleo (159 litros) contém energia equivalente a cerca de <strong>4,5 anos de trabalho humano manual</strong>. Um trabalhador adulto gera ~75 W continuamente; um barril contém ~6.100 MJ. É esse "escravo energético" barato e concentrado que permitiu a industrialização.</p>
+
+  <p>Renováveis capturam fluxos de energia da natureza — o sol que incide sobre cada metro quadrado (tipicamente 150–250 W/m² de média diária nas melhores regiões), o vento que passa por uma área (potência disponível proporcional ao cubo da velocidade: P = ½ρAv³). Esses fluxos são difusos, intermitentes e dispersos no espaço.</p>
+
+  <!-- ÁREA NECESSÁRIA -->
+  <div class="area-box">
+    <h4>📐 Quanto espaço seria necessário — exercício físico</h4>
+    <p style="font-size:.85rem;color:#92400e;margin-bottom:16px">Para suprir toda a demanda de energia primária do Brasil em 2024 (~3.919 TWh/ano) com cada fonte:</p>
+    <div class="area-grid">
+      <div class="area-item">
+        <div class="area-num">~280 km²</div>
+        <div class="area-desc">Usinas nucleares<br><small>baseado em densidade ~3.000 W/m², fator 90%</small></div>
+      </div>
+      <div class="area-item">
+        <div class="area-num">~50.000 km²</div>
+        <div class="area-desc">Solar FV (Nordeste)<br><small>baseado em 5 W/m² médio, irradiação local</small></div>
+      </div>
+      <div class="area-item">
+        <div class="area-num">~130.000 km²</div>
+        <div class="area-desc">Eólica onshore<br><small>baseado em 1 W/m² médio (área de influência)</small></div>
+      </div>
+      <div class="area-item">
+        <div class="area-num">~8.511.000 km²</div>
+        <div class="area-desc">Território do Brasil<br><small>para referência — o país tem espaço físico disponível</small></div>
+      </div>
+    </div>
+    <p style="font-size:.78rem;color:#92400e;margin-top:12px">* A área de eólica onshore é área de influência total, não área efetivamente ocupada — turbinas ocupam apenas ~2–5% desse espaço, o restante pode ser usado para agricultura.</p>
+  </div>
+
+  <h2>O desafio do armazenamento — a bateria como novo "barril"</h2>
+
+  <p>Se fontes renováveis são intermitentes e diluídas, o armazenamento é a chave para torná-las equivalentes aos fósseis. Mas a física das baterias impõe limites que o petróleo não tem.</p>
+
+  <!-- GRÁFICO 4: Evolução da densidade das baterias -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução da Densidade Gravimétrica das Baterias Li-Ion (2010–2024) e Projeções</div>
+    <div class="chart-sub">Wh/kg · Melhora gradual, mas ainda longe dos combustíveis líquidos · Fonte: IRENA, BloombergNEF, US DOE</div>
+    <div style="height:300px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>As baterias melhoraram ~5–8% ao ano em densidade gravimétrica desde 2010 — de ~100 Wh/kg para ~260–280 Wh/kg nas melhores células comerciais. Projeções indicam que baterias de estado sólido podem chegar a 400–500 Wh/kg até 2035. Mesmo assim, ainda serão 25 vezes menos densas que o diesel.</p>
+
+  <div class="callout amber">
+    <strong>O limite teórico:</strong> A densidade de energia de uma bateria é limitada pela química das reações de oxirredução. O lítio-ar, tecnologia em pesquisa laboratorial, poderia atingir teoricamente ~11.000 Wh/kg — próximo ao diesel. Na prática, com perdas e sistemas de suporte, estima-se 500–2.000 Wh/kg. Ainda assim, seria uma revolução.
+  </div>
+
+  <h2>O hidrogênio verde — alta densidade, logística difícil</h2>
+
+  <p>O hidrogênio tem densidade gravimétrica fantástica: 120 MJ/kg — o triplo do diesel. É por isso que ele propulsiona foguetes. Mas tem um problema volumétrico sério: mesmo comprimido a 700 bar, sua densidade volumétrica é de apenas 4,7 MJ/L — contra 35 MJ/L do diesel. E liquefazer o hidrogênio exige resfriamento a −253°C, consumindo ~30% da energia armazenada no processo.</p>
+
+  <!-- GRÁFICO 5: Ragone plot simplificado -->
+  <div class="chart-block">
+    <div class="chart-title">Densidade Gravimétrica vs Volumétrica — Comparação entre Fontes e Vetores</div>
+    <div class="chart-sub">Canto superior direito = ideal. Combustíveis fósseis dominam ambas as dimensões · Fonte: IPCC AR6, IEA, Engineering Toolbox</div>
+    <div style="height:380px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <h2>O que isso significa para a transição — setores por dificuldade</h2>
+
+  <p>A densidade energética determina quão difícil é eletrificar cada setor da economia. Os setores com menor consumo de energia por km percorrido ou por unidade produzida são os mais fáceis de descarbonizar:</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Setor</th>
+          <th class="c">Dificuldade</th>
+          <th>Por que</th>
+          <th>Solução mais viável</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Geração elétrica</strong></td>
+          <td class="c">🟢 Fácil</td>
+          <td>Não precisa transportar energia — transmite por fios</td>
+          <td>Solar + eólica + armazenamento</td>
+        </tr>
+        <tr>
+          <td><strong>Automóveis de passeio</strong></td>
+          <td class="c">🟡 Médio</td>
+          <td>Bateria suficiente para 400–600 km. Eficiência compensa.</td>
+          <td>Veículo elétrico a bateria (BEV)</td>
+        </tr>
+        <tr>
+          <td><strong>Transporte de carga urbano</strong></td>
+          <td class="c">🟡 Médio</td>
+          <td>Caminhões leves — bateria viável. Pesados ainda difíceis.</td>
+          <td>BEV leves + hidrogênio para pesados</td>
+        </tr>
+        <tr>
+          <td><strong>Aquecimento industrial</strong></td>
+          <td class="c">🟡 Médio</td>
+          <td>Alta temperatura exige solução alternativa ao elétrico convencional</td>
+          <td>Bomba de calor + hidrogênio + eletrificação direta</td>
+        </tr>
+        <tr>
+          <td><strong>Transporte de carga pesado (longa distância)</strong></td>
+          <td class="c">🔴 Difícil</td>
+          <td>Bateria pesada demais; autonomia insuficiente</td>
+          <td>Hidrogênio + amônia + e-fuels</td>
+        </tr>
+        <tr>
+          <td><strong>Aviação comercial</strong></td>
+          <td class="c">🔴 Muito difícil</td>
+          <td>Bateria 48× menos densa que querosene; inviável para longa distância</td>
+          <td>SAF (combustível sustentável) + hidrogênio líquido (futuro)</td>
+        </tr>
+        <tr>
+          <td><strong>Navegação de longa distância</strong></td>
+          <td class="c">🔴 Muito difícil</td>
+          <td>Enormes quantidades de energia; bateria seria maior que o navio</td>
+          <td>Amônia verde + metanol verde + hidrogênio</td>
+        </tr>
+        <tr>
+          <td><strong>Indústria pesada (aço, cimento)</strong></td>
+          <td class="c">🔴 Muito difícil</td>
+          <td>Processos químicos dependem de carbono/hidrogênio, não só de calor</td>
+          <td>Hidrogênio verde + captura de carbono (CCS)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    <h2>O que a física da densidade nos diz sobre a transição</h2>
+    <ul>
+      <li><strong>A transição é física antes de ser política.</strong> Migrar de combustíveis fósseis para renováveis é migrar de fontes com 35–50 MJ/L para fontes com 0,9–2,5 MJ/L (baterias) ou fluxos de 1–10 W/m². Isso não é um problema de vontade política — é um desafio de engenharia e escala que exige décadas.</li>
+      <li><strong>Eletricidade resolve 70% do problema.</strong> Geração elétrica, automóveis e aquecimento representam ~70% das emissões globais — e todos podem ser descarbonizados com tecnologias existentes (solar, eólica, bateria, bomba de calor). A transição nesses setores já está em curso.</li>
+      <li><strong>Os 30% restantes são o problema difícil.</strong> Aviação, navegação, indústria pesada e transporte de longa distância dependem da alta densidade dos combustíveis fósseis. Hidrogênio, amônia e e-fuels são as apostas, mas ainda carecem de escala e custo competitivo.</li>
+      <li><strong>O Brasil tem vantagem estrutural nesse cenário.</strong> Com potencial solar e eólico imenso, biomassa de cana (etanol com boa densidade: 21 MJ/kg), hidrelétrica consolidada e potencial para hidrogênio verde, o Brasil pode ser um dos países que melhor enfrenta a transição para fontes de menor densidade — porque tem escala física e recursos para compensar a diluição.</li>
+      <li><strong>A física não é o inimigo — é o parâmetro.</strong> Entender os limites impostos pela densidade energética não é pessimismo — é o primeiro passo para projetar soluções realistas. A transição é possível, mas exige honestidade sobre o que a física permite e o que ela impõe como custo.</li>
+    </ul>
+  </div>
+
+  <!-- REFS -->
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>MacKay, D.J.C.</strong> (2009). Sustainable Energy — Without the Hot Air. UIT Cambridge. Dados de densidade de potência por tecnologia. <a href="https://www.withouthotair.com" target="_blank">withouthotair.com</a></li>
+      <li><strong>IPCC</strong> — AR6, Working Group III. Chapter 6: Energy Systems. Tabelas de densidade energética e emissões de ciclo de vida. <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch/ar6</a></li>
+      <li><strong>IRENA</strong> — Renewable Power Generation Costs in 2024. Dados de land-use e densidade de potência. <a href="https://www.irena.org" target="_blank">irena.org</a></li>
+      <li><strong>IEA</strong> — The Future of Hydrogen (2019). Análise de densidade e logística do hidrogênio. <a href="https://www.iea.org/reports/the-future-of-hydrogen" target="_blank">iea.org</a></li>
+      <li><strong>US DOE</strong> — Alternative Fuels Data Center. Comparação de densidades energéticas de combustíveis alternativos. <a href="https://afdc.energy.gov/fuels/properties" target="_blank">afdc.energy.gov</a></li>
+      <li><strong>Engineering Toolbox</strong> — Energy Content of Fuels. Valores de referência para MJ/kg e MJ/L. <a href="https://www.engineeringtoolbox.com/fuels-higher-calorific-values-d_169.html" target="_blank">engineeringtoolbox.com</a></li>
+      <li><strong>BloombergNEF</strong> — Electric Vehicle Outlook 2024. Evolução da densidade de baterias Li-Ion. <a href="https://about.bnef.com/electric-vehicle-outlook/" target="_blank">bnef.com</a></li>
+      <li><strong>Nature Energy</strong> — Vários artigos sobre limites físicos de baterias de estado sólido (2022–2024).</li>
+    </ul>
+  </div>
+
+</article>
+
+<!-- CTA -->
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+// C1 — Densidade de potência W/m² (log scale)
+new Chart(document.getElementById('c1'),{
+  type:'bar',
+  data:{
+    labels:['Biomassa\n(cultivo)','Eólica\nonshore','Hidro\n(reservatório)','Solar FV\n(usina)','Eólica\noffshore','Hidro\n(fio d\'água)','Nuclear\n(usina)'],
+    datasets:[{
+      data:[0.3, 1.0, 2.0, 7.0, 3.5, 25, 1200],
+      backgroundColor:['#16a34a','#22d3ee','#3b82f6','#f59e0b','#0891b2','#2563eb','#7c3aed'],
+      borderRadius:4
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.parsed.y} W/m²`}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{type:'logarithmic',ticks:{font:{size:11},color:tc,callback:v=>{
+        const vals=[0.1,0.3,1,3,10,30,100,300,1000,3000];
+        return vals.includes(v)?v+' W/m²':'';
+      }},grid:{color:gc},title:{display:true,text:'W/m² (escala logarítmica)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C2 — Densidade gravimétrica MJ/kg (log)
+new Chart(document.getElementById('c2'),{
+  type:'bar',
+  data:{
+    labels:['Supercap.','Bateria\nLi-Ion','Bateria\nEst. Sólido','Amônia\nverde','Etanol','Biomassa','Diesel','Gasolina','GNL','H₂\ncomprimido','H₂\nlíquido','Urânio'],
+    datasets:[{
+      data:[0.005, 0.63, 1.0, 5.17, 24, 16, 44, 45, 44, 120, 120, 3900000],
+      backgroundColor:[
+        '#94a3b8','#3b82f6','#6366f1',
+        '#16a34a','#22c55e','#84cc16',
+        '#dc2626','#ef4444','#f97316',
+        '#06b6d4','#0891b2',
+        '#7c3aed'
+      ],
+      borderRadius:4
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.parsed.y} MJ/kg`}}},
+    scales:{
+      x:{ticks:{font:{size:9.5},color:'#374151'},grid:{display:false}},
+      y:{type:'logarithmic',ticks:{font:{size:10},color:tc,callback:v=>{
+        const vals=[0.001,0.01,0.1,1,10,100,1000,10000,1000000,10000000];
+        return vals.includes(v)?v+' MJ/kg':'';
+      }},grid:{color:gc},title:{display:true,text:'MJ/kg (escala logarítmica)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C3 — Energia útil: gasolina vs bateria
+new Chart(document.getElementById('c3'),{
+  type:'bar',
+  data:{
+    labels:['Gasolina (50L, 37kg)','Bateria Li-Ion (equivalente)'],
+    datasets:[
+      {label:'Energia total no tanque/bateria (MJ)',data:[1656,103],backgroundColor:'rgba(100,116,139,0.6)',borderRadius:4},
+      {label:'Energia útil para movimento (MJ)',data:[497,95],backgroundColor:['#dc2626','#16a34a'],borderRadius:4},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' MJ'},grid:{color:gc},
+         title:{display:true,text:'Energia (MJ)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C4 — Evolução densidade bateria
+const anosB=[2010,2012,2014,2016,2018,2020,2022,2024,2026,2028,2030,2032,2035];
+const densReal=[100,120,140,160,200,230,250,270,null,null,null,null,null];
+const densProj=[null,null,null,null,null,null,null,270,300,330,370,400,500];
+const limTarget=Array(anosB.length).fill(500);
+
+new Chart(document.getElementById('c4'),{
+  type:'line',
+  data:{labels:anosB.map(String),datasets:[
+    {label:'Bateria Li-Ion — dados reais (Wh/kg)',data:densReal,
+     borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,
+     tension:.4,pointRadius:4,borderWidth:2.5,pointBackgroundColor:'#3b82f6'},
+    {label:'Projeção estado sólido (Wh/kg)',data:densProj,
+     borderColor:'#7c3aed',borderDash:[5,4],
+     tension:.4,pointRadius:3,borderWidth:2,pointBackgroundColor:'#7c3aed'},
+    {label:'Querosene: 11.900 Wh/kg (referência)',
+     data:Array(anosB.length).fill(null),
+     borderColor:'#dc2626',borderDash:[2,2],borderWidth:1,pointRadius:0},
+  ]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:16}},
+      annotation:{annotations:{
+        ref:{type:'line',yMin:11900,yMax:11900,borderColor:'rgba(220,38,38,0.3)',borderDash:[3,3],borderWidth:1}
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' Wh/kg'},grid:{color:gc},min:0,max:600,
+         title:{display:true,text:'Densidade gravimétrica (Wh/kg)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C5 — Ragone plot: densidade gravimétrica vs volumétrica
+const pontos=[
+  {label:'Supercapacitor',x:0.003,y:0.005,cor:'#94a3b8',r:6},
+  {label:'Bateria Li-Ion',x:2.0,y:0.63,cor:'#3b82f6',r:10},
+  {label:'Bat. Est. Sólido (futuro)',x:3.2,y:1.0,cor:'#6366f1',r:9},
+  {label:'Amônia verde',x:11.5,y:5.17,cor:'#16a34a',r:9},
+  {label:'Etanol (cana)',x:17.0,y:24.0,cor:'#22c55e',r:10},
+  {label:'H₂ líquido (−253°C)',x:8.5,y:120.0,cor:'#06b6d4',r:11},
+  {label:'H₂ comprimido (700 bar)',x:4.7,y:120.0,cor:'#0891b2',r:10},
+  {label:'GNL',x:22.5,y:44.0,cor:'#f97316',r:10},
+  {label:'Diesel',x:36.0,y:44.0,cor:'#dc2626',r:14},
+  {label:'Gasolina',x:34.0,y:45.0,cor:'#ef4444',r:14},
+  {label:'Carvão',x:42.0,y:29.0,cor:'#374151',r:12},
+];
+
+new Chart(document.getElementById('c5'),{
+  type:'bubble',
+  data:{datasets:pontos.map(p=>({
+    label:p.label,
+    data:[{x:p.x,y:p.y,r:p.r}],
+    backgroundColor:p.cor+'bb',
+    borderColor:p.cor,
+    borderWidth:1.5
+  }))},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:12}},
+      tooltip:{callbacks:{
+        label:ctx=>`${ctx.dataset.label}: Vol=${ctx.parsed.x} MJ/L · Grav=${ctx.parsed.y} MJ/kg`
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+' MJ/L'},grid:{color:gc},min:0,max:50,
+         title:{display:true,text:'Densidade volumétrica (MJ/L)',color:tc,font:{size:10}}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' MJ/kg'},grid:{color:gc},min:0,max:140,
+         title:{display:true,text:'Densidade gravimétrica (MJ/kg)',color:tc,font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>

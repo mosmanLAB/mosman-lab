@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Identidade de Kaya: Decompondo as Emissões de CO₂ no Brasil, EUA, China, Índia e União Europeia | MosmanLAB</title>
+<meta name="description" content="A Identidade de Kaya decompõe as emissões de CO₂ em quatro fatores: população, riqueza, intensidade energética e carbono da energia. Análise comparativa com dados reais 2000–2023."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/identidade-kaya-brasil-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+
+/* HERO */
+.article-hero{background:linear-gradient(135deg,#0a0a1a,#1a1a3e,#0f2a1a);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.7rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+/* EQUAÇÃO DESTAQUE */
+.kaya-eq{background:#0f1c2e;border-radius:14px;padding:32px 28px;margin:36px 0;text-align:center}
+.kaya-eq .eq-title{font-family:'DM Mono',monospace;font-size:.7rem;color:#64748b;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.kaya-main{font-family:'DM Mono',monospace;font-size:clamp(1rem,2.5vw,1.4rem);color:#e2e8f0;letter-spacing:.04em;line-height:1.9;margin-bottom:20px}
+.kaya-main .verde{color:#4ade80}
+.kaya-main .azul{color:#60a5fa}
+.kaya-main .amber{color:#fbbf24}
+.kaya-main .roxo{color:#c084fc}
+.kaya-main .laranja{color:#fb923c}
+.kaya-factors{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.kaya-factor{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 16px;text-align:center}
+.kaya-factor .fsym{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:500;margin-bottom:3px}
+.kaya-factor .fdesc{font-size:.72rem;color:#94a3b8;line-height:1.4}
+
+/* CORPO */
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;line-height:1.25;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:5px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+
+/* CALLOUTS */
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+
+/* GRÁFICOS */
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.chart-wrap{position:relative}
+
+/* TABELA KAYA */
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th{background:#0f1c2e;color:#fff;padding:10px 14px;text-align:center;font-weight:600;font-size:.75rem;letter-spacing:.04em;white-space:nowrap}
+th.left{text-align:left}
+td{padding:9px 14px;border-bottom:1px solid #f1f5f9;color:#374151;text-align:center;white-space:nowrap}
+td.left{text-align:left;font-weight:500;color:#0f1c2e}
+tr:last-child td{border-bottom:none}
+tr.destaque td{background:#f0fdf4}
+tr.destaque td.left{color:#15803d}
+tr:nth-child(even) td{background:#fafafa}
+tr:nth-child(even) td.left{background:#fafafa}
+
+/* DECOMPOSIÇÃO VISUAL */
+.decomp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.decomp-card{border-radius:10px;padding:20px;border:1px solid}
+.decomp-card h4{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.decomp-card .val{font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;margin-bottom:4px}
+.decomp-card p{font-size:.8rem;margin:0;line-height:1.5}
+.dc-verde{background:#f0fdf4;border-color:#bbf7d0}
+.dc-verde h4,.dc-verde .val{color:#15803d}
+.dc-azul{background:#eff6ff;border-color:#bfdbfe}
+.dc-azul h4,.dc-azul .val{color:#1d4ed8}
+.dc-amber{background:#fffbeb;border-color:#fde68a}
+.dc-amber h4,.dc-amber .val{color:#b45309}
+.dc-roxo{background:#faf5ff;border-color:#ddd6fe}
+.dc-roxo h4,.dc-roxo .val{color:#6d28d9}
+
+/* SELETOR DE PAÍS */
+.regiao-selector{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.regiao-btn{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;padding:7px 16px;border-radius:6px;border:2px solid #e2e8f0;background:#fff;color:#64748b;cursor:pointer;transition:all .15s}
+.regiao-btn:hover{border-color:#2563eb;color:#2563eb}
+.regiao-btn.active{background:#0f1c2e;border-color:#0f1c2e;color:#fff}
+
+/* CONCLUSÃO */
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#1a3a4a);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#4ade80;font-weight:700}
+.conclusao li strong{color:#fff}
+
+/* CTA */
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px;line-height:1.3}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem;transition:background .15s}
+.sim-cta-btn:hover{background:#15803d}
+
+/* REFS */
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+.refs-list a:hover{text-decoration:underline}
+
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+
+@media(max-width:640px){
+  .article-body{padding:36px 18px 60px}
+  .kaya-main{font-size:.85rem}
+  .decomp-grid{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .conclusao{padding:24px 20px}
+  .kaya-factors{gap:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero">
+  <div class="article-tag">Física do Clima · Energia · Dados</div>
+  <h1>Identidade de Kaya: Decompondo as Emissões de CO₂ no Brasil, EUA, China, Índia e União Europeia</h1>
+  <p class="hero-lead">A equação que todo físico e economista do clima precisa conhecer — e o que ela revela sobre os caminhos de cada país para reduzir emissões com dados reais de 2000 a 2023.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 12 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Em 1990, o economista japonês Yoichi Kaya propôs uma identidade matemática elegante para decompor as emissões de CO₂ em quatro fatores fundamentais. Simples na forma, profunda nas implicações — a Identidade de Kaya tornou-se uma das ferramentas analíticas mais usadas no debate climático mundial.</p>
+
+  <!-- EQUAÇÃO DE KAYA -->
+  <div class="kaya-eq">
+    <div class="eq-title">Identidade de Kaya</div>
+    <div class="kaya-main">
+      <span class="verde">CO₂</span> = 
+      <span class="azul">P</span> × 
+      <span class="amber">(PIB/P)</span> × 
+      <span class="roxo">(E/PIB)</span> × 
+      <span class="laranja">(CO₂/E)</span>
+    </div>
+    <div class="kaya-factors">
+      <div class="kaya-factor">
+        <div class="fsym" style="color:#60a5fa">P</div>
+        <div class="fdesc">População<br>habitantes</div>
+      </div>
+      <div class="kaya-factor">
+        <div class="fsym" style="color:#fbbf24">PIB/P</div>
+        <div class="fdesc">Riqueza per capita<br>USD/pessoa</div>
+      </div>
+      <div class="kaya-factor">
+        <div class="fsym" style="color:#c084fc">E/PIB</div>
+        <div class="fdesc">Intensidade energética<br>kWh/USD</div>
+      </div>
+      <div class="kaya-factor">
+        <div class="fsym" style="color:#fb923c">CO₂/E</div>
+        <div class="fdesc">Carbono da energia<br>kg CO₂/kWh</div>
+      </div>
+    </div>
+  </div>
+
+  <p>A beleza da identidade está no cancelamento: quando multiplicamos os quatro termos, as unidades intermediárias se cancelam e ficamos com as toneladas de CO₂ emitidas. Mas mais importante do que a álgebra é a interpretação física e econômica de cada fator — e o que cada país pode (ou não pode) fazer para reduzi-los.</p>
+
+  <h2>Os quatro fatores de Kaya</h2>
+
+  <div class="decomp-grid">
+    <div class="decomp-card dc-azul">
+      <h4>Fator 1 — População (P)</h4>
+      <div class="val">P</div>
+      <p>Mais pessoas geralmente significa mais energia consumida e mais CO₂. Mas a relação não é direta — depende do nível de renda e do padrão de consumo. Países ricos emitem muito mais por pessoa do que países pobres.</p>
+    </div>
+    <div class="decomp-card dc-amber">
+      <h4>Fator 2 — Riqueza per capita (PIB/P)</h4>
+      <div class="val">PIB/P</div>
+      <p>Maior riqueza aumenta o consumo de energia e emissões. É o fator que nenhum país quer reduzir voluntariamente — daí a importância dos outros três fatores para compensar o crescimento econômico.</p>
+    </div>
+    <div class="decomp-card dc-roxo">
+      <h4>Fator 3 — Intensidade Energética (E/PIB)</h4>
+      <div class="val">E/PIB</div>
+      <p>Quanta energia é necessária para gerar cada unidade de PIB. Cai com eficiência energética e mudança estrutural da economia (mais serviços, menos indústria pesada). Todos os países analisados reduziram este fator.</p>
+    </div>
+    <div class="decomp-card dc-verde">
+      <h4>Fator 4 — Carbono da Energia (CO₂/E)</h4>
+      <div class="val">CO₂/E</div>
+      <p>Quanto CO₂ é emitido por unidade de energia gerada. É o fator da transição energética — cai quando renováveis substituem carvão, petróleo e gás. É onde a física das fontes de energia importa diretamente.</p>
+    </div>
+  </div>
+
+  <div class="callout roxo">
+    <strong>Por que a Identidade de Kaya importa para a física?</strong> Ela transforma uma questão política complexa ("como reduzir emissões?") em quatro problemas técnicos mensuráveis. Cada fator tem uma física própria — termodinâmica, dinâmica de fluidos, eletrônica de potência — tornando a identidade uma ponte entre a física e a política climática.
+  </div>
+
+  <h2>Dados reais: os quatro fatores em 2000 e 2022</h2>
+
+  <p>Com dados do Global Carbon Project, Energy Institute e World Bank, podemos calcular os quatro fatores de Kaya para cada região e acompanhar sua evolução em 22 anos.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="left" rowspan="2">Região</th>
+          <th colspan="2">P (milhões)</th>
+          <th colspan="2">PIB/P (USD)</th>
+          <th colspan="2">E/PIB (kWh/USD)</th>
+          <th colspan="2">CO₂/E (kg/kWh)</th>
+          <th colspan="2">CO₂ (Mt)</th>
+        </tr>
+        <tr>
+          <th>2000</th><th>2022</th>
+          <th>2000</th><th>2022</th>
+          <th>2000</th><th>2022</th>
+          <th>2000</th><th>2022</th>
+          <th>2000</th><th>2022</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="destaque">
+          <td class="left">Brasil</td>
+          <td>174</td><td>210</td>
+          <td>3.767</td><td>9.281</td>
+          <td>1,359</td><td>1,171</td>
+          <td>0,144</td><td>0,129</td>
+          <td>340</td><td>480</td>
+        </tr>
+        <tr>
+          <td class="left">Estados Unidos</td>
+          <td>282</td><td>334</td>
+          <td>36.330</td><td>76.657</td>
+          <td>2,050</td><td>1,360</td>
+          <td>0,227</td><td>0,191</td>
+          <td>6.023</td><td>5.055</td>
+        </tr>
+        <tr>
+          <td class="left">China</td>
+          <td>1.263</td><td>1.412</td>
+          <td>969</td><td>12.971</td>
+          <td>1,982</td><td>1,651</td>
+          <td>0,309</td><td>0,263</td>
+          <td>3.644</td><td>11.712</td>
+        </tr>
+        <tr>
+          <td class="left">Índia</td>
+          <td>1.058</td><td>1.425</td>
+          <td>443</td><td>2.347</td>
+          <td>1,328</td><td>0,960</td>
+          <td>0,265</td><td>0,281</td>
+          <td>987</td><td>2.831</td>
+        </tr>
+        <tr>
+          <td class="left">União Europeia</td>
+          <td>429</td><td>447</td>
+          <td>16.976</td><td>38.067</td>
+          <td>2,473</td><td>0,949</td>
+          <td>0,200</td><td>0,169</td>
+          <td>3.600</td><td>2.737</td>
+        </tr>
+        <tr>
+          <td class="left">Mundo</td>
+          <td>6.075</td><td>7.977</td>
+          <td>3.658</td><td>9.512</td>
+          <td>0,511</td><td>0,226</td>
+          <td>0,225</td><td>0,217</td>
+          <td>24.723</td><td>36.554</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Evolução histórica dos quatro fatores (2000–2022)</h2>
+
+  <!-- GRÁFICO 1: CO2 total por região -->
+  <div class="chart-block">
+    <div class="chart-title">Emissões Totais de CO₂ por Região (2000–2023)</div>
+    <div class="chart-sub">Mt CO₂ de combustíveis fósseis e indústria · Fonte: Global Carbon Project</div>
+    <div class="chart-wrap" style="height:320px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O gráfico revela trajetórias radicalmente diferentes. A China mais do que triplicou suas emissões — de 3.644 Mt em 2000 para 11.712 Mt em 2022. Os EUA reduziram de 6.023 para 5.055 Mt (−16%). A UE caiu de 3.600 para 2.737 Mt (−24%). O Brasil cresceu moderadamente de 340 para 480 Mt (+41%). A Índia dobrou de 987 para 2.831 Mt.</p>
+
+  <!-- GRÁFICO 2: Intensidade energética -->
+  <div class="chart-block">
+    <div class="chart-title">Fator 3 — Intensidade Energética (E/PIB) por Região (2000–2023)</div>
+    <div class="chart-sub">kWh de energia primária por USD de PIB · Quanto menor, mais eficiente · Fonte: Energy Institute / World Bank</div>
+    <div class="chart-wrap" style="height:320px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>A intensidade energética caiu em todas as regiões — sinal de que todas ficaram mais eficientes. O caso mais dramático é a União Europeia, que reduziu de 2,47 para 0,95 kWh/USD (−62%), graças a décadas de políticas de eficiência. A China caiu de 1,98 para 1,65 (−17%), mas partiu de um nível muito alto. O Brasil caiu de 1,36 para 1,17 (−14%), resultado da expansão dos serviços na composição do PIB.</p>
+
+  <!-- GRÁFICO 3: Carbono da energia -->
+  <div class="chart-block">
+    <div class="chart-title">Fator 4 — Carbono da Energia (CO₂/E) por Região (2000–2022)</div>
+    <div class="chart-sub">kg de CO₂ emitido por kWh de energia primária consumida · Fonte: GCP / Energy Institute</div>
+    <div class="chart-wrap" style="height:320px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <div class="callout verde">
+    <strong>O Brasil tem a energia mais limpa do grupo:</strong> 0,129 kg CO₂/kWh em 2022 — menos da metade dos EUA (0,191) e menos de um terço da China (0,263). Isso reflete a matriz com ~50% de renováveis. A Índia é o único país que <em>aumentou</em> este fator (0,265 → 0,281), reflexo da expansão acelerada do carvão para sustentar o crescimento econômico.
+  </div>
+
+  <h2>Análise comparativa: quem está na direção certa?</h2>
+
+  <!-- GRÁFICO 4: PIB per capita (riqueza) -->
+  <div class="chart-block">
+    <div class="chart-title">Fator 2 — PIB per capita por Região (2000–2023)</div>
+    <div class="chart-sub">USD correntes · Fonte: World Bank</div>
+    <div class="chart-wrap" style="height:300px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O crescimento da riqueza é o motor das emissões — mas também o que financia a transição. A China cresceu 13 vezes o PIB per capita em 22 anos (de US$ 969 para US$ 12.971). A Índia cresceu 5 vezes (de US$ 443 para US$ 2.347). O Brasil cresceu 2,5 vezes, os EUA 2,1 vezes e a UE 2,2 vezes.</p>
+
+  <!-- GRÁFICO 5: Decomposição Kaya — variação % dos fatores -->
+  <div class="chart-block">
+    <div class="chart-title">Decomposição de Kaya — Variação % dos Fatores (2000 → 2022)</div>
+    <div class="chart-sub">Variação percentual de cada fator entre 2000 e 2022 · Fatores negativos reduzem emissões · Positivos aumentam</div>
+    <div class="chart-wrap" style="height:360px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>Este gráfico é o coração da análise. Para reduzir emissões, é necessário que os fatores negativos (intensidade energética e carbono da energia, em azul e roxo) superem os fatores positivos (população e riqueza, em vermelho). Veja o que ocorreu em cada região:</p>
+
+  <h3>Estados Unidos — desacoplamento real</h3>
+  <p>Os EUA reduziram emissões absolutas (−16%) mesmo com PIB per capita crescendo 111% e população aumentando 18%. Isso só foi possível porque a intensidade energética caiu 34% e o carbono da energia caiu 16% — redução puxada pela substituição de carvão por gás natural e, mais recentemente, por solar e eólica.</p>
+
+  <h3>União Europeia — o caso mais avançado</h3>
+  <p>A UE conseguiu a maior redução de emissões absolutas do grupo (−24%) com economia crescendo. A intensidade energética desabou 62% — a maior queda de todos — graças a décadas de políticas de eficiência. O carbono da energia caiu 15%. É o exemplo mais próximo de desacoplamento absoluto consistente.</p>
+
+  <h3>China — crescimento domina tudo</h3>
+  <p>A China triplicou emissões apesar de reduzir tanto a intensidade energética (−17%) quanto o carbono da energia (−15%). O problema: o PIB per capita cresceu 1.238% — 13 vezes. Quando a riqueza cresce tão rápido, nenhuma melhoria de eficiência consegue compensar. É o desafio da transição em um país de renda média em aceleração.</p>
+
+  <h3>Índia — o paradoxo do desenvolvimento</h3>
+  <p>A Índia apresenta a situação mais preocupante do grupo: o único país que aumentou o carbono da energia (+6%), pois expandiu fortemente o carvão para eletrificar uma população de 1,4 bilhão de pessoas. A intensidade energética caiu 28%, mas o crescimento do PIB per capita (430%) e da população (35%) resultaram em emissões quase triplicadas.</p>
+
+  <h3>Brasil — posição privilegiada, mas frágil</h3>
+  <p>O Brasil combina crescimento moderado da riqueza com a menor intensidade de carbono da energia do grupo. Mas ainda está longe do desacoplamento absoluto — emissões cresceram 41% no período. O grande diferencial é a matriz elétrica, mas o petróleo no transporte continua pesando.</p>
+
+  <!-- GRÁFICO 6: CO2 per capita -->
+  <div class="chart-block">
+    <div class="chart-title">CO₂ per capita — Evolução por Região (2000–2023)</div>
+    <div class="chart-sub">Toneladas de CO₂ por habitante · Fonte: Global Carbon Project / World Bank</div>
+    <div class="chart-wrap" style="height:300px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <div class="callout amber">
+    <strong>A injustiça climática nos números:</strong> Os EUA emitem 14,8 t CO₂/pessoa — mais de 6 vezes o Brasil (2,3 t) e mais de 7 vezes a Índia (2,0 t). A China, com renda 7x menor que os EUA, já emite 8,2 t/pessoa. O debate sobre "quem deve reduzir mais" fica claro quando se olha para o CO₂ histórico per capita — e a Identidade de Kaya mostra exatamente por que cada país chegou onde está.
+  </div>
+
+  <h2>O que a Identidade de Kaya diz sobre o futuro</h2>
+
+  <p>Para estabilizar o clima, o IPCC indica que as emissões globais precisam chegar a zero líquido até 2050. Traduzindo em termos de Kaya, com população mundial crescendo até ~10 bilhões e PIB per capita continuando a subir, os dois primeiros fatores vão aumentar. Isso significa que os fatores 3 (intensidade energética) e 4 (carbono da energia) precisam cair muito mais rápido do que caíram nas últimas décadas.</p>
+
+  <p>Matematicamente, se população cresce 20% e riqueza per capita cresce 50% até 2050 (projeções conservadoras), o produto P × (PIB/P) crescerá ~80%. Para emissões chegarem a zero, o produto (E/PIB) × (CO₂/E) — ou seja, o carbono da energia por unidade de PIB — precisaria cair para próximo de zero. Isso equivale à descarbonização quase total da matriz energética mundial.</p>
+
+  <div class="callout navy">
+    <strong>A física da transição energética é implacável:</strong> A Identidade de Kaya não mente. Enquanto queimamos combustíveis fósseis, CO₂/E permanece positivo. A única forma de zerar este fator é substituir completamente as fontes fósseis por renováveis e nuclear. Não há atalho matemático — há apenas física, engenharia e velocidade de implantação.
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    <h2>O que a Identidade de Kaya revela</h2>
+    <ul>
+      <li><strong>A UE mostrou que é possível reduzir emissões absolutas com economia crescendo.</strong> Combinação de eficiência energética (−62% na intensidade) com expansão de renováveis. É o benchmark global para os demais.</li>
+      <li><strong>A China é o problema central do clima global.</strong> Nenhuma melhoria de eficiência compensa um PIB que cresceu 13 vezes em 22 anos. Só a transição rápida para renováveis pode mudar a trajetória — e a China está investindo nisso em velocidade recorde.</li>
+      <li><strong>O Brasil tem a melhor posição estrutural do grupo</strong> — menor carbono da energia (0,129 kg/kWh), graças à matriz renovável. Mas precisa enfrentar o transporte (petróleo) e o desmatamento para converter vantagem estrutural em liderança climática real.</li>
+      <li><strong>A Índia enfrenta o dilema mais difícil:</strong> eletrificar 1,4 bilhão de pessoas sem aumentar o carvão. O país reduziu a intensidade energética, mas o carbono da energia subiu. A velocidade da implantação de solar e eólica nos próximos anos definirá se o dilema tem solução.</li>
+      <li><strong>Mundialmente, os fatores 3 e 4 precisam cair em ritmo 5–10 vezes mais rápido</strong> do que nas últimas duas décadas para compatibilizar crescimento econômico com metas climáticas. A matemática de Kaya é exigente — e o tempo é curto.</li>
+    </ul>
+  </div>
+
+  <!-- REFS -->
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Kaya, Y.</strong> (1990). Impact of Carbon Dioxide Emission Control on GNP Growth: Interpretation of Proposed Scenarios. IPCC Energy and Industry Subgroup, Response Strategies Working Group.</li>
+      <li><strong>Global Carbon Project</strong> — CO₂ and Greenhouse Gas Emissions Dataset. Friedlingstein et al. (2024). <a href="https://globalcarbonproject.org" target="_blank">globalcarbonproject.org</a></li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy (2024). Via Our World in Data. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>World Bank</strong> — World Development Indicators. PIB, população, indicadores econômicos. <a href="https://databank.worldbank.org" target="_blank">databank.worldbank.org</a></li>
+      <li><strong>IPCC</strong> — Sixth Assessment Report (AR6), Working Group III: Mitigation of Climate Change (2022). <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch/ar6</a></li>
+      <li><strong>Our World in Data</strong> — Energy Mix, CO₂ Emissions. Hannah Ritchie, Pablo Rosado, Max Roser. <a href="https://ourworldindata.org" target="_blank">ourworldindata.org</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<!-- CTA -->
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+// ── DADOS REAIS DO DATASET ──
+const anos = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+const dados = {
+  Brasil: {
+    co2:    [340,346,348,345,361,364,369,391,413,390,440,462,497,532,557,528,492,497,477,477,448,497,480,484],
+    gdppc:  [3767,3176,2856,3091,3664,4828,5934,7410,8908,8679,11403,13397,12522,12459,12275,8936,8836,10081,9301,9030,7074,7973,9281,10378],
+    epib:   [1.359,1.290,1.263,1.253,1.228,1.207,1.179,1.168,1.147,1.130,1.131,1.117,1.127,1.123,1.142,1.170,1.181,1.175,1.157,1.169,1.160,1.156,1.171,null],
+    co2e:   [0.144,0.150,0.148,0.144,0.144,0.142,0.140,0.139,0.141,0.133,0.138,0.139,0.146,0.152,0.156,0.149,0.142,0.143,0.137,0.134,0.131,0.139,0.129,0.126],
+    co2pc:  [1.955,1.963,1.948,1.908,1.979,1.973,1.976,2.071,2.168,2.029,2.273,2.365,2.527,2.678,2.781,2.619,2.420,2.429,2.312,2.298,2.147,2.370,2.283,2.292],
+  },
+  EUA: {
+    co2:    [6023,5904,5948,6006,6112,6127,6045,6122,5919,5486,5669,5539,5331,5473,5531,5368,5245,5195,5361,5236,4690,5020,5055,null],
+    gdppc:  [36330,37134,37998,39490,41725,44123,46302,48050,48570,47195,48643,50025,51708,53179,54973,56573,57638,59635,62500,64746,63516,70205,76657,null],
+    epib:   [2.050,1.982,1.976,1.928,1.894,1.834,1.772,1.765,1.727,1.689,1.703,1.662,1.582,1.596,1.576,1.520,1.494,1.467,1.477,1.434,1.366,1.359,1.360,null],
+    co2e:   [0.227,0.228,0.226,0.228,0.227,0.228,0.226,0.226,0.224,0.218,0.218,0.215,0.213,0.213,0.213,0.209,0.204,0.201,0.200,0.197,0.190,0.193,0.191,null],
+    co2pc:  [21.4,20.8,20.7,20.7,20.9,20.7,20.2,20.3,19.4,17.8,18.2,17.6,16.8,17.1,17.1,16.5,15.9,15.6,16.0,15.5,13.8,14.8,14.8,null],
+  },
+  China: {
+    co2:    [3644,3724,4098,4835,5211,5882,6486,6975,7492,7881,8610,9520,9767,9942,9976,9858,9748,10000,10347,10714,10897,11284,11712,null],
+    gdppc:  [969,1065,1164,1307,1531,1778,2129,2735,3523,3898,4629,5704,6405,7147,7781,8175,8255,8980,10086,10343,10627,12887,12971,null],
+    epib:   [1.982,1.970,1.993,2.182,2.364,2.444,2.429,2.418,2.409,2.347,2.260,2.289,2.208,2.126,2.030,1.920,1.805,1.754,1.723,1.701,1.718,1.675,1.651,null],
+    co2e:   [0.309,0.299,0.302,0.306,0.282,0.280,0.281,0.278,0.288,0.290,0.296,0.304,0.299,0.294,0.287,0.281,0.276,0.273,0.269,0.267,0.263,0.257,0.263,null],
+    co2pc:  [2.87,2.91,3.19,3.74,4.00,4.49,4.92,5.26,5.62,5.87,6.37,7.00,7.13,7.21,7.19,7.06,6.94,7.08,7.29,7.53,7.64,7.91,8.22,null],
+  },
+  India: {
+    co2:    [987,1001,1033,1068,1135,1195,1293,1393,1490,1613,1679,1766,1927,1995,2148,2232,2353,2426,2595,2611,2423,2676,2831,null],
+    gdppc:  [443,450,469,544,624,710,802,1022,993,1095,1348,1445,1429,1433,1554,1584,1708,1950,1966,2041,1907,2240,2347,null],
+    epib:   [1.328,1.272,1.280,1.233,1.245,1.228,1.193,1.197,1.199,1.199,1.165,1.151,1.146,1.115,1.113,1.068,1.025,1.003,0.988,0.967,0.983,0.974,0.960,null],
+    co2e:   [0.265,0.268,0.267,0.267,0.261,0.259,0.266,0.264,0.267,0.269,0.269,0.268,0.278,0.279,0.281,0.283,0.285,0.283,0.286,0.281,0.276,0.280,0.281,null],
+    co2pc:  [0.933,0.929,0.941,0.957,0.999,1.035,1.103,1.170,1.234,1.316,1.350,1.400,1.507,1.540,1.637,1.681,1.750,1.784,1.888,1.880,1.727,1.892,1.986,null],
+  },
+  UE: {
+    co2:    [3600,3657,3657,3736,3743,3735,3752,3702,3626,3331,3424,3327,3259,3177,3039,3095,3095,3118,3049,2905,2627,2801,2737,2485],
+    gdppc:  [16976,17231,18798,23021,26369,27431,29201,33705,37169,33632,33120,35963,33325,34805,35590,30772,31457,33395,36055,35374,34695,39207,38067,41567],
+    epib:   [2.473,2.478,2.255,1.868,1.649,1.579,1.489,1.270,1.144,1.185,1.251,1.119,1.193,1.132,1.070,1.250,1.233,1.181,1.088,1.092,1.029,0.961,0.949,0.841],
+    co2e:   [0.200,0.199,0.200,0.201,0.198,0.198,0.197,0.197,0.194,0.189,0.187,0.187,0.185,0.182,0.180,0.181,0.179,0.178,0.174,0.168,0.165,0.167,0.169,0.158],
+    co2pc:  [8.39,8.51,8.49,8.64,8.62,8.57,8.58,8.44,8.24,7.55,7.75,7.54,7.37,7.18,6.86,6.97,6.96,7.00,6.83,6.50,5.88,6.28,6.12,5.54],
+  },
+  Mundo: {
+    co2:    [24723,24909,25462,26817,27700,28653,29597,30444,30984,30491,32237,33366,33853,34158,34343,34243,34215,34765,35490,35839,34310,35979,36554,37003],
+    gdppc:  [3658,3596,3687,4105,4603,4976,5395,6107,6737,6324,6937,7697,7793,7966,8089,7524,7527,7968,8385,8444,8092,9214,9512,9811],
+    epib:   [0.511,0.518,0.509,0.466,0.430,0.406,0.380,0.342,0.309,0.319,0.301,0.274,0.271,0.266,0.261,0.279,0.279,0.266,0.256,0.254,0.253,0.231,0.226,0.221],
+    co2e:   [0.225,0.224,0.224,0.228,0.225,0.225,0.226,0.225,0.226,0.226,0.228,0.231,0.231,0.229,0.228,0.226,0.223,0.221,0.220,0.220,0.218,0.218,0.217,0.216],
+    co2pc:  [0.42,0.42,0.42,0.44,0.45,0.45,0.46,0.47,0.47,0.46,0.48,0.49,0.49,0.49,0.48,0.47,0.47,0.47,0.47,0.47,0.45,0.46,0.47,0.47],
+  }
+};
+
+const cores = {
+  Brasil:'#16a34a', EUA:'#2563eb', China:'#dc2626',
+  India:'#d97706', UE:'#7c3aed', Mundo:'#64748b'
+};
+
+function makeDataset(regiao, campo, dash=false) {
+  return {
+    label: regiao==='India'?'Índia':regiao,
+    data: dados[regiao][campo],
+    borderColor: cores[regiao],
+    backgroundColor: cores[regiao]+'20',
+    tension: .35, pointRadius: 0, borderWidth: 2.5,
+    borderDash: dash ? [5,4] : []
+  };
+}
+
+const baseOpts = (yLabel, yCallback, yMin) => ({
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { labels: { font:{size:11}, color:'#374151', boxWidth:20 } } },
+  scales: {
+    x: { ticks:{maxTicksLimit:8,font:{size:11},color:tc}, grid:{display:false} },
+    y: { ticks:{font:{size:11},color:tc,callback:yCallback}, grid:{color:gc},
+         ...(yMin!==undefined?{min:yMin}:{}),
+         title:{display:!!yLabel,text:yLabel,color:tc,font:{size:10}} }
+  }
+});
+
+// C1 — CO2 total
+new Chart(document.getElementById('c1'),{type:'line',
+  data:{labels:anos.map(String),datasets:Object.keys(dados).map(r=>makeDataset(r,'co2',r==='Mundo'))},
+  options:{...baseOpts('Mt CO₂',v=>v.toLocaleString('pt-BR')+' Mt'),
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:20}}}}
+});
+
+// C2 — Intensidade energética
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:anos.map(String),datasets:Object.keys(dados).map(r=>({
+    ...makeDataset(r,'epib'), data:dados[r].epib.map((v,i)=>v)
+  }))},
+  options:baseOpts('kWh/USD',v=>v.toFixed(2))
+});
+
+// C3 — Carbono da energia
+new Chart(document.getElementById('c3'),{type:'line',
+  data:{labels:anos.map(String),datasets:Object.keys(dados).map(r=>makeDataset(r,'co2e'))},
+  options:baseOpts('kg CO₂/kWh',v=>v.toFixed(3))
+});
+
+// C4 — PIB per capita
+new Chart(document.getElementById('c4'),{type:'line',
+  data:{labels:anos.map(String),datasets:['Brasil','EUA','China','India','UE'].map(r=>makeDataset(r,'gdppc'))},
+  options:baseOpts('USD',v=>'$'+v.toLocaleString('pt-BR'))
+});
+
+// C5 — Decomposição Kaya: variação % dos fatores
+// Para cada região: calcular variação % de P, gdppc, epib, co2e entre 2000 e 2022
+const regioes = ['Brasil','EUA','China','India','UE'];
+const nomes   = ['Brasil','EUA','China','Índia','União Europeia'];
+
+// Pop 2000 e 2022 (milhões)
+const pop2000 = {Brasil:174, EUA:282, China:1263, India:1058, UE:429};
+const pop2022 = {Brasil:210, EUA:334, China:1412, India:1425, UE:447};
+
+function varPct(novo, velho){ return ((novo-velho)/velho*100).toFixed(1)*1; }
+
+const fatP    = regioes.map(r=>varPct(pop2022[r], pop2000[r]));
+const fatPIB  = regioes.map(r=>varPct(dados[r].gdppc[22],dados[r].gdppc[0]));
+const fatEPIB = regioes.map(r=>varPct(dados[r].epib[22],dados[r].epib[0]));
+const fatCO2E = regioes.map(r=>varPct(dados[r].co2e[22],dados[r].co2e[0]));
+
+new Chart(document.getElementById('c5'),{type:'bar',
+  data:{
+    labels:nomes,
+    datasets:[
+      {label:'População (P)',data:fatP,backgroundColor:'rgba(220,38,38,0.7)',borderRadius:3},
+      {label:'PIB per capita (PIB/P)',data:fatPIB,backgroundColor:'rgba(245,158,11,0.7)',borderRadius:3},
+      {label:'Intensidade energética (E/PIB)',data:fatEPIB,backgroundColor:'rgba(37,99,235,0.7)',borderRadius:3},
+      {label:'Carbono da energia (CO₂/E)',data:fatCO2E,backgroundColor:'rgba(124,58,237,0.7)',borderRadius:3},
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:16}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+         title:{display:true,text:'Variação % (2000→2022)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C6 — CO2 per capita
+new Chart(document.getElementById('c6'),{type:'line',
+  data:{labels:anos.map(String),datasets:regioes.map(r=>makeDataset(r,'co2pc'))},
+  options:baseOpts('t CO₂/pessoa',v=>v.toFixed(1)+' t')
+});
+</script>
+</body>
+</html>

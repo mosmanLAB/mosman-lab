@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LCOE — Custo Nivelado da Eletricidade: A Física e a Economia da Energia | MosmanLAB</title>
+<meta name="description" content="O que é o LCOE, como se calcula e o que os dados da IRENA e Lazard revelam: solar caiu 90% desde 2010 e já é mais barata que carvão e gás. Análise completa com gráficos e dados reais 2010–2024."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/lcoe-custo-nivelado-eletricidade.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+
+/* HERO */
+.article-hero{background:linear-gradient(135deg,#0a1628,#1a2d4a,#0a2818);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#fde68a;border:1px solid rgba(253,230,138,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+/* CORPO */
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;line-height:1.25;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+
+/* EQUAÇÃO LCOE */
+.lcoe-eq{background:#0f1c2e;border-radius:14px;padding:32px 28px;margin:36px 0;text-align:center}
+.lcoe-eq .eq-title{font-family:'DM Mono',monospace;font-size:.7rem;color:#64748b;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.lcoe-main{font-family:'DM Mono',monospace;font-size:clamp(.9rem,2.2vw,1.3rem);color:#e2e8f0;letter-spacing:.04em;line-height:2;margin-bottom:20px}
+.lcoe-main .am{color:#fbbf24}
+.lcoe-main .az{color:#60a5fa}
+.lcoe-main .vd{color:#4ade80}
+.lcoe-factors{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:20px}
+.lcoe-factor{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:12px 14px;text-align:left}
+.lcoe-factor .fsym{font-family:'DM Mono',monospace;font-size:.85rem;font-weight:500;margin-bottom:4px}
+.lcoe-factor .fdesc{font-size:.72rem;color:#94a3b8;line-height:1.5}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2.2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.vd{color:#16a34a}.az{color:#2563eb}.am{color:#d97706}.vr{color:#dc2626}.rx{color:#7c3aed}
+
+/* CALLOUTS */
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+
+/* GRÁFICOS */
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+
+/* TABELA */
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#0f1c2e;color:#fff;padding:11px 16px;text-align:left;font-weight:600;font-size:.77rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 16px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+tr:last-child td{border-bottom:none}
+tr.destaque td{background:#f0fdf4;font-weight:600}
+tr:nth-child(even) td{background:#fafafa}
+.tag-fonte{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;vertical-align:middle}
+.tg-verde{background:#dcfce7;color:#15803d}
+.tg-cinza{background:#f1f5f9;color:#475569}
+.tg-verm{background:#fee2e2;color:#b91c1c}
+.tg-azul{background:#dbeafe;color:#1d4ed8}
+
+/* BARRA DE COMPARAÇÃO */
+.lcoe-bars{display:flex;flex-direction:column;gap:8px;margin:28px 0}
+.lcoe-bar-item{display:grid;grid-template-columns:180px 1fr 80px;gap:12px;align-items:center}
+.lcoe-bar-label{font-size:.82rem;color:#374151;font-weight:500;text-align:right}
+.lcoe-bar-track{background:#f1f5f9;border-radius:4px;height:28px;overflow:hidden}
+.lcoe-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-family:'DM Mono',monospace;font-size:.72rem;font-weight:600;color:#fff;white-space:nowrap;transition:width .5s}
+.lcoe-bar-val{font-family:'DM Mono',monospace;font-size:.8rem;color:#374151;font-weight:600}
+
+/* CONCLUSÃO */
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#0f2a18);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#4ade80;font-weight:700}
+.conclusao li strong{color:#fff}
+
+/* CTA */
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px;line-height:1.3}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem;transition:background .15s}
+.sim-cta-btn:hover{background:#15803d}
+
+/* REFS */
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+.refs-list a:hover{text-decoration:underline}
+
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+
+@media(max-width:640px){
+  .article-body{padding:36px 18px 60px}
+  .lcoe-main{font-size:.82rem}
+  .lcoe-factors{grid-template-columns:1fr 1fr}
+  .lcoe-bar-item{grid-template-columns:130px 1fr 60px}
+  .lcoe-bar-label{font-size:.75rem}
+  .conclusao{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero">
+  <div class="article-tag">Energia · Economia · Física</div>
+  <h1>LCOE — Custo Nivelado da Eletricidade: A Física e a Economia da Energia em um Único Número</h1>
+  <p class="hero-lead">Solar caiu 90% desde 2010 e custa US$ 43/MWh em média global — mais barata que carvão (US$ 73) e gás (US$ 85). Como um único indicador resume toda a física e economia de uma usina elétrica.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 12 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Quando um engenheiro precisa comparar uma usina solar com uma termelétrica a carvão, ou um investidor quer saber se vale mais a pena construir eólica ou gás, há um indicador que resume toda a física e a economia da geração de eletricidade em um único número: o <strong>LCOE</strong> — Levelized Cost of Energy, ou Custo Nivelado de Energia.</p>
+
+  <p>É o indicador mais usado no mundo para comparar tecnologias de geração elétrica. E os dados mais recentes da IRENA (Agência Internacional de Energia Renovável) e da Lazard revelam uma transformação histórica: pela primeira vez em 200 anos de história da eletricidade, as fontes renováveis tornaram-se mais baratas do que qualquer alternativa fóssil.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num vd">US$ 34</div>
+      <div class="stat-label">LCOE eólica onshore global — 2024 (USD/MWh)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num am">US$ 43</div>
+      <div class="stat-label">LCOE solar FV global — 2024 (USD/MWh)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num vr">US$ 73</div>
+      <div class="stat-label">LCOE carvão global — 2024 (USD/MWh)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num rx">−90%</div>
+      <div class="stat-label">queda no custo da solar desde 2010</div>
+    </div>
+  </div>
+
+  <h2>O que é o LCOE — a física do indicador</h2>
+
+  <p>O LCOE responde a uma pergunta fundamental: <em>qual é o preço mínimo pelo qual uma usina precisa vender cada MWh de eletricidade para recuperar todos os seus custos ao longo da vida útil?</em></p>
+
+  <p>Matematicamente, o LCOE é o valor presente de todos os custos dividido pelo valor presente de toda a energia produzida ao longo da vida útil do projeto:</p>
+
+  <!-- EQUAÇÃO LCOE -->
+  <div class="lcoe-eq">
+    <div class="eq-title">Definição do LCOE</div>
+    <div class="lcoe-main">
+      <span class="am">LCOE</span> =
+      <span style="color:#e2e8f0"> ∑</span>
+      <span class="az"> (Cₜ) / (1+r)ᵗ</span>
+      <span style="color:#94a3b8"> ÷ </span>
+      <span style="color:#e2e8f0">∑</span>
+      <span class="vd"> (Eₜ) / (1+r)ᵗ</span>
+    </div>
+    <div class="lcoe-factors">
+      <div class="lcoe-factor">
+        <div class="fsym" style="color:#fbbf24">Cₜ</div>
+        <div class="fdesc">Custos totais no ano t: investimento (CAPEX), operação e manutenção (OPEX), combustível, descomissionamento</div>
+      </div>
+      <div class="lcoe-factor">
+        <div class="fsym" style="color:#60a5fa">Eₜ</div>
+        <div class="fdesc">Energia elétrica produzida no ano t (MWh) — depende da potência instalada e do fator de capacidade</div>
+      </div>
+      <div class="lcoe-factor">
+        <div class="fsym" style="color:#4ade80">r</div>
+        <div class="fdesc">Taxa de desconto — o custo do capital. Projeta todos os fluxos futuros ao valor presente</div>
+      </div>
+      <div class="lcoe-factor">
+        <div class="fsym" style="color:#c084fc">t</div>
+        <div class="fdesc">Ano do projeto, de 0 até a vida útil (20–40 anos, dependendo da tecnologia)</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Por que o LCOE captura a física da geração?</h3>
+  <p>O denominador da equação — a energia produzida — depende diretamente de grandezas físicas: a irradiação solar local (W/m²), a velocidade do vento (m/s), a eficiência do painel fotovoltaico (η), o coeficiente de potência da turbina (Cp). Uma usina solar no Nordeste do Brasil produz muito mais por MW instalado do que uma no norte da Europa — e isso aparece diretamente no LCOE.</p>
+
+  <p>O <strong>fator de capacidade</strong> é a chave: representa a fração do tempo em que a usina opera na potência máxima. Uma usina solar pode ter fator de capacidade de 25% no Sul do Brasil, 30% no Nordeste, e apenas 10-12% em países nórdicos. Uma hidrelétrica brasileira tem fator médio de 50-55%. Isso explica por que o Brasil tem alguns dos LCOEs mais competitivos do mundo para eólica e solar.</p>
+
+  <div class="callout azul">
+    <strong>A física determina a competitividade:</strong> O mesmo painel solar instalado no Nordeste do Brasil gera ~70% mais energia ao longo do ano do que na Alemanha. Com o mesmo CAPEX, o LCOE brasileiro é proporcionalmente menor — pura consequência da irradiação solar (W/m²) e da equação de geração fotovoltaica: <em>P = G × A × η</em>.
+  </div>
+
+  <h2>Os componentes do LCOE por tecnologia</h2>
+
+  <p>Para cada tecnologia, os componentes têm pesos muito diferentes. Isso é fundamental para entender por que renováveis se tornaram tão competitivas:</p>
+
+  <!-- GRÁFICO 1: Composição do LCOE por tecnologia -->
+  <div class="chart-block">
+    <div class="chart-title">Composição do LCOE por Tecnologia — 2024 (USD/MWh)</div>
+    <div class="chart-sub">CAPEX = investimento inicial · OPEX = operação e manutenção · Combustível = custo do insumo energético · Fonte: IRENA / Lazard 2024</div>
+    <div style="height:340px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O gráfico revela a diferença estrutural fundamental: renováveis têm CAPEX alto mas custo de combustível <strong>zero</strong>. Termelétricas têm CAPEX menor mas pagam pelo combustível ao longo de toda a vida útil — e estão sujeitas às oscilações do preço do petróleo, gás e carvão. Em um mundo de energia cara, isso é uma vulnerabilidade enorme.</p>
+
+  <div class="callout verde">
+    <strong>O combustível solar é gratuito:</strong> Uma usina solar não paga nada pelo sol. Uma termelétrica a gás paga pelo gás todo mês durante 30 anos. A matemática é implacável: com painéis cada vez mais baratos e custo operacional próximo de zero, o LCOE solar só tende a cair.
+  </div>
+
+  <h2>A queda histórica: solar e eólica em números</h2>
+
+  <p>A redução de custos de solar e eólica na última década é um dos fenômenos econômicos e tecnológicos mais extraordinários já registrados. Entre 2010 e 2024, o custo da solar fotovoltaica caiu 90%. A eólica onshore caiu 69%.</p>
+
+  <!-- GRÁFICO 2: Evolução histórica do LCOE -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução Histórica do LCOE — Solar FV, Eólica Onshore e Fontes Fósseis (2010–2024)</div>
+    <div class="chart-sub">USD/MWh · Médias globais ponderadas · Fonte: IRENA Renewable Power Generation Costs 2024 / Lazard LCOE+ 2024</div>
+    <div style="height:340px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>Em 2010, a solar custava US$ 445/MWh — inviável economicamente sem subsídios. Em 2024, chegou a US$ 43/MWh — <strong>41% mais barata que a alternativa fóssil mais barata</strong> (carvão, a US$ 73/MWh). A eólica, que já era competitiva em 2010 (US$ 107/MWh), chegou a US$ 34/MWh.</p>
+
+  <div class="callout amber">
+    <strong>O único período de alta:</strong> Entre 2021 e 2023, os custos de solar e eólica subiram pela primeira vez na história — impactados por inflação global, gargalos de cadeia de suprimentos e altas taxas de juros. Solar nos EUA chegou a US$ 60/MWh em 2023. Mas a tendência de longo prazo de queda retomou em 2024-2025.
+  </div>
+
+  <h2>LCOE por tecnologia em 2024 — comparação global</h2>
+
+  <!-- BARRA COMPARATIVA -->
+  <div class="chart-block">
+    <div class="chart-title">LCOE por Tecnologia — Comparação Global 2024 (USD/MWh)</div>
+    <div class="chart-sub">Médias globais ponderadas · Fonte: IRENA (2024) e Lazard LCOE+ (2025)</div>
+    <div class="lcoe-bars" style="margin-top:16px">
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Eólica onshore</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:17%;background:#16a34a">US$ 34</div>
+        </div>
+        <div class="lcoe-bar-val">34</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Solar FV utilitária</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:21.5%;background:#f59e0b">US$ 43</div>
+        </div>
+        <div class="lcoe-bar-val">43</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Hidrelétrica</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:27%;background:#3b82f6">US$ 54</div>
+        </div>
+        <div class="lcoe-bar-val">54</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Carvão (novo)</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:36.5%;background:#6b7280">US$ 73</div>
+        </div>
+        <div class="lcoe-bar-val">73</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Gás CCGT (novo)</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:42.5%;background:#d97706">US$ 85</div>
+        </div>
+        <div class="lcoe-bar-val">85</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Eólica offshore</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:47.5%;background:#0891b2">US$ 95</div>
+        </div>
+        <div class="lcoe-bar-val">95</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Solar + bateria (EUA)</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:39.5%;background:#7c3aed">US$ 79</div>
+        </div>
+        <div class="lcoe-bar-val">79</div>
+      </div>
+
+      <div class="lcoe-bar-item">
+        <div class="lcoe-bar-label">Nuclear (novo)</div>
+        <div class="lcoe-bar-track">
+          <div class="lcoe-bar-fill" style="width:91%;background:#dc2626">US$ 182</div>
+        </div>
+        <div class="lcoe-bar-val">182</div>
+      </div>
+
+    </div>
+    <p style="font-size:.75rem;color:#94a3b8;margin-top:8px">Valores em USD/MWh · IRENA: solar, eólica, hidro, carvão, gás · Lazard: nuclear, solar+bateria</p>
+  </div>
+
+  <h2>LCOE por país — por que o Brasil e a China são líderes</h2>
+
+  <p>O LCOE não é igual em todos os países — a física local importa muito. Irradiação solar, velocidade do vento, custo da mão de obra, acesso a financiamento barato e tamanho do mercado interno determinam se um projeto será caro ou barato.</p>
+
+  <!-- GRÁFICO 3: LCOE solar por país -->
+  <div class="chart-block">
+    <div class="chart-title">LCOE Solar FV por País — 2022 vs 2024 (USD/MWh)</div>
+    <div class="chart-sub">Médias ponderadas por país · Fonte: IRENA Renewable Power Generation Costs 2024</div>
+    <div style="height:340px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País / Região</th>
+          <th class="c">LCOE Solar 2024</th>
+          <th class="c">LCOE Eólica 2024</th>
+          <th class="c">Posição</th>
+          <th class="c">Principal fator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>China</strong></td>
+          <td class="c">US$ 33/MWh</td>
+          <td class="c">US$ 29/MWh</td>
+          <td class="c"><span class="tag-fonte tg-verde">1º</span></td>
+          <td class="c">Escala industrial, cadeia verticalizada</td>
+        </tr>
+        <tr class="destaque">
+          <td><strong>Brasil</strong></td>
+          <td class="c">~US$ 38/MWh</td>
+          <td class="c">US$ 30/MWh</td>
+          <td class="c"><span class="tag-fonte tg-verde">2º–3º</span></td>
+          <td class="c">Irradiação + vento + cadeia local</td>
+        </tr>
+        <tr>
+          <td><strong>Índia</strong></td>
+          <td class="c">US$ 38/MWh</td>
+          <td class="c">US$ 34/MWh</td>
+          <td class="c"><span class="tag-fonte tg-verde">2º–3º</span></td>
+          <td class="c">Irradiação alta, mão de obra barata</td>
+        </tr>
+        <tr>
+          <td><strong>Austrália</strong></td>
+          <td class="c">US$ 41/MWh</td>
+          <td class="c">US$ 52/MWh</td>
+          <td class="c"><span class="tag-fonte tg-azul">4º</span></td>
+          <td class="c">Boa irradiação, custo capital médio</td>
+        </tr>
+        <tr>
+          <td><strong>Global (média)</strong></td>
+          <td class="c">US$ 43/MWh</td>
+          <td class="c">US$ 34/MWh</td>
+          <td class="c">—</td>
+          <td class="c">Média ponderada global</td>
+        </tr>
+        <tr>
+          <td><strong>União Europeia</strong></td>
+          <td class="c">US$ 65/MWh</td>
+          <td class="c">US$ 55/MWh</td>
+          <td class="c"><span class="tag-fonte tg-cinza">Alto</span></td>
+          <td class="c">Permitting, custo capital, irradiação menor</td>
+        </tr>
+        <tr>
+          <td><strong>Estados Unidos</strong></td>
+          <td class="c">US$ 70/MWh</td>
+          <td class="c">US$ 58/MWh</td>
+          <td class="c"><span class="tag-fonte tg-cinza">Alto</span></td>
+          <td class="c">Custos de interconexão, gargalos regulatórios</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout verde">
+    <strong>O Brasil e a eólica mais barata do mundo:</strong> Com fator de capacidade eólico de 45–60% no Nordeste (contra 25–35% na Europa), e com leilões competitivos desde 2009 que desenvolveram uma cadeia local, o Brasil tem custo de eólica de US$ 30/MWh — entre os mais baixos do planeta. A física do vento do Nordeste é um ativo econômico real.
+  </div>
+
+  <h2>LCOE e a Identidade de Kaya — a conexão com o clima</h2>
+
+  <p>O LCOE tem uma relação direta com o quarto fator da Identidade de Kaya: o carbono da energia (CO₂/E). Quando o LCOE de renováveis cai abaixo do custo de fósseis, o mercado naturalmente substitui uma fonte pela outra — e o CO₂/E cai sem necessidade de subsídio.</p>
+
+  <!-- GRÁFICO 4: LCOE vs participação renovável -->
+  <div class="chart-block">
+    <div class="chart-title">Queda do LCOE Solar e Crescimento da Capacidade Solar Global (2010–2024)</div>
+    <div class="chart-sub">LCOE em USD/MWh (eixo esquerdo) vs capacidade instalada acumulada em GW (eixo direito) · Fonte: IRENA</div>
+    <div style="height:320px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O gráfico ilustra a <strong>Lei de Swanson</strong> — o análogo energético da Lei de Moore da microeletrônica: a cada vez que a capacidade solar instalada dobra, o custo cai ~20%. Com a capacidade global crescendo exponencialmente, os custos caem em espiral virtuosa.</p>
+
+  <div class="callout roxo">
+    <strong>Lei de Swanson:</strong> A cada duplicação da capacidade solar instalada globalmente, o preço dos módulos cai ~20%. Entre 2010 e 2024, a capacidade global de solar cresceu de ~40 GW para mais de 2.000 GW — uma multiplicação de 50 vezes. Resultado: custo caiu 90%. É o mesmo mecanismo de aprendizado que tornou os chips de computador 1 milhão de vezes mais baratos em 50 anos.
+  </div>
+
+  <h2>O LCOE tem limitações — o que ele não captura</h2>
+
+  <p>O LCOE é poderoso, mas não é perfeito. É importante entender suas limitações para não usar o indicador de forma ingênua:</p>
+
+  <h3>1. Não captura a intermitência</h3>
+  <p>Solar só gera de dia; eólica depende do vento. O LCOE não captura o custo de armazenar ou "firmar" essa geração. Por isso o LCOE de solar+bateria (US$ 79/MWh) é mais relevante do que o da solar isolada (US$ 43/MWh) quando se quer comparar com fontes despacháveis como hidro ou gás.</p>
+
+  <h3>2. Não inclui externalidades</h3>
+  <p>O LCOE do carvão é US$ 73/MWh — mas não inclui o custo da poluição do ar, doenças respiratórias, e o custo futuro das emissões de CO₂. Pesquisas estimam que esses custos externos chegam a US$ 50–100/MWh para carvão. Com externalidades, o carvão seria o mais caro de todos.</p>
+
+  <h3>3. Sensível à taxa de desconto</h3>
+  <p>Fontes renováveis têm muito CAPEX e pouco OPEX. Isso as torna mais sensíveis à taxa de desconto (r) do que termelétricas. Com taxas de juros altas — como em 2022-2023 — o LCOE de solar e eólica sobe mais do que o de gás. É por isso que o custo do capital (acesso a financiamento barato) é crítico para a transição energética em países emergentes.</p>
+
+  <!-- GRÁFICO 5: Sensibilidade à taxa de desconto -->
+  <div class="chart-block">
+    <div class="chart-title">Sensibilidade do LCOE à Taxa de Desconto por Tecnologia (USD/MWh)</div>
+    <div class="chart-sub">Como o custo do capital afeta o LCOE de cada tecnologia · Fonte: análise baseada em IRENA / Lazard</div>
+    <div style="height:320px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O gráfico revela algo crucial: com taxas de desconto baixas (3-5%), renováveis são imbatíveis. Com taxas altas (10-15%), a vantagem se reduz — e é por isso que países emergentes com acesso caro ao crédito têm dificuldade de acelerar a transição mesmo quando a física é favorável.</p>
+
+  <div class="callout navy">
+    <strong>A equação da justiça climática:</strong> Países ricos constroem solar com custo de capital de 4-5% ao ano. Países em desenvolvimento pagam 12-15%. Mesma tecnologia, mesmo sol — mas LCOE muito diferente. Financiamento climático barato não é caridade: é o que torna a física favorável em equação econômica.
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    <h2>O que o LCOE nos diz sobre o futuro da energia</h2>
+    <ul>
+      <li><strong>A transição energética virou economicamente obrigatória.</strong> Com solar a US$ 43/MWh e eólica a US$ 34/MWh globalmente — contra US$ 73 para carvão e US$ 85 para gás — construir nova geração fóssil é financeiramente irracional na maioria dos países. O mercado não precisa mais de ideologia — a física e a economia já decidiram.</li>
+      <li><strong>O Brasil tem uma vantagem estrutural rara.</strong> LCOE eólico de US$ 30/MWh e solar de ~US$ 38/MWh — entre os menores do mundo. Combinados com a matriz hidrelétrica existente para "firmar" a geração intermitente, o Brasil tem o conjunto de condições físicas e econômicas mais favoráveis para a transição energética entre os grandes países emergentes.</li>
+      <li><strong>A Lei de Swanson ainda não terminou.</strong> Com 91% da nova capacidade renovável instalada em 2024 mais barata que qualquer fóssil, e com bateria caindo 93% desde 2010 (US$ 192/kWh), o argumento da intermitência vai perdendo força. O próximo grande desafio é o custo do capital — não mais a física das fontes.</li>
+      <li><strong>O LCOE conecta física, economia e clima.</strong> Quando renováveis ficam mais baratas que fósseis, o quarto fator de Kaya (CO₂/E) cai naturalmente. É a convergência rara onde a física da eficiência, a economia dos mercados e a necessidade climática apontam na mesma direção.</li>
+    </ul>
+  </div>
+
+  <!-- REFS -->
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>IRENA</strong> — Renewable Power Generation Costs in 2024. International Renewable Energy Agency (2025). <a href="https://www.irena.org/Publications/2025/Jul/Renewable-power-generation-costs-in-2024" target="_blank">irena.org</a></li>
+      <li><strong>Lazard</strong> — Levelized Cost of Energy+ (LCOE+), Version 18.0. Junho 2025. <a href="https://www.lazard.com/research-insights/levelized-cost-of-energyplus/" target="_blank">lazard.com</a></li>
+      <li><strong>Lazard</strong> — LCOE+ Version 17.0. Junho 2024. Historical LCOE series 2009–2024.</li>
+      <li><strong>IRENA</strong> — World Energy Transitions Outlook 2024. Renewable capacity statistics. <a href="https://www.irena.org" target="_blank">irena.org</a></li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy (2024). Dados de geração e capacidade por fonte. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>IPCC</strong> — AR6, Working Group III. Chapter 6: Energy Systems. Cost of low-carbon technologies. <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch</a></li>
+      <li><strong>EPE</strong> — Empresa de Pesquisa Energética. Leilões de energia elétrica no Brasil. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<!-- CTA -->
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+const baseOpts=(yLabel,yCb)=>({
+  responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:16}}},
+  scales:{
+    x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+    y:{ticks:{font:{size:11},color:tc,callback:yCb},grid:{color:gc},
+       title:{display:!!yLabel,text:yLabel,color:tc,font:{size:10}}}
+  }
+});
+
+// C1 — Composição LCOE por tecnologia (stacked bar)
+new Chart(document.getElementById('c1'),{
+  type:'bar',
+  data:{
+    labels:['Solar FV','Eólica Onshore','Hidrelétrica','Carvão','Gás CCGT','Eólica Offshore','Nuclear'],
+    datasets:[
+      {label:'CAPEX (investimento)',
+       data:[30,22,38,28,25,70,155],
+       backgroundColor:'rgba(37,99,235,0.8)',borderRadius:3},
+      {label:'OPEX (operação e manutenção)',
+       data:[10,10,14,10,8,22,15],
+       backgroundColor:'rgba(124,58,237,0.8)',borderRadius:3},
+      {label:'Combustível',
+       data:[0,0,0,35,52,0,12],
+       backgroundColor:'rgba(220,38,38,0.8)',borderRadius:3},
+      {label:'Custo de capital (financiamento)',
+       data:[3,2,2,0,0,3,0],
+       backgroundColor:'rgba(100,116,139,0.5)',borderRadius:3},
+    ]
+  },
+  options:{...baseOpts('USD/MWh',v=>v+''),
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v},grid:{color:gc},stacked:true},
+      xAxis:{stacked:true}
+    },
+    barThickness:40
+  }
+});
+
+// C2 — Evolução histórica LCOE 2010-2024
+const anosH=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const solar=[445,350,290,220,180,122,100,86,79,68,57,36,60,61,43];
+const eolica=[107,97,88,79,72,67,63,56,51,47,44,38,50,50,34];
+const carvao=[111,118,107,106,113,115,108,110,109,111,112,115,120,119,73];
+const gas=[83,95,90,90,100,95,88,87,73,77,81,60,70,76,85];
+
+new Chart(document.getElementById('c2'),{
+  type:'line',
+  data:{labels:anosH.map(String),datasets:[
+    {label:'Solar FV',data:solar,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.1)',
+     fill:true,tension:.35,pointRadius:3,pointBackgroundColor:'#f59e0b',borderWidth:2.5},
+    {label:'Eólica Onshore',data:eolica,borderColor:'#16a34a',
+     tension:.35,pointRadius:3,pointBackgroundColor:'#16a34a',borderWidth:2.5},
+    {label:'Carvão',data:carvao,borderColor:'#6b7280',
+     tension:.2,pointRadius:3,borderWidth:2,borderDash:[5,4]},
+    {label:'Gás CCGT',data:gas,borderColor:'#d97706',
+     tension:.2,pointRadius:3,borderWidth:2,borderDash:[5,4]},
+  ]},
+  options:{...baseOpts('USD/MWh',v=>'$'+v),
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:16}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v},grid:{color:gc},min:0,max:460}
+    },
+    annotation:{annotations:{line1:{type:'line',yMin:73,yMax:73,borderColor:'#dc2626',borderWidth:1.5,borderDash:[3,3],label:{content:'Carvão 2024: $73',enabled:true,position:'start'}}}}
+  }
+});
+
+// C3 — LCOE solar por país 2022 vs 2024
+new Chart(document.getElementById('c3'),{
+  type:'bar',
+  data:{
+    labels:['China','Brasil','Índia','Austrália','Global','Chile','UE','EUA','Japão','África'],
+    datasets:[
+      {label:'2022',data:[37,50,41,56,49,52,98,81,110,135],
+       backgroundColor:'rgba(100,116,139,0.5)',borderRadius:3},
+      {label:'2024',data:[33,38,38,41,43,44,65,70,90,120],
+       backgroundColor:['#16a34a','#16a34a','#16a34a','#3b82f6','#f59e0b','#3b82f6','#dc2626','#dc2626','#7c3aed','#7c3aed'],
+       borderRadius:3}
+    ]
+  },
+  options:{...baseOpts('USD/MWh',v=>'$'+v),
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+  }
+});
+
+// C4 — Lei de Swanson: LCOE solar vs capacidade instalada
+const anosS=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const lcoeS=[445,350,290,220,180,122,100,86,79,68,57,36,60,61,43];
+const capGW=[40,72,100,140,180,230,295,400,509,630,760,900,1100,1400,2000];
+
+new Chart(document.getElementById('c4'),{
+  type:'line',
+  data:{labels:anosS.map(String),datasets:[
+    {label:'LCOE Solar (USD/MWh)',data:lcoeS,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.1)',
+     fill:true,tension:.35,pointRadius:3,borderWidth:2.5,yAxisID:'y'},
+    {label:'Capacidade Solar Global (GW)',data:capGW,borderColor:'#2563eb',
+     tension:.35,pointRadius:3,borderWidth:2.5,borderDash:[4,3],yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:16}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#d97706',callback:v=>'$'+v},grid:{color:gc},
+         title:{display:true,text:'LCOE (USD/MWh)',color:'#d97706',font:{size:10}}},
+      y1:{ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' GW'},grid:{display:false},
+          position:'right',title:{display:true,text:'Capacidade (GW)',color:'#2563eb',font:{size:10}}}
+    }
+  }
+});
+
+// C5 — Sensibilidade ao custo de capital
+const taxas=[3,5,7,10,12,15];
+const lcoeRenov=[25,32,40,54,64,80];    // solar/eólica — muito sensível
+const lcoeGas=[70,72,76,80,84,90];       // gás — pouco sensível (combustível domina)
+const lcoeCarvao=[68,70,72,76,80,86];    // carvão
+
+new Chart(document.getElementById('c5'),{
+  type:'line',
+  data:{labels:taxas.map(v=>v+'%'),datasets:[
+    {label:'Solar / Eólica',data:lcoeRenov,borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.1)',
+     fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#16a34a',borderWidth:2.5},
+    {label:'Gás CCGT',data:lcoeGas,borderColor:'#d97706',
+     tension:.3,pointRadius:4,borderWidth:2.5},
+    {label:'Carvão',data:lcoeCarvao,borderColor:'#6b7280',
+     tension:.3,pointRadius:4,borderWidth:2,borderDash:[5,4]},
+  ]},
+  options:{...baseOpts('USD/MWh',v=>'$'+v),
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:16}},
+      annotation:{annotations:{
+        baixo:{type:'box',xMin:0,xMax:1,backgroundColor:'rgba(22,163,74,.05)',borderWidth:0,
+               label:{content:'Países ricos',enabled:true,color:'#16a34a',font:{size:10}}},
+        alto:{type:'box',xMin:4,xMax:5,backgroundColor:'rgba(220,38,38,.05)',borderWidth:0,
+              label:{content:'Países emergentes',enabled:true,color:'#dc2626',font:{size:10}}}
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false},
+         title:{display:true,text:'Taxa de Desconto (custo do capital)',color:tc,font:{size:10}}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v},grid:{color:gc},min:0}
+    }
+  }
+});
+</script>
+</body>
+</html>

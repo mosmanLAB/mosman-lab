@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LCOH — Custo Nivelado do Hidrogênio: A Equação que Decide o Futuro do H₂ Verde | MosmanLAB</title>
+<meta name="description" content="O LCOH mede o custo real de produzir hidrogênio. Hidrogênio verde custa US$ 4/kg hoje — cinza custa US$ 1,50. Análise completa da equação, tipos de hidrogênio, dados por região e o papel do Brasil."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/lcoh-hidrogenio-brasil-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0a1a28,#0a2a1a,#1a1a38);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#6ee7b7;border:1px solid rgba(110,231,183,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+
+/* EQUAÇÃO */
+.lcoh-eq{background:#0f1c2e;border-radius:14px;padding:32px 28px;margin:36px 0;text-align:center}
+.eq-title{font-family:'DM Mono',monospace;font-size:.7rem;color:#64748b;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.eq-main{font-family:'DM Mono',monospace;font-size:clamp(.85rem,2vw,1.25rem);color:#e2e8f0;line-height:2;margin-bottom:20px}
+.eq-main .am{color:#fbbf24}.eq-main .az{color:#60a5fa}.eq-main .vd{color:#4ade80}.eq-main .rx{color:#c084fc}.eq-main .lg{color:#fb923c}
+.eq-factors{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-top:16px}
+.eq-factor{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:11px 13px}
+.eq-factor .fsym{font-family:'DM Mono',monospace;font-size:.85rem;font-weight:500;margin-bottom:4px}
+.eq-factor .fdesc{font-size:.71rem;color:#94a3b8;line-height:1.5}
+
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+
+/* TIPOS DE HIDROGÊNIO */
+.h2-tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
+.h2-tipo{border-radius:10px;padding:18px;border:1px solid}
+.h2-tipo h4{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.h2-tipo .preco{font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:400;margin-bottom:4px}
+.h2-tipo .co2{font-size:.75rem;margin-top:6px;opacity:.8}
+.h2-tipo p{font-size:.8rem;margin:0;line-height:1.5}
+.cinza{background:#f8fafc;border-color:#e2e8f0}.cinza h4,.cinza .preco{color:#374151}
+.marrom{background:#fef9ee;border-color:#fde68a}.marrom h4,.marrom .preco{color:#92400e}
+.azul{background:#eff6ff;border-color:#bfdbfe}.azul h4,.azul .preco{color:#1d4ed8}
+.turquesa{background:#f0fdfa;border-color:#99f6e4}.turquesa h4,.turquesa .preco{color:#0f766e}
+.roxo{background:#faf5ff;border-color:#ddd6fe}.roxo h4,.roxo .preco{color:#6d28d9}
+.verde{background:#f0fdf4;border-color:#bbf7d0}.verde h4,.verde .preco{color:#15803d}
+
+/* CALLOUTS */
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+
+/* GRÁFICOS */
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+
+/* TABELA */
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr.destaque td{background:#f0fdf4;font-weight:600;color:#15803d}
+tr.sep td{background:#f8fafc;font-style:italic;font-size:.78rem;color:#94a3b8;padding:6px 14px}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+tr.destaque td{background:#f0fdf4 !important;color:#15803d !important;font-weight:600}
+
+/* CONCLUSÃO */
+.conclusao{background:linear-gradient(135deg,#0a1a28,#0a2a1a);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#6ee7b7;font-weight:700}
+.conclusao li strong{color:#fff}
+
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px;line-height:1.3}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem;transition:background .15s}
+.sim-cta-btn:hover{background:#15803d}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.h2-tipos{grid-template-columns:1fr 1fr}.conclusao{padding:24px 20px}}
+</style>
+</head>
+<body>
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia · Hidrogênio · Física</div>
+  <h1>LCOH — Custo Nivelado do Hidrogênio: A Equação que Decide o Futuro do H₂ Verde</h1>
+  <p class="hero-lead">O hidrogênio cinza custa US$ 1,50/kg. O verde custa US$ 4,00/kg. Entre eles estão 2,5 toneladas de CO₂ por kg produzido — e a maior aposta tecnológica da transição energética. Análise completa da equação, dados reais por região e o papel do Brasil.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 13 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>O hidrogênio é o elemento mais abundante do universo — e, na Terra, praticamente não existe puro. Para usá-lo como combustível ou vetor energético, é preciso produzi-lo. E o custo dessa produção é o que o <strong>LCOH</strong> (Levelized Cost of Hydrogen, ou Custo Nivelado do Hidrogênio) mede com precisão.</p>
+
+  <p>Assim como o LCOE (Custo Nivelado de Eletricidade) revolucionou a comparação entre fontes de geração elétrica, o LCOH permite comparar de forma justa os diferentes caminhos para produzir hidrogênio — do reforming do gás natural à eletrólise movida a solar. E os números revelam tanto o enorme potencial quanto o desafio real da economia do hidrogênio.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num" style="color:#374151">US$1,50–2,50</div>
+      <div class="stat-label">LCOH hidrogênio cinza (gás natural) — 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#2563eb">US$2,00–3,50</div>
+      <div class="stat-label">LCOH hidrogênio azul (gás + CCS) — 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#16a34a">US$2,35–8,00</div>
+      <div class="stat-label">LCOH hidrogênio verde (renováveis) — 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#7c3aed">−60%</div>
+      <div class="stat-label">queda no custo do eletrolisador desde 2010</div>
+    </div>
+  </div>
+
+  <h2>O que é o LCOH — a física da equação</h2>
+
+  <p>O LCOH é o custo total de produzir um quilograma de hidrogênio ao longo de toda a vida útil da planta, expresso em valor presente. É o preço mínimo pelo qual o produtor precisa vender cada kg de H₂ para recuperar todos os seus investimentos e custos operacionais.</p>
+
+  <div class="lcoh-eq">
+    <div class="eq-title">Definição do LCOH</div>
+    <div class="eq-main">
+      <span class="am">LCOH</span> =
+      <span class="az"> ∑ (CAPEX + OPEX + C<sub>eletricidade</sub> + C<sub>água</sub>)ₜ / (1+r)ᵗ</span>
+      <br>
+      <span style="color:#64748b">÷</span>
+      <span class="vd"> ∑ (m<sub>H₂</sub>)ₜ / (1+r)ᵗ</span>
+    </div>
+    <div class="eq-factors">
+      <div class="eq-factor">
+        <div class="fsym" style="color:#fbbf24">CAPEX</div>
+        <div class="fdesc">Investimento inicial: eletrolisador, retificador, sistema de controle, compressor, tanques de armazenamento</div>
+      </div>
+      <div class="eq-factor">
+        <div class="fsym" style="color:#c084fc">OPEX</div>
+        <div class="fdesc">Operação e manutenção anual: reposição de membrana, mão de obra, seguros, troca de stack (~10 anos)</div>
+      </div>
+      <div class="eq-factor">
+        <div class="fsym" style="color:#60a5fa">C<sub>elet.</sub></div>
+        <div class="fdesc">Custo da eletricidade — o maior componente: 50–70% do LCOH. Depende diretamente do LCOE da fonte renovável</div>
+      </div>
+      <div class="eq-factor">
+        <div class="fsym" style="color:#4ade80">m<sub>H₂</sub></div>
+        <div class="fdesc">Massa de H₂ produzida (kg/ano): depende da eficiência do eletrolisador (η ≈ 55–80%) e do fator de capacidade da planta</div>
+      </div>
+      <div class="eq-factor">
+        <div class="fsym" style="color:#fb923c">r</div>
+        <div class="fdesc">Taxa de desconto (WACC): custo do capital. Projetos em países emergentes pagam 12–15%; países ricos pagam 4–6%</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>A física da eletrólise no denominador</h3>
+  <p>O denominador da equação — a massa de H₂ produzida — é determinado pela física da eletrólise da água. A reação é:</p>
+  <p style="font-family:'DM Mono',monospace;font-size:.95rem;background:#f8fafc;padding:12px 18px;border-radius:8px;border-left:3px solid #16a34a;color:#15803d">
+    2 H₂O → 2 H₂ + O₂ &nbsp;·&nbsp; ΔH° = +286 kJ/mol &nbsp;·&nbsp; ~39,4 kWh/kg H₂
+  </p>
+  <p>Do ponto de vista termodinâmico, são necessários no mínimo 39,4 kWh para produzir 1 kg de H₂. Na prática, com perdas do eletrolisador e do sistema de balanço de planta, os melhores equipamentos comerciais hoje consomem entre 47 e 55 kWh/kg H₂ — uma eficiência de 72–84% em relação ao limite termodinâmico.</p>
+
+  <div class="callout azul">
+    <strong>A conexão direta com o LCOE:</strong> Se o eletrolisador consome 50 kWh/kg H₂ e a eletricidade custa US$ 0,04/kWh (LCOE solar no Nordeste brasileiro), o custo elétrico é US$ 2,00/kg. Se a eletricidade custa US$ 0,08/kWh (Europa), o custo elétrico dobra para US$ 4,00/kg — antes mesmo de incluir CAPEX e OPEX. A física do LCOH está diretamente ancorada no LCOE da fonte renovável.
+  </div>
+
+  <h2>Os tipos de hidrogênio — o arco-íris do H₂</h2>
+
+  <p>O hidrogênio é classificado por "cores" informais que identificam a fonte e o processo de produção — e, consequentemente, o LCOH e as emissões de CO₂ associadas.</p>
+
+  <div class="h2-tipos">
+    <div class="h2-tipo cinza">
+      <h4>⬜ Cinza</h4>
+      <div class="preco">US$ 1,50–2,50/kg</div>
+      <p>Steam Methane Reforming (SMR) de gás natural. Processo dominante atual (~95% da produção mundial).</p>
+      <div class="co2">CO₂: 9–12 kg/kg H₂</div>
+    </div>
+    <div class="h2-tipo marrom">
+      <h4>🟫 Marrom</h4>
+      <div class="preco">US$ 1,00–2,00/kg</div>
+      <p>Gaseificação de carvão. Mais barato mas mais poluente. Dominante na China e Índia.</p>
+      <div class="co2">CO₂: 18–20 kg/kg H₂</div>
+    </div>
+    <div class="h2-tipo azul">
+      <h4>🔵 Azul</h4>
+      <div class="preco">US$ 2,00–3,50/kg</div>
+      <p>SMR + CCS (captura e armazenamento de CO₂). Transitório — depende do custo do CCS e do preço do gás.</p>
+      <div class="co2">CO₂: 1–4 kg/kg H₂</div>
+    </div>
+    <div class="h2-tipo turquesa">
+      <h4>🩵 Turquesa</h4>
+      <div class="preco">US$ 1,50–3,00/kg</div>
+      <p>Pirólise de metano: CH₄ → C + 2H₂. Produz carbono sólido em vez de CO₂. Tecnologia em escala piloto.</p>
+      <div class="co2">CO₂: ~0 (se renovável)</div>
+    </div>
+    <div class="h2-tipo roxo">
+      <h4>🟣 Rosa</h4>
+      <div class="preco">US$ 4,00–6,00/kg</div>
+      <p>Eletrólise com energia nuclear. Baixo carbono, disponibilidade contínua, mas custo alto e aceitação social difícil.</p>
+      <div class="co2">CO₂: ~3 kg/kg H₂</div>
+    </div>
+    <div class="h2-tipo verde">
+      <h4>🟢 Verde</h4>
+      <div class="preco">US$ 2,35–8,00/kg</div>
+      <p>Eletrólise com energia 100% renovável (solar, eólica, hidro). A aposta da transição energética. Emissões próximas de zero.</p>
+      <div class="co2">CO₂: &lt;1 kg/kg H₂</div>
+    </div>
+  </div>
+
+  <h2>Decomposição do LCOH verde — o que pesa mais</h2>
+
+  <!-- GRÁFICO 1: Decomposição do LCOH -->
+  <div class="chart-block">
+    <div class="chart-title">Decomposição do LCOH Verde por Componente (%) — 2024</div>
+    <div class="chart-sub">Participação de cada componente no custo total de US$ 4,00/kg · Fonte: IRENA / BloombergNEF 2024</div>
+    <div style="height:320px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O gráfico confirma o que a física indica: a eletricidade responde por 55–70% do LCOH verde. Isso torna o hidrogênio verde essencialmente um derivado do custo da energia renovável — e explica por que regiões com solar e eólica baratos têm vantagem estrutural tão grande na produção de H₂ verde.</p>
+
+  <div class="callout amber">
+    <strong>A regra prática:</strong> Para cada US$ 0,01/kWh de redução no LCOE da eletricidade, o LCOH verde cai aproximadamente US$ 0,50/kg (assumindo 50 kWh/kg de consumo do eletrolisador). Com solar chegando a US$ 0,02/kWh no Nordeste brasileiro em leilões recentes, o teto teórico do LCOH verde no Brasil pode chegar a US$ 1,50–2,00/kg até 2030 — perto da paridade com o cinza.
+  </div>
+
+  <h2>Comparação global: LCOH verde por região — 2024</h2>
+
+  <!-- GRÁFICO 2: LCOH por região -->
+  <div class="chart-block">
+    <div class="chart-title">LCOH Hidrogênio Verde por Região — 2024 (USD/kg)</div>
+    <div class="chart-sub">Médias regionais ponderadas · Fonte: IRENA LCOH Viewer / logicalcontent.io (2024)</div>
+    <div style="height:360px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Região / País</th>
+          <th class="c">LCOH Verde 2024</th>
+          <th class="c">Principal fonte</th>
+          <th class="c">Fator determinante</th>
+          <th class="c">Projeção 2030</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>MENA (Arábia, EAU)</strong></td><td class="c mono">US$ 1,50–3,00</td><td class="c">Solar</td><td class="c">Irradiação máxima + capital barato</td><td class="c mono">US$ 1,00–1,50</td></tr>
+        <tr><td><strong>Chile (Atacama)</strong></td><td class="c mono">US$ 2,00–3,50</td><td class="c">Solar + eólica</td><td class="c">Irradiação + vento patagônico</td><td class="c mono">US$ 1,50–2,00</td></tr>
+        <tr class="destaque"><td><strong>Brasil (Nordeste)</strong></td><td class="c mono">US$ 2,35–3,50</td><td class="c">Solar + eólica</td><td class="c">Eólica + solar com baixo LCOE</td><td class="c mono">US$ 1,50–2,50</td></tr>
+        <tr><td><strong>Austrália</strong></td><td class="c mono">US$ 2,00–3,50</td><td class="c">Solar</td><td class="c">Irradiação + escala</td><td class="c mono">US$ 1,50–2,50</td></tr>
+        <tr><td><strong>China</strong></td><td class="c mono">US$ 3,00–5,00</td><td class="c">Solar + eólica</td><td class="c">Eletrolisador barato (produção local)</td><td class="c mono">US$ 2,00–3,00</td></tr>
+        <tr><td><strong>EUA (média)</strong></td><td class="c mono">US$ 2,50–4,50</td><td class="c">Eólica + solar</td><td class="c">IRA ($3/kg crédito fiscal)</td><td class="c mono">US$ 1,50–3,00</td></tr>
+        <tr><td><strong>Europa (Alemanha)</strong></td><td class="c mono">US$ 3,00–4,50</td><td class="c">Eólica offshore</td><td class="c">Custo capital alto + LCOE elevado</td><td class="c mono">US$ 2,50–3,50</td></tr>
+        <tr><td><strong>Japão</strong></td><td class="c mono">US$ 7,00–11,00</td><td class="c">Import.</td><td class="c">Sem recursos renováveis suficientes</td><td class="c mono">US$ 3,50–5,00</td></tr>
+        <tr><td><strong>Global (média)</strong></td><td class="c mono">~US$ 4,00</td><td class="c">Misto</td><td class="c">Média ponderada global</td><td class="c mono">US$ 2,00–3,00</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Projeção histórica e futura do LCOH verde</h2>
+
+  <!-- GRÁFICO 3: Evolução LCOH verde -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução e Projeção do LCOH Verde Global (2015–2050)</div>
+    <div class="chart-sub">USD/kg H₂ · Cenários otimista e base · Fonte: IRENA (2022–2024) / BloombergNEF / DOE H2A</div>
+    <div style="height:320px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>A curva de aprendizado do hidrogênio verde é impulsionada por dois motores simultâneos: a queda do LCOE das renováveis (já bem avançada) e a queda do custo do eletrolisador (ainda no início da curva de aprendizado). O custo do eletrolisador caiu 60% desde 2010 — de ~US$ 1.000/kW para ~US$ 400/kW em 2024 — mas ainda está longe do nível necessário para tornar o H₂ verde universalmente competitivo.</p>
+
+  <div class="callout verde">
+    <strong>A meta do DOE — Hydrogen Shot:</strong> O Departamento de Energia dos EUA lançou em 2021 a meta "1-1-1": produzir 1 kg de hidrogênio limpo por US$ 1 em 1 década. Para atingir esse objetivo, o custo do eletrolisador precisa cair para ~US$ 200/kW (de ~US$ 400/kW hoje) e o LCOE das renováveis precisa chegar a US$ 0,02/kWh. Fisicamente possível — mas exigindo avanços tanto em escala de manufatura quanto em eficiência eletroquímica.
+  </div>
+
+  <h2>O caso do Brasil — o maior potencial do hemisfério sul</h2>
+
+  <p>O Brasil reúne uma combinação rara de fatores favoráveis para o hidrogênio verde: o Nordeste tem irradiação solar média de 5,5–6,5 kWh/m²/dia (entre as maiores do mundo) e fator de capacidade eólico de 45–60% — gerando eletricidade entre as mais baratas do planeta. Isso se traduz diretamente em um LCOH competitivo.</p>
+
+  <!-- GRÁFICO 4: LCOH Brasil por estado/região -->
+  <div class="chart-block">
+    <div class="chart-title">LCOH Mínimo por Região Brasileira — Solar vs Eólica (USD/kg)</div>
+    <div class="chart-sub">Valores mínimos alcançáveis com eletrolisador PEM otimizado · Fonte: ScienceDirect (2025) — Atlas Solar e Eólico do Brasil</div>
+    <div style="height:320px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O estudo publicado no ScienceDirect em 2025, utilizando dados do Atlas Solar e Eólico Brasileiro, confirma que o LCOH mínimo no Brasil é de US$ 2,35/kg com sistema solar no Nordeste — competitivo com os melhores valores globais. O sistema eólico chega a US$ 3,44/kg. A combinação solar+eólica (sistema híbrido) melhora o fator de capacidade do eletrolisador e reduz o LCOH para US$ 2,50–3,00/kg na melhor configuração.</p>
+
+  <div class="callout roxo">
+    <strong>Os hubs de exportação brasileiros:</strong> O Complexo do Pecém (CE) e o Porto de Suape (PE) são os projetos mais avançados para exportação de hidrogênio verde via amônia verde (NH₃). A amônia é o principal vetor de exportação proposto porque tem maior densidade energética volumétrica que o H₂ comprimido (11,5 MJ/L vs 4,7 MJ/L) e já possui infraestrutura global de transporte. O programa HBr (Hidrogênio Brasil) tem como meta atingir US$ 1,50/kg até 2030.
+  </div>
+
+  <!-- GRÁFICO 5: Sensibilidade ao LCOE -->
+  <div class="chart-block">
+    <div class="chart-title">Sensibilidade do LCOH Verde ao Custo da Eletricidade (USD/MWh)</div>
+    <div class="chart-sub">Para eletrolisador com eficiência de 50 kWh/kg H₂ e CAPEX de US$ 400/kW · Fonte: análise própria baseada em IRENA / DOE H2A</div>
+    <div style="height:300px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O gráfico mostra com clareza a linha de paridade com o hidrogênio cinza (US$ 2,00/kg): para atingi-la somente com redução do custo da eletricidade, é necessário chegar a ~US$ 20/MWh — valor que já é alcançado em alguns leilões de energia no Nordeste do Brasil. Combinado com a queda no CAPEX do eletrolisador, a paridade em projetos específicos é tecnicamente possível já na segunda metade desta década.
+
+  <h2>Comparação LCOH vs LCOE: as diferenças estruturais</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th class="c">LCOE (eletricidade)</th>
+          <th class="c">LCOH (hidrogênio)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Unidade</td><td class="c">USD/MWh ou USD/kWh</td><td class="c">USD/kg H₂</td></tr>
+        <tr><td>Principal componente de custo</td><td class="c">CAPEX da usina</td><td class="c">Custo da eletricidade (50–70%)</td></tr>
+        <tr><td>Impacto da taxa de desconto</td><td class="c">Alto (CAPEX intensivo)</td><td class="c">Moderado (depende da tecnologia)</td></tr>
+        <tr><td>Sensibilidade ao recurso local</td><td class="c">Irradiação/vento</td><td class="c">Irradiação + eficiência do eletrolisador</td></tr>
+        <tr><td>Maturidade tecnológica</td><td class="c">Alta (solar, eólica)</td><td class="c">Média (eletrolisador em escala)</td></tr>
+        <tr><td>Tendência de custo (2010–2024)</td><td class="c">Solar −90%, eólica −69%</td><td class="c">Eletrolisador −60%</td></tr>
+        <tr><td>Inclui armazenamento?</td><td class="c">Não (apenas geração)</td><td class="c">Sim (compressão e armazenagem incluídos)</td></tr>
+        <tr><td>Inclui transporte?</td><td class="c">Não</td><td class="c">Geralmente não (dutos/navios separados)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="conclusao">
+    <h2>O que o LCOH nos revela sobre a economia do H₂ verde</h2>
+    <ul>
+      <li><strong>A eletricidade é o destino.</strong> Com 50–70% do LCOH sendo custo elétrico, produzir hidrogênio verde competitivo exige eletricidade próxima de US$ 20–30/MWh. Isso já ocorre em projetos específicos no Nordeste brasileiro, no Chile e no Oriente Médio — mas ainda é exceção, não regra global.</li>
+      <li><strong>O eletrolisador ainda precisa cair mais.</strong> Custo atual de ~US$ 400/kW precisa chegar a ~US$ 150–200/kW para que o H₂ verde seja universalmente competitivo. A curva de aprendizado indica que isso ocorrerá entre 2030 e 2035 se os investimentos em capacidade de manufatura continuarem.</li>
+      <li><strong>O Brasil tem posição de destaque real.</strong> LCOH de US$ 2,35/kg solar e US$ 3,44/kg eólico coloca o Nordeste entre os melhores locais do mundo. Com o programa HBr e os hubs de Pecém e Suape, o Brasil pode tornar-se um exportador relevante de amônia verde na segunda metade da década.</li>
+      <li><strong>O custo do capital é uma barreira para países emergentes.</strong> Mesmo com recursos renováveis excelentes, países que pagam 12–15% ao ano pelo capital produzem H₂ verde mais caro que países ricos com recursos piores mas capital a 4–5%. Financiamento climático internacional é parte da solução — não é caridade, é física financeira.</li>
+      <li><strong>A paridade com o cinza está no horizonte.</strong> Em 2024, o verde custa 2–4 vezes mais que o cinza. Com a trajetória atual, projetos nas melhores localizações atingirão paridade entre 2028 e 2032 — sem subsídios. Com subsídios (como o crédito de US$ 3/kg do IRA americano), a paridade já é alcançável hoje em alguns contextos.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>IRENA</strong> — Global Hydrogen Trade to Meet the 1.5°C Climate Goal (Part III): Green Hydrogen Supply Cost (2022). <a href="https://lcoh.irena.org" target="_blank">lcoh.irena.org</a></li>
+      <li><strong>IEA</strong> — Levelised Cost of Hydrogen Maps. Data Tools. <a href="https://www.iea.org/data-and-statistics/data-tools/levelised-cost-of-hydrogen-maps" target="_blank">iea.org</a></li>
+      <li><strong>US DOE</strong> — Clean Hydrogen Production Cost: PEM Electrolyzer. Program Record #24005 (2024). <a href="https://www.hydrogen.energy.gov" target="_blank">hydrogen.energy.gov</a></li>
+      <li><strong>BloombergNEF</strong> — Hydrogen Market Outlook 2024. Electrolyzer cost projections.</li>
+      <li><strong>ScienceDirect</strong> — "Wind and solar-based green hydrogen potential in Brazil: Production, costs, and CO₂ mitigations." International Journal of Hydrogen Energy (2025). <a href="https://www.sciencedirect.com" target="_blank">sciencedirect.com</a></li>
+      <li><strong>EPE</strong> — Empresa de Pesquisa Energética. Programa Brasileiro de Hidrogênio (HBr). <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+      <li><strong>IPCC</strong> — AR6 WG III, Chapter 6: Energy Systems. Hydrogen cost projections. <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch/ar6</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+
+// C1 — Decomposição LCOH verde
+new Chart(document.getElementById('c1'),{
+  type:'doughnut',
+  data:{
+    labels:['Eletricidade (LCOE)','CAPEX eletrolisador','OPEX & manutenção','Água e processos','Custo de capital'],
+    datasets:[{
+      data:[60,20,10,4,6],
+      backgroundColor:['#f59e0b','#3b82f6','#7c3aed','#16a34a','#64748b'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed}%`}}
+    }
+  }
+});
+
+// C2 — LCOH por região
+new Chart(document.getElementById('c2'),{
+  type:'bar',
+  data:{
+    labels:['MENA','Chile','Brasil\n(Nordeste)','Austrália','EUA\n(+IRA)','China','Alemanha','Europa\n(média)','Global\n(média)','Japão'],
+    datasets:[
+      {label:'LCOH mínimo (USD/kg)',data:[1.5,2.0,2.35,2.0,2.5,3.0,3.0,3.5,3.5,7.0],
+       backgroundColor:'rgba(22,163,74,0.7)',borderRadius:4},
+      {label:'LCOH máximo (USD/kg)',data:[3.0,3.5,3.5,3.5,4.5,5.0,4.5,5.5,5.0,11.0],
+       backgroundColor:'rgba(22,163,74,0.25)',borderRadius:4},
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v},grid:{color:gc},
+         title:{display:true,text:'USD/kg H₂',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C3 — Evolução LCOH verde 2015-2050
+const anosL=[2015,2018,2020,2022,2024,2026,2028,2030,2035,2040,2050];
+const lcohBase=[12,8,6,5.5,4.0,null,null,null,null,null,null];
+const lcohProjBase=[null,null,null,null,4.0,3.2,2.6,2.2,1.8,1.5,1.2];
+const lcohProjOtim=[null,null,null,null,4.0,2.8,2.0,1.5,1.2,1.0,0.8];
+const cinzaLine=Array(anosL.length).fill(2.0);
+
+new Chart(document.getElementById('c3'),{
+  type:'line',
+  data:{labels:anosL.map(String),datasets:[
+    {label:'LCOH verde — histórico',data:lcohBase,borderColor:'#16a34a',
+     backgroundColor:'rgba(22,163,74,.1)',fill:true,tension:.4,pointRadius:4,borderWidth:2.5},
+    {label:'Projeção — cenário base',data:lcohProjBase,borderColor:'#16a34a',
+     borderDash:[5,4],tension:.4,pointRadius:3,borderWidth:2},
+    {label:'Projeção — cenário otimista',data:lcohProjOtim,borderColor:'#06b6d4',
+     borderDash:[3,3],tension:.4,pointRadius:3,borderWidth:2},
+    {label:'LCOH cinza atual (~US$ 2,00/kg)',data:cinzaLine,borderColor:'#dc2626',
+     borderDash:[2,2],pointRadius:0,borderWidth:1.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v+'/kg'},grid:{color:gc},min:0,max:14}
+    }
+  }
+});
+
+// C4 — LCOH por região brasileira
+new Chart(document.getElementById('c4'),{
+  type:'bar',
+  data:{
+    labels:['Nordeste\n(solar)','Nordeste\n(eólica)','Nordeste\n(híbrido)','Centro-Oeste\n(solar)','Sudeste\n(solar)','Sul\n(eólica)','Norte\n(solar)'],
+    datasets:[
+      {label:'LCOH mínimo (USD/kg)',
+       data:[2.35,3.44,2.60,3.10,3.40,3.80,3.20],
+       backgroundColor:['#16a34a','#22c55e','#4ade80','#84cc16','#a3a3a3','#64748b','#94a3b8'],
+       borderRadius:4}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      annotation:{annotations:{
+        linha:{type:'line',yMin:2.0,yMax:2.0,borderColor:'#dc2626',borderDash:[3,3],borderWidth:1.5,
+               label:{content:'LCOH cinza: $2,00/kg',enabled:true,position:'start',font:{size:10}}}
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v+'/kg'},grid:{color:gc},min:0,max:5}
+    }
+  }
+});
+
+// C5 — Sensibilidade ao LCOE
+const lcoe=[10,15,20,25,30,40,50,60,80,100];
+const lcohSens=lcoe.map(e=>{
+  const eletricidade=e/1000*50;// USD/kg
+  const capex=0.80; const opex=0.35; const agua=0.15;
+  return+(eletricidade+capex+opex+agua).toFixed(2);
+});
+
+new Chart(document.getElementById('c5'),{
+  type:'line',
+  data:{labels:lcoe.map(v=>v+' $/MWh'),datasets:[
+    {label:'LCOH Verde (USD/kg)',data:lcohSens,borderColor:'#16a34a',
+     backgroundColor:'rgba(22,163,74,.12)',fill:true,tension:.3,pointRadius:4,
+     pointBackgroundColor:'#16a34a',borderWidth:2.5},
+    {label:'Paridade com H₂ cinza (US$ 2,00/kg)',data:Array(lcoe.length).fill(2.0),
+     borderColor:'#dc2626',borderDash:[4,3],pointRadius:0,borderWidth:1.5},
+    {label:'H₂ azul (US$ 2,80/kg)',data:Array(lcoe.length).fill(2.80),
+     borderColor:'#3b82f6',borderDash:[4,3],pointRadius:0,borderWidth:1.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10.5},color:tc},grid:{display:false},
+         title:{display:true,text:'Custo da eletricidade (USD/MWh)',color:tc,font:{size:10}}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v+'/kg'},grid:{color:gc},min:0,max:7}
+    }
+  }
+});
+</script>
+</body>
+</html>

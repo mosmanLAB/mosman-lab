@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gás Natural no Brasil e no Mundo: Combustível da Transição ou Armadilha Climática? | MosmanLAB</title>
+<meta name="description" content="O gás natural emite 35% menos CO₂ que o carvão — mas em 2024 foi o maior contribuinte ao crescimento das emissões globais. Análise completa do papel do gás na transição energética, dados do Brasil e do mundo."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/gas-natural-brasil-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0a1628,#1a280a,#280a0a);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#fca5a5;border:1px solid rgba(252,165,165,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.verm{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout strong{font-weight:700}
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr.destaque td{background:#f0fdf4 !important;font-weight:600;color:#15803d}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+
+/* VEREDICTO */
+.veredicto{background:linear-gradient(135deg,#1a1a0f,#1a0f0f);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.veredicto h2{font-family:'Lora',serif;font-size:1.5rem;color:#fbbf24;margin-bottom:8px}
+.veredicto .subtitulo{font-size:.9rem;color:#94a3b8;margin-bottom:24px}
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.v-item{border-radius:8px;padding:16px}
+.v-sim{background:rgba(22,163,74,.15);border:1px solid rgba(22,163,74,.3)}
+.v-nao{background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.3)}
+.v-item h4{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.v-sim h4{color:#4ade80}.v-nao h4{color:#f87171}
+.v-item ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px}
+.v-item li{font-size:.82rem;color:#cbd5e1;padding-left:16px;position:relative;line-height:1.5}
+.v-item li::before{position:absolute;left:0;font-weight:700}
+.v-sim li::before{content:'✓';color:#4ade80}
+.v-nao li::before{content:'✗';color:#f87171}
+
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#1a0f0f);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#fbbf24;font-weight:700}
+.conclusao li strong{color:#fff}
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.v-grid{grid-template-columns:1fr}.conclusao{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia · Clima · Geopolítica</div>
+  <h1>Gás Natural no Brasil e no Mundo: Combustível da Transição ou Armadilha Climática?</h1>
+  <p class="hero-lead">O gás emite 35% menos CO₂ que o carvão ao ser queimado. Mas em 2024 foi o maior contribuinte ao crescimento das emissões globais. A questão não é simples — e os dados revelam uma contradição que o mundo ainda não resolveu.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 13 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Poucos temas dividem tanto o debate sobre energia e clima quanto o gás natural. De um lado, é o combustível fóssil mais limpo — emite 35% menos CO₂ que o carvão e mais de 95% quando combustíveis fósseis são queimados. Do outro, em 2024 bateu recorde histórico de consumo e foi responsável pelo maior crescimento absoluto das emissões de CO₂ no planeta. É o combustível da transição — ou uma armadilha que pode emperrar a descarbonização por décadas?</p>
+
+  <p>Este artigo reúne dados reais do Brasil e do mundo para examinar essa contradição com rigor: produção, consumo, emissões de metano, papel na geração elétrica e o que o futuro reserva para o "hidrocarboneto mais limpo".</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num" style="color:#f97316">115 bcm</div>
+      <div class="stat-label">crescimento da demanda global de gás em 2024 — novo recorde histórico</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#dc2626">+180 Mt</div>
+      <div class="stat-label">crescimento das emissões de CO₂ do gás em 2024 — maior contribuinte global</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#0891b2">153 Mm³/d</div>
+      <div class="stat-label">produção brasileira de gás natural em 2024 — 78% do pré-sal</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#7c3aed">33 bcm</div>
+      <div class="stat-label">demanda de gás no Brasil em 2024 — alta de 6%</div>
+    </div>
+  </div>
+
+  <h2>O gás natural — a física e a química básica</h2>
+
+  <p>O gás natural é composto majoritariamente de metano (CH₄) — tipicamente 70–90% — com frações de etano, propano, butano e gases inertes como CO₂ e N₂. Quando queimado em turbinas ou caldeiras, a reação de combustão é:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.92rem;background:#f8fafc;padding:12px 18px;border-radius:8px;border-left:3px solid #f97316;color:#92400e">
+    CH₄ + 2O₂ → CO₂ + 2H₂O &nbsp;·&nbsp; ΔH = −890 kJ/mol
+  </p>
+
+  <p>A combustão do gás libera apenas 1 mol de CO₂ por mol de metano, enquanto o carvão (representado como carbono puro) libera 1 mol de CO₂ por mol de C — mas com muito menos energia por mol. Considerando o poder calorífico, o gás emite aproximadamente <strong>490 gCO₂/kWh</strong> na geração elétrica, contra <strong>820–1.050 gCO₂/kWh</strong> do carvão. Essa vantagem de 40–50% na geração elétrica é o argumento central dos que defendem o gás como combustível de transição.</p>
+
+  <div class="callout azul">
+    <strong>A física favorece o gás sobre o carvão:</strong> Além de emitir menos CO₂ por kWh, as turbinas a gás de ciclo combinado (CCGT) têm eficiência termodinâmica de 55–62%, contra 38–42% das termelétricas a carvão. O produto dessas duas vantagens resulta em emissões por unidade de energia elétrica gerada 40–50% menores. É uma vantagem física real — não apenas retórica.
+  </div>
+
+  <h2>Demanda global: um recorde que complica o clima</h2>
+
+  <p>Em 2024, a demanda global de gás natural cresceu 2,7% — acima da média histórica de 2% ao ano entre 2010 e 2019. A demanda total atingiu um novo recorde histórico, com mais de três quartos do crescimento vindo de economias emergentes.</p>
+
+  <!-- GRÁFICO 1: Demanda global de gás -->
+  <div class="chart-block">
+    <div class="chart-title">Demanda Global de Gás Natural por Região (2015–2024)</div>
+    <div class="chart-sub">Bilhões de metros cúbicos (bcm) · Fonte: IEA Global Energy Review 2025</div>
+    <div style="height:320px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O crescimento em 2024 foi liderado por China (+6%), Índia (+6%), Oriente Médio (+2%) e América do Norte (+1,8%). A Europa cresceu apenas 1% após dois anos de cortes severos causados pela crise energética pós-invasão da Ucrânia. Na América Latina, o Brasil e a Colômbia foram os maiores contribuintes ao crescimento.</p>
+
+  <div class="callout verm">
+    <strong>O paradoxo de 2024:</strong> As emissões de CO₂ provenientes do gás cresceram 2,5% — 180 Mt de CO₂ a mais — tornando o gás o maior contribuinte ao crescimento das emissões globais, à frente do carvão (+135 Mt). É o resultado direto da combinação de economia forte, calor extremo e infraestrutura de gás em rápida expansão na Ásia.
+  </div>
+
+  <h2>O problema do metano — a bomba relógio invisível</h2>
+
+  <p>A vantagem do gás sobre o carvão em CO₂ tem um asterisco enorme: as emissões de metano (CH₄) ao longo da cadeia produtiva. O metano tem potencial de aquecimento global (GWP) de 30 vezes o CO₂ em 100 anos — e de 82–87 vezes em 20 anos. Quando há vazamentos significativos na extração, transporte e distribuição, a vantagem climática do gás se evapora.</p>
+
+  <!-- GRÁFICO 2: Metano vs CO2 no ciclo de vida -->
+  <div class="chart-block">
+    <div class="chart-title">Emissões de Ciclo de Vida — Gás vs Carvão (gCO₂eq/kWh elétrico)</div>
+    <div class="chart-sub">Incluindo metano da cadeia produtiva em GWP100 e GWP20 · Fonte: IEA Global Methane Tracker 2025 / IPCC AR6</div>
+    <div style="height:320px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O gráfico revela o nó climático do gás. Com taxa de vazamento de metano de 1% ou menos, o gás é claramente mais limpo que o carvão em qualquer prazo. Mas com taxas de vazamento acima de 3% (GWP20), a vantagem desaparece. Em 2024, a taxa média global de vazamento da cadeia de óleo e gás foi de ~1% — dentro do limite "seguro". Mas com variância enorme: Noruega e Países Baixos têm taxas próximas de 0,05%; alguns produtores do Oriente Médio e da Rússia excedem 2–3%.</p>
+
+  <div class="callout amber">
+    <strong>O GWP20 muda tudo:</strong> No horizonte de 20 anos — mais relevante para metas climáticas de 2030 e 2035 — 1 tonelada de metano equivale a 82–87 toneladas de CO₂. A IEA estima que em 2024 o setor de óleo e gás emitiu 80 Mt de metano. No GWP20, isso equivale a mais de 6 bilhões de toneladas de CO₂ — comparável ao total de emissões energéticas dos EUA em um ano.
+  </div>
+
+  <h2>Gás natural no Brasil: do pré-sal à geração elétrica</h2>
+
+  <p>O Brasil produziu em média 153 milhões de m³/dia de gás natural em 2024 — crescimento de 2% em relação a 2023. A característica distintiva da produção brasileira é que 78% vem de campos do pré-sal, associado ao petróleo. Isso significa que o gás é em grande parte um <em>subproduto</em> da extração de petróleo — não o objetivo primário dos poços.</p>
+
+  <!-- GRÁFICO 3: Produção e consumo Brasil -->
+  <div class="chart-block">
+    <div class="chart-title">Produção e Consumo de Gás Natural no Brasil (2015–2024)</div>
+    <div class="chart-sub">Milhões de m³/dia · Fonte: ANP / Enerdata 2024</div>
+    <div style="height:300px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <h3>O gás no sistema elétrico brasileiro — o papel de reserva</h3>
+  <p>No Brasil, o gás natural desempenha um papel singular e diferente de qualquer outro grande país: ele funciona principalmente como <strong>reserva de capacidade</strong> para os anos de seca severa que afetam o sistema hidrelétrico. Em anos hidrológicos normais, as termelétricas a gás operam com baixo fator de capacidade. Em anos secos — como 2021 — a geração a gás dispara.</p>
+
+  <p>Em 2024, a demanda brasileira de gás cresceu 6%, chegando a 33 bcm — após dois anos de forte queda. O crescimento foi impulsionado tanto pela geração elétrica quanto pelo setor industrial, favorecido por preços de gás mais baixos no mercado internacional.</p>
+
+  <!-- GRÁFICO 4: Uso do gás por setor Brasil -->
+  <div class="chart-block">
+    <div class="chart-title">Consumo de Gás Natural por Setor no Brasil — 2024 (%)</div>
+    <div class="chart-sub">Fonte: EPE / Enerdata 2024</div>
+    <div style="height:280px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <div class="callout verde">
+    <strong>A vantagem estrutural brasileira:</strong> O pré-sal brasileiro tem intensidade de carbono 40% menor que a média mundial por barril produzido (Petrobras). A Petrobras reinjeta CO₂ nos reservatórios para aumentar a produção — a maior operação de CCUS (Captura, Utilização e Armazenamento de Carbono) em águas profundas do mundo: 53,8 Mt de CO₂ reinjeitados entre 2015 e 2023. Isso coloca o gás brasileiro entre os mais limpos do mundo em termos de emissões de ciclo de vida.
+  </div>
+
+  <h2>Os maiores produtores e consumidores mundiais</h2>
+
+  <!-- TABELA: Top produtores/consumidores -->
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th class="c">Produção 2024 (bcm)</th>
+          <th class="c">Consumo 2024 (bcm)</th>
+          <th class="c">Saldo</th>
+          <th class="c">% da matriz elétrica</th>
+          <th class="c">Tendência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>EUA</strong></td><td class="c mono">~1.060</td><td class="c mono">~970</td><td class="c" style="color:#16a34a">Exportador</td><td class="c">43%</td><td class="c">↗ Crescendo</td></tr>
+        <tr><td><strong>Rússia</strong></td><td class="c mono">~640</td><td class="c mono">~430</td><td class="c" style="color:#16a34a">Exportador</td><td class="c">50%</td><td class="c">↘ Crise</td></tr>
+        <tr><td><strong>Irã</strong></td><td class="c mono">~270</td><td class="c mono">~245</td><td class="c">Doméstico</td><td class="c">65%</td><td class="c">→ Estável</td></tr>
+        <tr><td><strong>China</strong></td><td class="c mono">~240</td><td class="c mono">~410</td><td class="c" style="color:#dc2626">Importador</td><td class="c">13%</td><td class="c">↗ Forte</td></tr>
+        <tr><td><strong>Qatar</strong></td><td class="c mono">~180</td><td class="c mono">~44</td><td class="c" style="color:#16a34a">GNL global</td><td class="c">70%</td><td class="c">↗ Expansão</td></tr>
+        <tr><td><strong>Austrália</strong></td><td class="c mono">~145</td><td class="c mono">~40</td><td class="c" style="color:#16a34a">GNL Ásia</td><td class="c">22%</td><td class="c">↗ Crescendo</td></tr>
+        <tr><td><strong>Índia</strong></td><td class="c mono">~35</td><td class="c mono">~75</td><td class="c" style="color:#dc2626">Importador</td><td class="c">6%</td><td class="c">↗ Forte</td></tr>
+        <tr class="destaque"><td><strong>Brasil</strong></td><td class="c mono">~56</td><td class="c mono">~33</td><td class="c" style="color:#16a34a">Exportador pot.</td><td class="c">~15%</td><td class="c">↗ Crescendo</td></tr>
+        <tr><td><strong>UE (total)</strong></td><td class="c mono">~50</td><td class="c mono">~360</td><td class="c" style="color:#dc2626">Importador</td><td class="c">18%</td><td class="c">↘ Caindo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.75rem;color:#94a3b8;margin-top:-16px">Fonte: IEA Global Energy Review 2025 / Enerdata / ANP. Valores em bcm (bilhões de metros cúbicos) por ano.</p>
+
+  <h2>O GNL e a nova geopolítica do gás</h2>
+
+  <p>A invasão da Ucrânia pela Rússia em 2022 mudou estruturalmente o mercado global de gás. A Europa, que importava ~40% do seu gás da Rússia via gasodutos, foi forçada a diversificar rapidamente — e encontrou no GNL (Gás Natural Liquefeito) a solução de curto prazo. Em 2024, a Europa importou volumes recordes de GNL americano e qatari.</p>
+
+  <!-- GRÁFICO 5: LNG market evolution -->
+  <div class="chart-block">
+    <div class="chart-title">Comércio Global de GNL por Região de Origem (2015–2024)</div>
+    <div class="chart-sub">bcm equivalentes · Fonte: IEA / Energy Institute 2024</div>
+    <div style="height:320px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O comércio de GNL cresceu de ~330 bcm em 2015 para mais de 550 bcm em 2024 — um aumento de 67% em uma década. Os EUA tornaram-se o maior exportador global de GNL a partir de 2023, superando Qatar e Austrália. Para o Brasil, a expansão do mercado de GNL é uma oportunidade: a produção do pré-sal gera gás associado em volumes crescentes, e a infraestrutura de terminais de GNL está em expansão.</p>
+
+  <h2>O gás é o combustível da transição? — O veredicto dos dados</h2>
+
+  <p>A questão central do debate. Não há resposta binária — os dados mostram que o papel do gás na transição depende fundamentalmente de quem pergunta, em qual setor, em qual país e em qual horizonte de tempo.</p>
+
+  <div class="veredicto">
+    <h2>Veredicto: o gás na transição energética</h2>
+    <div class="subtitulo">Análise baseada em dados reais da IEA, IPCC AR6 e Energy Institute 2024</div>
+    <div class="v-grid">
+      <div class="v-item v-sim">
+        <h4>✓ Argumentos a favor</h4>
+        <ul>
+          <li>Emite 35–50% menos CO₂ que o carvão na geração elétrica</li>
+          <li>Turbinas CCGT têm eficiência termodinâmica de 55–62%</li>
+          <li>Dispatchável — complementa a intermitência de solar e eólica</li>
+          <li>Infraestrutura já instalada: gasodutos, usinas, mercado maduro</li>
+          <li>Facilita substituição urgente do carvão em países como Índia e China</li>
+          <li>Pode ser substituído progressivamente por biogás ou hidrogênio verde na mesma infra</li>
+          <li>Útil para setor industrial de alta temperatura, difícil de eletrificar</li>
+        </ul>
+      </div>
+      <div class="v-item v-nao">
+        <h4>✗ Argumentos contra</h4>
+        <ul>
+          <li>Em 2024 foi o maior contribuinte ao crescimento das emissões globais (+180 Mt CO₂)</li>
+          <li>Metano (CH₄) tem GWP20 = 82–87 — vazamentos corroem totalmente a vantagem</li>
+          <li>Infraestrutura de longa vida útil cria "lock-in" — plantas duram 30–40 anos</li>
+          <li>Demanda recorde impossibilita redução das emissões no ritmo necessário para 1,5°C</li>
+          <li>Em países com boa matriz renovável (Brasil), o gás pode ser dispensável</li>
+          <li>Preço volátil: crise europeia de 2022 mostrou a dependência geopolítica</li>
+          <li>Financiamento de nova infraestrutura de gás contradiz metas climáticas do IEA NZE</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>A posição da IEA: sem novo desenvolvimento de campos</h3>
+  <p>No cenário Net Zero Emissions by 2050 (NZE) da IEA, não há necessidade de desenvolvimento de novos campos de gás natural além dos já aprovados. O gás existente é suficiente para a transição — mas seu consumo precisa cair 25% até 2030 em relação aos níveis de 2022. A trajetória atual de crescimento contradiz diretamente esse cenário.</p>
+
+  <h3>Para o Brasil: uma situação particular</h3>
+  <p>O Brasil está numa posição singular: sua matriz elétrica já tem 88% de renováveis, então o gás tem papel muito menor na geração elétrica do que na maioria dos países. O gás brasileiro vem principalmente do pré-sal como subproduto do petróleo — e a alternativa ao seu aproveitamento seria queimá-lo em flaring, o que seria muito pior climaticamente. Nesse contexto específico, aproveitar o gás associado faz sentido ambiental.</p>
+
+  <!-- GRÁFICO 6: Projeções de gás -->
+  <div class="chart-block">
+    <div class="chart-title">Projeções de Demanda Global de Gás por Cenário (2024–2050)</div>
+    <div class="chart-sub">bcm/ano · Fonte: IEA World Energy Outlook 2024</div>
+    <div style="height:300px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>O gráfico mostra a bifurcação: no cenário de políticas atuais (STEPS), a demanda de gás continua crescendo até o final dos anos 2030. No cenário Net Zero, ela cai ~25% até 2030 e 60% até 2050. A diferença entre os dois caminhos é exatamente o que está em jogo no debate sobre o gás como combustível de transição.</p>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    <h2>O que os dados nos dizem sobre o futuro do gás</h2>
+    <ul>
+      <li><strong>O gás pode ser um combustível de transição — mas tem prazo de validade.</strong> Substituir carvão por gás é uma melhoria real de curto prazo. Mas continuar construindo infraestrutura de gás para 30–40 anos é inconsistente com as metas climáticas de 2050. A janela de transição é real, mas estreita — e está se fechando.</li>
+      <li><strong>O metano é o calcanhar de Aquiles.</strong> A vantagem climática do gás sobre o carvão existe — mas depende criticamente do controle de vazamentos. Com taxas de vazamento acima de 2–3% e horizonte de 20 anos, o gás pode ser tão prejudicial quanto o carvão. O monitoramento e a regulação de metano são não-negociáveis.</li>
+      <li><strong>Para o Brasil, o papel do gás é diferente do mundo.</strong> Com 88% de renováveis na matriz elétrica, o Brasil não precisa do gás para descarbonizar a geração — ele já está descarbonizado. O gás brasileiro serve principalmente como backup para anos secos e como insumo industrial. Aproveitar o gás associado do pré-sal (em vez de queimá-lo) faz sentido ambiental e econômico.</li>
+      <li><strong>A geopolítica do GNL criou uma nova realidade.</strong> A crise energética europeia de 2022 mostrou o risco da dependência de gás russo — e acelerou tanto o GNL americano quanto as renováveis europeias. O paradoxo: a crise foi ao mesmo tempo um argumento para mais gás (segurança energética) e para menos gás (independência energética via renováveis).</li>
+      <li><strong>O caminho mais curto para o zero é não passar pelo gás.</strong> Para países com recursos renováveis abundantes — como o Brasil — o atalho mais rápido para a descarbonização é ir diretamente das renováveis existentes para mais renováveis, sem construir nova infraestrutura de gás que depois precisará ser abandonada antecipadamente.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>IEA</strong> — Global Energy Review 2025: Natural Gas. <a href="https://www.iea.org/reports/global-energy-review-2025/natural-gas" target="_blank">iea.org</a></li>
+      <li><strong>IEA</strong> — Global Methane Tracker 2025. Key findings and emissions data. <a href="https://www.iea.org/reports/global-methane-tracker-2025" target="_blank">iea.org</a></li>
+      <li><strong>IEA</strong> — CO₂ Emissions — Global Energy Review 2025. <a href="https://www.iea.org/reports/global-energy-review-2025/co2-emissions" target="_blank">iea.org</a></li>
+      <li><strong>ANP</strong> — Agência Nacional do Petróleo, Gás Natural e Biocombustíveis. Produção de petróleo e gás 2024. <a href="https://www.anp.gov.br" target="_blank">anp.gov.br</a></li>
+      <li><strong>Enerdata</strong> — Brazil Energy Information 2024. Gas demand and production data. <a href="https://www.enerdata.net/estore/energy-market/brazil/" target="_blank">enerdata.net</a></li>
+      <li><strong>Petrobras</strong> — Strategic Plan 2025–2029 and Carbon Intensity Report. <a href="https://www.petrobras.com.br" target="_blank">petrobras.com.br</a></li>
+      <li><strong>US Trade.gov</strong> — Brazil: Oil and Gas Country Commercial Guide (2024). <a href="https://www.trade.gov/country-commercial-guides/brazil-oil-and-gas" target="_blank">trade.gov</a></li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy 2024. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>IPCC</strong> — AR6, WG III. Lifecycle GHG emissions of natural gas vs coal. <a href="https://www.ipcc.ch/ar6" target="_blank">ipcc.ch/ar6</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+const anos=[2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+
+// C1 — Demanda global por região
+new Chart(document.getElementById('c1'),{
+  type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'América do Norte',data:[920,940,950,980,1010,960,1000,1030,1040,1060],borderColor:'#3b82f6',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Ásia-Pacífico',data:[600,630,660,700,740,730,780,820,870,930],borderColor:'#f59e0b',tension:.35,pointRadius:0,borderWidth:2.5},
+    {label:'Europa',data:[520,520,540,560,570,480,530,430,410,415],borderColor:'#7c3aed',tension:.35,pointRadius:0,borderWidth:2,borderDash:[5,3]},
+    {label:'Oriente Médio',data:[480,490,500,510,520,520,530,540,560,570],borderColor:'#dc2626',tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Rússia / Eurasia',data:[540,530,540,545,550,530,545,450,440,450],borderColor:'#64748b',tension:.35,pointRadius:0,borderWidth:2,borderDash:[3,3]},
+    {label:'Resto do mundo',data:[280,290,310,320,340,330,355,375,390,405],borderColor:'#16a34a',tension:.35,pointRadius:0,borderWidth:2},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' bcm'},grid:{color:gc},
+         title:{display:true,text:'bcm',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C2 — Ciclo de vida gás vs carvão
+new Chart(document.getElementById('c2'),{
+  type:'bar',
+  data:{
+    labels:['Carvão\n(referência)','Gás — vazamento\n0,5% (GWP100)','Gás — vazamento\n1% (GWP100)','Gás — vazamento\n1% (GWP20)','Gás — vazamento\n3% (GWP20)'],
+    datasets:[{
+      label:'gCO₂eq/kWh elétrico',
+      data:[820,430,490,620,820],
+      backgroundColor:['#374151','#16a34a','#22c55e','#f59e0b','#dc2626'],
+      borderRadius:4
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.parsed.y} gCO₂eq/kWh`}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' g'},grid:{color:gc},
+         title:{display:true,text:'gCO₂eq/kWh elétrico',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C3 — Brasil produção e consumo
+new Chart(document.getElementById('c3'),{
+  type:'line',
+  data:{labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+    datasets:[
+      {label:'Produção bruta (Mm³/d)',data:[108,115,120,125,135,135,145,150,150,153],
+       borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.35,pointRadius:3,borderWidth:2.5},
+      {label:'Consumo interno (Mm³/d)',data:[72,68,70,75,78,70,78,68,62,66],
+       borderColor:'#f59e0b',tension:.35,pointRadius:3,borderWidth:2.5,borderDash:[5,3]},
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' Mm³/d'},grid:{color:gc}}
+    }
+  }
+});
+
+// C4 — Setores no Brasil
+new Chart(document.getElementById('c4'),{
+  type:'doughnut',
+  data:{
+    labels:['Geração Elétrica','Indústria','Refino / Petroquímica','Transporte (GNV)','Outros'],
+    datasets:[{
+      data:[38,32,18,8,4],
+      backgroundColor:['#f59e0b','#3b82f6','#7c3aed','#16a34a','#94a3b8'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:14}}}
+  }
+});
+
+// C5 — GNL global
+new Chart(document.getElementById('c5'),{
+  type:'bar',
+  data:{labels:['2015','2017','2019','2021','2022','2023','2024'],
+    datasets:[
+      {label:'EUA',data:[10,45,90,115,120,145,170],backgroundColor:'rgba(59,130,246,0.8)',borderRadius:3},
+      {label:'Qatar',data:[105,110,115,120,125,130,140],backgroundColor:'rgba(245,158,11,0.8)',borderRadius:3},
+      {label:'Austrália',data:[70,85,100,110,112,118,125],backgroundColor:'rgba(22,163,74,0.7)',borderRadius:3},
+      {label:'Outros',data:[145,150,155,155,160,170,180],backgroundColor:'rgba(100,116,139,0.6)',borderRadius:3},
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false},stacked:true},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' bcm'},grid:{color:gc},stacked:true,
+         title:{display:true,text:'bcm equivalentes',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C6 — Projeções gás 2024-2050
+const anosPr=['2024','2026','2028','2030','2035','2040','2045','2050'];
+new Chart(document.getElementById('c6'),{
+  type:'line',
+  data:{labels:anosPr,datasets:[
+    {label:'Políticas atuais (STEPS)',data:[4300,4400,4480,4550,4700,4750,4700,4600],
+     borderColor:'#dc2626',tension:.4,pointRadius:3,borderWidth:2.5},
+    {label:'Políticas anunciadas (APS)',data:[4300,4280,4200,4100,3800,3500,3200,2900],
+     borderColor:'#f59e0b',tension:.4,pointRadius:3,borderWidth:2.5,borderDash:[5,3]},
+    {label:'Net Zero (NZE)',data:[4300,4100,3700,3200,2400,1800,1400,1200],
+     borderColor:'#16a34a',tension:.4,pointRadius:3,borderWidth:2.5,borderDash:[3,3]},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' bcm'},grid:{color:gc},
+         title:{display:true,text:'Demanda global (bcm/ano)',color:tc,font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
