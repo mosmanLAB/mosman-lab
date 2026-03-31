@@ -146,4 +146,10 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://mosmanlab.com.br/blog/transicao-energetica-smil-fressoz.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
