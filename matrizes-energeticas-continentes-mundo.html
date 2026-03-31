@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Qual é o Continente Mais Verde? Matrizes Energética, Elétrica e Emissões por Continente | MosmanLAB</title>
+<meta name="description" content="Comparação completa das matrizes energética e elétrica e emissões de CO₂ dos 7 continentes. Dados reais 2000–2022 de 167 países revelam qual continente lidera a descarbonização — e qual está mais longe dela."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/matrizes-energeticas-continentes-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0a1628,#0f2d1a,#162a0a);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#6ee7b7;border:1px solid rgba(110,231,183,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:860px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:700px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:820px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.navy{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
+.callout.vermelho{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout strong{font-weight:700}
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+tr.dest{background:#f0fdf4!important}
+tr.dest td{font-weight:600;color:#15803d}
+tr.dest2{background:#fef2f2!important}
+tr.dest2 td{font-weight:600;color:#991b1b}
+/* Ranking cards */
+.ranking-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0}
+.rank-card{border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;position:relative;overflow:hidden}
+.rank-num{font-size:3.5rem;font-weight:700;line-height:1;margin-bottom:2px;opacity:.12;position:absolute;right:14px;top:10px}
+.rank-pos{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.rank-name{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.rank-val{font-family:'DM Mono',monospace;font-size:.82rem;color:#374151;line-height:1.6}
+.conclusao{background:linear-gradient(135deg,#0f1c2e,#0a2a1a);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'→';position:absolute;left:0;color:#6ee7b7;font-weight:700}
+.conclusao li strong{color:#fff}
+.veredicto{background:#f0fdf4;border:2px solid #16a34a;border-radius:14px;padding:28px 32px;margin:36px 0;text-align:center}
+.veredicto-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#16a34a;margin-bottom:6px}
+.veredicto-title{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.veredicto-text{font-size:.92rem;color:#374151;line-height:1.7;max-width:560px;margin:0 auto}
+.veredicto-neg{background:#fef2f2;border-color:#dc2626}
+.veredicto-neg .veredicto-label{color:#dc2626}
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.conclusao{padding:24px 20px}.veredicto{padding:20px}}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia Global · Comparação · Dados</div>
+  <h1>Qual é o Continente Mais Verde do Mundo?</h1>
+  <p class="hero-lead">Comparação completa da matriz energética primária, matriz elétrica e emissões de CO₂ dos 7 continentes — dados reais de 167 países entre 2000 e 2022. O veredicto surpreende: o continente com a eletricidade mais limpa não é a Europa.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 16 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Quando pensamos em "continente verde", a Europa vem à mente — painel solar na Alemanha, eólica offshore na Dinamarca, carros elétricos na Noruega. Mas os dados contam uma história diferente. Com 167 países mapeados, 2000 a 2022, três dimensões distintas — matriz energética primária, matriz elétrica e emissões de CO₂ per capita — este artigo compara o perfil energético de todos os continentes habitados e responde, com números, quem está liderando a descarbonização global.</p>
+
+  <p>A metodologia importa: agregamos os continentes pela produção total de eletricidade (média ponderada) e pela soma de consumo de energia primária, garantindo que países grandes como China, EUA e Brasil — que dominam os totais continentais — tenham o peso correto nas médias.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">74,9%</div><div class="stat-label">América do Sul — maior % de renováveis na eletricidade. O continente mais verde em geração elétrica</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">85%</div><div class="stat-label">Ásia — maior dependência de fósseis na energia primária. O continente menos verde no total</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">36,1%</div><div class="stat-label">Europa — maior % de renováveis na eletricidade entre continentes industrializados ricos</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">51 pp</div><div class="stat-label">Diferença entre América do Sul (74,9%) e Ásia (24,3%) na eletricidade renovável — 2022</div></div>
+  </div>
+
+  <h2>As três dimensões do "verde"</h2>
+
+  <p>Para comparar continentes com justiça, precisamos separar três métricas distintas — cada uma conta uma história diferente:</p>
+
+  <p><strong>1. Matriz energética primária (% renovável):</strong> mede quanto da energia total consumida — incluindo transporte, indústria, calefação e eletricidade — vem de fontes renováveis. É o indicador mais abrangente e mais difícil de descarbonizar. Petróleo, gás e carvão dominam o transporte e a indústria química mesmo onde a eletricidade já é limpa.</p>
+
+  <p><strong>2. Matriz elétrica (% renovável):</strong> mede somente a geração de eletricidade. É onde a descarbonização está acontecendo mais rápido, pois solar e eólica são competitivas em custo desde 2015–2020. Um continente pode ter 90% de eletricidade renovável e ainda assim queimar muito petróleo nos carros.</p>
+
+  <p><strong>3. CO₂ per capita (t/pessoa/ano):</strong> mede o resultado final — quantas toneladas de CO₂ cada habitante emite. É a métrica de responsabilidade climática: não importa se o continente tem muita renovável, o que importa é quanto CO₂ sai para a atmosfera por pessoa.</p>
+
+  <!-- GRÁFICO 1: Três dimensões comparadas — barras agrupadas -->
+  <div class="chart-block">
+    <div class="chart-title">Os 7 Continentes: Renovável na Energia Primária, na Eletricidade e CO₂ per Capita (2022)</div>
+    <div class="chart-sub">Barras azuis = % renováveis na matriz primária · Barras verdes = % renováveis na eletricidade · Linha vermelha = CO₂ per capita (esc. dir.) · Fonte: Energy Institute / World Bank — 167 países</div>
+    <div style="height:400px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O gráfico revela imediatamente a assimetria central deste artigo: <strong>América do Sul lidera a eletricidade renovável com 74,9%</strong>, mas sua matriz energética primária tem apenas 34% de renováveis — porque o transporte ainda roda predominantemente a petróleo e gás. A Europa, com 36,1% de renovável elétrica, está em segundo lugar — mas tem 15,5% de renováveis na energia primária, semelhante à Oceania (16,6%). A Ásia, com 24,3% de renovável elétrica, carrega o maior peso fóssil do planeta.</p>
+
+  <h2>América do Sul — o continente mais verde em eletricidade</h2>
+
+  <p>Com 74,9% de geração elétrica renovável em 2022, a América do Sul está décadas à frente de qualquer outro continente nesse indicador. O protagonista é a hidrelétrica — que sozinha responde por 56,3% de toda a eletricidade do continente — mas eólica (9,0%) e solar (4,1%) crescem rapidamente, especialmente no Brasil e no Chile.</p>
+
+  <!-- GRÁFICO 2: América do Sul — decomposição da eletricidade -->
+  <div class="chart-block">
+    <div class="chart-title">América do Sul: Fontes da Geração Elétrica (2022) — 1.246 TWh total</div>
+    <div class="chart-sub">Fonte: Energy Institute / Our World in Data — 13 países</div>
+    <div style="height:300px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O paradoxo sul-americano é claro: a eletricidade é extraordinariamente limpa, mas a <strong>energia primária total tem apenas 34% de renováveis</strong> — porque petróleo (37,5% da energia primária) e gás natural (18,8%) dominam o transporte e parte da indústria. O Brasil queima etanol nos carros e é responsável por uma enorme contribuição de biocombustíveis — mas Venezuela, Argentina e Colômbia ainda dependem intensamente de fósseis líquidos.</p>
+
+  <div class="callout verde">
+    <strong>Os outliers da América do Sul:</strong> Paraguai e Costa Rica (América Central) geram 100% de sua eletricidade com fontes renováveis — hidrelétrica no primeiro caso, geotérmica + hidro no segundo. O Uruguai atingiu 90,8% de renovável elétrica em 2022, impulsionado por eólica. O Brasil tem 87,7% — liderança que combina hidro, eólica e solar em rápida expansão. Chile tem 55,3%, tendo praticamente dobrado sua participação renovável em 10 anos graças ao solar do Atacama.
+  </div>
+
+  <h2>Europa — segundo lugar em eletricidade, líder em velocidade de transição</h2>
+
+  <p>A Europa atingiu 36,1% de renovável elétrica em 2022 — com crescimento expressivo desde os 18,8% de 2000. O avanço é real: eólica passou de quase zero para 11,3% da geração elétrica continental, e solar saiu de zero para 5,0%. O nuclear ainda representa 19,0% da geração — a maior participação entre todos os continentes — e é uma parte importante da equação de baixo carbono europeia, embora não seja "renovável" no sentido estrito.</p>
+
+  <!-- GRÁFICO 3: Europa — decomposição da eletricidade -->
+  <div class="chart-block">
+    <div class="chart-title">Europa: Fontes da Geração Elétrica (2022) — 4.954 TWh total</div>
+    <div class="chart-sub">Nota: nuclear não é renovável, mas é baixo carbono · Fonte: Energy Institute — 40 países</div>
+    <div style="height:300px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>O problema europeu está na <strong>matriz energética primária</strong>: apenas 15,5% é renovável, enquanto petróleo (32,1%) e gás (31,1%) dominam o aquecimento, a indústria e o transporte. A Rússia — incluída na Europa pela conveniência geográfica — distorce os números com sua enorme produção e consumo de gás e petróleo. Sem Rússia, a Europa Ocidental seria significativamente mais limpa em energia primária.</p>
+
+  <div class="callout azul">
+    <strong>A disparidade interna europeia é enorme.</strong> Noruega gera 98,6% de sua eletricidade com renováveis (quase toda hidro) e emite apenas 7,5 t CO₂/capita — baixo para sua renda. Dinamarca tem 80,9% de renovável elétrica (predominantemente eólica) e 4,9 t CO₂/capita. Na outra ponta, Polônia tem 21,1% de renovável elétrica com carvão respondendo por ~70% da geração, e emite 8,2 t CO₂/capita. Alemanha, com 44,4% de renovável elétrica e gás preenchendo o resto, emite 7,9 t. A "Europa verde" é, na prática, Europa Ocidental + Escandinávia.
+  </div>
+
+  <h2>América do Norte — alto consumo, transição acelerada mas partindo de patamar alto</h2>
+
+  <p>A América do Norte (EUA + Canadá) tem 28,5% de renovável elétrica em 2022 — crescendo desde 16,3% em 2000. O grande motor de crescimento foi a eólica americana: de praticamente zero em 2000 para 9,6% da geração elétrica continental. Solar saiu de zero para 4,3%. O Canadá contribui fortemente com hidrelétrica (68,1% de renovável elétrica), enquanto os EUA têm apenas 22,4%.</p>
+
+  <!-- GRÁFICO 4: América do Norte — decomposição -->
+  <div class="chart-block">
+    <div class="chart-title">América do Norte: Fontes da Geração Elétrica (2022) — 4.951 TWh total</div>
+    <div class="chart-sub">EUA + Canadá · Fonte: Energy Institute — 2 países</div>
+    <div style="height:300px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O problema norte-americano está no CO₂ per capita: <strong>14,73 t CO₂/pessoa/ano</strong> em 2022 — o segundo maior do mundo entre continentes, atrás apenas da Oceania (10,03 t). Apesar da queda expressiva desde o pico de 21,1 t em 2000, o americano médio ainda emite mais de 5 vezes o equivalente sul-americano (2,56 t). O altíssimo consumo energético per capita — 80.115 kWh/pessoa no Canadá — reflete clima frio, grandes distâncias e modelo urbano dependente de automóvel.</p>
+
+  <h2>Ásia — o gigante fóssil que também cresce em renováveis</h2>
+
+  <p>A Ásia é onde a batalha pelo clima será ganha ou perdida. Com 4,6 bilhões de pessoas e 88.366 TWh de energia primária consumida em 2022 — <strong>57% de toda a energia primária do planeta mapeado</strong> — o que acontece na Ásia determina o destino das emissões globais. E o quadro atual é dominantemente fóssil: 85% da energia primária asiática vem de carvão, petróleo e gás. O carvão sozinho responde por 51% de toda a eletricidade gerada no continente.</p>
+
+  <!-- GRÁFICO 5: Ásia — decomposição elétrica -->
+  <div class="chart-block">
+    <div class="chart-title">Ásia: Fontes da Geração Elétrica (2022) — 15.907 TWh total</div>
+    <div class="chart-sub">15.907 TWh = 55% de toda a eletricidade gerada nos 7 continentes · Fonte: Energy Institute — 46 países</div>
+    <div style="height:300px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>Mas a Ásia também é onde os renováveis crescem mais rápido em termos absolutos. A China instalou mais solar em 2022 do que toda a Europa em sua história até então. O continente saiu de 12,2% de renovável elétrica em 2000 para 24,3% em 2022 — crescimento de 12 pontos percentuais. O problema é que a demanda cresceu muito mais rápido que a expansão renovável: em termos absolutos, mais carvão e gás foram queimados em 2022 do que em qualquer momento anterior.</p>
+
+  <div class="callout vermelho">
+    <strong>A Arábia Saudita — o menos verde do continente mais fóssil:</strong> Com apenas 0,49% de renovável elétrica em 2022 e 20,7 t CO₂ per capita — o maior do dataset entre países grandes — a Arábia Saudita representa o extremo fóssil do mundo. O CO₂ per capita saudita é 8 vezes o da média sul-americana. Para efeito de comparação, o brasileiro emite 2,3 t/capita. Apesar de anunciar metas de 50% de renováveis em sua matriz elétrica até 2030 com investimentos massivos em solar, a transição ainda está no início.
+  </div>
+
+  <h2>África — paradoxo entre potencial renovável e realidade fóssil</h2>
+
+  <p>A África tem os menores números de CO₂ per capita do planeta — 1,03 t/pessoa/ano — mas por uma razão que não é motivo de celebração: a maioria da população ainda não tem acesso à energia moderna. O continente consome apenas 5,4% da energia primária global para 19% da população mundial. Onde a energia existe, ela é predominantemente fóssil: <strong>75% da geração elétrica africana vem de carvão e gás</strong>, puxada pela África do Sul (78% de carvão na matriz elétrica) e pela Nigéria (gás e petróleo dominam).</p>
+
+  <!-- GRÁFICO 6: África — decomposição elétrica -->
+  <div class="chart-block">
+    <div class="chart-title">África: Fontes da Geração Elétrica (2022) — 900 TWh total</div>
+    <div class="chart-sub">Baixo consumo total, mas alta dependência de fósseis onde há geração · Fonte: Energy Institute — 42 países</div>
+    <div style="height:300px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>O paradoxo africano é que o continente tem o maior potencial solar do planeta — irradiação média de 5–7 kWh/m²/dia em grande parte do território — mas apenas 2,6% do que é gerado vem de solar. A razão é econômica e histórica: a infraestrutura de geração foi construída antes da era solar competitiva, e os países mais ricos do continente (África do Sul, Argélia, Egito) basearam sua geração em recursos fósseis locais. A República Democrática do Congo e a Etiópia são exceções: 100% de renovável elétrica — quase toda hidrelétrica, mas com consumo per capita muito baixo.</p>
+
+  <h2>Oceania — pequena em população, grande em contradição</h2>
+
+  <p>A Oceania tem apenas 42 milhões de pessoas — menos que a Argentina — mas apresenta dados interessantes. Com 39,3% de renovável elétrica em 2022, está em terceiro lugar entre os continentes nesse indicador — crescendo de 18,1% em 2000. A Nova Zelândia lidera com 85,9% (hidro + geotérmica), enquanto a Austrália tem 32% mas cresce rapidamente em solar e eólica. O problema é o carvão australiano: <strong>40,5% da eletricidade da Oceania vem de carvão</strong> — a maior proporção carvão/eletricidade dentre os continentes de renda alta.</p>
+
+  <p>O CO₂ per capita da Oceania (10,03 t) é o segundo maior do mundo — reflexo do estilo de vida australiano com grande dependência de automóvel, casas grandes e indústria mineradora intensiva. A Austrália foi, por muitos anos, um dos maiores emissores per capita do mundo — e ainda está entre os dez maiores.</p>
+
+  <h2>América Central e Caribe — o esquecido com surpresas</h2>
+
+  <p>Frequentemente negligenciada nas análises globais, a América Central e Caribe tem 30,4% de renovável elétrica em 2022 — acima da América do Norte (28,5%). O gás domina (49,2% da eletricidade), puxado pelo México, que representa ~80% do consumo elétrico regional. Mas os países menores mostram caminhos alternativos: Costa Rica gera 100% com renováveis há vários anos consecutivos (geotérmica + hidro + eólica), Guatemala tem 84,6% de renovável elétrica e Nicarágua atingiu 64,1%.</p>
+
+  <p>O CO₂ per capita da região é 2,85 t/pessoa — comparável ao da América do Sul — mas com a diferença que parte dessa relativa limpeza reflete pobreza energética, especialmente no Haiti e na América Central rural, e não necessariamente escolhas de descarbonização.</p>
+
+  <!-- GRÁFICO 7: Evolução histórica — renovável elétrica por continente 2000-2022 -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução da Eletricidade Renovável por Continente (2000–2022)</div>
+    <div class="chart-sub">% de geração elétrica de fontes renováveis · Fonte: Energy Institute / World Bank — 167 países</div>
+    <div style="height:400px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <p>O gráfico histórico revela três grupos distintos de trajetórias. <strong>América do Sul</strong> começa já em patamar alto (77% em 2000) e oscila em torno de 70–75%, com hidro respondendo pela maioria e solar/eólica adicionando novos incrementos. <strong>Europa e Oceania</strong> mostram crescimento consistente e acelerado, especialmente após 2010 — resultado da queda de custos do solar e eólica. <strong>Ásia, América do Norte e América Central</strong> crescem mais lentamente mas com tendência positiva. A <strong>África</strong> praticamente estagnou em 17–24%, com crescimento apenas marginal em 22 anos.</p>
+
+  <!-- GRÁFICO 8: CO2 per capita por continente 2000-2022 -->
+  <div class="chart-block">
+    <div class="chart-title">CO₂ per Capita por Continente (2000–2022)</div>
+    <div class="chart-sub">Toneladas de CO₂ por habitante por ano · Fonte: Global Carbon Project / World Bank — 167 países</div>
+    <div style="height:380px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <p>O gráfico de CO₂ per capita conta a história mais importante da geopolítica climática. A <strong>América do Norte</strong> caiu de 21,1 para 14,7 t — uma queda de 30% em 22 anos, real e significativa, impulsionada principalmente pela substituição de carvão por gás nos EUA e pela expansão de eólica. A <strong>Europa</strong> reduziu de 8,0 para 6,6 t — queda de 18%. E a <strong>Ásia</strong> fez o movimento oposto: subiu de 2,5 para 4,7 t — alta de 90% — refletindo a industrialização acelerada de China, Índia e sudeste asiático.</p>
+
+  <h2>A tabela-síntese: todos os indicadores em perspectiva</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Continente</th>
+          <th class="c">Países</th>
+          <th class="c">Pop. (bi)</th>
+          <th class="c">Energia primária renovável</th>
+          <th class="c">Eletricidade renovável</th>
+          <th class="c">Carvão na eletricidade</th>
+          <th class="c">CO₂ per capita (t)</th>
+          <th class="c">CO₂ total (Gt)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="dest"><td><strong>América do Sul</strong></td><td class="c mono">13</td><td class="c mono">0,43</td><td class="c mono">34,0%</td><td class="c mono">74,9%</td><td class="c mono">3,5%</td><td class="c mono">2,56</td><td class="c mono">1,10</td></tr>
+        <tr><td><strong>Europa</strong></td><td class="c mono">40</td><td class="c mono">0,82</td><td class="c mono">15,5%</td><td class="c mono">36,1%</td><td class="c mono">15,9%</td><td class="c mono">6,61</td><td class="c mono">5,43</td></tr>
+        <tr><td><strong>Oceania</strong></td><td class="c mono">4</td><td class="c mono">0,04</td><td class="c mono">16,6%</td><td class="c mono">39,3%</td><td class="c mono">40,5%</td><td class="c mono">10,03</td><td class="c mono">0,43</td></tr>
+        <tr><td><strong>Am. Central e Caribe</strong></td><td class="c mono">14</td><td class="c mono">0,22</td><td class="c mono">6,8%</td><td class="c mono">30,4%</td><td class="c mono">4,3%</td><td class="c mono">2,85</td><td class="c mono">0,62</td></tr>
+        <tr><td><strong>América do Norte</strong></td><td class="c mono">2</td><td class="c mono">0,38</td><td class="c mono">13,2%</td><td class="c mono">28,5%</td><td class="c mono">17,3%</td><td class="c mono">14,73</td><td class="c mono">5,60</td></tr>
+        <tr><td><strong>África</strong></td><td class="c mono">42</td><td class="c mono">1,39</td><td class="c mono">2,4%</td><td class="c mono">23,8%</td><td class="c mono">26,6%</td><td class="c mono">1,03</td><td class="c mono">1,43</td></tr>
+        <tr class="dest2"><td><strong>Ásia</strong></td><td class="c mono">46</td><td class="c mono">4,63</td><td class="c mono">10,8%</td><td class="c mono">24,3%</td><td class="c mono">51,0%</td><td class="c mono">4,70</td><td class="c mono">21,73</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Gráfico 9: Radar chart - perfil verde de cada continente -->
+  <div class="chart-block">
+    <div class="chart-title">Perfil Comparativo: Renovável Energia, Renovável Elétrica e Baixo CO₂ per Capita por Continente (2022)</div>
+    <div class="chart-sub">Escores normalizados 0–100 em cada dimensão. CO₂ invertido: maior pontuação = menor emissão per capita · Fonte: Energy Institute / World Bank</div>
+    <div style="height:420px"><canvas id="c9"></canvas></div>
+  </div>
+
+  <h2>O veredicto: quem é o mais verde e quem é o menos verde?</h2>
+
+  <div class="veredicto">
+    <div class="veredicto-label">🌿 Continente mais verde</div>
+    <div class="veredicto-title">América do Sul</div>
+    <div class="veredicto-text">Com 74,9% de eletricidade renovável — a maior do mundo — 34% de renováveis na energia primária e apenas 2,56 t CO₂ per capita, a América do Sul é o continente com a menor pegada de carbono entre os que têm populações de renda média. A combinação de hidrelétrica histórica, eólica e solar em expansão no Brasil e no Chile, e biocombustíveis no transporte, faz do subcontinente um caso único de descarbonização de largo espectro.</div>
+  </div>
+
+  <div class="veredicto veredicto-neg" style="margin-top:16px">
+    <div class="veredicto-label">🏭 Continente menos verde</div>
+    <div class="veredicto-title">Ásia</div>
+    <div class="veredicto-text">Com 85% de fósseis na energia primária, 51% de carvão na eletricidade e 21,7 Gt de CO₂ emitidos em 2022 — 57% das emissões globais mapeadas — a Ásia é o continente de longe mais dependente de combustíveis fósseis. Embora tenha crescimento expressivo de renováveis em termos absolutos, a demanda cresce mais rápido que a descarbonização. Enquanto a Ásia não virar, o planeta não vira.</div>
+  </div>
+
+  <h3>O qualificador: África tem o menor CO₂ per capita — mas por pobreza energética</h3>
+  <p>A África tem 1,03 t CO₂/capita — abaixo de todos os outros continentes. Mas isso não significa que é "mais verde": significa que a maioria das famílias africanas ainda não tem acesso à energia moderna. Emitir pouco porque se consome pouco não é política climática — é subdesenvolvimento. O desafio africano é saltar diretamente para fontes renováveis enquanto expande o acesso energético, evitando repetir o caminho fóssil que os países ricos percorreram no século XX.</p>
+
+  <div class="callout roxo">
+    <strong>O paradoxo da América do Norte:</strong> EUA e Canadá têm 13,2% de renováveis na matriz primária — próximo da Europa — e estão reduzindo emissões per capita consistentemente (−30% desde 2000). Mas partem de um patamar tão alto (14,73 t CO₂/capita em 2022) que, mesmo com queda expressiva, ainda emitem mais de 5 vezes o sul-americano médio. Um americano que compra um carro elétrico e instala painéis solares ainda emite mais CO₂ do que um brasileiro médio que não faz nada. A transição norte-americana precisa de décadas de continuidade para chegar a patamares europeus.
+  </div>
+
+  <!-- Ranking visual -->
+  <h2>O ranking completo — 3 dimensões, 7 continentes</h2>
+
+  <div class="ranking-grid">
+    <div class="rank-card" style="border-color:#16a34a;background:#f0fdf4">
+      <div class="rank-num" style="color:#16a34a">1</div>
+      <div class="rank-pos" style="color:#16a34a">🥇 Eletricidade renovável</div>
+      <div class="rank-name">América do Sul</div>
+      <div class="rank-val">74,9% renovável elétrica<br>Hidro 56% · Eólica 9% · Solar 4%<br>1.246 TWh gerados</div>
+    </div>
+    <div class="rank-card" style="border-color:#16a34a;background:#f0fdf4">
+      <div class="rank-num" style="color:#16a34a">1</div>
+      <div class="rank-pos" style="color:#16a34a">🥇 Energia primária renovável</div>
+      <div class="rank-name">América do Sul</div>
+      <div class="rank-val">34,0% renovável na energia total<br>7.296 TWh consumidos<br>Hidro + Bio + Eólica</div>
+    </div>
+    <div class="rank-card" style="border-color:#16a34a;background:#f0fdf4">
+      <div class="rank-num" style="color:#16a34a">1</div>
+      <div class="rank-pos" style="color:#16a34a">🥇 Menor CO₂ per capita*</div>
+      <div class="rank-name">América do Sul</div>
+      <div class="rank-val">2,56 t CO₂/pessoa/ano<br>(África: 1,03 t — por pobreza energética)<br>Queda desde 3,0 t em 2014</div>
+    </div>
+    <div class="rank-card" style="border-color:#dc2626;background:#fef2f2">
+      <div class="rank-num" style="color:#dc2626">7</div>
+      <div class="rank-pos" style="color:#dc2626">🔴 Maior fóssil na energia</div>
+      <div class="rank-name">Ásia</div>
+      <div class="rank-val">85,0% fóssil na energia primária<br>88.366 TWh — 57% do total global<br>Carvão: 40,6% da energia primária</div>
+    </div>
+    <div class="rank-card" style="border-color:#dc2626;background:#fef2f2">
+      <div class="rank-num" style="color:#dc2626">7</div>
+      <div class="rank-pos" style="color:#dc2626">🔴 Mais carvão na eletricidade</div>
+      <div class="rank-name">Ásia</div>
+      <div class="rank-val">51% de carvão na eletricidade<br>8.108 TWh de carvão/ano<br>China + Índia respondem por 85%</div>
+    </div>
+    <div class="rank-card" style="border-color:#dc2626;background:#fef2f2">
+      <div class="rank-num" style="color:#dc2626">7</div>
+      <div class="rank-pos" style="color:#dc2626">🔴 Maior CO₂ total</div>
+      <div class="rank-name">Ásia</div>
+      <div class="rank-val">21,7 Gt CO₂/ano — 57% do total<br>4,70 t CO₂/capita (e subindo)<br>China: 8,2 t · Índia: 2,0 t</div>
+    </div>
+  </div>
+
+  <div class="conclusao">
+    <h2>Síntese — qual continente está liderando e qual precisa mudar mais</h2>
+    <ul>
+      <li><strong>América do Sul é o continente mais verde, sem controvérsia.</strong> Lidera nos três indicadores entre continentes de renda média — eletricidade renovável (74,9%), participação renovável na energia primária (34%) e menor CO₂ per capita real (2,56 t). A herança hidrelétrica construída nas décadas de 1960–1990 é a razão central, amplificada pela expansão recente de eólica e solar no Brasil e no Chile.</li>
+      <li><strong>Ásia é o continente menos verde, e é onde a transição global precisa acontecer.</strong> Com 57% das emissões globais, 85% de fósseis na energia primária e carvão dominando 51% da geração elétrica, a Ásia determina o destino climático do planeta. O crescimento explosivo de solar e eólica na China é real — mas a demanda cresce mais rápido. Enquanto a Ásia não dobrar a velocidade da descarbonização, os acordos climáticos globais são insuficientes.</li>
+      <li><strong>Europa está em segundo lugar em eletricidade renovável e é o continente industrializado com a transição mais acelerada.</strong> De 18,8% em 2000 para 36,1% em 2022 — mais que dobrou. Nuclear (19%) complementa a limpeza da geração. Mas o desafio real é a energia primária: 74,4% ainda fóssil, principalmente para transporte e aquecimento industrial.</li>
+      <li><strong>A África tem baixo CO₂ per capita por pobreza energética — não por política climática.</strong> O desafio africano é expandir acesso energético sem repetir a trajetória fóssil dos países ricos. Solar distribuído e mini-redes podem ser o caminho — mas exigem financiamento climático que os países ricos ainda não entregaram.</li>
+      <li><strong>América do Norte reduz emissões per capita de forma consistente, mas parte de um patamar muito alto.</strong> Os 14,73 t CO₂/capita norte-americanos são resultado de décadas de suburbanização, consumo intensivo e infraestrutura projetada para o petróleo. A transição é real (+12 pp de renovável elétrica em 22 anos), mas levará décadas para chegar a patamares europeus.</li>
+      <li><strong>O "verde" tem dimensões — e um continente pode liderar em uma e perder em outra.</strong> Oceania tem 39,3% de renovável elétrica mas 10 t CO₂/capita. Europa tem 36% de renovável elétrica mas 74% de fóssil na energia primária. A transição energética completa — da eletricidade para o transporte, a indústria e o aquecimento — é o desafio do século XXI para todos os continentes, incluindo o líder sul-americano.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy 2024. Dados de geração elétrica, energia primária e consumo por fonte. Via Our World in Data. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>Our World in Data</strong> — Energy mix, electricity mix, CO₂ emissions. Hannah Ritchie, Pablo Rosado &amp; Max Roser (2024). <a href="https://ourworldindata.org/energy" target="_blank">ourworldindata.org</a></li>
+      <li><strong>Global Carbon Project</strong> — Global Carbon Budget 2023. Emissões de CO₂ por país e região. <a href="https://www.globalcarbonproject.org" target="_blank">globalcarbonproject.org</a></li>
+      <li><strong>World Bank</strong> — World Development Indicators: population, GDP per capita. <a href="https://databank.worldbank.org" target="_blank">databank.worldbank.org</a></li>
+      <li><strong>IEA</strong> — World Energy Outlook 2023. Regional energy data and projections. <a href="https://www.iea.org/reports/world-energy-outlook-2023" target="_blank">iea.org</a></li>
+      <li><strong>IRENA</strong> — Renewable Capacity Statistics 2024. Solar, wind, hydro and geothermal by region. <a href="https://www.irena.org/Statistics" target="_blank">irena.org</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+const CONTS = ['Am. do Sul','Europa','Oceania','Am. Central','Am. do Norte','África','Ásia'];
+const COLORS = {
+  'Am. do Sul':   {b:'rgba(22,163,74,0.75)',  l:'#16a34a'},
+  'Europa':       {b:'rgba(37,99,235,0.75)',   l:'#2563eb'},
+  'Oceania':      {b:'rgba(124,58,237,0.75)',  l:'#7c3aed'},
+  'Am. Central':  {b:'rgba(20,184,166,0.75)',  l:'#0d9488'},
+  'Am. do Norte': {b:'rgba(245,158,11,0.75)',  l:'#d97706'},
+  'África':       {b:'rgba(249,115,22,0.75)',  l:'#ea580c'},
+  'Ásia':         {b:'rgba(220,38,38,0.75)',   l:'#dc2626'},
+};
+
+// ── C1: Grouped bars — Renovável energia, renovável elétrica, CO₂ per capita ──
+const renewEn   = [34.0, 15.5, 16.6,  6.8, 13.2,  2.4, 10.8];
+const renewEl   = [74.9, 36.1, 39.3, 30.4, 28.5, 23.8, 24.3];
+const co2pc     = [ 2.56, 6.61,10.03, 2.85,14.73,  1.03,  4.70];
+
+new Chart(document.getElementById('c1'),{
+  data:{labels: CONTS,
+    datasets:[
+      {type:'bar', label:'Renovável — Energia Primária (%)', data:renewEn,
+       backgroundColor: CONTS.map(c=>COLORS[c].b), yAxisID:'y', borderRadius:4},
+      {type:'bar', label:'Renovável — Eletricidade (%)', data:renewEl,
+       backgroundColor: CONTS.map(c=>COLORS[c].b.replace('0.75','0.35')),
+       borderColor: CONTS.map(c=>COLORS[c].l), borderWidth:2,
+       yAxisID:'y', borderRadius:4},
+      {type:'line', label:'CO₂ per capita (t/pessoa — esc. dir.)',
+       data:co2pc, borderColor:'#dc2626', backgroundColor:'rgba(220,38,38,.1)',
+       tension:.3, pointRadius:5, borderWidth:2.5, yAxisID:'y1'},
+    ]},
+  options:{responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'}, grid:{display:false}},
+      y:{min:0,max:90, ticks:{font:{size:11},color:tc,callback:v=>v+'%'}, grid:{color:gc},
+        title:{display:true,text:'% renovável',color:tc,font:{size:10}}},
+      y1:{min:0,max:17, ticks:{font:{size:11},color:'#dc2626',callback:v=>v+' t'},
+        grid:{display:false}, position:'right',
+        title:{display:true,text:'t CO₂/capita',color:'#dc2626',font:{size:10}}}
+    }
+  }
+});
+
+// helper: donut
+function donutChart(id, labels, data, colors) {
+  new Chart(document.getElementById(id),{type:'doughnut',
+    data:{labels, datasets:[{data, backgroundColor:colors, borderWidth:2, borderColor:'#fff'}]},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'right', labels:{font:{size:11}, color:'#374151', boxWidth:12, padding:10}}},
+      cutout:'55%'
+    }
+  });
+}
+
+// C2: América do Sul elétrica — Hidro 56,3 / Eólica 9,0 / Solar 4,1 / Gás 15,6 / Carvão 3,5 / Nuclear 1,8 / Outros 9,7
+donutChart('c2',
+  ['Hidro','Eólica','Solar','Gás','Carvão','Nuclear','Outros'],
+  [56.3, 9.0, 4.1, 15.6, 3.5, 1.8, 9.7],
+  ['#0ea5e9','#6ee7b7','#fbbf24','#f97316','#78716c','#a78bfa','#d1d5db']
+);
+
+// C3: Europa elétrica — Hidro 15,2 / Eólica 11,3 / Solar 5,0 / Gás 26,3 / Carvão 15,9 / Nuclear 19,0 / Outros 7,3
+donutChart('c3',
+  ['Hidro','Eólica','Solar','Gás','Carvão','Nuclear','Outros'],
+  [15.2, 11.3, 5.0, 26.3, 15.9, 19.0, 7.3],
+  ['#0ea5e9','#6ee7b7','#fbbf24','#f97316','#78716c','#a78bfa','#d1d5db']
+);
+
+// C4: América do Norte elétrica — Hidro 13,1 / Eólica 9,6 / Solar 4,3 / Gás 35,9 / Carvão 17,3 / Nuclear 17,3 / Outros 2,5
+donutChart('c4',
+  ['Hidro','Eólica','Solar','Gás','Carvão','Nuclear','Outros'],
+  [13.1, 9.6, 4.3, 35.9, 17.3, 17.3, 2.5],
+  ['#0ea5e9','#6ee7b7','#fbbf24','#f97316','#78716c','#a78bfa','#d1d5db']
+);
+
+// C5: Ásia elétrica — Hidro 12,1 / Eólica 5,5 / Solar 4,6 / Gás 16,8 / Carvão 51,0 / Nuclear 4,8 / Outros 5,2
+donutChart('c5',
+  ['Hidro','Eólica','Solar','Gás','Carvão','Nuclear','Outros'],
+  [12.1, 5.5, 4.6, 16.8, 51.0, 4.8, 5.2],
+  ['#0ea5e9','#6ee7b7','#fbbf24','#f97316','#78716c','#a78bfa','#d1d5db']
+);
+
+// C6: África elétrica — Hidro 17,6 / Eólica 2,8 / Solar 2,6 / Gás 42,8 / Carvão 26,6 / Nuclear 1,1 / Outros 6,5
+donutChart('c6',
+  ['Hidro','Eólica','Solar','Gás','Carvão','Nuclear','Outros'],
+  [17.6, 2.8, 2.6, 42.8, 26.6, 1.1, 6.5],
+  ['#0ea5e9','#6ee7b7','#fbbf24','#f97316','#78716c','#a78bfa','#d1d5db']
+);
+
+// C7: Evolução histórica renovável elétrica 2000-2022
+const anos = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022];
+const histEl = {
+  'Am. do Sul':  [77.2,74.5,75.8,75.6,74.0,75.3,75.1,74.4,71.9,73.9,70.8,72.7,68.4,65.0,63.2,63.0,65.7,67.6,69.4,69.2,71.3,68.4,74.9],
+  'Europa':      [18.8,18.8,17.7,16.8,18.3,18.4,18.4,18.9,19.6,21.4,22.3,22.1,24.4,26.8,27.5,28.5,29.1,29.1,31.1,32.8,36.6,35.2,36.1],
+  'Oceania':     [18.1,16.4,17.7,17.3,18.6,17.9,17.7,17.4,16.7,17.7,18.8,21.6,21.3,23.3,23.2,23.9,26.1,24.8,28.1,29.6,32.2,36.2,39.3],
+  'Am. Central': [22.2,19.3,17.8,16.0,17.9,18.5,18.7,17.7,21.1,17.6,21.1,19.8,19.5,18.8,21.8,20.6,20.7,21.8,22.1,21.9,27.1,30.7,30.4],
+  'Am. do Norte':[16.3,14.4,15.7,15.6,15.3,15.6,16.0,15.2,16.2,17.6,16.8,19.2,19.1,19.9,20.1,20.6,22.2,24.3,24.0,24.7,26.8,27.0,28.5],
+  'África':      [17.1,17.7,17.7,16.5,16.5,16.5,16.4,16.2,16.2,16.7,17.1,17.1,16.7,17.1,17.7,17.9,17.9,18.7,19.4,20.3,22.0,22.7,23.8],
+  'Ásia':        [12.2,12.8,12.3,12.0,12.8,12.7,12.9,12.7,14.1,13.6,14.4,13.9,15.4,16.0,17.2,18.0,18.6,19.3,19.9,21.0,22.3,23.0,24.3],
+};
+
+new Chart(document.getElementById('c7'),{type:'line',
+  data:{labels:anos.map(String),
+    datasets: Object.entries(histEl).map(([cont,data])=>({
+      label:cont, data,
+      borderColor: COLORS[cont].l,
+      backgroundColor: 'transparent',
+      tension:.3, pointRadius:0, borderWidth: cont==='Am. do Sul'||cont==='Ásia' ? 3 : 2,
+      borderDash: cont==='Am. do Norte'||cont==='África'||cont==='Am. Central' ? [5,4] : [],
+    }))
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:90,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// C8: CO₂ per capita histórico 2000-2022
+const histCo2 = {
+  'Am. do Sul':  [2.33,2.24,2.29,2.27,2.34,2.38,2.43,2.49,2.58,2.49,2.75,2.76,2.87,3.00,3.01,2.90,2.77,2.70,2.58,2.59,2.31,2.59,2.56],
+  'Europa':      [8.00,8.13,8.08,8.26,8.28,8.31,8.44,8.39,8.28,7.63,7.89,7.81,7.76,7.53,7.25,7.24,7.21,7.26,7.21,6.96,6.48,6.82,6.61],
+  'Oceania':     [13.14,13.29,13.24,13.36,13.53,13.45,13.42,13.41,13.29,13.01,12.72,12.47,12.31,11.88,11.59,11.62,11.62,11.53,11.39,11.24,10.64,10.29,10.03],
+  'Am. Central': [3.04,3.12,3.12,3.26,3.21,3.35,3.43,3.40,3.34,3.22,3.20,3.29,3.34,3.27,3.18,3.16,3.10,2.98,2.98,3.00,2.68,2.81,2.85],
+  'Am. do Norte':[21.10,20.48,20.44,20.47,20.58,20.41,19.95,20.04,19.19,17.63,18.03,17.50,16.74,17.00,16.99,16.38,15.86,15.61,15.94,15.48,13.81,14.68,14.73],
+  'África':      [1.14,1.10,1.05,1.13,1.16,1.15,1.15,1.15,1.17,1.14,1.16,1.18,1.14,1.13,1.17,1.12,1.11,1.09,1.08,1.10,1.01,1.06,1.03],
+  'Ásia':        [2.47,2.49,2.60,2.82,2.95,3.13,3.30,3.44,3.58,3.67,3.91,4.15,4.26,4.27,4.29,4.27,4.25,4.32,4.42,4.51,4.42,4.57,4.70],
+};
+
+new Chart(document.getElementById('c8'),{type:'line',
+  data:{labels:anos.map(String),
+    datasets: Object.entries(histCo2).map(([cont,data])=>({
+      label:cont, data,
+      borderColor: COLORS[cont].l,
+      backgroundColor:'transparent',
+      tension:.3, pointRadius:0, borderWidth: cont==='Am. do Norte'||cont==='Ásia' ? 3 : 2,
+      borderDash: cont==='África'||cont==='Am. Central'||cont==='Am. do Sul' ? [5,4] : [],
+    }))
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:23,ticks:{font:{size:11},color:tc,callback:v=>v+' t'},grid:{color:gc}}
+    }
+  }
+});
+
+// C9: Radar — perfil verde normalizado
+// Dimensões: renovável energia (%), renovável elétrica (%), baixo CO₂ per capita (invertido)
+// Normalização: 0–100 onde 100 = melhor desempenho ambiental
+function norm(val, min, max) { return Math.round((val - min) / (max - min) * 100); }
+// renew energia: 2.4–34.0 → normalizado
+// renew eletrica: 23.8–74.9
+// CO₂ per capita: inverso (menor = melhor). 1.03–14.73 → inverso normalizado
+
+const rawEn  = [34.0, 15.5, 16.6,  6.8, 13.2,  2.4, 10.8];
+const rawEl  = [74.9, 36.1, 39.3, 30.4, 28.5, 23.8, 24.3];
+const rawCo2 = [ 2.56, 6.61, 10.03, 2.85, 14.73, 1.03, 4.70];
+
+const minEn=2.4,maxEn=34.0, minEl=23.8,maxEl=74.9, minCo2=1.03,maxCo2=14.73;
+const nEn  = rawEn.map(v=>norm(v,minEn,maxEn));
+const nEl  = rawEl.map(v=>norm(v,minEl,maxEl));
+const nCo2 = rawCo2.map(v=>100-norm(v,minCo2,maxCo2)); // invertido
+
+new Chart(document.getElementById('c9'),{type:'radar',
+  data:{labels:['Renovável — Energia Primária','Renovável — Eletricidade','Baixo CO₂ per Capita'],
+    datasets: CONTS.map((cont,i)=>({
+      label:cont,
+      data:[nEn[i], nEl[i], nCo2[i]],
+      borderColor: COLORS[cont].l,
+      backgroundColor: COLORS[cont].b.replace('0.75','0.15'),
+      borderWidth: cont==='Am. do Sul'||cont==='Ásia' ? 2.5 : 1.5,
+      pointRadius: 4,
+    }))
+  },
+  options:{responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:12}}},
+    scales:{r:{
+      min:0,max:100,
+      ticks:{display:false},
+      grid:{color:'rgba(0,0,0,.08)'},
+      angleLines:{color:'rgba(0,0,0,.1)'},
+      pointLabels:{font:{size:11},color:'#374151'},
+    }}
+  }
+});
+</script>
+</body>
+</html>
