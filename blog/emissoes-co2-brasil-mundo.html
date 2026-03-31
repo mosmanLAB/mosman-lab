@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emissões de CO₂ no Mundo e no Brasil: Quem Emite, Quanto e Por Quê | MosmanLAB</title>
+  <meta name="description" content="China é o maior emissor atual; EUA lidera o histórico acumulado. O Brasil emite 2 t CO₂/hab — mas seu perfil de emissões é único. Análise completa com dados 2024."/>
+  <link rel="canonical" href="https://mosmanlab.com.br/blog/emissoes-co2-brasil-mundo.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a2e; background: #fff;
+      line-height: 1.8; font-size: 17px;
+    }
+
+    .urgency {
+      background: #2563eb; color: #fff;
+      text-align: center; padding: 10px 16px;
+      font-size: 13.5px; font-weight: 500;
+    }
+    nav {
+      background: #fff; border-bottom: 1px solid #e8e8e8;
+      position: sticky; top: 0; z-index: 100; padding: 0 5%;
+    }
+    .nav-top { display: flex; align-items: center; height: 58px; }
+    .nav-logo {
+      font-size: 19px; font-weight: 400;
+      color: #0f1c2e; text-decoration: none; letter-spacing: -.02em;
+    }
+    .nav-logo strong { font-weight: 700; }
+    .nav-links { display: flex; gap: 24px; margin-left: auto; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: #0f1c2e; text-decoration: none; opacity: .6; transition: opacity .15s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: #16a34a; }
+
+    /* HERO — fundo vermelho/escuro para CO₂ */
+    .hero {
+      background: linear-gradient(150deg, #1a0a0a 0%, #3b0d0d 50%, #1c1c2e 100%);
+      padding: 64px 5% 52px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(220,38,38,.18) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .article-tag {
+      display: inline-block;
+      background: rgba(220,38,38,.25); color: #fca5a5;
+      border: 1px solid rgba(220,38,38,.35);
+      border-radius: 999px; font-size: 11.5px; font-weight: 600;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 4px 14px; margin-bottom: 20px;
+      font-family: 'DM Mono', monospace;
+    }
+    .hero h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1.85rem, 4.5vw, 3rem);
+      font-weight: 700; line-height: 1.2;
+      color: #fff; max-width: 800px; margin: 0 auto 18px;
+    }
+    .hero-lead {
+      font-size: 17.5px; color: #94a3b8;
+      max-width: 650px; margin: 0 auto 28px; line-height: 1.65;
+    }
+    .byline {
+      font-size: 12.5px; color: #475569;
+      font-family: 'DM Mono', monospace;
+      display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+    }
+    .byline span::before { content: '· '; }
+    .byline span:first-child::before { content: ''; }
+
+    .article-body { max-width: 800px; margin: 0 auto; padding: 52px 24px 80px; }
+
+    .resumo {
+      background: #fff5f5; border-left: 4px solid #dc2626;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 24px; margin: 32px 0;
+      font-size: 16px; color: #7f1d1d; line-height: 1.65;
+    }
+    .resumo strong { color: #450a0a; font-weight: 600; }
+
+    .sumario {
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 12px; padding: 20px 26px; margin: 28px 0 40px;
+    }
+    .sumario-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .09em;
+      text-transform: uppercase; color: #94a3b8;
+      font-family: 'DM Mono', monospace; margin-bottom: 14px;
+    }
+    .sumario ol { padding-left: 18px; color: #2563eb; font-size: 14.5px; }
+    .sumario li { margin-bottom: 7px; }
+    .sumario a { color: #2563eb; text-decoration: none; font-weight: 500; }
+    .sumario a:hover { text-decoration: underline; }
+
+    .article-body h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.65rem; font-weight: 700;
+      color: #0f1c2e; margin: 56px 0 18px; line-height: 1.25;
+      scroll-margin-top: 80px;
+    }
+    .article-body h3 { font-size: 1.05rem; font-weight: 600; color: #0f1c2e; margin: 30px 0 10px; }
+    .article-body p { margin-bottom: 22px; color: #334155; }
+    .article-body strong { color: #0f1c2e; font-weight: 600; }
+
+    .callout {
+      border-left: 4px solid #16a34a; background: #f0fdf4;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 22px; margin: 28px 0;
+      font-size: 15.5px; color: #166534; line-height: 1.65;
+    }
+    .callout.red   { border-color: #dc2626; background: #fff5f5; color: #7f1d1d; }
+    .callout.blue  { border-color: #2563eb; background: #eff6ff; color: #1e3a5f; }
+    .callout.amber { border-color: #d97706; background: #fffbeb; color: #78350f; }
+    .callout.navy  { border-color: #0f1c2e; background: #f1f5f9; color: #0f1c2e; }
+    .callout strong { font-weight: 600; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px; margin: 28px 0;
+    }
+    .stat-card {
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 12px; padding: 18px 16px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Lora', serif; font-size: 2rem; font-weight: 700;
+      color: #0f1c2e; line-height: 1; margin-bottom: 7px;
+    }
+    .stat-num.red    { color: #dc2626; }
+    .stat-num.green  { color: #16a34a; }
+    .stat-num.blue   { color: #2563eb; }
+    .stat-num.amber  { color: #d97706; }
+    .stat-num.teal   { color: #0891b2; }
+    .stat-label { font-size: 12px; color: #64748b; line-height: 1.4; }
+
+    .chart-block {
+      background: #fff; border: 1px solid #e2e8f0;
+      border-radius: 14px; padding: 22px 24px; margin: 32px 0;
+    }
+    .chart-title { font-size: 14px; font-weight: 600; color: #0f1c2e; margin-bottom: 3px; }
+    .chart-sub {
+      font-size: 11.5px; color: #94a3b8; margin-bottom: 16px;
+      font-family: 'DM Mono', monospace;
+    }
+    .chart-wrap { position: relative; width: 100%; }
+    .chart-caption { font-size: 12px; color: #64748b; margin-top: 12px; font-style: italic; }
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: #64748b; }
+    .leg-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+    /* DOIS GRÁFICOS LADO A LADO */
+    .chart-2col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0;
+    }
+
+    /* TABELA */
+    .data-table {
+      width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 24px 0;
+    }
+    .data-table th {
+      text-align: left; padding: 10px 14px; background: #0f1c2e; color: #fff;
+      font-weight: 600; font-size: 11.5px; letter-spacing: .04em;
+    }
+    .data-table th:not(:first-child) { text-align: right; }
+    .data-table td {
+      padding: 9px 14px; border-bottom: 1px solid #f1f5f9; color: #334155;
+    }
+    .data-table td:not(:first-child) {
+      text-align: right; font-family: 'DM Mono', monospace; font-size: 13px;
+    }
+    .data-table tr:nth-child(even) td { background: #f8fafc; }
+    .data-table tr.highlight td { background: #fef2f2; font-weight: 600; color: #7f1d1d; }
+    .data-table tr.highlight-br td { background: #f0fdf4; font-weight: 600; color: #166534; }
+    .data-table tr.total td { font-weight: 700; background: #f1f5f9; color: #0f1c2e; }
+
+    /* BARRA EMPILHADA */
+    .stack-bar {
+      display: flex; border-radius: 8px; overflow: hidden; height: 48px; margin: 16px 0 8px;
+    }
+    .stack-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10.5px; font-weight: 600; color: #fff;
+      white-space: nowrap; overflow: hidden; padding: 0 4px;
+    }
+
+    /* CAIXA DESTAQUE */
+    .destaque-box {
+      background: #0f1c2e; border-radius: 16px;
+      padding: 28px 32px; margin: 32px 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .destaque-item { text-align: center; }
+    .destaque-num {
+      font-family: 'Lora', serif; font-size: 2.4rem; font-weight: 700;
+      line-height: 1; margin-bottom: 8px;
+    }
+    .destaque-desc { font-size: 13px; color: #94a3b8; line-height: 1.4; }
+
+    .conclusao {
+      background: #0f1c2e; color: #cbd5e1;
+      border-radius: 16px; padding: 40px; margin: 52px 0 40px;
+    }
+    .conclusao h2 {
+      font-family: 'Lora', serif; font-size: 1.45rem; font-weight: 700;
+      color: #f1f5f9; margin-bottom: 20px;
+    }
+    .conclusao-list { list-style: none; padding: 0; }
+    .conclusao-list li {
+      padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex; gap: 14px; line-height: 1.65; font-size: 15.5px;
+    }
+    .conclusao-list li:last-child { border-bottom: none; }
+    .conclusao-list li::before { content: '→'; color: #fca5a5; font-weight: 700; flex-shrink: 0; }
+    .conclusao-list strong { color: #93c5fd; font-weight: 600; }
+
+    .sim-cta {
+      background: #f0fdf4; border: 1px solid #bbf7d0;
+      border-radius: 16px; padding: 36px 32px; text-align: center; margin: 40px 0;
+    }
+    .sim-cta-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #16a34a;
+      font-family: 'DM Mono', monospace; margin-bottom: 10px;
+    }
+    .sim-cta-title {
+      font-family: 'Lora', serif; font-size: 1.6rem;
+      font-weight: 700; color: #0f1c2e; margin-bottom: 10px;
+    }
+    .sim-cta-text {
+      font-size: 15px; color: #475569; margin-bottom: 22px;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .sim-cta-btn {
+      display: inline-block; background: #16a34a; color: #fff;
+      font-size: 15px; font-weight: 600; padding: 13px 28px;
+      border-radius: 8px; text-decoration: none; transition: background .2s;
+    }
+    .sim-cta-btn:hover { background: #15803d; }
+
+    .refs-section {
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 12px; padding: 24px 28px; margin-top: 40px;
+    }
+    .refs-title {
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #94a3b8; margin-bottom: 16px;
+    }
+    .refs-list { list-style: none; padding: 0; }
+    .refs-list li {
+      font-size: 13px; color: #64748b; padding: 7px 0;
+      border-bottom: 1px solid #e2e8f0; line-height: 1.55;
+    }
+    .refs-list li:last-child { border-bottom: none; }
+    .refs-list a { color: #2563eb; text-decoration: none; }
+    .refs-list a:hover { text-decoration: underline; }
+
+    footer {
+      background: #0f1c2e; color: #475569; text-align: center; padding: 32px 16px; font-size: 13px;
+    }
+    footer a { color: #64748b; }
+    .footer-logo { font-size: 18px; font-weight: 400; color: #e2e8f0; margin-bottom: 6px; display: block; }
+    .footer-logo strong { font-weight: 700; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .article-body { padding: 32px 16px 60px; }
+      .conclusao { padding: 28px 20px; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .chart-2col { grid-template-columns: 1fr; }
+      .destaque-box { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="article-tag">Clima · Emissões · CO₂</div>
+  <h1>Emissões de CO₂ no Mundo e no Brasil: Quem Emite, Quanto — e por Quê o Brasil é um Caso Único</h1>
+  <p class="hero-lead">China é o maior emissor atual. EUA lidera o histórico acumulado desde 1850. O Brasil emite pouco CO₂ de energia — mas suas florestas e o agronegócio contam uma história diferente. Entenda tudo com dados de 2024.</p>
+  <div class="byline">
+    <span>Prof. Edson Mosman</span>
+    <span>mosmanLAB</span>
+    <span>30 de março de 2026</span>
+    <span>11 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <div class="resumo">
+    Este artigo analisa as emissões globais de CO₂ e gases de efeito estufa com base em dados do <strong>Global Carbon Project (2024)</strong>, <strong>Our World in Data (OWID)</strong>, <strong>WRI Climate Watch</strong> e o <strong>SEEG — Sistema de Estimativas de Emissões de GEE do Observatório do Clima</strong>, com dados até 2024. O foco é duplo: o panorama mundial (quem emite mais hoje e no histórico) e o perfil peculiar do Brasil, onde o desmatamento e a pecuária dominam as emissões — não os combustíveis fósseis.
+  </div>
+
+  <div class="sumario">
+    <p class="sumario-label">Neste artigo</p>
+    <ol>
+      <li><a href="#s1">O quadro global — emissões em 2024</a></li>
+      <li><a href="#s2">O maior emissor atual: China</a></li>
+      <li><a href="#s3">O maior emissor acumulado: EUA</a></li>
+      <li><a href="#s4">Per capita — quem realmente polui mais</a></li>
+      <li><a href="#s5">O Brasil no mundo — a aparente contradição</a></li>
+      <li><a href="#s6">Emissões brasileiras por setor — 2024</a></li>
+      <li><a href="#s7">O boi brasileiro, o desmatamento e a floresta</a></li>
+      <li><a href="#s8">A queda histórica de 2024 e a COP30</a></li>
+      <li><a href="#conclusao">Conclusão</a></li>
+    </ol>
+  </div>
+
+  <!-- S1 -->
+  <h2 id="s1">1. O quadro global — emissões em 2024</h2>
+
+  <p>Em 2024, as emissões globais de CO₂ provenientes de combustíveis fósseis atingiram <strong>41,6 bilhões de toneladas métricas</strong> — um novo recorde histórico, conforme o relatório Global Carbon Budget apresentado na COP29. Isso representa um aumento de cerca de 0,8% em relação a 2023, apesar de todos os acordos climáticos em vigor desde o Acordo de Paris de 2015.</p>
+
+  <p>Para entender a dimensão desse número: se o CO₂ emitido em um único ano fosse empilhado como blocos de gelo, formaria uma camada de 1 metro cobrindo toda a superfície da Terra. O CO₂ permanece na atmosfera por centenas de anos — cada tonelada emitida hoje afeta o clima das próximas gerações.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num red">41,6 Gt</div>
+      <div class="stat-label">CO₂ emitido<br>globalmente em 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num red">32%</div>
+      <div class="stat-label">Participação da China<br>nas emissões globais</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num amber">14%</div>
+      <div class="stat-label">Participação dos EUA<br>nas emissões globais</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num blue">420 ppm</div>
+      <div class="stat-label">Concentração de CO₂<br>na atmosfera (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num green">2,0 t</div>
+      <div class="stat-label">CO₂/hab. no Brasil<br>(energia, BEN 2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">13,8 t</div>
+      <div class="stat-label">CO₂/hab. nos EUA<br>(comparação, 2022)</div>
+    </div>
+  </div>
+
+  <div class="chart-block">
+    <div class="chart-title">Os 10 maiores emissores de CO₂ em 2023 — emissões de combustíveis fósseis (Mt CO₂)</div>
+    <div class="chart-sub">Fonte: Global Carbon Project (2024) / Our World in Data · Mt CO₂ = milhões de toneladas</div>
+    <div class="chart-wrap" style="height:320px"><canvas id="c1"></canvas></div>
+    <p class="chart-caption">Os 10 maiores emissores são responsáveis por 67% das emissões globais totais. China sozinha emite mais que EUA e UE juntos.</p>
+  </div>
+
+  <!-- S2 -->
+  <h2 id="s2">2. O maior emissor atual: China</h2>
+
+  <p>A China é o maior emissor de CO₂ do mundo desde 2006, quando ultrapassou os Estados Unidos. Em 2023, respondeu por <strong>~32% de todas as emissões globais de CO₂</strong> — mais de 11 bilhões de toneladas por ano. Esse número é maior que a soma das emissões dos EUA, União Europeia e Japão.</p>
+
+  <p>O crescimento foi impulsionado por décadas de industrialização acelerada, com economia alimentada majoritariamente por carvão. Em 2022, o carvão ainda respondia por 55% da geração elétrica chinesa — a maior dependência de carvão entre as grandes economias do mundo.</p>
+
+  <p>Mas o cenário está mudando rapidamente. A China também lidera a instalação de energias renováveis: em 2023, instalou mais capacidade solar em um único ano do que o mundo inteiro instalou em 2022. O pico das emissões chinesas ainda não chegou, mas analistas estimam que pode ocorrer entre 2025 e 2030 — antes da meta oficial de 2030.</p>
+
+  <div class="callout red">
+    <strong>Um contexto importante:</strong> com 1,4 bilhão de habitantes, a China emite em torno de 8 toneladas de CO₂ por pessoa por ano — metade das emissões per capita dos EUA (13,8 t/hab). O tamanho absoluto das emissões chinesas reflete, em grande parte, o tamanho da sua população e o fato de que a China se tornou a "fábrica do mundo", produzindo bens que são consumidos por todo o planeta.
+  </div>
+
+  <!-- S3 -->
+  <h2 id="s3">3. O maior emissor acumulado histórico: Estados Unidos</h2>
+
+  <p>Quando olhamos para as <strong>emissões acumuladas desde 1850</strong> — a medida mais relevante para o clima, já que o CO₂ permanece na atmosfera por séculos — o panorama muda completamente. Os Estados Unidos lideram com folga o ranking histórico, responsáveis por cerca de <strong>20% de todo o CO₂ emitido pela humanidade</strong> desde o início da Revolução Industrial.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Emissões acumuladas de CO₂ desde 1850 — top países (Gt CO₂)</div>
+    <div class="chart-sub">Fonte: Carbon Brief / Our World in Data · inclui combustíveis fósseis + uso do solo</div>
+    <div class="chart-wrap" style="height:280px"><canvas id="c2"></canvas></div>
+    <p class="chart-caption">Quando incluído o desmatamento histórico, Brasil e Indonésia entram no top 5 de emissores acumulados — uma perspectiva muito diferente do ranking de emissões anuais por combustíveis fósseis.</p>
+  </div>
+
+  <p>O Reino Unido foi o maior emissor do mundo em 1850 — suas emissões superavam em seis vezes as dos EUA na época. Ao longo do século XIX e XX, Europa Ocidental e América do Norte dominaram o ranking enquanto se industrializavam. Apenas a partir dos anos 2000 a China emergiu como protagonista, e em 2006 ultrapassou os EUA em emissões anuais.</p>
+
+  <p>Essa distinção entre emissões <em>anuais</em> e <em>acumuladas</em> é central no debate climático internacional. Países em desenvolvimento argumentam — com razão científica — que o CO₂ que causou o aquecimento atual foi majoritariamente emitido por países ricos que se industrializaram primeiro. Os EUA emitiram 20% do total histórico com apenas 4% da população mundial.</p>
+
+  <div class="callout blue">
+    <strong>Emissões acumuladas com desmatamento — a posição do Brasil muda radicalmente:</strong> quando a metodologia inclui as emissões de desmatamento e uso do solo (não apenas combustíveis fósseis), o Brasil sobe para o <strong>4º lugar</strong> no ranking histórico, segundo estudo do Carbon Brief (2021). A maior parte dessas emissões não vem de indústrias ou carros — vem de séculos de conversão de florestas em pastagens e agricultura.
+  </div>
+
+  <!-- S4 -->
+  <h2 id="s4">4. Per capita — quem realmente polui mais por pessoa</h2>
+
+  <p>A comparação em termos absolutos é enganosa sem considerar a população. <strong>Emissões per capita</strong> — toneladas de CO₂ por habitante por ano — revelam uma realidade diferente.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Emissões de CO₂ por habitante — comparação internacional (2022)</div>
+    <div class="chart-sub">Fonte: IEA (2022) / EPE BEN 2025 · toneladas CO₂ eq/habitante · energia</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c3"></canvas></div>
+    <p class="chart-caption">Os EUA emitem 13,8 t CO₂/hab — quase 7 vezes mais que o Brasil (2,0 t/hab), considerando apenas o setor de energia. Os países do Oriente Médio têm as maiores emissões per capita do mundo.</p>
+  </div>
+
+  <p>Os países do Oriente Médio lideram em emissões per capita — Catar, Kuwait e Emirados Árabes chegam a 30–40 toneladas por habitante, reflexo da intensa atividade petrolífera e do consumo energético elevado. Os EUA, com 13,8 t/hab, são o maior emissor per capita entre as grandes economias. A Alemanha está em 7,7 t/hab, a China em 7,5 t/hab e a média mundial em 4,7 t/hab.</p>
+
+  <p>O Brasil, medido apenas pelas <strong>emissões do setor de energia</strong>, emite apenas <strong>2,0 t CO₂/hab</strong> — menos que um terço da média dos países da OCDE. Mas esse número esconde a realidade do desmatamento e da agropecuária, que, incluídos no total de GEE, levam o Brasil a 10,5 t CO₂ eq/hab em emissões brutas totais em 2024 (dados SEEG).</p>
+
+  <!-- S5 -->
+  <h2 id="s5">5. O Brasil no mundo — a aparente contradição</h2>
+
+  <p>O Brasil é um caso único no debate climático global, e compreendê-lo exige clareza sobre <em>o que estamos medindo</em>. Existem dois indicadores muito diferentes que o país costuma apresentar:</p>
+
+  <p><strong>Emissões de CO₂ do setor de energia:</strong> o Brasil emite apenas ~2 t CO₂/hab — um dos menores índices entre economias emergentes. Isso porque a matriz elétrica é 88% renovável e o etanol substitui parte da gasolina. O setor elétrico emite apenas 59,9 kg CO₂/MWh — contra 678 kg/MWh da China.</p>
+
+  <p><strong>Emissões totais de GEE (todos os gases, todos os setores):</strong> aqui o Brasil sobe muito. Em emissões brutas totais, o país emitiu 2,145 bilhões de toneladas de CO₂ equivalente em 2024 — ocupando a 6ª posição entre os maiores emissores globais quando incluídas emissões de uso do solo e agropecuária.</p>
+
+  <div class="destaque-box">
+    <div class="destaque-item">
+      <div class="destaque-num" style="color:#4ade80">2,0 t</div>
+      <div class="destaque-desc">CO₂/hab no Brasil<br><em>só setor de energia</em></div>
+    </div>
+    <div class="destaque-item">
+      <div class="destaque-num" style="color:#fca5a5">10,5 t</div>
+      <div class="destaque-desc">CO₂e/hab no Brasil<br><em>emissões brutas totais (SEEG 2024)</em></div>
+    </div>
+  </div>
+
+  <p>A diferença entre 2,0 t (energia) e 10,5 t (total bruto) é explicada pelo desmatamento e pela pecuária. O Brasil não é um grande emissor industrial — é um grande emissor de uso do solo. Essa distinção importa para as políticas climáticas: reduzir emissões no Brasil não passa principalmente por fechar usinas a carvão (como na China) ou descarbonizar a indústria (como na Alemanha) — passa por combater o desmatamento e transformar o sistema agropecuário.</p>
+
+  <!-- S6 -->
+  <h2 id="s6">6. Emissões brasileiras por setor — 2024</h2>
+
+  <p>Os dados mais completos e recentes sobre as emissões brasileiras vêm do <strong>SEEG — Sistema de Estimativas de Emissões de GEE</strong>, do Observatório do Clima, publicados em novembro de 2025 com dados referentes a 2024.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Emissões brutas do Brasil por setor — 2024 (GtCO₂e)</div>
+    <div class="chart-sub">Fonte: SEEG — Observatório do Clima, 13ª edição (nov. 2025) · Total: 2,145 GtCO₂e</div>
+    <div class="chart-wrap" style="height:280px"><canvas id="c4"></canvas></div>
+    <p class="chart-caption">Mudança de uso da terra (desmatamento) e agropecuária juntos respondem por 71% das emissões brutas brasileiras — perfil radicalmente diferente do padrão global, onde a energia domina com 75% do total.</p>
+  </div>
+
+  <div class="stack-bar">
+    <div class="stack-seg" style="flex:42;background:#dc2626">Uso do Solo<br>42%</div>
+    <div class="stack-seg" style="flex:29;background:#d97706">Agropecuária<br>29%</div>
+    <div class="stack-seg" style="flex:20;background:#2563eb">Energia<br>20%</div>
+    <div class="stack-seg" style="flex:5; background:#6366f1">Resíduos<br>5%</div>
+    <div class="stack-seg" style="flex:4; background:#374151">Ind.<br>4%</div>
+  </div>
+  <p style="font-size:12px;color:#64748b;font-style:italic;margin-top:6px;font-family:'DM Sans',sans-serif">
+    Emissões brutas por setor · Brasil 2024 · Fonte: SEEG / Observatório do Clima (nov. 2025)
+  </p>
+
+  <p>Olhando as emissões líquidas (descontadas as remoções por florestas protegidas), o quadro é ainda mais revelador: a agropecuária assume o topo com 42%, seguida pela energia (29%), uso do solo (17%), resíduos (6%) e processos industriais (6%).</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Setor</th>
+        <th>Emissões Brutas (MtCO₂e)</th>
+        <th>% do Total</th>
+        <th>Δ% vs 2023</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>Mudança de Uso da Terra (desmatamento)</td><td>906</td><td>42%</td><td>−32,5%</td></tr>
+      <tr><td>Agropecuária (pecuária + agricultura)</td><td>626</td><td>29%</td><td>−0,7%</td></tr>
+      <tr><td>Energia (transporte + geração + indústria)</td><td>429</td><td>20%</td><td>+0,8%</td></tr>
+      <tr><td>Resíduos</td><td>107</td><td>5%</td><td>+3,6%</td></tr>
+      <tr><td>Processos Industriais</td><td>77</td><td>4%</td><td>+2,8%</td></tr>
+      <tr class="total"><td><strong>TOTAL BRASIL 2024</strong></td><td><strong>2.145</strong></td><td><strong>100%</strong></td><td><strong>−16,7%</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#64748b;font-style:italic;margin-top:-16px;margin-bottom:24px">Fonte: SEEG 13ª edição — Observatório do Clima, novembro de 2025. Dados referência: 2024.</p>
+
+  <div class="chart-2col">
+    <div class="chart-block" style="margin:0">
+      <div class="chart-title">Brasil 2024 — emissões brutas por setor (%)</div>
+      <div class="chart-sub">Fonte: SEEG 2025</div>
+      <div class="chart-wrap" style="height:220px"><canvas id="c5"></canvas></div>
+    </div>
+    <div class="chart-block" style="margin:0">
+      <div class="chart-title">Mundo 2022 — emissões brutas por setor (%)</div>
+      <div class="chart-sub">Fonte: WRI Climate Watch / IPCC</div>
+      <div class="chart-wrap" style="height:220px"><canvas id="c6"></canvas></div>
+    </div>
+  </div>
+  <p class="chart-caption">A comparação lado a lado revela a singularidade brasileira: no mundo, a energia domina com 75% das emissões. No Brasil, uso do solo e agropecuária somam 71% — invertendo completamente o perfil global.</p>
+
+  <!-- S7 -->
+  <h2 id="s7">7. O boi brasileiro, o desmatamento e a floresta</h2>
+
+  <p>O dado mais surpreendente do SEEG 2024 é este: <strong>a pecuária bovina é, sozinha, responsável por 51% de todas as emissões brutas do Brasil</strong> — 1,1 GtCO₂e. Se o rebanho bovino brasileiro fosse um país, seria o <strong>7º maior emissor do mundo</strong>, ligeiramente à frente do Japão.</p>
+
+  <p>Como um animal que come capim emite tanto? Por dois caminhos principais:</p>
+
+  <p><strong>Fermentação entérica (o "arroto do boi"):</strong> vacas são ruminantes — elas fermentam o alimento no estômago e liberam metano (CH₄) durante a digestão. O metano tem poder de aquecimento global 28 vezes maior que o CO₂ ao longo de 100 anos. Com um rebanho de ~220 milhões de cabeças, o Brasil tem o maior rebanho bovino comercial do mundo — e 404 MtCO₂e só de fermentação entérica.</p>
+
+  <p><strong>Desmatamento para pastagem:</strong> historicamente, a principal forma de expandir a pecuária no Brasil foi derrubar floresta. Cada hectare de Amazônia convertido em pasto libera décadas de carbono armazenado nas árvores. O setor de Mudança de Uso da Terra — dominado em 98% pelo desmatamento — emitiu 906 MtCO₂e em 2024, mesmo com a queda histórica de 32,5%.</p>
+
+  <div class="callout amber">
+    <strong>A floresta como "banco de carbono":</strong> o Brasil também <em>remove</em> CO₂ da atmosfera. Florestas secundárias em regeneração e áreas protegidas absorvem carbono continuamente. Em 2024, descontando essas remoções, as emissões líquidas de uso do solo caíram 64% — a maior redução da história. Isso mostra que <strong>proteger floresta é a medida de mitigação climática com maior retorno imediato disponível para o Brasil</strong>.
+  </div>
+
+  <!-- S8 -->
+  <h2 id="s8">8. A queda histórica de 2024 e a COP30</h2>
+
+  <p>O dado mais positivo de todo o panorama é também o mais recente: em 2024, as emissões brutas totais do Brasil caíram <strong>16,7%</strong> — de 2,576 GtCO₂e para 2,145 GtCO₂e. É a <strong>segunda maior queda da história das medições</strong>, iniciadas em 1990, perdendo apenas para 2009 (−17,2%).</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Emissões brutas totais do Brasil — 1990 a 2024 (GtCO₂e)</div>
+    <div class="chart-sub">Fonte: SEEG — Observatório do Clima, 13ª edição (nov. 2025)</div>
+    <div class="chart-wrap" style="height:250px"><canvas id="c7"></canvas></div>
+    <p class="chart-caption">O pico histórico de emissões foi em 2004, impulsionado pelo desmatamento. A retomada do controle ambiental explica as quedas de 2005–2009 e de 2023–2024. Setores como energia e agropecuária, porém, continuam crescendo.</p>
+  </div>
+
+  <p>A queda foi impulsionada quase exclusivamente pela redução do desmatamento. O combate ao desmatamento na Amazônia e no Cerrado, intensificado pelo governo federal desde 2023, resultou na maior redução histórica de emissões por uso do solo: −32,5%. Todos os outros setores (energia, agropecuária, resíduos, processos industriais) ficaram estáveis ou cresceram.</p>
+
+  <p>Esse resultado posiciona o Brasil com um número invejável na véspera da <strong>COP30</strong>, que ocorreu em novembro de 2025 em Belém — a primeira COP realizada no Brasil. Mas pesquisadores do SEEG alertam: a queda depende da manutenção do controle do desmatamento. A meta climática brasileira (NDC) estabelece um limite de 1,32 bilhão de toneladas líquidas para 2025 — e as estimativas indicam que o país ainda deve ultrapassar essa meta em cerca de 9%.</p>
+
+  <div class="callout navy">
+    <strong>"O desmatamento cai, mas todos os outros setores sobem"</strong> — David Tsai, coordenador do SEEG. O alerta é claro: toda a mitigação climática do Brasil está concentrada no combate ao desmatamento. Para cumprir as metas do Acordo de Paris, o Brasil precisará também descarbonizar a agropecuária, o transporte e a indústria — setores que hoje seguem na contramão.
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao" id="conclusao">
+    <h2>Conclusão: 3 pontos para fixar</h2>
+    <ul class="conclusao-list">
+      <li>
+        <strong>China emite mais hoje; EUA emitiram mais na história.</strong> A China é responsável por 32% das emissões anuais globais de CO₂ — mas os EUA acumularam ~20% de todo o CO₂ emitido desde 1850. Quando incluído o desmatamento histórico, o Brasil sobe para 4º lugar no ranking acumulado — reflexo de décadas de conversão de florestas em pastagem, não de industrialização.
+      </li>
+      <li>
+        <strong>O Brasil tem dois perfis de emissões radicalmente diferentes.</strong> No setor de energia, emite apenas 2,0 t CO₂/hab — um dos menores índices do mundo graças à matriz elétrica renovável. Mas no total bruto de GEE (incluindo desmatamento e pecuária), chega a 10,5 t CO₂e/hab. O problema climático do Brasil não está nas usinas — está nas florestas derrubadas e no rebanho bovino de 220 milhões de cabeças.
+      </li>
+      <li>
+        <strong>A floresta é a maior alavanca climática disponível para o Brasil.</strong> A queda de 16,7% nas emissões em 2024 — segunda maior da história — veio quase toda da redução do desmatamento. Proteger e restaurar florestas é, comprovadamente, a medida de mitigação com maior impacto imediato. Mas isso não basta: energia, agropecuária e transporte precisam de descarbonização própria para que o país cumpra suas metas do Acordo de Paris.
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <section class="sim-cta">
+    <p class="sim-cta-label">MosmanLAB</p>
+    <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+    <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+    <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="refs-section">
+    <h2 class="refs-title">Referências Bibliográficas</h2>
+    <ul class="refs-list">
+      <li>
+        <strong>Observatório do Clima — SEEG</strong> — <em>13ª Edição do Sistema de Estimativas de Emissões de Gases de Efeito Estufa.</em> Dados referência 2024, publicado em novembro de 2025.
+        <a href="https://seeg.eco.br" target="_blank">seeg.eco.br</a>
+      </li>
+      <li>
+        <strong>Global Carbon Project</strong> — <em>Global Carbon Budget 2024.</em> Friedlingstein et al. (2024). Earth System Science Data. Emissões globais de CO₂ por combustíveis fósseis.
+        <a href="https://www.globalcarbonproject.org" target="_blank">globalcarbonproject.org</a>
+      </li>
+      <li>
+        <strong>Our World in Data (OWID)</strong> — <em>CO₂ and Greenhouse Gas Emissions</em>. Hannah Ritchie, Pablo Rosado, Max Roser (2024).
+        <a href="https://ourworldindata.org/co2-and-greenhouse-gas-emissions" target="_blank">ourworldindata.org</a>
+      </li>
+      <li>
+        <strong>WRI — World Resources Institute / Climate Watch</strong> — <em>Historical GHG Emissions by Country and Sector.</em>
+        <a href="https://www.climatewatchdata.org/ghg-emissions" target="_blank">climatewatchdata.org</a>
+      </li>
+      <li>
+        <strong>Carbon Brief</strong> — <em>Analysis: Which countries are historically responsible for climate change?</em> (2021). Inclui emissões acumuladas com desmatamento.
+        <a href="https://www.carbonbrief.org" target="_blank">carbonbrief.org</a>
+      </li>
+      <li>
+        <strong>IEA — International Energy Agency</strong> — <em>World Energy Balances (2024)</em>. Dados de emissões por MWh e per capita por país.
+        <a href="https://www.iea.org/data-and-statistics" target="_blank">iea.org</a>
+      </li>
+      <li>
+        <strong>EPE — Empresa de Pesquisa Energética</strong> — <em>BEN 2025: Balanço Energético Nacional, Ano Base 2024.</em> Dados de emissões do setor energético brasileiro.
+        <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a>
+      </li>
+      <li>
+        <strong>Prof. Edson Mosman</strong> — mosmanLAB · São Paulo, março de 2026.
+        <a href="https://mosmanlab.com.br" target="_blank">mosmanlab.com.br</a>
+      </li>
+    </ul>
+  </section>
+
+</article>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc = 'rgba(0,0,0,.06)', tc = '#94a3b8';
+
+/* C1 — Top 10 emissores anuais */
+new Chart(document.getElementById('c1'), {
+  type: 'bar',
+  data: {
+    labels: ['China','EUA','Índia','Rússia','Japão','Alemanha','Coreia do Sul','Irã','Canadá','Arábia Saudita'],
+    datasets: [{
+      data: [11890, 5056, 2830, 1674, 1030, 675, 612, 754, 570, 723],
+      backgroundColor: ['#dc2626','#f97316','#fbbf24','#6366f1','#0891b2',
+                         '#64748b','#64748b','#64748b','#64748b','#64748b'],
+      borderRadius: 5, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.x.toLocaleString('pt-BR')} Mt CO₂` } }
+    },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc,callback:v=>(v/1000).toFixed(0)+'k Mt'}, grid:{color:gc} },
+      y: { ticks:{font:{size:11},color:'#334155'}, grid:{display:false} }
+    }
+  }
+});
+
+/* C2 — Emissões acumuladas históricas */
+new Chart(document.getElementById('c2'), {
+  type: 'bar',
+  data: {
+    labels: ['EUA','China','Rússia','Brasil','Indonésia','Alemanha','Reino Unido','Japão','Índia','França'],
+    datasets: [{
+      data: [509, 284, 172, 149, 102, 92, 78, 68, 53, 37],
+      backgroundColor: ['#f97316','#dc2626','#6366f1','#16a34a','#16a34a',
+                         '#64748b','#64748b','#64748b','#64748b','#64748b'],
+      borderRadius: 5, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y} Gt CO₂ acumulado` } }
+    },
+    scales: {
+      x: { ticks:{font:{size:10},color:tc}, grid:{display:false} },
+      y: { ticks:{font:{size:11},color:tc,callback:v=>v+' Gt'}, grid:{color:gc} }
+    }
+  }
+});
+
+/* C3 — Emissões per capita */
+new Chart(document.getElementById('c3'), {
+  type: 'bar',
+  data: {
+    labels: ['EUA','Austrália','Rússia','Japão','Alemanha','China','Mundo','Brasil (energia)','Índia'],
+    datasets: [{
+      data: [13.8, 13.2, 11.4, 8.5, 7.7, 7.5, 4.7, 2.0, 1.9],
+      backgroundColor: ['#f97316','#f97316','#f59e0b','#fbbf24','#64748b',
+                         '#dc2626','#94a3b8','#16a34a','#22c55e'],
+      borderRadius: 5, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+    plugins: { legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.x} t CO₂/hab (energia)`}}
+    },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc,callback:v=>v+' t'}, grid:{color:gc} },
+      y: { ticks:{font:{size:11},color:'#334155'}, grid:{display:false} }
+    }
+  }
+});
+
+/* C4 — Setores Brasil 2024 */
+new Chart(document.getElementById('c4'), {
+  type: 'bar',
+  data: {
+    labels: ['Uso da Terra\n(desmatamento)','Agropecuária','Energia','Resíduos','Proc. Industriais'],
+    datasets: [{
+      data: [906, 626, 429, 107, 77],
+      backgroundColor: ['#dc2626','#d97706','#2563eb','#6366f1','#374151'],
+      borderRadius: 5, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString('pt-BR')} MtCO₂e`}}
+    },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc}, grid:{display:false} },
+      y: { ticks:{font:{size:11},color:tc,callback:v=>v+' Mt'}, grid:{color:gc} }
+    }
+  }
+});
+
+/* C5 + C6 — Donut comparação Brasil vs Mundo */
+const donutOpts = {
+  responsive:true, maintainAspectRatio:false, cutout:'58%',
+  plugins:{
+    legend:{position:'right',labels:{font:{size:10},color:'#475569',padding:6,boxWidth:10}},
+    tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${ctx.parsed}%`}}
+  }
+};
+
+new Chart(document.getElementById('c5'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Uso do Solo','Agropecuária','Energia','Resíduos','Ind.'],
+    datasets: [{ data:[42,29,20,5,4],
+      backgroundColor:['#dc2626','#d97706','#2563eb','#6366f1','#374151'],
+      borderWidth:2, borderColor:'#fff' }]
+  }, options: donutOpts
+});
+
+new Chart(document.getElementById('c6'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Energia','Agropecuária','Uso do Solo','Ind./IPPU','Resíduos'],
+    datasets: [{ data:[75,11,6,5,3],
+      backgroundColor:['#2563eb','#d97706','#dc2626','#374151','#6366f1'],
+      borderWidth:2, borderColor:'#fff' }]
+  }, options: donutOpts
+});
+
+/* C7 — Emissões totais Brasil série histórica */
+const anos = [1990,1995,2000,2004,2005,2009,2010,2012,2015,2018,2019,2020,2021,2022,2023,2024];
+const emiss = [1.08,1.45,1.83,2.81,2.27,1.75,1.96,2.05,1.90,2.10,2.17,1.98,2.16,2.60,2.58,2.15];
+new Chart(document.getElementById('c7'), {
+  type: 'line',
+  data: {
+    labels: anos.map(String),
+    datasets: [{
+      data: emiss,
+      borderColor: '#dc2626',
+      backgroundColor: ctx => {
+        const g = ctx.chart.ctx.createLinearGradient(0,0,0,220);
+        g.addColorStop(0,'rgba(220,38,38,.25)');
+        g.addColorStop(1,'rgba(220,38,38,.02)');
+        return g;
+      },
+      fill: true, tension: 0.35,
+      pointRadius: 4, pointBackgroundColor: '#dc2626',
+      borderWidth: 2.5
+    }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toFixed(2)} GtCO₂e`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},color:tc}, grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' Gt'}, grid:{color:gc},
+         title:{display:true,text:'GtCO₂e',font:{size:10},color:tc}}
+    }
+  }
+});
+</script>
+</body>
+</html>

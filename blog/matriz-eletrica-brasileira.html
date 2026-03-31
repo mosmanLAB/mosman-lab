@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matriz Elétrica Brasileira: 88% Renovável e em Transformação | MosmanLAB</title>
+  <meta name="description" content="A matriz elétrica do Brasil tem 88% de fontes renováveis. Entenda o papel da hidráulica, solar, eólica, biomassa e termelétricas com dados reais do BEN 2025."/>
+  <link rel="canonical" href="https://mosmanlab.com.br/blog/matriz-eletrica-brasileira.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a2e;
+      background: #ffffff;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* ── URGENCY + NAV ── */
+    .urgency {
+      background: #2563eb;
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      position: sticky; top: 0; z-index: 100;
+      padding: 0 5%;
+    }
+    .nav-top {
+      display: flex; align-items: center; height: 58px;
+    }
+    .nav-logo {
+      font-size: 19px; font-weight: 400;
+      color: #0f1c2e; text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo strong { font-weight: 700; }
+    .nav-links {
+      display: flex; gap: 24px; margin-left: auto; list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: #0f1c2e; text-decoration: none;
+      opacity: .6; transition: opacity .15s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: #16a34a; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #0f1c2e 0%, #1e3a5f 60%, #0f3460 100%);
+      padding: 64px 5% 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(22,163,74,.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .article-tag {
+      display: inline-block;
+      background: rgba(22,163,74,.25);
+      color: #4ade80;
+      border: 1px solid rgba(74,222,128,.3);
+      border-radius: 999px;
+      font-size: 11.5px; font-weight: 600;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 4px 14px; margin-bottom: 20px;
+      font-family: 'DM Mono', monospace;
+    }
+    .hero h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-weight: 700; line-height: 1.2;
+      color: #fff;
+      max-width: 780px; margin: 0 auto 18px;
+    }
+    .hero-lead {
+      font-size: 17.5px; color: #94a3b8;
+      max-width: 640px; margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+    .byline {
+      font-size: 12.5px; color: #475569;
+      font-family: 'DM Mono', monospace;
+      display: flex; gap: 18px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .byline span::before { content: '· '; }
+    .byline span:first-child::before { content: ''; }
+
+    /* ── CORPO ── */
+    .article-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    /* RESUMO */
+    .resumo {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 24px;
+      margin: 32px 0;
+      font-size: 16px; color: #1e3a5f;
+      line-height: 1.65;
+    }
+    .resumo strong { color: #0f1c2e; font-weight: 600; }
+
+    /* SUMÁRIO */
+    .sumario {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 26px;
+      margin: 28px 0 40px;
+    }
+    .sumario-label {
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: .09em; text-transform: uppercase;
+      color: #94a3b8; font-family: 'DM Mono', monospace;
+      margin-bottom: 14px;
+    }
+    .sumario ol {
+      padding-left: 18px; color: #2563eb;
+      font-size: 14.5px;
+    }
+    .sumario li { margin-bottom: 7px; }
+    .sumario a { color: #2563eb; text-decoration: none; font-weight: 500; }
+    .sumario a:hover { text-decoration: underline; }
+
+    /* HEADINGS */
+    .article-body h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.65rem; font-weight: 700;
+      color: #0f1c2e; margin: 56px 0 18px;
+      line-height: 1.25; scroll-margin-top: 80px;
+    }
+    .article-body h3 {
+      font-size: 1.05rem; font-weight: 600;
+      color: #0f1c2e; margin: 30px 0 10px;
+    }
+    .article-body p { margin-bottom: 22px; color: #334155; }
+    .article-body strong { color: #0f1c2e; font-weight: 600; }
+
+    /* CALLOUTS */
+    .callout {
+      border-left: 4px solid #16a34a;
+      background: #f0fdf4;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 22px; margin: 28px 0;
+      font-size: 15.5px; color: #166534;
+      line-height: 1.65;
+    }
+    .callout.blue  { border-color: #2563eb; background: #eff6ff; color: #1e3a5f; }
+    .callout.amber { border-color: #d97706; background: #fffbeb; color: #78350f; }
+    .callout.red   { border-color: #dc2626; background: #fef2f2; color: #7f1d1d; }
+    .callout.navy  { border-color: #0f1c2e; background: #f1f5f9; color: #0f1c2e; }
+    .callout strong { font-weight: 600; }
+
+    /* STAT CARDS */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px; margin: 28px 0;
+    }
+    .stat-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 16px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Lora', serif;
+      font-size: 2rem; font-weight: 700;
+      color: #0f1c2e; line-height: 1;
+      margin-bottom: 7px;
+    }
+    .stat-num.green  { color: #16a34a; }
+    .stat-num.blue   { color: #2563eb; }
+    .stat-num.amber  { color: #d97706; }
+    .stat-num.red    { color: #dc2626; }
+    .stat-num.teal   { color: #0891b2; }
+    .stat-label { font-size: 12px; color: #64748b; line-height: 1.4; }
+
+    /* GRÁFICOS */
+    .chart-block {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px 24px; margin: 32px 0;
+    }
+    .chart-title {
+      font-size: 14px; font-weight: 600;
+      color: #0f1c2e; margin-bottom: 3px;
+    }
+    .chart-sub {
+      font-size: 11.5px; color: #94a3b8;
+      margin-bottom: 16px;
+      font-family: 'DM Mono', monospace;
+    }
+    .chart-wrap { position: relative; width: 100%; }
+    .chart-caption {
+      font-size: 12px; color: #64748b;
+      margin-top: 12px; font-style: italic;
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: #64748b; }
+    .leg-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+    /* FONTE CARDS — grid de fontes */
+    .fonte-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin: 28px 0;
+    }
+    .fonte-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .fonte-card-header {
+      display: flex; align-items: center;
+      gap: 10px; margin-bottom: 10px;
+    }
+    .fonte-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .fonte-card-name { font-size: 14px; font-weight: 600; color: #0f1c2e; }
+    .fonte-card-pct  { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+    .fonte-card-desc { font-size: 12.5px; color: #64748b; line-height: 1.5; }
+    .fonte-card-badge {
+      display: inline-block;
+      font-size: 10.5px; font-weight: 600;
+      padding: 2px 8px; border-radius: 999px;
+      margin-top: 6px;
+      font-family: 'DM Mono', monospace;
+    }
+    .badge-renov   { background: #dcfce7; color: #166534; }
+    .badge-nrenov  { background: #fee2e2; color: #991b1b; }
+    .badge-flex    { background: #fef9c3; color: #854d0e; }
+
+    /* TABELA */
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13.5px; margin: 24px 0;
+    }
+    .data-table th {
+      text-align: left; padding: 10px 14px;
+      background: #0f1c2e; color: #fff;
+      font-weight: 600; font-size: 11.5px;
+      letter-spacing: .04em;
+    }
+    .data-table th:not(:first-child) { text-align: right; }
+    .data-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+    .data-table td:not(:first-child) {
+      text-align: right;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+    }
+    .data-table tr:nth-child(even) td { background: #f8fafc; }
+    .data-table .row-total td { font-weight: 700; color: #0f1c2e; background: #f1f5f9; }
+    .data-table .row-renov td:first-child { border-left: 3px solid #16a34a; }
+    .data-table .row-nrenov td:first-child { border-left: 3px solid #dc2626; }
+    .data-table .row-flex td:first-child { border-left: 3px solid #d97706; }
+
+    /* BARRA EMPILHADA VISUAL */
+    .stack-bar {
+      display: flex; border-radius: 8px;
+      overflow: hidden; height: 44px;
+      margin: 16px 0 8px;
+    }
+    .stack-seg {
+      display: flex; align-items: center;
+      justify-content: center;
+      font-size: 10.5px; font-weight: 600;
+      color: #fff; white-space: nowrap;
+      overflow: hidden; padding: 0 4px;
+    }
+
+    /* CONCLUSÃO */
+    .conclusao {
+      background: #0f1c2e;
+      color: #cbd5e1;
+      border-radius: 16px;
+      padding: 40px; margin: 52px 0 40px;
+    }
+    .conclusao h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.45rem; font-weight: 700;
+      color: #f1f5f9; margin-bottom: 20px;
+    }
+    .conclusao-list { list-style: none; padding: 0; }
+    .conclusao-list li {
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex; gap: 14px;
+      line-height: 1.65; font-size: 15.5px;
+    }
+    .conclusao-list li:last-child { border-bottom: none; }
+    .conclusao-list li::before {
+      content: '→'; color: #4ade80;
+      font-weight: 700; flex-shrink: 0;
+    }
+    .conclusao-list strong { color: #93c5fd; font-weight: 600; }
+
+    /* CTA */
+    .sim-cta {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 16px;
+      padding: 36px 32px; text-align: center;
+      margin: 40px 0;
+    }
+    .sim-cta-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: #16a34a; font-family: 'DM Mono', monospace;
+      margin-bottom: 10px;
+    }
+    .sim-cta-title {
+      font-family: 'Lora', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: #0f1c2e; margin-bottom: 10px;
+    }
+    .sim-cta-text {
+      font-size: 15px; color: #475569;
+      margin-bottom: 22px;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .sim-cta-btn {
+      display: inline-block;
+      background: #16a34a; color: #fff;
+      font-size: 15px; font-weight: 600;
+      padding: 13px 28px; border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .sim-cta-btn:hover { background: #15803d; }
+
+    /* REFS */
+    .refs-section {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px 28px; margin-top: 40px;
+    }
+    .refs-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #94a3b8; margin-bottom: 16px;
+    }
+    .refs-list { list-style: none; padding: 0; }
+    .refs-list li {
+      font-size: 13px; color: #64748b;
+      padding: 7px 0;
+      border-bottom: 1px solid #e2e8f0;
+      line-height: 1.55;
+    }
+    .refs-list li:last-child { border-bottom: none; }
+    .refs-list a { color: #2563eb; text-decoration: none; }
+    .refs-list a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: #0f1c2e; color: #475569;
+      text-align: center; padding: 32px 16px;
+      font-size: 13px;
+    }
+    footer a { color: #64748b; }
+    .footer-logo {
+      font-size: 18px; font-weight: 400;
+      color: #e2e8f0; margin-bottom: 6px;
+      display: block;
+    }
+    .footer-logo strong { font-weight: 700; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .article-body { padding: 32px 16px 60px; }
+      .conclusao { padding: 28px 20px; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .fonte-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- URGENCY + NAV -->
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="article-tag">Energia · Matriz Elétrica</div>
+  <h1>Matriz Elétrica Brasileira: 88% Renovável e em Transformação Acelerada</h1>
+  <p class="hero-lead">Em 2024 o Brasil gerou 751 TWh de eletricidade — 88% de fontes renováveis. Entenda como essa matriz funciona, quem gera o quê, e por que a solar e a eólica estão mudando tudo.</p>
+  <div class="byline">
+    <span>Prof. Edson Mosman</span>
+    <span>mosmanLAB</span>
+    <span>30 de março de 2026</span>
+    <span>10 min de leitura</span>
+  </div>
+</header>
+
+<!-- CORPO -->
+<article class="article-body">
+
+  <div class="resumo">
+    Este artigo analisa a <strong>matriz elétrica brasileira</strong> com base nos dados do <strong>BEN 2025 — Balanço Energético Nacional</strong>, publicação oficial da Empresa de Pesquisa Energética (EPE) com ano base 2024. São apresentados os dados de geração por fonte, a evolução histórica da renovabilidade, o papel de cada fonte — hidráulica, eólica, solar, biomassa, gás natural, nuclear e outras — e o que essa matriz significa em comparação com o mundo.
+  </div>
+
+  <div class="sumario">
+    <p class="sumario-label">Neste artigo</p>
+    <ol>
+      <li><a href="#s1">A matriz elétrica em números — 2024</a></li>
+      <li><a href="#s2">Cada fonte em detalhe</a></li>
+      <li><a href="#s3">A evolução histórica — 20 anos de renovabilidade</a></li>
+      <li><a href="#s4">O boom solar e eólico</a></li>
+      <li><a href="#s5">O papel das termelétricas — flexibilidade com custo</a></li>
+      <li><a href="#s6">A micro e minigeração distribuída</a></li>
+      <li><a href="#s7">O Brasil no contexto global</a></li>
+      <li><a href="#conclusao">Conclusão</a></li>
+    </ol>
+  </div>
+
+  <!-- S1 -->
+  <h2 id="s1">1. A matriz elétrica em números — 2024</h2>
+
+  <p>Em 2024, o Brasil gerou <strong>751,3 TWh de eletricidade</strong> — um crescimento de 6,1% em relação a 2023. A Oferta Interna de Energia Elétrica (OIEE), que inclui geração nacional e o saldo de importações, chegou a <strong>762,9 TWh</strong>, crescimento de 5,5%.</p>
+
+  <p>O consumo final de eletricidade acompanhou esse ritmo: <strong>650,4 TWh</strong>, também +5,5% em relação ao ano anterior. Os setores que mais contribuíram para esse aumento foram o residencial (+8%, puxado por eletrodomésticos e climatização), o comercial (+7,4%) e o industrial (+4,1%).</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num green">88,2%</div>
+      <div class="stat-label">Renováveis na<br>geração elétrica (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num blue">751 TWh</div>
+      <div class="stat-label">Geração elétrica<br>total (2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num amber">+6,1%</div>
+      <div class="stat-label">Crescimento da geração<br>vs 2023</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num teal">59,9 kg</div>
+      <div class="stat-label">CO₂ emitido por<br>MWh gerado (eq)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">+39,6%</div>
+      <div class="stat-label">Crescimento da geração<br>solar em 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">23,7%</div>
+      <div class="stat-label">Solar + eólica na<br>geração total</div>
+    </div>
+  </div>
+
+  <div class="chart-block">
+    <div class="chart-title">Geração elétrica por fonte — Brasil 2024 (TWh)</div>
+    <div class="chart-sub">Fonte: BEN 2025 — EPE / Ministério de Minas e Energia · Ano base 2024</div>
+    <div class="chart-wrap" style="height:330px"><canvas id="c1"></canvas></div>
+    <p class="chart-caption">A hidráulica ainda lidera com 56,1% da geração, mas solar e eólica juntas já somam 23,7% — mais que o dobro da participação de 5 anos atrás.</p>
+  </div>
+
+  <div class="stack-bar">
+    <div class="stack-seg" style="flex:56.1;background:#2563eb">Hidro 56,1%</div>
+    <div class="stack-seg" style="flex:14.3;background:#06b6d4">Eólica 14,3%</div>
+    <div class="stack-seg" style="flex:9.4;background:#fbbf24">Solar 9,4%</div>
+    <div class="stack-seg" style="flex:8.2;background:#16a34a">Biomassa 8,2%</div>
+    <div class="stack-seg" style="flex:6.4;background:#f59e0b">Gás 6,4%</div>
+    <div class="stack-seg" style="flex:2.1;background:#6366f1">Nuclear 2,1%</div>
+    <div class="stack-seg" style="flex:3.5;background:#374151">Outros 3,5%</div>
+  </div>
+  <p style="font-size:12px;color:#64748b;font-style:italic;margin-top:6px">Participação percentual de cada fonte na geração total de 751,3 TWh · Fonte: BEN 2025 — EPE</p>
+
+  <!-- S2 -->
+  <h2 id="s2">2. Cada fonte em detalhe</h2>
+
+  <p>A tabela abaixo traz a geração elétrica por fonte em GWh, comparando 2023 e 2024, com as variações percentuais segundo o BEN 2025:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Fonte</th>
+        <th>2023 (GWh)</th>
+        <th>2024 (GWh)</th>
+        <th>% do total</th>
+        <th>Δ% 24/23</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-renov"><td>Hidrelétrica</td><td>425.996</td><td>421.799</td><td>56,1%</td><td>−1,0%</td></tr>
+      <tr class="row-renov"><td>Eólica</td><td>95.801</td><td>107.654</td><td>14,3%</td><td>+12,4%</td></tr>
+      <tr class="row-renov"><td>Solar Fotovoltaica</td><td>50.633</td><td>70.665</td><td>9,4%</td><td>+39,6%</td></tr>
+      <tr class="row-renov"><td>Biomassa</td><td>54.210</td><td>58.027</td><td>7,7%</td><td>+7,0%</td></tr>
+      <tr class="row-total"><td><strong>Subtotal Renováveis</strong></td><td><strong>626.640</strong></td><td><strong>658.145</strong></td><td><strong>87,6%</strong></td><td><strong>+5,0%</strong></td></tr>
+      <tr class="row-flex"><td>Gás Natural</td><td>38.589</td><td>47.792</td><td>6,4%</td><td>+23,9%</td></tr>
+      <tr class="row-nrenov"><td>Nuclear (Angra I e II)</td><td>14.504</td><td>15.767</td><td>2,1%</td><td>+8,7%</td></tr>
+      <tr class="row-nrenov"><td>Carvão Vapor</td><td>8.770</td><td>10.247</td><td>1,4%</td><td>+16,8%</td></tr>
+      <tr class="row-nrenov"><td>Derivados de Petróleo</td><td>5.686</td><td>5.960</td><td>0,8%</td><td>+4,8%</td></tr>
+      <tr class="row-nrenov"><td>Outras</td><td>13.932</td><td>13.425</td><td>1,8%</td><td>−3,6%</td></tr>
+      <tr class="row-total"><td><strong>GERAÇÃO TOTAL</strong></td><td><strong>708.119</strong></td><td><strong>751.335</strong></td><td><strong>100%</strong></td><td><strong>+6,1%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:12px;color:#64748b;font-style:italic;margin-top:-16px;margin-bottom:24px">¹ Biomassa inclui lenha, bagaço de cana, biodiesel e licor preto. Derivados de petróleo incluem óleo diesel e óleo combustível. Fonte: BEN 2025 — EPE.</p>
+
+  <p>Agora, o que cada uma dessas fontes representa na prática:</p>
+
+  <div class="fonte-grid">
+
+    <div class="fonte-card">
+      <div class="fonte-card-header">
+        <div class="fonte-icon" style="background:#dbeafe">💧</div>
+        <div class="fonte-card-name">Hidráulica</div>
+      </div>
+      <div class="fonte-card-pct" style="color:#2563eb">421,8 TWh</div>
+      <div class="fonte-card-desc">A base histórica da matriz elétrica brasileira. Opera há décadas e tem capacidade instalada de 109,9 GW — estável, sem crescimento em 2024. A geração caiu 1% por condições hidrológicas desfavoráveis em algumas regiões, mas permanece amplamente dominante. Inclui a importação de Itaipu.</div>
+      <span class="fonte-card-badge badge-renov">Renovável · 56,1%</span>
+    </div>
+
+    <div class="fonte-card">
+      <div class="fonte-card-header">
+        <div class="fonte-icon" style="background:#cffafe">🌬️</div>
+        <div class="fonte-card-name">Eólica</div>
+      </div>
+      <div class="fonte-card-pct" style="color:#06b6d4">107,7 TWh</div>
+      <div class="fonte-card-desc">Cresceu 12,4% em 2024, com capacidade instalada de 29.550 MW (+3%). Concentrada no Nordeste, onde o regime de ventos é um dos melhores do mundo. Complementa bem a hidráulica porque os ventos são mais fortes no período seco, quando os reservatórios estão baixos.</div>
+      <span class="fonte-card-badge badge-renov">Renovável · 14,3%</span>
+    </div>
+
+    <div class="fonte-card">
+      <div class="fonte-card-header">
+        <div class="fonte-icon" style="background:#fef9c3">☀️</div>
+        <div class="fonte-card-name">Solar Fotovoltaica</div>
+      </div>
+      <div class="fonte-card-pct" style="color:#d97706">70,7 TWh</div>
+      <div class="fonte-card-desc">A maior expansão de 2024: +39,6% de geração e +28,1% de capacidade instalada, chegando a 48.468 MW. Inclui usinas centralizadas e micro/minigeração (MMGD). A solar já responde por 5,6% da geração total via MMGD — painéis em telhados de residências e empresas.</div>
+      <span class="fonte-card-badge badge-renov">Renovável · 9,4%</span>
+    </div>
+
+    <div class="fonte-card">
+      <div class="fonte-card-header">
+        <div class="fonte-icon" style="background:#dcfce7">🌿</div>
+        <div class="fonte-card-name">Biomassa</div>
+      </div>
+      <div class="fonte-card-pct" style="color:#16a34a">58,0 TWh</div>
+      <div class="fonte-card-desc">A "bioeletricidade" vem principalmente do bagaço de cana (60,9%) e do licor preto — resíduo da produção de celulose (28,1%). Atingiu recorde histórico em 2024: 61.433 GWh (incluindo autoprodução). Cresce 2,3% ao ano em média na última década.</div>
+      <span class="fonte-card-badge badge-renov">Renovável · 7,7%</span>
+    </div>
+
+    <div class="fonte-card">
+      <div class="fonte-card-header">
+        <div class="fonte-icon" style="background:#fef3c7">🔥</div>
+        <div class="fonte-card-name">Gás Natural</div>
+      </div>
+      <div class="fonte-card-pct" style="color:#f59e0b">47,8 TWh</div>
+      <div class="fonte-card-desc">Cresceu 23,9% em 2024 — o maior aumento percentual entre todas as fontes. Funciona como válvula de ajuste: quando as hidrelétricas produzem menos (por seca), as termelétricas a gás entram para garantir o abastecimento. Esse papel de "backup" é essencial à segurança do sistema.</div>
+      <span class="fonte-card-badge badge-flex">Flexível · 6,4%</span>
+    </div>
+
+    <div class="fonte-card">
+      <div class="fonte-card-header">
+        <div class="fonte-icon" style="background:#ede9fe">⚛️</div>
+        <div class="fonte-card-name">Nuclear</div>
+      </div>
+      <div class="fonte-card-pct" style="color:#6366f1">15,8 TWh</div>
+      <div class="fonte-card-desc">Angra I e Angra II, no Rio de Janeiro, com capacidade instalada de 1.990 MW — estável há anos. Geração cresceu 8,7% em 2024, reflexo de melhor disponibilidade das usinas. Angra III está em construção há décadas e ainda sem previsão de conclusão. Opera como base contínua 24h.</div>
+      <span class="fonte-card-badge badge-nrenov">Não renovável · 2,1%</span>
+    </div>
+
+  </div>
+
+  <!-- S3 -->
+  <h2 id="s3">3. A evolução histórica — 20 anos de renovabilidade</h2>
+
+  <p>Uma das características mais notáveis da matriz elétrica brasileira é que ela <strong>nunca ficou abaixo de 70% de renovável desde 2004</strong>. Em comparação, a média mundial foi de apenas 29,9% em 2022 e os países da OCDE alcançaram 34%.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Renovabilidade da matriz elétrica brasileira — 2004 a 2024</div>
+    <div class="chart-sub">% de renováveis na OIEE · Fonte: BEN 2025 — EPE</div>
+    <div class="chart-wrap" style="height:230px"><canvas id="c2"></canvas></div>
+    <p class="chart-caption">Os vales em 2012–2015 refletem secas severas que reduziram a geração hidráulica, forçando o acionamento de termelétricas. A recuperação pós-2016 foi sustentada pela expansão de solar e eólica.</p>
+  </div>
+
+  <p>O ponto mais crítico da série foi 2014–2015, quando o Brasil enfrentou uma das piores crises hídricas da história. A renovabilidade caiu para 74–75% porque foi necessário acionar intensivamente as termelétricas a gás, carvão e óleo. A conta de luz subiu, o racionamento quase aconteceu, e a economia sentiu o impacto.</p>
+
+  <p>Mas esse episódio revelou algo importante: a dependência quase exclusiva da hidráulica tornava o sistema vulnerável ao clima. A resposta estrutural foi acelerar os leilões de energia eólica e solar — que nos anos seguintes transformaram o perfil da matriz.</p>
+
+  <div class="callout blue">
+    <strong>Eficiência das centrais elétricas:</strong> em 2024, a eficiência média das centrais elétricas brasileiras foi de 77,8% — muito acima dos anos de crise (66% em 2014). Isso porque hidráulica, eólica e solar são integralmente convertidas em eletricidade por convenção — não têm perdas térmicas como as usinas a carvão e gás, que desperdiçam energia como calor.
+  </div>
+
+  <!-- S4 -->
+  <h2 id="s4">4. O boom solar e eólico</h2>
+
+  <p>A transformação mais rápida e profunda da matriz elétrica brasileira nas últimas décadas aconteceu na geração solar e eólica. Em 2010, as duas fontes juntas representavam menos de 1% da geração. Em 2024, chegaram a <strong>23,7%</strong> — mudança que em outros países levou gerações.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Crescimento da geração solar e eólica — 2007 a 2024 (GWh)</div>
+    <div class="chart-sub">Fonte: BEN 2025 — EPE · escala em GWh</div>
+    <div class="chart-wrap" style="height:260px"><canvas id="c3"></canvas></div>
+    <p class="chart-caption">A solar fotovoltaica saiu de praticamente zero em 2015 para 70,7 TWh em 2024. A eólica cresceu de 12,4 TWh em 2010 para 107,7 TWh em 2024 — um aumento de mais de 8 vezes.</p>
+  </div>
+
+  <p>A velocidade do crescimento solar é especialmente impressionante. A capacidade instalada de solar saiu de 37.843 MW em 2023 para <strong>48.468 MW em 2024</strong> — expansão de 28,1% em apenas um ano. Para contexto: essa adição de aproximadamente 10.600 MW em um único ano é maior que toda a capacidade solar instalada no Brasil antes de 2020.</p>
+
+  <p>Uma parte significativa disso vem da <strong>micro e minigeração distribuída (MMGD)</strong> — painéis solares instalados em telhados de residências, comércios e pequenas indústrias. A MMGD gerou 42.268 GWh em 2024, crescimento de 36,6% em relação a 2023, e representa 5,6% de toda a geração elétrica do país. A energia solar fotovoltaica respondeu por 97% dessa geração distribuída.</p>
+
+  <div class="callout">
+    <strong>Por que o Brasil tem tanto vento e sol?</strong> O Nordeste brasileiro tem um dos regimes de vento mais consistentes do mundo — ventos alísios que sopram quase o ano inteiro, com fator de capacidade médio de 40–50% (comparado a 25–30% na Europa). E a irradiância solar no Brasil Central e Nordeste é comparável à do deserto do Saara. Esses recursos naturais, combinados com a queda de custo dos painéis solares (−90% em 10 anos), tornaram o Brasil um dos mercados mais competitivos do mundo para energias renováveis.
+  </div>
+
+  <!-- S5 -->
+  <h2 id="s5">5. O papel das termelétricas — flexibilidade com custo</h2>
+
+  <p>Em 2024, a geração termelétrica total cresceu 11,4%, chegando a 151,2 TWh — participação de 20,1% na geração total. Esse crescimento pode parecer contraditório em um país com 88% de renovável, mas tem uma lógica de sistema: as termelétricas são o mecanismo de segurança.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Geração termelétrica por fonte — participação 2023 vs 2024</div>
+    <div class="chart-sub">% de cada fonte na geração termelétrica total · Fonte: BEN 2025 — EPE</div>
+    <div class="chart-wrap" style="height:240px"><canvas id="c4"></canvas></div>
+    <p class="chart-caption">A bioeletricidade (40,6% das térmicas) é renovável — queima resíduos de cana e celulose. O gás natural (31,6%) é o principal combustível fóssil usado para regular o sistema.</p>
+  </div>
+
+  <p>Um detalhe importante: <strong>40,6% da geração termelétrica em 2024 veio de biomassa</strong> — bagaço de cana, licor preto, lenha. Isso significa que mesmo dentro das "termelétricas", uma parcela relevante é de origem renovável. O gás natural representa 31,6% das térmicas — é o principal combustível fóssil do sistema elétrico brasileiro.</p>
+
+  <p>O carvão mineral cresceu 16,8% em 2024, chegando a 10.247 GWh. Geograficamente concentrado em Santa Catarina e Rio Grande do Sul, o carvão nacional é uma questão política e regional tanto quanto energética — representa empregos em municípios que dependem da mineração.</p>
+
+  <div class="callout amber">
+    <strong>O dilema hídrico-térmico:</strong> quando chove bem, os reservatórios enchem, a geração hidráulica sobe e as termelétricas ficam paradas. Quando há seca, o oposto acontece — e o custo da energia sobe, pois termelétricas a gás e carvão são mais caras que hidrelétricas. A expansão de solar e eólica reduz essa dependência do regime de chuvas, tornando o sistema mais resiliente ao clima — exatamente o que aconteceu de 2016 em diante.
+  </div>
+
+  <!-- S6 -->
+  <h2 id="s6">6. A micro e minigeração distribuída — energia no telhado</h2>
+
+  <p>Um dos fenômenos mais significativos da última década na energia elétrica brasileira é a explosão da <strong>geração distribuída</strong>. Regulamentada pela Lei 14.300/2022 e impulsionada pela queda de preço dos painéis solares, a MMGD transformou consumidores em produtores de energia.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Evolução da geração MMGD — 2015 a 2024 (GWh)</div>
+    <div class="chart-sub">Micro e Minigeração Distribuída · Fonte: BEN 2025 — EPE</div>
+    <div class="chart-wrap" style="height:210px"><canvas id="c5"></canvas></div>
+    <p class="chart-caption">A MMGD saiu de praticamente zero em 2015 para 42.268 GWh em 2024 — uma curva de crescimento exponencial que reflete a viabilidade econômica dos painéis solares residenciais no Brasil.</p>
+  </div>
+
+  <p>Em 2024, a capacidade instalada de MMGD solar atingiu 35.892 MW — mais que a capacidade instalada total de eólica onshore há apenas 4 anos. A distribuição geográfica é concentrada no Centro-Sul: Minas Gerais, São Paulo, Santa Catarina, Rio Grande do Sul e Mato Grosso lideram. Estados com alta irradiância solar e forte presença de agronegócio adotaram o solar de forma especialmente intensa.</p>
+
+  <div class="callout">
+    <strong>Impacto na conta de luz:</strong> quem instala painéis solares pode injetar o excedente na rede e receber créditos de energia (sistema de compensação). Isso reduziu a conta elétrica de milhões de consumidores e criou uma nova dinâmica no mercado: a distribuidora de energia deixou de ser o único fornecedor e passou a competir com o próprio telhado do cliente.
+  </div>
+
+  <!-- S7 -->
+  <h2 id="s7">7. O Brasil no contexto global</h2>
+
+  <p>Para dimensionar a singularidade da matriz elétrica brasileira, a comparação internacional é fundamental. O Brasil emite <strong>59,9 kg de CO₂ equivalente por MWh gerado</strong>. Para comparação:</p>
+
+  <div class="chart-block">
+    <div class="chart-title">Emissões de CO₂ na geração elétrica — comparação internacional (2022)</div>
+    <div class="chart-sub">kg CO₂ equivalente por MWh gerado · Fonte: IEA 2022 e EPE 2024</div>
+    <div class="chart-wrap" style="height:230px"><canvas id="c6"></canvas></div>
+    <p class="chart-caption">O setor elétrico brasileiro emite apenas 9% do que o setor elétrico chinês emite por MWh, 17% do americano e 23% do europeu da OCDE — reflexo direto da alta participação de renováveis.</p>
+  </div>
+
+  <p>Esses números têm uma implicação prática muito concreta: <strong>eletrificar o transporte no Brasil tem um impacto climático muito maior do que em qualquer outro grande país</strong>. Um carro elétrico que roda no Brasil usa eletricidade com intensidade de carbono de ~60 kg/MWh. O mesmo carro na Alemanha (onde a matriz é ~38% renovável) usa eletricidade com ~350 kg/MWh — quase 6 vezes mais carbono por km rodado.</p>
+
+  <p>Isso significa que a estratégia climática do Brasil deveria priorizar a eletrificação do transporte — que consome 33% de toda a energia final do país, quase tudo em petróleo. Cada ônibus elétrico em São Paulo, cada caminhão elétrico no agronegócio, representa uma redução de emissões muito mais eficiente aqui do que em qualquer economia com matriz mais suja.</p>
+
+  <div class="callout navy">
+    <strong>Renovabilidade elétrica vs. renovabilidade total:</strong> há uma diferença importante entre os dois indicadores. O Brasil tem 88% de renovável na <em>geração elétrica</em> — mas apenas 50% de renovável na <em>matriz energética total</em> (que inclui transporte, calor industrial, etc.). A diferença é o petróleo e o gás consumidos fora do setor elétrico. O desafio da transição energética brasileira é fazer essa fatia não-elétrica migrar progressivamente para eletricidade limpa.
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao" id="conclusao">
+    <h2>Conclusão: 3 pontos para fixar</h2>
+    <ul class="conclusao-list">
+      <li>
+        <strong>88% renovável é excepcional — e foi conquistado ao longo de décadas, não de uma vez.</strong> A matriz elétrica brasileira é uma combinação única de hidráulica histórica (construída nas décadas de 1960–1990), biomassa (impulsionada pelo Proálcool nos anos 1970) e a expansão recente e acelerada de solar e eólica (2010–2024). Solar e eólica juntas saíram de 1% para 23,7% em menos de 15 anos — a transformação mais rápida da história energética brasileira.
+      </li>
+      <li>
+        <strong>A solar é a nova protagonista.</strong> Com 48.468 MW instalados e crescimento de 28,1% na capacidade e 39,6% na geração em apenas um ano, a solar fotovoltaica já representa 9,4% da geração total. A MMGD — painéis nos telhados — gerou 42.268 GWh, ou 5,6% do total. Se a curva atual se mantiver, a solar pode superar a eólica em geração até 2027.
+      </li>
+      <li>
+        <strong>O setor elétrico é limpo — o desafio está fora dele.</strong> Com 59,9 kg CO₂/MWh, o setor elétrico brasileiro é um dos mais limpos do mundo. O gargalo da descarbonização no Brasil não é a geração elétrica — é o transporte (que consome 33% de toda a energia final em petróleo) e a indústria pesada. A estratégia mais eficaz disponível é eletrificar esses setores sobre uma matriz já essencialmente renovável.
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <section class="sim-cta">
+    <p class="sim-cta-label">MosmanLAB</p>
+    <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+    <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+    <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="refs-section">
+    <h2 class="refs-title">Referências Bibliográficas</h2>
+    <ul class="refs-list">
+      <li>
+        <strong>EPE — Empresa de Pesquisa Energética</strong> — <em>Balanço Energético Nacional 2025: Relatório Síntese, Ano Base 2024.</em> Ministério de Minas e Energia. Rio de Janeiro, maio de 2025.
+        <a href="https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/BEN-Series-Historicas-Completas" target="_blank">epe.gov.br</a>
+      </li>
+      <li>
+        <strong>ANEEL — Agência Nacional de Energia Elétrica</strong> — Dados de capacidade instalada por fonte no Sistema Interligado Nacional (SIN), 2024.
+        <a href="https://www.aneel.gov.br" target="_blank">aneel.gov.br</a>
+      </li>
+      <li>
+        <strong>ONS — Operador Nacional do Sistema Elétrico</strong> — Dados operacionais de geração e despacho elétrico, 2024.
+        <a href="https://www.ons.org.br" target="_blank">ons.org.br</a>
+      </li>
+      <li>
+        <strong>ABSOLAR — Associação Brasileira de Energia Solar Fotovoltaica</strong> — Panorama da energia solar fotovoltaica no Brasil, 2024.
+        <a href="https://www.absolar.org.br" target="_blank">absolar.org.br</a>
+      </li>
+      <li>
+        <strong>ABEEólica — Associação Brasileira de Energia Eólica</strong> — Dados de capacidade instalada e geração eólica no Brasil, 2024.
+        <a href="https://www.abeeolica.org.br" target="_blank">abeeolica.org.br</a>
+      </li>
+      <li>
+        <strong>IEA — International Energy Agency</strong> — <em>World Energy Balances (2024)</em>. Dados de emissões por MWh gerado por país (2022).
+        <a href="https://www.iea.org/data-and-statistics" target="_blank">iea.org</a>
+      </li>
+      <li>
+        <strong>Our World in Data (OWID)</strong> — <em>Energy Mix; Electricity Generation.</em> Hannah Ritchie, Pablo Rosado, Max Roser (2024).
+        <a href="https://ourworldindata.org/energy" target="_blank">ourworldindata.org/energy</a>
+      </li>
+      <li>
+        <strong>Prof. Edson Mosman</strong> — mosmanLAB · São Paulo, março de 2026.
+        <a href="https://mosmanlab.com.br" target="_blank">mosmanlab.com.br</a>
+      </li>
+    </ul>
+  </section>
+
+</article>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc = 'rgba(0,0,0,.06)', tc = '#94a3b8';
+
+/* C1 — Geração por fonte 2024 (barras horizontais) */
+new Chart(document.getElementById('c1'), {
+  type: 'bar',
+  data: {
+    labels: ['Hidrelétrica','Eólica','Biomassa','Solar FV','Gás Natural','Nuclear','Carvão Vapor','Deriv. Petróleo','Outras'],
+    datasets: [{
+      data: [421.8, 107.7, 58.0, 70.7, 47.8, 15.8, 10.2, 6.0, 13.4],
+      backgroundColor: ['#2563eb','#06b6d4','#16a34a','#fbbf24','#f59e0b','#6366f1','#374151','#dc2626','#94a3b8'],
+      borderRadius: 5, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc,callback:v=>v+' TWh'}, grid:{color:gc} },
+      y: { ticks:{font:{size:11},color:'#334155'}, grid:{display:false} }
+    }
+  }
+});
+
+/* C2 — Renovabilidade histórica 2004–2024 */
+const anosH = [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const pctH  = [87.3,88.3,87.9,89.2,85.6,89.9,85.8,88.0,83.0,77.5,74.0,75.0,81.0,79.7,82.6,82.1,83.8,87.9,89.2,89.2,88.2];
+new Chart(document.getElementById('c2'), {
+  type: 'line',
+  data: {
+    labels: anosH.map(String),
+    datasets: [{
+      data: pctH,
+      borderColor: '#16a34a',
+      backgroundColor: ctx => {
+        const g = ctx.chart.ctx.createLinearGradient(0,0,0,200);
+        g.addColorStop(0,'rgba(22,163,74,.25)');
+        g.addColorStop(1,'rgba(22,163,74,.02)');
+        return g;
+      },
+      fill: true, tension: 0.35,
+      pointRadius: 3, pointBackgroundColor: '#16a34a',
+      borderWidth: 2.5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y.toFixed(1)}% renovável` } }
+    },
+    scales: {
+      x: { ticks:{maxTicksLimit:9,font:{size:10},color:tc}, grid:{display:false} },
+      y: { ticks:{font:{size:11},color:tc,callback:v=>v+'%'}, grid:{color:gc}, min:65, max:95,
+           title:{display:true,text:'% renováveis',font:{size:10},color:tc} }
+    }
+  }
+});
+
+/* C3 — Crescimento solar e eólica */
+const anosSE = [2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const eolica = [4.5,5.9,8.0,12.4,16.4,21.2,23.3,21.6,21.6,33.5,42.4,48.5,57.5,57.1,72.2,80.8,95.8,107.7];
+const solar  = [0.01,0.01,0.01,0.01,0.01,0.05,0.12,0.3,1.1,4.5,7.7,12.0,21.0,30.9,36.8,46.9,50.6,70.7];
+new Chart(document.getElementById('c3'), {
+  type: 'line',
+  data: {
+    labels: anosSE.map(String),
+    datasets: [
+      { label:'Eólica (GWh÷1000)', data: eolica,
+        borderColor:'#06b6d4', backgroundColor:'rgba(6,182,212,.1)',
+        fill:true, tension:.35, pointRadius:3, borderWidth:2.5 },
+      { label:'Solar FV (GWh÷1000)', data: solar,
+        borderColor:'#fbbf24', backgroundColor:'rgba(251,191,36,.1)',
+        fill:true, tension:.35, pointRadius:3, borderWidth:2.5, borderDash:[5,3] }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{ labels:{font:{size:11},color:tc} } },
+    scales: {
+      x: { ticks:{font:{size:10},color:tc}, grid:{display:false} },
+      y: { ticks:{font:{size:11},color:tc,callback:v=>v+' TWh'}, grid:{color:gc},
+           title:{display:true,text:'TWh',font:{size:10},color:tc} }
+    }
+  }
+});
+
+/* C4 — Mix termelétrico 2023 vs 2024 */
+new Chart(document.getElementById('c4'), {
+  type: 'bar',
+  data: {
+    labels: ['Gás Natural','Biomassa','Carvão e Deriv.','Nuclear','Deriv. Petróleo'],
+    datasets: [
+      { label:'2023', data:[28.4,42.6,10.4,10.7,7.9],
+        backgroundColor:'rgba(148,163,184,.5)', borderRadius:3 },
+      { label:'2024', data:[31.6,40.6,9.8,10.4,7.6],
+        backgroundColor:['#f59e0b','#16a34a','#374151','#6366f1','#dc2626'],
+        borderRadius:3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{ labels:{font:{size:11},color:tc} } },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc}, grid:{display:false} },
+      y: { ticks:{font:{size:11},color:tc,callback:v=>v+'%'}, grid:{color:gc}, max:50 }
+    }
+  }
+});
+
+/* C5 — MMGD crescimento */
+const anosMM = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const mmgd   = [68,310,780,2100,5100,9019,14200,21100,30950,42268];
+new Chart(document.getElementById('c5'), {
+  type: 'bar',
+  data: {
+    labels: anosMM.map(String),
+    datasets: [{
+      data: mmgd,
+      backgroundColor: mmgd.map((_,i) => `hsl(${44 + i*5}, 90%, ${45+i*2}%)`),
+      borderRadius: 5, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{ display:false } },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc}, grid:{display:false} },
+      y: { ticks:{font:{size:11},color:tc,callback:v=>(v/1000).toFixed(0)+'k GWh'}, grid:{color:gc} }
+    }
+  }
+});
+
+/* C6 — Emissões por MWh comparação */
+new Chart(document.getElementById('c6'), {
+  type: 'bar',
+  data: {
+    labels: ['China (2022)','EUA (2022)','Europa OCDE (2022)','Brasil (2022)','Brasil (2024)'],
+    datasets: [{
+      data: [678, 358, 270, 61, 59.9],
+      backgroundColor: ['#374151','#dc2626','#f59e0b','#22c55e','#16a34a'],
+      borderRadius: 6, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+    plugins: { legend:{ display:false },
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.x} kg CO₂/MWh` } }
+    },
+    scales: {
+      x: { ticks:{font:{size:11},color:tc,callback:v=>v+' kg'}, grid:{color:gc} },
+      y: { ticks:{font:{size:11},color:'#334155'}, grid:{display:false} }
+    }
+  }
+});
+</script>
+</body>
+</html>
