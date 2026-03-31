@@ -17,117 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
-.article-hero{background:linear-gradient(135deg,#0f0f1a,#1a1a2e,#1a0f2e);color:#fff;padding:72px 5% 56px;text-align:center}
-.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
-.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.75rem);font-weight:700;line-height:1.15;max-width:860px;margin:0 auto 18px;color:#fff}
-.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:700px;margin:0 auto 28px;line-height:1.65}
-.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-
-.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
-.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
-.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
-.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
-.article-body strong{color:#0f1c2e;font-weight:600}
-
-/* AUTORES */
-.autores-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
-.autor-card{border-radius:12px;padding:24px;border:1px solid}
-.card-smil{background:#faf5ff;border-color:#ddd6fe}
-.card-fressoz{background:#fff7ed;border-color:#fed7aa}
-.autor-card h3{font-size:.95rem;font-weight:700;margin-bottom:4px}
-.card-smil h3{color:#6d28d9}.card-fressoz h3{color:#c2410c}
-.autor-card .sub{font-size:.75rem;color:#94a3b8;margin-bottom:14px;font-family:'DM Mono',monospace;letter-spacing:.04em}
-.autor-card ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
-.autor-card li{font-size:.82rem;color:#374151;padding-left:16px;position:relative;line-height:1.55}
-.autor-card li::before{position:absolute;left:0;font-weight:700}
-.card-smil li::before{content:'·';color:#7c3aed}
-.card-fressoz li::before{content:'·';color:#ea580c}
-
-/* CALLOUTS */
-.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
-.callout.smil{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
-.callout.fressoz{border-left:4px solid #ea580c;background:#fff7ed;color:#9a3412}
-.callout.dados{border-left:4px solid #0f1c2e;background:#f1f5f9;color:#0f1c2e}
-.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
-.callout.verm{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
-.callout strong{font-weight:700}
-
-/* CITAÇÕES */
-.citacao{background:#0f1c2e;border-radius:12px;padding:24px 28px;margin:28px 0;position:relative}
-.citacao p{font-family:'Lora',serif;font-style:italic;color:#e2e8f0;font-size:.97rem;line-height:1.75;margin:0 0 10px}
-.citacao .fonte{font-size:.75rem;color:#64748b;font-family:'DM Mono',monospace;letter-spacing:.04em}
-.citacao-smil{border-left:4px solid #a78bfa}
-.citacao-fressoz{border-left:4px solid #fb923c}
-
-/* STATS */
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:28px 0}
-.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
-.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
-.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
-
-/* GRÁFICOS */
-.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
-.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
-.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
-.chart-label-smil{color:#7c3aed;font-weight:600;font-size:.8rem;text-align:right;margin-top:6px;font-family:'DM Mono',monospace}
-.chart-label-fressoz{color:#ea580c;font-weight:600;font-size:.8rem;text-align:right;margin-top:6px;font-family:'DM Mono',monospace}
-
-/* TABELA */
-.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
-table{width:100%;border-collapse:collapse;font-size:.84rem}
-th{background:#0f1c2e;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
-th.c{text-align:center}
-td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
-td.c{text-align:center}
-td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
-tr:last-child td{border-bottom:none}
-tr:nth-child(even) td{background:#fafafa}
-tr.smil-row td{background:#faf5ff;font-weight:600}
-tr.fressoz-row td{background:#fff7ed;font-weight:600}
-tr.verde-row td{background:#f0fdf4;color:#15803d;font-weight:600}
-
-/* SÍNTESE */
-.sintese{background:linear-gradient(135deg,#0f0f1a,#1a1a2e);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
-.sintese h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:24px}
-.sintese-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-.sint-item{border-radius:8px;padding:16px}
-.sint-smil{background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25)}
-.sint-fressoz{background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25)}
-.sint-item h4{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-.sint-smil h4{color:#a78bfa}.sint-fressoz h4{color:#fb923c}
-.sint-item ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px}
-.sint-item li{font-size:.83rem;color:#cbd5e1;padding-left:14px;position:relative;line-height:1.5}
-.sint-item li::before{position:absolute;left:0;font-weight:700}
-.sint-smil li::before{content:'→';color:#a78bfa}
-.sint-fressoz li::before{content:'→';color:#fb923c}
-.sintese-footer{font-size:.9rem;color:#94a3b8;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;line-height:1.7}
-.sintese-footer strong{color:#fff}
-
-.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
-.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
-.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
-.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
-.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
-.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
-.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
-.refs-list{list-style:none;padding:0}
-.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
-.refs-list li:last-child{border-bottom:none}
-footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
-.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
-.footer-logo strong{font-weight:700}
-footer a{color:#64748b}
-@media(max-width:640px){
-  .autores-grid{grid-template-columns:1fr}
-  .sintese-grid{grid-template-columns:1fr}
-  .article-body{padding:36px 18px 60px}
-  .sintese{padding:24px 18px}
-}
-</style>
 </head>
 <body>
 <div class="urgency">&#9889; Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
@@ -143,7 +34,7 @@ footer a{color:#64748b}
   </div>
 </nav>
 
-<header class="article-hero">
+<header class="article-hero" style="background:linear-gradient(135deg,#0f0f1a,#1a1a2e,#1a0f2e);">
   <div class="article-tag">Energia · Pensamento Crítico · Dados</div>
   <h1>Transição Energética: Smil vs Fressoz — Dois Críticos, Uma Questão Incomoda</h1>
   <p class="hero-lead">Vaclav Smil diz que a transição existe, mas é lenta demais. Jean-Baptiste Fressoz diz que a própria ideia de transição é uma ilusão histórica. Os dados reais de 232 países (2000–2023) dão razão a ambos — de formas diferentes e igualmente perturbadoras.</p>
