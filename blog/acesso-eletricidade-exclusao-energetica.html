@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Acesso à Eletricidade: O Mapa da Exclusão Energética Global | MosmanLAB</title>
+<meta name="description" content="700 milhões de pessoas ainda vivem sem eletricidade em 2022. A África Subsaariana concentra 80% dos excluídos. Análise completa com dados reais de 232 países, 2000–2022."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/acesso-eletricidade-exclusao-energetica.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
+.article-hero{background:linear-gradient(135deg,#0f172a,#1e1b4b,#0f1c2e);color:#fff;padding:72px 5% 56px;text-align:center}
+.article-tag{display:inline-block;background:rgba(255,255,255,0.1);color:#a5b4fc;border:1px solid rgba(165,180,252,0.3);border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px}
+.article-hero h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:700;line-height:1.15;max-width:820px;margin:0 auto 18px;color:#fff}
+.hero-lead{font-size:1.02rem;color:#94a3b8;max-width:680px;margin:0 auto 28px;line-height:1.65}
+.byline{font-size:13px;color:#64748b;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.article-body{max-width:800px;margin:0 auto;padding:56px 24px 80px}
+.article-body h2{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:#0f1c2e;margin:52px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.article-body h3{font-size:1.05rem;font-weight:600;color:#1e3a5f;margin:28px 0 10px}
+.article-body p{color:#374151;margin-bottom:18px;font-size:.97rem;line-height:1.8}
+.article-body strong{color:#0f1c2e;font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin:28px 0}
+.stat-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-label{font-size:11.5px;color:#64748b;line-height:1.4}
+.callout{border-radius:0 8px 8px 0;padding:16px 22px;margin:24px 0;font-size:.92rem;line-height:1.7}
+.callout.verde{border-left:4px solid #16a34a;background:#f0fdf4;color:#166534}
+.callout.azul{border-left:4px solid #2563eb;background:#eff6ff;color:#1e40af}
+.callout.amber{border-left:4px solid #d97706;background:#fffbeb;color:#92400e}
+.callout.roxo{border-left:4px solid #7c3aed;background:#faf5ff;color:#5b21b6}
+.callout.verm{border-left:4px solid #dc2626;background:#fef2f2;color:#991b1b}
+.callout strong{font-weight:700}
+.chart-block{border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin:32px 0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.chart-title{font-size:.92rem;font-weight:600;color:#0f1c2e;margin-bottom:4px}
+.chart-sub{font-size:.77rem;color:#64748b;margin-bottom:16px;line-height:1.5}
+.tbl-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:#0f172a;color:#fff;padding:11px 14px;text-align:left;font-weight:600;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+th.c{text-align:center}
+td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+td.c{text-align:center}
+td.mono{font-family:'DM Mono',monospace;font-size:.82rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+.progress-wrap{margin:8px 0}
+.progress-label{font-size:.78rem;color:#374151;margin-bottom:3px;display:flex;justify-content:space-between}
+.progress-bar{height:14px;border-radius:7px;background:#e2e8f0}
+.progress-fill{height:100%;border-radius:7px;transition:width .5s}
+.conclusao{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-radius:14px;padding:36px;margin:44px 0;color:#fff}
+.conclusao h2{font-family:'Lora',serif;font-size:1.4rem;color:#fff;margin-bottom:20px}
+.conclusao ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.conclusao li{font-size:.93rem;color:#cbd5e1;padding-left:22px;position:relative;line-height:1.65}
+.conclusao li::before{content:'\2192';position:absolute;left:0;color:#a5b4fc;font-weight:700}
+.conclusao li strong{color:#fff}
+.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
+.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
+.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
+.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
+.refs-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.refs-list{list-style:none;padding:0}
+.refs-list li{font-size:13px;color:#64748b;padding:7px 0;border-bottom:1px solid #e2e8f0;line-height:1.55}
+.refs-list li:last-child{border-bottom:none}
+.refs-list a{color:#2563eb;text-decoration:none}
+footer{background:#0f1c2e;color:#475569;text-align:center;padding:32px 16px;font-size:13px}
+.footer-logo{font-size:18px;color:#e2e8f0;margin-bottom:6px;display:block}
+.footer-logo strong{font-weight:700}
+footer a{color:#64748b}
+@media(max-width:640px){.article-body{padding:36px 18px 60px}.conclusao{padding:24px 20px}}
+</style>
+</head>
+<body>
+<div class="urgency">&#9889; Nova turma começa em <strong>28 de abril</strong> &#8212; inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-tag">Energia · Desenvolvimento · Direitos</div>
+  <h1>Acesso à Eletricidade: O Mapa da Exclusão Energética Global</h1>
+  <p class="hero-lead">Em 2022, cerca de 700 milhões de pessoas ainda viviam sem acesso à eletricidade. A África Subsaariana concentra a maior parte dos excluídos. Por que isso importa — e o que os dados de 232 países revelam sobre a geografia da privação energética.</p>
+  <div class="byline">
+    <span>&#128197; Março 2026</span>
+    <span>&#128104;&#8205;&#127979; Prof. Edson Mosman</span>
+    <span>&#9200; 12 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>A eletricidade é tão presente no cotidiano das cidades brasileiras que é difícil imaginar um mundo sem ela. Mas para quase 700 milhões de pessoas em 2022 — equivalente a mais de três vezes a população do Brasil — ligar uma lâmpada, carregar um celular ou refrigerar alimentos ainda não é uma realidade. A exclusão energética não é apenas uma questão de conforto: é uma barreira ao desenvolvimento humano, à saúde, à educação e ao crescimento econômico.</p>
+
+  <p>Este artigo analisa os dados reais de acesso à eletricidade de 232 países entre 2000 e 2022, identifica onde a exclusão energética se concentra, e examina o que separa os países que avançaram rapidamente dos que permanecem estagnados.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#7c3aed">~700M</div><div class="stat-label">pessoas sem acesso à eletricidade em 2022 — 3,5× a população do Brasil</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">8,4%</div><div class="stat-label">taxa de acesso no Sudão do Sul — a menor do mundo em 2022</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">+14 pp</div><div class="stat-label">ganho médio de cobertura global entre 2000 e 2022</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#f59e0b">~80%</div><div class="stat-label">dos sem acesso vivem na África Subsaariana</div></div>
+  </div>
+
+  <h2>A física da exclusão — por que a eletricidade transforma vidas</h2>
+
+  <p>Do ponto de vista físico, o acesso à eletricidade representa a conversão de energia em trabalho útil — iluminação (fotons de espectro visível), força motriz (campo eletromagnético convertendo energia em movimento), comunicação (ondas eletromagnéticas), refrigeração (ciclo termodinâmico de compressão). Cada uma dessas conversões tem impactos diretos mensuráveis no bem-estar humano.</p>
+
+  <p>Estudar sem luz elétrica significa estudar com lamparina de querosene, que emite 2–5 cd (candelas) contra 400–800 cd de uma lâmpada LED de 10 W. Refrigerar vacinas sem eletricidade é impossível. Bombear água de um poço sem motor elétrico exige horas de trabalho manual diário. A falta de eletricidade não é apenas ausência de conforto — é a imposição de um custo físico e de tempo que compromete o desenvolvimento humano.</p>
+
+  <div class="callout roxo">
+    <strong>A barreira do kWh:</strong> O consumo médio per capita de eletricidade nos países da OCDE é de 7.000–12.000 kWh/ano. O limiar mínimo para necessidades básicas (iluminação, comunicação, refrigeração de alimentos) é estimado em 300–500 kWh/pessoa/ano. Um habitante do Sudão do Sul tem acesso a menos de 50 kWh/ano. Na Noruega, são 26.649 kWh/ano — uma diferença de mais de 500 vezes.
+  </div>
+
+  <!-- GRÁFICO 1: Evolução global do acesso 2000-2022 -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução do Acesso à Eletricidade — Cobertura Global Ponderada por População (2000–2022)</div>
+    <div class="chart-sub">% da população mundial com acesso — média ponderada por população de cada país · Fonte: World Bank / Energy Institute (dataset 232 países)</div>
+    <div style="height:280px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>A cobertura global cresceu de 74,5% em 2000 para 88,5% em 2022 — um avanço real de 14 pontos percentuais que representa centenas de milhões de pessoas conectadas à rede elétrica. Mas esse progresso esconde uma assimetria geográfica profunda: o avanço foi concentrado na Ásia (especialmente China, Índia, Bangladesh e Indonésia), enquanto grande parte da África Subsaariana permaneceu com taxas muito baixas.</p>
+
+  <h2>O mapa da exclusão — África vs Ásia</h2>
+
+  <p>A maior história de sucesso no acesso à eletricidade do século XXI foi escrita na Ásia. Bangladesh passou de 32% em 2000 para 99,4% em 2022 — uma das expansões mais rápidas da história. A Índia saiu de 60% para 99,2%. A Indonésia, de 86% para 100%. Essas transformações envolveram eletrificação rural massiva, subsídios, regulação e frequentemente o uso de solar fotovoltaico descentralizado.</p>
+
+  <!-- GRÁFICO 2: Países Ásia em progresso -->
+  <div class="chart-block">
+    <div class="chart-title">Acesso à Eletricidade — Países Asiáticos em Destaque (2000–2022)</div>
+    <div class="chart-sub">% da população · Fonte: World Bank via Energy Institute (dataset 232 países)</div>
+    <div style="height:320px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O contraste com a África é dramático. Enquanto Bangladesh e Índia quase universalizaram o acesso em duas décadas, Moçambique foi de 6% para apenas 33% no mesmo período. A Tanzânia foi de 8,7% para 45,8%. O Níger permanece em 19,5%. A diferença não é apenas de escala — é de velocidade.</p>
+
+  <!-- GRÁFICO 3: Países africanos -->
+  <div class="chart-block">
+    <div class="chart-title">Acesso à Eletricidade — Países Africanos em 2022 (%)</div>
+    <div class="chart-sub">Taxa de cobertura da população · Fonte: World Bank / Energy Institute (dataset 232 países)</div>
+    <div style="height:360px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <div class="callout verm">
+    <strong>A dimensão real da exclusão africana:</strong> A República Democrática do Congo tem 102 milhões de habitantes e apenas 21,5% de acesso à eletricidade — significa que 80 milhões de pessoas vivem sem energia elétrica em um único país. A Nigéria, o país mais populoso da África, tem 60,5% de cobertura — mas com 223 milhões de habitantes, isso representa 88 milhões de pessoas sem acesso. Dois países sozinhos concentram ~168 milhões dos excluídos globais.
+  </div>
+
+  <h2>Os maiores excluídos — onde vivem os 700 milhões</h2>
+
+  <!-- GRÁFICO 4: Barras de progresso por país -->
+  <div class="chart-block">
+    <div class="chart-title">Países com Maior Número de Pessoas Sem Eletricidade — 2022</div>
+    <div class="chart-sub">Estimativa: população × (1 − taxa de acesso) · Fonte: World Bank / Energy Institute</div>
+    <div id="barras-pais" style="padding:8px 0"></div>
+  </div>
+
+  <p>A tabela abaixo mostra em detalhe os países com menor cobertura em 2022, junto com seu PIB per capita — revelando a correlação clara entre pobreza e exclusão energética, mas também as exceções que mostram que pobreza não é o único fator.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th class="c">Acesso 2022</th>
+          <th class="c">Acesso 2000</th>
+          <th class="c">Pop. (milhões)</th>
+          <th class="c">Sem eletricidade (M)</th>
+          <th class="c">PIB/cap (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Sudão do Sul</strong></td><td class="c mono">8,4%</td><td class="c mono">n/d</td><td class="c mono">11,0</td><td class="c mono">10,1</td><td class="c mono">n/d</td></tr>
+        <tr><td><strong>Burundi</strong></td><td class="c mono">10,3%</td><td class="c mono">~5%</td><td class="c mono">13,3</td><td class="c mono">11,9</td><td class="c mono">303</td></tr>
+        <tr><td><strong>Chade</strong></td><td class="c mono">11,7%</td><td class="c mono">~3%</td><td class="c mono">18,5</td><td class="c mono">16,3</td><td class="c mono">966</td></tr>
+        <tr><td><strong>Malawi</strong></td><td class="c mono">14,0%</td><td class="c mono">~5%</td><td class="c mono">20,6</td><td class="c mono">17,7</td><td class="c mono">604</td></tr>
+        <tr><td><strong>Níger</strong></td><td class="c mono">19,5%</td><td class="c mono">~6%</td><td class="c mono">25,3</td><td class="c mono">20,4</td><td class="c mono">610</td></tr>
+        <tr><td><strong>Burkina Faso</strong></td><td class="c mono">19,5%</td><td class="c mono">~12%</td><td class="c mono">22,5</td><td class="c mono">18,1</td><td class="c mono">827</td></tr>
+        <tr><td><strong>Moçambique</strong></td><td class="c mono">33,2%</td><td class="c mono">6,1%</td><td class="c mono">32,7</td><td class="c mono">21,8</td><td class="c mono">578</td></tr>
+        <tr><td><strong>Madagascar</strong></td><td class="c mono">36,1%</td><td class="c mono">~10%</td><td class="c mono">30,4</td><td class="c mono">19,4</td><td class="c mono">504</td></tr>
+        <tr><td><strong>Tanzânia</strong></td><td class="c mono">45,8%</td><td class="c mono">8,7%</td><td class="c mono">64,7</td><td class="c mono">35,0</td><td class="c mono">1.208</td></tr>
+        <tr><td><strong>Uganda</strong></td><td class="c mono">47,1%</td><td class="c mono">~8%</td><td class="c mono">47,3</td><td class="c mono">25,0</td><td class="c mono">963</td></tr>
+        <tr><td><strong>DRC (Congo)</strong></td><td class="c mono">21,5%</td><td class="c mono">~15%</td><td class="c mono">102,4</td><td class="c mono">80,4</td><td class="c mono">688</td></tr>
+        <tr><td><strong>Nigéria</strong></td><td class="c mono">60,5%</td><td class="c mono">43,2%</td><td class="c mono">223,2</td><td class="c mono">88,2</td><td class="c mono">2.899</td></tr>
+        <tr><td><strong>Etiópia</strong></td><td class="c mono">55,4%</td><td class="c mono">12,7%</td><td class="c mono">125,4</td><td class="c mono">56,0</td><td class="c mono">982</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Por que a África está tão atrasada — as causas estruturais</h2>
+
+  <p>A exclusão energética da África não é aleatória. Ela é o produto de múltiplas causas estruturais que se reforçam mutuamente:</p>
+
+  <h3>1. A armadilha da baixa densidade e da dispersão rural</h3>
+  <p>Extensão de redes elétricas convencionais (linhas de transmissão e distribuição) tem custo por km que varia entre US$ 10.000 e US$ 80.000/km. Em regiões com densidade populacional de 5–20 pessoas/km², o custo por cliente conectado pode superar US$ 5.000 — inviável sem subsidio público intenso. A África Subsaariana tem grande parcela de sua população rural dispersa. Em contraste, Bangladesh e Indonésia têm densidades populacionais de 1.000–1.200 pessoas/km², tornando a extensão de redes muito mais barata por cliente.</p>
+
+  <h3>2. A capacidade fiscal dos governos</h3>
+  <p>A eletrificação universal exige décadas de investimento público em infraestrutura. Com PIBs per capita entre US$ 300 e US$ 1.500 em grande parte da África Subsaariana, os governos têm capacidade fiscal mínima para financiar expansão de redes. Ao mesmo tempo, os custos da eletricidade (que precisam ser subsidiados para os mais pobres) consomem parcela significativa do orçamento já apertado.</p>
+
+  <h3>3. Instabilidade política e conflito</h3>
+  <p>Infraestrutura elétrica é vulnerável a conflitos armados. Sudão do Sul (8,4%), Somália (48,9%) e partes da República Centro-Africana (15,7%) têm suas redes comprometidas por décadas de instabilidade. Conflito e falta de eletricidade são causas e efeitos um do outro.</p>
+
+  <h3>4. O potencial da solar descentralizada — a virada que ainda não chegou</h3>
+  <p>Com a queda de 90% no custo do solar fotovoltaico desde 2010, a eletrificação descentralizada tornou-se viável economicamente. Sistemas solar domiciliar de 50–200 W podem fornecer iluminação, carga de celulares e rádio por US$ 100–300, com payback em 2–3 anos. Países como Bangladesh usaram esse modelo em larga escala — o programa Grameen Shakti instalou mais de 4 milhões de sistemas solares domiciliares. A África começa a seguir esse caminho, mas em escala ainda insuficiente.</p>
+
+  <!-- GRÁFICO 5: Evolução casos especiais -->
+  <div class="chart-block">
+    <div class="chart-title">Histórias de Sucesso vs Casos Críticos — Evolução do Acesso (2000–2022)</div>
+    <div class="chart-sub">% da população com acesso à eletricidade · Fonte: World Bank / Energy Institute (dataset 232 países)</div>
+    <div style="height:340px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <div class="callout verde">
+    <strong>O caso do Quênia — a aceleração possível:</strong> Em 2000, apenas 15,2% dos quenianos tinham eletricidade. Em 2022, 76,0% — um salto de 60 pontos percentuais em 22 anos. O programa Last Mile Connectivity Project (Quênia, 2015–2020) conectou 650.000 clientes em áreas rurais a um custo subsidiado de US$ 150–200/ligação. A lição: investimento público direcionado pode acelerar dramaticamente a eletrificação mesmo em países de baixa renda.
+  </div>
+
+  <h2>O mínimo de energia para uma vida digna — a física do limiar</h2>
+
+  <!-- GRÁFICO 6: Energia per capita vs acesso -->
+  <div class="chart-block">
+    <div class="chart-title">Acesso à Eletricidade vs PIB per capita — 232 Países (2022)</div>
+    <div class="chart-sub">Cada bolha = um país · Tamanho = população · Fonte: World Bank / Energy Institute (dataset 232 países)</div>
+    <div style="height:360px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>O scatter plot revela uma correlação clara e não linear: acima de US$ 5.000/capita de PIB, a maioria dos países tem acesso próximo de 100%. Entre US$ 1.000 e US$ 5.000, há grande variação — alguns países conseguem eletrificação ampla mesmo com renda baixa (Bangladesh com US$ 2.500/capita e 99,4%); outros não. Abaixo de US$ 1.000/capita, a exclusão energética é quase universal.</p>
+
+  <div class="conclusao">
+    <h2>O que os dados revelam sobre a exclusão energética</h2>
+    <ul>
+      <li><strong>O progresso global foi real, mas geograficamente assimétrico.</strong> De 74,5% para 88,5% de cobertura entre 2000 e 2022 é um avanço histórico — mas liderado pela Ásia. A África Subsaariana ficou para trás, e o ritmo atual de eletrificação não é suficiente para universalizar o acesso até 2030 (meta SDG7).</li>
+      <li><strong>Dois países concentram um terço da exclusão global.</strong> Nigéria (~88M sem acesso) e DRC (~80M) sozinhos respondem por ~168 milhões dos ~700 milhões sem eletricidade. A solução do problema global passa inevitavelmente por esses dois países.</li>
+      <li><strong>A solar descentralizada é o caminho mais rápido para regiões rurais dispersas.</strong> Com custo caindo para US$ 100–300 por sistema domiciliar, a eletrificação rural com solar fotovoltaico tornou-se economicamente viável. Bangladesh e Quênia demonstraram que é possível avançar rapidamente com programas bem desenhados.</li>
+      <li><strong>Eletricidade e desenvolvimento humano têm causalidade bidirecional.</strong> Países mais ricos têm mais eletricidade — mas mais eletricidade também gera mais riqueza. A exclusão energética é uma armadilha: sem energia, fica mais difícil crescer; sem crescimento, fica mais difícil investir em energia.</li>
+      <li><strong>A África pode queimar etapas com energia descentralizada.</strong> Assim como saltou do telefone fixo para o celular sem construir redes cabeadas, a África tem a oportunidade de pular a geração centralizada e ir diretamente para micro-redes e sistemas solares distribuídos — se financiamento climático internacional se materializar.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>World Bank</strong> — World Development Indicators. Electricity access, population data. <a href="https://databank.worldbank.org" target="_blank">databank.worldbank.org</a></li>
+      <li><strong>Energy Institute</strong> — Statistical Review of World Energy 2024. Via Our World in Data. <a href="https://www.energyinst.org/statistical-review" target="_blank">energyinst.org</a></li>
+      <li><strong>IEA</strong> — World Energy Outlook 2024: Universal Access Tracking. <a href="https://www.iea.org/reports/sdg7-data-and-projections" target="_blank">iea.org</a></li>
+      <li><strong>Our World in Data</strong> — Energy Access. Hannah Ritchie, Pablo Rosado (2024). <a href="https://ourworldindata.org/energy-access" target="_blank">ourworldindata.org</a></li>
+      <li><strong>IEA/IRENA/UNSD/WHO/World Bank</strong> — Tracking SDG 7: The Energy Progress Report 2024.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 &#8594;</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>&#169; 2026 MosmanLAB &#183; Prof. Edson Mosman &#183; <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 &#8212; Sala 171 &#183; Bela Vista &#183; São Paulo &#8212; SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)',tc='#9ca3af';
+const anos=Array.from({length:23},(_,i)=>2000+i);
+
+// C1 — Evolução global
+const acc_global=[74.5,75.3,76.1,77.0,77.9,78.8,79.6,80.4,81.3,82.2,83.1,83.9,84.7,85.4,86.1,86.8,87.2,87.5,87.8,88.0,87.5,88.1,88.5];
+new Chart(document.getElementById('c1'),{type:'line',
+  data:{labels:anos.map(String),datasets:[
+    {label:'Cobertura global ponderada (%)',data:acc_global,borderColor:'#7c3aed',
+     backgroundColor:'rgba(124,58,237,.1)',fill:true,tension:.4,pointRadius:3,
+     pointBackgroundColor:'#7c3aed',borderWidth:2.5},
+    {label:'Meta SDG7 (100%)',data:Array(23).fill(100),borderColor:'#16a34a',
+     borderDash:[4,3],pointRadius:0,borderWidth:1.5},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8,font:{size:11},color:tc},grid:{display:false}},
+      y:{min:60,max:102,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// C2 — Ásia em progresso
+const data_asia={
+  Bangladesh:[32,44.2,55.3,65,74,80,96.2,99.4],
+  India:[60.3,68.8,76.3,82,88,92,96.5,99.2],
+  Indonesia:[86.3,84.8,94.2,96,97.5,97.8,97,100],
+  Pakistan:[72.8,78.1,87.1,89,91,93,94.5,95],
+  Kenya:[15.2,24.5,19.2,30,41.6,60,71.5,76],
+};
+const anos_asia=['2000','2005','2010','2013','2015','2018','2020','2022'];
+const cores_asia=['#7c3aed','#dc2626','#f59e0b','#3b82f6','#16a34a'];
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:anos_asia,datasets:Object.entries(data_asia).map(([k,v],i)=>({
+    label:k,data:v,borderColor:cores_asia[i],tension:.4,pointRadius:4,borderWidth:2.5
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:105,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// C3 — barras africanas
+const paises_af=['Sudão do Sul','Burundi','Chade','Malawi','Níger','Burkina Faso','Rep.Centro-Africana',
+  'Sierra Leone','Libéria','Moçambique','Madagascar','Tanzânia','Uganda','Guiné','Zâmbia','Angola','Somália',
+  'Zimbabwe','Ruanda','Congo','Etiópia','Nigéria','Quênia','Gana'];
+const acc_af=[8.4,10.3,11.7,14,19.5,19.5,15.7,29.4,31.8,33.2,36.1,45.8,47.1,47.7,47.8,48.5,48.9,50.1,50.6,50.6,55.4,60.5,76,85.1];
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{labels:paises_af,datasets:[{
+    label:'Acesso (%)',data:acc_af,
+    backgroundColor:acc_af.map(v=>v<25?'rgba(220,38,38,.8)':v<50?'rgba(249,115,22,.8)':v<75?'rgba(245,158,11,.8)':'rgba(22,163,74,.75)'),
+    borderRadius:3
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{min:0,max:100,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}},
+      y:{ticks:{font:{size:9.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// C4 (BARRAS DE PROGRESSO inline) — gerenciado por JS abaixo
+
+// C5 — Histórias de sucesso vs críticos
+const anos5=['2000','2005','2010','2015','2020','2022'];
+new Chart(document.getElementById('c5'),{type:'line',
+  data:{labels:anos5,datasets:[
+    {label:'Bangladesh (sucesso)',data:[32,44.2,55.3,74,96.2,99.4],borderColor:'#16a34a',tension:.4,pointRadius:4,borderWidth:2.5},
+    {label:'Índia (sucesso)',data:[60.3,68.8,76.3,88,96.5,99.2],borderColor:'#06b6d4',tension:.4,pointRadius:4,borderWidth:2.5,borderDash:[4,3]},
+    {label:'Quênia (recuperação)',data:[15.2,24.5,19.2,41.6,71.5,76],borderColor:'#f59e0b',tension:.4,pointRadius:4,borderWidth:2.5},
+    {label:'Nigéria (lento)',data:[43.2,46.8,48,52.5,55.4,60.5],borderColor:'#dc2626',tension:.4,pointRadius:4,borderWidth:2},
+    {label:'Tanzânia (lento)',data:[8.7,13.8,14.8,26.2,39.9,45.8],borderColor:'#7c3aed',tension:.4,pointRadius:4,borderWidth:2},
+    {label:'Moçambique (muito lento)',data:[6.1,11.8,18.9,24,30.6,33.2],borderColor:'#374151',tension:.4,pointRadius:4,borderWidth:2,borderDash:[3,3]},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10.5},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:105,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// C6 — Scatter acesso vs PIB
+const scatter_data=[
+  {c:'Bangladesh',x:2500,y:99.4,r:12},{c:'Índia',x:2347,y:99.2,r:20},
+  {c:'Nigéria',x:2899,y:60.5,r:16},{c:'Etiópia',x:982,y:55.4,r:12},
+  {c:'DRC',x:688,y:21.5,r:14},{c:'Tanzânia',x:1208,y:45.8,r:9},
+  {c:'Moçambique',x:578,y:33.2,r:7},{c:'Madagascar',x:504,y:36.1,r:7},
+  {c:'Quênia',x:2110,y:76,r:9},{c:'Gana',x:2230,y:85.1,r:8},
+  {c:'Angola',x:3682,y:48.5,r:8},{c:'Zimbabwe',x:2536,y:50.1,r:7},
+  {c:'Brasil',x:9281,y:100,r:13},{c:'México',x:11406,y:100,r:12},
+  {c:'China',x:12971,y:100,r:20},{c:'Indonésia',x:4731,y:100,r:13},
+  {c:'Paquistão',x:1655,y:95,r:12},{c:'Nicarágua',x:2097,y:95,r:6},
+  {c:'Ruanda',x:975,y:50.6,r:6},{c:'Uganda',x:963,y:47.1,r:9},
+  {c:'Chade',x:966,y:11.7,r:7},{c:'Níger',x:610,y:19.5,r:7},
+  {c:'Malawi',x:604,y:14,r:7},{c:'Noruega',x:109270,y:100,r:7},
+  {c:'EUA',x:76657,y:100,r:15},{c:'Alemanha',x:50507,y:100,r:10},
+];
+new Chart(document.getElementById('c6'),{type:'bubble',
+  data:{datasets:scatter_data.map(p=>({
+    label:p.c,
+    data:[{x:Math.min(p.x,30000),y:p.y,r:p.r}],
+    backgroundColor:p.y>=99?'rgba(22,163,74,0.6)':p.y>=70?'rgba(245,158,11,0.6)':p.y>=40?'rgba(249,115,22,0.6)':'rgba(220,38,38,0.65)',
+    borderColor:p.y>=99?'#16a34a':p.y>=70?'#f59e0b':p.y>=40?'#f97316':'#dc2626',borderWidth:1.5
+  }))},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: PIB $${ctx.raw.x.toLocaleString()}/cap · ${ctx.raw.y}% acesso`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v>=1000?'$'+(v/1000).toFixed(0)+'k':'$'+v},grid:{color:gc},
+         title:{display:true,text:'PIB per capita (USD — cap. em $30k)',color:tc,font:{size:10}}},
+      y:{min:0,max:105,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+         title:{display:true,text:'% com acesso à eletricidade',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// Barras de progresso inline
+const pais_exc=[
+  {n:'Nigéria',sem:88.2,pop:223.2,pct:60.5},
+  {n:'DRC (Congo)',sem:80.4,pop:102.4,pct:21.5},
+  {n:'Etiópia',sem:56.0,pop:125.4,pct:55.4},
+  {n:'Tanzânia',sem:35.0,pop:64.7,pct:45.8},
+  {n:'Uganda',sem:25.0,pop:47.3,pct:47.1},
+  {n:'Moçambique',sem:21.8,pop:32.7,pct:33.2},
+  {n:'Níger',sem:20.4,pop:25.3,pct:19.5},
+  {n:'Burkina Faso',sem:18.1,pop:22.5,pct:19.5},
+  {n:'Madagascar',sem:19.4,pop:30.4,pct:36.1},
+  {n:'Malawi',sem:17.7,pop:20.6,pct:14.0},
+];
+const wrap=document.getElementById('barras-pais');
+pais_exc.forEach(p=>{
+  const cor=p.pct<25?'#dc2626':p.pct<50?'#f97316':'#f59e0b';
+  wrap.innerHTML+=`<div style="margin-bottom:10px">
+    <div class="progress-label"><span><strong>${p.n}</strong></span><span style="color:#64748b;font-size:.78rem">~${p.sem.toFixed(0)}M sem acesso (${p.pct}% cobertos)</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${p.pct}%;background:${cor}"></div></div>
+  </div>`;
+});
+</script>
+</body>
+</html>
