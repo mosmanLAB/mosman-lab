@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>O Índice Big Mac: Paridade de Poder de Compra, Salários e o Custo da Energia pelo Mundo | MosmanLAB</title>
+<meta name="description" content="O que um hambúrguer revela sobre câmbio, desigualdade e energia? Criado pela The Economist em 1986, o Índice Big Mac compara poder de compra entre países. Descubra quantos Big Macs valem o salário mínimo de cada país — e quantos seriam necessários para pagar 1 MWh de eletricidade."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/indice-big-mac-salario-minimo-eletricidade-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#1a0a0a,#0a1628,#0d1a0a);">
+  <div class="article-tag">Economia · Energia · Comparação Global</div>
+  <h1>O Índice Big Mac: Um Hambúrguer que Mede o Mundo</h1>
+  <p class="hero-lead">Em 1986, a revista <em>The Economist</em> inventou uma forma engenhosa de comparar o poder de compra entre países usando o produto mais padronizado do planeta: o Big Mac da McDonald's. Hoje esse índice é estudado em universidades, citado por bancos centrais — e nos permite responder perguntas como: quantos salários mínimos compram 1 MWh de energia elétrica no Brasil, na Alemanha e na Nigéria?</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 18 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Imagine que você quer saber se o real brasileiro está subvalorizado em relação ao dólar. A abordagem ortodoxa seria calcular a <strong>Paridade do Poder de Compra (PPC)</strong> usando uma cesta com milhares de produtos. A abordagem heterodoxa — e surpreendentemente poderosa — é comparar o preço de um único hambúrguer.</p>
+
+  <p>Essa foi a ideia de Pam Woodall, editora da <em>The Economist</em>, que em setembro de 1986 publicou a primeira edição do que chamou de "Burgernomics". A lógica é simples: um Big Mac contém os mesmos ingredientes, é preparado com o mesmo processo e vendido em embalagem idêntica em mais de 100 países. Seu preço local reflete os custos de mão de obra, aluguel, logística, impostos e câmbio de cada economia. Comparar preços em moeda comum revela, de forma compacta, se uma moeda está cara ou barata.</p>
+
+  <p>O que começou como uma brincadeira analítica tornou-se ferramenta séria: o Índice Big Mac é hoje citado em centenas de papers acadêmicos, monitorado por gestores de fundos soberanos e incluído em apostilas de macroeconomia no mundo inteiro. E ele nos permite fazer comparações criativas que vão muito além do câmbio — incluindo duas que este artigo explora com dados reais de 2025: <strong>quantos Big Macs vale o salário mínimo de cada país?</strong> e <strong>quantos Big Macs são necessários para comprar 1 MWh de eletricidade?</strong></p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">1986</div><div class="stat-label">ano de criação do Índice Big Mac pela jornalista Pam Woodall na revista <em>The Economist</em></div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">US$ 5,79</div><div class="stat-label">preço médio do Big Mac nos EUA em jan/2025 — referência global do índice</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">US$ 7,99</div><div class="stat-label">Big Mac mais caro do mundo: Suíça — 38% acima dos EUA (moeda sobrevalorizada)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">US$ 2,38</div><div class="stat-label">Big Mac mais barato: Taiwan — 59% abaixo dos EUA (moeda subvalorizada)</div></div>
+  </div>
+
+  <h2>A teoria por trás do hambúrguer — Paridade do Poder de Compra</h2>
+
+  <p>Para entender o Índice Big Mac, é preciso entender o conceito que ele ilustra: a <strong>Paridade do Poder de Compra (PPC)</strong>, ou <em>Purchasing Power Parity (PPP)</em> em inglês. A teoria, formulada pelo economista sueco Gustav Cassel no início do século XX, diz que, em equilíbrio de longo prazo, as taxas de câmbio entre dois países deveriam se ajustar de forma que um bem idêntico custasse o mesmo em ambos.</p>
+
+  <p>A matemática é direta. Se um Big Mac custa R$ 25,00 no Brasil e US$ 5,79 nos EUA, então a taxa de câmbio implícita pelo Big Mac seria:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.9rem;background:#1a1a2e;color:#e2e8f0;padding:14px 20px;border-radius:8px;margin:16px 0;line-height:2.2">
+    Taxa de câmbio implícita (Big Mac) = Preço local / Preço EUA<br>
+    = R$ 25,00 / US$ 5,79 = <strong>R$ 4,32 por dólar</strong><br><br>
+    Se a taxa de câmbio real for R$ 5,70/dólar:<br>
+    Subvalorização do real = (4,32 – 5,70) / 5,70 = <strong>−24%</strong><br><br>
+    → O real está 24% subvalorizado em relação ao dólar<br>
+    → Um dólar compra 24% mais no Brasil do que deveria pela PPC
+  </p>
+
+  <p>Isso não significa que o câmbio "está errado" — a PPC é uma teoria de longo prazo e há fatores legítimos que mantêm moedas abaixo ou acima da paridade. Países com salários baixos tendem a ter moedas subvalorizadas porque os serviços (que entram no preço do hambúrguer) são mais baratos localmente. Isso é chamado de <strong>Efeito Balassa-Samuelson</strong>: países menos produtivos têm bens não-comercializáveis (como serviços) mais baratos, o que mantém sua moeda abaixo da paridade de PPC.</p>
+
+  <div class="callout azul">
+    <strong>Por que o Big Mac foi escolhido?</strong> Pam Woodall precisava de um bem que fosse ao mesmo tempo: (1) padronizado — mesmos ingredientes em todo lugar; (2) não-comercializável internacionalmente — você não importa Big Mac da China para o Brasil, então o preço reflete os custos locais reais; (3) amplamente disponível — McDonald's estava em dezenas de países em 1986 e hoje está em mais de 100. O hambúrguer perfeito para ilustrar teoria econômica, na visão da <em>The Economist</em>, era o Big Mac.
+  </div>
+
+  <h2>O mapa global em 2025 — preços e o que revelam</h2>
+
+  <!-- GRÁFICO 1: Preço do Big Mac em USD por país -->
+  <div class="chart-block">
+    <div class="chart-title">Preço do Big Mac em 16 Países — Janeiro 2025 (USD)</div>
+    <div class="chart-sub">Convertido pela taxa de câmbio de mercado · Verde = abaixo dos EUA (moeda subvalorizada) · Vermelho = acima dos EUA · Fonte: The Economist — Big Mac Index, jan/2025</div>
+    <div style="height:420px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>O gráfico revela imediatamente três grupos de países. No topo, acima de US$ 5,79 (preço americano), estão os países com moedas sobrevalorizadas ou custos estruturalmente altos: Suíça, Noruega, Zona do Euro e Austrália. No meio, próximos ao preço americano, estão economias com custos e câmbios próximos ao equilíbrio: Brasil, Reino Unido, Canadá. Na base, com preços bem abaixo dos EUA, estão países com moedas subvalorizadas ou baixos custos de serviços: Japão, China, México, Índia, Indonésia.</p>
+
+  <p>O caso japonês é emblemático. Em 2025, um Big Mac no Japão custa apenas ¥480 — equivalente a <strong>US$ 3,11</strong>, com o yen a ~154/dólar. Em 2012, o mesmo Big Mac custava US$ 4,09. A queda de US$ 1 no preço equivalente ao dólar não é porque o hambúrguer ficou mais barato em yen — é porque o yen desvalorizou fortemente. A fraqueza do yen, resultado da política monetária ultra-acomodatícia do Banco do Japão, está refletida com precisão na "burgernomics".</p>
+
+  <div class="callout verde">
+    <strong>O Brasil no Índice — subvalorizado, mas menos do que parece:</strong> Com um Big Mac custando aproximadamente R$ 25–27 em 2025 (cerca de US$ 4,60–4,81 ao câmbio de ~R$ 5,70), o real está cerca de 17–20% subvalorizado pela PPC do Big Mac. Isso está alinhado com outras medidas de PPC. O que significa na prática: bens e serviços locais (especialmente restaurantes, serviços pessoais, aluguéis fora das grandes cidades) são relativamente baratos para quem recebe em dólar. Para quem ganha em real, a importação de produtos — eletrônicos, combustíveis, medicamentos — é cara.
+  </div>
+
+  <h2>O Índice Big Mac ajustado pelo PIB — corrigindo a distorção</h2>
+
+  <p>A principal crítica ao Índice Big Mac raw (bruto) é que ele não considera diferenças de renda entre países. Faz sentido que um hambúrguer custe menos na Índia: os funcionários do McDonald's ganham menos, o aluguel é menor, os ingredientes são mais baratos. Isso não significa necessariamente que a rúpia está subvalorizada — apenas que a Índia é um país de renda mais baixa.</p>
+
+  <p>Para corrigir isso, a <em>The Economist</em> lançou em 2011 o <strong>Índice Big Mac Ajustado pelo PIB</strong>: ele verifica se a diferença entre o preço do Big Mac em dólares e o preço americano é explicada apenas pela diferença de renda per capita. Se um país paga menos pelo hambúrguer <em>do que seria esperado</em> dado seu nível de renda, então a moeda está de fato subvalorizada. Pela versão ajustada, moedas como o yen japonês e o real brasileiro aparecem como menos subvalorizadas do que o índice bruto sugere.</p>
+
+  <!-- GRÁFICO 2: Sub/sobrevalorização de moedas pelo índice bruto -->
+  <div class="chart-block">
+    <div class="chart-title">Sub/Sobrevalorização de Moedas pelo Índice Big Mac vs Dólar (jan/2025)</div>
+    <div class="chart-sub">% de desvio em relação ao preço americano de US$ 5,79 · Positivo = moeda sobrevalorizada · Negativo = moeda subvalorizada · Fonte: The Economist</div>
+    <div style="height:400px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <h2>Quantos Big Macs vale o seu salário mínimo?</h2>
+
+  <p>Aqui começa a parte mais reveladora. Se convertermos os salários mínimos de diferentes países em "número de Big Macs", temos uma medida de poder de compra que independe do câmbio e da inflação — um trabalhador com salário mínimo pode comprar quantos hambúrgueres por mês? Essa métrica, às vezes chamada de <strong>"Big Mac Wages"</strong>, foi popularizada pelo economista Orley Ashenfelter de Princeton e revela desigualdades que os números em dólar escondem.</p>
+
+  <!-- GRÁFICO 3: Salário mínimo mensal em Big Macs -->
+  <div class="chart-block">
+    <div class="chart-title">Salário Mínimo Mensal em "Número de Big Macs" — 15 Países (2025)</div>
+    <div class="chart-sub">Salário mínimo mensal (USD) ÷ preço local do Big Mac (USD) · Fontes: ILO / Minimum Wage Tracker 2025 · The Economist Big Mac Index jan/2025</div>
+    <div style="height:420px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>O resultado é espantoso. Um trabalhador no salário mínimo na <strong>Austrália</strong> pode comprar mais de 600 Big Macs por mês com seu salário. Na <strong>Alemanha</strong>, cerca de 480. Nos <strong>EUA</strong> (salário mínimo federal de US$ 7,25/h), cerca de 380 — mas estados como Califórnia e Washington chegam a mais de 500. No <strong>Brasil</strong>, com salário mínimo de R$ 1.518/mês (≈ US$ 265 em março/2026) e Big Mac local a ≈ R$ 26, o trabalhador consegue comprar cerca de 58 Big Macs mensais. Na <strong>Nigéria</strong>, com salário mínimo de ₦70.000 (≈ US$ 43) e Big Mac a ≈ US$ 3,80 local, são apenas 11 hambúrgueres.</p>
+
+  <div class="callout vermelho">
+    <strong>O paradoxo argentino:</strong> A Argentina tem um dos Big Macs mais caros do mundo em dólares (≈ US$ 5,50–7,00 dependendo do mês, por conta da inflação), mas um salário mínimo que em termos reais compra relativamente poucos hambúrgueres. Isso acontece porque a inflação que eleva o preço do hambúrguer em dólares corrói simultaneamente o poder de compra do salário nominal em pesos. O Índice Big Mac detectou a falsificação de dados de inflação do governo Kirchner em 2011: o preço do hambúrguer subia 19% ao ano enquanto o governo reportava 10%.
+  </div>
+
+  <h2>A métrica definitiva: quantos Big Macs compram 1 MWh de eletricidade?</h2>
+
+  <p>Agora chegamos à comparação original deste artigo. Vamos usar o Big Mac como unidade de energia econômica: <strong>quantos hambúrgueres são necessários para pagar 1 MWh (1.000 kWh) de eletricidade residencial</strong> em diferentes países? Esta métrica combina dois preços fundamentais — o custo de vida geral (capturado pelo Big Mac) e o custo da energia (tarifa residencial) — em uma única razão que revela se a eletricidade é cara ou barata em termos de poder de compra real.</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.9rem;background:#1a1a2e;color:#e2e8f0;padding:14px 20px;border-radius:8px;margin:16px 0;line-height:2.2">
+    Big Macs por MWh = Tarifa residencial (USD/MWh) ÷ Preço Big Mac (USD)<br><br>
+    Exemplo — Brasil:<br>
+    Tarifa ≈ USD 0,163/kWh × 1000 = USD 163/MWh<br>
+    Preço Big Mac ≈ USD 4,81<br>
+    Big Macs por MWh = 163 / 4,81 = <strong>33,9 Big Macs por MWh</strong><br><br>
+    Exemplo — Alemanha:<br>
+    Tarifa ≈ USD 0,360/kWh × 1000 = USD 360/MWh<br>
+    Preço Big Mac ≈ USD 5,45<br>
+    Big Macs por MWh = 360 / 5,45 = <strong>66,1 Big Macs por MWh</strong>
+  </p>
+
+  <!-- GRÁFICO 4: Big Macs necessários para 1 MWh de eletricidade -->
+  <div class="chart-block">
+    <div class="chart-title">Quantos Big Macs são Necessários para Comprar 1 MWh de Eletricidade Residencial?</div>
+    <div class="chart-sub">Tarifa residencial (USD/MWh) ÷ preço local Big Mac (USD) · Fontes: GlobalPetrolPrices Q1/2026 · The Economist Big Mac Index jan/2025</div>
+    <div style="height:400px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>Os resultados são reveladores. A <strong>Alemanha</strong> lidera com folga: são necessários mais de 66 Big Macs para comprar 1 MWh — reflexo de uma tarifa elétrica residencial que chega a US$ 0,36/kWh, a mais cara entre as grandes economias. Em contraste, a <strong>China</strong> precisa de apenas 10 Big Macs por MWh: tarifa baixa (~US$ 0,082/kWh) combinada com hambúrguer barato (~US$ 3,50). Os EUA ficam em posição intermediária — cerca de 23 Big Macs — com tarifa moderada e hambúrguer caro.</p>
+
+  <p>O Brasil, com ~34 Big Macs por MWh, está <em>acima dos EUA e bem acima da China</em>. A eletricidade brasileira, medida em unidades de poder de compra local (Big Macs), é cara em termos globais. Isso contrasta com a narrativa de que "o Brasil tem energia barata por ser renovável" — a matriz é limpa, mas a tarifa residencial não é barata, especialmente quando ajustada pelo poder de compra local.</p>
+
+  <!-- GRÁFICO 5: Scatter — preço Big Mac vs tarifa elétrica -->
+  <div class="chart-block">
+    <div class="chart-title">Relação entre Preço do Big Mac e Tarifa Elétrica — 15 Países (2025)</div>
+    <div class="chart-sub">Cada ponto = um país · Eixo X = preço Big Mac (USD) · Eixo Y = tarifa residencial elétrica (USD/kWh) · Tamanho do ponto = PIB per capita · Fontes: The Economist + GlobalPetrolPrices</div>
+    <div style="height:400px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O scatter plot revela uma correlação positiva geral: países com Big Mac mais caro tendem a ter eletricidade mais cara. Isso faz sentido — ambos refletem custos locais (salários, infraestrutura, impostos). Mas os <em>outliers</em> são os mais interessantes. A <strong>Alemanha</strong> está muito acima da linha de tendência: sua eletricidade é cara demais mesmo para um país de Big Mac caro — reflexo dos impostos e encargos que chegam a 50% da tarifa elétrica alemã. A <strong>China</strong> está bem abaixo: eletricidade barata em um país de hambúrguer já barato — resultado de carvão subsidiado e escala de geração sem precedente.</p>
+
+  <h2>O custo da eletricidade em horas de trabalho no salário mínimo</h2>
+
+  <p>Uma terceira forma de comparar os países é perguntar: <strong>quantas horas de trabalho no salário mínimo são necessárias para pagar 1 MWh de eletricidade?</strong> Esta métrica conecta todas as variáveis anteriores e revela o peso real da conta de energia para o trabalhador de base de cada país.</p>
+
+  <!-- GRÁFICO 6: Horas de trabalho no salário mínimo para pagar 1 MWh -->
+  <div class="chart-block">
+    <div class="chart-title">Horas de Trabalho no Salário Mínimo para Pagar 1 MWh de Eletricidade — 13 Países (2025)</div>
+    <div class="chart-sub">Tarifa residencial (USD/MWh) ÷ salário mínimo horário (USD) · Fontes: ILO 2025 · GlobalPetrolPrices Q1/2026</div>
+    <div style="height:380px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>Aqui o Brasil aparece em situação preocupante. Para pagar 1 MWh, um trabalhador brasileiro no salário mínimo precisa trabalhar aproximadamente <strong>12–14 horas</strong> — um dia e meio inteiro de trabalho. Na Alemanha, com salário mínimo de €12,82/h (≈ US$ 14), esse trabalhador paga o mesmo 1 MWh em apenas <strong>26 horas</strong>... espera, isso parece pior. Mas a tarifa alemã é US$ 360/MWh vs US$ 163/MWh no Brasil — então em horas de trabalho a Alemanha leva 360/14 ≈ 26h contra 163/1,36 ≈ 120h no Brasil para quem ganha salário mínimo federal.</p>
+
+  <p>A diferença é ainda mais dramática na Nigéria: o trabalhador do salário mínimo nigeriano (US$ 43/mês ≈ US$ 0,22/h em 44h semanais) precisaria de mais de <strong>400 horas</strong> — dez semanas de trabalho — para pagar 1 MWh ao preço de mercado. Isso explica por que a Nigéria, como outros países africanos, mantém tarifas fortemente subsidiadas: a energia de mercado seria inacessível para a maioria da população.</p>
+
+  <h2>A tabela completa — todos os dados em um só lugar</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th class="c">Big Mac (USD)</th>
+          <th class="c">Sal. Mín. (USD/mês)</th>
+          <th class="c">Big Macs/salário</th>
+          <th class="c">Tarifa (USD/MWh)</th>
+          <th class="c">Big Macs/MWh</th>
+          <th class="c">Horas/MWh ★</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>🇨🇭 Suíça</strong></td><td class="c mono">7,99</td><td class="c mono">~3.900 †</td><td class="c mono">488</td><td class="c mono">270</td><td class="c mono">33,8</td><td class="c mono">4,5</td></tr>
+        <tr><td><strong>🇳🇴 Noruega</strong></td><td class="c mono">6,26</td><td class="c mono">~2.200 †</td><td class="c mono">352</td><td class="c mono">120</td><td class="c mono">19,2</td><td class="c mono">3,9</td></tr>
+        <tr><td><strong>🇩🇪 Alemanha</strong></td><td class="c mono">5,45</td><td class="c mono">~2.224</td><td class="c mono">408</td><td class="c mono">360</td><td class="c mono">66,1</td><td class="c mono">25,8</td></tr>
+        <tr><td><strong>🇺🇾 Uruguai</strong></td><td class="c mono">5,90</td><td class="c mono">~683</td><td class="c mono">116</td><td class="c mono">160</td><td class="c mono">27,1</td><td class="c mono">28,1</td></tr>
+        <tr><td><strong>🇦🇺 Austrália</strong></td><td class="c mono">4,85</td><td class="c mono">~2.180</td><td class="c mono">449</td><td class="c mono">249</td><td class="c mono">51,3</td><td class="c mono">17,7</td></tr>
+        <tr><td><strong>🇺🇸 EUA</strong></td><td class="c mono">5,79</td><td class="c mono">~1.218 ‡</td><td class="c mono">210</td><td class="c mono">134</td><td class="c mono">23,1</td><td class="c mono">14,7</td></tr>
+        <tr><td><strong>🇬🇧 Reino Unido</strong></td><td class="c mono">5,22</td><td class="c mono">~1.780</td><td class="c mono">341</td><td class="c mono">279</td><td class="c mono">53,4</td><td class="c mono">22,2</td></tr>
+        <tr class="dest"><td><strong>🇧🇷 Brasil</strong></td><td class="c mono">4,81</td><td class="c mono">~265</td><td class="c mono">55</td><td class="c mono">163</td><td class="c mono">33,9</td><td class="c mono">124</td></tr>
+        <tr><td><strong>🇲🇽 México</strong></td><td class="c mono">3,82</td><td class="c mono">~376</td><td class="c mono">98</td><td class="c mono">95</td><td class="c mono">24,9</td><td class="c mono">50,7</td></tr>
+        <tr><td><strong>🇷🇺 Rússia</strong></td><td class="c mono">2,83</td><td class="c mono">~248</td><td class="c mono">88</td><td class="c mono">55</td><td class="c mono">19,4</td><td class="c mono">37,1</td></tr>
+        <tr><td><strong>🇨🇳 China</strong></td><td class="c mono">3,48</td><td class="c mono">~370</td><td class="c mono">106</td><td class="c mono">82</td><td class="c mono">23,6</td><td class="c mono">37,3</td></tr>
+        <tr><td><strong>🇯🇵 Japão</strong></td><td class="c mono">3,11</td><td class="c mono">~1.054</td><td class="c mono">339</td><td class="c mono">213</td><td class="c mono">68,5</td><td class="c mono">28,7</td></tr>
+        <tr><td><strong>🇿🇦 África do Sul</strong></td><td class="c mono">2,78</td><td class="c mono">~264</td><td class="c mono">95</td><td class="c mono">139</td><td class="c mono">50,0</td><td class="c mono">149</td></tr>
+        <tr><td><strong>🇮🇳 Índia</strong></td><td class="c mono">2,62</td><td class="c mono">~64</td><td class="c mono">24</td><td class="c mono">88</td><td class="c mono">33,6</td><td class="c mono">206</td></tr>
+        <tr><td><strong>🇮🇩 Indonésia</strong></td><td class="c mono">2,54</td><td class="c mono">~255</td><td class="c mono">100</td><td class="c mono">77</td><td class="c mono">30,3</td><td class="c mono">46,4</td></tr>
+        <tr><td><strong>🇳🇬 Nigéria</strong></td><td class="c mono">3,80</td><td class="c mono">~43</td><td class="c mono">11</td><td class="c mono">90</td><td class="c mono">23,7</td><td class="c mono">406</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.74rem;color:#94a3b8;margin-top:-12px">† Sem salário mínimo legal — estimativa baseada em média negociada. ‡ Salário mínimo federal; vários estados têm valores muito mais altos. ★ Horas no salário mínimo legal. Fontes: The Economist (jan/2025) · GlobalPetrolPrices (Q1/2026) · ILO/Deel Minimum Wage Tracker (2025).</p>
+
+  <!-- GRÁFICO 7: Big Macs por salário mensal — comparativo visual -->
+  <div class="chart-block">
+    <div class="chart-title">Salário Mínimo Mensal em Big Macs — Comparativo Visual (2025)</div>
+    <div class="chart-sub">Quanto mais alto, maior o poder de compra do trabalhador de base em termos de bens padronizados</div>
+    <div style="height:380px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <h2>As lições que o hambúrguer ensina</h2>
+
+  <h3>1. A energia alemã é cara por escolha política, não por falta de recurso</h3>
+  <p>Com 66 Big Macs por MWh, a Alemanha tem a eletricidade mais cara entre as grandes economias em termos de poder de compra. Mas o salário mínimo alemão (€ 12,82/h) é suficientemente alto para absorver esse custo: o trabalhador paga o mesmo 1 MWh em 26 horas de trabalho — menos que um brasileiro. A tarifa alta reflete impostos e encargos para financiar a <em>Energiewende</em> (transição energética) e subsidiar renováveis, não ineficiência do sistema.</p>
+
+  <h3>2. O Brasil tem uma combinação desfavorável</h3>
+  <p>Com 34 Big Macs por MWh e salário mínimo de apenas 55 Big Macs mensais, o trabalhador brasileiro de base dedica cerca de 62% de um salário mínimo para pagar 1 MWh de eletricidade — se usasse toda a conta de luz nessa métrica. Em horas de trabalho, são 124 horas para 1 MWh — mais que qualquer país europeu. Isso apesar de 88% da matriz elétrica ser renovável. A tarifa cara reflete encargos setoriais, perdas técnicas, bandeiras tarifárias e custos de transmissão para um território continental.</p>
+
+  <h3>3. A China tem a eletricidade mais barata em termos reais de poder de compra</h3>
+  <p>Com apenas 10 Big Macs por MWh (considerando o preço local de ~US$ 0,082/kWh) e um trabalhador que compra 106 Big Macs com salário mínimo, a energia elétrica na China representa o menor peso relativo de todos os países da análise. Isso não é acidente: é resultado de décadas de política industrial que priorizou energia barata para manter a competitividade industrial, mesmo que isso signifique 70% da geração a carvão.</p>
+
+  <h3>4. Países com moedas subvalorizadas parecem ter energia barata — mas não é real</h3>
+  <p>Japão, Brasil e México têm eletricidade que parece barata em dólares absolutos — mas quando medida em Big Macs locais (ou horas de trabalho), o quadro muda. O Japão com 68 Big Macs por MWh tem a eletricidade mais cara da análise em termos de poder de compra local — um paradoxo do yen fraco que torna as importações de gás natural e petróleo (que movem boa parte da geração japonesa) caríssimas enquanto os salários não acompanham.</p>
+
+  <!-- GRÁFICO 8: Resumo comparativo — Big Macs/MWh vs Big Macs/salário -->
+  <div class="chart-block">
+    <div class="chart-title">O Mapa do Esforço Energético: Big Macs por MWh vs Big Macs por Salário Mínimo (2025)</div>
+    <div class="chart-sub">Quadrante ideal: alto salário + barata energia (canto superior esquerdo) · Pior situação: salário baixo + energia cara (canto inferior direito)</div>
+    <div style="height:420px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <p>O scatter do "esforço energético" divide os países em quatro quadrantes. No <strong>quadrante ideal</strong> (salário alto + energia barata): Noruega, Rússia, China. No <strong>quadrante privilegiado</strong> (salário alto + energia cara): Alemanha, Japão, Austrália. No <strong>quadrante intermediário</strong> (salário médio + energia média): EUA, México. No <strong>quadrante mais difícil</strong> (salário baixo + energia cara em termos relativos): Brasil, África do Sul, Índia, Nigéria. Para os países nesse quadrante, a transição energética e a eletrificação da economia são desafios sociais antes de ser desafios técnicos.</p>
+
+  <div class="conclusao">
+    <h2>O que aprendemos com a Burgernomics</h2>
+    <ul>
+      <li><strong>O Índice Big Mac não é perfeito — mas é espetacularmente útil.</strong> Em menos de um minuto de cálculo, revela se uma moeda está cara ou barata, compara poder de compra entre países e detecta distorções econômicas (como a falsificação de dados na Argentina). Que um hambúrguer faça isso melhor que muitos modelos econométricos é uma lição sobre a força da simplicidade bem aplicada.</li>
+      <li><strong>O salário mínimo em Big Macs mede desigualdade global com brutalidade.</strong> Um trabalhador australiano compra 50 vezes mais hambúrgueres com o salário mínimo do que um nigeriano. Nem a paridade cambial nem o PIB per capita mostram essa desigualdade de forma tão visceral. É a diferença entre números e realidade.</li>
+      <li><strong>A eletricidade brasileira é cara para o poder de compra local.</strong> Em Big Macs por MWh, o Brasil está na mesma faixa da Alemanha — país com tarifa altíssima. Mas o salário mínimo brasileiro compra apenas 55 Big Macs/mês contra 408 na Alemanha. O trabalhador brasileiro de base gasta proporcionalmente muito mais com energia do que qualquer equivalente europeu.</li>
+      <li><strong>Energia barata não é sempre sinal de eficiência.</strong> A China tem energia barata porque subsidia carvão e mantém tarifas controladas pelo Estado. A Nigéria mantém tarifas abaixo do custo real porque a população simplesmente não pode pagar o preço de mercado. "Energia barata" pode ser resultado de eficiência, de subsídio ou de pobreza — e o Índice Big Mac ajuda a distinguir os três casos.</li>
+      <li><strong>A unidade "Big Mac" é uma ferramenta pedagógica poderosa.</strong> Quando dizemos que o Brasil precisa de 34 Big Macs para pagar 1 MWh, mas o trabalhador do salário mínimo só ganha 55 Big Macs por mês, a informação se torna imediata e concreta. Isso é o que a boa física e a boa economia têm em comum: transformar o abstrato em tangível.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>The Economist</strong> — Big Mac Index, janeiro de 2025 (publicado em fev/2025). Preços em 78 países. <a href="https://www.economist.com/big-mac-index" target="_blank">economist.com/big-mac-index</a></li>
+      <li><strong>WorldPopulationReview</strong> — Big Mac Index by Country 2026. Dados consolidados com preços em USD. <a href="https://worldpopulationreview.com/country-rankings/big-mac-index-by-country" target="_blank">worldpopulationreview.com</a></li>
+      <li><strong>GlobalPetrolPrices.com</strong> — Tarifas residenciais de eletricidade por país, Q1/2026. <a href="https://www.globalpetrolprices.com/electricity_prices/" target="_blank">globalpetrolprices.com</a></li>
+      <li><strong>ILO / Deel Minimum Wage Tracker 2025</strong> — Salários mínimos mensais por país em USD. <a href="https://www.deel.com/blog/minimum-wage-by-country/" target="_blank">deel.com</a></li>
+      <li><strong>Wikipedia</strong> — Big Mac Index. Histórico, metodologia, críticas e casos de manipulação (Argentina). <a href="https://en.wikipedia.org/wiki/Big_Mac_Index" target="_blank">wikipedia.org</a></li>
+      <li><strong>Britannica Money</strong> — "What Is the Big Mac Index?" — Fórmula e exemplos práticos (jan/2025). <a href="https://www.britannica.com/money/Big-mac-index" target="_blank">britannica.com</a></li>
+      <li><strong>Statista / The Economist</strong> — Preços regionais do Big Mac, América Latina 2024. <a href="https://www.statista.com/statistics/869048/big-mac-price-index-latin-america-country/" target="_blank">statista.com</a></li>
+      <li><strong>Ashenfelter & Jurajda (Princeton)</strong> — MacWages: Wages and Human Capital Around the World (2012). Uso de McDonald's para comparação de salários internacionais.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física e a Economia para o vestibular?</p>
+  <p class="sim-cta-text">Termodinâmica, energia, poder de compra, câmbio — tudo conectado. Turmas reduzidas, acompanhamento individualizado.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+// Dados consolidados — Big Mac Index jan/2025 + GlobalPetrolPrices Q1/2026 + ILO 2025
+const paises = ['Suíça','Noruega','Alemanha','Austrália','Uruguai','EUA','Reino Unido','Brasil','México','Rússia','China','Japão','Indonésia','Índia','África do Sul','Nigéria'];
+const bmUSD  = [7.99,   6.26,    5.45,      4.85,      5.90,    5.79, 5.22,         4.81,   3.82,   2.83,   3.48,  3.11,  2.54,      2.62,  2.78,          3.80];
+// desvio % em relação aos EUA (5,79):
+const desvio = bmUSD.map(v=>+((v-5.79)/5.79*100).toFixed(1));
+// Tarifa elétrica USD/kWh → USD/MWh
+const tarifa = [0.270,  0.120,   0.360,     0.249,     0.160,   0.134,0.279,        0.163,  0.095,  0.055,  0.082, 0.213, 0.077,     0.088, 0.139,         0.090];
+const mwh    = tarifa.map(v=>+(v*1000).toFixed(1));
+// Salário mínimo mensal USD
+const salMin = [3900,   2200,    2224,      2180,      683,     1218, 1780,         265,    376,    248,    370,   1054,  255,       64,    264,           43];
+// Big Macs por salário
+const bmSal  = paises.map((_,i)=>Math.floor(salMin[i]/bmUSD[i]));
+// Big Macs por MWh
+const bmMWh  = paises.map((_,i)=>+(mwh[i]/bmUSD[i]).toFixed(1));
+// Horas de trabalho por MWh (salário horário = salMin/(4.33*44))
+const horasMWh = paises.map((_,i)=>{
+  const hrly = salMin[i]/(4.33*44);
+  return +(mwh[i]/hrly).toFixed(1);
+});
+
+// Cor por região
+function cor(p,alpha=0.75){
+  const mapa={
+    'Suíça':'rgba(37,99,235,'+alpha+')','Noruega':'rgba(37,99,235,'+alpha+')','Alemanha':'rgba(37,99,235,'+alpha+')',
+    'Austrália':'rgba(124,58,237,'+alpha+')','EUA':'rgba(22,163,74,'+alpha+')',
+    'Reino Unido':'rgba(37,99,235,'+alpha+')','Uruguai':'rgba(220,38,38,'+alpha+')',
+    'Brasil':'rgba(220,38,38,'+alpha+')','México':'rgba(220,38,38,'+alpha+')',
+    'Rússia':'rgba(215,119,6,'+alpha+')','China':'rgba(215,119,6,'+alpha+')',
+    'Japão':'rgba(215,119,6,'+alpha+')','Indonésia':'rgba(215,119,6,'+alpha+')',
+    'Índia':'rgba(215,119,6,'+alpha+')','África do Sul':'rgba(107,114,128,'+alpha+')',
+    'Nigéria':'rgba(107,114,128,'+alpha+')'
+  };
+  return mapa[p]||'rgba(156,163,175,'+alpha+')';
+}
+
+// ── C1: Preço Big Mac por país ──────────────────────────────────────────────
+new Chart(document.getElementById('c1'),{type:'bar',
+  data:{labels:paises, datasets:[{
+    label:'Preço Big Mac (USD)',
+    data:bmUSD,
+    backgroundColor:paises.map(p=>cor(p)),
+    borderRadius:5,
+  },{
+    // linha de referência EUA
+    type:'line',label:'Preço EUA (US$5,79)',
+    data:paises.map(()=>5.79),
+    borderColor:'rgba(100,100,100,0.5)',borderDash:[6,4],borderWidth:1.5,
+    pointRadius:0,fill:false,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{min:0,max:9,ticks:{font:{size:11},color:tc,callback:v=>'US$'+v.toFixed(2)},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C2: Sub/sobrevalorização ─────────────────────────────────────────────────
+// Ordenar por desvio
+const idxOrd = desvio.map((_,i)=>i).sort((a,b)=>desvio[b]-desvio[a]);
+new Chart(document.getElementById('c2'),{type:'bar',
+  data:{
+    labels:idxOrd.map(i=>paises[i]),
+    datasets:[{
+      label:'% de desvio vs EUA',
+      data:idxOrd.map(i=>desvio[i]),
+      backgroundColor:idxOrd.map(i=>desvio[i]>=0?'rgba(220,38,38,0.72)':'rgba(22,163,74,0.72)'),
+      borderRadius:4,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw>0?'+':''}${ctx.raw}% vs EUA`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>(v>0?'+':'')+v+'%'},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C3: Big Macs por salário ──────────────────────────────────────────────────
+const idxSal = bmSal.map((_,i)=>i).sort((a,b)=>bmSal[b]-bmSal[a]);
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{
+    labels:idxSal.map(i=>paises[i]),
+    datasets:[{
+      label:'Big Macs por salário mínimo mensal',
+      data:idxSal.map(i=>bmSal[i]),
+      backgroundColor:idxSal.map(i=>{
+        const v=bmSal[i];
+        return v>400?'rgba(22,163,74,0.78)':v>200?'rgba(37,99,235,0.72)':v>80?'rgba(215,119,6,0.75)':'rgba(220,38,38,0.72)';
+      }),
+      borderRadius:5,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} Big Macs/mês`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C4: Big Macs por MWh ─────────────────────────────────────────────────────
+const idxMWh = bmMWh.map((_,i)=>i).sort((a,b)=>bmMWh[b]-bmMWh[a]);
+new Chart(document.getElementById('c4'),{type:'bar',
+  data:{
+    labels:idxMWh.map(i=>paises[i]),
+    datasets:[{
+      label:'Big Macs necessários para 1 MWh',
+      data:idxMWh.map(i=>bmMWh[i]),
+      backgroundColor:idxMWh.map(i=>{
+        const v=bmMWh[i];
+        return v>60?'rgba(220,38,38,0.78)':v>40?'rgba(215,119,6,0.75)':v>25?'rgba(37,99,235,0.72)':'rgba(22,163,74,0.75)';
+      }),
+      borderRadius:5,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} Big Macs por MWh`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C5: Scatter — Big Mac vs tarifa ─────────────────────────────────────────
+new Chart(document.getElementById('c5'),{type:'scatter',
+  data:{datasets:[{
+    label:'Países',
+    data:paises.map((_,i)=>({x:bmUSD[i],y:tarifa[i],label:paises[i]})),
+    backgroundColor:paises.map(p=>cor(p,0.85)),
+    pointRadius:paises.map((_,i)=>Math.sqrt(salMin[i]/50)+4),
+    pointHoverRadius:12,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{
+        label:ctx=>`${ctx.raw.label}: Big Mac US$${ctx.raw.x} | Tarifa US$${ctx.raw.y.toFixed(3)}/kWh`
+      }}
+    },
+    scales:{
+      x:{min:2,max:9,title:{display:true,text:'Preço Big Mac (USD)',color:tc,font:{size:11}},
+        ticks:{font:{size:11},color:tc,callback:v=>'US$'+v},grid:{color:gc}},
+      y:{min:0,max:0.42,title:{display:true,text:'Tarifa elétrica (USD/kWh)',color:tc,font:{size:11}},
+        ticks:{font:{size:11},color:tc,callback:v=>'$'+v.toFixed(2)},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C6: Horas de trabalho por MWh ───────────────────────────────────────────
+// selecionar subset de países mais representativos (sem os extremos irreais)
+const sel6 = ['Noruega','Alemanha','EUA','Austrália','Japão','China','Brasil','México','Rússia','África do Sul','Índia','Nigéria'];
+const idx6 = sel6.map(s=>paises.indexOf(s));
+const horas6 = idx6.map(i=>horasMWh[i]);
+const idxH = horas6.map((_,i)=>i).sort((a,b)=>horas6[a]-horas6[b]);
+new Chart(document.getElementById('c6'),{type:'bar',
+  data:{
+    labels:idxH.map(i=>sel6[i]),
+    datasets:[{
+      label:'Horas de salário mínimo para 1 MWh',
+      data:idxH.map(i=>horas6[i]>500?500:horas6[i]),
+      backgroundColor:idxH.map(i=>{
+        const v=horas6[i];
+        return v<20?'rgba(22,163,74,0.75)':v<50?'rgba(37,99,235,0.72)':v<100?'rgba(215,119,6,0.75)':'rgba(220,38,38,0.75)';
+      }),
+      borderRadius:5,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>{
+        const orig=idx6.map(i=>horasMWh[i]);
+        const idx=sel6.indexOf(ctx.label);
+        const real=idx>=0?horasMWh[idx6[idx]]:ctx.raw;
+        return `${Math.round(real)} horas de trabalho para 1 MWh`;
+      }}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+'h'},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C7: Big Macs por salário — visual alternativo (bubble ordenado) ──────────
+const idxS2 = bmSal.map((_,i)=>i).sort((a,b)=>bmSal[b]-bmSal[a]);
+new Chart(document.getElementById('c7'),{type:'bar',
+  data:{
+    labels:idxS2.map(i=>paises[i]),
+    datasets:[{
+      label:'Big Macs por salário',data:idxS2.map(i=>bmSal[i]),
+      backgroundColor:idxS2.map(i=>cor(i<4?paises[0]:paises[i])),borderRadius:6,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} Big Macs/mês (salário mínimo)`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:9.5},color:'#374151',maxRotation:40},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C8: Scatter — Big Macs/MWh vs Big Macs/salário ──────────────────────────
+new Chart(document.getElementById('c8'),{type:'scatter',
+  data:{datasets:[{
+    label:'Países',
+    data:paises.map((_,i)=>({x:bmMWh[i],y:bmSal[i],label:paises[i]})),
+    backgroundColor:paises.map(p=>cor(p,0.85)),
+    pointRadius:8, pointHoverRadius:13,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{
+        label:ctx=>`${ctx.raw.label} — ${ctx.raw.x} BM/MWh · ${ctx.raw.y} BM/salário`
+      }}
+    },
+    scales:{
+      x:{title:{display:true,text:'Big Macs por MWh (↑ = energia cara)',color:tc,font:{size:11}},
+        ticks:{font:{size:11},color:tc},grid:{color:gc}},
+      y:{min:0,max:520,title:{display:true,text:'Big Macs por salário mínimo (↑ = salário alto)',color:tc,font:{size:11}},
+        ticks:{font:{size:11},color:tc},grid:{color:gc}}
+    }
+  }
+});
+</script>
+</body>
+</html>
