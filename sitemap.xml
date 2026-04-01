@@ -158,6 +158,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mosmanlab.com.br/blog/curva-do-pato-ons-seguranca-energetica-brasil.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mosmanlab.com.br/blog/pld-preco-liquidacao-diferencas-energia.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://mosmanlab.com.br/blog/biocombustiveis-brasil-mundo-eroi-co2.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
