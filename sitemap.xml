@@ -158,6 +158,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mosmanlab.com.br/blog/indice-big-mac-salario-minimo-eletricidade-mundo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://mosmanlab.com.br/blog/geladeira-eficiencia-energetica-consumo-mundo.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
