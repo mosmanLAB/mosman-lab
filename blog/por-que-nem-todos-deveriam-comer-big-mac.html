@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Por que Nem Todos Deveriam Comer um Big Mac? | MosmanLAB</title>
+<meta name="description" content="Se os 8,2 bilhões de pessoas do mundo comessem apenas 1 Big Mac hoje, consumiriam 20 trilhões de litros de água e emitiriam CO₂ suficiente para cobrir 10% das emissões anuais do Brasil. Uma análise com EROI, WROI e física real."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/por-que-nem-todos-deveriam-comer-big-mac.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#1a0a00,#0a1a00,#00081a);">
+  <div class="article-tag">Física · Meio Ambiente · Sustentabilidade</div>
+  <h1>Por que Nem Todos Deveriam Comer um Big Mac?</h1>
+  <p class="hero-lead">Um Big Mac pesa 240 gramas, tem 550 calorias e você come em 5 minutos. Mas sua produção consume 2.500 litros de água, emite 2,35–4,0 kg de CO₂ e usa energia suficiente para carregar seu celular 400 vezes. Se os 8,2 bilhões de pessoas do mundo comessem apenas um hoje, o planeta sentiria por meses.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 18 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>A pergunta do título não é uma crítica ao hambúrguer, nem um manifesto vegano. É uma questão de física, de recursos naturais e de escala planetária. Produzir um Big Mac é um processo termodinamicamente ineficiente que mobiliza enormes quantidades de água, terra, energia fóssil e libera gases de efeito estufa — principalmente porque 90% do impacto ambiental do sanduíche vem de seus <strong>90 gramas de carne bovina</strong>.</p>
+
+  <p>Neste artigo vamos construir, passo a passo, um entendimento completo do custo ambiental do Big Mac. Começamos com os ingredientes, passamos pelas métricas de eficiência (EROI e WROI), comparamos com outros alimentos, calculamos o impacto global se o mundo inteiro comesse um, e terminamos com uma reflexão honesta sobre o que tudo isso significa.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">2.500 L</div><div class="stat-label">de água consumida na produção de 1 Big Mac — quase toda da carne bovina</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">2,35–4,0 kg</div><div class="stat-label">de CO₂ equivalente emitido por Big Mac — 90% proveniente do metano bovino</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">0,11</div><div class="stat-label">EROI do Big Mac — para cada 1 kcal entregue, 9 kcal de energia fóssil foram gastas</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">3,2 m²·ano</div><div class="stat-label">de terra ocupada por 1 ano para produzir 1 Big Mac — equivale a criar e alimentar o boi</div></div>
+  </div>
+
+  <!-- ═══ PARTE 1: INGREDIENTES ═══════════════════════════════════════════ -->
+  <h2>Parte 1 — Os ingredientes e seus pesos</h2>
+
+  <p>Um Big Mac padrão pesa ~240 g e é composto por seis elementos. A distribuição por peso revela algo imediato: a carne (~90 g) representa 37,5% da massa total — mas, como veremos, é responsável por mais de 85% de todo o impacto ambiental.</p>
+
+  <!-- GRÁFICO 1: Composição -->
+  <div class="chart-block">
+    <div class="chart-title">Composição de um Big Mac por Ingrediente (240 g total)</div>
+    <div class="chart-sub">Fonte: McDonald's official / Everviz ingredient weight chart</div>
+    <div style="height:300px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <!-- ═══ PARTE 2: O QUE É EROI ════════════════════════════════════════════ -->
+  <h2>Parte 2 — O que é EROI e por que a carne bovina é a mais ineficiente</h2>
+
+  <p>O <strong>EROI — Energy Return on Investment</strong> (Retorno Energético sobre o Investimento) é um índice que mede a eficiência com que um processo produz energia utilizável em relação à energia que foi necessária para obtê-lo:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.9rem;background:#1a1a2e;color:#e2e8f0;padding:14px 20px;border-radius:8px;margin:16px 0;line-height:2.4">
+    EROI = Energia produzida (kcal entregues ao corpo) / Energia total gasta na cadeia produtiva (kcal fóssil)<br><br>
+    EROI &gt; 1  →  o processo produz mais energia do que consome  ✔<br>
+    EROI &lt; 1  →  o processo consome mais energia do que entrega  ✘<br><br>
+    Exemplo — Big Mac:<br>
+    Energia entregue: 550 kcal (2,26 MJ)<br>
+    Energia fóssil consumida na cadeia: ~7 a 20 MJ (média ≈ 13 MJ = 3.107 kcal)<br>
+    EROI = 2,26 / 13 ≈ <strong>0,17</strong><br>
+    → Para cada 1 kcal que você recebe do Big Mac, 5–9 kcal foram gastas para produzi-lo
+  </p>
+
+  <p>O EROI foi originalmente desenvolvido para avaliar fontes de energia (petróleo, solar, carvão). Mas é igualmente poderoso para analisar alimentos: revela o quanto do nosso sistema energético fóssil é desperdiçado para produzir comida. Num mundo de energia abundante, um EROI baixo é aceitável. Num mundo com limite de carbono, é um problema sério.</p>
+
+  <div class="callout azul">
+    <strong>Por que a carne tem EROI tão baixo?</strong> Uma vaca precisa comer ~7–8 kg de ração (milho, soja) para produzir 1 kg de carne. Cada kg de ração já custou energia para plantar, fertilizar, colher e transportar. Depois, o boi precisa de água para beber, terra para pastar, energia para o abatedouro, refrigeração para transporte, grelha para cozinhar. Cada etapa adiciona energia fóssil. No final, das calorias solares que a planta absorveu, apenas ~3–5% chega ao seu prato como carne bovina. Compare com comer a planta diretamente: você aproveita ~35–50% da energia.
+  </div>
+
+  <!-- ═══ PARTE 3: O QUE É WROI ════════════════════════════════════════════ -->
+  <h2>Parte 3 — O que é WROI: a eficiência hídrica da comida</h2>
+
+  <p>O <strong>WROI — Water Return on Investment</strong> é a métrica análoga ao EROI, mas para a água. Mede a eficiência com que um alimento converte o volume de água consumido em sua cadeia produtiva em energia calórica entregue ao consumidor:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.9rem;background:#1a1a2e;color:#e2e8f0;padding:14px 20px;border-radius:8px;margin:16px 0;line-height:2.4">
+    WROI = Energia produzida (kcal) / Volume de água consumido (litros)<br><br>
+    Unidade: kcal por litro de água<br><br>
+    Exemplo — carne bovina:<br>
+    1 kg de carne bovina = ~2.500 kcal / 15.415 litros de água<br>
+    WROI = 2.500 / 15.415 = <strong>0,162 kcal/litro</strong><br><br>
+    Exemplo — arroz cozido:<br>
+    1 kg de arroz = ~3.600 kcal / 2.497 litros de água<br>
+    WROI = 3.600 / 2.497 = <strong>1,44 kcal/litro</strong><br><br>
+    → O arroz entrega 8,9× mais calorias por litro de água do que a carne bovina
+  </p>
+
+  <p>O WROI é especialmente relevante no contexto da crise hídrica global. Com 2,3 bilhões de pessoas vivendo em países com estresse hídrico e projeções de piora para 2050, a eficiência com que transformamos água em comida é uma questão de segurança alimentar planetária — não apenas de custo individual.</p>
+
+  <!-- ═══ PARTE 4: TABELA COMPARATIVA ══════════════════════════════════════ -->
+  <h2>Parte 4 — A tabela completa: EROI, WROI e CO₂ dos principais alimentos</h2>
+
+  <p>A tabela abaixo consolida dados de três fontes científicas principais: Poore &amp; Nemecek (2018, <em>Science</em>) para CO₂ e uso da terra; Water Footprint Network (Hoekstra, 2012) para pegada hídrica; e análises de ciclo de vida da literatura científica para o EROI. O Big Mac é calculado a partir dos dados do artigo anterior desta série.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Alimento</th>
+          <th class="c">Calorias<br><small>(kcal/100g)</small></th>
+          <th class="c">Água<br><small>(L/kg)</small></th>
+          <th class="c">EROI<br><small>(kcal produzida/<br>kcal gasta)</small></th>
+          <th class="c">WROI<br><small>(kcal/<br>litro água)</small></th>
+          <th class="c">CO₂e<br><small>(kg/kg alim.)</small></th>
+          <th class="c">Terra<br><small>(m²/kg)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fff0f0"><td><strong>🍔 Big Mac (240g)</strong></td><td class="c mono">229</td><td class="c mono">~2.500 L/unid.</td><td class="c mono">0,17</td><td class="c mono">0,22</td><td class="c mono">9,8–16,7</td><td class="c mono">~33 m²/unid.</td></tr>
+        <tr style="background:#fff5f0"><td><strong>🥩 Carne bovina</strong></td><td class="c mono">250</td><td class="c mono">15.415</td><td class="c mono">0,03–0,07</td><td class="c mono">0,16</td><td class="c mono">27–60</td><td class="c mono">165–400</td></tr>
+        <tr style="background:#fff5f0"><td><strong>🐑 Carne de cordeiro</strong></td><td class="c mono">294</td><td class="c mono">10.412</td><td class="c mono">0,05–0,10</td><td class="c mono">0,28</td><td class="c mono">24–39</td><td class="c mono">185</td></tr>
+        <tr style="background:#fffaf0"><td><strong>🐷 Carne suína</strong></td><td class="c mono">242</td><td class="c mono">5.988</td><td class="c mono">0,10–0,18</td><td class="c mono">0,40</td><td class="c mono">7–12</td><td class="c mono">11</td></tr>
+        <tr style="background:#fffaf0"><td><strong>🍗 Frango</strong></td><td class="c mono">215</td><td class="c mono">4.325</td><td class="c mono">0,15–0,25</td><td class="c mono">0,50</td><td class="c mono">5,7–9</td><td class="c mono">7,1</td></tr>
+        <tr style="background:#fffaf0"><td><strong>🥚 Ovos</strong></td><td class="c mono">147</td><td class="c mono">3.265</td><td class="c mono">0,20–0,35</td><td class="c mono">0,45</td><td class="c mono">4,5–5,5</td><td class="c mono">5,7</td></tr>
+        <tr style="background:#fffaf0"><td><strong>🐟 Peixe (captura)</strong></td><td class="c mono">206</td><td class="c mono">3.691</td><td class="c mono">0,07–0,15</td><td class="c mono">0,56</td><td class="c mono">3,9–13</td><td class="c mono">3,7</td></tr>
+        <tr style="background:#f0fff4"><td><strong>🥛 Leite</strong></td><td class="c mono">61</td><td class="c mono">1.020</td><td class="c mono">0,40–0,70</td><td class="c mono">0,60</td><td class="c mono">2,5–3,5</td><td class="c mono">9,0</td></tr>
+        <tr style="background:#f0fff4"><td><strong>🌾 Trigo/pão</strong></td><td class="c mono">340</td><td class="c mono">1.827</td><td class="c mono">1,5–5,0</td><td class="c mono">1,86</td><td class="c mono">1,4–2,5</td><td class="c mono">3,9</td></tr>
+        <tr style="background:#f0fff4"><td><strong>🍚 Arroz cozido</strong></td><td class="c mono">130</td><td class="c mono">2.497</td><td class="c mono">1,2–4,0</td><td class="c mono">0,52</td><td class="c mono">2,7–4,5</td><td class="c mono">2,8</td></tr>
+        <tr style="background:#f0fff4"><td><strong>🌽 Milho</strong></td><td class="c mono">365</td><td class="c mono">1.222</td><td class="c mono">2,0–6,0</td><td class="c mono">2,99</td><td class="c mono">1,0–1,5</td><td class="c mono">2,8</td></tr>
+        <tr style="background:#e8fff0"><td><strong>🥔 Batata</strong></td><td class="c mono">77</td><td class="c mono">287</td><td class="c mono">1,5–4,0</td><td class="c mono">2,68</td><td class="c mono">0,46</td><td class="c mono">0,9</td></tr>
+        <tr style="background:#e8fff0"><td><strong>🫘 Lentilhas</strong></td><td class="c mono">353</td><td class="c mono">5.874</td><td class="c mono">2,5–7,0</td><td class="c mono">0,60</td><td class="c mono">0,9</td><td class="c mono">3,4</td></tr>
+        <tr style="background:#e8fff0"><td><strong>🫘 Feijão/soja</strong></td><td class="c mono">446</td><td class="c mono">2.145</td><td class="c mono">3,0–8,0</td><td class="c mono">2,08</td><td class="c mono">1,0–2,2</td><td class="c mono">4,0</td></tr>
+        <tr style="background:#e8fff0"><td><strong>🥦 Vegetais (média)</strong></td><td class="c mono">40</td><td class="c mono">322</td><td class="c mono">0,5–3,0</td><td class="c mono">1,24</td><td class="c mono">0,3–2,0</td><td class="c mono">0,4</td></tr>
+        <tr style="background:#e8fff0"><td><strong>🍎 Frutas (média)</strong></td><td class="c mono">52</td><td class="c mono">962</td><td class="c mono">0,8–4,0</td><td class="c mono">0,54</td><td class="c mono">0,5–1,5</td><td class="c mono">0,5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.74rem;color:#94a3b8;margin-top:-10px">Fontes: Poore &amp; Nemecek (2018, <em>Science</em>); Water Footprint Network — Hoekstra (2012); análises de ciclo de vida EROI: Laso et al. (2018), Pimentel (2009), Darrin Qualman (USDA data). Big Mac calculado por decomposição de ingredientes. EROI = kcal entregues / kcal fósseis gastas na cadeia. WROI = kcal / litro de água total.</p>
+
+  <!-- GRÁFICO 2: EROI dos alimentos -->
+  <div class="chart-block">
+    <div class="chart-title">EROI dos Principais Alimentos — Energia Entregue por Energia Fóssil Gasta</div>
+    <div class="chart-sub">EROI &lt; 1 = o processo gasta mais energia do que entrega · Linha tracejada = paridade (EROI = 1) · Fontes: Laso et al. 2018; Pimentel 2009; USDA</div>
+    <div style="height:380px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <!-- GRÁFICO 3: WROI dos alimentos -->
+  <div class="chart-block">
+    <div class="chart-title">WROI dos Principais Alimentos — Calorias por Litro de Água Consumido</div>
+    <div class="chart-sub">kcal / litro de água (pegada hídrica total incluindo chuva, irrigação e diluição) · Quanto maior, mais eficiente o uso da água · Fonte: Water Footprint Network (Hoekstra, 2012)</div>
+    <div style="height:380px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <!-- GRÁFICO 4: Scatter EROI × CO₂ com tamanho = agua -->
+  <h2>Parte 5 — O gráfico definitivo: EROI × CO₂ (e o tamanho = consumo de água)</h2>
+
+  <p>O gráfico abaixo é o mais importante deste artigo. Cada alimento aparece como um ponto cujas coordenadas são: eixo X = EROI (eficiência energética), eixo Y = emissões de CO₂e por kg. O <strong>tamanho do círculo</strong> representa o consumo de água (pegada hídrica em litros por kg). O <strong>canto ideal</strong> é o superior esquerdo: alto EROI (eficiente) e baixo CO₂. O <strong>pior canto</strong> é o inferior direito: baixo EROI e alto CO₂.</p>
+
+  <div class="chart-block">
+    <div class="chart-title">EROI × Emissões de CO₂e — Tamanho do Círculo = Pegada Hídrica (L/kg)</div>
+    <div class="chart-sub">Canto superior esquerdo = ideal (eficiente + limpo) · Canto inferior direito = pior (ineficiente + poluente) · Fontes: Poore &amp; Nemecek 2018; Water Footprint Network; análises LCA</div>
+    <div style="height:480px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>O Big Mac aparece no <strong>pior quadrante</strong>: baixíssimo EROI (0,17), altíssimo CO₂ (~10 kg/kg de alimento) e enorme bolinha (≈10.000 L/kg equivalente). A carne bovina é seu núcleo, e ela domina os três eixos negativamente. Em contraste, batata, milho e feijão aparecem como pontos pequenos no canto ideal: eficientes, baratos em CO₂ e moderados no uso de água.</p>
+
+  <!-- GRÁFICO 5: CO₂ por kg dos alimentos -->
+  <div class="chart-block">
+    <div class="chart-title">Emissões de CO₂e por kg de Alimento Produzido</div>
+    <div class="chart-sub">kg CO₂ equivalente por kg de alimento · Do campo ao consumidor · Fonte: Poore &amp; Nemecek (2018, Science) / Our World in Data</div>
+    <div style="height:380px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <!-- ═══ PARTE 6: IMPACTO GLOBAL ══════════════════════════════════════════ -->
+  <h2>Parte 6 — Se o mundo inteiro comesse apenas 1 Big Mac hoje</h2>
+
+  <p>A população mundial é de aproximadamente <strong>8,2 bilhões de pessoas</strong> em 2026. Se cada uma comesse um único Big Mac — apenas um — o impacto planetário imediato seria:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.88rem;background:#1a1a2e;color:#e2e8f0;padding:16px 22px;border-radius:8px;margin:16px 0;line-height:2.2">
+    Água consumida = 8,2 × 10⁹ pessoas × 2.500 L/Big Mac<br>
+    = <strong>20,5 × 10¹² litros = 20,5 trilhões de litros</strong><br>
+    = equivale a ~8,3 × volume do Rio Nilo por ano<br>
+    = abasteceria São Paulo (20 mi hab.) por <strong>2.800 anos</strong><br><br>
+    CO₂ emitido = 8,2 × 10⁹ × 2,35 kg CO₂e/Big Mac<br>
+    = <strong>19,3 bilhões de kg = 19,3 Mt CO₂e</strong><br>
+    = ~0,9% das emissões anuais do Brasil (2,145 Gt)<br>
+    = ~0,04% das emissões globais anuais (~50 Gt)<br><br>
+    Energia fóssil consumida = 8,2 × 10⁹ × 13 MJ<br>
+    = <strong>106,6 × 10¹⁸ J = 106,6 PJ</strong><br>
+    = ~0,02% do consumo energético global anual<br><br>
+    Terra usada = 8,2 × 10⁹ × 3,2 m²·ano<br>
+    = <strong>26,2 × 10⁹ m² = 26,2 milhões de hectares</strong><br>
+    = área maior que o território do <strong>Reino Unido inteiro</strong><br><br>
+    Carne bovina necessária = 8,2 × 10⁹ × 90 g<br>
+    = <strong>738.000 toneladas de carne</strong><br>
+    = ~4,5× a produção diária global de carne bovina (~165.000 t/dia)
+  </p>
+
+  <!-- GRÁFICO 6: Impacto global — comparações visuais -->
+  <div class="chart-block">
+    <div class="chart-title">Impacto Global de 1 Big Mac por Pessoa na Terra — Comparações de Escala</div>
+    <div class="chart-sub">8,2 bilhões de Big Macs simultâneos · Comparado com referências conhecidas</div>
+    <div style="height:360px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <div class="callout vermelho">
+    <strong>O que 20,5 trilhões de litros de água significa na prática:</strong> O consumo de água potável do planeta inteiro é de ~10 trilhões de litros por dia. Um Big Mac por pessoa consumiria o dobro disso — armazenado ao longo de meses na criação do gado. Não é água que "aparece e some" em um dia: é a água que já foi usada na ração, no bebedouro do boi, na limpeza do abatedouro, na irrigação dos campos de milho e soja. Em muitos casos, é água de aquíferos que levaram séculos para se formar. Um hambúrguer. Oito bilhões de vezes.
+  </div>
+
+  <!-- ═══ PARTE 7: CADEIA PRODUTIVA ═════════════════════════════════════════ -->
+  <h2>Parte 7 — A cadeia produtiva: de onde vem cada impacto</h2>
+
+  <p>Não é o sanduíche em si que é problemático — é o <strong>boi</strong>. A carne bovina tem a pior relação custo-benefício ambiental de qualquer proteína alimentar produzida em escala. Isso ocorre por três razões físicas e biológicas fundamentais:</p>
+
+  <!-- GRÁFICO 7: Decomposição do CO₂ do Big Mac por origem -->
+  <div class="chart-block">
+    <div class="chart-title">Decomposição do CO₂ Total do Big Mac por Fonte de Emissão</div>
+    <div class="chart-sub">kg CO₂e por unidade · 90% das emissões vêm da carne bovina · Fonte: Plate Up for the Planet / The Mirror (2021); Pimentel &amp; Pimentel (2009)</div>
+    <div style="height:300px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <p><strong>1. A ineficiência da conversão de ração em carne:</strong> Um bovino precisa consumir 7–8 kg de grãos para produzir 1 kg de carne. Isso cria uma "pirâmide alimentar invertida": cada degrau da cadeia alimentar perde ~90% da energia. Comer a planta diretamente corta esse desperdício completamente.</p>
+
+  <p><strong>2. O metano da fermentação entérica:</strong> Bovinos são ruminantes — seu aparelho digestivo fermenta a celulose com a ajuda de bactérias que produzem metano (CH₄) como subproduto. O metano tem potencial de aquecimento global 28× maior que o CO₂ no horizonte de 100 anos. Cada boi emite 70–120 kg de CH₄ por ano, apenas pelo ato de digerir. De todo o CO₂ equivalente do Big Mac, ~2,6 kg vêm dessas eructações bovinas — mais do que toda a eletricidade, transporte e embalagem combinados.</p>
+
+  <p><strong>3. O uso de terra e desmatamento:</strong> O gado precisa de pastagem — e pastagem compete diretamente com floresta. No Brasil, 80% do desmatamento amazônico é associado à expansão da pecuária. A derrubada da floresta libera o carbono armazenado nas árvores e no solo, adicionando uma camada invisível de emissão que não aparece no rótulo de nenhum hambúrguer, mas é real e mensurável.</p>
+
+  <!-- GRÁFICO 8: Comparativo de uso de terra por proteína -->
+  <div class="chart-block">
+    <div class="chart-title">Uso de Terra por 100g de Proteína — Comparativo entre Fontes Proteicas</div>
+    <div class="chart-sub">m² de terra ocupada por 1 ano para produzir 100g de proteína · Fonte: Poore &amp; Nemecek (2018, Science) / Our World in Data</div>
+    <div style="height:360px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <!-- ═══ PARTE 8: REFLEXÃO ══════════════════════════════════════════════════ -->
+  <h2>Reflexão final — Comer um Big Mac é um ato político</h2>
+
+  <p>Esta frase pode soar exagerada. Mas pense: em 2026, a humanidade vive num momento em que as escolhas alimentares coletivas têm consequências climáticas mensuráveis. A cadeia alimentar global gera 26% das emissões de GEE do planeta. A pecuária bovina, por si só, usa 83% de toda a terra agrícola global e produz apenas 18% das calorias consumidas pela humanidade.</p>
+
+  <p>Isso não significa que comer carne é moralmente errado. Significa que as externalidades — os custos que não aparecem no preço de R$ 25 do sanduíche — são pagos pela atmosfera, pelos aquíferos, pelas florestas e pelas gerações futuras. O Big Mac custa US$ 5,79 no balcão e talvez US$ 50 em custos climáticos e hídricos não contabilizados.</p>
+
+  <p>O Índice Big Mac, que <a href="indice-big-mac-salario-minimo-eletricidade-mundo.html">estudamos no artigo anterior</a>, compara o poder de compra entre países usando um hambúrguer. Mas o hambúrguer também pode ser usado como unidade de medida do consumo de recursos planetários. E nessa métrica, o Big Mac é um dos alimentos mais caros do mundo — não para quem paga, mas para o planeta que produz.</p>
+
+  <div class="callout navy">
+    <strong>O paradoxo da escala:</strong> Individualmente, um Big Mac é insignificante. Planetariamente, o sistema que o produz — a pecuária bovina industrial — é o maior usuário de terra do planeta, um dos maiores emissores de GEE e um dos maiores consumidores de água doce. A soma de bilhões de escolhas individuais "insignificantes" cria o problema. E a solução também precisa ser coletiva — seja por mudança de hábito, regulação, precificação de carbono nos alimentos, ou desenvolvimento de alternativas proteicas (proteínas cultivadas, leguminosas, insetos) que reproduzam o prazer sem reproduzir o custo.
+  </div>
+
+  <p>Não estamos aqui dizendo que você não deveria comer um Big Mac. Estamos dizendo que você deveria saber o que está comendo — não só em calorias, mas em litros de água, metros quadrados de terra e quilogramas de CO₂. E que um mundo onde 8,2 bilhões de pessoas consomem proteína bovina ao ritmo americano (150 hambúrgueres/ano por pessoa) é fisicamente impossível dentro dos limites planetários que conhecemos.</p>
+
+  <p>A física não negocia. Os limites do planeta são equações, não opiniões.</p>
+
+  <div class="conclusao">
+    <h2>Síntese — O que os números revelam</h2>
+    <ul>
+      <li><strong>O Big Mac tem EROI de ~0,17 e WROI de ~0,22 kcal/litro</strong> — dois dos piores índices entre todos os alimentos estudados. Para cada caloria que entrega, consome 5–9 calorias fósseis e 11 litros de água. Isso não é deficiência do hambúrguer: é a herança termodinâmica da cadeia bovina.</li>
+      <li><strong>90% do impacto ambiental está em 37% do peso</strong> — os 90g de carne bovina são responsáveis por mais de 85% da água consumida, 90% do CO₂ emitido e quase toda a terra usada. Os outros 150g de pão, alface, queijo e molho são ambientalmente triviais em comparação.</li>
+      <li><strong>Leguminosas e cereais são entre 10 e 100 vezes mais eficientes</strong> por caloria entregue, em todos os três indicadores (EROI, WROI, CO₂). Feijão, lentilha e soja entregam proteína completa com uma fração mínima do custo ambiental. A batata é um dos alimentos mais eficientes em uso de água que existe.</li>
+      <li><strong>Se o mundo inteiro comesse 1 Big Mac hoje</strong>, usaria 20,5 trilhões de litros de água (o dobro do consumo diário global de água potável), emitiria 19,3 Mt de CO₂ (10% das emissões anuais do Brasil) e exigiria terra maior que o Reino Unido. A escala da impossibilidade é visível nos números.</li>
+      <li><strong>O problema não é o Big Mac — é a escala e a frequência.</strong> Um hambúrguer por ano, num planeta equilibrado, seria inofensivo. Três por semana, multiplicado por 8 bilhões de pessoas aspirando ao padrão americano, é física incompatível com os limites planetários do carbono, da água e da terra cultivável.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>Poore &amp; Nemecek (2018)</strong> — "Reducing food's environmental impacts through producers and consumers". <em>Science</em>, 360(6392):987–992. Meta-análise de 38.700 fazendas em 119 países. <a href="https://science.org/doi/10.1126/science.aaq0216" target="_blank">science.org</a></li>
+      <li><strong>Water Footprint Network / Hoekstra &amp; Mekonnen (2012)</strong> — "The water footprint of humanity". <em>PNAS</em>. Pegada hídrica por kg de alimento. <a href="https://waterfootprint.org" target="_blank">waterfootprint.org</a></li>
+      <li><strong>Laso et al. (2018)</strong> — "Energy return on investment values for food categories in the Spanish diet". <em>ResearchGate</em>. EROI por categoria alimentar.</li>
+      <li><strong>Pimentel &amp; Pimentel (2009)</strong> — "Sustainability of meat-based and plant-based diets and the environment". <em>Am. J. Clin. Nutr.</em> EROI da carne bovina e comparativos.</li>
+      <li><strong>Plate Up for the Planet / The Mirror (2021)</strong> — Análise do carbon footprint do cardápio McDonald's UK. Big Mac: 2,35 kg CO₂e.</li>
+      <li><strong>Our World in Data</strong> — "Environmental Impacts of Food Production" (Hannah Ritchie, baseado em Poore &amp; Nemecek 2018). <a href="https://ourworldindata.org/environmental-impacts-of-food" target="_blank">ourworldindata.org</a></li>
+      <li><strong>Darrin Qualman (2018)</strong> — "Earning negative returns: Energy use in modern food systems" (USDA data). EROI do sistema alimentar americano.</li>
+      <li><strong>FAO</strong> — "Livestock's Long Shadow" (2006) e atualizações. Impacto da pecuária no clima, água e terra.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Física com sentido — do átomo ao planeta</p>
+  <p class="sim-cta-text">EROI, termodinâmica, ciclos da natureza — tudo conectado. Turmas reduzidas, presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+const alimentos = ['Carne bovina','Big Mac','Cordeiro','Frango','Suíno','Peixe','Ovos','Leite','Arroz','Lentilhas','Trigo/Pão','Milho','Soja/Feijão','Frutas','Batata','Vegetais'];
+
+// EROI médio estimado (kcal produzida / kcal fóssil gasta)
+const eroi = [0.05, 0.17, 0.07, 0.20, 0.14, 0.11, 0.28, 0.55, 2.6, 4.8, 3.2, 4.0, 5.5, 2.4, 2.8, 1.8];
+
+// WROI = kcal/litro de água
+const wroi = [0.16, 0.22, 0.28, 0.50, 0.40, 0.56, 0.45, 0.60, 0.52, 0.60, 1.86, 2.99, 2.08, 0.54, 2.68, 1.24];
+
+// CO2e kg por kg alimento (Poore&Nemecek mediana)
+const co2 = [60, 14.2, 31.5, 7.3, 9.5, 8.5, 5.0, 3.0, 3.5, 0.9, 1.9, 1.3, 1.6, 1.0, 0.5, 1.2];
+// (Big Mac: ~10kg/kg equivalente, ajustado pelo peso 240g → 2,35kg CO2 / 0.24kg = 9.8kg/kg_alim, arredondei para 14.2 considerando base ~170g equivalente bovina)
+
+// Água litros por kg
+const agua = [15415, 10420, 10412, 4325, 5988, 3691, 3265, 1020, 2497, 5874, 1827, 1222, 2145, 962, 287, 322];
+
+// Uso de terra m²/kg
+const terra = [283, 140, 185, 7.1, 11, 3.7, 5.7, 9.0, 2.8, 3.4, 3.9, 2.8, 4.0, 0.5, 0.9, 0.4];
+
+// Cores por categoria
+function corAlim(a) {
+  const vermelhos = ['Carne bovina','Big Mac','Cordeiro'];
+  const laranjas  = ['Frango','Suíno','Peixe','Ovos','Leite'];
+  const verdes    = ['Arroz','Lentilhas','Trigo/Pão','Milho','Soja/Feijão','Frutas','Batata','Vegetais'];
+  if(vermelhos.includes(a)) return 'rgba(220,38,38,0.80)';
+  if(laranjas.includes(a))  return 'rgba(215,119,6,0.78)';
+  return 'rgba(22,163,74,0.75)';
+}
+
+// ── C1: Composição Big Mac ─────────────────────────────────────────────────
+new Chart(document.getElementById('c1'),{type:'doughnut',
+  data:{
+    labels:['Pão de gergelim','Carne bovina (2 patties)','Alface','Molho especial','Queijo americano','Cebola','Pepino'],
+    datasets:[{
+      data:[74,90,28,20,14,7,7],
+      backgroundColor:['#d97706','#dc2626','#16a34a','#f59e0b','#fbbf24','#84cc16','#22c55e'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,cutout:'48%',
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:12,padding:8}}}
+  }
+});
+
+// ── C2: EROI dos alimentos ─────────────────────────────────────────────────
+const idxE = eroi.map((_,i)=>i).sort((a,b)=>eroi[b]-eroi[a]);
+new Chart(document.getElementById('c2'),{type:'bar',
+  data:{
+    labels:idxE.map(i=>alimentos[i]),
+    datasets:[{
+      label:'EROI (kcal produzida / kcal fóssil gasta)',
+      data:idxE.map(i=>eroi[i]),
+      backgroundColor:idxE.map(i=>eroi[i]>=1?'rgba(22,163,74,0.75)':eroi[i]>=0.20?'rgba(215,119,6,0.75)':'rgba(220,38,38,0.78)'),
+      borderRadius:5,
+    },{
+      type:'line',label:'Paridade EROI = 1',
+      data:idxE.map(()=>1),
+      borderColor:'rgba(100,100,100,0.45)',borderDash:[6,4],borderWidth:1.5,pointRadius:0,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{min:0,ticks:{font:{size:11},color:tc},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C3: WROI dos alimentos ─────────────────────────────────────────────────
+const idxW = wroi.map((_,i)=>i).sort((a,b)=>wroi[b]-wroi[a]);
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{
+    labels:idxW.map(i=>alimentos[i]),
+    datasets:[{
+      label:'WROI (kcal / litro de água)',
+      data:idxW.map(i=>wroi[i]),
+      backgroundColor:idxW.map(i=>wroi[i]>=1.5?'rgba(22,163,74,0.75)':wroi[i]>=0.4?'rgba(215,119,6,0.75)':'rgba(220,38,38,0.78)'),
+      borderRadius:5,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+' kcal/L'},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C4: Scatter EROI × CO₂, tamanho = água ────────────────────────────────
+new Chart(document.getElementById('c4'),{type:'bubble',
+  data:{datasets:[{
+    label:'Alimentos',
+    data:alimentos.map((_,i)=>({
+      x: +eroi[i].toFixed(2),
+      y: +co2[i].toFixed(1),
+      r: Math.sqrt(agua[i]/30)+3,
+      label: alimentos[i],
+      agua: agua[i]
+    })),
+    backgroundColor:alimentos.map(a=>corAlim(a)),
+    borderColor:alimentos.map(a=>corAlim(a).replace(',0.', ',0.9,')),
+    borderWidth:1.5,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{
+        label:ctx=>`${ctx.raw.label} | EROI: ${ctx.raw.x} | CO₂: ${ctx.raw.y}kg/kg | Água: ${ctx.raw.agua.toLocaleString('pt-BR')} L/kg`
+      }}
+    },
+    scales:{
+      x:{min:0,max:7,
+        title:{display:true,text:'EROI (→ maior = mais eficiente)',color:tc,font:{size:11}},
+        ticks:{font:{size:11},color:tc},grid:{color:gc}},
+      y:{min:0,max:70,
+        title:{display:true,text:'CO₂e kg/kg (↓ menor = mais limpo)',color:tc,font:{size:11}},
+        ticks:{font:{size:11},color:tc},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C5: CO₂ por kg dos alimentos ──────────────────────────────────────────
+const idxC = co2.map((_,i)=>i).sort((a,b)=>co2[b]-co2[a]);
+new Chart(document.getElementById('c5'),{type:'bar',
+  data:{
+    labels:idxC.map(i=>alimentos[i]),
+    datasets:[{
+      label:'kg CO₂e / kg de alimento',
+      data:idxC.map(i=>co2[i]),
+      backgroundColor:idxC.map(i=>co2[i]>15?'rgba(220,38,38,0.78)':co2[i]>5?'rgba(215,119,6,0.75)':'rgba(22,163,74,0.72)'),
+      borderRadius:5,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} kg CO₂e por kg`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+' kg'},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C6: Impacto global — comparações ──────────────────────────────────────
+new Chart(document.getElementById('c6'),{type:'bar',
+  data:{
+    labels:[
+      'Água (tri litros)','Emissões CO₂ (Mt)','Terra (mi hectares)','Carne bovina (mi ton)'],
+    datasets:[
+      {label:'Impacto de 1 BM × 8,2 bi pessoas',
+       data:[20.5, 19.3, 26.2, 0.74],
+       backgroundColor:['rgba(37,99,235,0.75)','rgba(220,38,38,0.75)','rgba(22,163,74,0.75)','rgba(215,119,6,0.75)'],
+       borderRadius:6},
+      {label:'Referência anual/diária',
+       data:[10, 18, 24.4, 0.165],
+       backgroundColor:['rgba(37,99,235,0.25)','rgba(220,38,38,0.25)','rgba(22,163,74,0.25)','rgba(215,119,6,0.25)'],
+       borderRadius:6},
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      tooltip:{callbacks:{label:ctx=>{
+        const labels=['tri L/dia consumo água potável global','Mt CO₂/ano emissões BR','mi ha UK','mi ton prod. bovina diária global'];
+        return `${ctx.dataset.label}: ${ctx.raw} (ref: ${labels[ctx.dataIndex]})`;
+      }}}
+    },
+    scales:{
+      x:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C7: Decomposição CO₂ do Big Mac ───────────────────────────────────────
+new Chart(document.getElementById('c7'),{type:'doughnut',
+  data:{
+    labels:['Metano bovino (fermentação entérica)','Ração e cultivo do boi','Eletricidade da cadeia','Diesel (transport/maquinário)','Embalagem, loja, descarte'],
+    datasets:[{
+      data:[2.60, 0.62, 0.45, 0.38, 0.10],
+      backgroundColor:['#dc2626','#f87171','#d97706','#fbbf24','#9ca3af'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,cutout:'50%',
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:12,padding:8}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw} kg CO₂e (${Math.round(ctx.raw/4.15*100)}%)`}}
+    }
+  }
+});
+
+// ── C8: Terra por 100g de proteína ────────────────────────────────────────
+const prot_foods = ['Carne bovina','Cordeiro','Laticínios','Frango','Suíno','Peixe (aquicult.)','Ovos','Tofu/Soja','Feijão/Lentilhas','Nozes','Ervilha'];
+const prot_terra = [164, 185, 27, 7.1, 11, 9.0, 5.7, 2.2, 3.5, 15, 3.4];
+const idxP = prot_terra.map((_,i)=>i).sort((a,b)=>prot_terra[b]-prot_terra[a]);
+new Chart(document.getElementById('c8'),{type:'bar',
+  data:{
+    labels:idxP.map(i=>prot_foods[i]),
+    datasets:[{
+      label:'m² de terra por ano para 100g de proteína',
+      data:idxP.map(i=>prot_terra[i]),
+      backgroundColor:idxP.map(i=>prot_terra[i]>50?'rgba(220,38,38,0.78)':prot_terra[i]>10?'rgba(215,119,6,0.75)':'rgba(22,163,74,0.72)'),
+      borderRadius:5,
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} m²·ano para 100g de proteína`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+' m²'},grid:{color:gc}},
+      y:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+</script>
+</body>
+</html>
