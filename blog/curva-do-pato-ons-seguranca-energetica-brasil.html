@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Curva do Pato, ONS e Segurança Energética no Brasil | MosmanLAB</title>
+<meta name="description" content="O ONS controla o maior sistema interligado do mundo. A Curva do Pato já chegou ao Brasil: em 2024 foram 400 mil horas de corte de renováveis. Como hidrelétricas, solar, eólica e termelétricas se combinam na curva de carga diária para garantir segurança energética."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/curva-do-pato-ons-seguranca-energetica-brasil.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#001428,#0a1400,#1a0028);">
+  <div class="article-tag">Energia · Sistemas Elétricos · ONS · Segurança Energética</div>
+  <h1>A Curva do Pato Chegou ao Brasil: Como o ONS Equilibra a Rede Elétrica Hora a Hora</h1>
+  <p class="hero-lead">Às 19h13 de uma segunda-feira de 2024, o Brasil atingiu 94.304 MW de demanda simultânea — com o sol já posto e o vento abaixo do pico. O ONS acionou hidrelétricas e termelétricas em questão de minutos. Esse é o desafio diário da maior rede elétrica renovável do mundo: manter a luz acesa quando o sol se apaga e o vento para.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 20 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Imagine ser responsável por equilibrar, em tempo real, a geração e o consumo de um país continental com 215.000 MW de capacidade instalada. A cada segundo, geração e consumo precisam ser exatamente iguais — uma diferença de frequência maior que 0,2 Hz dispara alarmes, e uma perturbação prolongada pode derrubar parte do sistema. Esse é o trabalho do <strong>ONS — Operador Nacional do Sistema Elétrico</strong>, com sede em Brasília e centros de operação em Brasília, Florianópolis, Recife e Rio de Janeiro.</p>
+
+  <p>O ONS é o maestro de uma orquestra com milhares de instrumentos: hidrelétricas que respondem em segundos, termelétricas que levam horas para partir, eólicas que flutuam com o vento, usinas solares que desligam ao pôr do sol, e uma rede de transmissão com 170 mil km de linhas. A chegada das renováveis intermitentes — solar e eólica — tornou essa tarefa dramaticamente mais complexa. E a <strong>Curva do Pato</strong>, fenômeno que a Califórnia identificou primeiro em 2013, já é uma realidade cotidiana no sistema elétrico brasileiro.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">215 GW</div><div class="stat-label">de capacidade instalada total no Brasil em 2025 — o maior sistema interligado renovável do mundo</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">88%</div><div class="stat-label">da geração elétrica brasileira provém de fontes renováveis — hidro, solar, eólica, biomassa e PCH</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">94.304 MW</div><div class="stat-label">pico máximo de demanda registrado no SIN em 2024 — às 19h13, sem solar e com vento abaixo do pico</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">400 mil h</div><div class="stat-label">de cortes de renováveis (curtailment) em 2024 — R$ 1,6 bi em perdas para geradores, 14,6 TWh desperdiçados</div></div>
+  </div>
+
+  <h2>O ONS — o maestro invisível da eletricidade brasileira</h2>
+
+  <p>O <strong>Operador Nacional do Sistema Elétrico</strong> foi criado em 1998 (Lei 9.648/98) como pessoa jurídica de direito privado, sem fins lucrativos, para coordenar e controlar a operação das instalações de geração e transmissão que compõem o <strong>Sistema Interligado Nacional — SIN</strong>. Funciona sob fiscalização da ANEEL e em estreita coordenação com o MME (Ministério de Minas e Energia) e a EPE (Empresa de Pesquisa Energética).</p>
+
+  <p>A missão do ONS é garantir que a energia gerada em qualquer ponto do SIN chegue a qualquer consumidor em qualquer outro ponto — mantendo a <strong>frequência do sistema em 60 Hz</strong> (variação tolerável: ±0,2 Hz) e a tensão dentro das faixas operacionais. Para isso, o ONS decide, hora a hora, quais usinas geram quanto — o chamado <strong>despacho de geração</strong>.</p>
+
+  <div class="callout azul">
+    <strong>🔗 Acompanhe a operação do ONS em tempo real:</strong>
+    <ul style="margin-top:10px;margin-bottom:0">
+      <li><a href="https://www.ons.org.br/paginas/energia-now/sin" target="_blank" rel="noopener"><strong>Geração em tempo real — ONS.org.br</strong></a> — painel com geração por fonte atualizado a cada 5 minutos</li>
+      <li><a href="https://dados.ons.org.br/dataset/curva-carga" target="_blank" rel="noopener"><strong>Dados abertos — Curva de Carga Horária</strong></a> — histórico completo em CSV, por subsistema</li>
+      <li><a href="https://www.ons.org.br/paginas/resultados-da-operacao/historico-da-operacao" target="_blank" rel="noopener"><strong>Histórico da Operação</strong></a> — boletins diários e mensais</li>
+    </ul>
+  </div>
+
+  <h2>A curva de carga típica do Brasil — um dia na vida do SIN</h2>
+
+  <p>A demanda elétrica de um país não é constante — ela varia ao longo do dia seguindo padrões bastante previsíveis ligados ao comportamento humano. O gráfico abaixo mostra a <strong>curva de carga típica do Brasil</strong> em um dia útil de semana, com os valores representativos do perfil horário do SIN.</p>
+
+  <!-- GRÁFICO 1: Curva de carga diária típica BR -->
+  <div class="chart-block">
+    <div class="chart-title">Curva de Carga Típica do SIN — Brasil (Dia Útil, GW horário)</div>
+    <div class="chart-sub">Perfil médio representativo · Pico noturno ≈ 94 GW (19h–20h) · Vale madrugada ≈ 52 GW (4h–5h) · Fonte: ONS / EPE / CNN Brasil (2024)</div>
+    <div style="height:360px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <p>A curva revela três momentos críticos. O <strong>vale da madrugada</strong> (0h–5h): demanda mínima de 50–55 GW; hidrelétricas e usinas de base operam, mas muitas podem ser reduzidas. O <strong>primeiro pico da manhã</strong> (8h–12h): demanda sobe para 80–85 GW com a abertura do comércio e da indústria. E o <strong>pico da tarde/noite</strong> (18h–21h): demanda máxima de 90–94 GW, quando as residências se somam ao consumo industrial — e é exatamente quando a geração solar despenca para zero.</p>
+
+  <h2>Como cada fonte supre a curva de carga</h2>
+
+  <p>A magia do sistema elétrico brasileiro é a complementaridade entre fontes. Cada uma tem características diferentes de <strong>flexibilidade</strong>, <strong>previsibilidade</strong> e <strong>custo marginal</strong>:</p>
+
+  <!-- GRÁFICO 2: Despacho por fonte ao longo do dia -->
+  <div class="chart-block">
+    <div class="chart-title">Composição do Despacho Horário por Fonte — Brasil (Dia Típico de Semana, GW)</div>
+    <div class="chart-sub">Área empilhada · Solar zero à noite · Hidro ajusta para compensar variações · Fonte: ONS / EPE Balanço Energético 2025</div>
+    <div style="height:400px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>O gráfico revela o papel de cada fonte:</p>
+
+  <p><strong>Hidrelétricas (azul):</strong> são a espinha dorsal e o grande regulador do sistema. Produzem entre 45–55 GW continuamente, mas variam para cima e para baixo em resposta à demanda e à disponibilidade das outras fontes. No pico da tarde, as hidros aumentam a geração para compensar o desaparecimento do solar. Na madrugada, reduzem para economizar água. Em 2024, a amplitude diária das hidros chegou a 38.300 MW — o equivalente à capacidade total de Itaipu e metade de Belo Monte operando só para cobrir a variação diurna.</p>
+
+  <p><strong>Solar (amarelo):</strong> sobe rapidamente das 7h às 12h, atinge pico ao meio-dia, e cai para zero antes das 19h. É a fonte que mais cresceu — 39,6% em 2024, chegando a 70,7 TWh. Mas sua ausência no pico noturno é o maior desafio operacional atual.</p>
+
+  <p><strong>Eólica (verde):</strong> no Nordeste brasileiro, sopra mais à noite e de madrugada — o que cria uma complementaridade natural com o solar. É um dos grandes ativos do Brasil: eólica forte quando o solar está fraco ajuda imensamente o ONS. Gerou 107,7 TWh em 2024.</p>
+
+  <p><strong>Térmica (cinza/laranja):</strong> são as fontes de "último recurso" — têm custo marginal alto e emissões elevadas (exceto biomassa), mas respondem rapidamente ao comando do ONS. Quando os reservatórios estão baixos ou o solar/eólico falha, as térmicas são acionadas. Em 2024, a geração termelétrica cresceu 11,4% — sintoma da transição energética não resolvida.</p>
+
+  <!-- GRÁFICO 3: Curva do Pato no Brasil -->
+  <h2>A Curva do Pato — o problema que a Califórnia revelou e o Brasil enfrenta</h2>
+
+  <p>A <strong>Curva do Pato</strong> (<em>Duck Curve</em>) foi identificada pelo operador californiano CAISO em 2013. Ela descreve o perfil da <strong>demanda líquida</strong> — a demanda total menos a geração solar — ao longo do dia. O nome vem da forma do gráfico, que lembra um pato de perfil: ventre cavado (excesso solar ao meio-dia) e cabeça erguida (pico noturno sem solar).</p>
+
+  <div class="chart-block">
+    <div class="chart-title">A Curva do Pato no Brasil — Demanda Líquida vs Demanda Total (GW)</div>
+    <div class="chart-sub">Demanda Líquida = Demanda Total − Geração Solar · Quanto maior a solar, mais pronunciada a "barriga" do pato e mais abrupta a "rampa" à tarde · Cenários: 2020 (pouca solar) vs 2024 (alta solar) vs projeção 2028</div>
+    <div style="height:400px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>A Curva do Pato tem dois problemas físicos concretos:</p>
+
+  <p><strong>O ventre (meio-dia):</strong> com solar intensa ao meio-dia, a demanda líquida despenca. O sistema pode ter excesso de energia — o que força o ONS a <em>cortar</em> a geração solar e eólica (curtailment) ou a reduzir as hidros ao mínimo técnico. Em 2024, foram <strong>14,6 TWh cortados</strong> — energia que poderia ter sido usada, desperdiçada por falta de flexibilidade de rede e armazenamento.</p>
+
+  <p><strong>A cabeça (entardecer):</strong> quando o sol se põe, por volta das 17h–18h, a demanda líquida dispara em poucos minutos. O sistema precisa de uma <strong>rampa de geração rápida</strong> — usinas que aumentam produção em tempo recorde. No Brasil, isso é feito pelas hidrelétricas (que respondem em segundos) e pelas térmicas (que levam minutos a horas). Em 2024, o ONS registrou rampas de até 38.300 MW em um único dia.</p>
+
+  <!-- GRÁFICO 4: A rampa do entardecer -->
+  <div class="chart-block">
+    <div class="chart-title">A "Rampa do Entardecer" — Variação de Geração Necessária entre 16h e 20h (MW/hora)</div>
+    <div class="chart-sub">Quanto mais solar no sistema, maior a rampa que as usinas flexíveis precisam cobrir · Fonte: ONS PEN 2024 / CNN Brasil</div>
+    <div style="height:320px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <h2>Segurança Energética — o conceito mais importante da transição</h2>
+
+  <p><strong>Segurança energética</strong> é a capacidade de um país garantir energia <strong>confiável, acessível e suficiente</strong> para sua população e economia — independentemente de choques externos ou variações internas. A Agência Internacional de Energia (IEA) define quatro dimensões:</p>
+
+  <!-- GRÁFICO 5: Dimensões da segurança energética -->
+  <div class="chart-block">
+    <div class="chart-title">As 4 Dimensões da Segurança Energética — Brasil vs Comparadores (2025)</div>
+    <div class="chart-sub">Radar normalizado 0–10 · Quanto mais externo, melhor · Fontes: IEA / EPE / ONS / World Energy Security Index</div>
+    <div style="height:380px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O Brasil tem uma situação sui generis em segurança energética. Na dimensão de <strong>disponibilidade</strong>, é privilegiado: sol abundante, vento regular no NE, rios caudalosos, potencial hídrico ainda não explorado, pré-sal para térmica de base. Na dimensão de <strong>sustentabilidade</strong>, está entre os melhores do mundo: 88% da eletricidade é renovável, emissões de apenas 59,9 kg CO₂/MWh (vs. >400 nos EUA). Mas na dimensão de <strong>resiliência</strong> — capacidade de suportar choques — há vulnerabilidades sérias:</p>
+
+  <ul style="margin-left:20px;margin-bottom:18px">
+    <li><strong>Dependência do regime de chuvas:</strong> quando os reservatórios secam (como em 2001 e 2021), o sistema entra em crise. O paradoxo climático: as mudanças climáticas que motivam mais solar/eólica também tornam as chuvas mais imprevisíveis.</li>
+    <li><strong>Concentração geográfica de renováveis:</strong> 75% dos cortes de renováveis em 2024 foram no Nordeste — região com excesso de geração mas falta de transmissão para escoar para o Sudeste.</li>
+    <li><strong>Ausência de armazenamento em escala:</strong> o Brasil não tem baterias grid-scale significativas nem usinas de bombeamento hidráulico reversível. As hidros com reservatório são o único "armazenamento" real.</li>
+    <li><strong>Dependência de componentes importados:</strong> painéis solares, aerogeradores, transformadores de alta tensão e baterias de lítio dependem de cadeias de fornecimento globais — China, principalmente.</li>
+  </ul>
+
+  <!-- GRÁFICO 6: Capacidade instalada Brasil 2024 por fonte -->
+  <div class="chart-block">
+    <div class="chart-title">Capacidade Instalada do SIN por Fonte — Brasil 2025 (GW)</div>
+    <div class="chart-sub">Total: ~215 GW · Hidro inclui UHE grandes + PCH · Solar inclui GD distribuída + usinas centralizadas · Fonte: ANEEL / EPE / ONS 2025</div>
+    <div style="height:320px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <!-- GRÁFICO 7: Geração anual por fonte 2024 TWh -->
+  <div class="chart-block">
+    <div class="chart-title">Geração Elétrica por Fonte — Brasil 2024 (TWh e % do total)</div>
+    <div class="chart-sub">Total: ~750 TWh · Solar cresceu 39,6% · Eólica cresceu 12,4% · Fonte: EPE Balanço Energético Nacional 2025</div>
+    <div style="height:320px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <h2>A vantagem única do Brasil: a hidrelétrica como bateria</h2>
+
+  <p>O Brasil tem uma vantagem que a Califórnia, Alemanha e China não têm: <strong>hidrelétricas com reservatório de grande volume</strong>. Uma hidrelétrica com reservatório é, na prática, uma bateria gigante. A água represada é energia potencial armazenada. Quando a solar e a eólica produzem muito (meio-dia, dia ventoso), a hidro reduz a geração e "guarda água". Quando falta energia (pico noturno, calmaria), a hidro aumenta instantaneamente.</p>
+
+  <p>Essa complementaridade é o grande ativo do sistema brasileiro. A hidro responde em <strong>segundos</strong> — muito mais rápido que uma térmica a gás (que leva 30–60 minutos para partir do zero). Isso permite ao ONS absorver variações bruscas de solar e eólica sem necessidade de baterias caras.</p>
+
+  <div class="callout verde">
+    <strong>O paradoxo climático da hidrelétrica brasileira:</strong> As mudanças climáticas que justificam e aceleram a expansão solar e eólica também aumentam a frequência de secas extremas — reduzindo a disponibilidade dos reservatórios. Em 2021, a pior seca em 91 anos levou o PLD ao teto (R$ 822/MWh) e quase provocou racionamento. O Brasil precisa de armazenamento adicional — baterias, bombeamento hidráulico ou hidrogênio verde — para reduzir essa dependência climática.
+  </div>
+
+  <!-- GRÁFICO 8: Evolução da solar e rampa diária das hidros -->
+  <div class="chart-block">
+    <div class="chart-title">Crescimento da Solar e Amplitude Diária das Hidrelétricas (2018–2024)</div>
+    <div class="chart-sub">À medida que cresce a solar, as hidros precisam variar mais ao longo do dia para compensar · Amplitude = diferença entre geração hidro mínima e máxima no mesmo dia · Fonte: ONS PEN 2024</div>
+    <div style="height:320px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <h2>O que o ONS faz para resolver o problema — as ferramentas do maestro</h2>
+
+  <p>O ONS conta com um conjunto sofisticado de ferramentas para manter o equilíbrio do sistema frente à intermitência crescente:</p>
+
+  <p><strong>1. Despacho centralizado:</strong> o ONS define, por otimização matemática, quais usinas geram quanto a cada hora — o DESSEM (curto prazo) e o NEWAVE/DECOMP (médio e longo prazo) são os modelos utilizados. O objetivo: minimizar o custo total de operação, respeitando restrições físicas e de confiabilidade.</p>
+
+  <p><strong>2. Intercâmbio entre subsistemas:</strong> o SIN é dividido em 4 subsistemas (Norte, Nordeste, SE/CO, Sul) conectados por linhas de transmissão. Quando o Nordeste tem excesso de eólica de madrugada, o ONS transfere para o Sudeste, onde a demanda é maior. A capacidade de intercâmbio é limitada — e por isso 75% dos cortes de renováveis em 2024 foram no Nordeste.</p>
+
+  <p><strong>3. Curtailment:</strong> quando não há demanda para absorver o excesso de renovável e não há capacidade de transmissão para escoar, o ONS ordena o corte da geração. Em 2024, foram 400 mil horas de curtailment, causando R$ 1,6 bilhão em perdas para geradores. É um sinal claro de que a rede de transmissão não acompanha a velocidade de instalação das renováveis.</p>
+
+  <p><strong>4. Termelétricas como regulação:</strong> o ONS aciona térmicas principalmente no horário de pico (18h–22h) e em períodos secos. Em 2024, a geração termelétrica cresceu 11,4% — uma consequência direta da Curva do Pato e das secas.</p>
+
+  <!-- GRÁFICO 9: Curtailment crescente no Brasil -->
+  <div class="chart-block">
+    <div class="chart-title">Curtailment de Renováveis no Brasil — Energia Cortada (TWh/ano)</div>
+    <div class="chart-sub">75% concentrado no Nordeste em 2024 · R$ 1,6 bilhão em perdas para geradores · Sinal de gargalo de transmissão · Fonte: Volt Robotics / Portal Solar (fev/2025)</div>
+    <div style="height:300px"><canvas id="c9"></canvas></div>
+  </div>
+
+  <h2>O futuro — as soluções para a Curva do Pato brasileira</h2>
+
+  <p>O ONS e o setor elétrico brasileiro têm pela frente um conjunto de soluções necessárias:</p>
+
+  <!-- GRÁFICO 10: Soluções para a Curva do Pato -->
+  <div class="chart-block">
+    <div class="chart-title">Soluções para a Curva do Pato — Eficácia vs Maturidade Tecnológica no Brasil</div>
+    <div class="chart-sub">Posicionamento qualitativo · Cada círculo = uma solução · Tamanho = custo de implantação relativo · Fontes: EPE / ONS / literatura especializada</div>
+    <div style="height:380px"><canvas id="c10"></canvas></div>
+  </div>
+
+  <div class="conclusao">
+    <h2>O que aprendemos com a Curva do Pato brasileira</h2>
+    <ul>
+      <li><strong>A Curva do Pato já é uma realidade operacional no Brasil.</strong> Em 2024, o ONS registrou rampas de 38.300 MW em um dia, 400 mil horas de curtailment e pico de 94.304 MW às 19h — sem solar. O desafio não é teórico.</li>
+      <li><strong>A hidrelétrica com reservatório é o maior ativo de flexibilidade do Brasil.</strong> Permite absorver variações solar/eólica sem baterias. Mas depende de chuvas — e o clima está mudando. É uma vantagem estrutural com validade climática incerta.</li>
+      <li><strong>A transmissão é o gargalo imediato.</strong> 65% dos cortes de renováveis em 2024 foram por limitações de rede — não por excesso de energia em si. Construir mais linhas de transmissão é mais urgente que construir mais usinas.</li>
+      <li><strong>Segurança energética não é mais sobre "ter petróleo".</strong> É sobre flexibilidade, resiliência e diversificação temporal. O Brasil está entre os melhores do mundo em fontes e emissões, mas precisa avançar em armazenamento, interconexão e gestão de demanda.</li>
+      <li><strong>O ONS é o coração invisível do sistema.</strong> Sem sua operação segundo a segundo, 215 GW de capacidade instalada seriam inúteis. Entender o papel do ONS é entender como a transição energética acontece na prática.</li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#1e40af;margin-bottom:12px;font-size:.95rem">🔗 Links Externos Úteis</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><a href="https://www.ons.org.br/paginas/energia-now/sin" target="_blank" rel="noopener"><strong>ONS — Geração em Tempo Real (SIN)</strong></a> — painel atualizado a cada 5 min</li>
+      <li><a href="https://dados.ons.org.br/dataset/curva-carga" target="_blank" rel="noopener"><strong>ONS Dados Abertos — Curva de Carga Horária</strong></a> — histórico desde 2000</li>
+      <li><a href="https://www.ons.org.br" target="_blank" rel="noopener"><strong>ONS.org.br</strong></a> — site oficial do Operador Nacional do Sistema Elétrico</li>
+      <li><a href="https://www.epe.gov.br" target="_blank" rel="noopener"><strong>EPE — Empresa de Pesquisa Energética</strong></a> — Balanço Energético Nacional e PEN</li>
+      <li><a href="https://www.ccee.org.br" target="_blank" rel="noopener"><strong>CCEE — Câmara de Comercialização de Energia Elétrica</strong></a> — PLD e mercado de energia</li>
+      <li><a href="https://www.aneel.gov.br" target="_blank" rel="noopener"><strong>ANEEL — Agência Nacional de Energia Elétrica</strong></a> — regulação, tarifas e capacidade instalada</li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#14532d;margin-bottom:12px;font-size:.95rem">🔗 Artigos Relacionados no Blog MosmanLAB</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><a href="pld-preco-liquidacao-diferencas-energia.html"><strong>O PLD — Preço de Liquidação das Diferenças</strong></a> — como o custo da energia varia hora a hora</li>
+      <li><a href="biocombustiveis-brasil-mundo-eroi-co2.html"><strong>Biocombustíveis: Brasil vs Mundo</strong></a> — EROI, RenovaBio e o papel do etanol na segurança energética</li>
+      <li><a href="matriz-eletrica-brasileira.html"><strong>Matriz Elétrica Brasileira</strong></a> — 88% renovável: como chegamos até aqui</li>
+      <li><a href="lcoe-custo-nivelado-eletricidade.html"><strong>LCOE — Custo Nivelado da Eletricidade</strong></a> — por que solar e eólica são hoje as fontes mais baratas</li>
+      <li><a href="desacoplamento-pib-co2-brasil.html"><strong>Desacoplamento PIB e CO₂ no Brasil</strong></a> — crescer sem emitir é possível?</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>ONS — Operador Nacional do Sistema Elétrico</strong>. PEN 2024 — Plano da Operação Energética. Rampa diária das hidros: 38.300 MW em 2024. <a href="https://www.ons.org.br" target="_blank">ons.org.br</a></li>
+      <li><strong>EPE — Empresa de Pesquisa Energética</strong>. Balanço Energético Nacional 2025 (base 2024). Solar: 70,7 TWh (+39,6%), eólica: 107,7 TWh (+12,4%), térmica: +11,4%.</li>
+      <li><strong>Volt Robotics / Portal Solar (fev/2025)</strong>. "Cortes na geração solar e eólica somaram 400 mil horas em 2024." R$ 1,6 bilhão em perdas, 14,6 TWh cortados, 75% no Nordeste.</li>
+      <li><strong>CNN Brasil (out/2024)</strong>. "Novas fontes renováveis vão ser 51% da geração em 2028." Pico de 94.304 MW às 19h13. <a href="https://www.cnnbrasil.com.br" target="_blank">cnnbrasil.com.br</a></li>
+      <li><strong>ANEEL / Abrapch (jan/2025)</strong>. Capacidade instalada SIN 2025: 215 GW total. Hidro: 109,9 GW (52,6%). Solar: 52,2 GW. Eólica: 33,7 GW.</li>
+      <li><strong>IEA Bioenergy Countries Report 2024</strong>. Biofuels per capita e mix elétrico por país.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Física dos sistemas elétricos — do elétron à rede nacional</p>
+  <p class="sim-cta-text">Frequência de 60 Hz, potência reativa, despacho de geração, curva de carga — tudo conectado em física real. Turmas presenciais em SP e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+const horas=['0h','1h','2h','3h','4h','5h','6h','7h','8h','9h','10h','11h','12h','13h','14h','15h','16h','17h','18h','19h','20h','21h','22h','23h'];
+
+// ── C1: Curva de carga diária típica ──────────────────────────────────────────
+const carga=[55,52,50,49,48,50,56,64,75,81,83,84,83,82,82,82,84,87,91,94,93,88,78,65];
+new Chart(document.getElementById('c1'),{type:'line',
+  data:{labels:horas,datasets:[{
+    label:'Carga SIN (GW)',data:carga,
+    borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.12)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      annotation:{annotations:{
+        pico:{type:'line',xMin:'19h',xMax:'19h',borderColor:'rgba(220,38,38,.6)',borderDash:[5,4],borderWidth:2},
+        vale:{type:'line',xMin:'4h',xMax:'4h',borderColor:'rgba(22,163,74,.6)',borderDash:[5,4],borderWidth:2}
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},color:tc},grid:{display:false}},
+      y:{min:30,max:100,ticks:{font:{size:11},color:tc,callback:v=>v+' GW'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C2: Despacho empilhado por fonte ──────────────────────────────────────────
+const hidro=[40,38,36,35,34,36,40,42,46,48,50,50,48,46,46,46,48,52,56,58,57,55,50,44];
+const solar=[0,0,0,0,0,0,1,5,12,18,22,25,26,25,23,20,14,6,1,0,0,0,0,0];
+const eolica=[8,8,7,7,7,7,7,8,8,7,6,5,4,4,4,5,6,8,10,12,13,13,12,10];
+const bio=[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
+const termica=horas.map((_,i)=>Math.max(0,carga[i]-hidro[i]-solar[i]-eolica[i]-bio[i]));
+new Chart(document.getElementById('c2'),{type:'bar',
+  data:{labels:horas,datasets:[
+    {label:'Hidrelétrica',data:hidro,backgroundColor:'rgba(37,99,235,.82)',stack:'s'},
+    {label:'Solar',data:solar,backgroundColor:'rgba(250,204,21,.85)',stack:'s'},
+    {label:'Eólica',data:eolica,backgroundColor:'rgba(22,163,74,.78)',stack:'s'},
+    {label:'Biomassa/PCH',data:bio,backgroundColor:'rgba(124,58,237,.70)',stack:'s'},
+    {label:'Termelétrica',data:termica,backgroundColor:'rgba(220,38,38,.72)',stack:'s'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:12,padding:8}}},
+    scales:{
+      x:{stacked:true,ticks:{font:{size:9.5},color:tc},grid:{display:false}},
+      y:{stacked:true,ticks:{font:{size:11},color:tc,callback:v=>v+' GW'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C3: Curva do Pato Brasil ──────────────────────────────────────────────────
+const solar2020=[0,0,0,0,0,0,0.3,2,5,8,10,11,11,10,9,7,4,1,0,0,0,0,0,0];
+const solar2024=[0,0,0,0,0,0,1,5,12,18,22,25,26,25,23,20,14,6,1,0,0,0,0,0];
+const solar2028=[0,0,0,0,0,0,2,10,22,34,42,48,50,48,44,38,26,10,1,0,0,0,0,0];
+const demLiq2020=carga.map((v,i)=>v-solar2020[i]);
+const demLiq2024=carga.map((v,i)=>v-solar2024[i]);
+const demLiq2028=carga.map((v,i)=>v-solar2028[i]);
+new Chart(document.getElementById('c3'),{type:'line',
+  data:{labels:horas,datasets:[
+    {label:'Demanda Total',data:carga,borderColor:'#374151',borderDash:[4,4],tension:.4,borderWidth:2,pointRadius:0},
+    {label:'Dem. Líquida 2020 (pouca solar)',data:demLiq2020,borderColor:'#16a34a',tension:.4,borderWidth:2.5,pointRadius:3,fill:false},
+    {label:'Dem. Líquida 2024',data:demLiq2024,borderColor:'#2563eb',tension:.4,borderWidth:2.5,pointRadius:3,fill:false},
+    {label:'Dem. Líquida 2028 (projeção)',data:demLiq2028,borderColor:'#dc2626',tension:.4,borderWidth:2.5,pointRadius:3,borderDash:[6,3],fill:false},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:tc},grid:{display:false}},
+      y:{min:20,ticks:{font:{size:11},color:tc,callback:v=>v+' GW'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C4: Rampa do entardecer ───────────────────────────────────────────────────
+const anos4=[2018,2019,2020,2021,2022,2023,2024];
+const rampa=[8500,10200,12400,15800,19000,25000,38300]; // MW de amplitude diária hidro
+new Chart(document.getElementById('c4'),{type:'bar',
+  data:{labels:anos4.map(String),datasets:[{
+    label:'Amplitude diária das hidrelétricas (MW)',
+    data:rampa,
+    backgroundColor:rampa.map(v=>v>30000?'rgba(220,38,38,.78)':v>20000?'rgba(215,119,6,.75)':'rgba(37,99,235,.72)'),
+    borderRadius:6
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>Math.round(v/1000)+'k MW'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C5: Radar segurança energética ────────────────────────────────────────────
+const dimSeg=['Disponibilidade\nde Recursos','Acessibilidade\nGeográfica','Acessibilidade\nEconômica','Sustentabilidade\nAmbiental','Resiliência\na Choques','Independência\nde Importação'];
+new Chart(document.getElementById('c5'),{type:'radar',
+  data:{labels:dimSeg,datasets:[
+    {label:'Brasil',data:[9,7,6,9,6,8],borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.18)',pointRadius:4,borderWidth:2.5},
+    {label:'Alemanha',data:[4,9,5,7,8,4],borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.12)',pointRadius:4,borderWidth:2},
+    {label:'EUA',data:[8,8,8,5,9,9],borderColor:'#d97706',backgroundColor:'rgba(215,119,6,.12)',pointRadius:4,borderWidth:2},
+    {label:'China',data:[6,6,9,4,7,7],borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.10)',pointRadius:4,borderWidth:2},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10.5},color:'#374151',boxWidth:12,padding:8}}},
+    scales:{r:{min:0,max:10,ticks:{font:{size:9},color:tc},grid:{color:gc},pointLabels:{font:{size:10},color:'#374151'}}}
+  }
+});
+
+// ── C6: Capacidade instalada por fonte ────────────────────────────────────────
+new Chart(document.getElementById('c6'),{type:'doughnut',
+  data:{
+    labels:['Hidrelétrica (UHE+PCH)','Solar (FV)','Eólica','Termelétrica','Biomassa','Nuclear','Outros'],
+    datasets:[{
+      data:[109.9,52.2,33.7,10.1,5.9,2.0,1.2],
+      backgroundColor:['rgba(37,99,235,.80)','rgba(250,204,21,.85)','rgba(22,163,74,.78)','rgba(220,38,38,.72)','rgba(124,58,237,.70)','rgba(107,114,128,.65)','rgba(20,184,166,.65)'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,cutout:'45%',
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:12,padding:8}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw} GW (${Math.round(ctx.raw/215*100)}%)`}}
+    }
+  }
+});
+
+// ── C7: Geração anual TWh ─────────────────────────────────────────────────────
+new Chart(document.getElementById('c7'),{type:'bar',
+  data:{
+    labels:['Hidrelétrica','Eólica','Solar FV','Termelétrica','Biomassa','Nuclear'],
+    datasets:[{
+      label:'TWh gerados em 2024',
+      data:[390.2,107.7,70.7,151.2,65.0,16.0],
+      backgroundColor:['rgba(37,99,235,.80)','rgba(22,163,74,.78)','rgba(250,204,21,.85)','rgba(220,38,38,.72)','rgba(124,58,237,.70)','rgba(107,114,128,.65)'],
+      borderRadius:6
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} TWh (${Math.round(ctx.raw/800.8*100)}%)`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' TWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C8: Solar crescimento vs amplitude hidro ──────────────────────────────────
+new Chart(document.getElementById('c8'),{type:'line',
+  data:{labels:['2018','2019','2020','2021','2022','2023','2024'],datasets:[
+    {label:'Capacidade solar instalada (GW)',data:[2.5,5.5,9.0,13.5,24.1,38.0,52.2],borderColor:'#f59e0b',tension:.4,pointRadius:4,borderWidth:2.5,yAxisID:'y'},
+    {label:'Amplitude diária hidros (GW)',data:[8.5,10.2,12.4,15.8,19.0,25.0,38.3],borderColor:'#2563eb',tension:.4,pointRadius:4,borderWidth:2.5,borderDash:[6,3],yAxisID:'y'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' GW'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C9: Curtailment ───────────────────────────────────────────────────────────
+new Chart(document.getElementById('c9'),{type:'bar',
+  data:{labels:['2020','2021','2022','2023','2024'],datasets:[{
+    label:'Energia cortada (TWh)',
+    data:[1.2,2.8,5.4,9.1,14.6],
+    backgroundColor:['rgba(22,163,74,.72)','rgba(37,99,235,.70)','rgba(215,119,6,.72)','rgba(215,119,6,.78)','rgba(220,38,38,.78)'],
+    borderRadius:6
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' TWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C10: Soluções curva do pato — scatter eficácia vs maturidade ──────────────
+new Chart(document.getElementById('c10'),{type:'bubble',
+  data:{datasets:[{
+    label:'Soluções',
+    data:[
+      {x:9,y:9,r:12,label:'Transmissão (ampliar interconexão)'},
+      {x:8,y:8,r:10,label:'Gestão da demanda (demand response)'},
+      {x:7,y:5,r:16,label:'Baterias grid-scale'},
+      {x:9,y:7,r:8,label:'Bombeamento hidráulico reversível'},
+      {x:6,y:9,r:8,label:'Hidrelétricas flex. (otimizar reservatórios)'},
+      {x:4,y:7,r:12,label:'Hidrogênio verde (armazenamento sazonal)'},
+      {x:7,y:4,r:10,label:'V2G — carro elétrico como bateria'},
+      {x:5,y:9,r:8,label:'Tarifas horo-sazonais (induzir consumo no pico solar)'},
+    ],
+    backgroundColor:'rgba(37,99,235,.65)',
+    borderColor:'rgba(37,99,235,.85)',
+    borderWidth:1.5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw.label} | Eficácia: ${ctx.raw.y}/10 | Maturidade BR: ${ctx.raw.x}/10`}}
+    },
+    scales:{
+      x:{min:0,max:10,title:{display:true,text:'Maturidade tecnológica no Brasil (→)',color:tc,font:{size:11}},ticks:{font:{size:11},color:tc},grid:{color:gc}},
+      y:{min:0,max:10,title:{display:true,text:'Eficácia para resolver Curva do Pato (↑)',color:tc,font:{size:11}},ticks:{font:{size:11},color:tc},grid:{color:gc}}
+    }
+  }
+});
+</script>
+</body>
+</html>

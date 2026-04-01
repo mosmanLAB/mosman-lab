@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PLD — O Preço que Muda de Hora em Hora: Guia Completo do Mercado de Energia | MosmanLAB</title>
+<meta name="description" content="O PLD é o preço do mercado spot de eletricidade no Brasil. Calculado hora a hora pela CCEE, varia de R$ 58 a R$ 1.542/MWh. Entenda como funciona, por que sobe na seca, o papel dos reservatórios e como isso afeta sua empresa ou residência."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/pld-preco-liquidacao-diferencas-energia.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#1a0028,#1a1400,#001428);">
+  <div class="article-tag">Mercado de Energia · PLD · CCEE · Economia da Energia</div>
+  <h1>PLD — O Preço que Muda de Hora em Hora: Tudo sobre o Mercado Spot de Energia Elétrica</h1>
+  <p class="hero-lead">A energia elétrica tem um custo que varia conforme o tempo, o clima, o nível dos reservatórios e a demanda de cada momento. O PLD — Preço de Liquidação das Diferenças — é o termômetro desse custo. Pode estar no piso de R$ 58/MWh em um dia chuvoso de março, ou explodir para R$ 1.542/MWh durante uma seca severa em outubro. Entender o PLD é entender como a física dos sistemas elétricos se traduz em preço.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 16 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Quando você contrata energia no <strong>Mercado Livre de Energia</strong>, negocia um volume e um preço com um fornecedor. Mas o consumo real raramente é idêntico ao contratado — um dia de produção maior, uma máquina que parou, um calor inesperado que aumentou o ar-condicionado. A diferença entre o que você contratou e o que realmente consumiu (ou gerou) precisa ser liquidada. E o preço dessa liquidação é o <strong>PLD — Preço de Liquidação das Diferenças</strong>.</p>
+
+  <p>O PLD é calculado diariamente, hora a hora, pela <strong>CCEE — Câmara de Comercialização de Energia Elétrica</strong> e publicado para o dia seguinte. Ele reflete o custo marginal de operação do sistema — quanto custa produzir mais 1 MWh naquele momento específico. Em dias de chuva abundante, os reservatórios cheios permitem gerar barato: PLD no piso. Em dias de seca severa, é preciso acionar térmicas caras: PLD dispara.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">R$ 58,60</div><div class="stat-label">PLD mínimo em 2025 — o "piso" estabelecido pela ANEEL, válido quando há excesso de energia no sistema</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">R$ 1.542</div><div class="stat-label">PLD máximo horário em 2025 — o "teto" da ANEEL, acionado em emergências de escassez hídrica severa</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">R$ 127,95</div><div class="stat-label">PLD médio anual em 2024 — acima do piso por conta da seca no 2º semestre</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">4</div><div class="stat-label">submercados do SIN com PLDs distintos: Norte, Nordeste, Sudeste/Centro-Oeste e Sul</div></div>
+  </div>
+
+  <!-- ═══ PARTE 1: O QUE É PLD ════════════════════════════════════════════ -->
+  <h2>Parte 1 — O que é o PLD e para que serve</h2>
+
+  <p>O PLD surgiu com a criação do Mercado Atacadista de Energia Elétrica (MAE) em 2000 e consolidou-se com a CCEE em 2004. Sua função é simples: estabelecer o preço de referência para toda a energia que não está coberta por contratos bilaterais de longo prazo no mercado livre.</p>
+
+  <p>Imagine um gerador de energia eólica que tem contrato para vender 100 MW médios por mês. Em um mês de muito vento, ele gera 120 MW médios — os 20 MW excedentes são vendidos ao mercado spot pelo PLD vigente. Em um mês de calmaria, ele gera apenas 80 MW — os 20 MW faltantes são comprados no mercado spot ao PLD vigente. O PLD é o preço dessa compensação.</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.88rem;background:#1a1a2e;color:#e2e8f0;padding:14px 20px;border-radius:8px;margin:16px 0;line-height:2.3">
+    PLD ≈ CMO (Custo Marginal de Operação) do sistema<br><br>
+    CMO = custo de geração da usina mais cara que precisa ser acionada<br>
+          para suprir o incremento marginal de carga naquele momento<br><br>
+    Sistema hidráulico cheio → CMO baixo (água é "grátis") → PLD no piso<br>
+    Sistema hidráulico vazio → CMO alto (térmicas caras necessárias) → PLD sobe<br>
+    Sistema em colapso → CMO máximo → PLD no teto
+  </p>
+
+  <!-- GRÁFICO 1: Lógica do PLD — reservatórios e custo marginal -->
+  <div class="chart-block">
+    <div class="chart-title">A Física por Trás do PLD — Nível dos Reservatórios vs Custo Marginal de Operação</div>
+    <div class="chart-sub">Relação inversa: quanto mais água represada, menor o custo de gerar mais 1 MWh · Curva qualitativa baseada em dados históricos CCEE</div>
+    <div style="height:340px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <div class="callout azul">
+    <strong>🔗 Acompanhe o PLD em tempo real:</strong>
+    <ul style="margin-top:10px;margin-bottom:0">
+      <li><a href="https://www.ccee.org.br/precos" target="_blank" rel="noopener"><strong>CCEE — Painel de Preços do PLD</strong></a> — PLD horário atualizado diariamente para todos os submercados</li>
+      <li><a href="https://www.ccee.org.br" target="_blank" rel="noopener"><strong>CCEE.org.br</strong></a> — site oficial da Câmara de Comercialização de Energia Elétrica</li>
+      <li><a href="https://grugeen.eng.br/pld/" target="_blank" rel="noopener"><strong>Grugeen — PLD Atualizado Diariamente</strong></a> — painel independente com PLD por submercado</li>
+    </ul>
+  </div>
+
+  <!-- ═══ PARTE 2: COMO É CALCULADO ═══════════════════════════════════════ -->
+  <h2>Parte 2 — Como o PLD é calculado: os modelos matemáticos</h2>
+
+  <p>O cálculo do PLD é uma das tarefas computacionais mais sofisticadas do setor elétrico brasileiro. Envolve modelos matemáticos de otimização estocástica que simulam centenas de cenários de afluência hídrica, demanda e disponibilidade de usinas.</p>
+
+  <p>Os principais modelos são:</p>
+
+  <p><strong>NEWAVE:</strong> modelo de médio/longo prazo (60 meses). Usa programação dinâmica estocástica para determinar a política ótima de operação dos reservatórios — quanto de água usar agora vs. guardar para o futuro. É o modelo que define a "sombra" de valor da água nos reservatórios, que fundamenta o CMO.</p>
+
+  <p><strong>DECOMP:</strong> modelo de curto prazo (12 semanas). Detalhamento semanal e subsistêmico do NEWAVE. Determina o despacho de usinas térmicas e as metas de geração hidráulica.</p>
+
+  <p><strong>DESSEM:</strong> modelo de curtíssimo prazo (semi-horário, 7 dias). Incorpora restrições da rede elétrica em tempo real — linhas de transmissão, estabilidade, tensão. É o modelo que efetivamente define o PLD horário.</p>
+
+  <!-- GRÁFICO 2: Fluxo de cálculo do PLD -->
+  <div class="chart-block">
+    <div class="chart-title">Como o PLD é Calculado — Fluxo do Processo (CCEE + ONS)</div>
+    <div class="chart-sub">Processo diário de cálculo e publicação do PLD para o dia seguinte · Fonte: CCEE / Módulo PLD versão 2023.3.0</div>
+    <div style="height:280px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <!-- ═══ PARTE 3: EVOLUÇÃO HISTÓRICA ═════════════════════════════════════ -->
+  <h2>Parte 3 — A história do PLD: das crises às renovéveis</h2>
+
+  <!-- GRÁFICO 3: Histórico PLD médio anual 2002-2025 -->
+  <div class="chart-block">
+    <div class="chart-title">Histórico do PLD Médio Anual — Brasil (R$/MWh, 2002–2025)</div>
+    <div class="chart-sub">Deflacionado para valores aproximados · Picos em anos de seca severa · Fonte: CCEE / Clarke Energia / CanalEnergia</div>
+    <div style="height:360px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>O histórico do PLD conta a história hídrica e energética do Brasil:</p>
+
+  <p><strong>2001–2002 — O racionamento:</strong> o Brasil viveu a crise do apagão com reservatórios no limite crítico. O PLD atingiu valores altíssimos e o governo implementou cotas de consumo. A crise levou à reformulação do setor elétrico e à criação da CCEE em 2004.</p>
+
+  <p><strong>2012 — Mudança das "regras do jogo":</strong> o governo Dilma editou a Medida Provisória 579 forçando renovações antecipadas de concessões com tarifas reduzidas, ao mesmo tempo que segurou o PLD artificialmente. Usinas que não renovaram ficaram sem receita garantida. O resultado: térmicas desligaram, reservatórios caíram, e em 2014–2015 o sistema entrou em crise severa.</p>
+
+  <p><strong>2021 — A pior seca em 91 anos:</strong> o PLD atingiu o teto de R$ 822,83/MWh — máxima histórica da época. O governo criou a "bandeira escassez hídrica" nas tarifas e chegou a considerar racionamento. A crise acelerou definitivamente a instalação de solar e eólica como estratégia de segurança energética.</p>
+
+  <p><strong>2022–2023 — O paradoxo da sobreoferta:</strong> chuvas abundantes + crescimento acelerado de renováveis levaram o PLD ao piso por meses consecutivos. Geradores reclamavam de receita insuficiente. A sobreoferta começou a criar o curtailment crescente.</p>
+
+  <p><strong>2024 — O PLD médio sobe para R$ 127/MWh:</strong> o 2º semestre foi marcado por seca no Centro-Oeste e Sudeste. O PLD saiu do piso, térmicas foram acionadas, e o setor viveu um microcosmo do dilema estrutural: muito solar de dia, pouco armazenamento, dependência das chuvas.</p>
+
+  <!-- ═══ PARTE 4: O PLD NO TEMPO ══════════════════════════════════════════ -->
+  <h2>Parte 4 — O PLD no tempo: a sazonalidade anual e a variação horária</h2>
+
+  <p>O PLD tem dois ritmos de variação sobrepostos: o <strong>sazonal anual</strong> (determinado pelo regime de chuvas) e o <strong>horário diário</strong> (determinado pela demanda e pela disponibilidade de fontes a cada hora).</p>
+
+  <!-- GRÁFICO 4: Sazonalidade anual do PLD -->
+  <div class="chart-block">
+    <div class="chart-title">Sazonalidade Típica do PLD ao Longo do Ano (R$/MWh)</div>
+    <div class="chart-sub">Período úmido (nov–abr): reservatórios cheios, PLD próximo ao piso · Período seco (maio–out): reservatórios caem, PLD sobe · Baseado em padrão histórico</div>
+    <div style="height:340px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <!-- GRÁFICO 5: PLD horário num dia típico -->
+  <div class="chart-block">
+    <div class="chart-title">PLD Horário — Variação ao Longo de um Dia Típico (R$/MWh)</div>
+    <div class="chart-sub">Madrugada: PLD baixo (demanda reduzida, solar zero) · Pico 18h–21h: PLD mais alto (demanda máxima, solar encerrada) · Padrão representativo</div>
+    <div style="height:340px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <div class="callout vermelho">
+    <strong>A novidade do PLD horário (desde 2021):</strong> antes de 2021, o PLD era calculado semanalmente — um único preço para todos os dias da semana e todas as horas do dia. Isso criava distorções enormes: a energia de domingo à madrugada (quando sobrava) era precificada igual à de segunda às 19h (quando faltava). Com o PLD horário, cada hora tem seu próprio preço, criando sinal econômico correto para gestão de demanda, armazenamento e geração flexível. É uma das reformas mais importantes do setor elétrico da última década.
+  </div>
+
+  <!-- ═══ PARTE 5: SUBMERCADOS ══════════════════════════════════════════════ -->
+  <h2>Parte 5 — Os 4 submercados e as diferenças regionais de preço</h2>
+
+  <p>O SIN é dividido em 4 submercados, cada um com seu próprio PLD calculado pela CCEE. Os submercados têm PLDs distintos quando existem <strong>restrições de transmissão</strong> entre eles — ou seja, quando o fluxo de energia entre regiões é limitado pelas linhas de transmissão existentes:</p>
+
+  <!-- GRÁFICO 6: PLD por submercado - comparativo mensal típico -->
+  <div class="chart-block">
+    <div class="chart-title">PLD por Submercado — Padrão Típico Anual (R$/MWh, ano seco)</div>
+    <div class="chart-sub">NE frequentemente tem PLD menor por excesso de eólica · N tem PLDs voláteis por isolamento relativo · SE/CO é o mercado dominante · Padrão representativo</div>
+    <div style="height:360px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <p>O Nordeste tem frequentemente o PLD mais baixo — às vezes até no piso — por excesso de energia eólica que não consegue ser escoada para o Sudeste por falta de capacidade de transmissão. O Norte tende a ter PLDs mais voláteis por ser mais isolado. O Sudeste/Centro-Oeste é o mercado de referência, onde se concentra 60% do consumo nacional e onde o CMO se forma com mais regularidade.</p>
+
+  <!-- ═══ PARTE 6: O QUE MOVE O PLD ════════════════════════════════════════ -->
+  <h2>Parte 6 — O que faz o PLD subir e cair</h2>
+
+  <!-- GRÁFICO 7: Drivers do PLD -->
+  <div class="chart-block">
+    <div class="chart-title">Fatores que Elevam ou Reduzem o PLD — Impacto Relativo</div>
+    <div class="chart-sub">Escala qualitativa de impacto no CMO e, consequentemente, no PLD · Baseado em análise histórica e metodologia CCEE</div>
+    <div style="height:380px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <p>O reservatório é o fator dominante. O nível de armazenamento do SIN é publicado semanalmente pelo ONS e acompanhado obsessivamente pelo mercado. Uma queda de 10 pontos percentuais no nível dos reservatórios pode elevar o CMO em R$ 50–100/MWh.</p>
+
+  <p>O crescimento das renováveis adiciona uma nova dimensão: em dias com muita solar e eólica, o CMO cai (as usinas são "grátis" em custo marginal). Mas isso também significa que, quando o sol se apaga e o vento para, o CMO pode subir rapidamente — especialmente se os reservatórios estiverem baixos. O PLD horário captura essa dinâmica intradiária que o PLD semanal jamais conseguia refletir.</p>
+
+  <!-- ═══ PARTE 7: PLD E MERCADO LIVRE ═════════════════════════════════════ -->
+  <h2>Parte 7 — PLD e o Mercado Livre de Energia</h2>
+
+  <p>O Mercado Livre de Energia (MLE) permite que consumidores com demanda acima de 0,5 MW (desde 2024) negociem seus contratos de energia diretamente com geradores ou comercializadoras, sem a intermediação da distribuidora local. O PLD é a referência de preço que permeia todas essas negociações.</p>
+
+  <!-- GRÁFICO 8: Como funciona o mercado livre com PLD -->
+  <div class="chart-block">
+    <div class="chart-title">Estrutura do Mercado Livre de Energia — O Papel do PLD</div>
+    <div class="chart-sub">O PLD é o preço de liquidação das diferenças entre o contratado e o realizado · Fonte: CCEE / metodologia de câmara de compensação</div>
+    <div style="height:340px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <p>No Mercado Livre, o PLD importa de três formas principais:</p>
+
+  <p><strong>1. Liquidação de diferenças:</strong> se uma empresa contratou 100 MWh mas consumiu 110 MWh, os 10 MWh excedentes são comprados no mercado spot ao PLD. Se consumiu 90 MWh, os 10 MWh sobrantes são vendidos ao PLD. Em períodos de PLD alto, consumir mais que o contratado é muito caro. Em PLD baixo, ter excesso de contrato é custoso (você "vende" barato a energia que pagou mais caro no contrato).</p>
+
+  <p><strong>2. Referência para contratos:</strong> os contratos de longo prazo são negociados com referência ao PLD esperado. Uma empresa que prevê PLD médio de R$ 200/MWh nos próximos 2 anos pode aceitar um contrato fixo a R$ 180/MWh como proteção. O PLD funciona como benchmark de mercado.</p>
+
+  <p><strong>3. Sinalização para investimentos:</strong> PLDs cronicamente baixos desestimulam novos investimentos em geração (margem insuficiente). PLDs cronicamente altos sinalizam escassez e atraem capital para novas usinas. Em 2024, o PLD no piso boa parte do ano gerou tensão entre geradores com contratos vencendo e sem renovação lucrativa disponível.</p>
+
+  <!-- ═══ PARTE 8: O PLD E A CURVA DO PATO ════════════════════════════════ -->
+  <h2>Parte 8 — PLD horário e a Curva do Pato: o preço da intermitência</h2>
+
+  <p>A introdução do PLD horário em 2021 criou um sinal de preço que reflete perfeitamente a Curva do Pato. Ao meio-dia, com solar intensa e demanda moderada, o CMO cai — PLD baixo ou no piso. Às 19h, com solar encerrada e pico de demanda, o CMO sobe — PLD mais alto. Essa diferença de preço entre meio-dia e noite é exatamente o sinal econômico que justifica o investimento em armazenamento.</p>
+
+  <!-- GRÁFICO 9: PLD horário e Curva do Pato -->
+  <div class="chart-block">
+    <div class="chart-title">PLD Horário e Curva de Carga — A Dança entre Preço e Demanda (dia típico)</div>
+    <div class="chart-sub">PLD baixo ao meio-dia (excesso solar) · PLD alto no pico noturno (sem solar, alta demanda) · Diferença de preço = sinal para armazenamento</div>
+    <div style="height:360px"><canvas id="c9"></canvas></div>
+  </div>
+
+  <p>Essa variação horária de preço cria oportunidades reais de arbitragem: carregar baterias ao meio-dia (PLD baixo, energia "barata") e descarregar no pico da noite (PLD alto, vender energia cara). Com baterias a ~US$ 100/kWh (2025) e diferencial de PLD de R$ 100–200/MWh entre meio-dia e noite, o payback começa a ser atrativo. O mercado de armazenamento decola no Brasil exatamente quando o PLD horário se consolida e o diferencial intradiário cresce.</p>
+
+  <!-- ═══ PARTE 9: LIMITES E BANDEIRAS ════════════════════════════════════ -->
+  <h2>Parte 9 — Piso, teto, bandeiras tarifárias e a proteção do consumidor</h2>
+
+  <p>O PLD não é livre para variar indefinidamente. A ANEEL estabelece anualmente limites máximo e mínimo:</p>
+
+  <!-- GRÁFICO 10: Histórico dos limites do PLD -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução dos Limites Máximo e Mínimo do PLD (R$/MWh, 2015–2026)</div>
+    <div class="chart-sub">Limite máximo horário e estrutural · Limite mínimo · O teto foi revisado após a crise de 2021 · Fonte: ANEEL / CCEE / Clarke Energia</div>
+    <div style="height:340px"><canvas id="c10"></canvas></div>
+  </div>
+
+  <p>O <strong>piso</strong> (R$ 58,60/MWh em 2025) representa o custo mínimo de operação do sistema — mesmo com água abundante, há custos fixos de operação e manutenção das usinas. O <strong>teto estrutural</strong> (R$ 751/MWh em 2025) é acionado nos dias mais comuns de escassez. O <strong>teto horário</strong> (R$ 1.542/MWh em 2025) é usado apenas em situações de emergência extrema, por poucas horas.</p>
+
+  <p>Para o consumidor residencial no mercado cativo (distribuidora), o PLD não aparece diretamente na conta de luz — a distribuidora absorve as variações e as repassa via <strong>bandeiras tarifárias</strong> (verde, amarela, vermelha P1, vermelha P2). As bandeiras são um mecanismo de socialização do risco: quando o PLD sobe muito, uma parcela do custo vai para a tarifa de todos os consumidores cativos, não apenas para os do mercado livre.</p>
+
+  <div class="conclusao">
+    <h2>Síntese — O PLD como espelho do sistema elétrico brasileiro</h2>
+    <ul>
+      <li><strong>O PLD é a física do sistema elétrico traduzida em preço.</strong> Quando os reservatórios estão cheios e o sol brilha, a energia é abundante e barata. Quando a seca chega e o sol se põe, a escassez faz o preço disparar. O PLD não mente: ele reflete a realidade física do sistema em tempo real.</li>
+      <li><strong>A mudança para PLD horário (2021) foi transformadora.</strong> Criou sinal econômico correto para gestão de demanda, armazenamento e geração flexível. Uma empresa que consome intensivamente ao meio-dia (PLD baixo) tem vantagem real sobre quem consome à noite (PLD alto).</li>
+      <li><strong>A variação sazonal reflete o regime de chuvas.</strong> No Brasil, o período seco (maio–outubro) é estruturalmente mais caro. Empresas no mercado livre precisam proteger esse risco — via contratos de longo prazo, energia por preço fixo ou estratégias de hedge.</li>
+      <li><strong>O diferencial intradiário do PLD é o principal driver para armazenamento.</strong> Baterias que carregam ao meio-dia e descarregam no pico noturno exploram exatamente essa arbitragem. Com a Curva do Pato se aprofundando, esse diferencial tende a crescer — tornando o armazenamento cada vez mais atrativo.</li>
+      <li><strong>O PLD de 2024 (R$ 127/MWh médio) é um sinal de transição.</strong> Nem no piso (sobreoferta) nem no teto (crise). O sistema está buscando equilíbrio entre renováveis crescentes, transmissão insuficiente, armazenamento ausente e dependência hídrica. A resolução desse triângulo determinará o PLD dos próximos anos.</li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#1e40af;margin-bottom:12px;font-size:.95rem">🔗 Links Externos — PLD e Mercado de Energia</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><a href="https://www.ccee.org.br/precos" target="_blank" rel="noopener"><strong>CCEE — Painel de Preços do PLD</strong></a> — PLD horário atualizado, todos os submercados</li>
+      <li><a href="https://www.ccee.org.br" target="_blank" rel="noopener"><strong>CCEE.org.br</strong></a> — Câmara de Comercialização de Energia Elétrica, portal oficial</li>
+      <li><a href="https://grugeen.eng.br/pld/" target="_blank" rel="noopener"><strong>Grugeen — PLD Diário Atualizado</strong></a> — painel independente com histórico e projeções</li>
+      <li><a href="https://clarke.com.br/post/historico-e-tendencias-do-pld-horario/" target="_blank" rel="noopener"><strong>Clarke Energia — Histórico e Tendências do PLD Horário</strong></a></li>
+      <li><a href="https://www.aneel.gov.br" target="_blank" rel="noopener"><strong>ANEEL</strong></a> — limites anuais do PLD, bandeiras tarifárias e regulação do setor</li>
+      <li><a href="https://www.ons.org.br" target="_blank" rel="noopener"><strong>ONS</strong></a> — operação do sistema e dados de reservatórios em tempo real</li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#14532d;margin-bottom:12px;font-size:.95rem">🔗 Artigos Relacionados no Blog MosmanLAB</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><a href="curva-do-pato-ons-seguranca-energetica-brasil.html"><strong>A Curva do Pato e o ONS</strong></a> — como o sistema elétrico é operado hora a hora</li>
+      <li><a href="matriz-eletrica-brasileira.html"><strong>Matriz Elétrica Brasileira</strong></a> — 88% renovável e os desafios da transição</li>
+      <li><a href="lcoe-custo-nivelado-eletricidade.html"><strong>LCOE — Custo Nivelado da Eletricidade</strong></a> — por que solar é hoje mais barata que carvão</li>
+      <li><a href="eletrificacao-economia.html"><strong>Eletrificação da Economia</strong></a> — o papel da energia elétrica no desenvolvimento</li>
+      <li><a href="indice-big-mac-salario-minimo-eletricidade-mundo.html"><strong>Índice Big Mac e Eletricidade</strong></a> — quanto custa 1 MWh em termos de poder de compra real</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>CCEE — Câmara de Comercialização de Energia Elétrica</strong>. "Preço de Liquidação das Diferenças" — módulo 2023.3.0. Limites 2025: piso R$ 58,60/MWh, teto horário R$ 1.542,23/MWh. <a href="https://www.ccee.org.br" target="_blank">ccee.org.br</a></li>
+      <li><strong>ANEEL</strong>. Resolução que define limites anuais do PLD. Teto revisado após crise de 2021 (R$ 822/MWh → R$ 388/MWh, depois reajustado). <a href="https://www.aneel.gov.br" target="_blank">aneel.gov.br</a></li>
+      <li><strong>Grugeen Engenharia</strong>. "PLD — Preço de Liquidação das Diferenças." Limites 2024: mínimo R$ 58,60, máximo estrutural R$ 751,73, máximo horário R$ 1.542,23. <a href="https://grugeen.eng.br/pld/" target="_blank">grugeen.eng.br</a></li>
+      <li><strong>Clarke Energia (jun/2025)</strong>. "Histórico e tendências do PLD Horário." PLD médio 2024: R$ 127,95/MWh. Limites 2025. <a href="https://clarke.com.br" target="_blank">clarke.com.br</a></li>
+      <li><strong>Futtura Energy (jan/2025)</strong>. "CCEE Projeta PLD Médio de R$ 59/MWh até Maio em Todos os Submercados." Projeção PLD 2025.</li>
+      <li><strong>Mercado Livre de Energia (mercadolivredeenergia.com.br)</strong>. "O que é PLD?" — histórico de crises, metodologia e impacto no MLE.</li>
+      <li><strong>Serena Energia (jan/2026)</strong>. "PLD — Guia Completo 2026." Teto 2026: R$ 1.611,04/MWh horário.</li>
+      <li><strong>Abrapch / Thymos Energia (jan/2025)</strong>. "Geração de novas renováveis salta quase 10% no Brasil em 2025." PLD médio 2024: R$ 126/MWh. Curtailment 12,7 mil GWh.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Economia da Energia — do CMO ao contrato de longo prazo</p>
+  <p class="sim-cta-text">PLD, CMO, reservatórios, submercados, mercado livre — física e economia da energia integradas. Turmas presenciais em SP e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+// ── C1: Reservatório vs CMO ────────────────────────────────────────────────────
+const reserv=[10,20,30,40,50,60,70,80,90,100];
+const cmo=[750,600,450,350,280,200,150,110,80,59];
+new Chart(document.getElementById('c1'),{type:'line',
+  data:{labels:reserv.map(v=>v+'%'),datasets:[{
+    label:'Custo Marginal de Operação típico (R$/MWh)',
+    data:cmo,
+    borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.10)',fill:true,tension:.4,pointRadius:5,borderWidth:2.5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{title:{display:true,text:'Nível dos reservatórios do SIN (%)',color:tc,font:{size:11}},ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{title:{display:true,text:'CMO / PLD (R$/MWh)',color:tc,font:{size:11}},ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C2: Fluxo de cálculo do PLD (gráfico de barras estilizado) ─────────────────
+new Chart(document.getElementById('c2'),{type:'bar',
+  data:{
+    labels:['NEWAVE\n(60 meses)','DECOMP\n(12 semanas)','DESSEM\n(7 dias semi-hor.)','CCEE calcula\nPLD','CCEE publica\nPLD D+1'],
+    datasets:[{
+      label:'Sequência temporal de cálculo',
+      data:[100,90,80,70,60],
+      backgroundColor:['rgba(124,58,237,.75)','rgba(37,99,235,.75)','rgba(22,163,74,.75)','rgba(215,119,6,.75)','rgba(220,38,38,.72)'],
+      borderRadius:8
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`Etapa ${6-ctx.dataIndex} de 5 no processo de cálculo`}}},
+    scales:{
+      x:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}},
+      y:{display:false}
+    }
+  }
+});
+
+// ── C3: Histórico PLD médio anual ─────────────────────────────────────────────
+const anosPLD=['2002','2004','2006','2008','2010','2012','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025*'];
+const pldHist=[185,72,55,164,40,90,689,287,145,385,310,100,65,822,95,72,128,65];
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{labels:anosPLD,datasets:[{
+    label:'PLD médio anual (R$/MWh)',
+    data:pldHist,
+    backgroundColor:pldHist.map(v=>v>600?'rgba(220,38,38,.80)':v>200?'rgba(215,119,6,.75)':v>100?'rgba(37,99,235,.72)':'rgba(22,163,74,.72)'),
+    borderRadius:5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`R$ ${ctx.raw}/MWh em ${ctx.label}`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:9.5},color:tc,maxRotation:40},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C4: Sazonalidade anual PLD ────────────────────────────────────────────────
+const meses=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const pldSeco=[80,75,68,72,110,160,200,250,280,220,140,90];    // ano seco
+const pldChuvoso=[62,59,59,59,65,75,90,110,95,75,65,60];       // ano chuvoso
+new Chart(document.getElementById('c4'),{type:'line',
+  data:{labels:meses,datasets:[
+    {label:'Ano seco (ex: 2021)',data:pldSeco,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},
+    {label:'Ano chuvoso (ex: 2022)',data:pldChuvoso,borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C5: PLD horário dia típico ─────────────────────────────────────────────────
+const horas5=['0h','2h','4h','6h','8h','10h','12h','14h','16h','18h','19h','20h','22h'];
+const pldHora=[70,65,62,65,80,95,68,72,85,155,180,160,100];
+const cargaH5=[55,50,48,52,75,83,82,82,84,91,94,93,78];
+new Chart(document.getElementById('c5'),{type:'line',
+  data:{labels:horas5,datasets:[
+    {label:'PLD horário (R$/MWh)',data:pldHora,borderColor:'#dc2626',tension:.4,borderWidth:2.5,pointRadius:4,yAxisID:'y'},
+    {label:'Carga SIN (GW)',data:cargaH5,borderColor:'#2563eb',tension:.4,borderWidth:2,borderDash:[6,3],pointRadius:3,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#dc2626',callback:v=>'R$'+v},grid:{color:gc},title:{display:true,text:'PLD (R$/MWh)',color:'#dc2626',font:{size:10}}},
+      y1:{min:40,max:100,ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' GW'},grid:{display:false},position:'right',title:{display:true,text:'Carga (GW)',color:'#2563eb',font:{size:10}}}
+    }
+  }
+});
+
+// ── C6: PLD por submercado mensal típico ──────────────────────────────────────
+new Chart(document.getElementById('c6'),{type:'line',
+  data:{labels:meses,datasets:[
+    {label:'Sudeste/Centro-Oeste',data:[85,78,72,80,115,165,205,255,285,225,145,92],borderColor:'#2563eb',tension:.4,borderWidth:2.5,pointRadius:4},
+    {label:'Sul',data:[82,75,70,78,112,160,200,248,278,218,140,88],borderColor:'#16a34a',tension:.4,borderWidth:2,pointRadius:3},
+    {label:'Nordeste',data:[59,59,59,65,80,110,130,160,175,140,100,72],borderColor:'#d97706',tension:.4,borderWidth:2,borderDash:[6,3],pointRadius:3},
+    {label:'Norte',data:[90,82,75,88,125,175,215,265,295,235,155,98],borderColor:'#dc2626',tension:.4,borderWidth:2,borderDash:[4,4],pointRadius:3},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C7: Drivers do PLD ────────────────────────────────────────────────────────
+const drivers=['Reservatórios cheios\n→ baixa PLD','Alta solar/eólica\n→ baixa PLD','Baixa demanda\n(madrugada/fim semana)','Expansão de renováveis\n(longo prazo)','Alta demanda\n(verão quente)','Seca / ENA baixa\n→ eleva PLD','Pico noturno\n(sem solar)','Falha de usina\n→ eleva PLD','Desmatamento\n(menos chuva/ENA)'];
+const impacto=[-9,-7,-5,-4,+5,+9,+6,+7,+4]; // negativo = reduz PLD, positivo = eleva
+new Chart(document.getElementById('c7'),{type:'bar',
+  data:{labels:drivers,datasets:[{
+    label:'Impacto no PLD',
+    data:impacto,
+    backgroundColor:impacto.map(v=>v<0?'rgba(22,163,74,.75)':'rgba(220,38,38,.75)'),
+    borderRadius:5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{font:{size:9},color:'#374151',maxRotation:25},grid:{display:false}},
+      y:{min:-10,max:10,ticks:{font:{size:11},color:tc,callback:v=>v>0?'+'+v:v},grid:{color:gc},title:{display:true,text:'Impacto relativo (−reduz / +eleva PLD)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C8: Estrutura mercado livre com PLD (donut) ───────────────────────────────
+new Chart(document.getElementById('c8'),{type:'doughnut',
+  data:{
+    labels:['Energia contratada (preço fixo)','Diferença liquidada no PLD','Serviços ancilares (TSA)','Encargos e perdas'],
+    datasets:[{
+      data:[75,15,5,5],
+      backgroundColor:['rgba(37,99,235,.78)','rgba(220,38,38,.78)','rgba(215,119,6,.72)','rgba(107,114,128,.65)'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,cutout:'48%',
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:12,padding:8}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw}% do custo total típico`}}
+    }
+  }
+});
+
+// ── C9: PLD horário e curva de carga ──────────────────────────────────────────
+const horas9=['0h','2h','4h','6h','8h','10h','12h','14h','16h','18h','19h','20h','22h'];
+const pldH9=[70,65,62,65,80,95,59,65,85,180,210,165,105];
+const solar9=[0,0,0,0,12,25,30,28,18,2,0,0,0];
+new Chart(document.getElementById('c9'),{type:'line',
+  data:{labels:horas9,datasets:[
+    {label:'PLD horário (R$/MWh)',data:pldH9,borderColor:'#dc2626',tension:.4,borderWidth:2.5,pointRadius:4,yAxisID:'y',fill:false},
+    {label:'Geração solar (GW)',data:solar9,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.15)',fill:true,tension:.4,borderWidth:2,pointRadius:4,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:'#dc2626',callback:v=>'R$'+v},grid:{color:gc},title:{display:true,text:'PLD (R$/MWh)',color:'#dc2626',font:{size:10}}},
+      y1:{min:0,max:38,ticks:{font:{size:11},color:'#f59e0b',callback:v=>v+' GW'},grid:{display:false},position:'right',title:{display:true,text:'Solar (GW)',color:'#f59e0b',font:{size:10}}}
+    }
+  }
+});
+
+// ── C10: Limites históricos do PLD ────────────────────────────────────────────
+const anosLim=['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+const tetoEst=[388,534,422,505,513,559,823,388,626,751,751,800];   // aprox. teto estrutural
+const tetoHor=[null,null,null,null,null,null,null,null,1295,1542,1542,1611]; // teto horário (criado após 2021)
+const piso   =[17,21,28,40,42,44,69,69,69,58,58,58];
+new Chart(document.getElementById('c10'),{type:'line',
+  data:{labels:anosLim,datasets:[
+    {label:'Teto horário',data:tetoHor,borderColor:'#dc2626',tension:.3,borderWidth:2.5,pointRadius:5,borderDash:[],fill:false},
+    {label:'Teto estrutural',data:tetoEst,borderColor:'#d97706',tension:.3,borderWidth:2,pointRadius:5,borderDash:[6,3],fill:false},
+    {label:'Piso mínimo',data:piso,borderColor:'#16a34a',tension:.3,borderWidth:2,pointRadius:5,borderDash:[4,4],fill:false},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+</script>
+</body>
+</html>
