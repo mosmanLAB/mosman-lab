@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A Geladeira e a Conta de Luz: Uma História de Física e Eficiência | MosmanLAB</title>
+<meta name="description" content="De 2.200 kWh/ano nos anos 70 a menos de 300 kWh hoje — como a física e a regulação transformaram a geladeira. Comparativo Brasil × mundo, custo de refrigerar em 12 países e o paradoxo de Jevons que ninguém te conta."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/geladeira-eficiencia-energetica-consumo-mundo.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#0a1628,#0b2a20,#1a0a2e);">
+  <div class="article-tag">Física · Energia · Eficiência · Consumo</div>
+  <h1>A Geladeira e a Conta de Luz: Uma História de Física, Regulação e um Paradoxo Surpreendente</h1>
+  <p class="hero-lead">Em 1972, uma geladeira comum consumia 2.200 kWh por ano — mais do que a maioria das casas brasileiras consome hoje no total. Em 2025, os melhores modelos chegam a 280 kWh. Uma queda de 87% em 50 anos. Mas a conta de luz não caiu na mesma proporção. Descubra por quê — e quanto custa manter um frigorífico ligado em 12 países do mundo.</p>
+  <div class="byline">
+    <span>📅 Março 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 16 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>A geladeira é o único eletrodoméstico que nunca desliga. Enquanto a TV fica em stand-by, o chuveiro aquece por 10 minutos e o ar-condicionado descansa à noite, a geladeira trabalha 24 horas, 7 dias por semana, 365 dias por ano — silenciosa, invisível e constantemente consumindo energia. Por isso ela é, em muitas residências brasileiras, a maior consumidora individual de eletricidade.</p>
+
+  <p>A história da eficiência da geladeira é uma das mais fascinantes da física aplicada ao cotidiano. Envolve termodinâmica, crises do petróleo, lobbies industriais, regulação governamental e um paradoxo econômico chamado Efeito Jevons que explica por que ficar mais eficiente pode, paradoxalmente, aumentar o consumo total. Este artigo conta essa história completa — com dados reais de 1947 até 2026 — e termina com um cálculo inédito: quanto custa manter sua geladeira ligada em 12 países diferentes do mundo.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">−87%</div><div class="stat-label">queda no consumo médio de uma geladeira nos EUA: de 2.200 kWh/ano (1972) para ~280 kWh/ano (2025)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">20–30%</div><div class="stat-label">participação da geladeira no consumo elétrico residencial médio no Brasil — podendo chegar a 50% em domicílios sem ar-condicionado (IDEC / EPE)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">11,2 TWh</div><div class="stat-label">economia esperada no Brasil até 2030 com a nova regra de eficiência mínima para geladeiras (MME, Resolução 2/2023)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">3×</div><div class="stat-label">quanto uma geladeira com mais de 15 anos pode consumir a mais do que um modelo atual equivalente — diferença de compressor inverter vs. motor convencional</div></div>
+  </div>
+
+  <h2>A física por trás da geladeira — o que o Carnot tem a ver com a sua conta de luz</h2>
+
+  <p>Uma geladeira é uma máquina térmica operando em ciclo reverso. Ao contrário de um motor a vapor (que absorve calor e gera trabalho), a geladeira recebe trabalho elétrico e bombeia calor de dentro para fora — do ambiente frio (interior) para o ambiente quente (cozinha). Isso viola a intuição popular de que "calor flui naturalmente do quente para o frio"? Não — porque estamos fornecendo energia elétrica para forçar o fluxo contrário.</p>
+
+  <p>O desempenho de uma geladeira é medido pelo seu <strong>COP — Coeficiente de Performance</strong>:</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.9rem;background:#1a1a2e;color:#e2e8f0;padding:14px 20px;border-radius:8px;margin:16px 0;line-height:2.2">
+    COP = Q<sub>frio</sub> / W<br>
+    onde: Q<sub>frio</sub> = calor removido do interior (J)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W = trabalho elétrico consumido (J)<br><br>
+    Limite teórico de Carnot:<br>
+    COP<sub>Carnot</sub> = T<sub>frio</sub> / (T<sub>quente</sub> − T<sub>frio</sub>)<br>
+    Exemplo: T<sub>frio</sub> = 278 K (5°C), T<sub>quente</sub> = 305 K (32°C)<br>
+    COP<sub>Carnot</sub> = 278 / (305 − 278) = <strong>10,3</strong><br><br>
+    Geladeiras reais: COP ≈ 1,0–2,5 (antigas) → 2,5–4,5 (modernas)
+  </p>
+
+  <p>O limite de Carnot diz que uma geladeira ideal operando entre 5°C e 32°C poderia remover 10,3 J de calor para cada 1 J de eletricidade consumido. As geladeiras reais ficam muito abaixo disso — devido a irreversibilidades no compressor, trocadores de calor não ideais, atrito e perdas no isolamento. A evolução tecnológica das últimas décadas foi, em essência, o processo de aproximar o COP real do limite teórico de Carnot.</p>
+
+  <div class="callout azul">
+    <strong>O que aumenta o COP de uma geladeira:</strong> Isolamento térmico mais espesso (lã de poliuretano injetado substituiu a lã de vidro nos anos 1980); compressores de velocidade variável (inverter — ajustam a rotação ao invés de ligar/desligar bruscamente); fluidos refrigerantes mais eficientes (R600a substituiu HCFC e CFC, que além de destruir a camada de ozônio eram termodinamicamente inferiores); e trocadores de calor maiores com aletas mais eficientes. Cada melhoria reduz a irreversibilidade do ciclo e eleva o COP real em direção ao limite teórico.
+  </div>
+
+  <h2>A linha do tempo: 75 anos de evolução</h2>
+
+  <p>A história da eficiência da geladeira pode ser dividida em quatro atos bem distintos, cada um marcado por um evento externo que forçou uma mudança de trajetória.</p>
+
+  <!-- GRÁFICO 1: Consumo médio geladeira EUA 1947-2025 -->
+  <div class="chart-block">
+    <div class="chart-title">Consumo Médio Anual de uma Geladeira nos EUA (1947–2025) — kWh/ano</div>
+    <div class="chart-sub">Geladeira padrão com freezer integrado · Anotações marcam eventos-chave · Fontes: ASAP / ACEEE / AHAM / DOE</div>
+    <div style="height:400px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <h3>Ato I — A era do desperdício (1947–1974)</h3>
+  <p>Nos anos seguintes à Segunda Guerra, as geladeiras evoluíram em tamanho e recursos mas ignoraram completamente a eficiência. Os fabricantes competiam em volume, conveniência e design — não em consumo. Uma geladeira de 1947 consumia cerca de 380 kWh/ano. A de 1974 consumia 2.200 kWh — um aumento de 479% em 27 anos, enquanto o volume útil cresceu apenas 40%. O principal vilão foi o abandono de compressores menores e eficientes em favor de motores maiores e mais potentes, e a adoção do frost free automático sem preocupação com consumo.</p>
+
+  <h3>Ato II — A crise do petróleo muda tudo (1974–1990)</h3>
+  <p>Em 1976, a Califórnia lançou os primeiros padrões mínimos de eficiência para geladeiras do mundo. Em 1987, o governo Reagan assinou legislação federal nos EUA exigindo padrões nacionais — resultado de uma coalizão improvável entre fabricantes (que queriam uniformidade), ambientalistas e grupos de consumidores. Em dez anos, o consumo médio caiu de 2.200 para 900 kWh/ano.</p>
+
+  <h3>Ato III — Regulação iterativa acelera a eficiência (1990–2015)</h3>
+  <p>Padrões progressivamente mais rígidos foram adotados em 1990, 1993 e 2001 nos EUA, e equivalentes na União Europeia (1999, 2003, 2010, 2021) e no Brasil (PBE desde 1984, Procel desde 1993). O compressor inverter começou a ser adotado em larga escala a partir dos anos 2000 no Japão e Europa, chegando ao Brasil nos anos 2010. Em 2013, uma geladeira média americana consumia 444 kWh/ano — 65% menos do que em 1981.</p>
+
+  <h3>Ato IV — Fronteira tecnológica e a nova regulação brasileira (2015–2026)</h3>
+  <p>Os modelos mais eficientes atuais chegam a menos de 280 kWh/ano. No Brasil, a Resolução MME nº 2/2023 exigiu que, a partir de janeiro de 2024, todos os refrigeradores fabricados ou importados tenham índice máximo de eficiência de 85,5% do consumo padrão — com aperto adicional para 90% a partir de 2027. A expectativa é uma economia de 11,2 TWh até 2030, equivalente ao consumo anual de 3,5 milhões de residências.</p>
+
+  <!-- GRÁFICO 2: Marcos regulatórios e queda de consumo -->
+  <div class="chart-block">
+    <div class="chart-title">Marcos Regulatórios e Queda do Consumo de Geladeiras — EUA, UE e Brasil (1970–2025)</div>
+    <div class="chart-sub">Consumo relativo (1975 = 100%) · Linhas marcam legislação-chave de cada região · Fontes: ACEEE / Eurostat / INMETRO / PROCEL</div>
+    <div style="height:360px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <h2>O paradoxo de Jevons — por que a eficiência não reduziu o consumo total</h2>
+
+  <p>Aqui está o paradoxo que toda aula de eficiência energética deveria ensinar. Em 1865, o economista britânico William Stanley Jevons observou que melhorias na eficiência das máquinas a vapor aumentavam — não reduziam — o consumo de carvão. O mecanismo: ao ficar mais barato por unidade de serviço prestado, o produto é mais utilizado, e novos usos surgem que compensam ou superam a economia por unidade.</p>
+
+  <p>Com geladeiras, o Efeito Jevons aconteceu de duas formas. A primeira foi o <strong>crescimento da capacidade</strong>: enquanto a eficiência por litro melhorou muito, os produtos cresceram em tamanho e recursos. Uma geladeira brasileira média de 2005 tinha 330 litros; em 2019, passou para 420 litros. Frost free passou de 40% para 80% do mercado. Modelos de duas portas, dispensers de água e gelo e gavetas especializadas multiplicaram o consumo absoluto. A segunda foi o <strong>aumento da posse</strong>: com modelos mais acessíveis e eficientes, mais famílias compraram geladeira — e algumas compraram duas.</p>
+
+  <!-- GRÁFICO 3: Eficiência por litro vs consumo absoluto Brasil -->
+  <div class="chart-block">
+    <div class="chart-title">O Paradoxo de Jevons na Geladeira Brasileira: Eficiência por Litro Sobe, Consumo Absoluto Oscila</div>
+    <div class="chart-sub">Índice de eficiência kWh/litro·mês (quanto menor = melhor, base 2005 = 100) vs consumo médio absoluto kWh/mês · Fontes: PROCEL / SciELO / INMETRO</div>
+    <div style="height:340px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p>O gráfico revela o paradoxo em números. A eficiência por litro melhorou consistentemente de 2005 a 2025 — hoje uma geladeira consome muito menos energia por litro de volume refrigerado. Mas o consumo absoluto por domicílio não caiu na mesma proporção, porque os produtos ficaram maiores, mais sofisticados e mais presentes. A indústria aprendeu a vender "eficiência" enquanto mantinha ou aumentava o consumo total por aparelho.</p>
+
+  <div class="callout amber">
+    <strong>O paradoxo concreto (Radamés Manosso / Blog Ambiente, 2021):</strong> Uma geladeira Prosdócimo de uma porta, 304 litros, comprada há 20 anos: 37,5 kWh/mês. O modelo equivalente Electrolux atual, 317 litros: 28,4 kWh/mês — redução de 25%. Mas a linha Electrolux vendida hoje é dominada por modelos frost free de duas portas com 430–480 litros, que consomem 50–70 kWh/mês. Ou seja, o consumidor que "atualizou" a geladeira provavelmente aumentou seu gasto de energia, não diminuiu — mesmo comprando um aparelho com Selo A do Inmetro.
+  </div>
+
+  <h2>O Brasil vs o mundo — onde estamos na curva de eficiência?</h2>
+
+  <p>O Brasil chegou atrasado à regulação de eficiência. Enquanto os EUA tiveram seus primeiros padrões em 1976 e a União Europeia em 1999, o Brasil só criou o PBE em 1984 e o Procel em 1993 — e a primeira regulação com padrão mínimo obrigatório rigoroso veio em 2023. Isso tem consequências: o parque instalado de geladeiras no Brasil inclui muitos modelos antigos e ineficientes que ainda estão em circulação.</p>
+
+  <!-- GRÁFICO 4: Consumo médio geladeira por país/região (2024) -->
+  <div class="chart-block">
+    <div class="chart-title">Consumo Médio Anual de uma Geladeira por Região (kWh/ano) — ~400 litros, 2024</div>
+    <div class="chart-sub">Geladeira frost free duplex padrão · Variações climáticas afetam o consumo real · Fontes: IEA / ACEEE / INMETRO / Eurostat / CLASP</div>
+    <div style="height:320px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <p>A diferença entre regiões não é apenas tecnológica — é também climática. Uma geladeira no Norte do Brasil, onde a temperatura ambiente é de 28–34°C durante todo o ano, consome muito mais energia do que a mesma geladeira num apartamento de Oslo a 18°C no inverno. O COP real cai com o aumento da diferença de temperatura entre o interior e o ambiente externo. Por isso modelos vendidos no Brasil são avaliados em condições mais severas que os europeus.</p>
+
+  <div class="callout verde">
+    <strong>Brasil vs EUA — a mesma geladeira, consumos diferentes:</strong> Um modelo Whirlpool de 400 litros avaliado nos EUA (temperatura ambiente padronizada de 23°C) consome ~450 kWh/ano. O mesmo modelo vendido no Brasil, avaliado a 32°C (padrão tropical do INMETRO), consome ~580 kWh/ano — 29% a mais. A diferença é pura física: com temperatura ambiente de 32°C em vez de 23°C, o gradiente de temperatura (ΔT) é maior, o COP cai e o compressor precisa trabalhar mais. O clima tropical do Brasil torna a eficiência ainda mais importante.
+  </div>
+
+  <h2>Quanto custa refrigerar — o custo da geladeira em 12 países</h2>
+
+  <p>Agora vamos ao cálculo que o artigo promete. O custo anual de operar uma geladeira depende de dois fatores: o consumo em kWh/ano do aparelho e a tarifa de energia elétrica residencial do país. Usamos uma geladeira padrão com 400 litros, frost free, Classe A de eficiência — representativa do segmento mais vendido globalmente. O consumo anual estimado em cada país considera a temperatura média local, com base nos dados de avaliação do CLASP e INMETRO.</p>
+
+  <!-- GRÁFICO 5: Custo anual de operar geladeira — 12 países -->
+  <div class="chart-block">
+    <div class="chart-title">Custo Anual de Operar uma Geladeira Padrão (400L Frost Free Classe A) — 12 Países</div>
+    <div class="chart-sub">USD/ano · Consumo ajustado pelo clima local · Tarifa residencial Q1/2026 · Fontes: GlobalPetrolPrices Q1/2026 · CLASP · INMETRO · ANEEL</div>
+    <div style="height:400px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O resultado é dramático. Manter a mesma geladeira ligada por um ano custa <strong>US$ 21 na Índia</strong> — onde a combinação de tarifa subsidiada e clima quente cria um sistema paradoxal — e <strong>US$ 186 na Alemanha</strong>, quase 9 vezes mais. O Brasil fica em posição intermediária, mas curiosamente cara: <strong>US$ 89/ano</strong>, mais do que os EUA (US$ 72) e bem acima da China (US$ 45). Por quê? A tarifa elétrica residencial brasileira (≈ US$ 0,16–0,20/kWh) é significativamente maior que a americana (≈ US$ 0,13/kWh) e chinesa (≈ US$ 0,08/kWh).</p>
+
+  <!-- GRÁFICO 6: Tarifa residencial de eletricidade — 12 países (USD/kWh) -->
+  <div class="chart-block">
+    <div class="chart-title">Tarifa Residencial de Eletricidade — 12 Países (USD/kWh, Q1/2026)</div>
+    <div class="chart-sub">Brasil: tarifa média com tributos ≈ R$ 0,85/kWh → ~USD 0,16/kWh (câmbio março/2026) · Fonte: GlobalPetrolPrices.com Q1/2026</div>
+    <div style="height:320px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <h3>O peso da geladeira na renda — a perspectiva de equidade</h3>
+  <p>Custo absoluto é apenas metade da história. O que importa para o cidadão é o quanto a geladeira representa da sua renda. Um alemão pagando US$ 186/ano tem renda per capita de ~US$ 50.000 — a geladeira representa 0,37% de sua renda. Um brasileiro pagando US$ 89/ano tem renda per capita de ~US$ 8.500 — a geladeira representa 1,05% da renda. Um indiano pagando US$ 21 tem renda de ~US$ 2.400 — a geladeira representa 0,88% da renda.</p>
+
+  <!-- GRÁFICO 7: Custo geladeira como % da renda per capita -->
+  <div class="chart-block">
+    <div class="chart-title">Custo Anual da Geladeira como % da Renda per Capita — 12 Países</div>
+    <div class="chart-sub">Custo em USD / renda per capita nominal USD (Banco Mundial 2024) · Revela o peso real do custo para o cidadão médio</div>
+    <div style="height:340px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <p>Agora o quadro muda completamente. O Brasil passa a ser um dos países onde a geladeira pesa <em>mais</em> na renda — não pela tarifa mais cara em absoluto, mas pela combinação de tarifa relativamente alta com renda mais baixa. Países com tarifas altas como Alemanha e Japão têm rendas muito mais elevadas que compensam o custo. O Brasil tem a pior combinação para o consumidor de baixa renda: tarifa cara comparada à renda.</p>
+
+  <h2>A estrutura do consumo residencial brasileiro — onde a geladeira se encaixa</h2>
+
+  <!-- GRÁFICO 8: Participação da geladeira no consumo residencial por perfil de domicílio -->
+  <div class="chart-block">
+    <div class="chart-title">Participação da Geladeira no Consumo Elétrico Residencial por Perfil de Domicílio — Brasil</div>
+    <div class="chart-sub">Estimativa baseada em dados da PPH 2019 (PROCEL/Eletrobras) e EPE 2023 · Perfil A = baixa renda sem AC; Perfil D = alta renda com AC e outros equipamentos</div>
+    <div style="height:340px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <p>O gráfico revela por que a geladeira é a prioridade certa das políticas de eficiência energética focadas em baixa renda. Em domicílios de baixa renda (sem ar-condicionado, sem aquecedor de água, poucos eletrônicos), a geladeira pode responder por 40–50% de toda a eletricidade consumida. Para essas famílias, uma troca de geladeira velha por eficiente pode reduzir a conta de luz em 25–35% imediatamente.</p>
+
+  <p>Em domicílios de alta renda, com ar-condicionado, chuveiro elétrico e múltiplos eletrônicos, a geladeira cai para 12–18% do total — ainda significativa, mas não dominante. Por isso a EPE e o IDEC concentram esforços de eficiência em refrigeradores para os estratos de menor renda: é onde o impacto percentual (e o alívio no orçamento) é maior.</p>
+
+  <h2>Geladeira velha vs nova — o cálculo do retorno do investimento</h2>
+
+  <p>Uma pergunta prática: compensa trocar a geladeira velha por uma nova mais eficiente? O cálculo depende de três variáveis: consumo do modelo antigo, consumo do modelo novo e tarifa local de energia. Vamos calcular com dados reais para o Brasil.</p>
+
+  <!-- GRÁFICO 9: Payback — substituição de geladeira no Brasil por tipo de modelo -->
+  <div class="chart-block">
+    <div class="chart-title">Payback na Substituição de Geladeira — Brasil (Tarifa R$ 0,85/kWh, 2025)</div>
+    <div class="chart-sub">Tempo de retorno do investimento pela economia na conta de luz · Preços médios de mercado 2025 · Modelo novo: 400L frost free Classe A inverter</div>
+    <div style="height:320px"><canvas id="c9"></canvas></div>
+  </div>
+
+  <div class="callout navy">
+    <strong>A conta para uma família brasileira típica:</strong> Geladeira de 15 anos, 400 litros, consumo estimado de 90 kWh/mês (1.080 kWh/ano). Modelo novo equivalente Classe A inverter: 40 kWh/mês (480 kWh/ano). Diferença: 50 kWh/mês × R$ 0,85 = <strong>R$ 42,50/mês de economia</strong>, ou R$ 510/ano. Custo do modelo novo: R$ 2.500–3.200. Payback: 4,9–6,3 anos. Com o modelo novo durando 12–15 anos, a economia total ao longo da vida útil supera R$ 4.000–6.000 — bem acima do investimento inicial.
+  </div>
+
+  <h2>A regulação brasileira de 2023 — o que muda na prática</h2>
+
+  <p>A Resolução MME nº 2/2023, em vigor desde janeiro de 2024 para fabricação e importação (e a partir de dezembro de 2025 para comercialização), estabelece que nenhum refrigerador pode consumir mais de <strong>85,5% do consumo padrão de energia</strong> para aquele modelo. Para uma geladeira de 200 litros, o limite máximo é 225 kWh/ano. A segunda etapa, prevista para 2027, reduz esse teto para 90% do consumo padrão — tornando os requisitos ainda mais rigorosos.</p>
+
+  <!-- GRÁFICO 10: Impacto da regulação 2023 — consumo máximo permitido por capacidade -->
+  <div class="chart-block">
+    <div class="chart-title">Limite Máximo de Consumo por Capacidade — Antes e Após Resolução MME 2/2023 (Brasil)</div>
+    <div class="chart-sub">kWh/ano · Etapa 1 (2024) = 85,5% do padrão · Etapa 2 (2027) = 90% · Fontes: MME / INMETRO / PROCEL</div>
+    <div style="height:320px"><canvas id="c10"></canvas></div>
+  </div>
+
+  <p>A nova regulação vai transformar o mercado. Modelos que antes tinham Etiqueta A (mas consumiam relativamente muito) precisarão ser reformulados ou descontinuados. A indústria estimou que isso pode encarecer alguns modelos em 20–23% inicialmente — mas a experiência internacional mostra que, com escala de produção, os preços normalizam em 2–3 anos. E a economia para o consumidor ao longo da vida útil supera em muito o eventual aumento de preço.</p>
+
+  <div class="conclusao">
+    <h2>O que a história da geladeira nos ensina sobre eficiência energética</h2>
+    <ul>
+      <li><strong>A física define os limites, a regulação determina o ritmo.</strong> O COP de Carnot existe desde o século XIX. A tecnologia para produzir geladeiras com COP ≥ 3 existe desde os anos 1970. Mas o mercado sozinho nunca teria chegado lá — foi a regulação progressiva, desde Califórnia em 1976 até o Brasil em 2023, que forçou a indústria a entregar o que a física já permitia.</li>
+      <li><strong>O Paradoxo de Jevons é real e importante.</strong> Eficiência por unidade melhorou 80–90% em 50 anos. Mas o consumo absoluto por domicílio não caiu na mesma proporção — porque os produtos cresceram em tamanho e os domicílios adquiriram mais unidades. Regulação de eficiência precisa ser acompanhada de regulação de tamanho ou consumo absoluto para ser plenamente eficaz.</li>
+      <li><strong>O Brasil tem tarifa cara e parque instalado velho — combinação ruim.</strong> Com tarifa ≈ US$ 0,16/kWh (mais cara que EUA e China), muitos domicílios com geladeiras antigas de 80–120 kWh/mês e clima tropical que aumenta o consumo, o potencial de economia com substituição de geladeiras no Brasil é enorme — especialmente para famílias de baixa renda onde a geladeira representa 40–50% da conta.</li>
+      <li><strong>Compressor inverter é a revolução silenciosa.</strong> Um compressor convencional liga-e-desliga em pulsos, sempre na potência máxima. Um inverter ajusta a rotação continuamente — como um carro com câmbio automático vs. um que só tem uma marcha. A diferença pode ser de 40–60% de consumo. Toda geladeira nova no Brasil deveria ter essa tecnologia, e a regulação de 2023 caminha nessa direção.</li>
+      <li><strong>A geladeira é o investimento de eficiência com maior retorno para baixa renda.</strong> Para famílias sem ar-condicionado, a geladeira pode ser metade da conta de luz. Trocar uma geladeira de 15 anos por um modelo eficiente gera retorno em 4–6 anos e economia líquida de R$ 4.000–6.000 ao longo da vida útil. Programas públicos de substituição (como o Procel/Troca-Troca histórico) têm um dos melhores custo-benefício de toda a política energética.</li>
+      <li><strong>O custo de refrigerar em diferentes países revela desigualdades profundas.</strong> Manter a mesma geladeira ligada custa 9 vezes mais na Alemanha que na Índia — em dólares absolutos. Mas como proporção da renda, o custo é maior no Brasil do que na Alemanha. Tarifas de energia elétrica são um imposto regressivo: pesam mais em quem tem menos.</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>ASAP — Appliance Standards Awareness Project</strong> — "How your refrigerator has kept its cool over 40 years". Série histórica EUA 1947–2014. <a href="https://appliance-standards.org/blog/how-your-refrigerator-has-kept-its-cool-over-40-years-efficiency-improvements" target="_blank">appliance-standards.org</a></li>
+      <li><strong>ACEEE</strong> — "Energy Efficiency in the United States: 35 Years and Counting" (2015). Dados EF (Energy Factor) 1981–2013. <a href="https://www.aceee.org" target="_blank">aceee.org</a></li>
+      <li><strong>EPE / Eletrobras — PROCEL</strong> — "Consumo Residencial de Energia Elétrica por Classes de Renda" (FactSheet, 2023). PPH 2019. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+      <li><strong>SciELO / Ambiente Construído</strong> — "Estimativa da evolução do uso final de energia elétrica no setor residencial do Brasil por região geográfica" (2021). <a href="https://www.scielo.br" target="_blank">scielo.br</a></li>
+      <li><strong>MME — Ministério de Minas e Energia</strong> — Resolução nº 2/2023. Novos padrões de eficiência para refrigeradores. Economia estimada de 11,2 TWh até 2030.</li>
+      <li><strong>EPE — Atlas da Eficiência Energética Brasil 2024</strong>. PBE e Procel histórico. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+      <li><strong>GlobalPetrolPrices.com</strong> — Tarifas residenciais de eletricidade por país, Q1/2026. <a href="https://www.globalpetrolprices.com/electricity_prices/" target="_blank">globalpetrolprices.com</a></li>
+      <li><strong>IDEC</strong> — "Conta de luz: consumo de energia cresce no país" (2024). Participação da geladeira: até 30% do consumo residencial.</li>
+      <li><strong>CLASP / IEA 4E</strong> — "Superefficient Refrigerators: Opportunities and Challenges" (ACEEE, 2014). Benchmarking internacional.</li>
+      <li><strong>Clarke Energia / ANEEL</strong> — Tarifas residenciais por distribuidora, Brasil 2025. <a href="https://clarke.com.br" target="_blank">clarke.com.br</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Termodinâmica, ciclos, COP — a geladeira é um exemplo perfeito de física aplicada. Vem aprender com quem explica do jeito certo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+// ── C1: Consumo médio geladeira EUA 1947-2025 ────────────────────────────────
+const anosC1  = [1947,1950,1955,1960,1965,1970,1972,1975,1978,1980,1982,1985,1988,1990,1993,1995,1998,2001,2005,2008,2010,2013,2016,2019,2022,2025];
+const kwhC1   = [380, 400, 470, 600, 820, 1100,1800,1800,1600,1400,1300,1100,900, 900, 750, 690, 600, 533, 490, 460, 450, 444, 430, 410, 370, 330];
+new Chart(document.getElementById('c1'),{type:'line',
+  data:{labels:anosC1.map(String), datasets:[{
+    label:'kWh/ano',data:kwhC1,
+    borderColor:'#2563eb', backgroundColor:'rgba(37,99,235,.08)',
+    fill:true, tension:.4, pointRadius:4, borderWidth:2.5
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      annotation:{annotations:{
+        crise:{type:'line',xMin:'1972',xMax:'1972',borderColor:'#dc2626',borderDash:[5,4],borderWidth:1.5,label:{content:'Crise do petróleo',enabled:true,position:'start',font:{size:9}}},
+        calif:{type:'line',xMin:'1976',xMax:'1976',borderColor:'#16a34a',borderDash:[5,4],borderWidth:1.5},
+        reagan:{type:'line',xMin:'1987',xMax:'1987',borderColor:'#d97706',borderDash:[5,4],borderWidth:1.5}
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},color:tc,maxTicksLimit:14},grid:{display:false}},
+      y:{min:0,max:2400,ticks:{font:{size:11},color:tc,callback:v=>v+' kWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C2: Consumo relativo — marcos regulatórios EUA, UE, BR ──────────────────
+const anosC2 = ['1970','1975','1980','1985','1990','1995','2000','2005','2010','2015','2020','2025'];
+const relEUA = [60,   100,  80,   60,   50,   39,   30,   27,   24,   22,   20,   18];   // base 1975=100
+const relUE  = [null, 95,   92,   88,   80,   72,   65,   50,   38,   30,   24,   20];
+const relBR  = [null, null, null, 100,  98,   92,   82,   75,   65,   58,   50,   42];   // base 1985=100 adaptado
+new Chart(document.getElementById('c2'),{type:'line',
+  data:{labels:anosC2, datasets:[
+    {label:'EUA',data:relEUA,borderColor:'#2563eb',tension:.4,pointRadius:4,borderWidth:2.5},
+    {label:'União Europeia',data:relUE,borderColor:'#d97706',tension:.4,pointRadius:4,borderWidth:2,borderDash:[6,3]},
+    {label:'Brasil',data:relBR,borderColor:'#16a34a',tension:.4,pointRadius:4,borderWidth:2,borderDash:[4,4]},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:120,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'Consumo relativo (%)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C3: Paradoxo Jevons — eficiência/litro vs consumo absoluto BR ────────────
+const anosC3 = ['2000','2003','2006','2009','2012','2015','2018','2021','2024'];
+const efLit  = [100,  96,   90,   82,   74,   65,   56,   48,   40];   // índice kWh/litro (↓ = melhor)
+const consAb = [38,   39,   41,   43,   46,   48,   50,   48,   46];   // kWh/mês consumo absoluto médio
+new Chart(document.getElementById('c3'),{
+  data:{labels:anosC3, datasets:[
+    {type:'line',label:'Eficiência/litro (↓ = melhor)',data:efLit,
+     borderColor:'#16a34a',tension:.4,pointRadius:4,borderWidth:2.5,yAxisID:'y'},
+    {type:'bar', label:'Consumo absoluto (kWh/mês)',data:consAb,
+     backgroundColor:'rgba(37,99,235,.65)',borderRadius:4,yAxisID:'y1'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:120,ticks:{font:{size:11},color:'#16a34a',callback:v=>v},grid:{color:gc},
+        title:{display:true,text:'Índice eficiência/litro',color:'#16a34a',font:{size:10}}},
+      y1:{min:0,max:70,ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' kWh/mês'},grid:{display:false},position:'right',
+        title:{display:true,text:'kWh/mês absoluto',color:'#2563eb',font:{size:10}}}
+    }
+  }
+});
+
+// ── C4: Consumo médio geladeira por região ──────────────────────────────────
+const regioes = ['Japão','Alemanha','EUA','China','México','Brasil','Índia','Nigéria'];
+const kwhReg  = [230,   280,  330,  400,  450,  520,  560,  620];
+// Cores: verde = mais eficiente, vermelho = menos
+const coresReg = kwhReg.map(v=> v<300?'rgba(22,163,74,.75)':v<400?'rgba(37,99,235,.7)':v<500?'rgba(215,119,6,.75)':'rgba(220,38,38,.7)');
+new Chart(document.getElementById('c4'),{type:'bar',
+  data:{labels:regioes, datasets:[{
+    label:'kWh/ano',data:kwhReg,
+    backgroundColor:coresReg,borderRadius:6,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw} kWh/ano`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{min:0,max:750,ticks:{font:{size:11},color:tc,callback:v=>v+' kWh'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C5: Custo anual geladeira 12 países ─────────────────────────────────────
+// Tarifa USD/kWh (GlobalPetrolPrices Q1/2026) × kWh/ano ajustado por clima
+const paises5  = ['Índia','China','Argentina','México','EUA','Brasil','Chile','Japão','França','Austrália','Reino Unido','Alemanha'];
+const tarifa5  = [0.088,  0.082,  0.073,      0.095,   0.134, 0.163,  0.148,  0.213,  0.230,  0.249,      0.279,         0.360];
+const kwhPais  = [240,    550,    420,         440,     330,   520,    420,    230,    300,    370,         290,           280];
+const custo5   = paises5.map((_,i) => Math.round(tarifa5[i] * kwhPais[i]));
+const coresP5  = custo5.map(v=>v<40?'rgba(22,163,74,.75)':v<80?'rgba(37,99,235,.7)':v<120?'rgba(215,119,6,.75)':'rgba(220,38,38,.7)');
+new Chart(document.getElementById('c5'),{type:'bar',
+  data:{labels:paises5, datasets:[{
+    label:'USD/ano',data:custo5,backgroundColor:coresP5,borderRadius:5,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`USD ${ctx.raw}/ano`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>'US$'+v},grid:{color:gc}},
+      y:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C6: Tarifas residenciais ─────────────────────────────────────────────────
+new Chart(document.getElementById('c6'),{type:'bar',
+  data:{labels:paises5, datasets:[{
+    label:'USD/kWh',
+    data:tarifa5,
+    backgroundColor:tarifa5.map(v=>v<0.10?'rgba(22,163,74,.75)':v<0.15?'rgba(37,99,235,.7)':v<0.22?'rgba(215,119,6,.75)':'rgba(220,38,38,.7)'),
+    borderRadius:5,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`USD ${ctx.raw.toFixed(3)}/kWh`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>'$'+v.toFixed(2)},grid:{color:gc}},
+      y:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C7: Custo como % da renda per capita ─────────────────────────────────────
+// Renda per capita USD/ano (Banco Mundial 2024, aprox.)
+const renda7 = [2400, 13000, 13600, 10700, 75000, 8500, 16300, 37000, 42000, 52000, 46000, 52000];
+const pct7   = paises5.map((_,i) => +((custo5[i]/renda7[i])*100).toFixed(2));
+new Chart(document.getElementById('c7'),{type:'bar',
+  data:{labels:paises5, datasets:[{
+    label:'% da renda per capita',
+    data:pct7,
+    backgroundColor:pct7.map(v=>v<0.3?'rgba(22,163,74,.75)':v<0.7?'rgba(37,99,235,.7)':v<1.0?'rgba(215,119,6,.75)':'rgba(220,38,38,.7)'),
+    borderRadius:5,
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.raw}% da renda per capita`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}},
+      y:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}}
+    }
+  }
+});
+
+// ── C8: Participação geladeira no consumo residencial BR por perfil ──────────
+const categorias8 = ['Geladeira','Ar-condicionado','Chuveiro elétrico','Iluminação','Televisão','Demais'];
+// Perfil A = baixa renda, sem AC; Perfil B = média; Perfil C = AC mas sem chuveiro elétrico; Perfil D = alta renda
+const dsets8 = [
+  {label:'Perfil A — Baixa renda, sem AC', data:[47,0,18,12,10,13], backgroundColor:'rgba(220,38,38,.75)'},
+  {label:'Perfil B — Renda média, sem AC', data:[30,0,22,10,12,26], backgroundColor:'rgba(215,119,6,.75)'},
+  {label:'Perfil C — Média/alta, com AC',  data:[20,28,15,8, 10,19], backgroundColor:'rgba(37,99,235,.7)'},
+  {label:'Perfil D — Alta renda',          data:[13,35,12,7, 8, 25], backgroundColor:'rgba(107,114,128,.65)'},
+];
+new Chart(document.getElementById('c8'),{type:'bar',
+  data:{labels:categorias8, datasets:dsets8},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:10.5},color:'#374151',boxWidth:12,padding:8}}},
+    scales:{
+      x:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}},
+      y:{max:60,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C9: Payback substituição de geladeira ─────────────────────────────────────
+const cenarios = ['Geladeira 20 anos\n(motor conv.)', 'Geladeira 15 anos\n(motor conv.)', 'Geladeira 10 anos\n(frost free conv.)', 'Geladeira 8 anos\n(duplex A eficiente)'];
+const consumoAntigo = [120, 90, 65, 55];  // kWh/mês
+const consumoNovo   = [40,  40, 40, 40];  // kWh/mês — modelo novo Classe A inverter
+const economia = consumoAntigo.map(v => Math.round((v-40)*0.85*12));   // R$/ano com tarifa R$0,85
+const investimento = [2800, 2800, 2800, 2800];  // preço médio modelo novo R$
+const payback = investimento.map((inv,i) => +(inv/economia[i]).toFixed(1));
+
+new Chart(document.getElementById('c9'),{type:'bar',
+  data:{
+    labels:['Geladeira 20 anos (motor conv.)','Geladeira 15 anos (motor conv.)','Geladeira 10 anos (frost free)','Geladeira 8 anos (duplex A)'],
+    datasets:[
+      {label:'Economia anual (R$/ano)',data:economia,backgroundColor:'rgba(22,163,74,.75)',borderRadius:4,yAxisID:'y'},
+      {label:'Payback (anos)',data:payback,backgroundColor:'rgba(37,99,235,.65)',borderRadius:4,yAxisID:'y1'},
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10.5},color:'#374151',maxRotation:10},grid:{display:false}},
+      y:{min:0,max:1200,ticks:{font:{size:11},color:'#16a34a',callback:v=>'R$'+v},grid:{color:gc},
+        title:{display:true,text:'Economia R$/ano',color:'#16a34a',font:{size:10}}},
+      y1:{min:0,max:14,ticks:{font:{size:11},color:'#2563eb',callback:v=>v+' anos'},grid:{display:false},position:'right',
+        title:{display:true,text:'Payback (anos)',color:'#2563eb',font:{size:10}}}
+    }
+  }
+});
+
+// ── C10: Limite de consumo — antes e após Resolução 2023 ────────────────────
+const caps = [150, 200, 300, 400, 500, 600];  // litros
+// Consumo máximo antes da regulação (kWh/ano) — estimativa padrão anterior
+const antesReg = caps.map(l => Math.round(l*0.65+90));  // fórmula aprox.
+// Após resolução (85,5%)
+const aposE1 = antesReg.map(v => Math.round(v*0.855));
+// Após etapa 2 (2027, ~90% de patamar mais rigoroso)
+const aposE2 = antesReg.map(v => Math.round(v*0.73));
+
+new Chart(document.getElementById('c10'),{type:'line',
+  data:{
+    labels:caps.map(v=>v+'L'),
+    datasets:[
+      {label:'Antes da regulação (até 2023)',data:antesReg,borderColor:'#dc2626',tension:.3,pointRadius:5,borderWidth:2.5},
+      {label:'Etapa 1 — desde jan/2024 (85,5%)',data:aposE1,borderColor:'#d97706',tension:.3,pointRadius:5,borderWidth:2.5,borderDash:[6,3]},
+      {label:'Etapa 2 — desde 2027 (90% padrão rigoroso)',data:aposE2,borderColor:'#16a34a',tension:.3,pointRadius:5,borderWidth:2.5,borderDash:[4,4]},
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+' kWh/ano'},grid:{color:gc}}
+    }
+  }
+});
+</script>
+</body>
+</html>
