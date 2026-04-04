@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reforma Tributária e a Conta de Luz: O Que Muda para Você | MosmanLAB</title>
+<meta name="description" content="A Reforma Tributária extingue ICMS, PIS e COFINS da conta de luz e cria IBS e CBS. Entenda cada componente da sua conta hoje, o cronograma da transição 2026–2033, o cashback para baixa renda e o impacto no painel solar."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/reforma-tributaria-conta-de-luz.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+/* ── Tabelas editoriais ─────────────────────────────────────────── */
+.tabela-editorial { width:100%; border-collapse:collapse; margin:28px 0; font-size:.9rem; }
+.tabela-editorial thead th { background:#1e3a5f; color:#fff; padding:11px 14px; text-align:left; font-family:'DM Sans',sans-serif; font-weight:600; font-size:.82rem; letter-spacing:.03em; }
+.tabela-editorial tbody tr:nth-child(even){ background:rgba(37,99,235,.04); }
+.tabela-editorial tbody tr:hover { background:rgba(37,99,235,.09); }
+.tabela-editorial td { padding:10px 14px; border-bottom:1px solid rgba(0,0,0,.07); line-height:1.5; vertical-align:top; }
+.tabela-editorial .destaque-verde { color:#15803d; font-weight:700; }
+.tabela-editorial .destaque-vermelho { color:#b91c1c; font-weight:700; }
+.tabela-editorial .destaque-laranja { color:#c2410c; font-weight:700; }
+.tabela-editorial .destaque-azul { color:#1d4ed8; font-weight:700; }
+.tabela-editorial .cinza { color:#6b7280; }
+
+/* ── Timeline visual ────────────────────────────────────────────── */
+.timeline { position:relative; padding:8px 0 8px 32px; margin:32px 0; }
+.timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,#1d4ed8,#dc2626); border-radius:2px; }
+.tl-item { position:relative; margin-bottom:28px; }
+.tl-item::before { content:''; position:absolute; left:-26px; top:6px; width:14px; height:14px; border-radius:50%; background:#fff; border:2.5px solid #1d4ed8; z-index:1; }
+.tl-item.marco::before { background:#1d4ed8; }
+.tl-item.fim::before { background:#dc2626; border-color:#dc2626; }
+.tl-ano { font-family:'DM Mono',monospace; font-size:.85rem; font-weight:700; color:#1d4ed8; margin-bottom:4px; }
+.tl-item.fim .tl-ano { color:#dc2626; }
+.tl-titulo { font-weight:700; font-size:.97rem; margin-bottom:4px; color:#111827; }
+.tl-desc { font-size:.88rem; color:#4b5563; line-height:1.6; }
+
+/* ── Pill badges ────────────────────────────────────────────────── */
+.pill { display:inline-block; padding:2px 10px; border-radius:20px; font-size:.75rem; font-weight:700; font-family:'DM Sans',sans-serif; margin:1px; }
+.pill-verde { background:#dcfce7; color:#15803d; }
+.pill-vermelho { background:#fee2e2; color:#b91c1c; }
+.pill-amarelo { background:#fef9c3; color:#a16207; }
+.pill-azul { background:#dbeafe; color:#1d4ed8; }
+.pill-cinza { background:#f3f4f6; color:#374151; }
+.pill-roxo { background:#ede9fe; color:#6d28d9; }
+
+/* ── Comparativo antes/depois ───────────────────────────────────── */
+.comparativo { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:32px 0; }
+@media(max-width:640px){ .comparativo { grid-template-columns:1fr; } }
+.comp-box { border-radius:14px; padding:22px 24px; }
+.comp-box.antes { background:linear-gradient(135deg,#fff5f5,#fff1f0); border:1.5px solid #fecaca; }
+.comp-box.depois { background:linear-gradient(135deg,#f0fdf4,#eff8ff); border:1.5px solid #bbf7d0; }
+.comp-titulo { font-weight:800; font-size:1rem; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.comp-titulo.antes-t { color:#b91c1c; }
+.comp-titulo.depois-t { color:#15803d; }
+.comp-item { display:flex; justify-content:space-between; align-items:flex-start; padding:7px 0; border-bottom:1px solid rgba(0,0,0,.06); font-size:.87rem; gap:8px; }
+.comp-item:last-child { border-bottom:none; }
+.comp-item-nome { color:#374151; flex:1; }
+.comp-item-val { font-family:'DM Mono',monospace; font-weight:700; font-size:.82rem; white-space:nowrap; }
+
+/* ── Nota de rodapé dos gráficos ────────────────────────────────── */
+.chart-nota { font-size:.75rem; color:#9ca3af; margin-top:8px; font-style:italic; text-align:center; }
+
+/* ── Caixa de alerta ────────────────────────────────────────────── */
+.alerta-box { border-radius:12px; padding:18px 22px; margin:28px 0; }
+.alerta-box.azul { background:rgba(219,234,254,.5); border-left:4px solid #2563eb; }
+.alerta-box.verde { background:rgba(220,252,231,.5); border-left:4px solid #16a34a; }
+.alerta-box.laranja { background:rgba(255,237,213,.5); border-left:4px solid #ea580c; }
+.alerta-box.roxo { background:rgba(237,233,254,.5); border-left:4px solid #7c3aed; }
+.alerta-titulo { font-weight:800; font-size:.9rem; margin-bottom:6px; }
+.alerta-box.azul .alerta-titulo { color:#1e40af; }
+.alerta-box.verde .alerta-titulo { color:#166534; }
+.alerta-box.laranja .alerta-titulo { color:#9a3412; }
+.alerta-box.roxo .alerta-titulo { color:#5b21b6; }
+.alerta-box p { font-size:.88rem; margin:0; line-height:1.65; color:#374151; }
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#0a001e,#001428,#001a0a);">
+  <div class="article-tag">Tributação · Energia · Reforma Tributária · Conta de Luz</div>
+  <h1>Como Fica a Conta de Luz com a Reforma Tributária</h1>
+  <p class="hero-lead">A maior reforma tributária desde 1988 vai extinguir ICMS, PIS e COFINS da sua conta de luz e substituí-los por dois novos tributos. O processo começa em 2026 e termina em 2033. Neste artigo você entende cada centavo cobrado hoje, o que some, o que chega, quando acontece cada mudança — e se a sua conta vai subir ou cair.</p>
+  <div class="byline">
+    <span>📅 Abril 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 22 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>A conta de energia elétrica brasileira é um documento de difícil compreensão. Nela coexistem tarifas reguladas pela ANEEL, encargos criados por lei federal, tributos estaduais, contribuições municipais e sinalização sobre reservatórios de hidrelétricas. São camadas sobrepostas construídas ao longo de décadas, com lógicas diferentes e objetivos que às vezes se contradizem.</p>
+
+  <p>A <strong>Reforma Tributária</strong> — aprovada pela Emenda Constitucional 132/2023 e regulamentada pela Lei Complementar 214/2025 — vai mexer em três dessas camadas: extinguirá o ICMS estadual, o PIS e o COFINS federais, e os substituirá pelo <strong>IBS</strong> (Imposto sobre Bens e Serviços) e pela <strong>CBS</strong> (Contribuição sobre Bens e Serviços). O processo começa agora, em 2026, e só termina em 2033.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">~30%</div><div class="stat-label">da conta de luz residencial típica são tributos hoje — ICMS, PIS e COFINS somados</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">2033</div><div class="stat-label">ano em que a transição termina — 7 anos de convivência entre o sistema antigo e o novo</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">100%</div><div class="stat-label">de cashback da CBS para famílias de baixa renda no fornecimento domiciliar de energia</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">26–28%</div><div class="stat-label">alíquota combinada estimada do IVA dual (IBS+CBS) — mas energia pode ter alíquota reduzida</div></div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 1 — Anatomia da conta de luz hoje</h2>
+
+  <p>Antes de entender o que vai mudar, é preciso entender o que existe. A conta de luz tem três grandes blocos: <strong>tarifas</strong> (o serviço em si), <strong>encargos setoriais</strong> (políticas públicas embutidas) e <strong>tributos</strong>. Cada bloco tem uma lógica diferente e uma origem legal diferente.</p>
+
+  <!-- GRÁFICO 1: Composição da conta de luz residencial -->
+  <div class="chart-block">
+    <div class="chart-title">Composição da Conta de Luz Residencial Típica — Brasil 2026 (% do total)</div>
+    <div class="chart-sub">Consumidor residencial padrão em SP com ~300 kWh/mês · Bandeira verde · Fonte: ANEEL / Enel / MME / análise MosmanLAB</div>
+    <div style="height:360px"><canvas id="c1"></canvas></div>
+    <div class="chart-nota">* Os encargos setoriais estão embutidos na TUSD e TE nas faturas residenciais. Aqui foram extraídos para visualização educacional.</div>
+  </div>
+
+  <p>O gráfico acima revela algo importante: quando você paga R$ 300 de conta de luz, aproximadamente R$ 90 são tributos puros (ICMS + PIS/COFINS), R$ 126 são tarifas de distribuição e energia, R$ 48 são encargos setoriais e R$ 36 são o custo da distribuição local. A <strong>Reforma Tributária afeta apenas a fatia de tributos</strong> — os encargos setoriais, as tarifas e o custo da distribuição permanecem intactos.</p>
+
+  <h3>Bloco 1 — As Tarifas (o serviço em si)</h3>
+
+  <p>As tarifas reguladas pela ANEEL cobrem o custo real de gerar, transportar e distribuir a energia até sua tomada. São três componentes principais:</p>
+
+  <table class="tabela-editorial">
+    <thead><tr><th>Tarifa</th><th>O que paga</th><th>% típico</th><th>Quem regula</th></tr></thead>
+    <tbody>
+      <tr><td><strong>TE — Tarifa de Energia</strong></td><td>O custo de gerar a eletricidade — quanto a distribuidora pagou nas usinas</td><td class="destaque-azul">~30%</td><td>ANEEL (leilões)</td></tr>
+      <tr><td><strong>TUSD — Tarifa de Uso do Sistema de Distribuição</strong></td><td>Manutenção da rede local: postes, fios, transformadores, medidores</td><td class="destaque-azul">~28%</td><td>ANEEL</td></tr>
+      <tr><td><strong>TUST — Tarifa de Transmissão</strong></td><td>Transporte em alta tensão das usinas até a rede local (embutida na TUSD para residências)</td><td class="destaque-cinza cinza">Embutida</td><td>ANEEL / ONS</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Bloco 2 — Encargos Setoriais (políticas públicas pagas por todos)</h3>
+
+  <p>Os encargos setoriais são criados por lei federal e embutidos nas tarifas. Não são tributos — são contribuições compulsórias para financiar políticas do setor elétrico. A Reforma Tributária <strong>não os extingue</strong>.</p>
+
+  <table class="tabela-editorial">
+    <thead><tr><th>Encargo</th><th>Para que serve</th><th>% típico</th></tr></thead>
+    <tbody>
+      <tr><td><strong>CDE</strong> — Conta de Desenvolvimento Energético</td><td>Subsidia a Tarifa Social para baixa renda, Luz para Todos, fontes renováveis, regiões remotas</td><td class="destaque-laranja">~8%</td></tr>
+      <tr><td><strong>CCC</strong> — Conta de Consumo de Combustíveis</td><td>Paga o diesel e gás das termelétricas nos sistemas isolados da Amazônia</td><td class="cinza">~1%</td></tr>
+      <tr><td><strong>PROINFA</strong></td><td>Incentivo às fontes alternativas de energia (eólica, solar, biomassa). Em 2025: R$ 543/MWh, R$ 6,1 bi/ano</td><td class="cinza">~1,5%</td></tr>
+      <tr><td><strong>TFSEE</strong></td><td>Taxa de Fiscalização — custeia o funcionamento da ANEEL</td><td class="cinza">&lt;0,5%</td></tr>
+      <tr><td><strong>P&D</strong></td><td>Pesquisa e Desenvolvimento — distribuidoras obrigadas a investir em inovação</td><td class="cinza">&lt;0,5%</td></tr>
+      <tr><td><strong>ESS / EER</strong></td><td>Encargos do Sistema e de Reserva — paga serviços ancilares e usinas de backup do ONS</td><td class="cinza">~1%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Bloco 3 — Tributos (o que a Reforma vai mudar)</h3>
+
+  <p>É aqui que a Reforma Tributária atua. Os três tributos cobrados hoje na conta de luz — e que serão substituídos:</p>
+
+  <!-- GRÁFICO 2: Tributos atuais detalhados -->
+  <div class="chart-block">
+    <div class="chart-title">Tributos na Conta de Luz Hoje — Alíquotas Efetivas por Estado (2025)</div>
+    <div class="chart-sub">ICMS varia muito por estado e faixa de consumo · PIS e COFINS são federais, mas variam mensalmente (regime não cumulativo) · Fonte: ANEEL / legislações estaduais / EY 2025</div>
+    <div style="height:380px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <div class="alerta-box laranja">
+    <div class="alerta-titulo">⚠️ O truque do cálculo "por dentro" — por que o ICMS é maior do que parece</div>
+    <p>O ICMS é calculado "por dentro": o imposto integra sua própria base de cálculo. Em SP, a alíquota nominal é 25% (acima de 200 kWh/mês). Mas como é cobrado sobre um valor que já inclui o imposto, a alíquota efetiva sobre o valor líquido da energia é <strong>33,3%</strong>. Isso significa que para cada R$ 75 de energia, você paga R$ 25 de ICMS — não R$ 18,75 como a alíquota nominal sugeriria. Com a reforma, o IBS será cobrado "por fora" — eliminando essa distorção e tornando o tributo visível e honesto.</p>
+  </div>
+
+  <table class="tabela-editorial">
+    <thead><tr><th>Tributo</th><th>Tipo</th><th>Alíquota</th><th>Base de cálculo</th><th>Cálculo</th><th>Destino</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>ICMS</strong></td><td>Estadual</td>
+        <td class="destaque-vermelho">12–33%*</td>
+        <td>Valor total da fatura (TE+TUSD+encargos)</td>
+        <td><span class="pill pill-vermelho">Por dentro</span></td>
+        <td>Estado</td>
+      </tr>
+      <tr>
+        <td><strong>PIS</strong></td><td>Federal</td>
+        <td class="destaque-vermelho">~1%</td>
+        <td>Valor da fatura (exceto ICMS e CIP)</td>
+        <td><span class="pill pill-vermelho">Por dentro</span></td>
+        <td>União (trabalhadores)</td>
+      </tr>
+      <tr>
+        <td><strong>COFINS</strong></td><td>Federal</td>
+        <td class="destaque-vermelho">~4–5%</td>
+        <td>Valor da fatura (exceto ICMS e CIP)</td>
+        <td><span class="pill pill-vermelho">Por dentro</span></td>
+        <td>União (saúde/previdência)</td>
+      </tr>
+      <tr>
+        <td><strong>COSIP/CIP</strong></td><td>Municipal</td>
+        <td class="cinza">Valor fixo mensal</td>
+        <td>—</td>
+        <td><span class="pill pill-cinza">Fixo</span></td>
+        <td>Município (iluminação pública)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:-16px">* ICMS varia por estado e faixa de consumo: SP 12% (até 200 kWh) → 25% (201–500 kWh); BA/TO cobram 27–25% para todos independente do consumo.</p>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 2 — O que é a Reforma Tributária e como funciona</h2>
+
+  <p>A Reforma Tributária é a maior mudança no sistema de tributação do consumo desde a Constituição de 1988. Ela substitui cinco tributos fragmentados e conflitantes por dois novos tributos integrados, baseados no modelo de IVA (Imposto sobre Valor Agregado) usado em países desenvolvidos.</p>
+
+  <!-- GRÁFICO 3: Os cinco tributos antigos → dois novos -->
+  <div class="chart-block">
+    <div class="chart-title">A Transformação Tributária — Cinco Impostos Viram Dois</div>
+    <div class="chart-sub">A Reforma unifica a tributação sobre consumo em um modelo de IVA Dual — padrão internacional usado por mais de 170 países</div>
+    <div style="height:320px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <p><strong>CBS — Contribuição sobre Bens e Serviços (federal):</strong> substitui PIS e COFINS. Administrada pela Receita Federal. Incide sobre operações com bens e serviços em todo o Brasil com alíquota uniforme.</p>
+
+  <p><strong>IBS — Imposto sobre Bens e Serviços (estadual/municipal):</strong> substitui ICMS e ISS. Administrado por um Comitê Gestor com participação de estados e municípios. A grande mudança: alíquota uniforme em todo o Brasil — acabando com a guerra fiscal entre estados.</p>
+
+  <p><strong>IS — Imposto Seletivo:</strong> tributo sobre bens e serviços prejudiciais à saúde ou ao meio ambiente (cigarros, bebidas alcoólicas, veículos poluentes, extração de recursos naturais). <strong>Energia elétrica NÃO está na lista do IS</strong> — boa notícia para o consumidor.</p>
+
+  <div class="comparativo">
+    <div class="comp-box antes">
+      <div class="comp-titulo antes-t">❌ Sistema Atual (2026)</div>
+      <div class="comp-item"><span class="comp-item-nome">PIS (federal)</span><span class="comp-item-val destaque-vermelho">~1%</span></div>
+      <div class="comp-item"><span class="comp-item-nome">COFINS (federal)</span><span class="comp-item-val destaque-vermelho">~4–5%</span></div>
+      <div class="comp-item"><span class="comp-item-nome">ICMS (estadual)</span><span class="comp-item-val destaque-vermelho">12–33%</span></div>
+      <div class="comp-item"><span class="comp-item-nome">ISS (municipal) — não incide sobre energia</span><span class="comp-item-val cinza">—</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Cálculo</span><span class="comp-item-val destaque-vermelho">Por dentro</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Alíquota varia por estado</span><span class="comp-item-val destaque-vermelho">Sim, muito</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Litigiosidade (ações no STJ/STF)</span><span class="comp-item-val destaque-vermelho">Altíssima</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Créditos tributários na cadeia</span><span class="comp-item-val destaque-vermelho">Parciais</span></div>
+    </div>
+    <div class="comp-box depois">
+      <div class="comp-titulo depois-t">✅ Sistema Novo (a partir de 2027)</div>
+      <div class="comp-item"><span class="comp-item-nome">CBS (federal) — substitui PIS+COFINS</span><span class="comp-item-val destaque-verde">a definir*</span></div>
+      <div class="comp-item"><span class="comp-item-nome">IBS (estadual+municipal) — substitui ICMS</span><span class="comp-item-val destaque-verde">a definir*</span></div>
+      <div class="comp-item"><span class="comp-item-nome">IS — Imposto Seletivo sobre energia</span><span class="comp-item-val destaque-verde">NÃO incide</span></div>
+      <div class="comp-item"><span class="comp-item-nome">—</span><span class="comp-item-val cinza">—</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Cálculo</span><span class="comp-item-val destaque-verde">Por fora</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Alíquota uniforme em todo o Brasil</span><span class="comp-item-val destaque-verde">Sim</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Litigiosidade esperada</span><span class="comp-item-val destaque-verde">Muito menor</span></div>
+      <div class="comp-item"><span class="comp-item-nome">Créditos tributários na cadeia</span><span class="comp-item-val destaque-verde">Plenos</span></div>
+    </div>
+  </div>
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:-20px">* A alíquota definitiva de CBS e IBS sobre energia ainda não foi publicada. A alíquota padrão estimada do IVA dual é 26–28%, mas energia pode ter alíquota reduzida por ser bem essencial.</p>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 3 — O cronograma da transição (2026–2033)</h2>
+
+  <p>A transição não acontece do dia para a noite. É um processo gradual de 7 anos, projetado para evitar choques tarifários e permitir que estados, municípios, empresas e consumidores se adaptem. Em nenhum momento do período de transição os impostos antigos e os novos somam mais do que 100% do total — a ideia é que, à medida que os novos sobem, os antigos caem.</p>
+
+  <!-- GRÁFICO 4: Cronograma da transição -->
+  <div class="chart-block">
+    <div class="chart-title">Cronograma da Reforma Tributária — Extinção dos Tributos Antigos e Surgimento dos Novos (2025–2033)</div>
+    <div class="chart-sub">Eixo vertical = % da alíquota total em vigor · Em cada ano, a soma dos tributos antigos + novos = 100% da carga tributária sobre energia · Fonte: EC 132/2023 / LC 214/2025</div>
+    <div style="height:380px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-ano">2025</div>
+      <div class="tl-titulo">Aprovação das regras — LC 214/2025</div>
+      <div class="tl-desc">Lei Complementar 214 regulamenta a EC 132/2023. Define IBS, CBS, cashback, regimes especiais e cronograma. ICMS, PIS e COFINS continuam normalmente.</div>
+    </div>
+    <div class="tl-item marco">
+      <div class="tl-ano">2026 — Fase de Teste</div>
+      <div class="tl-titulo">IBS e CBS aparecem nas notas, mas não são cobrados</div>
+      <div class="tl-desc">CBS: 0,9% e IBS: 0,1% — valores simbólicos para teste do sistema. Empresas emitem notas fiscais com os novos campos, mas ficam dispensadas do recolhimento se cumprirem as obrigações acessórias. PIS, COFINS e ICMS continuam normais. A conta de luz <strong>não muda para o consumidor</strong> neste ano.</div>
+    </div>
+    <div class="tl-item marco">
+      <div class="tl-ano">2027 — Marco: PIS e COFINS são extintos</div>
+      <div class="tl-titulo">CBS começa a funcionar de verdade. Split Payment implementado.</div>
+      <div class="tl-desc">PIS e COFINS são extintos em 31/12/2026. A CBS entra com alíquota plena a partir de 1/1/2027. O Split Payment (retenção automática do imposto no pagamento) começa. ICMS ainda existe, mas com redução de 10% da alíquota atual. <strong>Primeira mudança visível para o consumidor</strong>: o IVA começa a aparecer "por fora" na conta de luz. Cashback da CBS começa para beneficiários do CadÚnico.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ano">2028</div>
+      <div class="tl-titulo">ICMS cai para 80% do valor atual</div>
+      <div class="tl-desc">IBS sobe para 20% do valor final. A guerra fiscal entre estados começa a perder sentido — as alíquotas estaduais convergem para a nacional.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ano">2029</div>
+      <div class="tl-titulo">ICMS cai para 60%. IBS sobe para 40%</div>
+      <div class="tl-desc">Cashback do IBS começa para famílias de baixa renda (20% do IBS pago). As diferenças de alíquota entre estados diminuem significativamente.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ano">2030</div>
+      <div class="tl-titulo">ICMS cai para 40%. IBS sobe para 60%</div>
+      <div class="tl-desc">A conta de luz de estados com ICMS alto começa a ficar mais barata relativamente; estados com ICMS baixo ficam levemente mais caras. Convergência nacional.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ano">2031</div>
+      <div class="tl-titulo">ICMS cai para 20%. IBS sobe para 80%</div>
+      <div class="tl-desc">O ICMS, o imposto mais litigioso do Brasil, está quase extinto. O setor elétrico começa a operar predominantemente no novo sistema.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ano">2032</div>
+      <div class="tl-titulo">ICMS cai para 10%. IBS sobe para 90%</div>
+      <div class="tl-desc">Último ano de convivência significativa com o ICMS. Estados e municípios já operam majoritariamente pelo novo Comitê Gestor do IBS.</div>
+    </div>
+    <div class="tl-item fim">
+      <div class="tl-ano">2033 — Sistema definitivo</div>
+      <div class="tl-titulo">ICMS e ISS extintos. Reforma completa.</div>
+      <div class="tl-desc">O Brasil passa a ter um sistema tributário de consumo unificado, com IBS (estadual/municipal) + CBS (federal) em alíquota uniforme nacional. A conta de luz terá transparência total: você verá exatamente o quanto de imposto está pagando, calculado "por fora", sem distorções.</div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 5: Evolução da carga tributária na conta de luz por ano -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução dos Tributos na Conta de Luz — ICMS×IBS e PIS/COFINS×CBS (% da fatura, 2025–2033)</div>
+    <div class="chart-sub">A carga tributária total deve permanecer aproximadamente constante durante a transição (princípio da neutralidade) · O impacto real dependerá da alíquota definitiva de CBS+IBS, ainda a ser definida</div>
+    <div style="height:380px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 4 — O que muda na prática para cada tipo de consumidor</h2>
+
+  <!-- GRÁFICO 6: Simulação de conta de luz R$ 300 antes e depois -->
+  <div class="chart-block">
+    <div class="chart-title">Simulação: Conta de Luz de R$ 300 — Composição Antes (2026) vs Depois (2033)</div>
+    <div class="chart-sub">Cenário base: consumidor residencial SP, 300 kWh/mês, bandeira verde · Valores em R$ e % · A parcela de tributos permanece similar, mas o cálculo muda de "por dentro" para "por fora"</div>
+    <div style="height:360px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <h3>Consumidor residencial padrão</h3>
+  <p>Para o consumidor comum no mercado cativo (que paga para a distribuidora local), a mudança mais importante não é no valor em si, mas na <strong>transparência</strong>. Com o ICMS calculado "por dentro", hoje você não sabe exatamente quanto está pagando de imposto. Com o IBS "por fora", o valor do tributo aparecerá de forma explícita na fatura — como acontece na maioria dos países.</p>
+
+  <p>Se a alíquota de IBS+CBS sobre energia for definida abaixo do ICMS médio atual (cenário otimista, possível se energia for tratada como bem essencial com alíquota reduzida), a conta pode ficar um pouco mais barata. Se a alíquota consolidada for igual ou superior, o valor total se mantém ou sobe ligeiramente. O governo garantiu neutralidade arrecadatória — mas isso é do ponto de vista do governo, não necessariamente do consumidor individual.</p>
+
+  <h3>Consumidor de baixa renda (Tarifa Social / CadÚnico)</h3>
+
+  <div class="alerta-box verde">
+    <div class="alerta-titulo">💚 Boa notícia: cashback tributário direto a partir de 2027</div>
+    <p>A LC 214/2025 (art. 118) garante que famílias inscritas no CadÚnico terão <strong>devolução de 100% da CBS e 20% do IBS</strong> pago no fornecimento domiciliar de energia elétrica. Os estados e municípios podem aumentar esse percentual por legislação própria. O cashback será transferido diretamente para a conta bancária do beneficiário em até 15 dias. Isso representa uma transformação importante: em vez de um subsídio cruzado embutido na tarifa (CDE), passa a ser uma devolução direta e transparente de imposto para quem mais precisa.</p>
+  </div>
+
+  <h3>Quem tem painel solar (geração distribuída)</h3>
+
+  <div class="alerta-box laranja">
+    <div class="alerta-titulo">⚠️ Atenção: pontos ainda indefinidos para GD</div>
+    <p>Este é o ponto mais delicado para os donos de painéis solares. A LC 214/2025 apresenta dois artigos que se contradizem: o art. 4º diz que IBS e CBS incidem apenas sobre operações onerosas (e a injeção de energia na rede é gratuita pela lei vigente), mas o art. 28 §3º prevê exclusão da base de cálculo, presumindo incidência. Esse conflito jurídico ainda não tem resolução definitiva. O que se sabe: a isenção de ICMS para geração compartilhada acima de 1 MW, que alguns estados como Minas Gerais concediam generosamente, ficará mais restrita. Quem tem sistema pequeno (até 1 MW) está mais protegido. Quem opera em modelo de geração compartilhada ou múltiplas unidades deve monitorar as regulamentações do Comitê Gestor do IBS.</p>
+  </div>
+
+  <h3>Empresas no Mercado Livre de Energia</h3>
+
+  <p>Para empresas que compram energia diretamente de geradores ou comercializadoras, a reforma traz um benefício importante: <strong>não cumulatividade plena com créditos integrais</strong>. Hoje, partes do ICMS e do PIS/COFINS pagos na cadeia elétrica não geram crédito — ficam como custo. Com IBS e CBS, toda a cadeia gera crédito, reduzindo o custo tributário efetivo da energia para as empresas. Isso pode representar redução real de custo para indústrias intensivas em energia.</p>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 5 — O que NÃO muda na conta de luz</h2>
+
+  <p>É importante ser claro sobre os limites da reforma. Ela mexe apenas nos tributos — não nos encargos setoriais, não nas tarifas, não no modelo de bandeiras tarifárias. A maior parte da conta de luz continuará exatamente igual:</p>
+
+  <!-- GRÁFICO 7: O que muda e o que não muda -->
+  <div class="chart-block">
+    <div class="chart-title">Impacto da Reforma Tributária na Conta de Luz — O que Muda vs O que Permanece</div>
+    <div class="chart-sub">Verde = muda com a reforma · Cinza = permanece igual</div>
+    <div style="height:360px"><canvas id="c7"></canvas></div>
+  </div>
+
+  <table class="tabela-editorial">
+    <thead><tr><th>Componente</th><th>Muda com a RT?</th><th>Por quê</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ICMS</strong></td><td><span class="pill pill-verde">✓ Some em 2033</span></td><td>Substituído pelo IBS</td></tr>
+      <tr><td><strong>PIS / COFINS</strong></td><td><span class="pill pill-verde">✓ Somem em 2027</span></td><td>Substituídos pela CBS</td></tr>
+      <tr><td><strong>Cálculo "por dentro"</strong></td><td><span class="pill pill-verde">✓ Muda para "por fora"</span></td><td>IBS e CBS têm base de cálculo explícita</td></tr>
+      <tr><td><strong>Tarifa de Energia (TE)</strong></td><td><span class="pill pill-cinza">Não muda</span></td><td>Regulada pela ANEEL — fora do escopo da RT</td></tr>
+      <tr><td><strong>TUSD / TUST</strong></td><td><span class="pill pill-cinza">Não muda</span></td><td>Tarifas regulatórias da ANEEL</td></tr>
+      <tr><td><strong>CDE / CCC / PROINFA</strong></td><td><span class="pill pill-cinza">Não muda</span></td><td>Encargos setoriais criados por lei federal — fora do escopo da RT</td></tr>
+      <tr><td><strong>Bandeiras tarifárias</strong></td><td><span class="pill pill-cinza">Não muda</span></td><td>São sinalizadores de custo operacional, não tributos</td></tr>
+      <tr><td><strong>COSIP / CIP</strong></td><td><span class="pill pill-amarelo">⚠ Pode mudar</span></td><td>Contribuição municipal que pode ser reorganizada dentro do IBS no longo prazo</td></tr>
+      <tr><td><strong>Imposto Seletivo sobre energia</strong></td><td><span class="pill pill-verde">✓ Não vai existir</span></td><td>Energia elétrica foi explicitamente excluída do IS</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 6 — A grande dúvida: a conta vai subir ou cair?</h2>
+
+  <p>Esta é a pergunta que todo consumidor quer responder, e a honestidade obriga a dizer: <strong>ainda não se sabe com certeza</strong>. A alíquota definitiva de IBS+CBS sobre energia elétrica ainda não foi publicada. O governo prometeu neutralidade arrecadatória — mas isso significa que o total arrecadado pelo setor público permanece igual, não que cada consumidor pagará o mesmo que paga hoje.</p>
+
+  <!-- GRÁFICO 8: Cenários possíveis de impacto -->
+  <div class="chart-block">
+    <div class="chart-title">Cenários de Impacto da Reforma Tributária na Conta de Luz (R$, consumidor 300 kWh/mês)</div>
+    <div class="chart-sub">Três cenários dependendo da alíquota de IBS+CBS sobre energia elétrica · O cenário base assume alíquota reduzida por ser bem essencial · Fonte: análise MosmanLAB / EY 2026</div>
+    <div style="height:360px"><canvas id="c8"></canvas></div>
+  </div>
+
+  <p>Os três cenários:</p>
+
+  <p><strong>Cenário Otimista</strong> — Energia com alíquota reduzida (50% da alíquota padrão). Se a CBS+IBS sobre energia for tratada como bem essencial e receber alíquota reduzida (algo entre 13–14%), e como o IS não incide sobre energia, a carga tributária total pode cair de ~30% para ~20% da fatura. Uma conta de R$ 300 pode cair para cerca de R$ 270–280 em termos de carga tributária.</p>
+
+  <p><strong>Cenário Neutro</strong> — Alíquota nova similar à atual (~25%). A conta permanece aproximadamente igual, mas com maior transparência e sem a distorção do "por dentro". O maior benefício seria sistêmico: menos litígios, créditos na cadeia, convergência entre estados.</p>
+
+  <p><strong>Cenário Pessimista</strong> — Alíquota padrão plena (26–28%) sem redução para energia. A carga tributária pode subir marginalmente, especialmente para estados que hoje têm ICMS baixo e veriam o IBS nacional ser mais alto que o ICMS local.</p>
+
+  <div class="alerta-box azul">
+    <div class="alerta-titulo">🔵 O que determina qual cenário se concretiza</div>
+    <p>A decisão crítica é se o Congresso vai classificar a energia elétrica como bem essencial com alíquota reduzida na CBS e no IBS. O STF em 2021 (RE 714139 - Tema 745) já estabeleceu que o ICMS deve respeitar a essencialidade da energia elétrica. O princípio de que energia é bem essencial para dignidade humana deve influenciar a definição da alíquota de IBS+CBS — mas isso ainda precisa ser aprovado em lei. É o debate mais importante do setor elétrico para os próximos dois anos.</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <h2>Parte 7 — O impacto na geração de energia e nos investimentos</h2>
+
+  <p>Além do consumidor final, a reforma muda o ambiente para quem investe e opera no setor elétrico:</p>
+
+  <p><strong>Investimento (CAPEX) fica mais barato:</strong> O REIDI (Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura) foi mantido e ampliado para CBS e IBS. Isso significa que equipamentos de usinas solares, eólicas, hidrelétricas e linhas de transmissão terão suspensão de IBS e CBS — reduzindo o custo de capital de novos projetos. Isso é um incentivo real à expansão das renováveis.</p>
+
+  <p><strong>Créditos plenos na cadeia:</strong> Hoje, parte do ICMS e PIS/COFINS pago pelos geradores ao comprar equipamentos, combustíveis e serviços fica "preso" — não gera crédito contra o imposto cobrado na venda de energia. Com IBS e CBS, tudo gera crédito. Isso reduz o custo tributário cumulativo embutido na tarifa — o que, em teoria, pode reduzir o custo da energia nos leilões futuros.</p>
+
+  <p><strong>Contratos de longo prazo precisam de revisão:</strong> Contratos de compra e venda de energia firmados antes da reforma têm cláusulas de repasse de tributos. Com extinção de ICMS e PIS/COFINS e surgimento de IBS e CBS, essas cláusulas precisam ser revistas. Distribuidoras, geradoras e comercializadoras estão renegociando — o que pode gerar litígios durante o período de transição.</p>
+
+  <div class="conclusao">
+    <h2>O que concluímos — seis pontos para o consumidor guardar</h2>
+    <ul>
+      <li><strong>A conta de luz hoje tem ~30% de tributos.</strong> ICMS (dominante), PIS e COFINS — todos calculados "por dentro", obscurecendo o valor real cobrado. Os outros 70% são tarifas e encargos que a Reforma Tributária não toca.</li>
+      <li><strong>A transição começa em 2026, mas o consumidor só sente em 2027.</strong> Em 2026, CBS e IBS aparecem nas notas em modo teste, sem cobrança real. A primeira mudança concreta é em 2027 — extinção do PIS/COFINS e entrada da CBS. O ICMS some aos poucos até 2033.</li>
+      <li><strong>O maior benefício não é no preço — é na transparência e uniformidade.</strong> Com IBS "por fora" e alíquota única nacional, você vai saber exatamente quanto paga de imposto. E uma empresa no Maranhão vai pagar o mesmo que uma em São Paulo — acabando com a guerra fiscal estadual.</li>
+      <li><strong>Famílias de baixa renda ganham um mecanismo direto.</strong> Cashback de 100% da CBS e 20% do IBS a partir de 2027–2029 para inscritos no CadÚnico. É mais transparente que o atual subsídio via CDE embutido na tarifa de todos.</li>
+      <li><strong>Energia solar distribuída está em zona de atenção.</strong> A isenção ampla de ICMS que estados como MG davam para GD pode ficar mais restrita. Quem tem sistema até 1 MW está mais protegido. O Comitê Gestor do IBS vai precisar regulamentar esse ponto com clareza.</li>
+      <li><strong>O quanto a conta vai mudar depende de uma decisão ainda não tomada.</strong> Se o Congresso classificar energia elétrica como bem essencial com alíquota reduzida de IBS+CBS, a conta pode até cair. Se aplicar a alíquota padrão (26–28%), pode subir. É o debate mais importante do setor elétrico para 2026–2027.</li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#1e40af;margin-bottom:12px;font-size:.95rem">🔗 Links Externos — Reforma Tributária e Energia</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><a href="https://www.planalto.gov.br/ccivil_03/Constituicao/Emendas/Emc/emc132.htm" target="_blank" rel="noopener"><strong>EC 132/2023 — Emenda Constitucional da Reforma Tributária</strong></a></li>
+      <li><a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp214.htm" target="_blank" rel="noopener"><strong>LC 214/2025 — Lei Complementar que regulamenta IBS e CBS</strong></a></li>
+      <li><a href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-consumo" target="_blank" rel="noopener"><strong>Receita Federal — Portal da Reforma Tributária do Consumo</strong></a></li>
+      <li><a href="https://www.aneel.gov.br" target="_blank" rel="noopener"><strong>ANEEL — Tarifas e encargos do setor elétrico</strong></a></li>
+      <li><a href="https://www.ccee.org.br" target="_blank" rel="noopener"><strong>CCEE — Câmara de Comercialização de Energia Elétrica</strong></a></li>
+      <li><a href="https://direito.usp.br/noticia/041cd38ebef9-impactos-da-reforma-tributaria-no-setor-de-energia-eletrica" target="_blank" rel="noopener"><strong>USP Direito — Impactos da Reforma Tributária no Setor de Energia Elétrica</strong></a></li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#14532d;margin-bottom:12px;font-size:.95rem">🔗 Artigos Relacionados no Blog MosmanLAB</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><a href="curva-do-pato-ons-seguranca-energetica-brasil.html"><strong>A Curva do Pato e o ONS</strong></a> — como o sistema elétrico é operado hora a hora</li>
+      <li><a href="pld-preco-liquidacao-diferencas-energia.html"><strong>PLD — O Preço que Muda de Hora em Hora</strong></a> — como funciona o mercado spot de energia</li>
+      <li><a href="matriz-eletrica-brasileira.html"><strong>Matriz Elétrica Brasileira</strong></a> — 88% renovável e os desafios da transição</li>
+      <li><a href="lcoe-custo-nivelado-eletricidade.html"><strong>LCOE — Custo Nivelado da Eletricidade</strong></a> — por que solar é hoje mais barata que carvão</li>
+      <li><a href="eletrificacao-economia.html"><strong>Eletrificação da Economia</strong></a> — o papel crescente da eletricidade na vida moderna</li>
+    </ul>
+  </div>
+
+  <div class="refs-section">
+    <div class="refs-title">Fontes e Referências</div>
+    <ul class="refs-list">
+      <li><strong>EC 132/2023 — Emenda Constitucional da Reforma Tributária.</strong> Aprovada em dezembro de 2023.</li>
+      <li><strong>LC 214/2025 — Lei Complementar que regulamenta IBS e CBS.</strong> Publicada em janeiro de 2025. Arts. 4º, 26, 28 §3º, 47, 118, 373.</li>
+      <li><strong>Ernst & Young / Ricardo Ferreira da Costa (jan/2026).</strong> "Reforma tributária: o que muda para o setor elétrico a partir de 2026?" Canal Solar.</li>
+      <li><strong>USP Direito (2025).</strong> "Impactos da Reforma Tributária no Setor de Energia Elétrica." Análise jurídica da LC 214/2025 para o setor elétrico.</li>
+      <li><strong>Receita Federal / Comitê Gestor IBS (dez/2025).</strong> Comunicado Conjunto — orientações sobre CBS e IBS a partir de 1/1/2026.</li>
+      <li><strong>MME — Ministério de Minas e Energia.</strong> "Tributos cobrados na conta de energia." Portal oficial.</li>
+      <li><strong>IDEC — Instituto Brasileiro de Defesa do Consumidor.</strong> "Encargos e tributos na conta de luz."</li>
+      <li><strong>ANEEL.</strong> Resoluções homologatórias de tarifa 2025. Tabela de encargos e limites do PLD.</li>
+      <li><strong>STF — RE 714139 (Tema 745, 2021).</strong> Inconstitucionalidade de ICMS sobre energia sem observar essencialidade.</li>
+      <li><strong>STJ — Tema 986 (2024).</strong> TUSD e TUST integram base de cálculo do ICMS sobre energia.</li>
+    </ul>
+  </div>
+
+</article>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Física + Economia da Energia — do elétron ao imposto</p>
+  <p class="sim-cta-text">ICMS, IBS, CBS, PLD, ONS, curva de carga — conectar a física da energia com sua realidade econômica e tributária. Turmas presenciais em SP e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+// ── C1: Composição conta de luz residencial ───────────────────────────────────
+new Chart(document.getElementById('c1'),{type:'doughnut',
+  data:{
+    labels:['Tarifa de Energia (TE)','Distrib. (TUSD/Rede local)','CDE + encargos setoriais','ICMS (~25% efetivo SP)','PIS + COFINS (~6%)','COSIP (iluminação pública)'],
+    datasets:[{
+      data:[30,28,12,22,6,2],
+      backgroundColor:['rgba(37,99,235,.80)','rgba(99,102,241,.75)','rgba(124,58,237,.70)','rgba(220,38,38,.78)','rgba(239,68,68,.65)','rgba(107,114,128,.60)'],
+      borderWidth:2,borderColor:'#fff'
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,cutout:'40%',
+    plugins:{legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:12,padding:8}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw}% ≈ R$${Math.round(ctx.raw*3)} em conta de R$300`}}
+    }
+  }
+});
+
+// ── C2: ICMS por estado ───────────────────────────────────────────────────────
+const estados=['SP\n(acima 200kWh)','RJ','MG\n(acima 300kWh)','RS','PR','BA/TO','CE','PE','GO'];
+const icmsEst=[25,28,25,30,29,27,25,25,25];
+const pisCofinEst=estados.map(()=>6);
+new Chart(document.getElementById('c2'),{type:'bar',
+  data:{labels:estados,datasets:[
+    {label:'ICMS estadual (%)',data:icmsEst,backgroundColor:'rgba(220,38,38,.75)',borderRadius:5,stack:'t'},
+    {label:'PIS + COFINS (%)',data:pisCofinEst,backgroundColor:'rgba(239,68,68,.45)',borderRadius:0,stack:'t'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:12}}},
+    scales:{
+      x:{stacked:true,ticks:{font:{size:9.5},color:'#374151'},grid:{display:false}},
+      y:{stacked:true,min:0,max:42,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'% da fatura → vai para governo (não para a energia)',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C3: 5 tributos → 2 (diagrama de barras estilizado) ───────────────────────
+new Chart(document.getElementById('c3'),{type:'bar',
+  data:{
+    labels:['PIS (Fed.)','COFINS (Fed.)','IPI (Fed.)*','ICMS (Est.)','ISS (Mun.)','','CBS (Fed.)','IBS (Est.+Mun.)'],
+    datasets:[{
+      label:'Tributos antigos (azul escuro) → novos (verde)',
+      data:[1,5,0,22,0,null,7,22],
+      backgroundColor:['rgba(220,38,38,.75)','rgba(220,38,38,.75)','rgba(220,38,38,.75)','rgba(220,38,38,.75)','rgba(220,38,38,.75)',null,'rgba(22,163,74,.75)','rgba(22,163,74,.75)'],
+      borderRadius:6
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.raw==null?'':ctx.dataset.label+': '+ctx.raw+'%'}}
+    },
+    scales:{
+      x:{ticks:{font:{size:10.5},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'% representativa na conta de luz residencial',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C4: Cronograma de transição ───────────────────────────────────────────────
+const anos4=['2025','2026','2027','2028','2029','2030','2031','2032','2033'];
+// ICMS: começa 100%, vai caindo 10% por ano a partir de 2027
+const icmsT= [100, 100, 90, 80, 60, 40, 20, 10, 0];
+// IBS: começa 0%, vai subindo à medida que ICMS cai
+const ibsT=  [0,   0,  10, 20, 40, 60, 80, 90, 100];
+// PIS/COFINS: some em 2027
+const pisCofT=[100,100, 0,  0,  0,  0,  0,  0,  0];
+// CBS: começa em 2027
+const cbsT=  [0,   0, 100,100,100,100,100,100,100];
+new Chart(document.getElementById('c4'),{type:'bar',
+  data:{labels:anos4,datasets:[
+    {label:'ICMS (atual)',data:icmsT,backgroundColor:'rgba(220,38,38,.75)',borderRadius:3,stack:'antigo'},
+    {label:'PIS+COFINS',data:pisCofT,backgroundColor:'rgba(239,68,68,.50)',borderRadius:3,stack:'antigo2'},
+    {label:'IBS (novo)',data:ibsT,backgroundColor:'rgba(22,163,74,.75)',borderRadius:3,stack:'novo'},
+    {label:'CBS (nova)',data:cbsT,backgroundColor:'rgba(37,99,235,.65)',borderRadius:3,stack:'novo2'},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:12}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:110,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'% do valor final de cada tributo em vigor',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C5: Evolução da carga tributária na conta ─────────────────────────────────
+const anos5=['2025','2026','2027','2028','2029','2030','2031','2032','2033'];
+// % de tributos na conta de luz (ICMS+PIS/COFINS ou IBS+CBS)
+// Pressupõe neutralidade — mantém ~28-30% total
+const icmsPorc=[22,22,20,17.6,13.2,8.8,4.4,2.2,0];
+const pisCofPorc=[6,6,0,0,0,0,0,0,0];
+const cbsPorc=[0,0,5,5,5,5,5,5,5];
+const ibsPorc=[0,0,2,5,8,12,16,18,22];
+new Chart(document.getElementById('c5'),{type:'line',
+  data:{labels:anos5,datasets:[
+    {label:'ICMS (% da conta)',data:icmsPorc,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.10)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},
+    {label:'PIS+COFINS (% da conta)',data:pisCofPorc,borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',fill:true,tension:.4,borderWidth:2,borderDash:[5,4],pointRadius:4},
+    {label:'CBS (% da conta)',data:cbsPorc,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},
+    {label:'IBS (% da conta)',data:ibsPorc,borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:tc},grid:{display:false}},
+      y:{min:0,max:32,ticks:{font:{size:11},color:tc,callback:v=>v+'%'},grid:{color:gc},
+        title:{display:true,text:'% do total da conta de luz',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C6: Simulação conta R$300 antes vs depois ─────────────────────────────────
+new Chart(document.getElementById('c6'),{type:'bar',
+  data:{
+    labels:['Tarifa de Energia (TE)','Distribuição (TUSD)','Encargos Setoriais','ICMS / IBS','PIS+COFINS / CBS','COSIP','Total'],
+    datasets:[
+      {label:'Hoje – 2026 (R$)',data:[90,84,36,66,18,6,300],backgroundColor:'rgba(220,38,38,.72)',borderRadius:5},
+      {label:'Após 2033 – Cenário neutro (R$)',data:[90,84,36,60,12,6,288],backgroundColor:'rgba(22,163,74,.72)',borderRadius:5},
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      tooltip:{callbacks:{label:ctx=>`R$ ${ctx.raw}`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+
+// ── C7: O que muda vs o que não muda ─────────────────────────────────────────
+new Chart(document.getElementById('c7'),{type:'bar',
+  data:{
+    labels:['ICMS','PIS/COFINS','Cálculo\n"por dentro"','Tarifa de\nEnergia (TE)','TUSD/TUST','CDE/CCC/\nPROINFA','Bandeiras\nTarifárias','COSIP','IS sobre\nEnergia'],
+    datasets:[{
+      label:'Impacto da RT neste componente (%)',
+      data:[100,100,100,0,0,0,0,30,-100],
+      backgroundColor:[
+        'rgba(22,163,74,.75)','rgba(22,163,74,.75)','rgba(22,163,74,.75)',
+        'rgba(107,114,128,.45)','rgba(107,114,128,.45)','rgba(107,114,128,.45)','rgba(107,114,128,.45)',
+        'rgba(215,119,6,.65)',
+        'rgba(37,99,235,.75)'
+      ],
+      borderRadius:5
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>ctx.raw>0?`Muda: ${ctx.raw}% de impacto`:ctx.raw<0?'Bom: NÃO incidirá sobre energia':'Não muda com a Reforma Tributária'}}
+    },
+    scales:{
+      x:{ticks:{font:{size:9.5},color:'#374151'},grid:{display:false}},
+      y:{min:-110,max:110,ticks:{font:{size:11},color:tc,callback:v=>v>0?`+${v}%`:v+'%'},grid:{color:gc},
+        title:{display:true,text:'Verde = muda; Cinza = permanece; Azul = não vai incidir',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// ── C8: Cenários de impacto na conta ─────────────────────────────────────────
+const cenarios=['Conta\nhoje (2026)','Cenário\nOtimista\n(alíquota red.)','Cenário\nNeutro\n(alíquota ~atual)','Cenário\nPessimista\n(alíquota plena)'];
+const valTotal=[300,275,298,315];
+const cores=['rgba(107,114,128,.65)','rgba(22,163,74,.78)','rgba(37,99,235,.72)','rgba(220,38,38,.72)'];
+new Chart(document.getElementById('c8'),{type:'bar',
+  data:{
+    labels:cenarios,
+    datasets:[{
+      label:'Total da conta (R$)',data:valTotal,
+      backgroundColor:cores,borderRadius:8
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`R$ ${ctx.raw} — ${ctx.raw<300?'↓ cai R$'+(300-ctx.raw):ctx.raw===300?'= igual':'+R$'+(ctx.raw-300)+' a mais'}`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{min:240,max:330,ticks:{font:{size:11},color:tc,callback:v=>'R$'+v},grid:{color:gc}}
+    }
+  }
+});
+</script>
+</body>
+</html>
