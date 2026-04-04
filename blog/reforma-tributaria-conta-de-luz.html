@@ -27,16 +27,42 @@
 .tabela-editorial .cinza { color:#6b7280; }
 
 /* ── Timeline visual ────────────────────────────────────────────── */
-.timeline { position:relative; padding:8px 0 8px 56px; margin:32px 0; }
-.timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,#1d4ed8,#dc2626); border-radius:2px; }
-.tl-item { position:relative; margin-bottom:32px; }
-.tl-item::before { content:''; position:absolute; left:-42px; top:6px; width:16px; height:16px; border-radius:50%; background:#fff; border:3px solid #1d4ed8; z-index:1; box-shadow:0 0 0 3px rgba(29,78,216,.15); }
-.tl-item.marco::before { background:#1d4ed8; box-shadow:0 0 0 4px rgba(29,78,216,.2); }
-.tl-item.fim::before { background:#dc2626; border-color:#dc2626; box-shadow:0 0 0 4px rgba(220,38,38,.2); }
-.tl-ano { font-family:'DM Mono',monospace; font-size:.88rem; font-weight:700; color:#1d4ed8; margin-bottom:5px; }
+.timeline { margin:36px 0; display:flex; flex-direction:column; gap:0; }
+.tl-item {
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:0 20px;
+  position:relative;
+}
+.tl-left {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:0;
+  gap:4px;
+}
+.tl-dot {
+  width:18px; height:18px; border-radius:50%;
+  background:#fff; border:3px solid #93c5fd;
+  flex-shrink:0; z-index:1;
+}
+.tl-item.marco .tl-dot { background:#1d4ed8; border-color:#1d4ed8; box-shadow:0 0 0 4px rgba(29,78,216,.18); }
+.tl-item.fim .tl-dot { background:#dc2626; border-color:#dc2626; box-shadow:0 0 0 4px rgba(220,38,38,.18); }
+.tl-line {
+  width:3px; flex:1; min-height:24px;
+  background:linear-gradient(to bottom,#bfdbfe,#fca5a5);
+}
+.tl-right {
+  padding:0 0 36px 0;
+}
+.tl-ano {
+  font-family:'DM Mono',monospace; font-size:.78rem; font-weight:700;
+  color:#1d4ed8; line-height:1.35; text-align:right;
+  padding-top:3px; padding-right:4px; word-break:break-word;
+}
 .tl-item.fim .tl-ano { color:#dc2626; }
-.tl-titulo { font-weight:700; font-size:1rem; margin-bottom:6px; color:#111827; }
-.tl-desc { font-size:.89rem; color:#4b5563; line-height:1.65; }
+.tl-titulo { font-weight:700; font-size:1rem; margin-bottom:6px; color:#111827; margin-top:2px; }
+.tl-desc { font-size:.88rem; color:#4b5563; line-height:1.65; }
 
 /* ── Pill badges ────────────────────────────────────────────────── */
 .pill { display:inline-block; padding:2px 10px; border-radius:20px; font-size:.75rem; font-weight:700; font-family:'DM Sans',sans-serif; margin:1px; }
@@ -269,51 +295,79 @@
   </div>
 
   <div class="timeline">
+
     <div class="tl-item">
-      <div class="tl-ano">2025</div>
-      <div class="tl-titulo">Aprovação das regras — LC 214/2025</div>
-      <div class="tl-desc">Lei Complementar 214 regulamenta a EC 132/2023. Define IBS, CBS, cashback, regimes especiais e cronograma. ICMS, PIS e COFINS continuam normalmente.</div>
+      <div class="tl-left"><div class="tl-ano">2025</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">Aprovação das regras — LC 214/2025</div>
+        <div class="tl-desc">Lei Complementar 214 regulamenta a EC 132/2023. Define IBS, CBS, cashback, regimes especiais e cronograma. ICMS, PIS e COFINS continuam normalmente.</div>
+      </div>
     </div>
+
     <div class="tl-item marco">
-      <div class="tl-ano">2026 — Fase de Teste</div>
-      <div class="tl-titulo">IBS e CBS aparecem nas notas, mas não são cobrados</div>
-      <div class="tl-desc">CBS: 0,9% e IBS: 0,1% — valores simbólicos para teste do sistema. Empresas emitem notas fiscais com os novos campos, mas ficam dispensadas do recolhimento se cumprirem as obrigações acessórias. PIS, COFINS e ICMS continuam normais. A conta de luz <strong>não muda para o consumidor</strong> neste ano.</div>
+      <div class="tl-left"><div class="tl-ano">2026 —<br>Fase de Teste</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">IBS e CBS aparecem nas notas, mas não são cobrados</div>
+        <div class="tl-desc">CBS: 0,9% e IBS: 0,1% — valores simbólicos para teste do sistema. Empresas emitem notas fiscais com os novos campos, mas ficam dispensadas do recolhimento se cumprirem as obrigações acessórias. PIS, COFINS e ICMS continuam normais. A conta de luz <strong>não muda para o consumidor</strong> neste ano.</div>
+      </div>
     </div>
+
     <div class="tl-item marco">
-      <div class="tl-ano">2027 — Marco: PIS e COFINS são extintos</div>
-      <div class="tl-titulo">CBS começa a funcionar de verdade. Split Payment implementado.</div>
-      <div class="tl-desc">PIS e COFINS são extintos em 31/12/2026. A CBS entra com alíquota plena a partir de 1/1/2027. O Split Payment (retenção automática do imposto no pagamento) começa. ICMS ainda existe, mas com redução de 10% da alíquota atual. <strong>Primeira mudança visível para o consumidor</strong>: o IVA começa a aparecer "por fora" na conta de luz. Cashback da CBS começa para beneficiários do CadÚnico.</div>
+      <div class="tl-left"><div class="tl-ano">2027 —<br>Marco</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">PIS e COFINS extintos. CBS começa de verdade. Split Payment.</div>
+        <div class="tl-desc">PIS e COFINS são extintos em 31/12/2026. A CBS entra com alíquota plena a partir de 1/1/2027. O Split Payment (retenção automática do imposto no pagamento) começa. ICMS ainda existe, mas com redução de 10% da alíquota atual. <strong>Primeira mudança visível para o consumidor</strong>: o IVA começa a aparecer "por fora" na conta de luz. Cashback da CBS começa para beneficiários do CadÚnico.</div>
+      </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-ano">2028</div>
-      <div class="tl-titulo">ICMS cai para 80% do valor atual</div>
-      <div class="tl-desc">IBS sobe para 20% do valor final. A guerra fiscal entre estados começa a perder sentido — as alíquotas estaduais convergem para a nacional.</div>
+      <div class="tl-left"><div class="tl-ano">2028</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">ICMS cai para 80% do valor atual</div>
+        <div class="tl-desc">IBS sobe para 20% do valor final. A guerra fiscal entre estados começa a perder sentido — as alíquotas estaduais convergem para a nacional.</div>
+      </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-ano">2029</div>
-      <div class="tl-titulo">ICMS cai para 60%. IBS sobe para 40%</div>
-      <div class="tl-desc">Cashback do IBS começa para famílias de baixa renda (20% do IBS pago). As diferenças de alíquota entre estados diminuem significativamente.</div>
+      <div class="tl-left"><div class="tl-ano">2029</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">ICMS cai para 60%. IBS sobe para 40%</div>
+        <div class="tl-desc">Cashback do IBS começa para famílias de baixa renda (20% do IBS pago). As diferenças de alíquota entre estados diminuem significativamente.</div>
+      </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-ano">2030</div>
-      <div class="tl-titulo">ICMS cai para 40%. IBS sobe para 60%</div>
-      <div class="tl-desc">A conta de luz de estados com ICMS alto começa a ficar mais barata relativamente; estados com ICMS baixo ficam levemente mais caras. Convergência nacional.</div>
+      <div class="tl-left"><div class="tl-ano">2030</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">ICMS cai para 40%. IBS sobe para 60%</div>
+        <div class="tl-desc">A conta de luz de estados com ICMS alto começa a ficar mais barata relativamente; estados com ICMS baixo ficam levemente mais caras. Convergência nacional.</div>
+      </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-ano">2031</div>
-      <div class="tl-titulo">ICMS cai para 20%. IBS sobe para 80%</div>
-      <div class="tl-desc">O ICMS, o imposto mais litigioso do Brasil, está quase extinto. O setor elétrico começa a operar predominantemente no novo sistema.</div>
+      <div class="tl-left"><div class="tl-ano">2031</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">ICMS cai para 20%. IBS sobe para 80%</div>
+        <div class="tl-desc">O ICMS, o imposto mais litigioso do Brasil, está quase extinto. O setor elétrico começa a operar predominantemente no novo sistema.</div>
+      </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-ano">2032</div>
-      <div class="tl-titulo">ICMS cai para 10%. IBS sobe para 90%</div>
-      <div class="tl-desc">Último ano de convivência significativa com o ICMS. Estados e municípios já operam majoritariamente pelo novo Comitê Gestor do IBS.</div>
+      <div class="tl-left"><div class="tl-ano">2032</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">ICMS cai para 10%. IBS sobe para 90%</div>
+        <div class="tl-desc">Último ano de convivência significativa com o ICMS. Estados e municípios já operam majoritariamente pelo novo Comitê Gestor do IBS.</div>
+      </div>
     </div>
+
     <div class="tl-item fim">
-      <div class="tl-ano">2033 — Sistema definitivo</div>
-      <div class="tl-titulo">ICMS e ISS extintos. Reforma completa.</div>
-      <div class="tl-desc">O Brasil passa a ter um sistema tributário de consumo unificado, com IBS (estadual/municipal) + CBS (federal) em alíquota uniforme nacional. A conta de luz terá transparência total: você verá exatamente o quanto de imposto está pagando, calculado "por fora", sem distorções.</div>
+      <div class="tl-left"><div class="tl-ano">2033 —<br>Definitivo</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-titulo">ICMS e ISS extintos. Reforma completa.</div>
+        <div class="tl-desc">O Brasil passa a ter um sistema tributário de consumo unificado, com IBS (estadual/municipal) + CBS (federal) em alíquota uniforme nacional. A conta de luz terá transparência total: você verá exatamente o quanto de imposto está pagando, calculado "por fora", sem distorções.</div>
+      </div>
     </div>
+
   </div>
 
   <!-- GRÁFICO 5: Evolução da carga tributária na conta de luz por ano -->
