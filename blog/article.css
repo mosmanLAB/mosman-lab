@@ -71,12 +71,7 @@ tr.dest3 td{font-weight:600;color:#991b1b}
 .conclusao li::before{content:'→';position:absolute;left:0;color:#6ee7b7;font-weight:700}
 .conclusao li strong{color:#fff}
 
-/* ── CTA TURMA ── */
-.sim-cta{background:#f0fdf4;padding:52px 24px;text-align:center;border-top:1px solid #e2e8f0;margin-top:60px}
-.sim-cta-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
-.sim-cta-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#0f1c2e;margin-bottom:8px}
-.sim-cta-text{font-size:.92rem;color:#555;max-width:440px;margin:0 auto 24px;line-height:1.6}
-.sim-cta-btn{display:inline-block;background:#16a34a;color:#fff;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:.95rem}
+
 
 /* ── REFERÊNCIAS ── */
 .refs-section{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-top:40px}
@@ -463,3 +458,107 @@ tr.verm td{background:#fef2f2;color:#991b1b}
   .area-grid{grid-template-columns:1fr}
   .dc-label{min-width:120px;font-size:.73rem}
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   BACK TO BLOG BUTTON
+   ══════════════════════════════════════════════════════════════════ */
+.back-to-blog{padding:12px 5%;background:#fff;border-bottom:1px solid #f1f5f9}
+.back-to-blog a{font-size:.82rem;color:#64748b;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;transition:color .15s}
+.back-to-blog a:hover{color:#0f1c2e}
+.back-to-blog a::before{content:'←';font-size:.9rem}
+
+/* ══════════════════════════════════════════════════════════════════
+   LEIA TAMBÉM — RELATED ARTICLES
+   ══════════════════════════════════════════════════════════════════ */
+.related-articles{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 26px;margin:40px 0}
+.related-articles-title{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:14px}
+.related-articles ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.related-articles ul li a{font-family:'DM Sans',sans-serif;font-size:.91rem;color:#1e40af;text-decoration:none;display:flex;align-items:center;gap:8px;line-height:1.4}
+.related-articles ul li a::before{content:"→";color:#94a3b8;font-size:.82rem;flex-shrink:0}
+.related-articles ul li a:hover{color:#1d4ed8;text-decoration:underline}
+
+/* ══════════════════════════════════════════════════════════════════
+   ESTREITO DE ORMUZ — Figuras Energy Institute
+   ══════════════════════════════════════════════════════════════════ */
+.ei-figure{margin:36px 0;background:#fff;border:1px solid rgba(0,0,0,.10);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.ei-figure img{width:100%;height:auto;display:block}
+.ei-figure-caption{padding:14px 20px 16px;background:#f8fafc;border-top:1px solid rgba(0,0,0,.07);font-size:.8rem;color:#6b7280;line-height:1.6}
+.ei-figure-caption strong{color:#374151}
+.ei-fonte{font-size:.75rem;color:#9ca3af;margin-top:4px}
+.tabela-geo{width:100%;border-collapse:collapse;margin:28px 0;font-size:.89rem}
+.tabela-geo thead th{background:#7c1c1c;color:#fff;padding:10px 14px;text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.04em}
+.tabela-geo tbody tr:nth-child(even){background:rgba(124,28,28,.04)}
+.tabela-geo tbody tr:hover{background:rgba(124,28,28,.08);transition:.15s}
+.tabela-geo td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.07);line-height:1.5;vertical-align:top}
+.tabela-geo .alerta{color:#b91c1c;font-weight:700}
+.tabela-geo .ok{color:#15803d;font-weight:700}
+.tabela-geo .medio{color:#c2410c;font-weight:600}
+.callout-vermelho{background:rgba(254,226,226,.5);border-left:4px solid #dc2626;border-radius:10px;padding:16px 20px;margin:26px 0}
+.callout-vermelho strong{color:#991b1b}
+.callout-azul{background:rgba(219,234,254,.5);border-left:4px solid #2563eb;border-radius:10px;padding:16px 20px;margin:26px 0}
+.callout-azul strong{color:#1e40af}
+.callout-verde{background:rgba(220,252,231,.5);border-left:4px solid #16a34a;border-radius:10px;padding:16px 20px;margin:26px 0}
+.callout-verde strong{color:#166534}
+.ormuz-box{background:linear-gradient(135deg,#001428,#1a0a00);border-radius:14px;padding:28px 32px;margin:32px 0;color:#e5e7eb}
+.ormuz-box h3{color:#fbbf24;font-family:'DM Mono',monospace;font-size:1rem;margin-bottom:16px}
+.ormuz-stat{display:flex;flex-wrap:wrap;gap:20px;margin-top:16px}
+.ormuz-stat-item{flex:1;min-width:140px;background:rgba(255,255,255,.06);border-radius:10px;padding:14px 16px}
+.ormuz-stat-num{font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:700;color:#fbbf24}
+.ormuz-stat-label{font-size:.78rem;color:#9ca3af;margin-top:4px;line-height:1.4}
+
+/* ══════════════════════════════════════════════════════════════════
+   REFORMA TRIBUTÁRIA — Timeline IBS/CBS, Pills, Comparativo, Alertas
+   ══════════════════════════════════════════════════════════════════ */
+.tabela-editorial{width:100%;border-collapse:collapse;margin:28px 0;font-size:.9rem}
+.tabela-editorial thead th{background:#1e3a5f;color:#fff;padding:11px 14px;text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.03em}
+.tabela-editorial tbody tr:nth-child(even){background:rgba(37,99,235,.04)}
+.tabela-editorial tbody tr:hover{background:rgba(37,99,235,.09)}
+.tabela-editorial td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.07);line-height:1.5;vertical-align:top}
+.tabela-editorial .destaque-verde{color:#15803d;font-weight:700}
+.tabela-editorial .destaque-vermelho{color:#b91c1c;font-weight:700}
+.tabela-editorial .destaque-laranja{color:#c2410c;font-weight:700}
+.tabela-editorial .destaque-azul{color:#1d4ed8;font-weight:700}
+.tabela-editorial .cinza{color:#6b7280}
+.tl-rt{margin:36px 0;display:flex;flex-direction:column;gap:0}
+.tl-rt-item{display:grid;grid-template-columns:100px 1fr;gap:0 20px}
+.tl-rt-left{display:flex;flex-direction:column;align-items:center;gap:4px}
+.tl-dot{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid #93c5fd;flex-shrink:0;z-index:1}
+.tl-rt-item.marco .tl-dot{background:#1d4ed8;border-color:#1d4ed8;box-shadow:0 0 0 4px rgba(29,78,216,.18)}
+.tl-rt-item.fim .tl-dot{background:#dc2626;border-color:#dc2626;box-shadow:0 0 0 4px rgba(220,38,38,.18)}
+.tl-line{width:3px;flex:1;min-height:24px;background:linear-gradient(to bottom,#bfdbfe,#fca5a5)}
+.tl-rt-right{padding:0 0 36px 0}
+.tl-ano-rt{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:700;color:#1d4ed8;line-height:1.35;text-align:right;padding-top:3px;padding-right:4px;word-break:break-word}
+.tl-rt-item.fim .tl-ano-rt{color:#dc2626}
+.tl-titulo-rt{font-weight:700;font-size:1rem;margin-bottom:6px;color:#111827;margin-top:2px}
+.tl-desc-rt{font-size:.88rem;color:#4b5563;line-height:1.65}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.75rem;font-weight:700;font-family:'DM Sans',sans-serif;margin:1px}
+.pill-verde{background:#dcfce7;color:#15803d}
+.pill-vermelho{background:#fee2e2;color:#b91c1c}
+.pill-amarelo{background:#fef9c3;color:#a16207}
+.pill-azul{background:#dbeafe;color:#1d4ed8}
+.pill-cinza{background:#f3f4f6;color:#374151}
+.pill-roxo{background:#ede9fe;color:#6d28d9}
+.comparativo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+.comp-box{border-radius:14px;padding:22px 24px}
+.comp-box.antes{background:linear-gradient(135deg,#fff5f5,#fff1f0);border:1.5px solid #fecaca}
+.comp-box.depois{background:linear-gradient(135deg,#f0fdf4,#eff8ff);border:1.5px solid #bbf7d0}
+.comp-titulo{font-weight:800;font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.comp-titulo.antes-t{color:#b91c1c}
+.comp-titulo.depois-t{color:#15803d}
+.comp-item{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.87rem;gap:8px}
+.comp-item:last-child{border-bottom:none}
+.comp-item-nome{color:#374151;flex:1}
+.comp-item-val{font-family:'DM Mono',monospace;font-weight:700;font-size:.82rem;white-space:nowrap}
+.chart-nota{font-size:.75rem;color:#9ca3af;margin-top:8px;font-style:italic;text-align:center}
+.alerta-box{border-radius:12px;padding:18px 22px;margin:28px 0}
+.alerta-box.azul{background:rgba(219,234,254,.5);border-left:4px solid #2563eb}
+.alerta-box.verde{background:rgba(220,252,231,.5);border-left:4px solid #16a34a}
+.alerta-box.laranja{background:rgba(255,237,213,.5);border-left:4px solid #ea580c}
+.alerta-box.roxo{background:rgba(237,233,254,.5);border-left:4px solid #7c3aed}
+.alerta-titulo{font-weight:800;font-size:.9rem;margin-bottom:6px}
+.alerta-box.azul .alerta-titulo{color:#1e40af}
+.alerta-box.verde .alerta-titulo{color:#166534}
+.alerta-box.laranja .alerta-titulo{color:#9a3412}
+.alerta-box.roxo .alerta-titulo{color:#5b21b6}
+.alerta-box p{font-size:.88rem;margin:0;line-height:1.65;color:#374151}
+@media(max-width:640px){.comparativo{grid-template-columns:1fr}}
