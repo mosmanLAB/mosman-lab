@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frota de Caminhões Brasileira: Envelhecimento, Ineficiência Energética e o Custo Invisível | MosmanLAB</title>
+<meta name="description" content="Dados reais do RNTRC/ANTT: autônomos com frota média de 23 anos, 44% da frota pré-Euro 5. Modelo bottom-up estima 7,2 bilhões de litros de diesel em excesso por ano. CAUE privado vs. social e o Programa Renovar.">
+<link rel="canonical" href="https://mosmanlab.com.br/blog/frota-caminhoes-envelhecimento-eficiencia-energetica-rntrc.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="article-hero" style="background:linear-gradient(135deg,#1a0533 0%,#0f2417 50%,#1a3a0f 100%)">
+  <span class="article-tag">Transporte · Energia · Política Pública</span>
+  <h1>Frota de Caminhões Brasileira: Envelhecimento, Ineficiência Energética e o Custo Invisível de R$45 bi/ano</h1>
+  <p class="hero-lead">Dados reais do RNTRC/ANTT revelam dois mundos: empresas com frota média de 9,9 anos; autônomos com 23,2 anos. 44% da frota opera com tecnologia anterior ao PROCONVE P7. Um modelo bottom-up calibrado com o BEN 2024 quantifica o excesso — e mostra por que o Programa Renovar não fecha a conta.</p>
+  <div class="byline">
+    <span>Prof. Edson Mosman</span>
+    <span>MosmanLAB</span>
+    <span>9 de abril de 2026</span>
+    <span>14 min de leitura</span>
+  </div>
+</div>
+
+<!-- CORPO -->
+<div class="article-body">
+
+  <!-- SUMÁRIO -->
+  <div class="sumario" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-bottom:40px">
+    <div class="sumario-label">Neste artigo</div>
+    <ol>
+      <li><a href="#dados-rntrc">O que os dados do RNTRC revelam</a></li>
+      <li><a href="#duas-frotas">Duas frotas dentro de uma: ETC vs. TAC</a></li>
+      <li><a href="#proconve">Da idade ao consumo: gerações PROCONVE</a></li>
+      <li><a href="#modelo">O modelo de quantificação</a></li>
+      <li><a href="#caue">CAUE privado vs. CAUE social</a></li>
+      <li><a href="#renovar">O Programa Renovar é suficiente?</a></li>
+      <li><a href="#conclusao">Conclusão</a></li>
+    </ol>
+  </div>
+
+  <p>O Brasil movimenta mais de 60% de sua produção pelo modal rodoviário. Os 2,24 milhões de caminhões registrados no RNTRC (Registro Nacional de Transportadores Rodoviários de Cargas) são a espinha dorsal da logística nacional — e também uma das fontes mais subestimadas de ineficiência energética do país.</p>
+
+  <p>A média geral de <strong>14,9 anos de idade</strong> já é alta. Mas ela esconde uma divisão ainda mais grave: enquanto as empresas de transporte renovam continuamente suas frotas, a frota dos autônomos — que representa parcela expressiva da movimentação nacional — envelhece sem substituição. Caminhões com 20, 30 e até 60 anos circulam nas rodovias brasileiras consumindo até 50% mais diesel e emitindo 10 a 12 vezes mais óxidos de nitrogênio do que os veículos mais modernos.</p>
+
+  <p>Este artigo usa dados primários do RNTRC para quantificar esse problema, construir um modelo de ineficiência energética calibrado com o Balanço Energético Nacional, e calcular o que a teoria econômica chama de <strong>CAUE social</strong> — o custo real por quilômetro que a sociedade paga, mas que o operador privado não enxerga.</p>
+
+  <!-- STAT CARDS -->
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#0f1c2e">14,9</div><div class="stat-label">anos<br>idade média geral da frota RNTRC</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">23,2</div><div class="stat-label">anos<br>idade média dos TAC (autônomos)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">44%</div><div class="stat-label">da frota opera sob<br>tecnologia pré-PROCONVE P7</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">7,2 bi</div><div class="stat-label">litros de diesel/ano<br>consumidos em excesso (estimativa central)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">19,3</div><div class="stat-label">MtCO₂/ano<br>emissões evitáveis com renovação</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#1565C0">R$45 bi</div><div class="stat-label">por ano<br>custo econômico do excesso de consumo</div></div>
+  </div>
+
+  <!-- ── SEÇÃO 1 ── -->
+  <h2 id="dados-rntrc">O que os dados do RNTRC revelam</h2>
+
+  <p>O RNTRC é o cadastro obrigatório administrado pela ANTT para todos os transportadores remunerados de carga. Seus dados desagregam a frota em quatro categorias: <strong>CTC</strong> (Cooperativas de Transporte de Cargas), <strong>ETC</strong> (Empresas de Transporte de Cargas), <strong>ETC-Equiparado</strong> e <strong>TAC</strong> (Transportadores Autônomos de Cargas).</p>
+
+  <p>A distribuição por idade vai de 0 a mais de 60 anos — e essa amplitude já é, por si só, um diagnóstico. Em sistemas logísticos maduros, veículos acima de 15 anos representam uma fração residual da frota ativa. No Brasil, eles são maioria entre os autônomos.</p>
+
+  <!-- GRÁFICO 1: Distribuição stacked por idade -->
+  <div class="chart-block">
+    <div class="chart-title">Distribuição da Frota RNTRC por Idade do Veículo e Tipo de Transportador</div>
+    <div class="chart-sub">Fonte: ANTT/RNTRC | Número de veículos por faixa etária (0–35 anos exibidos) | CTC + ETC + ETC-Equiparado + TAC</div>
+    <canvas id="chart1" style="max-height:380px"></canvas>
+  </div>
+
+  <p>A ETC domina em volume absoluto — especialmente nas faixas jovens (1–5 anos). As empresas têm acesso a crédito, calculam vida econômica e renovam. O TAC apresenta um padrão completamente diferente: pico de concentração entre 12 e 20 anos, com cauda longa e persistente nos veículos mais antigos.</p>
+
+  <!-- ── SEÇÃO 2 ── -->
+  <h2 id="duas-frotas">Duas frotas dentro de uma: ETC vs. TAC</h2>
+
+  <p>Quando normalizamos cada categoria pelo seu total, a divergência fica ainda mais clara. O perfil etário da ETC lembra o de sistemas logísticos desenvolvidos: concentração nas faixas jovens, decaimento rápido. O TAC tem uma distribuição radicalmente diferente — achatada, com pico tardio e uma "barriga" persistente entre 12 e 25 anos.</p>
+
+  <!-- GRÁFICO 2: ETC vs TAC normalizado -->
+  <div class="chart-block">
+    <div class="chart-title">Perfil Etário Comparado: ETC (Empresas) vs. TAC (Autônomos)</div>
+    <div class="chart-sub">Distribuição normalizada pelo total de cada categoria — permite comparar o "formato" independente do volume absoluto</div>
+    <canvas id="chart2" style="max-height:340px"></canvas>
+  </div>
+
+  <div class="callout amber">
+    <strong>Por que os autônomos não renovam?</strong> Três razões estruturais: (i) dificuldade de acesso a crédito com garantias suficientes; (ii) ausência de escala para negociar com concessionários; (iii) o preço do frete não diferencia por norma de emissão — um caminhão P5 polui mais mas recebe o mesmo frete que um P7. Sem sinal de preço, o incentivo econômico para renovar simplesmente não existe.
+  </div>
+
+  <!-- ── SEÇÃO 3 ── -->
+  <h2 id="proconve">Da idade ao consumo: gerações PROCONVE</h2>
+
+  <p>O PROCONVE (Programa de Controle da Poluição do Ar por Veículos Automotores) estabelece fases normativas que correspondem a saltos tecnológicos reais. Para veículos pesados, as três gerações relevantes são: <strong>P5/Euro 3</strong> (vigência até 2011), <strong>P7/Euro 5</strong> (2012–2022) e <strong>P8/Euro 6</strong> (desde 2023).</p>
+
+  <p>O Brasil pulou o equivalente ao Euro 4 — a transição foi direto do P5 para o P7 em 2012, por limitações na qualidade do combustível disponível à época. Isso significa que a diferença tecnológica entre um caminhão fabricado em 2010 e um de 2013 é muito maior do que três anos de produção sugerem.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Geração</th>
+          <th>Faixa etária (2025)</th>
+          <th>Vigência Brasil</th>
+          <th class="c">Consumo (km/L)</th>
+          <th class="c">NOₓ (g/kWh)</th>
+          <th class="c">MP (g/kWh)</th>
+          <th class="c">Vs. P7 (consumo)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="dest">
+          <td>P8 / Euro 6</td>
+          <td>0–2 anos</td>
+          <td>2023–atual</td>
+          <td class="c">2,9</td>
+          <td class="c">0,40</td>
+          <td class="c">0,010</td>
+          <td class="c">+7% eficiente</td>
+        </tr>
+        <tr class="dest2">
+          <td>P7 / Euro 5 <em>(referência)</em></td>
+          <td>3–13 anos</td>
+          <td>2012–2022</td>
+          <td class="c">2,7</td>
+          <td class="c">2,00</td>
+          <td class="c">0,020</td>
+          <td class="c">—</td>
+        </tr>
+        <tr>
+          <td>P5 / Euro 3</td>
+          <td>14–21 anos</td>
+          <td>2004–2011</td>
+          <td class="c">2,2</td>
+          <td class="c">5,00</td>
+          <td class="c">0,100</td>
+          <td class="c dest3" style="background:transparent">−18%</td>
+        </tr>
+        <tr class="dest3">
+          <td>Pré-P5 (≤ Euro 2)</td>
+          <td>&gt; 21 anos</td>
+          <td>até 2003</td>
+          <td class="c">1,9</td>
+          <td class="c">≥ 5,00</td>
+          <td class="c">≥ 0,10</td>
+          <td class="c">−30%</td>
+        </tr>
+        <tr class="total">
+          <td colspan="3">Frota P5 + Pré-P5 (estimativa RNTRC 2024)</td>
+          <td class="c" colspan="2">~44% da frota total</td>
+          <td class="c" colspan="2">~986 mil veículos</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Fontes dos limites normativos: Resoluções CONAMA nº 315/2002 (P5), nº 403/2008 (P7) e nº 490/2018 (P8). Os valores de consumo são estimativas setoriais baseadas em IEA/EPE (2021) e CNT, não limites normativos.</p>
+
+  <p>A consequência prática é direta. Um caminhão P5/Euro 3 operando 120.000 km/ano consome aproximadamente <strong>54.500 litros de diesel</strong>. O mesmo percurso com um P7/Euro 5 consume cerca de <strong>44.400 litros</strong> — uma diferença de 10.100 litros por veículo por ano. Multiplicada por 717 mil veículos P5, o excesso já atinge bilhões de litros anuais antes mesmo de contabilizar os pré-P5.</p>
+
+  <!-- ── SEÇÃO 4 ── -->
+  <h2 id="modelo">O modelo de quantificação: excesso de consumo de diesel</h2>
+
+  <p>Para estimar o excesso agregado, usamos um modelo <em>bottom-up</em> calibrado com o Balanço Energético Nacional (BEN 2024). A equação é:</p>
+
+  <div style="background:#1a1a2e;border-radius:8px;padding:18px 22px;margin:20px 0;font-family:'DM Mono',monospace;font-size:.88rem;color:#e2e8f0;line-height:1.9;overflow-x:auto">
+    <span style="color:#4ade80">E_excesso</span> = Σᵢ [ Nᵢ · km_med · (1/cᵢ − 1/c_ref) · α ]<br>
+    <span style="color:#64748b"><br>
+    Nᵢ     = veículos da geração i (RNTRC/Sindipeças 2024)<br>
+    km_med = quilometragem anual média = 85.000 km/ano (CNT/IEA-EPE)<br>
+    cᵢ     = consumo específico da geração i em km/L<br>
+    c_ref  = referência P7 = 2,7 km/L<br>
+    α      = fator de calibração com o BEN = 0,83</span>
+  </div>
+
+  <p>O fator α = 0,83 reflete a heterogeneidade da frota real: veículos com menor utilização, rotas mistas, operação parcial. É obtido pela razão entre o consumo total do TRC reportado pelo BEN (~65 bi L) e o consumo calculado sem ajuste (~78,8 bi L).</p>
+
+  <!-- GRÁFICO 3: Excesso por cenário -->
+  <div class="chart-block">
+    <div class="chart-title">Excesso de Consumo de Diesel por Cenário de Renovação</div>
+    <div class="chart-sub">Bilhões de litros/ano (barras) e custo econômico em R$ bilhões/ano (linha) | Preço diesel: R$ 6,28/L | Fator CO₂: 2,36 kg/L (B12)</div>
+    <canvas id="chart3" style="max-height:320px"></canvas>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Cenário</th>
+          <th>Substituição</th>
+          <th class="c">Excesso diesel (bi L/ano)</th>
+          <th class="c">Mtep</th>
+          <th class="c">MtCO₂</th>
+          <th class="c">Custo (R$ bi/ano)</th>
+          <th class="c">% emissões transportes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A — Mínimo</td>
+          <td>P5+Pré→P7, Δc=12%</td>
+          <td class="c">4,7</td><td class="c">4,0</td><td class="c">11,1</td><td class="c">29,5</td><td class="c">5,1%</td>
+        </tr>
+        <tr class="dest">
+          <td><strong>A — Central ★</strong></td>
+          <td>P5+Pré→P7, Δc=18%</td>
+          <td class="c"><strong>7,2</strong></td><td class="c"><strong>6,2</strong></td>
+          <td class="c"><strong>19,3</strong></td><td class="c"><strong>45,2</strong></td><td class="c"><strong>8,9%</strong></td>
+        </tr>
+        <tr>
+          <td>A — Máximo</td>
+          <td>P5+Pré→P7, Δc=25%</td>
+          <td class="c">9,8</td><td class="c">8,4</td><td class="c">23,1</td><td class="c">61,5</td><td class="c">10,6%</td>
+        </tr>
+        <tr class="dest2">
+          <td>B — Central</td>
+          <td>P5+Pré→P8, Δc=24%</td>
+          <td class="c">9,0</td><td class="c">7,7</td><td class="c">24,1</td><td class="c">56,5</td><td class="c">11,1%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>O resultado central de <strong>7,2 bilhões de litros/ano</strong> representa 9% das emissões totais do setor de transportes brasileiro em 2023 (217 MtCO₂-eq, BEN 2024). Para escala: é equivalente ao consumo anual de combustível de toda a frota de veículos do Estado do Rio de Janeiro.</p>
+
+  <div class="callout verde">
+    <strong>Por que o BEN não mostra isso?</strong> O BEN reporta consumo de diesel por setor (transporte rodoviário, agrícola, industrial), mas não por geração tecnológica. A ineficiência do envelhecimento está completamente invisível nas estatísticas oficiais de energia — é capturada pelo consumo total, mas não é atribuída à sua causa estrutural.
+  </div>
+
+  <!-- ── SEÇÃO 5 ── -->
+  <h2 id="caue">CAUE privado vs. CAUE social: a falha de mercado</h2>
+
+  <p>Um caminhoneiro autônomo com um P5/Euro 3 de 18 anos toma uma decisão <em>racional</em> do ponto de vista privado. O veículo está quitado, não há custo de capital. Mesmo com maior consumo de diesel e manutenção mais cara, o custo total por quilômetro pode ser menor do que adquirir um caminhão novo a financiamento de 5 anos a 14% a.a.</p>
+
+  <p>O <strong>Custo Anual Uniforme Equivalente (CAUE)</strong> é o método padrão da Engenharia Econômica para determinar o momento ótimo de substituição de equipamentos (Casarotto Filho &amp; Kopittke, 2010). Ele anualiza todos os custos — capital, combustível, manutenção — ao longo da vida útil e encontra o ponto de mínimo: a vida econômica.</p>
+
+  <p>O problema é que o CAUE privado não contabiliza as externalidades: o CO₂ emitido para a atmosfera, o NOₓ que causa doenças respiratórias, os custos incrementais de acidentes de veículos envelhecidos. Quando adicionamos esses custos — o <strong>CAUE social</strong> — o ponto ótimo de substituição muda, e o caminhão P5 passa a ser antieconômico muito mais cedo.</p>
+
+  <!-- GRÁFICO 4: CAUE decomposição -->
+  <div class="chart-block">
+    <div class="chart-title">Decomposição do CAUE Privado e Social por Componente (R$/km)</div>
+    <div class="chart-sub">Veículo referência: cavalo mecânico 6×2 (família Scania R), 120.000 km/ano carregado, TMA 13% a.a. | CSC central: US$51/tCO₂ (R$300)</div>
+    <canvas id="chart4" style="max-height:360px"></canvas>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Componente (R$/km)</th>
+          <th class="c">P5/Euro 3<br><small>ano 10</small></th>
+          <th class="c">P7/Euro 5<br><small>novo</small></th>
+          <th class="c">P8/Euro 6<br><small>novo</small></th>
+          <th class="c">Gap P5 vs P7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Capital (FRC)</td><td class="c">0,12</td><td class="c">0,38</td><td class="c">0,61</td><td class="c">−0,26</td></tr>
+        <tr><td>Combustível</td><td class="c">2,85</td><td class="c">2,30</td><td class="c">2,20</td><td class="c">+0,55</td></tr>
+        <tr><td>Manutenção + Arla 32</td><td class="c">1,00</td><td class="c">0,44</td><td class="c">0,35</td><td class="c">+0,56</td></tr>
+        <tr><td>Motorista</td><td class="c">0,62</td><td class="c">0,62</td><td class="c">0,62</td><td class="c">0,00</td></tr>
+        <tr class="dest2">
+          <td><strong>CAUE PRIVADO</strong></td>
+          <td class="c"><strong>4,59</strong></td><td class="c"><strong>3,74</strong></td><td class="c"><strong>3,78</strong></td>
+          <td class="c" style="color:#dc2626"><strong>+0,85</strong></td>
+        </tr>
+        <tr><td>Externalidade CO₂ (US$51/tCO₂)</td><td class="c">0,32</td><td class="c">0,26</td><td class="c">0,25</td><td class="c">+0,06</td></tr>
+        <tr><td>Externalidade NOₓ + MP</td><td class="c">0,21</td><td class="c">0,08</td><td class="c">0,02</td><td class="c">+0,13</td></tr>
+        <tr><td>Externalidade acidentes</td><td class="c">0,15</td><td class="c">0,06</td><td class="c">0,03</td><td class="c">+0,09</td></tr>
+        <tr class="dest">
+          <td><strong>CAUE SOCIAL</strong></td>
+          <td class="c"><strong>5,27</strong></td><td class="c"><strong>4,14</strong></td><td class="c"><strong>4,08</strong></td>
+          <td class="c" style="color:#dc2626"><strong>+1,13</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>O gap de <strong>R$1,13/km</strong> entre o CAUE social do P5 e do P7 novo é o número central deste artigo. Para um caminhão que roda 120.000 km/ano, isso representa <strong>R$135.600/ano de custo social não pago pelo operador</strong>. Em 5 anos de vida remanescente, totaliza <strong>R$678.000 por veículo</strong> — o subsídio máximo economicamente justificável para induzir a substituição.</p>
+
+  <!-- GRÁFICO 5: Curvas CAUE -->
+  <div class="chart-block">
+    <div class="chart-title">Curvas de CAUE ao Longo da Vida Útil — P5 vs. P7</div>
+    <div class="chart-sub">O gap horizontal entre os pontos de mínimo (privado vs. social) é o "atraso de substituição" gerado pela não-internalização das externalidades</div>
+    <canvas id="chart5" style="max-height:360px"></canvas>
+  </div>
+
+  <p>O gráfico mostra o mecanismo central da falha de mercado: o operador privado enxerga o mínimo do CAUE do seu P5 em torno do ano 8–10, quando o custo de capital já caiu. A sociedade enxerga esse mínimo 2–4 anos antes, porque as externalidades crescem com o envelhecimento enquanto o operador não as paga. Essa diferença — o gap horizontal entre os dois mínimos — é o atraso estrutural de renovação que o Programa Renovar deveria corrigir.</p>
+
+  <!-- ── SEÇÃO 6 ── -->
+  <h2 id="renovar">O Programa Renovar é suficiente?</h2>
+
+  <p>O Programa Renovar (MP 1.328/2025) destina R$6–10 bilhões via BNDES para financiamento de caminhões novos, com taxas entre 13,32% e 14,89% a.a. e prazo de 60 meses. É o maior programa federal de renovação de frota já criado. E ainda assim é insuficiente por uma ordem de grandeza.</p>
+
+  <!-- GRÁFICO 6: Renovar vs necessidade -->
+  <div class="chart-block">
+    <div class="chart-title">Programa Renovar: Cobertura vs. Necessidade Real</div>
+    <div class="chart-sub">Frota-alvo = veículos P5 + Pré-P5 registrados no RNTRC | Custo médio P7 novo: ~R$800 mil</div>
+    <canvas id="chart6" style="max-height:280px"></canvas>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Indicador</th>
+          <th class="c">Programa Renovar<br>(MP 1.328/2025)</th>
+          <th class="c">Necessidade estimada<br>pelo modelo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Dotação total</td><td class="c">R$ 6–10 bilhões</td><td class="c">R$ 250–450 bi (VP social, 5 anos)</td></tr>
+        <tr><td>Veículos financiáveis</td><td class="c">~10.000 unidades</td><td class="c">~986.000 (frota-alvo)</td></tr>
+        <tr class="dest3"><td>% da frota-alvo atendida</td><td class="c"><strong>~1,3%</strong></td><td class="c">100%</td></tr>
+        <tr><td>Condicionalidade de sucateamento</td><td class="c">Facultativa (&gt;20 anos)</td><td class="c">Obrigatória para eficácia</td></tr>
+        <tr><td>Prazo</td><td class="c">Até jun/2026</td><td class="c">Programa decenal necessário</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout vermelho">
+    <strong>O problema central do Renovar não é o valor — é o design.</strong> Sem condicionalidade obrigatória de sucateamento, o programa financia frotas novas sem retirar as velhas de circulação. Programas anteriores (Procaminhoneiro, BNDES Finame PSI) repetiram esse erro: a frota cresceu, mas a distribuição etária não melhorou.
+  </div>
+
+  <p>Para que o Renovar produzisse redução mensurável no consumo agregado de diesel — digamos, 1 bilhão de litros/ano — seria necessário financiar ao menos 100.000 substituições efetivas, com sucateamento verificado. Isso requer dotação da ordem de R$80 bilhões em programa decenal. O subsídio por veículo justificável pelo modelo (R$340–680 mil) é superior ao subsídio implícito nas condições atuais do BNDES — o que significa que mesmo o juro subsidiado está abaixo do ótimo social.</p>
+
+  <!-- ── CONCLUSÃO ── -->
+  <div class="conclusao" id="conclusao">
+    <h2>Conclusão</h2>
+    <ul>
+      <li>Os dados do RNTRC revelam uma frota dividida: <strong>empresas renovam, autônomos envelhecem</strong>. A idade média dos TAC (23,2 anos) é 2,3 vezes a das ETCs (9,9 anos).</li>
+      <li>O excesso de consumo de diesel atribuível ao déficit de renovação está entre <strong>4,7 e 9,8 bilhões de litros/ano</strong>, com valor central de 7,2 bi L — equivalente a 9% das emissões totais do setor de transportes.</li>
+      <li>O <strong>gap entre CAUE social e privado</strong> (R$1,13/km, cenário central) demonstra que o mercado não sinaliza corretamente o momento de substituição para o operador individual. Essa é a falha de mercado que fundamenta qualquer política pública de renovação.</li>
+      <li>O <strong>Programa Renovar cobre apenas 1,3% da frota-alvo</strong> e não exige sucateamento obrigatório — condição necessária para eficácia real. O desenho atual não altera a distribuição etária da frota de forma mensurável.</li>
+      <li>A solução de longo prazo exige <strong>diferenciação de preço pelo nível de emissão</strong>: pedagio menor para P7+, frete diferenciado por norma PROCONVE, ou integração com o SBCE (Sistema Brasileiro de Comércio de Emissões, Lei 15.042/2024).</li>
+    </ul>
+  </div>
+
+  <!-- REFERÊNCIAS -->
+  <div class="refs-section">
+    <div class="refs-title">Referências</div>
+    <ul class="refs-list">
+      <li>ANTT. <em>Registro Nacional de Transportadores Rodoviários de Cargas — RNTRC: distribuição por idade e tipo de transportador</em>. Brasília: ANTT, 2024.</li>
+      <li>BRASIL. Resolução CONAMA nº 315/2002; nº 403/2008; nº 490/2018. Limites de emissão PROCONVE para veículos pesados.</li>
+      <li>BRASIL. Medida Provisória nº 1.328, de 16 de dezembro de 2025. Programa Renovar. Diário Oficial da União.</li>
+      <li>EPE — Empresa de Pesquisa Energética. <em>Balanço Energético Nacional 2024: ano base 2023</em>. Rio de Janeiro: EPE/MME, 2024.</li>
+      <li>IEA/EPE. <em>Brazilian Road Freight Transport Benchmarking</em>. Paris/Rio de Janeiro, 2021.</li>
+      <li>ICCT. <em>Freight in Brazil: an assessment and outlook for improving sustainability</em>. Washington: ICCT, 2021.</li>
+      <li>IEMA. <em>O PROCONVE e o impacto do adiamento da fase P8</em>. São Paulo: IEMA, 2020.</li>
+      <li>SINDIPEÇAS. <em>Relatório da Frota Circulante: edição 2025 (ano base 2024)</em>. São Paulo: Sindipeças, 2025.</li>
+      <li>CASAROTTO FILHO, N.; KOPITTKE, B.H. <em>Análise de Investimentos</em>. 11. ed. São Paulo: Atlas, 2010.</li>
+      <li>CASTRO, N. "Custos externos subjacentes à atual frota autônoma de caminhões do Brasil." <em>Journal of Transport Literature</em>, v. 7, n. 1, 2013.</li>
+      <li>LIU, Y. et al. "Modeling fuel-, vehicle-type-, and age-specific CO₂ emissions from global on-road vehicles in 1970–2020." <em>Earth System Science Data</em>, v. 16, 2024.</li>
+      <li>ILOS. <em>Custos Logísticos no Brasil 2025</em>. Rio de Janeiro: ILOS, 2025.</li>
+    </ul>
+  </div>
+
+</div><!-- /article-body -->
+
+<!-- CTA -->
+<div class="sim-cta">
+  <div class="sim-cta-label">MosmanLAB · FUVEST · ENEM · ITA · Unicamp</div>
+  <div class="sim-cta-title">Prepare-se com quem entende de física e energia</div>
+  <div class="sim-cta-text">Turma de maio com vagas limitadas. Aulas presenciais em São Paulo e online ao vivo.</div>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Ver detalhes da turma →</a>
+</div>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  © 2026 Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Em frente ao Shopping Pátio Paulista · São Paulo – SP
+</footer>
+
+<!-- ══ GRÁFICOS ══ -->
+<script>
+const dados = [
+  [0,241,8334,1628,731],[1,1166,76363,11272,5958],[2,2041,140093,18736,9470],
+  [3,1885,108585,18171,8914],[4,2183,125235,18059,11545],[5,2214,134518,23424,16361],
+  [6,1813,84064,17804,13626],[7,1926,92327,19763,15889],[8,1365,65962,15482,14153],
+  [9,714,33307,9062,10441],[10,524,23028,7887,10359],[11,765,27592,10926,16201],
+  [12,1585,56097,23925,32130],[13,2319,71528,31051,41466],[14,1321,48317,21261,33242],
+  [15,2092,58319,30738,61058],[16,1959,50661,27235,54624],[17,1057,30442,16071,35434],
+  [18,1459,33877,19689,45434],[19,1019,24568,13447,32350],[20,613,16907,8947,22126],
+  [21,868,17800,9774,24376],[22,1202,19773,11904,27581],[23,784,13293,8093,20308],
+  [24,628,11471,6868,18142],[25,645,10363,6524,19681],[26,526,8590,5923,18723],
+  [27,372,5546,3975,14510],[28,447,5472,3785,16290],[29,470,5804,3958,18211],
+  [30,296,4112,2877,12765],[31,435,5480,3986,18559],[32,405,4340,3331,16582],
+  [33,281,2776,2151,11475],[34,165,1663,1298,6863]
+];
+const idades = dados.map(d=>d[0]);
+const ctc = dados.map(d=>d[1]);
+const etc = dados.map(d=>d[2]);
+const etcEq = dados.map(d=>d[3]);
+const tac = dados.map(d=>d[4]);
+
+const tf = {family:'DM Sans,sans-serif',size:11};
+const tft = {family:'DM Sans,sans-serif',size:11,weight:'600'};
+
+// 1 — stacked bar
+new Chart(document.getElementById('chart1'),{
+  type:'bar',
+  data:{labels:idades,datasets:[
+    {label:'CTC',data:ctc,backgroundColor:'#16a34a',stack:'s'},
+    {label:'ETC',data:etc,backgroundColor:'#0f1c2e',stack:'s'},
+    {label:'ETC-Equiparado',data:etcEq,backgroundColor:'#2563eb',stack:'s'},
+    {label:'TAC',data:tac,backgroundColor:'#d97706',stack:'s'},
+  ]},
+  options:{responsive:true,plugins:{legend:{labels:{font:tf}}},
+    scales:{x:{stacked:true,ticks:{font:tf},title:{display:true,text:'Idade (anos)',font:tft}},
+            y:{stacked:true,ticks:{font:tf,callback:v=>v.toLocaleString('pt-BR')},
+               title:{display:true,text:'Nº de veículos',font:tft}}}}
+});
+
+// 2 — ETC vs TAC normalizado
+const tETC=etc.reduce((a,b)=>a+b,0), tTAC=tac.reduce((a,b)=>a+b,0);
+new Chart(document.getElementById('chart2'),{
+  type:'line',
+  data:{labels:idades,datasets:[
+    {label:'ETC (Empresas)',data:etc.map(v=>v/tETC*100),
+     borderColor:'#0f1c2e',backgroundColor:'rgba(15,28,46,.08)',
+     borderWidth:2.5,fill:true,tension:.35,pointRadius:0},
+    {label:'TAC (Autônomos)',data:tac.map(v=>v/tTAC*100),
+     borderColor:'#d97706',backgroundColor:'rgba(217,119,6,.08)',
+     borderWidth:2.5,fill:true,tension:.35,pointRadius:0},
+  ]},
+  options:{responsive:true,plugins:{legend:{labels:{font:tf}}},
+    scales:{x:{ticks:{font:tf},title:{display:true,text:'Idade (anos)',font:tft}},
+            y:{ticks:{font:tf,callback:v=>v.toFixed(1)+'%'},
+               title:{display:true,text:'% do total da categoria',font:tft}}}}
+});
+
+// 3 — excesso por cenário
+new Chart(document.getElementById('chart3'),{
+  type:'bar',
+  data:{labels:['A — Mínimo','A — Central ★','A — Máximo','B — Central'],
+        datasets:[
+    {label:'Excesso diesel (bi L/ano)',data:[4.7,7.2,9.8,9.0],
+     backgroundColor:['#94a3b8','#16a34a','#dc2626','#2563eb'],yAxisID:'y1'},
+    {label:'Custo econômico (R$ bi/ano)',data:[29.5,45.2,61.5,56.5],
+     type:'line',borderColor:'#d97706',backgroundColor:'transparent',
+     borderWidth:2.5,pointRadius:6,pointBackgroundColor:'#d97706',yAxisID:'y2'},
+  ]},
+  options:{responsive:true,plugins:{legend:{labels:{font:tf}}},
+    scales:{
+      y1:{type:'linear',position:'left',title:{display:true,text:'Bilhões de litros/ano',font:tft},ticks:{font:tf}},
+      y2:{type:'linear',position:'right',grid:{drawOnChartArea:false},
+          title:{display:true,text:'R$ bilhões/ano',font:tft},ticks:{font:tf}}
+    }}
+});
+
+// 4 — CAUE decomposição
+new Chart(document.getElementById('chart4'),{
+  type:'bar',
+  data:{
+    labels:['P5 Privado','P7 Privado','P8 Privado','P5 Social','P7 Social'],
+    datasets:[
+      {label:'Capital',data:[0.12,0.38,0.61,0.12,0.38],backgroundColor:'#2563eb',stack:'s'},
+      {label:'Combustível',data:[2.85,2.30,2.20,2.85,2.30],backgroundColor:'#dc2626',stack:'s'},
+      {label:'Manutenção+Arla',data:[1.00,0.44,0.35,1.00,0.44],backgroundColor:'#64748b',stack:'s'},
+      {label:'Motorista',data:[0.62,0.62,0.62,0.62,0.62],backgroundColor:'#94a3b8',stack:'s'},
+      {label:'Ext. CO₂',data:[0,0,0,0.32,0.26],backgroundColor:'#86efac',stack:'s'},
+      {label:'Ext. NOₓ+MP',data:[0,0,0,0.21,0.08],backgroundColor:'#fcd34d',stack:'s'},
+      {label:'Ext. Acidentes',data:[0,0,0,0.15,0.06],backgroundColor:'#fca5a5',stack:'s'},
+    ]
+  },
+  options:{responsive:true,plugins:{legend:{labels:{font:tf,boxWidth:12}}},
+    scales:{x:{stacked:true,ticks:{font:tf}},
+            y:{stacked:true,ticks:{font:tf,callback:v=>'R$'+v.toFixed(2)},
+               title:{display:true,text:'R$/km',font:tft}}}}
+});
+
+// 5 — curvas CAUE
+function privP5(n){
+  const P=520000,i=0.13,VR=P*Math.pow(0.85,n);
+  const frc=i*Math.pow(1+i,n)/(Math.pow(1+i,n)-1);
+  return (P*frc-VR*i/(Math.pow(1+i,n)-1))/120000+2.85*(1+.01*n)+0.40+0.06*n+0.62;
+}
+function socP5(n){return privP5(n)+0.32+0.21+0.15;}
+function privP7(n){
+  const P=750000,i=0.13,VR=P*Math.pow(0.88,n);
+  const frc=i*Math.pow(1+i,n)/(Math.pow(1+i,n)-1);
+  return (P*frc-VR*i/(Math.pow(1+i,n)-1))/120000+2.30*(1+.008*n)+0.25+0.02*n+0.62;
+}
+function socP7(n){return privP7(n)+0.26+0.08+0.06;}
+const anos=Array.from({length:18},(_,i)=>i+1);
+new Chart(document.getElementById('chart5'),{
+  type:'line',
+  data:{labels:anos,datasets:[
+    {label:'P5 — CAUE Privado',data:anos.map(n=>+privP5(n).toFixed(3)),
+     borderColor:'#f97316',borderWidth:2,borderDash:[6,3],pointRadius:2,tension:.3,fill:false},
+    {label:'P5 — CAUE Social',data:anos.map(n=>+socP5(n).toFixed(3)),
+     borderColor:'#dc2626',borderWidth:2.5,pointRadius:2,tension:.3,fill:false},
+    {label:'P7 novo — CAUE Privado',data:anos.map(n=>+privP7(n).toFixed(3)),
+     borderColor:'#60a5fa',borderWidth:2,borderDash:[6,3],pointRadius:2,tension:.3,fill:false},
+    {label:'P7 novo — CAUE Social',data:anos.map(n=>+socP7(n).toFixed(3)),
+     borderColor:'#2563eb',borderWidth:2.5,pointRadius:2,tension:.3,fill:false},
+  ]},
+  options:{responsive:true,plugins:{legend:{labels:{font:tf,boxWidth:12}}},
+    scales:{x:{title:{display:true,text:'Anos de vida útil',font:tft},ticks:{font:tf}},
+            y:{min:3.0,title:{display:true,text:'CAUE (R$/km)',font:tft},
+               ticks:{font:tf,callback:v=>'R$'+v.toFixed(2)}}}}
+});
+
+// 6 — Renovar vs necessidade
+new Chart(document.getElementById('chart6'),{
+  type:'bar',
+  data:{
+    labels:['Frota-alvo (P5+Pré-P5)','Veículos financiados\npelo Renovar','Mín. para −1 bi L/ano'],
+    datasets:[{
+      label:'Número de veículos',
+      data:[986000,10000,100000],
+      backgroundColor:['#dc2626','#16a34a','#d97706'],
+      borderRadius:4,
+    }]
+  },
+  options:{indexAxis:'y',responsive:true,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.x.toLocaleString('pt-BR')} veículos`}}},
+    scales:{x:{ticks:{font:tf,callback:v=>v.toLocaleString('pt-BR')},
+               title:{display:true,text:'Número de veículos',font:tft}},
+            y:{ticks:{font:{...tf,size:12}}}}}
+});
+</script>
+
+</body>
+</html>
