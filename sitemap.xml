@@ -30,6 +30,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- NOVO — Ormuz e Fluxo Global de Petróleo -->
+  <url>
+    <loc>https://mosmanlab.com.br/blog/estreito-ormuz-fluxo-petroleo-geopolitica.html</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- NOVO — Frota RNTRC -->
   <url>
     <loc>https://mosmanlab.com.br/blog/frota-caminhoes-envelhecimento-eficiencia-energetica-rntrc.html</loc>
