@@ -1,0 +1,31 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MosmanLAB — index.css
+   CSS exclusivo da página de listagem do blog (index.html)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.page-hero{padding:64px 40px 40px;max-width:860px;margin:0 auto}
+.blog-list{max-width:860px;margin:0 auto;padding:0 40px 80px}
+.blog-item{display:grid;grid-template-columns:72px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:padding-left .15s}
+.blog-item:first-child{border-top:1px solid var(--border)}
+.blog-item:hover{padding-left:8px}
+.blog-mes{font-size:.7rem;color:var(--muted);padding-top:4px;line-height:1.4;text-align:center}
+.blog-mes strong{display:block;font-size:1.4rem;font-weight:700;color:var(--black)}
+.blog-cat{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 10px;border-radius:50px;margin-bottom:6px}
+.cat-energia{color:#1a4a8a;background:#e8eeff}
+.cat-fisica{color:var(--green-dark);background:var(--bg-mint)}
+.cat-brasil{color:#7c2d12;background:#fff7ed}
+.cat-transporte{color:#4a1d96;background:#f5f3ff}
+.blog-titulo{font-family:'Lora',serif;font-size:1.08rem;font-weight:600;color:var(--black);line-height:1.3;margin-bottom:6px}
+.blog-resumo{font-size:.86rem;color:var(--mid);line-height:1.6}
+.badge-novo{display:inline-block;background:var(--green);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:50px;margin-left:6px;vertical-align:middle}
+.em-breve{opacity:.45;pointer-events:none}
+
+@media(max-width:768px){
+  .page-hero{padding:40px 20px 28px}
+  .blog-list{padding:0 20px 60px}
+  .blog-item{grid-template-columns:1fr;gap:6px}
+}
+
+/* Hero titles — evita inline style no HTML */
+.page-hero-title{font-family:'Lora',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--black);letter-spacing:-.02em;margin-bottom:12px}
+.section-lead{margin-bottom:0}
