@@ -422,7 +422,7 @@
 // ============================================================
 const provas = [
   // 2020s
-  { year: 2026, decade: '2020s', title: 'UNESP 2026 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Física Moderna'],      diff: 'mod',  file: 'unesp-2026-1fase-fisica.pdf',       mosman: false, available: false },
+  { year: 2026, decade: '2020s', title: 'UNESP 2026 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Física Moderna'],      diff: 'mod',  file: 'unesp-2026-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2025, decade: '2020s', title: 'UNESP 2025 · 1ª Fase — Física', topics: ['Dinâmica','Termodinâmica','Ondulatória'],           diff: 'hard', file: 'unesp-2025-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2024, decade: '2020s', title: 'UNESP 2024 · 1ª Fase — Física', topics: ['Cinemática','Eletrodinâmica','Física Moderna'],     diff: 'mod',  file: 'unesp-2024-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2023, decade: '2020s', title: 'UNESP 2023 · 1ª Fase — Física', topics: ['Mecânica','Calorimetria','Eletromagnetismo'],       diff: 'mod',  file: 'unesp-2023-1fase-fisica.pdf',       mosman: false, available: true },
@@ -464,8 +464,8 @@ const diffLabel = { easy: 'Acessível', mod: 'Moderada', hard: 'Difícil' };
 const diffClass = { easy: 'badge-easy', mod: 'badge-med', hard: 'badge-hard' };
 
 function fileHref(p) {
-  if (p.mosman) return `/assets/provas/unesp/mosman/${p.file}`;
-  return `/assets/provas/unesp/${p.file}`;
+  if (p.mosman) return `${p.file}`;
+  return `${p.file}`;
 }
 
 function renderProvas(filter) {
