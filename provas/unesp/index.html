@@ -464,8 +464,7 @@ const diffLabel = { easy: 'Acessível', mod: 'Moderada', hard: 'Difícil' };
 const diffClass = { easy: 'badge-easy', mod: 'badge-med', hard: 'badge-hard' };
 
 function fileHref(p) {
-  if (p.mosman) return `${p.file}`;
-  return `${p.file}`;
+  return p.file;
 }
 
 function renderProvas(filter) {
