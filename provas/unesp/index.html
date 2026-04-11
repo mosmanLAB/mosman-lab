@@ -422,7 +422,7 @@
 // ============================================================
 const provas = [
   // 2020s
-  { year: 2026, decade: '2020s', title: 'UNESP 2026 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Física Moderna'],      diff: 'mod',  file: 'unesp-2026-1fase-fisica.pdf',       mosman: false, available: false },
+  { year: 2026, decade: '2020s', title: 'UNESP 2026 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Física Moderna'],      diff: 'mod',  file: 'unesp-2026-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2025, decade: '2020s', title: 'UNESP 2025 · 1ª Fase — Física', topics: ['Dinâmica','Termodinâmica','Ondulatória'],           diff: 'hard', file: 'unesp-2025-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2024, decade: '2020s', title: 'UNESP 2024 · 1ª Fase — Física', topics: ['Cinemática','Eletrodinâmica','Física Moderna'],     diff: 'mod',  file: 'unesp-2024-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2023, decade: '2020s', title: 'UNESP 2023 · 1ª Fase — Física', topics: ['Mecânica','Calorimetria','Eletromagnetismo'],       diff: 'mod',  file: 'unesp-2023-1fase-fisica.pdf',       mosman: false, available: true },
@@ -447,15 +447,15 @@ const provas = [
   { year: 2006, decade: '2000s', title: 'UNESP 2006 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Óptica'],               diff: 'mod',  file: 'unesp-2006-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2005, decade: '2000s', title: 'UNESP 2005 · 1ª Fase — Física', topics: ['Dinâmica','Calorimetria','Eletrostática'],          diff: 'easy', file: 'unesp-2005-1fase-fisica.pdf',       mosman: false, available: true },
   { year: 2004, decade: '2000s', title: 'UNESP 2004 · 1ª Fase — Física', topics: ['Mecânica','Ondulatória','Eletrodinâmica'],          diff: 'mod',  file: 'unesp-2004-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 2003, decade: '2000s', title: 'UNESP 2003 · 1ª Fase — Física', topics: ['Cinemática','Eletromagnetismo','Termodinâmica'],   diff: 'hard', file: 'unesp-2003-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 2002, decade: '2000s', title: 'UNESP 2002 · 1ª Fase — Física', topics: ['Dinâmica','Óptica','Eletrodinâmica'],               diff: 'mod',  file: 'unesp-2002-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 2001, decade: '2000s', title: 'UNESP 2001 · 1ª Fase — Física', topics: ['Mecânica','Calorimetria','Eletrostática'],          diff: 'mod',  file: 'unesp-2001-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 2000, decade: '2000s', title: 'UNESP 2000 · 1ª Fase — Física', topics: ['Cinemática','Eletrodinâmica','Ondulatória'],        diff: 'easy', file: 'unesp-2000-1fase-fisica.pdf',       mosman: false, available: true },
+  { year: 2003, decade: '2000s', title: 'UNESP 2003 · 1ª Fase — Física', topics: ['Cinemática','Eletromagnetismo','Termodinâmica'],   diff: 'hard', file:  'Unesp-Fisica-Teste-2003.pdf',       mosman: false, available: true },
+  { year: 2002, decade: '2000s', title: 'UNESP 2002 · 1ª Fase — Física', topics: ['Dinâmica','Óptica','Eletrodinâmica'],               diff: 'mod',  file: 'Unesp-Fisica-Teste-2002.pdf',       mosman: false, available: true },
+  { year: 2001, decade: '2000s', title: 'UNESP 2001 · 1ª Fase — Física', topics: ['Mecânica','Calorimetria','Eletrostática'],          diff: 'mod',  file: 'Unesp-Fisica-Teste-2001.pdf',       mosman: false, available: true },
+  { year: 2000, decade: '2000s', title: 'UNESP 2000 · 1ª Fase — Física', topics: ['Cinemática','Eletrodinâmica','Ondulatória'],        diff: 'easy', file: 'Unesp-Fisica-Teste-2000.pdf',       mosman: false, available: true },
   // 1990s
-  { year: 1999, decade: '1990s', title: 'UNESP 1999 · 1ª Fase — Física', topics: ['Mecânica','Óptica','Termodinâmica'],                diff: 'mod',  file: 'unesp-1999-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 1998, decade: '1990s', title: 'UNESP 1998 · 1ª Fase — Física', topics: ['Dinâmica','Eletrostática','Calorimetria'],          diff: 'mod',  file: 'unesp-1998-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 1997, decade: '1990s', title: 'UNESP 1997 · 1ª Fase — Física', topics: ['Cinemática','Eletromagnetismo','Óptica'],           diff: 'mod',  file: 'unesp-1997-1fase-fisica.pdf',       mosman: false, available: true },
-  { year: 1996, decade: '1990s', title: 'UNESP 1996 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Termodinâmica'],        diff: 'easy', file: 'unesp-1996-1fase-fisica.pdf',       mosman: false, available: true },
+  { year: 1999, decade: '1990s', title: 'UNESP 1999 · 1ª Fase — Física', topics: ['Mecânica','Óptica','Termodinâmica'],                diff: 'mod',  file: 'Unesp-Fisica-Teste-1999.pdf',       mosman: false, available: true },
+  { year: 1998, decade: '1990s', title: 'UNESP 1998 · 1ª Fase — Física', topics: ['Dinâmica','Eletrostática','Calorimetria'],          diff: 'mod',  file: 'Unesp-Fisica-Teste-1998.pdf',       mosman: false, available: true },
+  { year: 1997, decade: '1990s', title: 'UNESP 1997 · 1ª Fase — Física', topics: ['Cinemática','Eletromagnetismo','Óptica'],           diff: 'mod',  file: 'Unesp-Fisica-Teste-1997.pdf',       mosman: false, available: true },
+  { year: 1996, decade: '1990s', title: 'UNESP 1996 · 1ª Fase — Física', topics: ['Mecânica','Eletrodinâmica','Termodinâmica'],        diff: 'easy', file: 'Unesp-Fisica-Teste-1996.pdf',       mosman: false, available: true },
   // Prova MosmanLAB disponível
   { year: 1995, decade: '1990s', title: 'UNESP 1995 · 1ª Fase — Física', topics: ['Cinemática','Dinâmica','Eletrodinâmica'],           diff: 'easy', file: 'Unesp-Fisica-Teste-1995.pdf',       mosman: true,  available: true },
 ];
