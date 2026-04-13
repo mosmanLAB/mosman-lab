@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário Completo de Física — Todas as Fórmulas | MosmanLAB</title>
+  <meta name="description" content="Formulário completo de Física para vestibular: 305 equações com teoria explicada, constantes, trigonometria e fórmulas matemáticas. Download em PDF. Prof. Edson Mosman.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mosmanlab.com.br/teoria/resumo-geral/">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resumo-geral.css">
+
+  <!-- MathJax -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://mosmanlab.com.br"},
+    {"@type":"ListItem","position":2,"name":"Teoria","item":"https://mosmanlab.com.br/teoria/"},
+    {"@type":"ListItem","position":3,"name":"Formulário Completo","item":"https://mosmanlab.com.br/teoria/resumo-geral/"}
+  ]}
+  </script>
+</head>
+<body>
+
+<div class="urgency-bar">
+  🟢 Turma Intensiva Maio 2026 com vagas limitadas —
+  <a href="/turma-maio-2026.html">Garante sua vaga →</a>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">Mosman<span>LAB</span></a>
+  <div class="nav-links">
+    <a href="/blog/">Blog</a>
+    <a href="/teoria/" class="active">Teoria</a>
+    <a href="/simulacoes/">Simulações</a>
+    <a href="/provas/">Provas</a>
+    <a href="/turma-maio-2026.html" class="nav-cta">Turma Maio 2026</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>
+  <a href="/teoria/">Teoria</a><span>›</span>
+  Formulário Completo
+</div>
+
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="btn-download-pdf" href="/teoria/resumo-geral/formulas_fisica_mosman.pdf" download>
+      ⬇ Baixar PDF do Formulário
+    </a>
+    <div class="sidebar-title">Conteúdo</div>
+    <nav class="sidebar-nav">
+      <a href="#cinematica"><span class="nav-icon">🏃</span> Cinemática</a>
+      <a href="#dinamica"><span class="nav-icon">⚙️</span> Dinâmica — Newton</a>
+      <a href="#impulso"><span class="nav-icon">💥</span> Dinâmica Impulsiva</a>
+      <a href="#energia"><span class="nav-icon">⚡</span> Trabalho, Energia e Potência</a>
+      <a href="#estatica"><span class="nav-icon">⚖️</span> Estática</a>
+      <a href="#hidrostatica"><span class="nav-icon">💧</span> Hidrostática</a>
+      <a href="#gravitacao"><span class="nav-icon">🪐</span> Kepler e Gravitação</a>
+      <a href="#eletrostatica"><span class="nav-icon">⚡</span> Eletrostática</a>
+      <a href="#mhs"><span class="nav-icon">〰️</span> M.H.S.</a>
+      <a href="#termodinamica"><span class="nav-icon">🌡️</span> Termodinâmica</a>
+      <a href="#ondulatoria"><span class="nav-icon">🔊</span> Ondulatória</a>
+      <a href="#optica"><span class="nav-icon">🔭</span> Óptica</a>
+      <a href="#eletrodinamica"><span class="nav-icon">🔌</span> Eletrodinâmica</a>
+      <a href="#magnetismo"><span class="nav-icon">🧲</span> Magnetismo</a>
+      <a href="#radioatividade"><span class="nav-icon">☢️</span> Radioatividade</a>
+      <a href="#moderna"><span class="nav-icon">⚛️</span> Física Moderna</a>
+      <div class="sidebar-divider"></div>
+      <a href="#constantes"><span class="nav-icon">📊</span> Constantes</a>
+      <a href="#unidades"><span class="nav-icon">📐</span> Conversão de Unidades</a>
+      <a href="#matematica"><span class="nav-icon">∑</span> Fórmulas Matemáticas</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <div class="resumo-hero">
+      <h1>Formulário Completo<br>de <em>Física</em></h1>
+      <p>Todas as fórmulas do vestibular com teoria explicada — organizadas por área, com LaTeX renderizado, tabela de constantes e fórmulas matemáticas. O mesmo material da turma intensiva.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">305 equações numeradas</span>
+        <span class="hero-badge">18 áreas temáticas</span>
+        <span class="hero-badge">Teoria por fórmula</span>
+        <span class="hero-badge">PDF para download</span>
+      </div>
+      <div style="margin-top:20px">
+        <a class="btn-download-pdf" href="/teoria/resumo-geral/formulas_fisica_mosman.pdf" download style="display:inline-flex;width:fit-content">
+          ⬇ Baixar PDF do Formulário — Prof. Edson Mosman
+        </a>
+      </div>
+    </div>
+
+    <!-- ==================== CINEMÁTICA ==================== -->
+    <section class="formula-section" id="cinematica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#00c896"></div>
+        <div class="section-icon">🏃</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Cinemática</div>
+          <div class="section-subtitle">Descrição do movimento — posição, velocidade e aceleração</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Grandeza Média vs. Instantânea</div>
+        <div class="formula-eq">$$\bar{w} = \frac{\Delta z}{\Delta t} \qquad w_{inst} = \lim_{\Delta t \to 0} \frac{\Delta z}{\Delta t}$$</div>
+        <div class="formula-theory">A grandeza <strong>média</strong> descreve o comportamento do sistema em um intervalo finito $\Delta t$. A grandeza <strong>instantânea</strong> é o limite dessa razão quando o intervalo tende a zero — é o que o ponteiro do velocímetro mostra num instante específico. No vestibular, a distinção aparece em gráficos: a grandeza média é a inclinação da secante; a instantânea é a inclinação da tangente.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Velocidade e Aceleração Médias</div>
+        <div class="formula-eq">$$\vec{v}_{med} = \frac{\vec{d}}{\Delta t} \qquad \vec{a}_{med} = \frac{\Delta \vec{v}}{\Delta t}$$</div>
+        <div class="formula-theory">A <strong>velocidade vetorial média</strong> é o deslocamento $\vec{d}$ dividido pelo tempo. Atenção: o módulo da velocidade média não é necessariamente igual à velocidade escalar média — isso só ocorre em movimento unidimensional sem inversão de sentido. A <strong>aceleração média</strong> mede a variação de velocidade por unidade de tempo.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Movimento Uniforme (MRU)</div>
+        <div class="formula-eq">$$S = S_0 + vt \qquad v = \text{constante} \qquad a = 0$$</div>
+        <div class="formula-theory">No MRU, a velocidade é constante e não há aceleração. O gráfico $S \times t$ é uma <strong>reta</strong> — a inclinação é a velocidade. O gráfico $v \times t$ é uma reta horizontal. A equação horária de posição é linear no tempo.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Movimento Uniformemente Variado (MRUV)</div>
+        <div class="formula-eq">$$S = S_0 + v_0 t + \frac{at^2}{2} \qquad v = v_0 + at \qquad v^2 = v_0^2 + 2a\Delta S$$</div>
+        <div class="formula-theory">No MRUV, a aceleração $a$ é constante. A equação de Torricelli $v^2 = v_0^2 + 2a\Delta S$ é a equação sem o tempo — muito útil quando $t$ não aparece no enunciado. O gráfico $v \times t$ é uma reta com inclinação $a$; o gráfico $S \times t$ é uma parábola.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Queda Livre e Método de Galileu</div>
+        <div class="formula-eq">$$S = \frac{gt^2}{2} \qquad v = gt \qquad \text{Galileu: } \Delta S_n = (2n-1)\frac{g\tau^2}{2}$$</div>
+        <div class="formula-theory">A queda livre é um MRUV com $v_0 = 0$ e $a = g \approx 10\,\text{m/s}^2$. O Método de Galileu mostra que os espaços percorridos em intervalos iguais de tempo seguem a proporção $1:3:5:7:\ldots$ (ímpares consecutivos). Isso é muito cobrado no ENEM e FUVEST em questões de queda com imagens estroboscópicas.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Lançamento Oblíquo</div>
+        <div class="formula-eq">$$t_{subida} = \frac{v_0 \sin\theta}{g} \qquad h_{max} = \frac{(v_0 \sin\theta)^2}{2g} \qquad A_h = \frac{v_0^2}{g}\sin(2\theta)$$</div>
+        <div class="formula-theory">No lançamento oblíquo, o movimento é decomposto: horizontal (MRU, $v_x = v_0\cos\theta$) e vertical (MRUV, desacelerado na subida). O alcance máximo ocorre para $\theta = 45°$. Ângulos complementares ($\theta$ e $90°-\theta$) produzem o mesmo alcance — questão clássica de FUVEST e UNESP.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Movimento Circular Uniforme (MCU)</div>
+        <div class="formula-eq">$$\omega = \frac{2\pi}{T} = 2\pi f \qquad v = \omega R \qquad a_{CP} = \frac{v^2}{R} = \omega^2 R$$</div>
+        <div class="formula-theory">No MCU, o módulo da velocidade é constante, mas a direção muda continuamente — por isso há aceleração centrípeta $a_{CP}$, sempre apontando para o centro. A <strong>frequência</strong> $f$ (rotações por segundo) e o período $T$ (tempo por rotação) são recíprocos: $f = 1/T$. Acoplamentos por correia: $v_A = v_B$; por eixo: $\omega_A = \omega_B$.</div>
+      </div>
+    </section>
+
+    <!-- ==================== DINÂMICA ==================== -->
+    <section class="formula-section" id="dinamica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#0099ff"></div>
+        <div class="section-icon">⚙️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Dinâmica — Leis de Newton</div>
+          <div class="section-subtitle">Causas do movimento — forças e aceleração</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">1ª, 2ª e 3ª Leis de Newton</div>
+        <div class="formula-eq">$$\vec{F}_R = \vec{0} \Rightarrow \vec{a} = \vec{0} \qquad \vec{F}_R = m\vec{a} \qquad \vec{F}_{AB} = -\vec{F}_{BA}$$</div>
+        <div class="formula-theory">A <strong>1ª Lei</strong> (inércia) diz que um corpo só muda de estado de movimento se houver força resultante não nula. A <strong>2ª Lei</strong> quantifica: a resultante é proporcional à massa e à aceleração — quanto maior a massa, maior a inércia. A <strong>3ª Lei</strong> (ação e reação) afirma que forças sempre aparecem em pares iguais e opostos, mas aplicados em corpos diferentes.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Força Elástica e Associação de Molas</div>
+        <div class="formula-eq">$$F_{el} = kx \qquad \frac{1}{k_R} = \frac{1}{k_1}+\frac{1}{k_2}+\ldots \text{ (série)} \qquad k_R = k_1+k_2+\ldots \text{ (paralelo)}$$</div>
+        <div class="formula-theory">A Lei de Hooke diz que a força elástica é proporcional à deformação $x$ e à constante de rigidez $k$ da mola. Em série, a constante equivalente é menor que a menor individual; em paralelo, é maior que a maior. Analogia direta com resistores elétricos — o que facilita para quem já domina circuitos.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Atrito e Força de Contato</div>
+        <div class="formula-eq">$$f_{at}^{din} = \mu_{din} N \qquad 0 \leq f_{at}^{est} \leq \mu_{est} N \qquad F_C = \sqrt{N^2 + f_{at}^2}$$</div>
+        <div class="formula-theory">O atrito estático <strong>se ajusta</strong> à força aplicada até atingir o valor máximo $\mu_{est} N$ — só depois o objeto desliza. O atrito cinético é constante em $\mu_{din} N$, com $\mu_{din} < \mu_{est}$. A força de contato é a resultante entre a normal e o atrito — o que o piso realmente exerce sobre o objeto.</div>
+      </div>
+    </section>
+
+    <!-- ==================== IMPULSO ==================== -->
+    <section class="formula-section" id="impulso">
+      <div class="section-header">
+        <div class="section-accent" style="background:#f43f5e"></div>
+        <div class="section-icon">💥</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Dinâmica Impulsiva</div>
+          <div class="section-subtitle">Quantidade de movimento, colisões e impulso</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Quantidade de Movimento e Teorema do Impulso</div>
+        <div class="formula-eq">$$\vec{Q} = m\vec{v} \qquad \vec{I}_R = \vec{F}_R \Delta t = \Delta \vec{Q}$$</div>
+        <div class="formula-theory">O <strong>momento linear</strong> $\vec{Q}$ mede a "quantidade de movimento" — depende da massa e da velocidade. O <strong>Teorema do Impulso</strong> diz que o impulso (força × tempo) iguala a variação do momento linear. Isso explica por que capacetes e airbags funcionam: aumentar o $\Delta t$ reduz a força de impacto para o mesmo $\Delta Q$.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Conservação do Momento e Coeficiente de Restituição</div>
+        <div class="formula-eq">$$\vec{F}_{ext} = \vec{0} \Rightarrow \vec{Q}_{inicial} = \vec{Q}_{final} \qquad e = \frac{v'_B - v'_A}{v_A - v_B} = \sqrt{\frac{h}{H}}$$</div>
+        <div class="formula-theory">Em sistema isolado (sem força externa resultante), o momento total é conservado. O <strong>coeficiente de restituição</strong> $e$ mede o quanto a colisão é elástica: $e=1$ (perfeitamente elástica), $0 < e < 1$ (parcialmente inelástica), $e=0$ (perfeitamente inelástica, os objetos grudam). Para uma bola quicando: $e = \sqrt{h/H}$, onde $H$ é a altura de lançamento e $h$ é a altura do rebote.</div>
+      </div>
+    </section>
+
+    <!-- ==================== ENERGIA ==================== -->
+    <section class="formula-section" id="energia">
+      <div class="section-header">
+        <div class="section-accent" style="background:#f5a623"></div>
+        <div class="section-icon">⚡</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Trabalho, Energia e Potência</div>
+          <div class="section-subtitle">Formas de energia e transformações</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Trabalho e Teorema Trabalho-Energia</div>
+        <div class="formula-eq">$$\tau_F = F \cdot d \cdot \cos\theta \qquad \tau_R = \Delta E_{cin} \qquad E_{cin} = \frac{mv^2}{2}$$</div>
+        <div class="formula-theory">O trabalho de uma força depende do módulo da força, do deslocamento e do ângulo entre eles. Quando $\theta = 90°$, o trabalho é nulo — a força normal e a força centrípeta não realizam trabalho. O <strong>Teorema Trabalho-Energia</strong> afirma que o trabalho da resultante iguala a variação da energia cinética — é a ponte entre força e energia.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Energia Mecânica e Conservação</div>
+        <div class="formula-eq">$$E_{mec} = E_{cin} + E_{pot} = \frac{mv^2}{2} + mgh + \frac{kx^2}{2} \qquad \tau_{não-cons} = \Delta E_{mec}$$</div>
+        <div class="formula-theory">Na ausência de forças não conservativas (atrito, força externa), a energia mecânica total é conservada. O atrito converte energia mecânica em calor — é uma força não conservativa e seu trabalho aparece como variação de $E_{mec}$. A energia potencial elástica $kx^2/2$ é relevante em problemas com molas e oscilações.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Potência e Rendimento</div>
+        <div class="formula-eq">$$P_{med} = \frac{\tau_F}{\Delta t} \qquad P = Fv\cos\theta \qquad P_{hid} = \eta\mu\varphi g h \qquad P_{eol} = \eta\frac{1}{2}\rho_{ar}\pi r^2 v_{ar}^3$$</div>
+        <div class="formula-theory">Potência é a taxa de realização de trabalho. A potência eólica cresce com o <strong>cubo</strong> da velocidade do vento — dobrar a velocidade do vento multiplica a potência por 8. O limite teórico de extração de energia cinética do vento é 16/27 ≈ 59% (Limite de Betz), por isso a fórmula inclui o rendimento $\eta$.</div>
+      </div>
+    </section>
+
+    <!-- ==================== ESTÁTICA ==================== -->
+    <section class="formula-section" id="estatica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#0099ff"></div>
+        <div class="section-icon">⚖️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Estática e Hidrostática</div>
+          <div class="section-subtitle">Equilíbrio de corpos e fluidos em repouso</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Centro de Massa e Equilíbrio</div>
+        <div class="formula-eq">$$x_{CM} = \frac{\sum m_i x_i}{\sum m_i} \qquad \sum\vec{F} = \vec{0} \qquad \sum\vec{M}_F = \vec{0}$$</div>
+        <div class="formula-theory">Para um corpo rígido em equilíbrio estático, duas condições devem ser satisfeitas simultaneamente: a <strong>resultante das forças</strong> é nula (não translada) e a <strong>resultante dos torques</strong> é nula (não gira). O ponto de aplicação do torque pode ser escolhido livremente — escolha um ponto onde passem o maior número de forças desconhecidas para simplificar o cálculo.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Torque e Momento Angular</div>
+        <div class="formula-eq">$$M_F = F \cdot d \cdot \sin\theta \qquad L = rmv$$</div>
+        <div class="formula-theory">O torque (momento de força) mede a tendência de uma força de produzir rotação. Depende da força, do braço de alavanca $d$ e do ângulo entre eles. O <strong>momento angular</strong> $L = rmv$ é conservado quando não há torque externo resultante — explica por que uma bailarina gira mais rápido ao aproximar os braços do corpo.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Princípios de Arquimedes, Stevin e Pascal</div>
+        <div class="formula-eq">$$E = \mu_{liq} V_{desl} g \qquad p = p_0 + \mu g h \qquad \frac{F_1}{A_1} = \frac{F_2}{A_2}$$</div>
+        <div class="formula-theory"><strong>Arquimedes:</strong> o empuxo é igual ao peso do fluido deslocado — independe do material do objeto, apenas do volume submerso. <strong>Stevin:</strong> a pressão aumenta linearmente com a profundidade. <strong>Pascal:</strong> pressão aplicada num ponto de um fluido confinado se transmite integralmente a todos os pontos — princípio da prensa hidráulica, do freio e do macacão hidráulico.</div>
+      </div>
+    </section>
+
+    <!-- ==================== GRAVITAÇÃO ==================== -->
+    <section class="formula-section" id="gravitacao">
+      <div class="section-header">
+        <div class="section-accent" style="background:#a855f7"></div>
+        <div class="section-icon">🪐</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Leis de Kepler e Gravitação</div>
+          <div class="section-subtitle">Movimentos planetários e campo gravitacional</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">3ª Lei de Kepler e Gravitação Universal</div>
+        <div class="formula-eq">$$\frac{T^2}{R^3} = \frac{4\pi^2}{GM} \qquad F_G = G\frac{Mm}{d^2} \qquad g = G\frac{M}{d^2}$$</div>
+        <div class="formula-theory">A <strong>3ª Lei de Kepler</strong> relaciona o período orbital com o raio — válida para qualquer corpo orbitando o mesmo astro central. A <strong>Lei da Gravitação Universal</strong> de Newton mostra que a força gravitacional cai com o quadrado da distância. O campo gravitacional $g$ é a força por unidade de massa e diminui com a altitude — na superfície terrestre $g \approx 9{,}8\,\text{m/s}^2$.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Velocidade Orbital e de Escape</div>
+        <div class="formula-eq">$$v_{orb} = \sqrt{\frac{GM}{R}} = \sqrt{Rg} \qquad v_{escape} = \sqrt{\frac{2GM}{R}} = \sqrt{2}\ v_{orb}$$</div>
+        <div class="formula-theory">A velocidade orbital é aquela para a qual a força gravitacional fornece exatamente a força centrípeta necessária. A velocidade de escape é $\sqrt{2}$ vezes a orbital — é a velocidade mínima para um objeto deixar o campo gravitacional do astro sem propulsão adicional. Buracos negros são objetos cuja velocidade de escape supera a velocidade da luz.</div>
+      </div>
+    </section>
+
+    <!-- ==================== ELETROSTÁTICA ==================== -->
+    <section class="formula-section" id="eletrostatica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#eab308"></div>
+        <div class="section-icon">⚡</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Eletrostática</div>
+          <div class="section-subtitle">Cargas, campos e potencial elétrico</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Lei de Coulomb e Campo Elétrico</div>
+        <div class="formula-eq">$$F_E = K_0\frac{|Q||q|}{d^2} \qquad E = K_0\frac{|Q|}{d^2} \qquad K_0 = 9\times10^9\,\frac{\text{N·m}^2}{\text{C}^2}$$</div>
+        <div class="formula-theory">A força elétrica entre cargas tem a mesma estrutura matemática da gravitação — proporcional às cargas e inversamente proporcional ao quadrado da distância. O <strong>campo elétrico</strong> $E$ é a força por unidade de carga de prova — descreve o ambiente elétrico independentemente da carga que vai ser colocada ali. Cargas de mesmo sinal se repelem; de sinais contrários, se atraem.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Potencial Elétrico e Trabalho</div>
+        <div class="formula-eq">$$V = K_0\frac{Q}{d} \qquad U_{AB} = V_A - V_B = Ed \qquad \tau_{el} = q(V_{inicial} - V_{final})$$</div>
+        <div class="formula-theory">O <strong>potencial elétrico</strong> $V$ é uma grandeza escalar — mais fácil de calcular que o campo. A diferença de potencial (ddp ou tensão) entre dois pontos determina o trabalho realizado pela força elétrica ao mover uma carga entre eles. No campo uniforme (entre placas de capacitor), $U = Ed$.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Capacitor</div>
+        <div class="formula-eq">$$Q = CU \qquad C = \epsilon_0 \frac{A}{d} \qquad E_{cap} = \frac{QU}{2} = \frac{CU^2}{2}$$</div>
+        <div class="formula-theory">Um capacitor armazena carga elétrica e energia. A capacitância $C$ depende da geometria: área das placas $A$ e separação $d$. Inserir um dielétrico aumenta $C$ por um fator $\kappa > 1$. Em série, a menor capacitância domina; em paralelo, as capacitâncias somam — o oposto das resistências.</div>
+      </div>
+    </section>
+
+    <!-- ==================== MHS ==================== -->
+    <section class="formula-section" id="mhs">
+      <div class="section-header">
+        <div class="section-accent" style="background:#06b6d4"></div>
+        <div class="section-icon">〰️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Movimento Harmônico Simples</div>
+          <div class="section-subtitle">Oscilações — mola e pêndulo</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Funções Horárias e Períodos</div>
+        <div class="formula-eq">$$x(t) = A\cos(\omega t + \theta_0) \qquad T_{mola} = 2\pi\sqrt{\frac{m}{k}} \qquad T_{pêndulo} = 2\pi\sqrt{\frac{L}{g}}$$</div>
+        <div class="formula-theory">No MHS, o objeto oscila em torno de uma posição de equilíbrio. A amplitude $A$ é o afastamento máximo. O período do sistema massa-mola depende de $m$ e $k$ — mas não da amplitude. O período do pêndulo simples depende do comprimento $L$ e da gravidade — mas não da massa nem da amplitude (para oscilações pequenas). Isso é explorado em questões de relógio de pêndulo em satélites e em diferentes planetas.</div>
+      </div>
+    </section>
+
+    <!-- ==================== TERMODINÂMICA ==================== -->
+    <section class="formula-section" id="termodinamica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#f5a623"></div>
+        <div class="section-icon">🌡️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Termodinâmica e Calorimetria</div>
+          <div class="section-subtitle">Calor, temperatura, gases e máquinas térmicas</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Escalas Termométricas</div>
+        <div class="formula-eq">$$\frac{\theta_C}{5} = \frac{\theta_F - 32}{9} = \frac{T - 273}{5}$$</div>
+        <div class="formula-theory">As três escalas mais usadas são Celsius (°C), Fahrenheit (°F) e Kelvin (K). A escala Kelvin é absoluta — não tem temperaturas negativas e é fundamental para os cálculos de gases. A conversão prática: $T(K) = \theta_C + 273$. O zero absoluto (0 K = −273 °C) é a temperatura na qual a agitação térmica cessa.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Calor Sensível e Latente</div>
+        <div class="formula-eq">$$Q_S = mc\Delta\theta \qquad Q_L = mL \qquad \sum Q_i = 0 \text{ (sistema isolado)}$$</div>
+        <div class="formula-theory">O <strong>calor sensível</strong> provoca variação de temperatura — depende da massa, do calor específico $c$ e da variação de temperatura. O <strong>calor latente</strong> provoca mudança de estado sem alterar a temperatura — é por isso que o gelo derrete a 0 °C sem que a temperatura aumente enquanto há gelo. Em sistema isolado termicamente, o calor total é zero: calor cedido = calor recebido.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Gases Ideais</div>
+        <div class="formula-eq">$$pV = nRT \qquad \frac{p_1V_1}{T_1} = \frac{p_2V_2}{T_2} \qquad R = 8{,}3\,\text{J/(mol·K)}$$</div>
+        <div class="formula-theory">A equação de estado do gás ideal relaciona pressão, volume, quantidade e temperatura. As transformações especiais: <strong>isotérmica</strong> ($T$ constante, $pV = $ cte), <strong>isobárica</strong> ($p$ constante, $V/T = $ cte) e <strong>isocórica</strong> ($V$ constante, $p/T = $ cte). Atenção: a temperatura deve estar sempre em Kelvin nos cálculos com gases.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">1ª e 2ª Leis da Termodinâmica</div>
+        <div class="formula-eq">$$\Delta U = Q - \tau \qquad \tau = p\Delta V \qquad \eta = 1 - \frac{Q_2}{Q_1} \leq 1 - \frac{T_2}{T_1} \text{ (Carnot)}$$</div>
+        <div class="formula-theory">A <strong>1ª Lei</strong> é a conservação de energia: o calor recebido pelo sistema se converte em aumento de energia interna ou em trabalho realizado. A <strong>2ª Lei</strong> limita a eficiência das máquinas térmicas — nenhuma máquina real pode superar o rendimento do ciclo de Carnot entre os mesmos reservatórios. O rendimento de Carnot depende apenas das temperaturas absolutas dos reservatórios.</div>
+      </div>
+    </section>
+
+    <!-- ==================== ONDULATÓRIA ==================== -->
+    <section class="formula-section" id="ondulatoria">
+      <div class="section-header">
+        <div class="section-accent" style="background:#06b6d4"></div>
+        <div class="section-icon">🔊</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Ondulatória e Acústica</div>
+          <div class="section-subtitle">Ondas, som, interferência e efeito Doppler</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Equação Fundamental das Ondas</div>
+        <div class="formula-eq">$$v = \lambda f \qquad v_{som} = \sqrt{\frac{P}{\rho}} \qquad v_{luz}^{vácuo} = c \approx 3\times10^8\,\text{m/s}$$</div>
+        <div class="formula-theory">A relação $v = \lambda f$ é universal para todas as ondas. A frequência é determinada pela fonte — não muda ao mudar de meio. O comprimento de onda muda ao mudar de meio (junto com a velocidade). A velocidade do som no ar a 20 °C é ~343 m/s; no aço, ~5000 m/s. A luz no vácuo tem velocidade constante $c$ — o postulado central da Relatividade Especial.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Ondas Estacionárias</div>
+        <div class="formula-eq">$$\lambda_n = \frac{2L}{n} \text{ (corda/tubo aberto)} \qquad \lambda_{n_i} = \frac{4L}{n_i} \text{ (tubo fechado, } n_i \text{ ímpar)}$$</div>
+        <div class="formula-theory">Ondas estacionárias surgem da superposição de ondas opostas. Em cordas e tubos abertos, são possíveis todos os harmônicos. Em tubos fechados, apenas os harmônicos ímpares. Isso determina o <strong>timbre</strong> dos instrumentos musicais. A flauta (tubo aberto) tem timbre diferente do clarinete (tubo fechado) mesmo tocando a mesma nota.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Nível Sonoro e Efeito Doppler</div>
+        <div class="formula-eq">$$\beta = 10\log\left(\frac{i}{i_0}\right) \qquad f_{ap} = \frac{v_{onda} \pm v_{obs}}{v_{onda} \mp v_{fonte}} \cdot f_0$$</div>
+        <div class="formula-theory">O <strong>nível sonoro</strong> em decibéis é logarítmico — dobrar a intensidade aumenta o nível em apenas 3 dB; multiplicar por 10 aumenta 10 dB. O <strong>Efeito Doppler</strong> explica a mudança de frequência percebida quando há movimento relativo entre fonte e observador. Regra dos sinais: no numerador, soma quando observador se aproxima; no denominador, subtrai quando fonte se aproxima.</div>
+      </div>
+    </section>
+
+    <!-- ==================== ÓPTICA ==================== -->
+    <section class="formula-section" id="optica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#f43f5e"></div>
+        <div class="section-icon">🔭</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Óptica Geométrica</div>
+          <div class="section-subtitle">Reflexão, refração, lentes e espelhos</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Lei de Snell e Reflexão Total</div>
+        <div class="formula-eq">$$n_A \sin\theta_A = n_B \sin\theta_B \qquad \sin\theta_L = \frac{n_{menor}}{n_{maior}}$$</div>
+        <div class="formula-theory">A Lei de Snell governa a refração: ao passar para um meio mais denso opticamente (maior $n$), a luz se aproxima da normal; ao passar para um menos denso, se afasta. A <strong>reflexão total</strong> ocorre quando o raio incide de um meio mais denso para um menos denso, com ângulo maior que o ângulo limite $\theta_L$ — princípio das fibras ópticas.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Equação de Gauss e Aumento Linear</div>
+        <div class="formula-eq">$$\frac{1}{f} = \frac{1}{p} + \frac{1}{p'} \qquad A_{trans} = -\frac{p'}{p} \qquad C = \frac{1}{f}\,\text{(dioptrias)}$$</div>
+        <div class="formula-theory">A equação de Gauss vale para lentes e espelhos. Convenção de sinais: objeto real tem $p > 0$; imagem real tem $p' > 0$ (para espelhos) e $p' < 0$ para lentes convergentes. O aumento linear: $|A| > 1$ é ampliado; $|A| < 1$ é reduzido; $A < 0$ é invertido. A vergência $C$ em dioptrias (1/m) é somada para lentes justapostas.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Óptica da Visão</div>
+        <div class="formula-eq">$$C_{miopia} = -\frac{1}{p_{rem}} \qquad C_{hipermetropia} = 4 - \frac{1}{p_{prox}}$$</div>
+        <div class="formula-theory">O míope enxerga bem de perto mas não de longe — ponto remoto $p_{rem}$ menor que infinito. Usa lente <strong>divergente</strong> (vergência negativa). O hipermétrope enxerga mal de perto — ponto proximal $p_{prox}$ maior que 25 cm. Usa lente <strong>convergente</strong>. O ponto proximal normal é 25 cm (distância convencional de visão nítida).</div>
+      </div>
+    </section>
+
+    <!-- ==================== ELETRODINÂMICA ==================== -->
+    <section class="formula-section" id="eletrodinamica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#eab308"></div>
+        <div class="section-icon">🔌</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Eletrodinâmica</div>
+          <div class="section-subtitle">Corrente, resistência, geradores e circuitos</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Corrente Elétrica e Leis de Ohm</div>
+        <div class="formula-eq">$$i = \frac{Q}{\Delta t} \qquad U_{AB} = Ri \qquad R = \rho\frac{L}{A}$$</div>
+        <div class="formula-theory">A corrente elétrica é o fluxo de cargas por unidade de tempo. A <strong>1ª Lei de Ohm</strong> diz que a tensão é proporcional à corrente para resistores ôhmicos. A <strong>2ª Lei de Ohm</strong> relaciona a resistência com a geometria do condutor e a resistividade do material $\rho$ — resistividade aumenta com temperatura para metais.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Potência e Associação de Resistores</div>
+        <div class="formula-eq">$$P = Ui = \frac{U^2}{R} = Ri^2 \qquad R_R = R_1+R_2+\ldots \text{ (série)} \qquad \frac{1}{R_R} = \frac{1}{R_1}+\frac{1}{R_2}+\ldots \text{ (paralelo)}$$</div>
+        <div class="formula-theory">Em série, a corrente é igual em todos os resistores; a tensão divide. Em paralelo, a tensão é igual; a corrente divide. Em paralelo, a resistência equivalente é sempre menor que o menor resistor. A associação de resistores em paralelo é como as lâmpadas domésticas — se uma queima, as outras continuam acesas.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Gerador Real e Leis de Kirchhoff</div>
+        <div class="formula-eq">$$U_{AB} = \varepsilon - ri \qquad \eta = \frac{U_{AB}}{\varepsilon} \qquad \Sigma i = 0 \text{ (nó)} \qquad \Sigma U = 0 \text{ (malha)}$$</div>
+        <div class="formula-theory">Todo gerador real tem uma resistência interna $r$ que dissipa energia. Quando o circuito externo tem resistência zero (curto-circuito), toda a força eletromotriz $\varepsilon$ cai na resistência interna. A <strong>1ª Lei de Kirchhoff</strong> (nós): a soma das correntes que entram iguala as que saem. A <strong>2ª Lei</strong> (malhas): a soma das tensões em qualquer malha fechada é zero.</div>
+      </div>
+    </section>
+
+    <!-- ==================== MAGNETISMO ==================== -->
+    <section class="formula-section" id="magnetismo">
+      <div class="section-header">
+        <div class="section-accent" style="background:#ec4899"></div>
+        <div class="section-icon">🧲</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Magnetismo e Eletromagnetismo</div>
+          <div class="section-subtitle">Campo magnético, indução e transformadores</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Campo Magnético e Força Magnética</div>
+        <div class="formula-eq">$$B_{fio} = \frac{\mu_0 i}{2\pi d} \qquad F_{MAG} = |q|vB\sin\theta \qquad F_{MAG} = iLB\sin\theta$$</div>
+        <div class="formula-theory">Um fio percorrido por corrente gera campo magnético circular ao seu redor. A força magnética sobre uma carga em movimento é perpendicular à velocidade e ao campo — por isso não realiza trabalho, apenas curva a trajetória. Em motores elétricos, a força sobre um condutor percorrido por corrente dentro de um campo magnético gera rotação.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Indução Eletromagnética e Transformador</div>
+        <div class="formula-eq">$$\varepsilon_{ind} = -\frac{\Delta\phi_{mag}}{\Delta t} = BLv \qquad \frac{U_p}{N_p} = \frac{U_s}{N_s} \qquad P_p = P_s$$</div>
+        <div class="formula-theory">A <strong>Lei de Faraday</strong> diz que a variação do fluxo magnético induz uma força eletromotriz. A <strong>Lei de Lenz</strong> (sinal negativo) determina o sentido: a corrente induzida se opõe à variação que a causou — é a "inércia magnética". O transformador ideal transfere potência integralmente: aumentar tensão implica diminuir corrente proporcionalmente.</div>
+      </div>
+    </section>
+
+    <!-- ==================== RADIOATIVIDADE ==================== -->
+    <section class="formula-section" id="radioatividade">
+      <div class="section-header">
+        <div class="section-accent" style="background:#84cc16"></div>
+        <div class="section-icon">☢️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Radioatividade</div>
+          <div class="section-subtitle">Decaimentos, meia-vida e leis de Soddy</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Emissões Alpha e Beta — Leis de Soddy</div>
+        <div class="formula-eq">$${}^A_Z X \rightarrow {}^4_2\alpha + {}^{A-4}_{Z-2} Y \qquad {}^A_Z X \rightarrow {}^0_{-1}\beta + {}^A_{Z+1} Y$$</div>
+        <div class="formula-theory">Na emissão <strong>alfa</strong>, o núcleo perde 4 de massa e 2 de número atômico — é o decaimento mais ionizante mas menos penetrante (bloqueado por papel). Na emissão <strong>beta</strong>, um nêutron se converte em próton emitindo elétron (β⁻) — o número de massa não muda, mas o atômico aumenta em 1. A emissão gama não altera nem massa nem número atômico — é pura energia eletromagnética.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Meia-Vida e Decaimento Exponencial</div>
+        <div class="formula-eq">$$N(t) = N_0 e^{-\lambda t} \qquad m_n = \frac{m_0}{2^n} \qquad t_{1/2} = \frac{\ln 2}{\lambda}$$</div>
+        <div class="formula-theory">A meia-vida $t_{1/2}$ é o tempo para metade dos núcleos decair. Após $n$ meias-vidas, resta $m_0/2^n$ da amostra. É um processo probabilístico — nunca chega a zero exatamente. A meia-vida varia de frações de segundo (núcleos instáveis) a bilhões de anos (urânio-238: 4,5 bilhões de anos — base para datação radiométrica geológica). No ENEM, aparecem muito em contexto de medicina nuclear e datação por carbono-14.</div>
+      </div>
+    </section>
+
+    <!-- ==================== FÍSICA MODERNA ==================== -->
+    <section class="formula-section" id="moderna">
+      <div class="section-header">
+        <div class="section-accent" style="background:#8b5cf6"></div>
+        <div class="section-icon">⚛️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Física Moderna</div>
+          <div class="section-subtitle">Fótons, Bohr, De Broglie e Relatividade</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Efeito Fotoelétrico e Energia do Fóton</div>
+        <div class="formula-eq">$$E_{fóton} = hf \qquad E_{cin}^{elétron} = hf - W \qquad h = 6{,}63\times10^{-34}\,\text{J·s}$$</div>
+        <div class="formula-theory">Einstein explicou o efeito fotoelétrico propondo que a luz é quantizada em pacotes de energia — os <strong>fótons</strong>. A função trabalho $W$ é a energia mínima para arrancar um elétron do material. Se $hf < W$, não há emissão, independente da intensidade da luz — foi isso que provou a natureza quântica da radiação. Células fotovoltaicas operam neste princípio.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Modelo de Bohr e Níveis de Energia</div>
+        <div class="formula-eq">$$E_n = \frac{-13{,}6}{n^2}\,\text{eV} \qquad E_{fóton} = |E_{inicial} - E_{final}| = hf \qquad r_n = n^2 \cdot 0{,}53\times10^{-10}\,\text{m}$$</div>
+        <div class="formula-theory">No modelo de Bohr, o elétron ocupa <strong>órbitas estacionárias</strong> com energias bem definidas. A emissão de luz ocorre quando o elétron <strong>cai</strong> de um nível mais alto para um mais baixo — a energia do fóton emitido é exatamente a diferença de energia entre os níveis. Isso explica os espectros discretos dos elementos — cada elemento tem sua "impressão digital" espectral.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Relatividade Restrita e Equivalência Massa-Energia</div>
+        <div class="formula-eq">$$E = |\Delta m|c^2 \qquad \Delta t' = \frac{\Delta t}{\sqrt{1-v^2/c^2}} \qquad L' = L\sqrt{1-v^2/c^2}$$</div>
+        <div class="formula-theory">A equação $E = mc^2$ de Einstein é a mais famosa da física — relaciona massa e energia como duas faces da mesma moeda. A <strong>dilatação temporal</strong>: relógios em movimento correm mais devagar para o observador externo — GPS precisa corrigir esse efeito. A <strong>contração espacial</strong>: comprimentos no sentido do movimento aparecem contraídos. Esses efeitos são detectáveis apenas próximos à velocidade da luz.</div>
+      </div>
+    </section>
+
+    <!-- ==================== CONSTANTES ==================== -->
+    <section class="formula-section" id="constantes">
+      <div class="section-header">
+        <div class="section-accent" style="background:#94a3b8"></div>
+        <div class="section-icon">📊</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Tabela de Constantes</div>
+          <div class="section-subtitle">Valores fundamentais utilizados nos vestibulares</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Constantes Físicas Fundamentais</div>
+        <table class="const-table">
+          <thead><tr><th>Constante</th><th>Valor</th><th>Símbolo / Descrição</th></tr></thead>
+          <tbody>
+            <tr><td>Aceleração da gravidade</td><td>9,8 m/s² ≈ 10 m/s²</td><td>$g$ — superfície terrestre</td></tr>
+            <tr><td>Constante Gravitacional</td><td>6,67 × 10⁻¹¹ N·m²/kg²</td><td>$G$</td></tr>
+            <tr><td>Velocidade da luz (vácuo)</td><td>3,00 × 10⁸ m/s</td><td>$c$</td></tr>
+            <tr><td>Constante de Planck</td><td>6,63 × 10⁻³⁴ J·s</td><td>$h$</td></tr>
+            <tr><td>Carga elementar</td><td>1,6 × 10⁻¹⁹ C</td><td>$e$</td></tr>
+            <tr><td>Massa do elétron</td><td>9,11 × 10⁻³¹ kg</td><td>$m_e$</td></tr>
+            <tr><td>Massa do próton</td><td>1,67 × 10⁻²⁷ kg</td><td>$m_p$</td></tr>
+            <tr><td>Constante eletrostática</td><td>9,0 × 10⁹ N·m²/C²</td><td>$K_0 = 1/(4\pi\varepsilon_0)$</td></tr>
+            <tr><td>Permeabilidade magnética (vácuo)</td><td>4π × 10⁻⁷ T·m/A</td><td>$\mu_0$</td></tr>
+            <tr><td>Constante universal dos gases</td><td>8,3 J/(mol·K)</td><td>$R$</td></tr>
+            <tr><td>Número de Avogadro</td><td>6,02 × 10²³ mol⁻¹</td><td>$N_A$</td></tr>
+            <tr><td>Massa da Terra</td><td>6,0 × 10²⁴ kg</td><td>$M_T$</td></tr>
+            <tr><td>Raio da Terra</td><td>6,4 × 10⁶ m</td><td>$R_T$</td></tr>
+            <tr><td>Dist. média Terra–Sol</td><td>1,5 × 10¹¹ m = 1 u.a.</td><td></td></tr>
+            <tr><td>Energia do estado fundamental — H</td><td>−13,6 eV</td><td>$E_1$</td></tr>
+            <tr><td>Raio de Bohr</td><td>0,53 × 10⁻¹⁰ m</td><td>$a_1$</td></tr>
+            <tr><td>Constante de Stefan-Boltzmann</td><td>5,67 × 10⁻⁸ W/(m²·K⁴)</td><td>$\sigma$</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== UNIDADES ==================== -->
+    <section class="formula-section" id="unidades">
+      <div class="section-header">
+        <div class="section-accent" style="background:#94a3b8"></div>
+        <div class="section-icon">📐</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Conversão de Unidades</div>
+          <div class="section-subtitle">Conversões essenciais para os vestibulares</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Conversões Mais Cobradas</div>
+        <table class="const-table">
+          <thead><tr><th>Grandeza</th><th>Conversão</th></tr></thead>
+          <tbody>
+            <tr><td>Velocidade</td><td>$1{,}0\,\text{m/s} = 3{,}6\,\text{km/h}$</td></tr>
+            <tr><td>Energia</td><td>$1\,\text{cal} = 4{,}18\,\text{J} \approx 4{,}2\,\text{J}$</td></tr>
+            <tr><td>Energia</td><td>$1\,\text{eV} = 1{,}6\times10^{-19}\,\text{J}$</td></tr>
+            <tr><td>Energia</td><td>$1\,\text{Wh} = 3{,}6\times10^3\,\text{J}$</td></tr>
+            <tr><td>Potência</td><td>$1\,\text{CV} = 735\,\text{W} \approx 750\,\text{W}$</td></tr>
+            <tr><td>Pressão</td><td>$1\,\text{atm} = 0{,}76\,\text{mHg} = 10\,\text{mH}_2\text{O} = 1{,}01\times10^5\,\text{Pa}$</td></tr>
+            <tr><td>Temperatura</td><td>$T(\text{K}) = \theta_C + 273$</td></tr>
+            <tr><td>Carga</td><td>$1\,\text{Ah} = 3{,}6\times10^3\,\text{C}$</td></tr>
+            <tr><td>Distância</td><td>$1\,\text{ano-luz} = 9{,}46\times10^{15}\,\text{m}$</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== MATEMÁTICA ==================== -->
+    <section class="formula-section" id="matematica">
+      <div class="section-header">
+        <div class="section-accent" style="background:#94a3b8"></div>
+        <div class="section-icon">∑</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Fórmulas Matemáticas</div>
+          <div class="section-subtitle">Trigonometria, funções e sequências</div>
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Tabela Trigonométrica</div>
+        <table class="trig-table">
+          <thead><tr><th>θ</th><th>sen θ</th><th>cos θ</th><th>tg θ</th></tr></thead>
+          <tbody>
+            <tr><td>0°</td><td>0</td><td>1</td><td>0</td></tr>
+            <tr><td>30°</td><td>1/2 = 0,5</td><td>√3/2 ≈ 0,87</td><td>√3/3 ≈ 0,58</td></tr>
+            <tr><td>≈37°</td><td>3/5 = 0,6</td><td>4/5 = 0,8</td><td>3/4 = 0,75</td></tr>
+            <tr><td>45°</td><td>√2/2 ≈ 0,71</td><td>√2/2 ≈ 0,71</td><td>1</td></tr>
+            <tr><td>≈53°</td><td>4/5 = 0,8</td><td>3/5 = 0,6</td><td>4/3 ≈ 1,33</td></tr>
+            <tr><td>60°</td><td>√3/2 ≈ 0,87</td><td>1/2 = 0,5</td><td>√3 ≈ 1,73</td></tr>
+            <tr><td>90°</td><td>1</td><td>0</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <div class="callout" style="margin-top:14px">
+          <strong>Dica:</strong> Os ângulos 37° e 53° são complementares e formam o triângulo 3-4-5. São os mais usados em lançamento oblíquo, plano inclinado e óptica nos vestibulares paulistas.
+        </div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Identidades e Adição de Arcos</div>
+        <div class="formula-eq">$$\sin^2\theta + \cos^2\theta = 1 \qquad \sin(\alpha\pm\beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$$</div>
+        <div class="formula-eq">$$\cos(\alpha\pm\beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$$</div>
+        <div class="formula-theory">A relação fundamental $\sin^2\theta + \cos^2\theta = 1$ é derivada do Teorema de Pitágoras no círculo unitário — é a identidade mais usada para simplificação em física. As fórmulas de adição de arcos são necessárias em problemas de interferência, batimento e análise de componentes vetoriais em ângulos não tabelados.</div>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-label">Bhaskara e Progressões</div>
+        <div class="formula-eq">$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \qquad a_n = a_1 + (n-1)r \text{ (PA)} \qquad a_n = a_1 q^{n-1} \text{ (PG)}$$</div>
+        <div class="formula-theory">A fórmula de Bhaskara resolve equações do 2° grau — aparece em cinemática (MRUV com posição inicial), óptica (equação de Gauss) e eletrodinâmica. A progressão aritmética descreve espaços no MRUV; a geométrica descreve decaimento radioativo e descarga de capacitor.</div>
+      </div>
+
+      <!-- BOTÃO DOWNLOAD FINAL -->
+      <div style="margin-top:32px; padding:28px; background:var(--bg2); border:1px solid var(--border); border-radius:12px; text-align:center;">
+        <div style="font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px">Baixar o Formulário Completo em PDF</div>
+        <div style="font-size:14px;color:var(--text-muted);margin-bottom:20px">O mesmo material da turma intensiva — 15 páginas, 305 equações, constantes e fórmulas matemáticas. Elaborado pelo Prof. Edson Mosman.</div>
+        <a href="/teoria/resumo-geral/formulas_fisica_mosman.pdf" download class="btn-download-pdf" style="display:inline-flex;justify-content:center;font-size:15px;padding:14px 28px">
+          ⬇ Baixar PDF — Formulário MosmanLAB
+        </a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Material educacional gratuito. Conteúdo de autoria exclusiva do Prof. Edson Mosman.</p>
+</footer>
+
+<script>
+// Highlight sidebar link on scroll
+const sections = document.querySelectorAll('.formula-section');
+const links = document.querySelectorAll('.sidebar-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  links.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

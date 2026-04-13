@@ -1,0 +1,116 @@
+/* ============================================================
+   MosmanLAB — /teoria/resumo-geral/ CSS
+   ============================================================ */
+:root {
+  --bg: #0d0d0f; --bg2: #141418; --bg3: #1c1c22; --border: #2a2a35;
+  --text: #e8e8f0; --text-muted: #8888a8; --accent: #00c896;
+  --accent2: #0099ff; --accent-warm: #f5a623;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.7; }
+
+.urgency-bar { background: linear-gradient(90deg,#1a3a1a,#0d2d1a); border-bottom: 1px solid var(--accent); text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 500; color: var(--accent); }
+.urgency-bar a { color:#fff; text-decoration:underline; margin-left:8px; }
+
+nav { background:var(--bg2); border-bottom:1px solid var(--border); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:64px; position:sticky; top:0; z-index:100; }
+.nav-logo { font-family:var(--font-serif); font-size:20px; font-weight:700; color:var(--text); text-decoration:none; }
+.nav-logo span { color:var(--accent); }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { color:var(--text-muted); text-decoration:none; font-size:14px; font-weight:500; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text); }
+.nav-cta { background:var(--accent); color:#000!important; padding:8px 18px; border-radius:6px; font-weight:600!important; }
+
+.breadcrumb { padding:14px 40px; font-size:13px; color:var(--text-muted); border-bottom:1px solid var(--border); background:var(--bg2); }
+.breadcrumb a { color:var(--text-muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--accent); }
+.breadcrumb span { margin:0 6px; }
+
+/* LAYOUT */
+.page-layout { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 130px); }
+
+/* SIDEBAR */
+.sidebar { background:var(--bg2); border-right:1px solid var(--border); padding:32px 20px; position:sticky; top:64px; height:calc(100vh - 64px); overflow-y:auto; }
+.sidebar-title { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+.sidebar-nav { display:flex; flex-direction:column; gap:2px; }
+.sidebar-nav a { color:var(--text-muted); text-decoration:none; font-size:13px; padding:7px 12px; border-radius:6px; transition:all 0.2s; display:flex; align-items:center; gap:8px; }
+.sidebar-nav a:hover { background:var(--bg3); color:var(--text); }
+.sidebar-nav a.active { background:rgba(0,200,150,0.1); color:var(--accent); border-left:2px solid var(--accent); }
+.sidebar-nav .nav-icon { font-size:14px; flex-shrink:0; }
+.sidebar-divider { height:1px; background:var(--border); margin:12px 0; }
+
+/* DOWNLOAD BTN SIDEBAR */
+.btn-download-pdf { display:flex; align-items:center; gap:10px; background:var(--accent); color:#000; font-size:13px; font-weight:700; padding:11px 16px; border-radius:8px; text-decoration:none; margin-bottom:20px; transition:opacity 0.2s; }
+.btn-download-pdf:hover { opacity:0.85; }
+
+/* MAIN CONTENT */
+.main-content { padding:48px 56px; max-width:860px; }
+
+/* HERO DO RESUMO */
+.resumo-hero { margin-bottom:48px; }
+.resumo-hero h1 { font-family:var(--font-serif); font-size:clamp(26px,3vw,38px); font-weight:700; color:var(--text); margin-bottom:12px; letter-spacing:-0.02em; line-height:1.2; }
+.resumo-hero h1 em { font-style:normal; color:var(--accent); }
+.resumo-hero p { font-size:16px; color:var(--text-muted); max-width:600px; line-height:1.8; }
+.hero-badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.hero-badge { background:var(--bg2); border:1px solid var(--border); border-radius:20px; font-size:12px; padding:4px 12px; color:var(--text-muted); }
+
+/* SEÇÃO */
+.formula-section { margin-bottom:56px; scroll-margin-top:80px; }
+.section-header { display:flex; align-items:center; gap:14px; margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid var(--border); }
+.section-icon { font-size:28px; }
+.section-title-wrap {}
+.section-title { font-family:var(--font-serif); font-size:22px; font-weight:700; color:var(--text); }
+.section-subtitle { font-size:13px; color:var(--text-muted); margin-top:2px; }
+.section-accent { width:3px; height:32px; border-radius:2px; flex-shrink:0; }
+
+/* FORMULA BLOCK */
+.formula-block { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px 28px; margin-bottom:16px; }
+.formula-block:hover { border-color:rgba(0,200,150,0.2); }
+.formula-label { font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; }
+.formula-eq { background:var(--bg3); border-radius:8px; padding:16px 20px; margin-bottom:14px; overflow-x:auto; font-size:17px; line-height:1.6; text-align:center; }
+.formula-theory { font-size:14.5px; color:var(--text-muted); line-height:1.8; }
+.formula-theory strong { color:var(--text); font-weight:500; }
+
+/* FORMULA GROUP: múltiplas equações */
+.formula-group { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px 28px; margin-bottom:16px; }
+.formula-group .formula-label { margin-bottom:16px; }
+.formula-group .formula-eq { margin-bottom:10px; }
+.formula-group .formula-eq:last-of-type { margin-bottom:14px; }
+
+/* CONSTANTES TABLE */
+.const-table { width:100%; border-collapse:collapse; font-size:14px; margin-bottom:16px; }
+.const-table thead th { background:var(--bg3); color:var(--text-muted); font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:left; border-bottom:1px solid var(--border); }
+.const-table tbody tr { border-bottom:1px solid var(--border); transition:background 0.15s; }
+.const-table tbody tr:hover { background:var(--bg3); }
+.const-table tbody td { padding:10px 16px; }
+.const-table tbody td:first-child { color:var(--text); font-weight:500; }
+.const-table tbody td:nth-child(2) { font-family:'Courier New', monospace; font-size:13px; color:var(--accent); }
+.const-table tbody td:last-child { color:var(--text-muted); font-size:13px; }
+
+/* TRIG TABLE */
+.trig-table { width:100%; border-collapse:collapse; font-size:14px; text-align:center; }
+.trig-table th { background:var(--bg3); padding:10px; color:var(--text-muted); font-size:12px; border-bottom:1px solid var(--border); }
+.trig-table td { padding:10px; border-bottom:1px solid var(--border); color:var(--text-muted); }
+.trig-table td:first-child { color:var(--accent-warm); font-weight:600; }
+
+/* CALLOUT */
+.callout { background:rgba(0,200,150,0.07); border:1px solid rgba(0,200,150,0.2); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:14px 18px; margin-top:12px; font-size:14px; color:var(--text-muted); line-height:1.75; }
+.callout strong { color:var(--accent); }
+.callout-warn { background:rgba(245,166,35,0.07); border-color:rgba(245,166,35,0.2); border-left-color:var(--accent-warm); }
+.callout-warn strong { color:var(--accent-warm); }
+
+/* FOOTER */
+footer { background:var(--bg2); border-top:1px solid var(--border); padding:28px 40px; text-align:center; color:var(--text-muted); font-size:13px; }
+footer a { color:var(--text-muted); }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .page-layout { grid-template-columns:1fr; }
+  .sidebar { display:none; }
+  .main-content { padding:32px 20px; }
+  .breadcrumb { padding-left:20px; }
+  nav { padding:0 20px; }
+  .nav-links a:not(.nav-cta) { display:none; }
+}
