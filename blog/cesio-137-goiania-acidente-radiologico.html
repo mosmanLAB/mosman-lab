@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Césio-137: A História Completa do Maior Acidente Radiológico do Brasil | MosmanLAB</title>
+<meta name="description" content="A história completa do acidente com Césio-137 em Goiânia (1987): cronograma dia a dia, doses de radiação de cada vítima, custos da descontaminação, física da radiação ionizante e as consequências que duram até hoje. Com dados da IAEA, CNEN e IBGE."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/cesio-137-goiania-acidente-radiologico.html"/>
+<meta name="keywords" content="césio 137 Goiânia, acidente radiológico 1987, Leide das Neves, Walter Mendes, CNEN, síndrome aguda radiação, Devair Ferreira, descontaminação nuclear, radioatividade física vestibular"/>
+<meta name="author" content="Edson Mosman — MosmanLAB"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Césio-137: A História Completa do Maior Acidente Radiológico do Brasil"/>
+<meta property="og:description" content="Cronograma dia a dia, doses de cada vítima, custos da descontaminação e a física da radiação ionizante. O acidente que mudou o Brasil."/>
+<meta property="og:url" content="https://mosmanlab.com.br/blog/cesio-137-goiania-acidente-radiologico.html"/>
+<meta property="og:site_name" content="MosmanLAB"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="article:published_time" content="2026-04-14"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Césio-137: A História Completa do Maior Acidente Radiológico do Brasil"/>
+<meta name="twitter:description" content="Cronograma dia a dia, doses de cada vítima, custos da descontaminação. O acidente que mudou o Brasil — e a física por trás da tragédia."/>
+<meta name="twitter:site" content="@mosmanlab"/>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "headline":"Césio-137: A História Completa do Maior Acidente Radiológico do Brasil",
+  "description":"A história completa do acidente com Césio-137 em Goiânia (1987): cronograma dia a dia, doses de cada vítima, custos da descontaminação e a física da radiação ionizante.",
+  "url":"https://mosmanlab.com.br/blog/cesio-137-goiania-acidente-radiologico.html",
+  "datePublished":"2026-04-14",
+  "author":{"@type":"Person","name":"Edson Mosman","url":"https://mosmanlab.com.br/professor.html"},
+  "publisher":{"@type":"Organization","name":"MosmanLAB","url":"https://mosmanlab.com.br"},
+  "inLanguage":"pt-BR"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+/* ── CRONOGRAMA ─────────────────────────────────── */
+.crono{margin:40px 0;position:relative}
+.crono::before{content:'';position:absolute;left:110px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#b91c1c,#7c3aed,#1d4ed8,#166534);border-radius:2px}
+.crono-item{display:grid;grid-template-columns:100px 1fr;gap:0 28px;margin-bottom:0;position:relative}
+.crono-data{text-align:right;padding-top:18px;font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;color:#64748b;line-height:1.3;padding-right:4px}
+.crono-linha{padding:14px 0 32px 20px;position:relative}
+.crono-linha::before{content:'';position:absolute;left:-7px;top:22px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #b91c1c;box-shadow:0 0 0 3px rgba(185,28,28,.15)}
+.crono-item.azul .crono-linha::before{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.crono-item.verde .crono-linha::before{border-color:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.15)}
+.crono-item.roxo .crono-linha::before{border-color:#7c3aed;box-shadow:0 0 0 3px rgba(124,58,237,.15)}
+.crono-item.morte .crono-linha::before{background:#b91c1c;border-color:#b91c1c;width:18px;height:18px;left:-9px;top:20px;box-shadow:0 0 0 5px rgba(185,28,28,.2)}
+.crono-titulo{font-weight:700;font-size:1rem;color:#111827;margin-bottom:5px}
+.crono-item.morte .crono-titulo{color:#b91c1c}
+.crono-desc{font-size:.89rem;color:#374151;line-height:1.7}
+.crono-tag{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:6px}
+.tag-inicio{background:#fee2e2;color:#b91c1c}
+.tag-dispersao{background:#fef3c7;color:#92400e}
+.tag-descoberta{background:#dbeafe;color:#1e40af}
+.tag-resposta{background:#dcfce7;color:#166534}
+.tag-morte{background:#fce7f3;color:#9d174d}
+.tag-limpeza{background:#ede9fe;color:#5b21b6}
+
+/* ── VITIMAS TABLE ─────────────────────────────── */
+.vitimas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:32px 0}
+.vitima-card{border-radius:12px;padding:18px 20px;border:1.5px solid}
+.vitima-card.fatal{border-color:#fca5a5;background:linear-gradient(135deg,#fff5f5,#fff1f0)}
+.vitima-card.grave{border-color:#fdba74;background:linear-gradient(135deg,#fff7ed,#fff4eb)}
+.vitima-card.sobrev{border-color:#86efac;background:linear-gradient(135deg,#f0fdf4,#f0fff4)}
+.vitima-nome{font-weight:800;font-size:.95rem;color:#111827;margin-bottom:4px}
+.vitima-dose{font-family:'DM Mono',monospace;font-size:1.3rem;font-weight:700;margin:6px 0}
+.vitima-card.fatal .vitima-dose{color:#dc2626}
+.vitima-card.grave .vitima-dose{color:#ea580c}
+.vitima-card.sobrev .vitima-dose{color:#16a34a}
+.vitima-detalhe{font-size:.82rem;color:#4b5563;line-height:1.6;margin-top:6px}
+.vitima-status{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:8px}
+.vitima-card.fatal .vitima-status{background:#fee2e2;color:#b91c1c}
+.vitima-card.grave .vitima-status{background:#ffedd5;color:#c2410c}
+.vitima-card.sobrev .vitima-status{background:#dcfce7;color:#166534}
+
+/* ── ESCALA INES ────────────────────────────────── */
+.ines-bar{display:flex;height:48px;border-radius:10px;overflow:hidden;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.ines-seg{display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:700;color:#fff;font-size:.85rem;flex:1;position:relative;cursor:default;transition:filter .15s}
+.ines-seg:hover{filter:brightness(1.15)}
+.ines-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:.65rem;color:#64748b;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.ines-wrap{margin-bottom:36px}
+
+/* ── CALLOUTS ───────────────────────────────────── */
+.callout{border-radius:10px;padding:16px 20px;margin:26px 0;border-left:4px solid}
+.callout.vermelho{background:rgba(254,226,226,.5);border-color:#dc2626}
+.callout.vermelho strong{color:#991b1b}
+.callout.azul{background:rgba(219,234,254,.5);border-color:#2563eb}
+.callout.azul strong{color:#1e40af}
+.callout.verde{background:rgba(220,252,231,.5);border-color:#16a34a}
+.callout.verde strong{color:#166534}
+.callout.amber{background:rgba(255,251,235,.8);border-color:#d97706}
+.callout.amber strong{color:#92400e}
+.callout.roxo{background:rgba(237,233,254,.5);border-color:#7c3aed}
+.callout.roxo strong{color:#5b21b6}
+
+/* ── LINKS JORNALISTICOS ────────────────────────── */
+.links-press{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin:28px 0}
+.links-press-title{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:14px}
+.links-press ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.links-press ul li a{font-size:.88rem;color:#1e40af;text-decoration:none;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.links-press ul li a::before{content:"📰";font-size:.8rem;flex-shrink:0;margin-top:1px}
+.links-press ul li a:hover{color:#1d4ed8;text-decoration:underline}
+.links-press ul li span{font-size:.75rem;color:#9ca3af;margin-left:4px}
+
+/* ── DECAY BOX ──────────────────────────────────── */
+.decay-box{background:linear-gradient(135deg,#0f1c2e,#1a0a2e);border-radius:14px;padding:28px 32px;margin:32px 0;color:#e5e7eb}
+.decay-box h3{color:#a78bfa;font-family:'DM Mono',monospace;font-size:.95rem;margin-bottom:16px}
+.decay-formula{font-family:'DM Mono',monospace;font-size:1.05rem;color:#e2e8f0;background:rgba(255,255,255,.07);border-radius:8px;padding:12px 16px;margin:12px 0;display:inline-block}
+.decay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.decay-item{background:rgba(255,255,255,.06);border-radius:10px;padding:14px 16px}
+.decay-num{font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:700;color:#a78bfa}
+.decay-lbl{font-size:.78rem;color:#9ca3af;margin-top:4px;line-height:1.4}
+
+/* ── LIXO RADIOATIVO ────────────────────────────── */
+.lixo-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:24px 0}
+.lixo-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;text-align:center}
+.lixo-num{font-family:'DM Mono',monospace;font-size:1.3rem;font-weight:700;color:#7c3aed}
+.lixo-lbl{font-size:.77rem;color:#64748b;margin-top:4px;line-height:1.4}
+
+@media(max-width:640px){
+  .crono::before{left:80px}
+  .crono-item{grid-template-columns:70px 1fr}
+  .crono-data{font-size:.65rem}
+  .decay-grid{grid-template-columns:1fr}
+  .vitimas-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+<div class="back-to-blog"><a href="index.html">Voltar ao Blog</a></div>
+
+<header class="article-hero" style="background:linear-gradient(135deg,#1a0005,#0f0a1e,#050f1a);">
+  <div class="article-tag">Física Nuclear · Radioatividade · História da Ciência · Saúde Pública</div>
+  <h1>Césio-137: A História Completa do Maior Acidente Radiológico do Brasil</h1>
+  <p class="hero-lead">Em 13 de setembro de 1987, dois catadores retiraram um aparelho de radioterapia abandonado de uma clínica em Goiânia. Dentro havia 19,26 gramas de cloreto de césio-137 — invisível, inodoro e letal. Em 16 dias, o pó azul brilhante percorreu bolsos, mesas e mãos de centenas de pessoas. Quatro morreram. 112.800 foram monitoradas. 6.000 toneladas de lixo radioativo foram geradas. Este artigo reconstrói o acidente hora a hora, explica a física da radiação ionizante, quantifica as doses recebidas por cada vítima e examina as consequências que duram até hoje — quase 40 anos depois.</p>
+  <div class="byline">
+    <span>📅 Abril 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 30 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">4</div><div class="stat-label">mortes oficiais imediatas pela Síndrome Aguda da Radiação — em menos de 50 dias</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">249</div><div class="stat-label">pessoas com algum grau de contaminação confirmada entre as 112.800 monitoradas</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#7c3aed">6.000 t</div><div class="stat-label">toneladas de lixo radioativo geradas — armazenadas por 180 anos em Abadia de Goiás</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563eb">Nível 5</div><div class="stat-label">na Escala INES — o mesmo nível do acidente de Three Mile Island. Abaixo apenas de Chernobyl e Fukushima (nível 7)</div></div>
+  </div>
+
+  <!-- ════════════════════════ PARTE 1 ══════════════════════════ -->
+  <h2>Parte 1 — O Contexto: Como uma Clínica Abandonada Criou a Tragédia</h2>
+
+  <p>A história do acidente com o Césio-137 começa dois anos antes de setembro de 1987. Em 1985, o <strong>Instituto Goiano de Radioterapia (IGR)</strong>, clínica especializada no tratamento de câncer localizada no Setor Central de Goiânia, mudou-se para novas instalações. Ao fazer isso, seus médicos — os Drs. Carlos Figueiredo Bezerril e Flamarion Barbosa Goulart — deixaram para trás, no edifício em abandono, um equipamento de radioterapia de modelo <em>Cesapan F-3000</em>. Dentro do aparelho havia uma cápsula de aço inoxidável e chumbo contendo uma fonte radioativa: <strong>cloreto de césio-137 (CsCl)</strong>.</p>
+
+  <p>A decisão de abandonar o equipamento sem comunicar a CNEN (Comissão Nacional de Energia Nuclear) ou a Vigilância Sanitária foi o primeiro elo de uma cadeia de negligências. Entre 1985 e 1987, o edifício foi tomado pelo mato, suas portas e janelas desapareceram. Em maio de 1987, iniciou-se uma demolição irregular do imóvel — que parou por liminar judicial. O prédio ficou em ruínas acessíveis a qualquer pessoa. O aparelho de radioterapia permaneceu lá, sem qualquer sinalização de perigo, por dois anos.</p>
+
+  <div class="callout vermelho">
+    <strong>O aparelho de radioterapia:</strong> O equipamento era uma fonte de radioterapia de contato do tipo <em>teletherapy unit</em>, fabricada provavelmente nos EUA pelo Oak Ridge National Laboratory. A fonte original tinha atividade de 74 TBq em 1971. Em setembro de 1987, após 16 anos de decaimento natural, ainda possuía 50,9 TBq (1.375 Ci) de atividade — suficiente para emitir dose de <strong>4,56 Gy por hora a 1 metro de distância</strong>, acima da dose letal mediana (4 Gy). A cápsula tinha 51 mm de diâmetro e 48 mm de comprimento. Dentro havia 93 gramas de CsCl.
+  </div>
+
+  <!-- ════════════════════════ PARTE 2 ══════════════════════════ -->
+  <h2>Parte 2 — A Física do Césio-137: Por que é tão Perigoso</h2>
+
+  <p>Para entender a gravidade do que aconteceu em Goiânia, é preciso entender a física do elemento que causou a tragédia.</p>
+
+  <p>O <strong>Césio-137 (¹³⁷Cs)</strong> é um isótopo radioativo artificial do elemento césio — um metal alcalino mole e dourado que não existe na natureza em forma radioativa. Ele é produto da <strong>fissão nuclear</strong> do urânio-235 e do plutônio-239 em reatores nucleares e explosões atômicas. Junto com o Iodo-131 e o Estrôncio-90, o Césio-137 é um dos isótopos de fissão mais preocupantes em termos de saúde pública.</p>
+
+  <div class="decay-box">
+    <h3>⚛️ Física do Decaimento Radioativo do Cs-137</h3>
+    <p style="font-size:.88rem;color:#d1d5db;margin-bottom:12px">O césio-137 decai por emissão beta para bário-137 metaestável, que emite radiação gama:</p>
+    <div class="decay-formula">¹³⁷Cs → ¹³⁷Ba* + β⁻ → ¹³⁷Ba + γ (661,7 keV)</div>
+    <p style="font-size:.82rem;color:#9ca3af;margin-top:10px">A radiação gama de 661,7 keV é altamente penetrante — atravessa paredes finas, roupas e tecidos. O chumbo e o concreto denso são necessários para blindagem efetiva.</p>
+    <div class="decay-grid">
+      <div class="decay-item"><div class="decay-num">30,17 anos</div><div class="decay-lbl">Meia-vida física do Cs-137 — metade da atividade da fonte de Goiânia ainda persistirá em 2017, um quarto em 2047</div></div>
+      <div class="decay-item"><div class="decay-num">661,7 keV</div><div class="decay-lbl">Energia do fóton gama emitido — suficiente para ionizar tecidos e quebrar ligações no DNA</div></div>
+      <div class="decay-item"><div class="decay-num">~180 anos</div><div class="decay-lbl">Tempo estimado para que os rejeitos de Goiânia percam sua periculosidade a níveis seguros</div></div>
+      <div class="decay-item"><div class="decay-num">4,56 Gy/h</div><div class="decay-lbl">Taxa de dose a 1 metro da fonte original — acima da dose letal mediana (4 Gy) em uma única hora</div></div>
+    </div>
+  </div>
+
+  <p>O CsCl (cloreto de césio) é especialmente perigoso porque é um <strong>sal altamente solúvel em água</strong>, de comportamento químico similar ao cloreto de potássio (KCl). No corpo humano, o Cs-137 se comporta como o potássio — distribui-se pelos tecidos musculares e não se concentra em um único órgão como o iodo na tireoide, o que dificulta sua remoção e torna a contaminação interna especialmente grave. A meia-vida biológica do Cs-137 no organismo adulto é de 50 a 150 dias.</p>
+
+  <p>Outro fator crítico: o CsCl é <strong>higroscópico</strong> — absorve umidade do ar. Isso faz com que o pó adira facilmente à pele, roupas, cabelos e superfícies. Uma vez disperso, contamina tudo que toca. Em Goiânia, fragmentos viajaram em bolsos de calça, embrulhados em papel, carregados nas palmas das mãos de crianças.</p>
+
+  <div class="callout azul">
+    <strong>Por que brilhava azul?</strong> O intenso brilho azul que fascinou Devair Ferreira e dezenas de outras pessoas provavelmente era causado pela <strong>ionização das moléculas de ar</strong> ao redor do material radioativo — um fenômeno às vezes confundido com efeito Cherenkov. O mesmo brilho azul foi observado em 1988 no Oak Ridge National Laboratory, EUA, durante o descapsulamento de outra fonte de Cs-137. A IAEA, em seu relatório de 1988, admitiu que o mecanismo exato ainda não era completamente compreendido. O que é certo: aquele brilho mágico era radiação ionizante em ação — e cada pessoa que se aproximava fascínada estava sendo irradiada.
+  </div>
+
+  <!-- ════════════════════════ PARTE 3 — CRONOGRAMA ══════════════════════════ -->
+  <h2>Parte 3 — Cronograma Completo: 46 Dias que Mudaram Goiânia</h2>
+
+  <div class="crono">
+
+    <div class="crono-item">
+      <div class="crono-data">13 Set<br/>1987<br/>(Sáb)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-inicio">Início</span>
+        <div class="crono-titulo">Wagner e Roberto retiram o aparelho do IGR</div>
+        <div class="crono-desc">Wagner Mota Pereira, 20 anos, e Roberto dos Santos Alves, 21, invadem as ruínas do Instituto Goiano de Radioterapia no Setor Central. Com marretas e talhadeiras, removem o cabeçote rotativo do aparelho de radioterapia — a parte que continha a fonte radioativa. Usando um carrinho de mão, transportam a peça de 98 kg até a casa de Roberto, na Rua 57. Naquela mesma noite, ambos sentem náuseas e vômitos, atribuídos à alimentação.</div>
+      </div>
+    </div>
+
+    <div class="crono-item azul">
+      <div class="crono-data">14–17 Set<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-dispersao">Dispersão</span>
+        <div class="crono-titulo">Primeiros sintomas e tentativas de desmontagem</div>
+        <div class="crono-desc">Wagner e Roberto tentam desmontar o aparelho para recuperar o chumbo. Roberto desenvolve inchaço no rosto e na mão direita, vômitos persistentes e perda de dedos da mão — sintomas de contaminação severa. Procura a emergência de um hospital local, onde é diagnosticado como alergia. A taxa de dose a 1 metro do aparelho intacto era de 4,56 Gy/h — horas de exposição já seriam letais.</div>
+      </div>
+    </div>
+
+    <div class="crono-item">
+      <div class="crono-data">18 Set<br/>1987<br/>(Sex)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-dispersao">Dispersão</span>
+        <div class="crono-titulo">Devair compra a peça — e encontra o brilho azul</div>
+        <div class="crono-desc">Roberto vende os fragmentos do aparelho a <strong>Devair Alves Ferreira</strong>, dono de um ferro-velho no Setor Aeroporto, por cerca de 25.000 cruzados. À noite, Devair nota um intenso brilho azul vindo da cápsula perfurada. Fascinado, acredita ter encontrado algo precioso ou sobrenatural. Leva a cápsula para dentro de casa. Nos dias seguintes, convida familiares e vizinhos para ver o "pó mágico".</div>
+      </div>
+    </div>
+
+    <div class="crono-item roxo">
+      <div class="crono-data">18–24 Set<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-dispersao">Dispersão</span>
+        <div class="crono-titulo">O pó se espalha pela cidade</div>
+        <div class="crono-desc">Devair distribui fragmentos do pó azul para amigos e familiares como se fosse uma curiosidade especial. Um amigo (identificado na documentação da IAEA como "EF1") libera grãos adicionais da cápsula com uma chave de fenda. O irmão de Devair, <strong>Ivo Ferreira</strong>, leva fragmentos embrulhados em papel para sua casa no Setor Norte-Ferroviário. Outro irmão, Odesson, também tem contato direto. A tia de Leide, Luiza Odete, é chamada pela sobrinha para ver a "pedrinha iluminante". O pó já contaminou pelo menos 7 locais diferentes da cidade.</div>
+      </div>
+    </div>
+
+    <div class="crono-item">
+      <div class="crono-data">24 Set<br/>1987<br/>(Qui)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-inicio">Tragédia</span>
+        <div class="crono-titulo">Leide das Neves ingere o césio</div>
+        <div class="crono-desc"><strong>Leide das Neves Ferreira</strong>, 6 anos, filha de Ivo, brinca com o pó azul brilhante espalhado sobre a mesa da sala. Sem lavar as mãos, come um ovo cozido que a mãe preparou para o jantar, ingerindo partículas radioativas. 15 minutos depois, começa a vomitar. Ela recebe a maior dose de radiação de todo o acidente — contaminação interna severa por ingestão direta. Na mesma data, sua tia Luiza Odete tem o pescoço marcado por um pedaço de papel contaminado que o pai brincalhão passou em seu pescoço — lesão que deixaria cicatrizes permanentes.</div>
+      </div>
+    </div>
+
+    <div class="crono-item azul">
+      <div class="crono-data">25–27 Set<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-dispersao">Sintomas</span>
+        <div class="crono-titulo">Surto de doenças inexplicadas</div>
+        <div class="crono-desc">Múltiplas pessoas do círculo de Devair apresentam sintomas simultâneos: vômitos, diarreia, tontura, queimaduras na pele, queda de cabelo. Os médicos locais não associam os sintomas à radiação — tratam como intoxicação alimentar, suspeita alimentada por uma feijoada com Coca-Cola que alguns tinham comido juntos. Odesson, irmão de Devair, trabalha como motorista de ônibus contaminado, transportando cerca de 1.000 passageiros por dia. O número de locais contaminados na cidade continua crescendo silenciosamente.</div>
+      </div>
+    </div>
+
+    <div class="crono-item verde">
+      <div class="crono-data">28 Set<br/>1987<br/>(Dom)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-descoberta">Primeira Suspeita</span>
+        <div class="crono-titulo">Maria Gabriela leva a cápsula à Vigilância Sanitária</div>
+        <div class="crono-desc"><strong>Maria Gabriela Ferreira</strong>, 37 anos, esposa de Devair, instigada por uma vizinha, recolhe os fragmentos da cápsula em uma sacola plástica e os leva até a Divisão de Vigilância Sanitária da Secretaria Estadual de Saúde. A sacola é deixada no pátio do órgão — onde permanece por um dia inteiro, contaminando o local e as pessoas que passam por ali. A carga que Maria Gabriela carregou a expõe a uma dose adicional ao longo do caminho. Ela se tornará uma das vítimas fatais — mas também a heroína que impediu uma catástrofe ainda maior.
+        <br/><br/>
+        <em>Nota: <a href="https://g1.globo.com/goias/noticia/2012/09/considerada-heroina-vitima-do-cesio-evitou-que-contaminacao-fosse-maior.html" target="_blank" rel="noopener">A história de Maria Gabriela foi documentada pelo G1 em 2012</a>.</em></div>
+      </div>
+    </div>
+
+    <div class="crono-item verde">
+      <div class="crono-data">29 Set<br/>1987<br/>(Seg)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-descoberta">Identificação</span>
+        <div class="crono-titulo">Walter Mendes identifica a radiação a 80 metros</div>
+        <div class="crono-desc">O físico <strong>Walter Mendes Ferreira</strong>, 29 anos, funcionário do Departamento de Física Médica da Secretaria Estadual de Saúde, é convocado para examinar o "material suspeito". Usando um cintilômetro emprestado de uma agência de prospecção de urânio, <strong>detecta radiação ionizante a 80 metros de distância</strong> — o aparelho literalmente "grita" antes de se aproximar. Reconhece imediatamente a gravidade: impede que os bombeiros joguem o material no rio, ordena evacuação imediata da área. Na mesma data, a CNEN (Comissão Nacional de Energia Nuclear) é oficialmente notificada e aciona a AIEA (Agência Internacional de Energia Atômica).
+        <br/><br/>
+        <em><a href="https://www.gov.br/ipen/pt-br/assuntos/clipping-de-noticias/quem-e-o-fisico-que-identificou-o-acidente-com-cesio-137-em-goiania" target="_blank" rel="noopener">Walter Mendes contou sua história ao IPEN em 2024</a>. Ele é o herói real que inspirou o personagem de Johnny Massaro na série da Netflix.</em></div>
+      </div>
+    </div>
+
+    <div class="crono-item verde">
+      <div class="crono-data">30 Set<br/>1987<br/>(Ter)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-resposta">Resposta</span>
+        <div class="crono-titulo">Operação Césio-137 — começa a maior operação de emergência nuclear civil do Brasil</div>
+        <div class="crono-desc">Técnicos da CNEN chegam a Goiânia. O físico <strong>José de Júlio Rozental</strong> coordena a operação. Na madrugada, o ferro-velho de Devair é interditado. Devair, seus familiares e vizinhos são retirados em ônibus da Polícia Militar. O Estádio Olímpico Pedro Ludovico Teixeira é designado como centro de triagem. A "Operação Césio-137" é deflagrada, envolvendo CNEN, FURNAS, NUCLEBRÁS, Defesa Civil, Hospital Naval Marcílio Dias, Secretaria Estadual de Saúde de Goiás e dezenas de outras instituições.</div>
+      </div>
+    </div>
+
+    <div class="crono-item azul">
+      <div class="crono-data">Out 1987<br/>(todo o mês)</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-resposta">Triagem</span>
+        <div class="crono-titulo">112.800 pessoas monitoradas no Estádio Olímpico</div>
+        <div class="crono-desc">O Estádio Olímpico torna-se o maior posto de triagem radiológica da história do Brasil. Filas imensas se formam — pessoas aterorizadas aguardam para serem medidas com contadores Geiger. <strong>112.800 pessoas passam pelos exames</strong>. A metodologia: banho com sabão neutro e ácido acético (vinagre), seguido de medição. Regiões de maior contaminação tratadas com dióxido de titânio e lanolina, mais pedra-pomes. <strong>249 apresentam contaminação</strong>, 129 precisam de acompanhamento médico, 50 têm contaminação interna, 14 são transferidos ao estado grave para o Hospital Naval Marcílio Dias no Rio de Janeiro.</div>
+      </div>
+    </div>
+
+    <div class="crono-item morte">
+      <div class="crono-data">23 Out<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-morte">Mortes</span>
+        <div class="crono-titulo">Morrem Leide das Neves (6 anos) e Maria Gabriela (37 anos)</div>
+        <div class="crono-desc"><strong>Leide das Neves Ferreira</strong> morre no Hospital Naval Marcílio Dias, Rio de Janeiro, de "septicemia e infecção generalizada". A criança havia sido encontrada isolada em um quarto do hospital — a equipe médica tinha medo de se aproximar dela. Leide havia recebido dose estimada em <strong>6,0 Gy</strong> — a maior de todas as vítimas. Seu corpo é enterrado no cemitério de Goiânia em caixão especial de fibra de vidro forrado de chumbo (700 kg) para conter a radiação. O enterro provoca um tumulto com mais de 2.000 pessoas aterrorizadas tentando impedir o sepultamento.
+        <br/><br/>
+        No mesmo dia morre <strong>Maria Gabriela Ferreira</strong>, 37 anos, de falência múltipla de órgãos. A heroína que levou o material à vigilância sanitária — impedindo que o pó continuasse se espalhando — não sobreviveu à dose que havia recebido: <strong>5,7 Gy</strong>.
+        <br/><br/>
+        <em><a href="https://www.metropoles.com/brasil/cesio-137-o-que-aconteceu-com-as-vitimas" target="_blank" rel="noopener">Metrópoles documentou a história de todas as vítimas em 2026.</a></em></div>
+      </div>
+    </div>
+
+    <div class="crono-item morte">
+      <div class="crono-data">27 Out<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-morte">Morte</span>
+        <div class="crono-titulo">Morre Israel Batista dos Santos (20 anos)</div>
+        <div class="crono-desc"><strong>Israel Batista dos Santos</strong>, funcionário do ferro-velho de Devair, havia trabalhado diretamente com a remoção do chumbo da fonte radioativa. Dose estimada: <strong>4,5 Gy</strong>. Morre de hemorragia interna e falência dos órgãos. Era o responsável por grande parte do manuseio direto da fonte.</div>
+      </div>
+    </div>
+
+    <div class="crono-item morte">
+      <div class="crono-data">28 Out<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-morte">Morte</span>
+        <div class="crono-titulo">Morre Admilson Alves de Souza (18 anos)</div>
+        <div class="crono-desc"><strong>Admilson Alves de Souza</strong>, 18 anos, também funcionário do ferro-velho. Havia manipulado a fonte radioativa nos primeiros dias após a compra. Dose estimada: <strong>5,3 Gy</strong>. Desenvolveu lesão pulmonar, hemorragia interna e dano cardíaco. É a quarta e última morte imediata oficialmente atribuída ao acidente.</div>
+      </div>
+    </div>
+
+    <div class="crono-item roxo">
+      <div class="crono-data">Out–Dez<br/>1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-limpeza">Limpeza</span>
+        <div class="crono-titulo">Descontaminação de Goiânia — 83 dias de operação</div>
+        <div class="crono-desc">Entre 30 de setembro e 21 de dezembro, <strong>40 técnicos da CNEN</strong> trabalham na descontaminação. Sete casas são demolidas. Quarenta e uma famílias são evacuadas. O solo é removido de múltiplos locais. Telhados são aspirados a vácuo. Dois telhados são completamente removidos. Objetos pessoais, brinquedos, fotografias, documentos, roupas, móveis e animais de estimação contaminados são confiscados e destruídos. <strong>6.000 toneladas de lixo radioativo</strong> são geradas, acondicionadas em 14 contêineres com 1.200 caixas e 2.900 tambores, concretados hermeticamente.</div>
+      </div>
+    </div>
+
+    <div class="crono-item verde">
+      <div class="crono-data">Dez 1987</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-resposta">Institucional</span>
+        <div class="crono-titulo">Criação da FUNLEIDE e início do monitoramento de longo prazo</div>
+        <div class="crono-desc">O governo do Estado de Goiás cria a <strong>Fundação Leide das Neves Ferreira (FUNLEIDE)</strong> para acompanhar permanentemente os efeitos do acidente sobre as vítimas. São definidos grupos de monitoramento conforme normas internacionais. A fundação publica anualmente relatórios de saúde dos sobreviventes. Em 1988, começa a construção do Depósito Definitivo de Rejeitos Radioativos em <strong>Abadia de Goiás</strong>, a 23 km de Goiânia.</div>
+      </div>
+    </div>
+
+    <div class="crono-item azul">
+      <div class="crono-data">1994</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-morte">Morte tardia</span>
+        <div class="crono-titulo">Morre Devair Ferreira — o homem que abriu a cápsula</div>
+        <div class="crono-desc"><strong>Devair Alves Ferreira</strong>, que havia recebido 7 Gy — a maior dose entre os sobreviventes imediatos — morre 7 anos depois do acidente. Após sobreviver à Síndrome Aguda da Radiação, desenvolveu depressão profunda, alcoolismo e cirrose hepática. Carregou o peso da culpa pela tragédia até o fim da vida. Morreu aos 43 anos.
+        <br/><br/>
+        <em><a href="https://aventurasnahistoria.com.br/noticias/historia-hoje/emergencia-radioativa-quem-eram-as-vitimas-do-cesio-137.phtml" target="_blank" rel="noopener">A história de Devair foi documentada pela Aventuras na História em 2026.</a></em></div>
+      </div>
+    </div>
+
+    <div class="crono-item azul">
+      <div class="crono-data">2012</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-resposta">25 anos</span>
+        <div class="crono-titulo">104 mortes associadas ao acidente — segundo a Associação das Vítimas</div>
+        <div class="crono-desc">Ao completar 25 anos, a <strong>Associação das Vítimas do Césio-137</strong> afirma que 104 pessoas morreram em decorrência da contaminação — de câncer, doenças cardíacas e outras complicações relacionadas à exposição à radiação. Cerca de 1.600 pessoas foram afetadas diretamente. 1.141 sobreviventes ainda são acompanhados pelo <strong>Centro de Assistência aos Radioacidentados (CARA)</strong>, vinculado à Secretaria de Saúde de Goiás.
+        <br/><br/>
+        <em><a href="https://istoe.com.br/233563_GOIANIA+25+ANOS+DEPOIS+PERGUNTAM+ATE+SE+BRILHAMOS+DIZ+VITIMA/" target="_blank" rel="noopener">"Perguntam até se brilhamos", disse uma vítima à IstoÉ em 2012.</a></em></div>
+      </div>
+    </div>
+
+    <div class="crono-item verde">
+      <div class="crono-data">Mar 2026</div>
+      <div class="crono-linha">
+        <span class="crono-tag tag-resposta">Hoje</span>
+        <div class="crono-titulo">Netflix lança "Emergência Radioativa" — e o debate volta ao centro</div>
+        <div class="crono-desc">Em março de 2026, a Netflix estreia a minissérie <strong>"Emergência Radioativa"</strong>, dirigida por Fernando Coimbra, com Johnny Massaro no papel do físico Walter Mendes. A série reacende o debate sobre memória, responsabilização e as vítimas que ainda aguardam reajuste de pensões — sem correção há 7 anos. A Assembleia Legislativa de Goiás aprova em abril de 2026 o reajuste das pensões especiais para as vítimas.
+        <br/><br/>
+        <em><a href="https://www.cnnbrasil.com.br/entretenimento/cesio-137-relembre-o-caso-do-maior-acidente-radioativo-do-brasil-em-1987/" target="_blank" rel="noopener">CNN Brasil publicou cobertura completa em 2026.</a></em></div>
+      </div>
+    </div>
+
+  </div><!-- /crono -->
+
+  <!-- ════════════════════════ PARTE 4 — VÍTIMAS ══════════════════════════ -->
+  <h2>Parte 4 — As Vítimas: Doses, Destinos e Sequelas</h2>
+
+  <p>A IAEA, em seu relatório oficial de 1988 (<em>The Radiological Accident in Goiânia</em>), documentou com precisão as doses recebidas pelas principais vítimas, estimadas por dosimetria citogenética (aberrações cromossomiais) e contador de corpo inteiro. Abaixo estão os perfis das principais pessoas afetadas.</p>
+
+  <div class="vitimas-grid">
+    <div class="vitima-card fatal">
+      <div class="vitima-nome">Leide das Neves Ferreira</div>
+      <div style="font-size:.78rem;color:#6b7280">6 anos · filha de Ivo Ferreira</div>
+      <div class="vitima-dose">6,0 Gy</div>
+      <div class="vitima-detalhe">Maior dose de todo o acidente. Contaminação interna por ingestão direta de partículas ao comer com as mãos contaminadas. Isolada em quarto de hospital — a equipe médica temia se aproximar. Inchaço generalizado, queda de cabelo, dano renal e pulmonar, hemorragia interna. Enterrada em caixão de chumbo e fibra de vidro (700 kg).</div>
+      <span class="vitima-status">† 23 Out 1987 — 40 dias de sobrevida</span>
+    </div>
+    <div class="vitima-card fatal">
+      <div class="vitima-nome">Maria Gabriela Ferreira</div>
+      <div style="font-size:.78rem;color:#6b7280">37 anos · esposa de Devair</div>
+      <div class="vitima-dose">5,7 Gy</div>
+      <div class="vitima-detalhe">Heroína que levou o material à Vigilância Sanitária — carregou a sacola com a cápsula por dois quarteirões. Adoeceu 3 dias após o contato. Falência múltipla de órgãos. Tia de Leide. Considerada a pessoa que evitou que a tragédia fosse ainda maior.</div>
+      <span class="vitima-status">† 23 Out 1987 — 25 dias de sobrevida</span>
+    </div>
+    <div class="vitima-card fatal">
+      <div class="vitima-nome">Admilson Alves de Souza</div>
+      <div style="font-size:.78rem;color:#6b7280">18 anos · funcionário do ferro-velho</div>
+      <div class="vitima-dose">5,3 Gy</div>
+      <div class="vitima-detalhe">Manipulou a fonte radioativa diretamente ao desmontar o aparelho. Desenvolveu lesão pulmonar, hemorragia interna e dano cardíaco grave. Síndrome Aguda da Radiação grau IV.</div>
+      <span class="vitima-status">† 28 Out 1987 — 45 dias de sobrevida</span>
+    </div>
+    <div class="vitima-card fatal">
+      <div class="vitima-nome">Israel Batista dos Santos</div>
+      <div style="font-size:.78rem;color:#6b7280">20 anos · funcionário do ferro-velho</div>
+      <div class="vitima-dose">4,5 Gy</div>
+      <div class="vitima-detalhe">Responsável pela remoção do chumbo da fonte. Contaminação externa e interna severa. Hemorragia e infecção generalizada. Síndrome Aguda da Radiação grau III-IV.</div>
+      <span class="vitima-status">† 27 Out 1987 — 44 dias de sobrevida</span>
+    </div>
+    <div class="vitima-card grave">
+      <div class="vitima-nome">Devair Alves Ferreira</div>
+      <div style="font-size:.78rem;color:#6b7280">36 anos · dono do ferro-velho</div>
+      <div class="vitima-dose">7,0 Gy</div>
+      <div class="vitima-detalhe">Maior dose absoluta registrada — acima da DL₅₀ (dose letal para 50% dos expostos). Sobreviveu por razões ainda não completamente explicadas. Perdeu cabelo, sofreu danos em múltiplos órgãos. Depressão severa, alcoolismo, câncer induzido por radiação.</div>
+      <span class="vitima-status">† 1994 — cirrose e sequelas da radiação</span>
+    </div>
+    <div class="vitima-card grave">
+      <div class="vitima-nome">Odesson Alves Ferreira</div>
+      <div style="font-size:.78rem;color:#6b7280">32 anos · irmão de Devair</div>
+      <div class="vitima-dose">~4,5 Gy</div>
+      <div class="vitima-detalhe">Trabalhou 8 dias como motorista de ônibus contaminado — transportando ~1.000 passageiros/dia. Internado em isolamento por meses. Perdeu a palma da mão (reconstruída cirurgicamente) e parte do dedo indicador (amputado). Ativista pelos direitos das vítimas até hoje.</div>
+      <span class="vitima-status">Sobrevivente · sequelas permanentes</span>
+    </div>
+    <div class="vitima-card grave">
+      <div class="vitima-nome">Wagner Mota Pereira</div>
+      <div style="font-size:.78rem;color:#6b7280">20 anos · catador</div>
+      <div class="vitima-dose">~4,5 Gy</div>
+      <div class="vitima-detalhe">Um dos dois catadores que retiraram o aparelho do IGR. Exposição direta desde o dia 13 de setembro. Desenvolveu inchaço, queimaduras e perda de tecidos na mão. Sobreviveu após tratamento intensivo.</div>
+      <span class="vitima-status">Sobrevivente · sequelas permanentes</span>
+    </div>
+    <div class="vitima-card grave">
+      <div class="vitima-nome">Roberto dos Santos Alves</div>
+      <div style="font-size:.78rem;color:#6b7280">21 anos · catador</div>
+      <div class="vitima-dose">~3,0 Gy</div>
+      <div class="vitima-detalhe">O segundo catador. Exposição intensa nos primeiros dias. Perdeu o antebraço direito por amputação — consequência das radiolesões. Foi o mais cético sobre a origem dos problemas de saúde, acreditando inicialmente que eram causados pela alimentação.</div>
+      <span class="vitima-status">Sobrevivente · amputação do antebraço</span>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 1: Doses comparativas -->
+  <div class="chart-block">
+    <div class="chart-title">Doses de Radiação Recebidas pelas Principais Vítimas (Gy)</div>
+    <div class="chart-sub">Fonte: IAEA — The Radiological Accident in Goiânia (1988) · A DL₅₀ (dose letal para 50% da população sem tratamento médico) é ~4 Gy · Devair recebeu a maior dose e sobreviveu graças a tratamento intensivo</div>
+    <div style="height:380px"><canvas id="c1"></canvas></div>
+  </div>
+
+  <!-- ════════════════════════ PARTE 5 ══════════════════════════ -->
+  <h2>Parte 5 — A Síndrome Aguda da Radiação: A Física dos Danos Biológicos</h2>
+
+  <p>O que acontece com um corpo humano exposto a doses maciças de radiação ionizante? A resposta está na <strong>Síndrome Aguda da Radiação (SAR)</strong> — o conjunto de sintomas que ocorre quando o organismo inteiro ou grande parte dele é exposto a uma dose alta de radiação em curto período de tempo.</p>
+
+  <p>A radiação gama do Cs-137 penetra profundamente no corpo, ionizando moléculas ao longo de seu caminho. O mecanismo de dano é duplo: <strong>dano direto ao DNA</strong> (quebras de fita simples e dupla na molécula) e <strong>dano indireto por radicais livres</strong> (a radiação ioniza moléculas de água, gerando radicais OH• altamente reativos que atacam o DNA). As células mais sensíveis são aquelas que se dividem mais rapidamente: células da medula óssea (precursoras de sangue), epitélio intestinal e células reprodutivas.</p>
+
+  <!-- GRÁFICO 2: SAR por dose -->
+  <div class="chart-block">
+    <div class="chart-title">Síndrome Aguda da Radiação — Efeitos por Faixa de Dose (Gy)</div>
+    <div class="chart-sub">As vítimas fatais de Goiânia receberam doses entre 4,5 e 7,0 Gy — na faixa de mortalidade quase certa sem transplante de medula óssea</div>
+    <div style="height:360px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <p>No caso de Goiânia, as vítimas experimentaram as fases clássicas da SAR:</p>
+
+  <p><strong>Fase prodrômica (horas a 2 dias):</strong> Náuseas, vômitos, diarreia, fadiga, tontura. Nas vítimas com doses acima de 4 Gy, esses sintomas aparecem em menos de 2 horas. Nas doses de Leide (~6 Gy) e Devair (~7 Gy), em menos de 30 minutos.</p>
+
+  <p><strong>Período de latência (1–3 semanas):</strong> Melhora aparente dos sintomas enquanto a medula óssea e o epitélio intestinal continuam sofrendo depleção celular. Este período criou a falsa impressão de recuperação em algumas das vítimas — e foi o período em que muitos continuaram circulando pela cidade, contaminando mais locais.</p>
+
+  <p><strong>Fase manifesta (2–4 semanas):</strong> Quando a depleção da medula óssea se torna crítica. Queda dramática de leucócitos e plaquetas, hemorragias internas, infecções oportunistas impossíveis de combater sem imunidade. Queda de cabelo (epítolio folicular destruído). Radiodermatite severa — queimaduras profundas sem fonte de calor externa.</p>
+
+  <p><strong>Desfecho:</strong> Para doses acima de 4–6 Gy sem transplante de medula óssea, a mortalidade é de 50–100%. O transplante de medula foi tentado em algumas das vítimas mais graves de Goiânia — sem sucesso, em parte porque a contaminação interna continuava liberando radiação mesmo após o transplante.</p>
+
+  <div class="callout roxo">
+    <strong>Por que Devair sobreviveu a 7 Gy?</strong> Devair recebeu a maior dose estimada de todas as vítimas — acima da DL₁₀₀ (dose letal para 100% sem tratamento). Sua sobrevivência imediata provavelmente se deve a uma combinação de fatores: a exposição foi parcialmente fracionada (não instantânea), o tratamento intensivo no Hospital Naval Marcílio Dias incluiu cuidados de suporte rigorosos e antibióticoterapia de amplo espectro, e houve variabilidade biológica individual na radiorresistência. O corpo humano apresenta variação significativa na resposta à radiação — alguns indivíduos sobrevivem a doses que matariam outros.
+  </div>
+
+  <!-- ════════════════════════ PARTE 6 — DESCONTAMINAÇÃO ══════════════════════════ -->
+  <h2>Parte 6 — A Descontaminação: Números, Custos e o Lixo que Dura 180 Anos</h2>
+
+  <div class="lixo-stats">
+    <div class="lixo-item"><div class="lixo-num">6.000 t</div><div class="lixo-lbl">toneladas de lixo radioativo gerado pela descontaminação</div></div>
+    <div class="lixo-item"><div class="lixo-num">14</div><div class="lixo-lbl">contêineres fechados hermeticamente com concreto para armazenamento</div></div>
+    <div class="lixo-item"><div class="lixo-num">1.200</div><div class="lixo-lbl">caixas de metal dentro dos contêineres</div></div>
+    <div class="lixo-item"><div class="lixo-num">2.900</div><div class="lixo-lbl">tambores de aço nos contêineres</div></div>
+    <div class="lixo-item"><div class="lixo-num">7</div><div class="lixo-lbl">casas completamente demolidas</div></div>
+    <div class="lixo-item"><div class="lixo-num">41</div><div class="lixo-lbl">famílias evacuadas permanentemente de suas residências</div></div>
+    <div class="lixo-item"><div class="lixo-num">40</div><div class="lixo-lbl">técnicos da CNEN envolvidos na operação de descontaminação</div></div>
+    <div class="lixo-item"><div class="lixo-num">83 dias</div><div class="lixo-lbl">duração da operação de descontaminação (30/set a 21/dez/1987)</div></div>
+    <div class="lixo-item"><div class="lixo-num">180 anos</div><div class="lixo-lbl">tempo estimado para que os rejeitos percam periculosidade a níveis seguros</div></div>
+    <div class="lixo-item"><div class="lixo-num">Abadia de Goiás</div><div class="lixo-lbl">município de destino, a 23 km de Goiânia — Parque Estadual Telma Ortegal</div></div>
+  </div>
+
+  <!-- GRÁFICO 3: Distribuição da contaminação -->
+  <div class="chart-block">
+    <div class="chart-title">Triagem das 112.800 Pessoas Monitoradas — Resultado dos Exames</div>
+    <div class="chart-sub">Fonte: CNEN / Secretaria de Saúde de Goiás (1988) · 249 pessoas com algum nível de contaminação; 4 mortes imediatas</div>
+    <div style="height:320px"><canvas id="c3"></canvas></div>
+  </div>
+
+  <h3>Os Custos: um Cálculo Incompleto</h3>
+
+  <p>Estimar o custo total do acidente é uma tarefa complexa porque inclui dimensões que a contabilidade convencional não captura facilmente. Os custos diretos documentados incluem:</p>
+
+  <p><strong>Descontaminação imediata (1987):</strong> A operação envolvendo 40 técnicos da CNEN, equipamentos especializados, construção do depósito provisório e depois definitivo em Abadia de Goiás teve custos estimados em dezenas de milhões de cruzados (equivalente a vários milhões de dólares em valores de 1987). Documentos judiciais confirmam que o Ministério Público solicitou indenizações de R$ 2 milhões para a União Federal e R$ 1 milhão para a CNEN a título de dano ambiental difuso — valores reconhecidamente simbólicos diante da magnitude real do dano.</p>
+
+  <p><strong>Monitoramento contínuo (1987–hoje):</strong> A FUNLEIDE/CARA acompanha sobreviventes desde 1987. O município de Abadia de Goiás recebe R$ 70 mil anuais do governo federal para custear a manutenção do depósito de rejeitos — valor considerado insuficiente e inalterado há mais de uma década.</p>
+
+  <p><strong>Pensões vitalícias:</strong> A Lei Estadual nº 10.977/1989 instituiu pensões especiais para as vítimas. Em 2025, os sobreviventes recebiam R$ 954 mensais — sem reajuste há 7 anos. Em abril de 2026, a Assembleia Legislativa de Goiás aprovou o reajuste, mas os valores ainda são considerados inadequados pelas associações de vítimas.</p>
+
+  <p><strong>Impacto econômico indireto:</strong> Este é o custo mais devastador e menos quantificado. O turismo goiano sofreu queda de 50% nas vendas em hotéis e comércio. Voos para Goiânia chegaram a ser impedidos em alguns estados. Imóveis na região do acidente perderam ~50% do valor — desvalorização que persiste décadas depois. A economia do estado de Goiás sofreu com o estigma de que todos os seus produtos poderiam estar contaminados.</p>
+
+  <!-- GRÁFICO 4: Linha do tempo das mortes -->
+  <div class="chart-block">
+    <div class="chart-title">Linha do Tempo das Mortes Imediatas (dias após exposição inicial — 13/Set/1987)</div>
+    <div class="chart-sub">As 4 mortes ocorreram entre 40 e 45 dias após a exposição inicial — dentro do padrão esperado da SAR grau III-IV · Devair recebeu dose maior mas sobreviveu por mais tempo</div>
+    <div style="height:280px"><canvas id="c4"></canvas></div>
+  </div>
+
+  <!-- ════════════════════════ PARTE 7 — ESCALA INES ══════════════════════════ -->
+  <h2>Parte 7 — A Escala INES e o Lugar de Goiânia na História dos Acidentes Nucleares</h2>
+
+  <p>O acidente com o Césio-137 em Goiânia foi classificado como <strong>Nível 5</strong> na <strong>Escala Internacional de Eventos Nucleares e Radiológicos (INES)</strong> — criada justamente após Goiânia e Chernobyl para padronizar a comunicação de gravidade de acidentes. A escala vai de 0 a 7.</p>
+
+  <div class="ines-wrap">
+    <div class="ines-bar">
+      <div class="ines-seg" style="background:#16a34a">0<span class="ines-label">Desvio</span></div>
+      <div class="ines-seg" style="background:#65a30d">1<span class="ines-label">Anomalia</span></div>
+      <div class="ines-seg" style="background:#ca8a04">2<span class="ines-label">Incidente</span></div>
+      <div class="ines-seg" style="background:#ea580c">3<span class="ines-label">Inc. sério</span></div>
+      <div class="ines-seg" style="background:#dc2626">4<span class="ines-label">Acid. local</span></div>
+      <div class="ines-seg" style="background:#b91c1c;transform:scaleY(1.15);z-index:1;border:3px solid #fff">5<span class="ines-label" style="color:#b91c1c;font-weight:800">GOIÂNIA</span></div>
+      <div class="ines-seg" style="background:#7f1d1d">6<span class="ines-label">Acid. grave</span></div>
+      <div class="ines-seg" style="background:#450a0a">7<span class="ines-label">Chernobyl</span></div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 5: Comparação INES -->
+  <div class="chart-block">
+    <div class="chart-title">Comparação: Maiores Acidentes Radiológicos da História — Escala INES e Vítimas Imediatas</div>
+    <div class="chart-sub">Goiânia é o maior acidente radiológico fora de usinas nucleares da história · Chernobyl e Fukushima são os únicos nível 7 da escala INES</div>
+    <div style="height:360px"><canvas id="c5"></canvas></div>
+  </div>
+
+  <p>O que torna Goiânia único na escala INES não é apenas a classificação, mas o contexto: foi o único acidente Nível 5 que ocorreu em ambiente <strong>urbano denso, fora de qualquer instalação nuclear</strong>, causado por uma fonte órfã (radiological orphan source) — um equipamento radioativo abandonado sem controle. Foi esse aspecto que levou a IAEA a usá-lo como caso-estudo central para o desenvolvimento de protocolos internacionais de controle de fontes radioativas.</p>
+
+  <!-- ════════════════════════ PARTE 8 — RESPONSABILIDADE ══════════════════════════ -->
+  <h2>Parte 8 — Responsabilidade e Consequências Jurídicas</h2>
+
+  <p>A tragédia expôs uma cadeia de negligências que começou anos antes de setembro de 1987. As responsabilidades foram amplas — e as punições, brandas.</p>
+
+  <p><strong>Os médicos do IGR:</strong> Os Drs. Carlos Figueiredo Bezerril e Flamarion Barbosa Goulart abandonaram a fonte radioativa sem comunicar à CNEN. Eles foram os principais réus criminais. As penas aplicadas foram brandas diante da magnitude do dano — condenações entre 2 e 3 anos de reclusão, com benefícios.</p>
+
+  <p><strong>A CNEN:</strong> A Comissão Nacional de Energia Nuclear falhou em fiscalizar o destino do equipamento após o IGR mudar de endereço. Em ação civil, foi condenada a pagar <strong>R$ 1 milhão por danos difusos</strong> — valor considerado simbólico por especialistas em responsabilidade civil ambiental.</p>
+
+  <p><strong>O IPASGO:</strong> O Instituto de Previdência e Assistência Social do Estado de Goiás, que havia adquirido o imóvel judicialmente e iniciado sua demolição, também foi responsabilizado — por permitir o estado de abandono e a demolição que deixou o equipamento acessível.</p>
+
+  <p><strong>A União e o Estado de Goiás</strong> escaparam de punições — a Justiça alegou falta de envolvimento direto e prescrição de pedidos. O resultado prático: as indenizações às vítimas foram fragmentadas, tardias e insuficientes.</p>
+
+  <div class="callout amber">
+    <strong>O legado legal:</strong> O acidente levou o Brasil a criar uma "cultura de radioproteção que não existia até então", segundo estudiosos do tema. Houve reformulação completa das normas de controle e descarte de fontes radioativas. Atualmente, existem mais de 9.600 fontes radioativas em uso no Brasil — em hospitais, clínicas, indústrias e usinas — sujeitas a controle mais rigoroso. Mas especialistas alertam que lacunas regulatórias persistem décadas depois.
+  </div>
+
+  <!-- ════════════════════════ PARTE 9 — LEGADO ══════════════════════════ -->
+  <h2>Parte 9 — O Legado: O Que Goiânia Ensinou ao Mundo</h2>
+
+  <p>O acidente de Goiânia se tornou o caso de estudo mais importante da história da radioproteção em ambiente urbano. A IAEA publicou seu relatório oficial em 1988 — disponível gratuitamente para download — e usou o caso para reformular protocolos internacionais.</p>
+
+  <p><strong>1. O conceito de "fonte órfã":</strong> Goiânia tornou o mundo consciente do perigo das fontes radioativas abandonadas — equipamentos médicos, industriais e de pesquisa descartados sem controle. A IAEA estimou, antes de Goiânia, que havia centenas de fontes órfãs no mundo. Após o acidente, programas internacionais de recuperação de fontes órfãs foram criados em dezenas de países.</p>
+
+  <p><strong>2. A criação da Escala INES:</strong> A Escala Internacional de Eventos Nucleares e Radiológicos foi desenvolvida diretamente como resposta a Goiânia e Chernobyl — para padronizar a comunicação de gravidade de acidentes ao público e às autoridades.</p>
+
+  <p><strong>3. Protocolos de emergência radiológica:</strong> O Brasil passou a ter um sistema nacional de emergência radiológica baseado nas lições de 1987. O Centro Regional de Ciências Nucleares do Centro-Oeste (CRCN-CO), em Abadia de Goiás, foi criado para monitorar permanentemente os rejeitos e coordenar resposta a futuros incidentes.</p>
+
+  <p><strong>4. O estigma e a dimensão social:</strong> Goiânia ficou marcada por anos como "a cidade radioativa". Moradores que viajavam tinham seus carros danificados e eram hostilizados. O jornalista Weber Borges, que cobriu o acidente pela TV Goyá/SBT, escreveu o livro "Eu também sou vítima" relatando ter perdido o emprego por denunciar o estigma nacional. A IAEA classifica o estigma social como um dos grandes impactos de acidentes radiológicos — frequentemente mais devastador que os danos físicos diretos para a maioria da população.</p>
+
+  <p><strong>5. As vítimas que esperam:</strong> Em 2026, quase 40 anos depois, 1.141 sobreviventes ainda são acompanhados medicamente. As pensões não eram reajustadas há 7 anos até a aprovação de ajuste pela ALEGO em abril de 2026. A <a href="https://www.metropoles.com/brasil/vitimas-do-cesio-137-tragedia-memorias" target="_blank" rel="noopener">reportagem do Metrópoles "Memórias Radioativas"</a> documenta com precisão o sofrimento que persiste.</p>
+
+  <!-- GRÁFICO 6: Decaimento ao longo do tempo -->
+  <div class="chart-block">
+    <div class="chart-title">Decaimento da Atividade da Fonte — Cs-137 de Goiânia (1971–2077)</div>
+    <div class="chart-sub">Meia-vida de 30,17 anos · Em 2017 (30 anos), a fonte ainda tinha ~50% da atividade original · Em 2077 restará ~12% · O material em Abadia de Goiás permanece perigoso até ~2167</div>
+    <div style="height:320px"><canvas id="c6"></canvas></div>
+  </div>
+
+  <!-- ════════════════════════ LINKS JORNALÍSTICOS ══════════════════════════ -->
+  <div class="links-press">
+    <div class="links-press-title">📰 Materiais Jornalísticos e Fontes Primárias</div>
+    <ul>
+      <li><a href="https://g1.globo.com/goias/noticia/2012/09/considerada-heroina-vitima-do-cesio-evitou-que-contaminacao-fosse-maior.html" target="_blank" rel="noopener">G1 (2012) — "Considerada heroína, vítima do césio evitou que contaminação fosse maior" <span>— a história de Maria Gabriela</span></a></li>
+      <li><a href="https://www.metropoles.com/brasil/vitimas-do-cesio-137-tragedia-memorias" target="_blank" rel="noopener">Metrópoles (2025) — "Memórias Radioativas: vítimas do Césio-137 lutam para não serem esquecidas" <span>— série especial com fotos e testemunhos</span></a></li>
+      <li><a href="https://www.metropoles.com/brasil/cesio-137-o-que-aconteceu-com-as-vitimas" target="_blank" rel="noopener">Metrópoles (2026) — "O que aconteceu com as vítimas do Césio-137" <span>— perfil de cada sobrevivente</span></a></li>
+      <li><a href="https://www.gov.br/ipen/pt-br/assuntos/clipping-de-noticias/quem-e-o-fisico-que-identificou-o-acidente-com-cesio-137-em-goiania" target="_blank" rel="noopener">IPEN / Gov.br (2024) — "Quem é o físico que identificou o acidente com Césio-137" <span>— perfil de Walter Mendes</span></a></li>
+      <li><a href="https://www.migalhas.com.br/quentes/452570/condenacoes-por-cesio-137-foram-brandas-veja-repercussoes-juridicas" target="_blank" rel="noopener">Migalhas (2026) — "Condenações por Césio-137 foram brandas; veja repercussões jurídicas" <span>— análise jurídica completa</span></a></li>
+      <li><a href="https://goias.gov.br/saude/historia-do-cesio-137-em-goiania/" target="_blank" rel="noopener">Governo de Goiás — "História do Césio-137 em Goiânia" <span>— fonte oficial do Estado</span></a></li>
+      <li><a href="https://www.cnnbrasil.com.br/entretenimento/cesio-137-relembre-o-caso-do-maior-acidente-radioativo-do-brasil-em-1987/" target="_blank" rel="noopener">CNN Brasil (2026) — "Césio-137: relembre o caso do maior acidente radioativo do Brasil" <span>— cobertura com contexto histórico</span></a></li>
+      <li><a href="https://pt.wikipedia.org/wiki/Acidente_radiol%C3%B3gico_de_Goi%C3%A2nia" target="_blank" rel="noopener">Wikipedia PT — "Acidente Radiológico de Goiânia" <span>— verbete com referências completas e relatório da IAEA</span></a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Goi%C3%A2nia_accident" target="_blank" rel="noopener">Wikipedia EN — "Goiânia Accident" <span>— versão em inglês com dados técnicos da IAEA em maior detalhe</span></a></li>
+    </ul>
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    <h2>O que Goiânia Nos Ensina sobre Radiação, Ciência e Responsabilidade</h2>
+    <ul>
+      <li><strong>19,26 gramas de pó</strong> — é tudo que foi necessário para contaminar uma cidade inteira, matar quatro pessoas, gerar 6.000 toneladas de lixo radioativo perigoso por 180 anos e deixar 1.600 pessoas com sequelas para o resto da vida. A radiação ionizante é, literalmente, invisível, inodora e silenciosa — e exatamente por isso é tão perigosa.</li>
+      <li><strong>A ignorância matou tanto quanto a radiação.</strong> Se Wagner e Roberto soubessem que aquele aparelho era radioativo, não o teriam tocado. Se Devair soubesse que o brilho azul era radiação gama, não teria distribuído o pó. Se os médicos que atenderam os primeiros sintomáticos soubessem reconhecer a SAR, o diagnóstico teria sido feito dias antes. O acidente de Goiânia é, acima de tudo, um argumento pela educação científica.</li>
+      <li><strong>A física da radioatividade não negocia.</strong> Uma vez exposto, o corpo absorve a dose. Não há antídoto para a radiação gama depois da exposição. O tratamento da SAR é suporte intensivo — transfusões, antibióticos, transplante de medula — na tentativa de manter o corpo vivo enquanto ele tenta se reparar. Às vezes funciona (Devair, 7 Gy, sobreviveu anos). Frequentemente não funciona.</li>
+      <li><strong>O legado persiste.</strong> Em 2026, o depósito de Abadia de Goiás ainda contém os rejeitos — monitorados 24 horas por dia com sensores de ar, água e solo. A meia-vida do Cs-137 é 30 anos: a fonte original, colocada em serviço em 1971, ainda terá radioatividade significativa em 2077. Leide das Neves, enterrada em caixão de chumbo de 700 kg, ainda emite radiação no cemitério de Goiânia.</li>
+      <li><strong>As vítimas ainda esperam.</strong> Quase 40 anos depois, pensões atrasadas, monitoramento médico insuficiente, estigma persistente. A série da Netflix trouxe o acidente de volta ao debate nacional — mas o debate real precisa acontecer nas políticas públicas, não nas telas de streaming.</li>
+    </ul>
+  </div>
+
+  <div style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:20px 24px;margin:32px 0">
+    <div style="font-weight:700;color:#1e40af;margin-bottom:12px;font-size:.95rem">📚 Fontes Técnicas e Científicas</div>
+    <ul style="margin:0;padding-left:20px;line-height:2.2;font-size:.9rem">
+      <li><strong>IAEA (1988)</strong>. <em>The Radiological Accident in Goiânia</em>. Vienna: International Atomic Energy Agency. ISBN 92-0-129088-8. — O relatório técnico oficial, disponível no site da IAEA.</li>
+      <li><strong>CNEN (1988)</strong>. <em>Relatório do Acidente Radiológico em Goiânia</em>. Comissão Nacional de Energia Nuclear.</li>
+      <li><strong>Governo de Goiás / SES-GO</strong>. <em>Césio 137 — A História do Acidente Radioativo em Goiânia</em>. Secretaria de Estado da Saúde. goias.gov.br/saude</li>
+      <li><strong>Vieira, Suzane de Alencar (2013)</strong>. "Césio-137, um drama recontado." <em>Estudos Avançados</em> (77): 217–236.</li>
+      <li><strong>Pozzobon, Thayse Cristine (2019)</strong>. "O desastre radiológico do Césio 137: lições após 30 anos." <em>Direito, Estado e Sociedade</em>, n. 54.</li>
+      <li><strong>Wikipedia EN</strong>. "Goiânia Accident." Consultado em abril de 2026. — Contém síntese técnica com base no relatório da IAEA.</li>
+    </ul>
+  </div>
+
+  <div class="related-articles">
+    <div class="related-articles-title">📚 Leia também</div>
+    <ul>
+      <li><a href="taxa-investimento-brasil-fbcf-world-bank.html">Taxa de Investimento: O Brasil e o Mundo — FBCF/PIB</a></li>
+      <li><a href="acesso-eletricidade-exclusao-energetica.html">Acesso à Eletricidade: O Mapa da Exclusão Energética Global</a></li>
+      <li><a href="saude-energia-eletricidade-expectativa-vida.html">Saúde e Energia: Quanto Vale Uma Tomada?</a></li>
+      <li><a href="emissoes-co2-brasil-mundo.html">Emissões de CO₂: Brasil no Contexto Global</a></li>
+      <li><a href="plano-clima-brasil-metas-setores-viabilidade.html">O Plano Clima Brasileiro: Metas, Setores e Viabilidade</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:4px">Praça Oswaldo Cruz, 124 — Sala 171 · Em frente ao Shopping Pátio Paulista · São Paulo – SP</p>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+const gc = 'rgba(0,0,0,.07)', tc = '#9ca3af';
+
+// C1: Doses das vítimas
+const vitimas = ['Devair\n(sobreviveu 1994)','Leide\n(†23/out)','Maria Gabriela\n(†23/out)','Admilson\n(†28/out)','Israel\n(†27/out)','Odesson\n(sobrevivente)','Wagner\n(sobrevivente)','Roberto\n(sobrevivente)'];
+const doses   = [7.0, 6.0, 5.7, 5.3, 4.5, 4.5, 4.5, 3.0];
+const coresDoses = doses.map((d,i) => {
+  if(i < 4) return 'rgba(185,28,28,.85)';
+  if(i === 0) return 'rgba(185,28,28,.85)';
+  return d >= 4 ? 'rgba(234,88,12,.80)' : 'rgba(37,99,235,.70)';
+});
+coresDoses[0] = 'rgba(124,58,237,.80)'; // Devair — sobrevivente com maior dose
+
+new Chart(document.getElementById('c1'), {
+  type: 'bar',
+  data: {
+    labels: ['Devair (†1994)','Leide (†23/out)','Maria Gabriela (†23/out)','Admilson (†28/out)','Israel (†27/out)','Odesson','Wagner','Roberto'],
+    datasets: [
+      { label: 'Dose recebida (Gy)', data: doses, backgroundColor: ['rgba(124,58,237,.80)','rgba(185,28,28,.85)','rgba(185,28,28,.85)','rgba(185,28,28,.80)','rgba(185,28,28,.75)','rgba(234,88,12,.75)','rgba(234,88,12,.65)','rgba(37,99,235,.70)'], borderRadius: 5 },
+      { type:'line', label:'DL₅₀ (dose letal 50% sem tratamento) = 4 Gy', data: Array(8).fill(4.0), borderColor:'rgba(220,38,38,.6)', borderDash:[6,4], borderWidth:2, pointRadius:0, fill:false }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ labels:{ font:{size:11}, color:'#374151', boxWidth:14 } } },
+    scales:{
+      x:{ ticks:{ font:{size:10}, color:'#374151' }, grid:{display:false} },
+      y:{ min:0, max:8.5, ticks:{ font:{size:11}, color:tc, callback:v=>v+' Gy' }, grid:{color:gc},
+          title:{display:true,text:'Dose (Gray)',color:tc,font:{size:10}} }
+    }
+  }
+});
+
+// C2: SAR por faixa de dose
+const sarDoses = ['0.1–0.5','0.5–1.0','1–2','2–4','4–6','6–8','> 8'];
+const sarMort  = [0, 0, 5, 30, 70, 95, 100];
+const sarDesc  = ['Sem sintomas clínicos','Leve: náusea, fadiga','Moderado: SAR grau I-II','Grave: SAR grau III — hospitalisação','Muito grave: SAR grau IV — morte provável','Crítico: óbito quase certo sem transplante de medula','Letal: sobrevivência rara mesmo com tratamento máximo'];
+new Chart(document.getElementById('c2'), {
+  type: 'bar',
+  data: {
+    labels: sarDoses,
+    datasets: [
+      { label: 'Mortalidade estimada sem tratamento (%)', data: sarMort,
+        backgroundColor: ['rgba(22,163,74,.6)','rgba(101,163,13,.6)','rgba(234,179,8,.65)','rgba(234,88,12,.7)','rgba(185,28,28,.75)','rgba(127,29,29,.80)','rgba(69,10,10,.85)'], borderRadius:5 }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      tooltip:{ callbacks:{ afterBody: ctx => [sarDesc[ctx[0].dataIndex]] } }
+    },
+    scales:{
+      x:{ ticks:{font:{size:11},color:'#374151'}, grid:{display:false},
+          title:{display:true,text:'Dose (Gray)',color:tc,font:{size:10}} },
+      y:{ min:0, max:110, ticks:{font:{size:11},color:tc,callback:v=>v+'%'}, grid:{color:gc},
+          title:{display:true,text:'Mortalidade (%)',color:tc,font:{size:10}} }
+    }
+  }
+});
+
+// C3: Triagem das 112.800 pessoas
+new Chart(document.getElementById('c3'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Sem contaminação (112.551)','Cont. apenas em roupas/calçados (120)','Cont. interna/externa — amb. (79)','Cont. interna — isolamento (50)','Estado grave — Hospital Naval RJ (14)','Óbitos imediatos (4)'],
+    datasets:[{ data:[112551,120,79,50,14,4],
+      backgroundColor:['rgba(22,163,74,.7)','rgba(234,179,8,.7)','rgba(234,88,12,.7)','rgba(185,28,28,.7)','rgba(127,29,29,.8)','rgba(69,10,10,.9)'],
+      borderWidth:2, borderColor:'#fff' }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false, cutout:'38%',
+    plugins:{
+      legend:{position:'right',labels:{font:{size:10.5},color:'#374151',boxWidth:14,padding:10}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw.toLocaleString('pt-BR')} pessoas`}}
+    }
+  }
+});
+
+// C4: Linha do tempo das mortes
+new Chart(document.getElementById('c4'), {
+  type:'bar',
+  data:{
+    labels:['Leide das Neves\n6,0 Gy','Maria Gabriela\n5,7 Gy','Israel Santos\n4,5 Gy','Admilson Souza\n5,3 Gy'],
+    datasets:[{
+      label:'Dias de sobrevida após exposição (13/set/1987)',
+      data:[40,40,44,45],
+      backgroundColor:['rgba(185,28,28,.80)','rgba(185,28,28,.70)','rgba(185,28,28,.60)','rgba(185,28,28,.50)'],
+      borderRadius:6
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:11},color:'#374151'},grid:{display:false}},
+      y:{min:0,max:55,ticks:{font:{size:11},color:tc,callback:v=>v+' dias'},grid:{color:gc},
+         title:{display:true,text:'Dias de sobrevida',color:tc,font:{size:10}}}
+    }
+  }
+});
+
+// C5: Comparação acidentes nucleares
+new Chart(document.getElementById('c5'), {
+  type:'bar',
+  data:{
+    labels:['Chernobyl\n1986 (URSS)','Fukushima\n2011 (Japão)','Goiânia\n1987 (Brasil)','Three Mile\nIsland 1979 (EUA)','Windscale\n1957 (Reino Unido)'],
+    datasets:[
+      {label:'Nível INES',data:[7,7,5,5,5],backgroundColor:['rgba(69,10,10,.85)','rgba(69,10,10,.85)','rgba(185,28,28,.85)','rgba(234,88,12,.70)','rgba(234,88,12,.60)'],borderRadius:5,yAxisID:'y'},
+      {type:'line',label:'Mortes imediatas confirmadas',data:[31,1,4,0,0],borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.15)',fill:true,tension:.3,pointRadius:6,borderWidth:2.5,yAxisID:'y2'}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}}},
+    scales:{
+      x:{ticks:{font:{size:10},color:'#374151'},grid:{display:false}},
+      y:{min:0,max:8,ticks:{font:{size:11},color:tc,callback:v=>'Nível '+v},grid:{color:gc},title:{display:true,text:'Escala INES',color:tc,font:{size:10}}},
+      y2:{position:'right',min:0,max:40,ticks:{font:{size:11},color:'#7c3aed',callback:v=>v+' mortos'},grid:{display:false},title:{display:true,text:'Mortes imediatas',color:'#7c3aed',font:{size:10}}}
+    }
+  }
+});
+
+// C6: Decaimento do Cs-137
+function decai(t) { return 74 * Math.pow(0.5, t/30.17); } // atividade original 74 TBq em 1971
+const anos = [];
+const ativ  = [];
+for(let y=1971;y<=2167;y+=5){ anos.push(y); ativ.push(decai(y-1971)); }
+const corDecai = ativ.map(a => a > 10 ? 'rgba(185,28,28,.75)' : a > 1 ? 'rgba(234,88,12,.65)' : 'rgba(22,163,74,.60)');
+new Chart(document.getElementById('c6'), {
+  type:'line',
+  data:{
+    labels:anos,
+    datasets:[
+      {label:'Atividade da fonte (TBq)',data:ativ,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.08)',fill:true,tension:.4,pointRadius:0,borderWidth:2},
+      {label:'Limite de segurança (~0.1 TBq)',data:anos.map(()=>0.1),borderColor:'rgba(22,163,74,.6)',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      annotation:{annotations:{
+        line1:{type:'line',xMin:1987,xMax:1987,borderColor:'rgba(220,38,38,.5)',borderDash:[4,4]}
+      }}
+    },
+    scales:{
+      x:{ticks:{font:{size:11},color:tc,maxRotation:45,callback:(v,i)=>anos[i]%20===0?anos[i]:''},grid:{color:gc}},
+      y:{min:0,ticks:{font:{size:11},color:tc,callback:v=>v+' TBq'},grid:{color:gc},
+         title:{display:true,text:'Atividade (TBq)',color:tc,font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
