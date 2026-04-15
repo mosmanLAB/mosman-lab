@@ -7,6 +7,35 @@
   <url><loc>https://mosmanlab.com.br/depoimentos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://mosmanlab.com.br/professor.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
+  <!-- PROVAS — Hub -->
+  <url><loc>https://mosmanlab.com.br/provas/</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- PROVAS — Vestibulares Gerais -->
+  <url><loc>https://mosmanlab.com.br/provas/fuvest/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/unesp/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/unesp-2f/</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/enem/</loc><lastmod>2026-04-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/ufrgs/</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- PROVAS — Medicina SP -->
+  <url><loc>https://mosmanlab.com.br/provas/famerp/</loc><lastmod>2026-04-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/famema/</loc><lastmod>2026-04-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/facisb/</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/provas/fmj/</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- TEORIA -->
+  <url><loc>https://mosmanlab.com.br/teoria/</loc><lastmod>2026-04-13</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://mosmanlab.com.br/teoria/resumo-geral/</loc><lastmod>2026-04-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/teoria/mecanica/cinematica-mru-mruv.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://mosmanlab.com.br/teoria/mecanica/gravitacao.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- SIMULAÇÕES -->
+  <url><loc>https://mosmanlab.com.br/simulacoes/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mosmanlab.com.br/simulacoes/energia-solar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mosmanlab.com.br/simulacoes/curva-iv-solar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mosmanlab.com.br/simulacoes/energia-eolica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mosmanlab.com.br/simulacoes/hidroeletrica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- BLOG — ÍNDICE -->
   <url><loc>https://mosmanlab.com.br/blog/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
@@ -49,17 +78,5 @@
   <url><loc>https://mosmanlab.com.br/blog/emissoes-co2-brasil-mundo.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mosmanlab.com.br/blog/matriz-eletrica-brasileira.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mosmanlab.com.br/blog/eletrificacao-economia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- SIMULAÇÕES -->
-  <url><loc>https://mosmanlab.com.br/simulacoes/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/energia-solar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/curva-iv-solar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/energia-eolica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/hidroeletrica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- TEORIA -->
-  <url><loc>https://mosmanlab.com.br/teoria/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://mosmanlab.com.br/teoria/mecanica/cinematica-mru-mruv.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://mosmanlab.com.br/teoria/mecanica/gravitacao.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
 
 </urlset>
