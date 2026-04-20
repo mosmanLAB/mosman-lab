@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Simulados de Física | MosmanLAB</title>
+<meta name="description" content="Simulados interativos de Física para FUVEST, UNICAMP, ITA e ENEM com gabarito detalhado e histórico de desempenho. Prof. Edson Mosman · MosmanLAB.">
+<meta name="author" content="Prof. Edson Mosman · MosmanLAB">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mosmanlab.com.br/simulados/">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --green:#22c55e;
+  --green-dark:#16a34a;
+  --green-glow:rgba(34,197,94,0.15);
+  --bg:#0d0f10;
+  --surface:#161a1d;
+  --surface2:#1e2327;
+  --surface3:#252b30;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --text:#e8eaed;
+  --muted:#6b7280;
+  --dim:#374151;
+  --error:#f87171;
+  --amber:#fbbf24;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  min-height:100vh;
+}
+
+/* ── URGENCY ── */
+.urgency{
+  background:#0057ff;
+  color:#fff;
+  text-align:center;
+  padding:10px 20px;
+  font-size:0.82rem;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.urgency strong{font-weight:800;}
+.urgency a{color:#fff;text-decoration:underline;}
+
+/* ── NAV ── */
+nav{
+  background:rgba(13,15,16,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.nav-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 32px;max-width:1100px;margin:0 auto;
+}
+.nav-logo{
+  font-family:'Lora',serif;font-size:1.15rem;font-weight:600;
+  color:var(--text);text-decoration:none;letter-spacing:-0.01em;
+}
+.nav-logo span{color:var(--green);}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:0.84rem;
+  font-weight:500;padding:7px 12px;border-radius:8px;
+  transition:background 0.15s,color 0.15s;white-space:nowrap;
+}
+.nav-links a:hover{background:var(--surface2);color:var(--text);}
+.nav-links a.active{color:var(--text);font-weight:600;}
+.nav-cta{
+  background:var(--green);color:#000 !important;
+  border-radius:50px !important;padding:8px 18px !important;
+  font-weight:600 !important;transition:background 0.15s !important;
+}
+.nav-cta:hover{background:var(--green-dark) !important;}
+
+/* ══════════════════════════════════════════════
+   PORTAL PRINCIPAL (tela de login + lista)
+══════════════════════════════════════════════ */
+.portal{
+  max-width:1100px;margin:0 auto;
+  padding:56px 32px 80px;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:40px;
+  align-items:start;
+}
+
+/* ── LADO ESQUERDO: lista de simulados ── */
+.sim-panel h1{
+  font-family:'Lora',serif;
+  font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:700;line-height:1.2;
+  letter-spacing:-0.02em;color:var(--text);
+  margin-bottom:10px;
+}
+.sim-panel h1 em{font-style:italic;color:var(--green);}
+.sim-panel .lead{
+  font-size:0.95rem;color:var(--muted);
+  line-height:1.7;max-width:520px;margin-bottom:36px;
+}
+
+/* Filtros */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.filter-btn{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;padding:6px 14px;border-radius:50px;
+  border:1px solid var(--border2);
+  background:transparent;color:var(--muted);
+  cursor:pointer;transition:all 0.15s;
+}
+.filter-btn:hover{border-color:var(--green);color:var(--green);}
+.filter-btn.active{background:var(--green);color:#000;border-color:var(--green);}
+
+/* Grade de simulados */
+.sim-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:14px;
+}
+.sim-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;
+  transition:border-color 0.18s,transform 0.18s,box-shadow 0.18s;
+  cursor:pointer;
+}
+.sim-card:hover{
+  border-color:rgba(34,197,94,0.35);
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,0.3);
+}
+.sim-card.locked{opacity:0.45;pointer-events:none;}
+.sim-thumb{
+  height:90px;display:flex;align-items:center;
+  justify-content:center;font-size:2.2rem;
+  border-bottom:1px solid var(--border);
+}
+.th-mecanica  {background:linear-gradient(135deg,#1e2327,#252d35);}
+.th-termodin  {background:linear-gradient(135deg,#1e1e23,#272027);}
+.th-eletro    {background:linear-gradient(135deg,#1a2035,#1e2840);}
+.th-optica    {background:linear-gradient(135deg,#1e2327,#1e2e27);}
+.th-moderna   {background:linear-gradient(135deg,#23201e,#2e2820);}
+.th-ondul     {background:linear-gradient(135deg,#1e2327,#1e2730);}
+
+.sim-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;}
+.sim-area{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--green);
+  margin-bottom:8px;
+}
+.sim-title{
+  font-family:'Lora',serif;font-size:0.92rem;font-weight:600;
+  color:var(--text);line-height:1.35;margin-bottom:6px;flex:1;
+}
+.sim-meta{
+  display:flex;gap:8px;align-items:center;margin-top:10px;
+  font-size:0.72rem;color:var(--muted);
+}
+.sim-meta-pill{
+  background:var(--surface2);border:1px solid var(--border);
+  padding:3px 9px;border-radius:50px;
+}
+.badge-novo{
+  background:var(--green);color:#000;
+  font-size:0.6rem;font-weight:800;letter-spacing:0.08em;
+  text-transform:uppercase;padding:2px 7px;border-radius:50px;
+}
+.badge-breve{
+  background:var(--surface3);color:var(--muted);
+  font-size:0.6rem;font-weight:700;letter-spacing:0.06em;
+  text-transform:uppercase;padding:2px 7px;border-radius:50px;
+}
+
+/* ── AVISO LOGIN ── */
+.login-nudge{
+  background:var(--surface);border:1px solid rgba(34,197,94,0.25);
+  border-radius:10px;padding:14px 16px;
+  font-size:0.84rem;color:var(--muted);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:20px;
+}
+.login-nudge span{font-size:1.1rem;}
+.login-nudge strong{color:var(--green);}
+
+/* ══════════════════════════════════════════════
+   PAINEL DIREITO — login / dashboard
+══════════════════════════════════════════════ */
+.auth-panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:32px 28px;
+  position:sticky;top:90px;
+}
+
+/* Tabs login/cadastro */
+.tabs{
+  display:flex;background:var(--surface2);
+  border:1px solid var(--border);border-radius:10px;
+  padding:4px;margin-bottom:28px;
+}
+.tab-btn{
+  flex:1;padding:9px;border:none;border-radius:7px;
+  background:transparent;color:var(--muted);
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;
+  cursor:pointer;transition:all 0.2s;
+}
+.tab-btn.active{
+  background:var(--surface);color:var(--text);
+  box-shadow:0 1px 4px rgba(0,0,0,0.5);
+}
+
+.form-group{margin-bottom:16px;}
+label{
+  display:block;font-size:12px;font-weight:500;
+  color:var(--muted);margin-bottom:6px;letter-spacing:0.3px;
+}
+input[type="text"],input[type="email"],input[type="password"]{
+  width:100%;padding:11px 13px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:14px;
+  outline:none;transition:border-color 0.2s,box-shadow 0.2s;
+}
+input:focus{
+  border-color:rgba(34,197,94,0.5);
+  box-shadow:0 0 0 3px var(--green-glow);
+}
+input::placeholder{color:#3d4349;}
+
+.btn-primary{
+  width:100%;padding:12px;background:var(--green);color:#0d0f10;
+  border:none;border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;margin-top:4px;
+  transition:background 0.2s,transform 0.1s;position:relative;
+}
+.btn-primary:hover{background:var(--green-dark);}
+.btn-primary:active{transform:scale(0.99);}
+.btn-primary.loading{pointer-events:none;opacity:0.7;}
+.btn-primary .spinner{
+  display:none;width:16px;height:16px;
+  border:2px solid rgba(0,0,0,0.3);border-top-color:#000;
+  border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto;
+}
+.btn-primary.loading .btn-text{display:none;}
+.btn-primary.loading .spinner{display:block;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.divider{
+  display:flex;align-items:center;gap:10px;
+  margin:18px 0;color:var(--muted);font-size:11px;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+
+.btn-google{
+  width:100%;padding:11px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
+  cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:9px;transition:all 0.2s;
+}
+.btn-google:hover{background:var(--surface3);border-color:var(--border2);}
+
+.forgot-link{
+  font-size:11px;color:var(--muted);text-align:right;
+  display:block;margin-top:-8px;margin-bottom:16px;
+  cursor:pointer;transition:color 0.2s;
+}
+.forgot-link:hover{color:var(--green);}
+
+.alert{
+  padding:10px 13px;border-radius:8px;font-size:12px;
+  margin-bottom:16px;display:none;align-items:center;gap:8px;line-height:1.5;
+}
+.alert.error{background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);color:var(--error);display:flex;}
+.alert.success{background:var(--green-glow);border:1px solid rgba(34,197,94,0.2);color:var(--green);display:flex;}
+
+/* ── DASHBOARD ── */
+.dashboard{display:none;animation:fadeIn 0.35s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.dash-welcome{margin-bottom:20px;}
+.dash-welcome h2{font-family:'Lora',serif;font-size:1.15rem;color:var(--text);margin-bottom:3px;}
+.dash-welcome p{font-size:12px;color:var(--muted);}
+
+.dash-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.dash-card{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:14px;
+}
+.dash-card .card-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.dash-card .card-value{font-size:1.6rem;font-weight:600;color:var(--green);font-family:'Lora',serif;line-height:1;}
+.dash-card .card-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+
+.dash-section{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:14px;margin-bottom:14px;
+}
+.dash-section-title{
+  font-size:10px;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;
+}
+
+/* mini gráfico de barras */
+.mini-bar-wrap{display:flex;flex-direction:column;gap:7px;}
+.mini-bar-row{display:flex;align-items:center;gap:8px;font-size:11px;}
+.mini-bar-label{color:var(--muted);min-width:70px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mini-bar-track{flex:1;height:6px;background:var(--surface3);border-radius:3px;overflow:hidden;}
+.mini-bar-fill{height:100%;border-radius:3px;background:var(--green);transition:width 0.6s ease;}
+.mini-bar-fill.amber{background:var(--amber);}
+.mini-bar-fill.red{background:var(--error);}
+.mini-bar-pct{font-size:11px;font-weight:600;color:var(--text);min-width:32px;text-align:right;}
+
+.activity-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;
+}
+.activity-item:last-child{border-bottom:none;}
+.activity-item .name{color:var(--text);}
+.activity-empty{font-size:12px;color:var(--muted);text-align:center;padding:10px 0;}
+.loading-row{text-align:center;color:var(--muted);font-size:12px;padding:12px 0;}
+
+.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;}
+.badge.green{background:var(--green-glow);color:var(--green);}
+.badge.yellow{background:rgba(250,204,21,0.1);color:var(--amber);}
+.badge.red{background:rgba(248,113,113,0.1);color:var(--error);}
+
+.btn-cta{
+  display:block;width:100%;padding:12px;
+  background:var(--green);color:#000;border:none;border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;text-align:center;
+  margin-bottom:10px;transition:background 0.2s;text-decoration:none;
+}
+.btn-cta:hover{background:var(--green-dark);}
+
+.btn-logout{
+  width:100%;padding:10px;background:transparent;
+  border:1px solid var(--border);border-radius:8px;
+  color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-logout:hover{border-color:var(--error);color:var(--error);}
+
+/* auth header acima do form */
+.auth-header{margin-bottom:24px;}
+.auth-header h2{font-family:'Lora',serif;font-size:1.15rem;color:var(--text);margin-bottom:4px;}
+.auth-header p{font-size:12px;color:var(--muted);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .portal{grid-template-columns:1fr;padding:32px 20px 60px;}
+  .auth-panel{position:static;order:-1;}
+  .sim-grid{grid-template-columns:1fr;}
+  .nav-top{padding:12px 20px;}
+  .nav-links a{font-size:0.78rem;padding:6px 8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">
+  ⚡ Nova turma começa em <strong>maio de 2026</strong> — <a href="../turma-maio-2026.html">garantir minha vaga →</a>
+</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<span>LAB</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Início</a>
+      <a href="../turma-maio-2026.html">Turma de Maio</a>
+      <a href="../depoimentos.html">Depoimentos</a>
+      <a href="../blog/">Blog</a>
+      <a class="active" href="index.html">Simulados</a>
+      <a href="../professor.html">O Professor</a>
+      <a class="nav-cta" href="../turma-maio-2026.html">Garantir vaga →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="portal">
+
+  <!-- ══ ESQUERDO: lista de simulados ══ -->
+  <div class="sim-panel">
+    <h1>Simulados de Física.<br><em>Treine como na prova.</em></h1>
+    <p class="lead">Questões de FUVEST, UNICAMP, ITA e ENEM com gabarito comentado, cronômetro e histórico de desempenho. Faça login para salvar seus resultados.</p>
+
+    <div id="loginNudge" class="login-nudge">
+      <span>🔒</span>
+      <span>Faça <strong>login</strong> para salvar resultados e acompanhar sua evolução.</span>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filtrarSim('todos',this)">Todos</button>
+      <button class="filter-btn" onclick="filtrarSim('mecanica',this)">Mecânica</button>
+      <button class="filter-btn" onclick="filtrarSim('termodinamica',this)">Termodinâmica</button>
+      <button class="filter-btn" onclick="filtrarSim('eletromagnetismo',this)">Eletromag.</button>
+      <button class="filter-btn" onclick="filtrarSim('optica',this)">Óptica</button>
+      <button class="filter-btn" onclick="filtrarSim('moderna',this)">Física Moderna</button>
+    </div>
+
+    <div class="sim-grid" id="simGrid">
+
+      <!-- MECÂNICA -->
+      <div class="sim-card" data-area="mecanica" onclick="abrirSimulado('mecanica-01','Mecânica — Leis de Newton')">
+        <div class="sim-thumb th-mecanica">⚙️</div>
+        <div class="sim-body">
+          <div class="sim-area">Mecânica</div>
+          <div class="sim-title">Leis de Newton e Dinâmica</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card" data-area="mecanica" onclick="abrirSimulado('mecanica-02','Mecânica — Energia e Trabalho')">
+        <div class="sim-thumb th-mecanica">🔋</div>
+        <div class="sim-body">
+          <div class="sim-area">Mecânica</div>
+          <div class="sim-title">Trabalho, Energia e Potência</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card" data-area="mecanica" onclick="abrirSimulado('mecanica-03','Mecânica — Cinemática')">
+        <div class="sim-thumb th-mecanica">🚀</div>
+        <div class="sim-body">
+          <div class="sim-area">Mecânica</div>
+          <div class="sim-title">Cinemática: MU, MUV e Lançamentos</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMODINÂMICA -->
+      <div class="sim-card" data-area="termodinamica" onclick="abrirSimulado('termo-01','Termodinâmica — Calorimetria')">
+        <div class="sim-thumb th-termodin">🌡️</div>
+        <div class="sim-body">
+          <div class="sim-area">Termodinâmica</div>
+          <div class="sim-title">Calorimetria e Mudanças de Fase</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card" data-area="termodinamica" onclick="abrirSimulado('termo-02','Termodinâmica — Leis')">
+        <div class="sim-thumb th-termodin">♨️</div>
+        <div class="sim-body">
+          <div class="sim-area">Termodinâmica</div>
+          <div class="sim-title">Leis da Termodinâmica e Máquinas</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELETROMAGNETISMO -->
+      <div class="sim-card" data-area="eletromagnetismo" onclick="abrirSimulado('eletro-01','Eletrostática')">
+        <div class="sim-thumb th-eletro">⚡</div>
+        <div class="sim-body">
+          <div class="sim-area">Eletromagnetismo</div>
+          <div class="sim-title">Eletrostática: Cargas, Campo e Potencial</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card" data-area="eletromagnetismo" onclick="abrirSimulado('eletro-02','Eletrodinâmica')">
+        <div class="sim-thumb th-eletro">🔌</div>
+        <div class="sim-body">
+          <div class="sim-area">Eletromagnetismo</div>
+          <div class="sim-title">Eletrodinâmica: Lei de Ohm e Circuitos</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card" data-area="eletromagnetismo" onclick="abrirSimulado('eletro-03','Magnetismo')">
+        <div class="sim-thumb th-eletro">🧲</div>
+        <div class="sim-body">
+          <div class="sim-area">Eletromagnetismo</div>
+          <div class="sim-title">Magnetismo e Indução Eletromagnética</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÓPTICA -->
+      <div class="sim-card" data-area="optica" onclick="abrirSimulado('optica-01','Óptica Geométrica')">
+        <div class="sim-thumb th-optica">🔭</div>
+        <div class="sim-body">
+          <div class="sim-area">Óptica</div>
+          <div class="sim-title">Óptica Geométrica: Lentes e Espelhos</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card" data-area="optica" onclick="abrirSimulado('optica-02','Ondulatória e Óptica Física')">
+        <div class="sim-thumb th-ondul">〰️</div>
+        <div class="sim-body">
+          <div class="sim-area">Óptica · Ondulatória</div>
+          <div class="sim-title">Ondulatória: Som, Ondas e Interferência</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FÍSICA MODERNA -->
+      <div class="sim-card" data-area="moderna" onclick="abrirSimulado('moderna-01','Física Moderna')">
+        <div class="sim-thumb th-moderna">⚛️</div>
+        <div class="sim-body">
+          <div class="sim-area">Física Moderna</div>
+          <div class="sim-title">Efeito Fotoelétrico, Relatividade e Núcleo</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIMULADO COMPLETO -->
+      <div class="sim-card" data-area="todos" onclick="abrirSimulado('geral-01','Simulado Completo — Estilo FUVEST')">
+        <div class="sim-thumb" style="background:linear-gradient(135deg,#1e2327,#1a2235)">🎯</div>
+        <div class="sim-body">
+          <div class="sim-area" style="color:#fbbf24">Simulado Completo</div>
+          <div class="sim-title">FUVEST — Simulado Geral (todas as áreas)</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">20 questões</span>
+            <span class="sim-meta-pill">45 min</span>
+            <span class="badge-novo">Disponível</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ DIREITO: auth / dashboard ══ -->
+  <div class="auth-panel">
+
+    <!-- FORM DE LOGIN -->
+    <div id="formSection">
+      <div class="auth-header">
+        <h2>Acesse sua conta</h2>
+        <p>Entre para salvar resultados e acompanhar sua evolução</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('login')">Entrar</button>
+        <button class="tab-btn" onclick="switchTab('signup')">Criar conta</button>
+      </div>
+
+      <div id="alertBox" class="alert"></div>
+
+      <!-- LOGIN -->
+      <div id="loginForm">
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="loginEmail" placeholder="seu@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" id="loginPassword" placeholder="••••••••"
+            onkeydown="if(event.key==='Enter') handleLogin()"/>
+        </div>
+        <span class="forgot-link" onclick="handleForgot()">Esqueci minha senha</span>
+        <button class="btn-primary" id="btnLogin" onclick="handleLogin()">
+          <span class="btn-text">Entrar</span>
+          <div class="spinner"></div>
+        </button>
+      </div>
+
+      <!-- CADASTRO -->
+      <div id="signupForm" style="display:none">
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" id="signupName" placeholder="Seu nome completo"/>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="signupEmail" placeholder="seu@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" id="signupPassword" placeholder="mín. 6 caracteres"/>
+        </div>
+        <button class="btn-primary" id="btnSignup" onclick="handleSignup()">
+          <span class="btn-text">Criar conta gratuita</span>
+          <div class="spinner"></div>
+        </button>
+      </div>
+
+      <div class="divider">ou</div>
+
+      <button class="btn-google" onclick="handleGoogle()">
+        <svg width="16" height="16" viewBox="0 0 48 48">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        Continuar com Google
+      </button>
+    </div>
+
+    <!-- DASHBOARD PÓS-LOGIN -->
+    <div id="dashboard" class="dashboard">
+
+      <div class="dash-welcome">
+        <h2>Olá, <span id="userName">—</span> 👋</h2>
+        <p id="userEmail"></p>
+      </div>
+
+      <div class="dash-cards">
+        <div class="dash-card">
+          <div class="card-label">Simulados feitos</div>
+          <div class="card-value" id="totalSimulados">—</div>
+          <div class="card-sub">no total</div>
+        </div>
+        <div class="dash-card">
+          <div class="card-label">Média geral</div>
+          <div class="card-value" id="mediaGeral">—</div>
+          <div class="card-sub">de acerto</div>
+        </div>
+      </div>
+
+      <!-- Mini gráfico por área -->
+      <div class="dash-section" id="areaSection" style="display:none">
+        <div class="dash-section-title">Desempenho por área</div>
+        <div class="mini-bar-wrap" id="areaBars"></div>
+      </div>
+
+      <!-- Histórico recente -->
+      <div class="dash-section">
+        <div class="dash-section-title">Últimas atividades</div>
+        <div id="activityList"><div class="loading-row">Carregando…</div></div>
+      </div>
+
+      <a href="simulado.html" class="btn-cta">Fazer novo simulado →</a>
+      <button class="btn-logout" onclick="handleLogout()">Sair da conta</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL: redirecionamento para simulado ══ -->
+<div id="modalOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;display:none;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px 28px;max-width:400px;width:90%;text-align:center;">
+    <div style="font-size:2rem;margin-bottom:16px" id="modalEmoji">📋</div>
+    <h3 style="font-family:'Lora',serif;font-size:1.1rem;color:var(--text);margin-bottom:8px" id="modalTitle">Simulado</h3>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:24px" id="modalMsg">Você será redirecionado para o simulado.</p>
+    <div style="display:flex;gap:10px;">
+      <button onclick="fecharModal()" style="flex:1;padding:11px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">Cancelar</button>
+      <a id="modalBtn" href="simulado.html" style="flex:1;padding:11px;background:var(--green);color:#000;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;">Começar →</a>
+    </div>
+  </div>
+</div>
+
+<footer style="border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:0.8rem;color:var(--muted);">
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br" style="color:var(--muted);">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
+</footer>
+
+<script>
+// ═══════════════════════════════
+//  SUPABASE
+// ═══════════════════════════════
+const SUPABASE_URL = 'https://debljvblrljehsscbtbo.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_CmhW_jV-uSxxcWcYRjGOzQ_1195fdpz'
+const { createClient } = supabase
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+let currentUser = null
+
+// ═══════════════════════════════
+//  INIT
+// ═══════════════════════════════
+window.addEventListener('DOMContentLoaded', async () => {
+  const { data: { session } } = await sb.auth.getSession()
+  if (session) {
+    currentUser = session.user
+    await enterDashboard(session.user)
+  }
+  // Escuta mudanças de sessão (retorno OAuth Google)
+  sb.auth.onAuthStateChange(async (event, session) => {
+    if (event === 'SIGNED_IN' && session) {
+      currentUser = session.user
+      await enterDashboard(session.user)
+    } else if (event === 'SIGNED_OUT') {
+      currentUser = null
+    }
+  })
+})
+
+// ═══════════════════════════════
+//  FILTRO DE SIMULADOS
+// ═══════════════════════════════
+function filtrarSim(area, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+  btn.classList.add('active')
+  document.querySelectorAll('.sim-card').forEach(c => {
+    const a = c.dataset.area || ''
+    c.style.display = (area === 'todos' || a.includes(area)) ? '' : 'none'
+  })
+}
+
+// ═══════════════════════════════
+//  ABRIR SIMULADO
+// ═══════════════════════════════
+function abrirSimulado(id, titulo) {
+  const overlay = document.getElementById('modalOverlay')
+  document.getElementById('modalTitle').textContent = titulo
+  document.getElementById('modalBtn').href = `simulado.html?id=${id}`
+
+  if (!currentUser) {
+    document.getElementById('modalMsg').textContent =
+      'Você pode fazer o simulado sem login, mas seus resultados não serão salvos. Crie uma conta gratuita para acompanhar sua evolução.'
+  } else {
+    document.getElementById('modalMsg').textContent =
+      'Seu resultado será salvo automaticamente ao terminar.'
+  }
+  overlay.style.display = 'flex'
+}
+
+function fecharModal() {
+  document.getElementById('modalOverlay').style.display = 'none'
+}
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) fecharModal()
+})
+
+// ═══════════════════════════════
+//  TABS
+// ═══════════════════════════════
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', (i===0&&tab==='login')||(i===1&&tab==='signup'))
+  })
+  document.getElementById('loginForm').style.display  = tab==='login'  ? 'block' : 'none'
+  document.getElementById('signupForm').style.display = tab==='signup' ? 'block' : 'none'
+  clearAlert()
+}
+
+// ═══════════════════════════════
+//  LOGIN
+// ═══════════════════════════════
+async function handleLogin() {
+  const email = document.getElementById('loginEmail').value.trim()
+  const pass  = document.getElementById('loginPassword').value
+  clearAlert()
+  if (!email || !pass) return showAlert('Preencha e-mail e senha.')
+  setLoading('btnLogin', true)
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass })
+  setLoading('btnLogin', false)
+  if (error) return showAlert(traduziErro(error.message))
+  currentUser = data.user
+  await enterDashboard(data.user)
+}
+
+// ═══════════════════════════════
+//  CADASTRO
+// ═══════════════════════════════
+async function handleSignup() {
+  const name  = document.getElementById('signupName').value.trim()
+  const email = document.getElementById('signupEmail').value.trim()
+  const pass  = document.getElementById('signupPassword').value
+  clearAlert()
+  if (!name || !email || !pass) return showAlert('Preencha todos os campos.')
+  if (pass.length < 6) return showAlert('A senha precisa ter pelo menos 6 caracteres.')
+  setLoading('btnSignup', true)
+  const { error } = await sb.auth.signUp({
+    email, password: pass, options: { data: { nome: name } }
+  })
+  setLoading('btnSignup', false)
+  if (error) return showAlert(traduziErro(error.message))
+  showAlert('✓ Conta criada! Verifique seu e-mail para confirmar o cadastro.', 'success')
+}
+
+// ═══════════════════════════════
+//  GOOGLE
+// ═══════════════════════════════
+async function handleGoogle() {
+  const { error } = await sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.href }
+  })
+  if (error) showAlert(traduziErro(error.message))
+}
+
+// ═══════════════════════════════
+//  RECUPERAR SENHA
+// ═══════════════════════════════
+async function handleForgot() {
+  const email = document.getElementById('loginEmail').value.trim()
+  if (!email) return showAlert('Digite seu e-mail acima antes de clicar aqui.')
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + '/nova-senha.html'
+  })
+  if (error) return showAlert(traduziErro(error.message))
+  showAlert('✓ Link de recuperação enviado para ' + email, 'success')
+}
+
+// ═══════════════════════════════
+//  DASHBOARD
+// ═══════════════════════════════
+async function enterDashboard(user) {
+  document.getElementById('formSection').style.display = 'none'
+  document.getElementById('dashboard').style.display   = 'block'
+  document.getElementById('loginNudge').style.display  = 'none'
+
+  const nome = user.user_metadata?.nome || user.email.split('@')[0]
+  document.getElementById('userName').textContent  = capitalize(nome)
+  document.getElementById('userEmail').textContent = user.email
+
+  const { data: resultados, error } = await sb
+    .from('resultados')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+    .limit(20)
+
+  if (error || !resultados || resultados.length === 0) {
+    document.getElementById('activityList').innerHTML =
+      '<div class="activity-empty">Nenhum simulado feito ainda — que tal começar agora?</div>'
+    document.getElementById('totalSimulados').textContent = '0'
+    document.getElementById('mediaGeral').textContent = '—'
+    return
+  }
+
+  // Totais
+  document.getElementById('totalSimulados').textContent = resultados.length
+  const media = Math.round(resultados.reduce((s,r) => s + r.score, 0) / resultados.length)
+  document.getElementById('mediaGeral').textContent = media + '%'
+
+  // Desempenho por área
+  const areas = {}
+  resultados.forEach(r => {
+    const area = r.simulado.split('-')[0]
+    if (!areas[area]) areas[area] = { total: 0, count: 0 }
+    areas[area].total += r.score
+    areas[area].count++
+  })
+  const nomeArea = {
+    'mecanica':'Mecânica','termo':'Termodinâmica',
+    'eletro':'Eletromag.','optica':'Óptica',
+    'moderna':'Fís. Moderna','geral':'Geral'
+  }
+  const barsHtml = Object.entries(areas).map(([k, v]) => {
+    const pct = Math.round(v.total / v.count)
+    const cls = pct >= 70 ? '' : pct >= 50 ? 'amber' : 'red'
+    return `<div class="mini-bar-row">
+      <span class="mini-bar-label">${nomeArea[k]||k}</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill ${cls}" style="width:${pct}%"></div></div>
+      <span class="mini-bar-pct">${pct}%</span>
+    </div>`
+  }).join('')
+  if (barsHtml) {
+    document.getElementById('areaBars').innerHTML = barsHtml
+    document.getElementById('areaSection').style.display = 'block'
+  }
+
+  // Histórico recente
+  document.getElementById('activityList').innerHTML = resultados.slice(0,6).map(r => {
+    const cls  = r.score >= 70 ? 'green' : r.score >= 50 ? 'yellow' : 'red'
+    const data = new Date(r.created_at).toLocaleDateString('pt-BR')
+    const label = nomeArea[r.simulado.split('-')[0]] || r.simulado
+    return `<div class="activity-item">
+      <span class="name">${label} · ${data}</span>
+      <span class="badge ${cls}">${r.score}%</span>
+    </div>`
+  }).join('')
+}
+
+// ═══════════════════════════════
+//  LOGOUT
+// ═══════════════════════════════
+async function handleLogout() {
+  await sb.auth.signOut()
+  currentUser = null
+  document.getElementById('dashboard').style.display   = 'none'
+  document.getElementById('formSection').style.display = 'block'
+  document.getElementById('loginNudge').style.display  = 'flex'
+  document.getElementById('loginEmail').value    = ''
+  document.getElementById('loginPassword').value = ''
+  clearAlert()
+}
+
+// ═══════════════════════════════
+//  UTILS
+// ═══════════════════════════════
+function setLoading(id, state) {
+  document.getElementById(id).classList.toggle('loading', state)
+}
+function showAlert(msg, type='error') {
+  const b = document.getElementById('alertBox')
+  b.className = `alert ${type}`
+  b.innerHTML = msg
+}
+function clearAlert() {
+  document.getElementById('alertBox').className = 'alert'
+}
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1) }
+function traduziErro(msg) {
+  const m = {
+    'Invalid login credentials':    'E-mail ou senha incorretos.',
+    'Email not confirmed':          'Confirme seu e-mail antes de fazer login.',
+    'User already registered':      'Este e-mail já possui uma conta.',
+    'Password should be at least 6':'A senha precisa ter pelo menos 6 caracteres.',
+    'Unable to validate email':     'E-mail inválido.',
+    'Email rate limit exceeded':    'Muitas tentativas. Aguarde alguns minutos.',
+  }
+  for (const [en, pt] of Object.entries(m)) {
+    if (msg.includes(en)) return pt
+  }
+  return msg
+}
+</script>
+</body>
+</html>
