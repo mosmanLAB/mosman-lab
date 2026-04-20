@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidroeletricidade: como a água vira eletricidade | MosmanLAB Blog</title>
+<meta name="description" content="Da energia potencial gravitacional à tomada elétrica: entenda a física das usinas hidrelétricas, a fórmula da potência hidráulica e o papel do Brasil na geração hidrelétrica mundial. Prof. Edson Mosman · MosmanLAB.">
+<meta name="author" content="Prof. Edson Mosman · MosmanLAB">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mosmanlab.com.br/blog/hidroeletricidade.html">
+<meta property="og:title" content="Hidroeletricidade: como a água vira eletricidade | MosmanLAB Blog">
+<meta property="og:description" content="A física completa das usinas hidrelétricas: fórmula da potência, limite de rendimento, dados do Brasil e do mundo. Prof. Edson Mosman.">
+<meta property="og:url" content="https://mosmanlab.com.br/blog/hidroeletricidade.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+  };
+</script>
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* ── BLOG ARTICLE ── */
+.article-wrap { max-width: 720px; margin: 0 auto; padding: 64px 40px 80px; }
+
+.article-meta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.article-cat {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #1d7a4f; background: #eef7f3; padding: 4px 14px; border-radius: 50px;
+}
+.article-date { font-size: 0.82rem; color: #999; }
+
+.article-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.02em; color: #1a1a2e;
+  margin-bottom: 20px;
+}
+.article-lead {
+  font-size: 1.1rem; line-height: 1.8; color: #555;
+  border-left: 3px solid #1dbd5c;
+  padding-left: 20px; margin-bottom: 48px;
+  font-style: italic;
+}
+
+/* Corpo do artigo */
+.article-body h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: #1a1a2e; margin: 48px 0 16px;
+  letter-spacing: -0.01em;
+}
+.article-body h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem; font-weight: 600;
+  color: #1a1a2e; margin: 32px 0 12px;
+}
+.article-body p {
+  font-size: 1rem; line-height: 1.85; color: #374151;
+  margin-bottom: 18px;
+}
+.article-body strong { color: #1a1a2e; font-weight: 600; }
+.article-body em { font-family: 'Lora', serif; font-style: italic; }
+.article-body a { color: #0057ff; text-decoration: none; }
+.article-body a:hover { text-decoration: underline; }
+
+/* Equação destaque */
+.eq-box {
+  background: #f6f8fb;
+  border: 1px solid #e8e8e8;
+  border-left: 4px solid #1a4a8a;
+  border-radius: 0 10px 10px 0;
+  padding: 24px 28px;
+  margin: 28px 0;
+  overflow-x: auto;
+}
+.eq-box .eq-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #1a4a8a; margin-bottom: 14px;
+}
+.eq-box .eq-legend {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid #e8e8e8;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px;
+}
+.eq-box .eq-legend li {
+  font-size: 0.84rem; color: #555; list-style: none; line-height: 1.6;
+}
+.eq-box .eq-legend li strong { color: #1a4a8a; font-family: 'DM Sans', monospace; }
+
+/* Fatos / métricas */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin: 28px 0;
+}
+.fact-card {
+  background: #f6f8fb; border: 1px solid #e8e8e8;
+  border-radius: 10px; padding: 20px 16px;
+  text-align: center;
+}
+.fact-num {
+  font-family: 'Lora', serif; font-size: 1.7rem; font-weight: 700;
+  color: #1a4a8a; line-height: 1; margin-bottom: 6px;
+}
+.fact-lbl { font-size: 0.78rem; color: #888; line-height: 1.4; }
+
+/* Callout */
+.callout {
+  background: #eef7f3; border-left: 3px solid #1dbd5c;
+  border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 28px 0;
+}
+.callout p { margin: 0; font-size: 0.95rem; color: #374151; }
+.callout strong { color: #1d7a4f; }
+
+/* CTA inline */
+.sim-link-box {
+  background: #f0fbf5; border: 1.5px solid #1dbd5c;
+  border-radius: 10px; padding: 20px 24px;
+  margin: 36px 0; display: flex; align-items: center; gap: 16px;
+}
+.sim-link-box .sim-icon { font-size: 1.8rem; flex-shrink: 0; }
+.sim-link-box p { margin: 0; font-size: 0.92rem; color: #374151; line-height: 1.6; }
+.sim-link-box a { color: #1d7a4f; font-weight: 600; text-decoration: none; }
+.sim-link-box a:hover { text-decoration: underline; }
+
+/* Separador */
+.article-divider { height: 1px; background: #e8e8e8; margin: 48px 0; }
+
+/* Refs */
+.refs-section { margin-top: 60px; padding-top: 32px; border-top: 1px solid #e8e8e8; }
+.refs-title {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #999; margin-bottom: 14px;
+}
+.refs-list { list-style: none; padding: 0; }
+.refs-list li {
+  font-size: 0.84rem; color: #555; line-height: 1.7;
+  padding: 4px 0; border-bottom: 1px solid #f0f0f0;
+}
+.refs-list li:last-child { border-bottom: none; }
+.refs-list a { color: #0057ff; }
+
+/* CTA final */
+.article-cta {
+  background: #111827; color: #fff;
+  border-radius: 12px; padding: 48px 36px;
+  text-align: center; margin: 60px 0 0;
+}
+.article-cta h2 {
+  font-family: 'Lora', serif; font-size: 1.5rem;
+  font-weight: 700; color: #fff; margin-bottom: 12px;
+}
+.article-cta p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .article-wrap { padding: 40px 20px 60px; }
+  .fact-grid { grid-template-columns: 1fr 1fr; }
+  .eq-box .eq-legend { grid-template-columns: 1fr; }
+  .sim-link-box { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<main class="article-wrap">
+
+  <div class="article-meta">
+    <span class="article-cat">Energia · Hidroeletricidade</span>
+    <span class="article-date">abril de 2026 · Prof. Edson Mosman</span>
+  </div>
+
+  <h1 class="article-title">Hidroeletricidade: como a água em queda se transforma em eletricidade</h1>
+
+  <p class="article-lead">
+    Da represa à tomada, a física de uma usina hidrelétrica é uma cadeia elegante de transformações de energia. Entender cada etapa — e a fórmula que governa tudo — é dominar um dos temas mais recorrentes nos vestibulares de Física.
+  </p>
+
+  <article class="article-body">
+
+    <h2>O Brasil e a hidroeletricidade</h2>
+
+    <p>O Brasil é um país extraordinariamente privilegiado pela geografia. Rios caudalosos como o Paraná, o Tocantins e o São Francisco percorrem centenas de metros de desnível ao descer do Planalto Central até o litoral. Esse binômio — grande <strong>vazão</strong> e grande <strong>desnível</strong> — é exatamente o que uma usina hidrelétrica precisa para funcionar.</p>
+
+    <p>Como resultado, as usinas hidrelétricas respondem por aproximadamente <strong>60 a 65% de toda a eletricidade consumida no Brasil</strong>, tornando nossa matriz elétrica uma das mais renováveis do mundo. Enquanto países como Alemanha e Japão dependem fortemente de gás natural e carvão para gerar eletricidade, o Brasil abastece dois terços de sua demanda com a força da água.</p>
+
+    <div class="fact-grid">
+      <div class="fact-card">
+        <div class="fact-num">~63%</div>
+        <div class="fact-lbl">da energia elétrica brasileira vem de usinas hidrelétricas</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-num">14 GW</div>
+        <div class="fact-lbl">potência instalada de Itaipu — maior geradora do mundo em produção anual</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-num">+200</div>
+        <div class="fact-lbl">usinas hidrelétricas de grande porte em operação no país</div>
+      </div>
+    </div>
+
+    <p>No cenário global, a hidroeletricidade é a maior fonte de energia renovável em operação. Segundo a Agência Internacional de Energia (IEA), ela responde por cerca de <strong>16% da eletricidade gerada no mundo</strong> e por mais de 40% de toda a geração renovável. China (com a Usina das Três Gargantas, de 22,5 GW), Brasil, Canadá, Estados Unidos e Rússia lideram a geração hidrelétrica mundial.</p>
+
+    <h2>Como funciona uma usina hidrelétrica</h2>
+
+    <p>Uma usina hidrelétrica é uma máquina de converter energia. O processo segue uma cadeia de três transformações:</p>
+
+    <p><strong>1. Energia potencial gravitacional → energia cinética.</strong> A água armazenada no reservatório, a uma altura \(H\) acima da casa de força, possui energia potencial gravitacional. Quando as comportas se abrem, essa água desce pelo <em>conduto forçado</em> (um tubo de aço de alta pressão), acelerando e convertendo energia potencial em energia cinética.</p>
+
+    <p><strong>2. Energia cinética do fluido → energia mecânica de rotação.</strong> O jato d'água de alta velocidade atinge as pás da turbina (tipo Francis, Pelton ou Kaplan, dependendo do desnível e da vazão) e a faz girar. A turbina está acoplada ao eixo do gerador elétrico.</p>
+
+    <p><strong>3. Energia mecânica → energia elétrica.</strong> O gerador converte o movimento de rotação em corrente elétrica alternada (no Brasil, a 60 Hz), que é então elevada de tensão pelos transformadores para ser transmitida a longas distâncias com baixas perdas.</p>
+
+    <div class="callout">
+      <p><strong>Perda inevitável:</strong> em cada etapa dessa cadeia, parte da energia se dissipa como calor — por atrito nos mancais, turbulência na água, resistência elétrica nos enrolamentos. Por isso toda usina tem um <strong>rendimento \(\eta &lt; 1\)</strong>. As melhores turbinas modernas (tipo Francis) chegam a \(\eta = 0{,}93\) a \(0{,}95\).</p>
+    </div>
+
+    <h2>A fórmula da potência hidráulica</h2>
+
+    <p>A expressão que governa a geração de energia em uma usina hidrelétrica vem diretamente da mecânica básica. Recorde a energia potencial gravitacional para uma massa \(m\):</p>
+
+    $$E_{pot} = mgh$$
+
+    <p>Em uma usina, o que importa é a <em>taxa</em> com que essa energia é entregue à turbina — ou seja, a <strong>potência</strong>. A cada segundo, chega à turbina uma massa de água igual a \(\rho \cdot Q\), onde \(\rho\) é a densidade da água e \(Q\) é a vazão volumétrica (volume de água por segundo). A potência <em>hidráulica bruta</em> disponível no fluxo é portanto:</p>
+
+    $$P_{hid} = \rho \cdot g \cdot Q \cdot H$$
+
+    <p>Multiplicando pelo rendimento \(\eta\) da turbina, obtemos a potência elétrica entregue à rede:</p>
+
+    <div class="eq-box">
+      <div class="eq-label">Equação fundamental da usina hidrelétrica</div>
+      $$\boxed{P = \eta \cdot \rho \cdot g \cdot Q \cdot H}$$
+      <ul class="eq-legend">
+        <li><strong>P</strong> — potência elétrica gerada (W ou MW)</li>
+        <li><strong>\(\eta\)</strong> — rendimento da turbina (0 a 1)</li>
+        <li><strong>\(\rho\)</strong> — densidade da água = 1000 kg/m³</li>
+        <li><strong>g</strong> — aceleração gravitacional ≈ 9,8 m/s²</li>
+        <li><strong>Q</strong> — vazão volumétrica (m³/s)</li>
+        <li><strong>H</strong> — altura de queda líquida (m)</li>
+      </ul>
+    </div>
+
+    <h3>Linearidade: uma propriedade poderosa</h3>
+
+    <p>Observe que \(P\) é diretamente proporcional tanto a \(Q\) quanto a \(H\). Isso tem implicações práticas imediatas: <strong>dobrar a vazão dobra a potência; dobrar a altura de queda também dobra a potência</strong>. É por isso que engenheiros buscam rios com grande volume d'água <em>e</em> aproveitam ao máximo o desnível disponível — são as duas alavancas que controlam a geração.</p>
+
+    <p>A diferença entre \(P_{hid}\) e \(P_{elétrica}\) é a energia dissipada como calor e turbulência:</p>
+
+    $$P_{perdas} = P_{hid} - P_{elétrica} = (1 - \eta)\cdot\rho\cdot g\cdot Q\cdot H$$
+
+    <h3>Exemplo: Itaipu</h3>
+
+    <p>Itaipu opera com altura de queda de aproximadamente \(H = 120\) m e vazão total de até \(Q = 12\,000\) m³/s, com rendimento \(\eta \approx 0{,}93\). Aplicando a fórmula:</p>
+
+    $$P = 0{,}93 \times 1000 \times 9{,}8 \times 12\,000 \times 120 \approx 13\,100 \text{ MW}$$
+
+    <p>Esse valor é próximo da capacidade nominal de 14 000 MW — a diferença vem da operação parcial e de perdas que o modelo simplificado não captura completamente. Itaipu é, em produção anual de energia, <strong>a maior usina hidrelétrica do mundo</strong>, à frente da gigante chinesa das Três Gargantas.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>Classificação das usinas por porte</h2>
+
+    <p>A potência instalada é o principal critério de classificação das usinas no Brasil, segundo a ANEEL:</p>
+
+    <p>As <strong>Pequenas Centrais Hidrelétricas (PCHs)</strong> têm entre 1 e 30 MW de potência instalada e aproveitam rios menores, com menor impacto ambiental — sem a necessidade de grandes reservatórios. As <strong>usinas de médio porte</strong> ficam na faixa de 30 a 1 000 MW. Acima disso, situam-se as <strong>grandes usinas</strong>, como Belo Monte (11 233 MW) e Tucuruí (8 370 MW).</p>
+
+    <h2>Desafios e perspectivas</h2>
+
+    <p>Apesar das vantagens, a hidroeletricidade enfrenta desafios importantes. O mais sério é a <strong>vulnerabilidade às secas</strong>: em anos de baixa pluviosidade, os reservatórios recuam e a geração cai. As crises hídricas de 2001 e 2021 forçaram racionamentos e elevaram os preços da energia no Brasil.</p>
+
+    <p>Outro desafio é o <strong>impacto socioambiental</strong> dos grandes reservatórios, que inundam extensas áreas de vegetação e deslocam comunidades. A construção de Belo Monte, por exemplo, foi acompanhada de intenso debate sobre os impactos na Amazônia e nos povos indígenas do Xingu.</p>
+
+    <p>No contexto global de transição energética, a hidroeletricidade ocupa um papel ambíguo. Por um lado, é renovável e emite poucos gases de efeito estufa durante sua operação. Por outro, os grandes reservatórios em regiões tropicais podem emitir metano (CH₄) — um gás 80 vezes mais potente que o CO₂ em horizonte de 20 anos — pela decomposição da matéria orgânica submersa. A IEA estima que a hidroeletricidade global ainda tem um potencial técnico muito superior ao atualmente explorado, especialmente na África e na Ásia Central.</p>
+
+    <div class="sim-link-box">
+      <div class="sim-icon">💧</div>
+      <p>
+        <strong>Explore na prática:</strong> na simulação interativa do mosmanLAB, você pode ajustar a altura de queda \(H\), a vazão \(Q\) e o rendimento \(\eta\) e ver em tempo real a potência gerada, a comparação entre energia hidráulica e elétrica, e em que faixa de porte a usina se enquadra.<br>
+        <a href="../simulacoes/hidroeletrica.html">Abrir simulação de Usina Hidrelétrica →</a>
+      </p>
+    </div>
+
+    <h2>A física no vestibular</h2>
+
+    <p>A equação \(P = \eta\rho g Q H\) é derivável diretamente de \(E_{pot} = mgh\) e da definição de potência \(P = W/t\). As questões de FUVEST e UNICAMP costumam apresentar uma usina com dados de altura e vazão e pedir a potência gerada, o rendimento a partir de dados de potência hidráulica e elétrica, ou a energia produzida em determinado período. O domínio da álgebra dimensional — verificar que as unidades se combinam corretamente — é sempre um caminho seguro para não errar o raciocínio.</p>
+
+    <div class="article-cta">
+      <h2>Quer dominar a Física para o vestibular?</h2>
+      <p>Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo. Prof. Edson Mosman — Mestre em Física pela USP, 26 anos de experiência.</p>
+      <a class="btn" href="../turma-maio-2026.html">Conhecer a Turma de Maio 2026 →</a>
+    </div>
+
+  </article>
+
+  <section class="refs-section">
+    <h2 class="refs-title">Referências</h2>
+    <ul class="refs-list">
+      <li><strong>EPE</strong> — Empresa de Pesquisa Energética. <em>Balanço Energético Nacional 2024</em>. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+      <li><strong>ANEEL</strong> — Agência Nacional de Energia Elétrica. Dados do setor elétrico. <a href="https://www.aneel.gov.br" target="_blank">aneel.gov.br</a></li>
+      <li><strong>ONS</strong> — Operador Nacional do Sistema Elétrico. <a href="https://www.ons.org.br" target="_blank">ons.org.br</a></li>
+      <li><strong>IEA</strong> — International Energy Agency. <em>World Energy Outlook 2024</em>. <a href="https://www.iea.org" target="_blank">iea.org</a></li>
+      <li><strong>Itaipu Binacional</strong>. Dados técnicos da usina. <a href="https://www.itaipu.gov.br" target="_blank">itaipu.gov.br</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
+</footer>
+
+</body>
+</html>

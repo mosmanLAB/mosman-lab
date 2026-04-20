@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energia Eólica: a física do vento e o limite de Betz | MosmanLAB Blog</title>
+<meta name="description" content="Por que a potência de uma turbina cresce com o cubo da velocidade do vento? Entenda a equação da energia eólica, o limite de Betz e o papel do Brasil como potência eólica global. Prof. Edson Mosman · MosmanLAB.">
+<meta name="author" content="Prof. Edson Mosman · MosmanLAB">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mosmanlab.com.br/blog/energia-eolica.html">
+<meta property="og:title" content="Energia Eólica: a física do vento e o limite de Betz | MosmanLAB Blog">
+<meta property="og:description" content="A relação cúbica entre velocidade do vento e potência, o limite de Betz e os dados do Brasil na geração eólica mundial. Prof. Edson Mosman.">
+<meta property="og:url" content="https://mosmanlab.com.br/blog/energia-eolica.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+  };
+</script>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.article-wrap { max-width: 720px; margin: 0 auto; padding: 64px 40px 80px; }
+.article-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.article-cat { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d7a4f; background: #eef7f3; padding: 4px 14px; border-radius: 50px; }
+.article-date { font-size: 0.82rem; color: #999; }
+.article-title { font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #1a1a2e; margin-bottom: 20px; }
+.article-lead { font-size: 1.1rem; line-height: 1.8; color: #555; border-left: 3px solid #1dbd5c; padding-left: 20px; margin-bottom: 48px; font-style: italic; }
+.article-body h2 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin: 48px 0 16px; letter-spacing: -0.01em; }
+.article-body h3 { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; color: #1a1a2e; margin: 32px 0 12px; }
+.article-body p { font-size: 1rem; line-height: 1.85; color: #374151; margin-bottom: 18px; }
+.article-body strong { color: #1a1a2e; font-weight: 600; }
+.article-body em { font-family: 'Lora', serif; font-style: italic; }
+.article-body a { color: #0057ff; text-decoration: none; }
+.article-body a:hover { text-decoration: underline; }
+.eq-box { background: #f6f8fb; border: 1px solid #e8e8e8; border-left: 4px solid #1a4a8a; border-radius: 0 10px 10px 0; padding: 24px 28px; margin: 28px 0; overflow-x: auto; }
+.eq-box .eq-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1a4a8a; margin-bottom: 14px; }
+.eq-box .eq-legend { margin-top: 16px; padding-top: 14px; border-top: 1px solid #e8e8e8; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+.eq-box .eq-legend li { font-size: 0.84rem; color: #555; list-style: none; line-height: 1.6; }
+.eq-box .eq-legend li strong { color: #1a4a8a; }
+.fact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+.fact-card { background: #f6f8fb; border: 1px solid #e8e8e8; border-radius: 10px; padding: 20px 16px; text-align: center; }
+.fact-num { font-family: 'Lora', serif; font-size: 1.7rem; font-weight: 700; color: #1a4a8a; line-height: 1; margin-bottom: 6px; }
+.fact-lbl { font-size: 0.78rem; color: #888; line-height: 1.4; }
+.callout { background: #eef7f3; border-left: 3px solid #1dbd5c; border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 28px 0; }
+.callout p { margin: 0; font-size: 0.95rem; color: #374151; }
+.callout strong { color: #1d7a4f; }
+.betz-box { background: #f0f5ff; border: 1.5px solid #c0d4ff; border-radius: 10px; padding: 28px; margin: 28px 0; text-align: center; }
+.betz-num { font-family: 'Lora', serif; font-size: 3rem; font-weight: 700; color: #1a4a8a; line-height: 1; }
+.betz-label { font-size: 0.9rem; color: #555; margin-top: 8px; }
+.sim-link-box { background: #f0fbf5; border: 1.5px solid #1dbd5c; border-radius: 10px; padding: 20px 24px; margin: 36px 0; display: flex; align-items: center; gap: 16px; }
+.sim-link-box .sim-icon { font-size: 1.8rem; flex-shrink: 0; }
+.sim-link-box p { margin: 0; font-size: 0.92rem; color: #374151; line-height: 1.6; }
+.sim-link-box a { color: #1d7a4f; font-weight: 600; text-decoration: none; }
+.article-divider { height: 1px; background: #e8e8e8; margin: 48px 0; }
+.refs-section { margin-top: 60px; padding-top: 32px; border-top: 1px solid #e8e8e8; }
+.refs-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #999; margin-bottom: 14px; }
+.refs-list { list-style: none; padding: 0; }
+.refs-list li { font-size: 0.84rem; color: #555; line-height: 1.7; padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+.refs-list li:last-child { border-bottom: none; }
+.refs-list a { color: #0057ff; }
+.article-cta { background: #111827; color: #fff; border-radius: 12px; padding: 48px 36px; text-align: center; margin: 60px 0 0; }
+.article-cta h2 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.article-cta p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.7; }
+@media (max-width: 768px) {
+  .article-wrap { padding: 40px 20px 60px; }
+  .fact-grid { grid-template-columns: 1fr 1fr; }
+  .eq-box .eq-legend { grid-template-columns: 1fr; }
+  .sim-link-box { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<main class="article-wrap">
+
+  <div class="article-meta">
+    <span class="article-cat">Energia · Eólica</span>
+    <span class="article-date">abril de 2026 · Prof. Edson Mosman</span>
+  </div>
+
+  <h1 class="article-title">Energia Eólica: a física do vento, o cubo da velocidade e o limite de Betz</h1>
+
+  <p class="article-lead">
+    Dobrar a velocidade do vento aumenta a potência disponível em oito vezes. Essa é a consequência mais importante — e mais contraintuitiva — da física das turbinas eólicas. Entender por quê exige nada mais do que energia cinética e um pouco de álgebra.
+  </p>
+
+  <article class="article-body">
+
+    <h2>O Brasil como potência eólica</h2>
+
+    <p>O Brasil tem um dos melhores recursos eólicos do planeta. No Nordeste, os ventos alísios sopram de forma constante e intensa durante praticamente todo o ano — com velocidades médias acima de 8 m/s em boa parte da costa e do interior. Isso é excepcional: na Europa, considerada referência em energia eólica, as médias ficam em torno de 6 a 7 m/s.</p>
+
+    <p>O resultado é uma indústria eólica que cresceu de quase zero em 2009 para tornar o Brasil um dos dez maiores geradores eólicos do mundo. Em 2023, as turbinas eólicas responderam por cerca de <strong>12% de toda a eletricidade gerada no Brasil</strong> — mais do que a soma de toda a geração nuclear e a carvão do país.</p>
+
+    <div class="fact-grid">
+      <div class="fact-card">
+        <div class="fact-num">~12%</div>
+        <div class="fact-lbl">da eletricidade brasileira gerada por turbinas eólicas em 2023</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-num">30 GW</div>
+        <div class="fact-lbl">capacidade instalada eólica no Brasil — entre os 10 maiores do mundo</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-num">15 MW</div>
+        <div class="fact-lbl">potência das maiores turbinas offshore atuais (Vestas V236, pás de 115 m)</div>
+      </div>
+    </div>
+
+    <p>No cenário global, a energia eólica é a fonte renovável que mais cresce em capacidade instalada. Em 2023, o mundo instalou mais de 110 GW de nova capacidade eólica, liderado pela China (que sozinha detém mais de 40% do total mundial), seguida pelos Estados Unidos e pela Europa. A energia eólica offshore — turbinas instaladas no mar, onde os ventos são mais fortes e constantes — representa a próxima grande fronteira, e o Brasil começa a desenvolver seus primeiros projetos na costa nordestina.</p>
+
+    <h2>Do vento à eletricidade: como funciona uma turbina</h2>
+
+    <p>Uma turbina eólica moderna é uma máquina aerodinâmica sofisticada. Suas <strong>pás</strong> são perfis aerodinâmicos — parecidos com asas de avião — que geram sustentação quando o vento passa sobre elas, fazendo o rotor girar. O eixo do rotor aciona um <strong>gerador elétrico</strong> dentro da <em>nacele</em> (a carcaça no topo da torre).</p>
+
+    <p>Sistemas de controle sofisticados orientam a nacele para sempre enfrentar o vento (<em>yaw control</em>) e ajustam o ângulo das pás (<em>pitch control</em>) para extrair a máxima energia em baixas velocidades de vento e para proteger a turbina em ventos muito fortes. Acima de uma velocidade crítica (tipicamente 25 m/s), a turbina é desligada para evitar danos.</p>
+
+    <h2>A equação da potência eólica</h2>
+
+    <p>Para derivar a fórmula da potência, imagine um cilindro de ar com seção transversal \(A\) (a área varrida pelas pás do rotor) se movendo com velocidade \(v\). Em um segundo, o volume de ar que atravessa o rotor é \(A \cdot v\), com massa:</p>
+
+    $$m = \rho \cdot A \cdot v$$
+
+    <p>onde \(\rho \approx 1{,}225\) kg/m³ é a densidade do ar ao nível do mar. A energia cinética desse volume de ar é:</p>
+
+    $$E_c = \frac{1}{2}mv^2 = \frac{1}{2}(\rho A v)v^2 = \frac{1}{2}\rho A v^3$$
+
+    <p>Como essa é a energia disponível a cada segundo (por definição, energia por tempo é potência), temos a <strong>potência disponível no vento</strong>:</p>
+
+    $$P_{vento} = \frac{1}{2}\rho A v^3$$
+
+    <p>A área varrida pelas pás é um círculo de raio \(R\) (o comprimento de cada pá): \(A = \pi R^2\). Incluindo o rendimento \(\eta\) da turbina:</p>
+
+    <div class="eq-box">
+      <div class="eq-label">Equação da potência eólica</div>
+      $$\boxed{P = \eta \cdot \frac{1}{2} \cdot \rho \cdot \pi R^2 \cdot v^3}$$
+      <ul class="eq-legend">
+        <li><strong>P</strong> — potência elétrica gerada (W ou MW)</li>
+        <li><strong>\(\eta\)</strong> — rendimento da turbina (0 a 0,593)</li>
+        <li><strong>\(\rho\)</strong> — densidade do ar ≈ 1,225 kg/m³</li>
+        <li><strong>R</strong> — raio das pás (m)</li>
+        <li><strong>v</strong> — velocidade do vento (m/s)</li>
+        <li><strong>A = \(\pi R^2\)</strong> — área varrida pelo rotor (m²)</li>
+      </ul>
+    </div>
+
+    <h3>A dependência cúbica: a consequência mais importante</h3>
+
+    <p>A presença de \(v^3\) na equação é o resultado mais fundamental da física eólica e tem consequências práticas enormes. Considere dois locais, um com vento médio de 6 m/s e outro com 8 m/s. A razão de potências é:</p>
+
+    $$\frac{P_2}{P_1} = \left(\frac{v_2}{v_1}\right)^3 = \left(\frac{8}{6}\right)^3 \approx 2{,}37$$
+
+    <p>O local com vento apenas 33% mais forte gera <strong>mais que o dobro da energia</strong>. Isso explica por que a escolha do local de instalação é a decisão mais crítica no desenvolvimento de um parque eólico — e por que o Nordeste brasileiro, com suas velocidades médias superiores a 8 m/s, tem um potencial eólico que países europeus invejam.</p>
+
+    <h3>A dependência com o quadrado do raio</h3>
+
+    <p>O segundo resultado importante é que \(P \propto R^2\). Dobrar o comprimento das pás quadruplica a área varrida \(A = \pi R^2\) e, portanto, a potência. É por isso que as turbinas modernas têm pás cada vez maiores: a Vestas V236, atualmente a maior turbina do mundo, tem pás de 115 m de comprimento — cada turbina varre uma área equivalente a mais de quatro campos de futebol.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>O limite de Betz: uma lei física intransponível</h2>
+
+    <p>Existe um teto fundamental para a eficiência de qualquer turbina eólica, demonstrado matematicamente pelo físico alemão Albert Betz em 1919.</p>
+
+    <p>O raciocínio é elegante. Se a turbina absorvesse <em>toda</em> a energia cinética do vento, o ar ficaria completamente parado após passar pelas pás — e ar parado bloqueia a entrada de novo ar. Se a turbina não absorvesse <em>nada</em>, o vento passaria sem interação. O ótimo está em algum ponto intermediário.</p>
+
+    <p>Aplicando a conservação do momento linear ao fluxo de ar atravessando o rotor, Betz demonstrou que a velocidade ótima do ar <em>após</em> passar pelas pás deve ser exatamente 1/3 da velocidade de entrada \(v\). Substituindo esse resultado na expressão de energia, obtém-se a fração máxima de energia que pode ser extraída:</p>
+
+    <div class="betz-box">
+      <div class="betz-num">\(\dfrac{16}{27}\)</div>
+      <div class="betz-label"><strong>Limite de Betz ≈ 59,3%</strong><br>Nenhuma turbina de eixo horizontal pode capturar mais do que 59,3% da energia cinética do vento — independentemente do design.</div>
+    </div>
+
+    <p>Esse resultado não é uma limitação tecnológica — é uma <strong>lei física</strong>, derivada da mecânica dos fluidos, análoga ao limite de Carnot na termodinâmica. As melhores turbinas comerciais modernas atingem rendimentos de 45 a 50%, muito próximos do limite teórico de Betz.</p>
+
+    <div class="callout">
+      <p><strong>Atenção ao usar a fórmula:</strong> o rendimento \(\eta\) na equação \(P = \eta \cdot \frac{1}{2}\rho\pi R^2 v^3\) deve ser sempre menor que \(\frac{16}{27} \approx 0{,}593\). Um valor de \(\eta = 0{,}8\), por exemplo, viola o limite de Betz e é fisicamente impossível para uma turbina de eixo horizontal.</p>
+    </div>
+
+    <h2>Desafios e perspectivas globais</h2>
+
+    <p>A energia eólica tem duas características que a tornam complementar a outras fontes: ela é intermitente (o vento não sopra sempre) e despachável apenas indiretamente (via armazenamento de energia). Por isso, parques eólicos precisam ser combinados com outras fontes — hidrelétricas, baterias, ou conexões a longas distâncias — para garantir fornecimento estável.</p>
+
+    <p>A energia eólica <em>offshore</em> representa a próxima grande onda de expansão. No mar, os ventos são mais fortes, mais constantes e há menos restrições de espaço. A capacidade offshore global deve triplicar até 2030, segundo a IEA. O Brasil tem um potencial offshore estimado em mais de 700 GW — um número maior que toda a capacidade instalada do país atualmente.</p>
+
+    <div class="sim-link-box">
+      <div class="sim-icon">💨</div>
+      <p>
+        <strong>Explore na prática:</strong> na simulação interativa do mosmanLAB, você pode ajustar o raio das pás \(R\), a velocidade do vento \(v\) e o rendimento \(\eta\) (limitado ao máximo de Betz) e verificar em tempo real como a potência responde de forma cúbica à velocidade.<br>
+        <a href="../simulacoes/energia-eolica.html">Abrir simulação de Energia Eólica →</a>
+      </p>
+    </div>
+
+    <h2>A física no vestibular</h2>
+
+    <p>A fórmula \(P = \frac{1}{2}\eta\rho A v^3\) é derivável passo a passo a partir de \(E_c = \frac{1}{2}mv^2\) — e os vestibulares frequentemente pedem exatamente essa derivação. Questões típicas envolvem calcular a potência dado o raio e a velocidade, comparar a potência entre dois cenários de vento (onde a dependência cúbica é a chave), ou calcular o raio necessário para uma potência-alvo. O limite de Betz aparece em questões de ITA e em provas de Física do ENEM com raciocínio qualitativo.</p>
+
+    <div class="article-cta">
+      <h2>Quer dominar a Física para o vestibular?</h2>
+      <p>Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo. Prof. Edson Mosman — Mestre em Física pela USP, 26 anos de experiência.</p>
+      <a class="btn" href="../turma-maio-2026.html">Conhecer a Turma de Maio 2026 →</a>
+    </div>
+
+  </article>
+
+  <section class="refs-section">
+    <h2 class="refs-title">Referências</h2>
+    <ul class="refs-list">
+      <li><strong>ABEEólica</strong> — Associação Brasileira de Energia Eólica. Dados do setor. <a href="https://abeeolica.org.br" target="_blank">abeeolica.org.br</a></li>
+      <li><strong>EPE</strong> — Empresa de Pesquisa Energética. <em>Balanço Energético Nacional 2024</em>. <a href="https://www.epe.gov.br" target="_blank">epe.gov.br</a></li>
+      <li><strong>IEA</strong> — International Energy Agency. <em>World Energy Outlook 2024</em>. <a href="https://www.iea.org" target="_blank">iea.org</a></li>
+      <li><strong>CRESESB</strong> — Centro de Referência para Energia Solar e Eólica Sérgio Brito. <a href="http://www.cresesb.cepel.br" target="_blank">cresesb.cepel.br</a></li>
+      <li>Betz, A. (1926). <em>Wind-Energie und ihre Ausnutzung durch Windmühlen</em>. Vandenhoeck & Ruprecht.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
+</footer>
+
+</body>
+</html>

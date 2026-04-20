@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curva I×V do Painel Solar: o gráfico que governa a fotovoltaica | MosmanLAB Blog</title>
+<meta name="description" content="O que é a curva característica I×V de um painel solar, onde fica o ponto de máxima potência (MPP), o que é o fator de preenchimento e como o modelo de diodo único descreve a célula fotovoltaica. Prof. Edson Mosman · MosmanLAB.">
+<meta name="author" content="Prof. Edson Mosman · MosmanLAB">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mosmanlab.com.br/blog/curva-iv-solar.html">
+<meta property="og:title" content="Curva I×V do Painel Solar: o gráfico que governa a fotovoltaica | MosmanLAB Blog">
+<meta property="og:description" content="MPP, fator de preenchimento, modelo de diodo único e a equação implícita da célula solar. Prof. Edson Mosman · MosmanLAB.">
+<meta property="og:url" content="https://mosmanlab.com.br/blog/curva-iv-solar.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['$$','$$'],['\\[','\\]']] },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+  };
+</script>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.article-wrap { max-width: 720px; margin: 0 auto; padding: 64px 40px 80px; }
+.article-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.article-cat { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0040cc; background: #e8eeff; padding: 4px 14px; border-radius: 50px; }
+.article-date { font-size: 0.82rem; color: #999; }
+.article-title { font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #1a1a2e; margin-bottom: 20px; }
+.article-lead { font-size: 1.1rem; line-height: 1.8; color: #555; border-left: 3px solid #0057ff; padding-left: 20px; margin-bottom: 48px; font-style: italic; }
+.article-body h2 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin: 48px 0 16px; letter-spacing: -0.01em; }
+.article-body h3 { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; color: #1a1a2e; margin: 32px 0 12px; }
+.article-body p { font-size: 1rem; line-height: 1.85; color: #374151; margin-bottom: 18px; }
+.article-body strong { color: #1a1a2e; font-weight: 600; }
+.article-body em { font-family: 'Lora', serif; font-style: italic; }
+.article-body a { color: #0057ff; text-decoration: none; }
+.article-body a:hover { text-decoration: underline; }
+.eq-box { background: #f0f5ff; border: 1px solid #c0d4ff; border-left: 4px solid #0057ff; border-radius: 0 10px 10px 0; padding: 24px 28px; margin: 28px 0; overflow-x: auto; }
+.eq-box .eq-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0040cc; margin-bottom: 14px; }
+.eq-box .eq-legend { margin-top: 16px; padding-top: 14px; border-top: 1px solid #c0d4ff; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+.eq-box .eq-legend li { font-size: 0.84rem; color: #555; list-style: none; line-height: 1.6; }
+.eq-box .eq-legend li strong { color: #0040cc; }
+.param-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+.param-card { background: #f0f5ff; border: 1px solid #c0d4ff; border-radius: 10px; padding: 18px 16px; }
+.param-name { font-size: 0.85rem; font-weight: 600; color: #0040cc; margin-bottom: 6px; font-family: 'Lora', serif; }
+.param-desc { font-size: 0.82rem; color: #555; line-height: 1.6; }
+.callout { background: #eef7f3; border-left: 3px solid #1dbd5c; border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 28px 0; }
+.callout p { margin: 0; font-size: 0.95rem; color: #374151; }
+.callout strong { color: #1d7a4f; }
+.callout-blue { background: #f0f5ff; border-left: 3px solid #0057ff; border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 28px 0; }
+.callout-blue p { margin: 0; font-size: 0.95rem; color: #374151; }
+.callout-blue strong { color: #0040cc; }
+.mpp-box { background: #fff; border: 2px solid #0057ff; border-radius: 10px; padding: 28px; margin: 28px 0; }
+.mpp-box-title { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700; color: #0057ff; margin-bottom: 12px; }
+.mpp-box p { margin: 0 0 8px; font-size: 0.95rem; color: #374151; line-height: 1.7; }
+.mpp-box p:last-child { margin: 0; }
+.sim-link-box { background: #f0f5ff; border: 1.5px solid #0057ff; border-radius: 10px; padding: 20px 24px; margin: 36px 0; display: flex; align-items: center; gap: 16px; }
+.sim-link-box .sim-icon { font-size: 1.8rem; flex-shrink: 0; }
+.sim-link-box p { margin: 0; font-size: 0.92rem; color: #374151; line-height: 1.6; }
+.sim-link-box a { color: #0040cc; font-weight: 600; text-decoration: none; }
+.article-divider { height: 1px; background: #e8e8e8; margin: 48px 0; }
+.refs-section { margin-top: 60px; padding-top: 32px; border-top: 1px solid #e8e8e8; }
+.refs-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #999; margin-bottom: 14px; }
+.refs-list { list-style: none; padding: 0; }
+.refs-list li { font-size: 0.84rem; color: #555; line-height: 1.7; padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+.refs-list li:last-child { border-bottom: none; }
+.refs-list a { color: #0057ff; }
+.article-cta { background: #111827; color: #fff; border-radius: 12px; padding: 48px 36px; text-align: center; margin: 60px 0 0; }
+.article-cta h2 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.article-cta p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.7; }
+@media (max-width: 768px) {
+  .article-wrap { padding: 40px 20px 60px; }
+  .param-grid { grid-template-columns: 1fr; }
+  .eq-box .eq-legend { grid-template-columns: 1fr; }
+  .sim-link-box { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — inscrições abertas, vagas limitadas</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<main class="article-wrap">
+
+  <div class="article-meta">
+    <span class="article-cat">Eletricidade · Solar</span>
+    <span class="article-date">abril de 2026 · Prof. Edson Mosman</span>
+  </div>
+
+  <h1 class="article-title">Curva I×V do Painel Solar: o gráfico que todo engenheiro precisa entender</h1>
+
+  <p class="article-lead">
+    Um painel solar não é uma bateria nem uma fonte de tensão constante. É um dispositivo não linear, e o gráfico que descreve seu comportamento — a curva I×V — é a ferramenta fundamental para entender como extrair o máximo de energia em qualquer condição de luz.
+  </p>
+
+  <article class="article-body">
+
+    <h2>Por que a curva I×V existe</h2>
+
+    <p>Quando você conecta uma carga elétrica (um motor, uma bateria, um resistor) a um painel solar, o painel não fornece sempre a mesma tensão ou sempre a mesma corrente. Dependendo do valor da carga, o ponto de operação se desloca ao longo de uma curva característica. Essa curva — que relaciona a corrente \(I\) gerada pelo painel para cada valor de tensão \(V\) nos seus terminais — é a <strong>curva I×V</strong>.</p>
+
+    <p>Dois pontos extremos definem a curva inteiramente:</p>
+
+    <div class="param-grid">
+      <div class="param-card">
+        <div class="param-name">Corrente de curto-circuito \(I_{sc}\)</div>
+        <div class="param-desc">É a corrente quando a tensão nos terminais é zero (circuito em curto). É o valor máximo de corrente que o painel pode gerar. Proporcional à irradiância \(G\).</div>
+      </div>
+      <div class="param-card">
+        <div class="param-name">Tensão de circuito aberto \(V_{oc}\)</div>
+        <div class="param-desc">É a tensão quando a corrente é zero (circuito aberto, sem carga). É o valor máximo de tensão. Depende da temperatura — aumenta levemente com o frio.</div>
+      </div>
+    </div>
+
+    <p>Entre esses dois extremos existe um ponto especial — o <strong>Ponto de Máxima Potência (MPP)</strong> — onde o produto \(P = V \times I\) atinge seu valor máximo. Todo sistema fotovoltaico bem projetado opera nesse ponto.</p>
+
+    <div class="mpp-box">
+      <div class="mpp-box-title">Ponto de Máxima Potência (MPP — Maximum Power Point)</div>
+      <p>É o ponto da curva I×V onde \(P = V \times I\) é máximo. Geometricamente, corresponde ao maior retângulo que pode ser inscrito sob a curva — com largura \(V_{mpp}\) e altura \(I_{mpp}\).</p>
+      <p>Os inversores de sistemas fotovoltaicos modernos usam um algoritmo chamado <strong>MPPT (Maximum Power Point Tracker)</strong> que ajusta continuamente a carga elétrica vista pelo painel para mantê-lo sempre operando no MPP — independentemente das variações de luz e temperatura ao longo do dia.</p>
+    </div>
+
+    <h2>O fator de preenchimento (Fill Factor)</h2>
+
+    <p>O <strong>fator de preenchimento</strong> \(FF\) mede o quanto a curva I×V se aproxima de um retângulo perfeito. Quanto mais "quadrada" a curva, maior a potência que pode ser extraída para dados \(I_{sc}\) e \(V_{oc}\):</p>
+
+    <div class="eq-box">
+      <div class="eq-label">Fator de preenchimento</div>
+      $$\boxed{FF = \frac{P_{mpp}}{I_{sc} \cdot V_{oc}} = \frac{V_{mpp} \cdot I_{mpp}}{I_{sc} \cdot V_{oc}}}$$
+      <ul class="eq-legend">
+        <li><strong>\(P_{mpp}\)</strong> — potência máxima (W)</li>
+        <li><strong>\(I_{sc}\)</strong> — corrente de curto-circuito (A)</li>
+        <li><strong>\(V_{oc}\)</strong> — tensão de circuito aberto (V)</li>
+        <li><strong>FF ideal</strong> — tende a 1 (curva perfeitamente retangular)</li>
+      </ul>
+    </div>
+
+    <p>Painéis comerciais de silício monocristalino de boa qualidade têm \(FF\) entre <strong>0,78 e 0,85</strong>. Um \(FF\) baixo indica perdas elevadas — geralmente por resistência série alta (contatos oxidados, cabos subdimensionados) ou resistência de derivação baixa (defeitos internos, sujeira).</p>
+
+    <h2>O modelo de diodo único: a equação da célula solar</h2>
+
+    <p>Para entender de onde vem a forma da curva I×V, é preciso olhar para a física interna da célula. Uma célula fotovoltaica se comporta como uma <strong>fonte de corrente</strong> (a corrente fotogerada \(I_{ph}\), proporcional à irradiância) em paralelo com um <strong>diodo</strong> (a junção p-n do semicondutor). O diodo "desvia" parte da corrente internamente.</p>
+
+    <p>O modelo de engenharia mais usado acrescenta duas resistências parasitas: a <strong>resistência série</strong> \(R_s\) (perdas nos contatos e fios) e a <strong>resistência shunt</strong> \(R_{sh}\) (correntes de fuga). A equação completa que descreve a curva é:</p>
+
+    <div class="eq-box">
+      <div class="eq-label">Modelo de diodo único (equação da célula solar)</div>
+      $$\boxed{I = I_{ph} - I_0\left(e^{\frac{q(V + IR_s)}{nkT}} - 1\right) - \frac{V + IR_s}{R_{sh}}}$$
+      <ul class="eq-legend">
+        <li><strong>\(I_{ph}\)</strong> — corrente fotogerada (\(\propto G\))</li>
+        <li><strong>\(I_0\)</strong> — corrente de saturação do diodo (cresce com \(T\))</li>
+        <li><strong>\(n\)</strong> — fator de idealidade (1 a 2)</li>
+        <li><strong>\(q\)</strong> — carga do elétron = \(1{,}6 \times 10^{-19}\) C</li>
+        <li><strong>\(k\)</strong> — constante de Boltzmann = \(1{,}38 \times 10^{-23}\) J/K</li>
+        <li><strong>\(T\)</strong> — temperatura absoluta (K)</li>
+        <li><strong>\(R_s\)</strong> — resistência série (Ω)</li>
+        <li><strong>\(R_{sh}\)</strong> — resistência shunt (Ω)</li>
+      </ul>
+    </div>
+
+    <p>Observe que esta é uma <strong>equação implícita</strong> — \(I\) aparece em ambos os lados da igualdade (dentro do exponencial e na divisão por \(R_{sh}\)). Não existe solução analítica em forma fechada; a curva I×V completa é obtida numericamente, ponto a ponto, por métodos como o de Newton-Raphson.</p>
+
+    <div class="callout-blue">
+      <p><strong>Tensão térmica:</strong> o fator \(\frac{kT}{q}\) na equação do diodo tem unidade de tensão e vale aproximadamente <strong>26 mV a 25°C</strong> (298 K). É chamado de tensão térmica e aparece frequentemente na forma \(V_T = kT/q\). A 50°C, sobe para ~28 mV, afetando a forma da curva.</p>
+    </div>
+
+    <h2>Como cada parâmetro afeta a curva</h2>
+
+    <h3>Irradiância G</h3>
+    <p>Aumentar \(G\) desloca a curva para cima: a corrente fotogerada \(I_{ph} \propto G\), então \(I_{sc}\) cresce proporcionalmente. A tensão \(V_{oc}\) também cresce, mas de forma logarítmica — bem mais lentamente. Reduzir \(G\) pela metade (por exemplo, por sombreamento parcial) praticamente corta \(I_{sc}\) ao meio, mas reduz \(V_{oc}\) em apenas alguns por cento.</p>
+
+    <h3>Temperatura T</h3>
+    <p>Aumentar a temperatura reduz significativamente \(V_{oc}\) — a taxa é de aproximadamente \(-2\) mV/°C para silício, ou cerca de \(-0{,}4\%\)/°C relativo. A corrente \(I_{sc}\) cresce levemente com \(T\) (cerca de \(+0{,}05\%\)/°C), mas o efeito dominante é a queda de tensão. Por isso, <strong>dias muito quentes reduzem a potência do painel</strong> — um paradoxo aparente para quem associa mais sol com mais energia.</p>
+
+    <h3>Resistência série \(R_s\)</h3>
+    <p>Aumentar \(R_s\) inclina a parte superior direita da curva, reduzindo o fator de preenchimento \(FF\). Representa perdas nos contatos, solda e cabos — um problema de qualidade de instalação.</p>
+
+    <h3>Fator de idealidade \(n\)</h3>
+    <p>Para \(n = 1\), o diodo é "ideal" — a corrente de recombinação ocorre principalmente no bulk do semicondutor. Para \(n = 2\), a recombinação na região de depleção domina. Na prática, \(n\) fica entre 1 e 2 e afeta a curvatura na região de transição da curva.</p>
+
+    <div class="article-divider"></div>
+
+    <h2>Do laboratório ao sistema: a cadeia de eficiência</h2>
+
+    <p>A eficiência de um <strong>sistema</strong> fotovoltaico completo é sempre menor que a eficiência da célula. As perdas se acumulam em cada etapa:</p>
+
+    <p>Células de laboratório de silício monocristalino chegam a \(\eta_{cel} \approx 26\%\). Módulos comerciais (células encapsuladas em vidro) ficam em 20 a 24%. Sistemas completos — considerando perdas de temperatura, sombreamento, descasamento entre módulos, eficiência do inversor e perdas no cabeamento — tipicamente entregam 75 a 85% da energia nominal dos módulos. Isso é o que os engenheiros chamam de <em>Performance Ratio</em> (PR).</p>
+
+    <div class="sim-link-box">
+      <div class="sim-icon">📈</div>
+      <p>
+        <strong>Explore na prática:</strong> na simulação do mosmanLAB, você pode ajustar irradiância, temperatura, resistência série, resistência shunt e fator de idealidade, e ver a curva I×V e a curva de potência \(P \times V\) serem redesenhadas em tempo real. O MPP e o fator de preenchimento são calculados automaticamente.<br>
+        <a href="../simulacoes/curva-iv-solar.html">Abrir simulação da Curva I×V →</a>
+      </p>
+    </div>
+
+    <h2>A física no vestibular e além</h2>
+
+    <p>A curva I×V é um tema que aparece nos cursos de Engenharia Elétrica, Eletrônica e Energia, e começa a aparecer em vestibulares de alto nível quando o tema é Física Moderna aplicada. O fator de preenchimento — definido como a razão de áreas sob a curva — é um bom exemplo de conceito geométrico com significado físico direto. A equação do diodo, embora implícita, mostra como a termodinâmica estatística (\(kT\)) e a estrutura eletrônica dos semicondutores se combinam para determinar o comportamento de um dispositivo prático.</p>
+
+    <p>Para o vestibular, os pontos mais importantes são: saber identificar \(I_{sc}\), \(V_{oc}\) e o MPP num gráfico I×V; calcular a potência como \(P = V \times I\); entender qualitativamente o efeito da temperatura sobre \(V_{oc}\); e conectar o efeito fotoelétrico de Einstein com a geração de corrente elétrica na célula.</p>
+
+    <div class="article-cta">
+      <h2>Quer dominar a Física para o vestibular?</h2>
+      <p>Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo. Prof. Edson Mosman — Mestre em Física pela USP, 26 anos de experiência.</p>
+      <a class="btn" href="../turma-maio-2026.html">Conhecer a Turma de Maio 2026 →</a>
+    </div>
+
+  </article>
+
+  <section class="refs-section">
+    <h2 class="refs-title">Referências</h2>
+    <ul class="refs-list">
+      <li>Luque, A. & Hegedus, S. (eds.). (2011). <em>Handbook of Photovoltaic Science and Engineering</em> (2nd ed.). Wiley.</li>
+      <li>Shockley, W. & Queisser, H. J. (1961). Detailed Balance Limit of Efficiency of p-n Junction Solar Cells. <em>Journal of Applied Physics</em>, 32(3), 510–519.</li>
+      <li><strong>ABSOLAR</strong> — Associação Brasileira de Energia Solar Fotovoltaica. <a href="https://www.absolar.org.br" target="_blank">absolar.org.br</a></li>
+      <li><strong>IEA</strong> — International Energy Agency. <em>World Energy Outlook 2024</em>. <a href="https://www.iea.org" target="_blank">iea.org</a></li>
+      <li><strong>CRESESB</strong> — Centro de Referência para Energia Solar e Eólica Sérgio Brito. <a href="http://www.cresesb.cepel.br" target="_blank">cresesb.cepel.br</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
+</footer>
+
+</body>
+</html>
