@@ -424,65 +424,32 @@ input::placeholder{color:#3d4349;}
 
     <div class="sim-grid" id="simGrid">
 
-      <!-- MECÂNICA -->
-      <div class="sim-card" data-area="mecanica" onclick="abrirSimulado('mecanica-01','Mecânica — Leis de Newton')">
+      <!-- ══ SIMULADO 01 — DISPONÍVEL ══ -->
+      <a class="sim-card" data-area="mecanica" href="simulado-01-cinematica-MU-MUV-quedalivre-lancamentos.html"
+         style="border-color:rgba(34,197,94,0.3);text-decoration:none;">
+        <div class="sim-thumb th-mecanica" style="position:relative;">
+          🚀
+          <span style="position:absolute;top:8px;right:8px;background:var(--green);color:#000;
+            font-size:0.58rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+            padding:2px 8px;border-radius:50px;">Novo</span>
+        </div>
+        <div class="sim-body">
+          <div class="sim-area">Mecânica · Simulado 01</div>
+          <div class="sim-title">Cinemática: MU, MUV, Queda Livre e Lançamentos</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="sim-meta-pill">FUVEST · ENEM</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- MECÂNICA — Em breve -->
+      <div class="sim-card locked" data-area="mecanica">
         <div class="sim-thumb th-mecanica">⚙️</div>
         <div class="sim-body">
-          <div class="sim-area">Mecânica</div>
-          <div class="sim-title">Leis de Newton e Dinâmica</div>
-          <div class="sim-meta">
-            <span class="sim-meta-pill">10 questões</span>
-            <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="sim-card" data-area="mecanica" onclick="abrirSimulado('mecanica-02','Mecânica — Energia e Trabalho')">
-        <div class="sim-thumb th-mecanica">🔋</div>
-        <div class="sim-body">
-          <div class="sim-area">Mecânica</div>
-          <div class="sim-title">Trabalho, Energia e Potência</div>
-          <div class="sim-meta">
-            <span class="sim-meta-pill">10 questões</span>
-            <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="sim-card" data-area="mecanica" onclick="abrirSimulado('mecanica-03','Mecânica — Cinemática')">
-        <div class="sim-thumb th-mecanica">🚀</div>
-        <div class="sim-body">
-          <div class="sim-area">Mecânica</div>
-          <div class="sim-title">Cinemática: MU, MUV e Lançamentos</div>
-          <div class="sim-meta">
-            <span class="sim-meta-pill">10 questões</span>
-            <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- TERMODINÂMICA -->
-      <div class="sim-card" data-area="termodinamica" onclick="abrirSimulado('termo-01','Termodinâmica — Calorimetria')">
-        <div class="sim-thumb th-termodin">🌡️</div>
-        <div class="sim-body">
-          <div class="sim-area">Termodinâmica</div>
-          <div class="sim-title">Calorimetria e Mudanças de Fase</div>
-          <div class="sim-meta">
-            <span class="sim-meta-pill">10 questões</span>
-            <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="sim-card" data-area="termodinamica" onclick="abrirSimulado('termo-02','Termodinâmica — Leis')">
-        <div class="sim-thumb th-termodin">♨️</div>
-        <div class="sim-body">
-          <div class="sim-area">Termodinâmica</div>
-          <div class="sim-title">Leis da Termodinâmica e Máquinas</div>
+          <div class="sim-area">Mecânica · Simulado 02</div>
+          <div class="sim-title">Dinâmica: Leis de Newton e Aplicações</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
             <span class="sim-meta-pill">20 min</span>
@@ -491,37 +458,77 @@ input::placeholder{color:#3d4349;}
         </div>
       </div>
 
-      <!-- ELETROMAGNETISMO -->
-      <div class="sim-card" data-area="eletromagnetismo" onclick="abrirSimulado('eletro-01','Eletrostática')">
+      <div class="sim-card locked" data-area="mecanica">
+        <div class="sim-thumb th-mecanica">🔋</div>
+        <div class="sim-body">
+          <div class="sim-area">Mecânica · Simulado 03</div>
+          <div class="sim-title">Trabalho, Energia, Potência e Impulso</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMODINÂMICA — Em breve -->
+      <div class="sim-card locked" data-area="termodinamica">
+        <div class="sim-thumb th-termodin">🌡️</div>
+        <div class="sim-body">
+          <div class="sim-area">Termodinâmica · Simulado 04</div>
+          <div class="sim-title">Calorimetria e Mudanças de Fase</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-card locked" data-area="termodinamica">
+        <div class="sim-thumb th-termodin">♨️</div>
+        <div class="sim-body">
+          <div class="sim-area">Termodinâmica · Simulado 05</div>
+          <div class="sim-title">Leis da Termodinâmica e Máquinas Térmicas</div>
+          <div class="sim-meta">
+            <span class="sim-meta-pill">10 questões</span>
+            <span class="sim-meta-pill">20 min</span>
+            <span class="badge-breve">Em breve</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELETROMAGNETISMO — Em breve -->
+      <div class="sim-card locked" data-area="eletromagnetismo">
         <div class="sim-thumb th-eletro">⚡</div>
         <div class="sim-body">
-          <div class="sim-area">Eletromagnetismo</div>
+          <div class="sim-area">Eletromagnetismo · Simulado 06</div>
           <div class="sim-title">Eletrostática: Cargas, Campo e Potencial</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
             <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
+            <span class="badge-breve">Em breve</span>
           </div>
         </div>
       </div>
 
-      <div class="sim-card" data-area="eletromagnetismo" onclick="abrirSimulado('eletro-02','Eletrodinâmica')">
+      <div class="sim-card locked" data-area="eletromagnetismo">
         <div class="sim-thumb th-eletro">🔌</div>
         <div class="sim-body">
-          <div class="sim-area">Eletromagnetismo</div>
+          <div class="sim-area">Eletromagnetismo · Simulado 07</div>
           <div class="sim-title">Eletrodinâmica: Lei de Ohm e Circuitos</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
             <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
+            <span class="badge-breve">Em breve</span>
           </div>
         </div>
       </div>
 
-      <div class="sim-card" data-area="eletromagnetismo" onclick="abrirSimulado('eletro-03','Magnetismo')">
+      <div class="sim-card locked" data-area="eletromagnetismo">
         <div class="sim-thumb th-eletro">🧲</div>
         <div class="sim-body">
-          <div class="sim-area">Eletromagnetismo</div>
+          <div class="sim-area">Eletromagnetismo · Simulado 08</div>
           <div class="sim-title">Magnetismo e Indução Eletromagnética</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
@@ -531,24 +538,24 @@ input::placeholder{color:#3d4349;}
         </div>
       </div>
 
-      <!-- ÓPTICA -->
-      <div class="sim-card" data-area="optica" onclick="abrirSimulado('optica-01','Óptica Geométrica')">
+      <!-- ÓPTICA — Em breve -->
+      <div class="sim-card locked" data-area="optica">
         <div class="sim-thumb th-optica">🔭</div>
         <div class="sim-body">
-          <div class="sim-area">Óptica</div>
+          <div class="sim-area">Óptica · Simulado 09</div>
           <div class="sim-title">Óptica Geométrica: Lentes e Espelhos</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
             <span class="sim-meta-pill">20 min</span>
-            <span class="badge-novo">Disponível</span>
+            <span class="badge-breve">Em breve</span>
           </div>
         </div>
       </div>
 
-      <div class="sim-card" data-area="optica" onclick="abrirSimulado('optica-02','Ondulatória e Óptica Física')">
+      <div class="sim-card locked" data-area="optica">
         <div class="sim-thumb th-ondul">〰️</div>
         <div class="sim-body">
-          <div class="sim-area">Óptica · Ondulatória</div>
+          <div class="sim-area">Ondulatória · Simulado 10</div>
           <div class="sim-title">Ondulatória: Som, Ondas e Interferência</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
@@ -558,11 +565,11 @@ input::placeholder{color:#3d4349;}
         </div>
       </div>
 
-      <!-- FÍSICA MODERNA -->
-      <div class="sim-card" data-area="moderna" onclick="abrirSimulado('moderna-01','Física Moderna')">
+      <!-- FÍSICA MODERNA — Em breve -->
+      <div class="sim-card locked" data-area="moderna">
         <div class="sim-thumb th-moderna">⚛️</div>
         <div class="sim-body">
-          <div class="sim-area">Física Moderna</div>
+          <div class="sim-area">Física Moderna · Simulado 11</div>
           <div class="sim-title">Efeito Fotoelétrico, Relatividade e Núcleo</div>
           <div class="sim-meta">
             <span class="sim-meta-pill">10 questões</span>
@@ -572,8 +579,8 @@ input::placeholder{color:#3d4349;}
         </div>
       </div>
 
-      <!-- SIMULADO COMPLETO -->
-      <div class="sim-card" data-area="todos" onclick="abrirSimulado('geral-01','Simulado Completo — Estilo FUVEST')">
+      <!-- SIMULADO COMPLETO — Em breve -->
+      <div class="sim-card locked" data-area="todos">
         <div class="sim-thumb" style="background:linear-gradient(135deg,#1e2327,#1a2235)">🎯</div>
         <div class="sim-body">
           <div class="sim-area" style="color:#fbbf24">Simulado Completo</div>
@@ -581,7 +588,7 @@ input::placeholder{color:#3d4349;}
           <div class="sim-meta">
             <span class="sim-meta-pill">20 questões</span>
             <span class="sim-meta-pill">45 min</span>
-            <span class="badge-novo">Disponível</span>
+            <span class="badge-breve">Em breve</span>
           </div>
         </div>
       </div>
@@ -697,18 +704,7 @@ input::placeholder{color:#3d4349;}
   </div>
 </div>
 
-<!-- ══ MODAL: redirecionamento para simulado ══ -->
-<div id="modalOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;display:none;align-items:center;justify-content:center;">
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px 28px;max-width:400px;width:90%;text-align:center;">
-    <div style="font-size:2rem;margin-bottom:16px" id="modalEmoji">📋</div>
-    <h3 style="font-family:'Lora',serif;font-size:1.1rem;color:var(--text);margin-bottom:8px" id="modalTitle">Simulado</h3>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:24px" id="modalMsg">Você será redirecionado para o simulado.</p>
-    <div style="display:flex;gap:10px;">
-      <button onclick="fecharModal()" style="flex:1;padding:11px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">Cancelar</button>
-      <a id="modalBtn" href="simulado.html" style="flex:1;padding:11px;background:var(--green);color:#000;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;">Começar →</a>
-    </div>
-  </div>
-</div>
+
 
 <footer style="border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:0.8rem;color:var(--muted);">
   © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br" style="color:var(--muted);">mosmanlab.com.br</a><br>
@@ -758,30 +754,7 @@ function filtrarSim(area, btn) {
   })
 }
 
-// ═══════════════════════════════
-//  ABRIR SIMULADO
-// ═══════════════════════════════
-function abrirSimulado(id, titulo) {
-  const overlay = document.getElementById('modalOverlay')
-  document.getElementById('modalTitle').textContent = titulo
-  document.getElementById('modalBtn').href = `simulado.html?id=${id}`
 
-  if (!currentUser) {
-    document.getElementById('modalMsg').textContent =
-      'Você pode fazer o simulado sem login, mas seus resultados não serão salvos. Crie uma conta gratuita para acompanhar sua evolução.'
-  } else {
-    document.getElementById('modalMsg').textContent =
-      'Seu resultado será salvo automaticamente ao terminar.'
-  }
-  overlay.style.display = 'flex'
-}
-
-function fecharModal() {
-  document.getElementById('modalOverlay').style.display = 'none'
-}
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if (e.target === this) fecharModal()
-})
 
 // ═══════════════════════════════
 //  TABS

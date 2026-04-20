@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Simulado 01 — Cinemática: MU, MUV, Queda Livre e Lançamentos | MosmanLAB</title>
+<meta name="description" content="Simulado de Física — Cinemática: Movimento Uniforme, Uniformemente Variado, Queda Livre e Lançamentos. 10 questões com gabarito comentado e fórmulas. Prof. Edson Mosman · MosmanLAB.">
+<meta name="author" content="Prof. Edson Mosman · MosmanLAB">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mosmanlab.com.br/simulados/simulado-01-cinematica-MU-MUV-quedalivre-lancamentos.html">
+<meta property="og:title" content="Simulado 01 — Cinemática | MosmanLAB">
+<meta property="og:description" content="10 questões de Cinemática com gabarito comentado. MU, MUV, Queda Livre e Lançamentos. Prof. Edson Mosman.">
+<meta property="og:url" content="https://mosmanlab.com.br/simulados/simulado-01-cinematica-MU-MUV-quedalivre-lancamentos.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['$$','$$'],['\\[','\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --green:#22c55e;
+  --green-dark:#16a34a;
+  --green-glow:rgba(34,197,94,0.12);
+  --bg:#0d0f10;
+  --surface:#161a1d;
+  --surface2:#1e2327;
+  --surface3:#252b30;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --text:#e8eaed;
+  --muted:#6b7280;
+  --error:#f87171;
+  --amber:#fbbf24;
+  --blue:#60a5fa;
+}
+
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:15px;
+  min-height:100vh;
+}
+
+/* ── URGENCY ── */
+.urgency{
+  background:#0057ff;color:#fff;text-align:center;
+  padding:10px 20px;font-size:0.82rem;font-weight:600;
+}
+.urgency strong{font-weight:800;}
+.urgency a{color:#fff;text-decoration:underline;}
+
+/* ── NAV ── */
+nav{
+  background:rgba(13,15,16,0.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 32px;max-width:900px;margin:0 auto;
+}
+.nav-logo{
+  font-family:'Lora',serif;font-size:1.1rem;font-weight:600;
+  color:var(--text);text-decoration:none;
+}
+.nav-logo span{color:var(--green);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-back{
+  font-size:0.82rem;color:var(--muted);text-decoration:none;
+  transition:color 0.15s;
+}
+.nav-back:hover{color:var(--text);}
+
+/* ── CRONÔMETRO STICKY ── */
+.timer-bar{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:10px 32px;display:flex;align-items:center;
+  justify-content:space-between;max-width:900px;
+  margin:0 auto;
+}
+.timer-bar-wrap{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  position:sticky;top:52px;z-index:90;
+}
+.timer-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.timer-value{
+  font-family:'Lora',serif;font-size:1.5rem;font-weight:700;
+  color:var(--green);letter-spacing:0.04em;
+  transition:color 0.3s;
+}
+.timer-value.urgent{color:var(--error);}
+.progress-track{
+  flex:1;height:4px;background:var(--surface3);
+  border-radius:2px;margin:0 24px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:var(--green);border-radius:2px;
+  transition:width 1s linear,background 0.3s;
+}
+.progress-fill.urgent{background:var(--error);}
+
+/* mapa de questões */
+.qmap{display:flex;gap:6px;flex-wrap:wrap;}
+.qmap-dot{
+  width:26px;height:26px;border-radius:6px;
+  background:var(--surface3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all 0.15s;
+}
+.qmap-dot.answered{background:var(--green-glow);border-color:rgba(34,197,94,0.3);color:var(--green);}
+.qmap-dot.current{border-color:var(--green);color:var(--text);}
+
+/* ── MAIN ── */
+main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
+
+/* ── CABEÇALHO DO SIMULADO ── */
+.sim-header{margin-bottom:36px;}
+.sim-tag{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--green);
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+.sim-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--green);}
+.sim-header h1{
+  font-family:'Lora',serif;font-size:clamp(1.5rem,3vw,2rem);
+  font-weight:700;line-height:1.2;color:var(--text);margin-bottom:8px;
+}
+.sim-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;}
+.sim-meta-pill{
+  font-size:0.72rem;color:var(--muted);
+  background:var(--surface2);border:1px solid var(--border);
+  padding:4px 12px;border-radius:50px;
+}
+
+/* ── QUESTÃO ── */
+.question-block{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:28px 28px 24px;
+  margin-bottom:20px;scroll-margin-top:120px;
+  transition:border-color 0.2s;
+}
+.question-block.answered{border-color:rgba(34,197,94,0.2);}
+.question-block.wrong{border-color:rgba(248,113,113,0.2);}
+
+.q-num{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px;
+}
+.q-text{
+  font-family:'Lora',serif;font-size:1rem;
+  line-height:1.8;color:var(--text);margin-bottom:20px;
+}
+.q-text p{margin-bottom:10px;}
+.q-text p:last-child{margin-bottom:0;}
+
+/* Alternativas */
+.options{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+.option{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 16px;border-radius:10px;
+  border:1px solid var(--border);background:var(--surface2);
+  cursor:pointer;transition:all 0.15s;
+  font-size:0.92rem;line-height:1.5;color:var(--text);
+  text-align:left;width:100%;
+}
+.option:hover:not(:disabled){
+  border-color:rgba(34,197,94,0.4);background:var(--surface3);
+}
+.option.selected{
+  border-color:rgba(34,197,94,0.5);
+  background:rgba(34,197,94,0.06);
+}
+.option.correct{
+  border-color:rgba(34,197,94,0.6);
+  background:rgba(34,197,94,0.1);
+  color:var(--green);
+}
+.option.wrong-pick{
+  border-color:rgba(248,113,113,0.5);
+  background:rgba(248,113,113,0.08);
+  color:var(--error);
+}
+.option:disabled{cursor:default;}
+.opt-letter{
+  width:22px;height:22px;border-radius:6px;flex-shrink:0;
+  background:var(--surface3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;font-weight:700;color:var(--muted);
+  margin-top:1px;
+}
+.option.correct .opt-letter{background:var(--green);color:#000;border-color:var(--green);}
+.option.wrong-pick .opt-letter{background:var(--error);color:#fff;border-color:var(--error);}
+
+/* Gabarito / explicação */
+.gabarito{
+  display:none;
+  background:var(--surface2);border:1px solid var(--border);
+  border-left:3px solid var(--green);border-radius:0 8px 8px 0;
+  padding:16px 20px;margin-top:4px;
+  animation:fadeIn 0.3s ease;
+}
+.gabarito.wrong-gab{border-left-color:var(--error);}
+.gabarito.show{display:block;}
+.gab-title{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--green);margin-bottom:10px;
+}
+.gabarito.wrong-gab .gab-title{color:var(--error);}
+.gab-body{
+  font-size:0.88rem;line-height:1.85;color:#9ca3af;
+}
+.gab-body p{margin-bottom:8px;}
+.gab-body p:last-child{margin-bottom:0;}
+.gab-body strong{color:var(--text);}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+/* botão confirmar */
+.btn-confirm{
+  padding:10px 24px;background:var(--green);color:#000;
+  border:none;border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;
+  cursor:pointer;transition:background 0.15s;
+}
+.btn-confirm:hover{background:var(--green-dark);}
+.btn-confirm:disabled{opacity:0.4;cursor:default;}
+
+/* ── TELA DE RESULTADO ── */
+#telaResultado{display:none;}
+.resultado-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:48px 40px;text-align:center;
+  max-width:580px;margin:40px auto 0;
+}
+.resultado-emoji{font-size:3.5rem;margin-bottom:16px;}
+.resultado-titulo{
+  font-family:'Lora',serif;font-size:1.6rem;font-weight:700;
+  color:var(--text);margin-bottom:8px;
+}
+.resultado-sub{font-size:0.92rem;color:var(--muted);margin-bottom:32px;line-height:1.6;}
+.resultado-score{
+  font-family:'Lora',serif;font-size:4rem;font-weight:700;
+  color:var(--green);line-height:1;margin-bottom:4px;
+}
+.resultado-score.medio{color:var(--amber);}
+.resultado-score.baixo{color:var(--error);}
+.resultado-detalhe{font-size:0.85rem;color:var(--muted);margin-bottom:32px;}
+
+.resultado-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:12px;margin-bottom:32px;
+}
+.res-cell{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:14px 10px;
+}
+.res-cell-val{
+  font-family:'Lora',serif;font-size:1.4rem;font-weight:700;
+  color:var(--text);line-height:1;
+}
+.res-cell-lbl{font-size:0.7rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;}
+
+.btn-revisar{
+  display:block;width:100%;padding:13px;
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:8px;color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;
+  cursor:pointer;margin-bottom:10px;transition:all 0.15s;text-decoration:none;text-align:center;
+}
+.btn-revisar:hover{background:var(--surface3);border-color:var(--green);}
+.btn-novo{
+  display:block;width:100%;padding:13px;
+  background:var(--green);color:#000;border:none;border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;
+  cursor:pointer;text-decoration:none;text-align:center;transition:background 0.15s;
+}
+.btn-novo:hover{background:var(--green-dark);}
+
+.save-status{
+  font-size:0.78rem;margin-bottom:16px;padding:8px 14px;
+  border-radius:6px;display:none;
+}
+.save-status.ok{background:var(--green-glow);color:var(--green);border:1px solid rgba(34,197,94,0.2);display:block;}
+.save-status.err{background:rgba(248,113,113,0.08);color:var(--error);border:1px solid rgba(248,113,113,0.2);display:block;}
+
+/* revisão por questão */
+.revisao-header{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted);
+  margin:48px 0 16px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+}
+.revisao-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:16px 20px;margin-bottom:10px;
+  display:flex;align-items:center;gap:14px;
+}
+.revisao-item.certo{border-left:3px solid var(--green);}
+.revisao-item.errado{border-left:3px solid var(--error);}
+.revisao-icon{font-size:1.1rem;flex-shrink:0;}
+.revisao-text{font-size:0.85rem;color:var(--muted);line-height:1.5;}
+.revisao-text strong{color:var(--text);}
+
+/* ── MOBILE ── */
+@media(max-width:640px){
+  .nav-inner{padding:12px 20px;}
+  main{padding:28px 16px 60px;}
+  .timer-bar{padding:10px 20px;}
+  .question-block{padding:20px 16px 16px;}
+  .resultado-card{padding:32px 20px;}
+  .resultado-grid{grid-template-columns:1fr 1fr;}
+  .resultado-score{font-size:3rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">
+  ⚡ Nova turma começa em <strong>maio de 2026</strong> — <a href="../turma-maio-2026.html">garantir minha vaga →</a>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">mosman<span>LAB</span></a>
+    <div class="nav-right">
+      <a class="nav-back" href="index.html">← Voltar aos simulados</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CRONÔMETRO STICKY -->
+<div class="timer-bar-wrap" id="timerBarWrap">
+  <div class="timer-bar">
+    <div>
+      <div class="timer-label">Tempo restante</div>
+      <div class="timer-value" id="timerDisplay">20:00</div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:100%"></div>
+    </div>
+    <div class="qmap" id="qmap"></div>
+  </div>
+</div>
+
+<main id="telaSimulado">
+
+  <div class="sim-header">
+    <div class="sim-tag">Cinemática · Simulado 01</div>
+    <h1>MU, MUV, Queda Livre e Lançamentos</h1>
+    <div class="sim-meta">
+      <span class="sim-meta-pill">10 questões</span>
+      <span class="sim-meta-pill">20 minutos</span>
+      <span class="sim-meta-pill">FUVEST · UNICAMP · ENEM</span>
+      <span class="sim-meta-pill">Prof. Edson Mosman</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 1 ══════════════ -->
+  <div class="question-block" id="q1" data-gabarito="B">
+    <div class="q-num">Questão 1 de 10</div>
+    <div class="q-text">
+      <p>Ano-Luz é uma unidade de medida comumente utilizada em astronomia e astrofísica. O Ano-Luz é uma unidade de medida de:</p>
+    </div>
+    <div class="options" id="opts1">
+      <button class="option" onclick="selecionar(1,'A')"><span class="opt-letter">A</span> velocidade.</button>
+      <button class="option" onclick="selecionar(1,'B')"><span class="opt-letter">B</span> distância.</button>
+      <button class="option" onclick="selecionar(1,'C')"><span class="opt-letter">C</span> tempo.</button>
+      <button class="option" onclick="selecionar(1,'D')"><span class="opt-letter">D</span> tempo astronômico.</button>
+    </div>
+    <button class="btn-confirm" id="btn1" onclick="confirmar(1)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab1">
+      <div class="gab-title">✓ Resposta correta: B</div>
+      <div class="gab-body">
+        <p>1 ano-luz é uma unidade de medida de <strong>distância</strong> — especificamente, a distância que a luz percorre em 1 ano no vácuo.</p>
+        <p>Velocidade da luz: \(c = 3 \times 10^8 \text{ m/s}\). Em 1 ano (\(\approx 3 \times 10^7\) s), a luz percorre \(d = c \cdot \Delta t \approx 9 \times 10^{15}\) m \(= 9 \times 10^{12}\) km.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 2 ══════════════ -->
+  <div class="question-block" id="q2" data-gabarito="C">
+    <div class="q-num">Questão 2 de 10</div>
+    <div class="q-text">
+      <p>Analise as afirmativas:</p>
+      <p><strong>(01)</strong> O Ano-Luz é uma unidade de distância; 1 Ano-Luz é aproximadamente \(9 \times 10^{12}\) km.</p>
+      <p><strong>(02)</strong> As informações luminosas que recebemos do universo ao nosso redor são sempre relativas ao passado, e não ao futuro.</p>
+      <p><strong>(03)</strong> Um raio de luz leva aproximadamente 1 Ano-Luz para percorrer a distância do Sol até a Terra.</p>
+      <p>Estão corretas:</p>
+    </div>
+    <div class="options" id="opts2">
+      <button class="option" onclick="selecionar(2,'A')"><span class="opt-letter">A</span> Todas estão corretas.</button>
+      <button class="option" onclick="selecionar(2,'B')"><span class="opt-letter">B</span> Somente (02) está correta.</button>
+      <button class="option" onclick="selecionar(2,'C')"><span class="opt-letter">C</span> Estão corretas (01) e (02).</button>
+      <button class="option" onclick="selecionar(2,'D')"><span class="opt-letter">D</span> Nenhuma está correta.</button>
+    </div>
+    <button class="btn-confirm" id="btn2" onclick="confirmar(2)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab2">
+      <div class="gab-title">✓ Resposta correta: C</div>
+      <div class="gab-body">
+        <p><strong>(01) Correto.</strong> \(d = c \cdot \Delta t = 3\times10^8 \cdot 3\times10^7 = 9\times10^{15}\text{ m} = 9\times10^{12}\text{ km}\).</p>
+        <p><strong>(02) Correto.</strong> A luz demora tempo finito para nos atingir — toda imagem do universo é uma fotografia do passado.</p>
+        <p><strong>(03) Errado.</strong> A luz do Sol leva aproximadamente <strong>8 minutos</strong> para chegar à Terra (distância \(\approx 150\) milhões de km \(= 1\) UA, não 1 ano-luz).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 3 ══════════════ -->
+  <div class="question-block" id="q3" data-gabarito="A">
+    <div class="q-num">Questão 3 de 10</div>
+    <div class="q-text">
+      <p>Para ir de uma cidade A até uma cidade B, um automóvel realiza a viagem em duas situações:</p>
+      <p><strong>(I)</strong> Metade do <em>percurso</em> com \(v_1 = 80\) km/h e a outra metade com \(v_2 = 100\) km/h.</p>
+      <p><strong>(II)</strong> Metade do <em>tempo total</em> com \(v_1 = 80\) km/h e a outra metade com \(v_2 = 100\) km/h.</p>
+      <p>Determine a velocidade escalar média nas duas situações.</p>
+    </div>
+    <div class="options" id="opts3">
+      <button class="option" onclick="selecionar(3,'A')"><span class="opt-letter">A</span> I. \(v_m = 89{,}\overline{8}\) km/h &nbsp;·&nbsp; II. \(v_m = 90\) km/h</button>
+      <button class="option" onclick="selecionar(3,'B')"><span class="opt-letter">B</span> I. \(v_m = 90\) km/h &nbsp;·&nbsp; II. \(v_m = 89\) km/h</button>
+      <button class="option" onclick="selecionar(3,'C')"><span class="opt-letter">C</span> I. \(v_m = 90\) km/h &nbsp;·&nbsp; II. \(v_m = 90\) km/h</button>
+      <button class="option" onclick="selecionar(3,'D')"><span class="opt-letter">D</span> I. \(v_m = 92\) km/h &nbsp;·&nbsp; II. \(v_m = 89\) km/h</button>
+    </div>
+    <button class="btn-confirm" id="btn3" onclick="confirmar(3)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab3">
+      <div class="gab-title">✓ Resposta correta: A</div>
+      <div class="gab-body">
+        <p><strong>Situação I</strong> (metade do espaço em cada velocidade — média harmônica):</p>
+        <p>$$v_m = \frac{2v_1 v_2}{v_1 + v_2} = \frac{2 \times 80 \times 100}{80 + 100} = \frac{16000}{180} \approx 88{,}9 \text{ km/h}$$</p>
+        <p><strong>Situação II</strong> (metade do tempo em cada velocidade — média aritmética):</p>
+        <p>$$v_m = \frac{v_1 + v_2}{2} = \frac{80 + 100}{2} = 90 \text{ km/h}$$</p>
+        <p>A média aritmética é sempre maior ou igual à média harmônica — por isso a situação II é mais rápida.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 4 ══════════════ -->
+  <div class="question-block" id="q4" data-gabarito="A">
+    <div class="q-num">Questão 4 de 10</div>
+    <div class="q-text">
+      <p>Quando um terremoto ocorre, ondas sísmicas partem do hipocentro. Em uma estação sismológica são detectados dois tipos de onda: a onda primária (P) com velocidade \(v_p = 8\) km/s e a onda secundária (S) com velocidade \(v_s = 5\) km/s. Se o intervalo de tempo entre as detecções é \(\Delta t = 200\) s, determine a distância aproximada, em km, do epicentro à estação.</p>
+    </div>
+    <div class="options" id="opts4">
+      <button class="option" onclick="selecionar(4,'A')"><span class="opt-letter">A</span> 2 667 km</button>
+      <button class="option" onclick="selecionar(4,'B')"><span class="opt-letter">B</span> 2 400 km</button>
+      <button class="option" onclick="selecionar(4,'C')"><span class="opt-letter">C</span> 1 400 km</button>
+      <button class="option" onclick="selecionar(4,'D')"><span class="opt-letter">D</span> 1 200 km</button>
+      <button class="option" onclick="selecionar(4,'E')"><span class="opt-letter">E</span> 600 km</button>
+    </div>
+    <button class="btn-confirm" id="btn4" onclick="confirmar(4)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab4">
+      <div class="gab-title">✓ Resposta correta: A</div>
+      <div class="gab-body">
+        <p>Ambas as ondas percorrem a mesma distância \(d\), mas em tempos diferentes:</p>
+        <p>$$\Delta t = \frac{d}{v_s} - \frac{d}{v_p} = d\left(\frac{v_p - v_s}{v_p v_s}\right)$$</p>
+        <p>$$d = \frac{v_p \cdot v_s}{v_p - v_s}\cdot\Delta t = \frac{8 \times 5}{8 - 5}\times 200 = \frac{40}{3}\times 200 \approx 2667 \text{ km}$$</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 5 ══════════════ -->
+  <div class="question-block" id="q5" data-gabarito="B">
+    <div class="q-num">Questão 5 de 10</div>
+    <div class="q-text">
+      <p>A queda livre é um exemplo de qual tipo de movimento?</p>
+    </div>
+    <div class="options" id="opts5">
+      <button class="option" onclick="selecionar(5,'A')"><span class="opt-letter">A</span> M.R.U. — Movimento Retilíneo Uniforme</button>
+      <button class="option" onclick="selecionar(5,'B')"><span class="opt-letter">B</span> M.R.U.V. — Movimento Retilíneo Uniformemente Variado</button>
+      <button class="option" onclick="selecionar(5,'C')"><span class="opt-letter">C</span> M.C.U. — Movimento Circular Uniforme</button>
+      <button class="option" onclick="selecionar(5,'D')"><span class="opt-letter">D</span> Parabólico</button>
+    </div>
+    <button class="btn-confirm" id="btn5" onclick="confirmar(5)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab5">
+      <div class="gab-title">✓ Resposta correta: B</div>
+      <div class="gab-body">
+        <p>Na queda livre, o único agente é a gravidade, que aplica uma aceleração constante \(g \approx 10\) m/s² para baixo. Aceleração constante + direção única = <strong>M.R.U.V.</strong></p>
+        <p>Equações da queda livre (partindo do repouso, \(v_0 = 0\)):</p>
+        <p>$$v = g t \qquad H = \frac{g t^2}{2} \qquad v^2 = 2gH$$</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 6 ══════════════ -->
+  <div class="question-block" id="q6" data-gabarito="C">
+    <div class="q-num">Questão 6 de 10</div>
+    <div class="q-text">
+      <p>Um corpo é abandonado do alto de uma torre de \(H = 45\) m. Desprezando os atritos e adotando \(g = 10\) m/s², o tempo de queda e a velocidade ao atingir o solo serão:</p>
+    </div>
+    <div class="options" id="opts6">
+      <button class="option" onclick="selecionar(6,'A')"><span class="opt-letter">A</span> 1 s e 10 m/s</button>
+      <button class="option" onclick="selecionar(6,'B')"><span class="opt-letter">B</span> 2 s e 20 m/s</button>
+      <button class="option" onclick="selecionar(6,'C')"><span class="opt-letter">C</span> 3 s e 30 m/s</button>
+      <button class="option" onclick="selecionar(6,'D')"><span class="opt-letter">D</span> 4 s e 40 m/s</button>
+    </div>
+    <button class="btn-confirm" id="btn6" onclick="confirmar(6)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab6">
+      <div class="gab-title">✓ Resposta correta: C</div>
+      <div class="gab-body">
+        <p><strong>Tempo de queda:</strong></p>
+        <p>$$H = \frac{g t^2}{2} \Rightarrow 45 = 5t^2 \Rightarrow t^2 = 9 \Rightarrow t = 3 \text{ s}$$</p>
+        <p><strong>Velocidade ao atingir o solo:</strong></p>
+        <p>$$v = g t = 10 \times 3 = 30 \text{ m/s}$$</p>
+        <p>Verificação por Torricelli: \(v^2 = 2gH = 2 \times 10 \times 45 = 900 \Rightarrow v = 30\) m/s. ✓</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 7 ══════════════ -->
+  <div class="question-block" id="q7" data-gabarito="C">
+    <div class="q-num">Questão 7 de 10</div>
+    <div class="q-text">
+      <p>Um corpo é abandonado do alto de uma torre de altura \(H\) desconhecida. Se o corpo percorreu \(25\) m no último segundo de queda, a altura da torre é:</p>
+    </div>
+    <div class="options" id="opts7">
+      <button class="option" onclick="selecionar(7,'A')"><span class="opt-letter">A</span> \(H = 5\) m</button>
+      <button class="option" onclick="selecionar(7,'B')"><span class="opt-letter">B</span> \(H = 20\) m</button>
+      <button class="option" onclick="selecionar(7,'C')"><span class="opt-letter">C</span> \(H = 45\) m</button>
+      <button class="option" onclick="selecionar(7,'D')"><span class="opt-letter">D</span> \(H = 80\) m</button>
+      <button class="option" onclick="selecionar(7,'E')"><span class="opt-letter">E</span> \(H = 125\) m</button>
+    </div>
+    <button class="btn-confirm" id="btn7" onclick="confirmar(7)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab7">
+      <div class="gab-title">✓ Resposta correta: C</div>
+      <div class="gab-body">
+        <p><strong>Método de Galileu</strong> — em queda livre a partir do repouso, os espaços percorridos em segundos consecutivos seguem a razão dos ímpares: \(1:3:5:7:9:\ldots\)</p>
+        <p>Se o espaço base é \(z = 5\) m (no 1º segundo), os acumulados são:</p>
+        <p>\(5\) · \(5+15=20\) · \(5+15+25=\mathbf{45}\) · \(80\) · \(125\) m</p>
+        <p>O último espaço de 25 m corresponde ao 3º segundo (\(5z = 25\) m com \(z=5\)), portanto a altura total é \(H = 45\) m.</p>
+        <p>Verificação: \(H = 5t^2 \Rightarrow 45 = 5t^2 \Rightarrow t = 3\) s. No 3º segundo: \(\Delta S = 5(2\times3-1) = 25\) m. ✓</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 8 ══════════════ -->
+  <div class="question-block" id="q8" data-gabarito="C">
+    <div class="q-num">Questão 8 de 10</div>
+    <div class="q-text">
+      <p>Um corpo é lançado verticalmente para cima a partir do solo com velocidade inicial \(v_0 = 50\) m/s. Desprezando os atritos e adotando \(g = 10\) m/s², o tempo para atingir a altura máxima e a altura máxima são:</p>
+    </div>
+    <div class="options" id="opts8">
+      <button class="option" onclick="selecionar(8,'A')"><span class="opt-letter">A</span> 10 s e 100 m</button>
+      <button class="option" onclick="selecionar(8,'B')"><span class="opt-letter">B</span> 5 s e 250 m</button>
+      <button class="option" onclick="selecionar(8,'C')"><span class="opt-letter">C</span> 5 s e 125 m</button>
+      <button class="option" onclick="selecionar(8,'D')"><span class="opt-letter">D</span> 2,5 s e 50 m</button>
+    </div>
+    <button class="btn-confirm" id="btn8" onclick="confirmar(8)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab8">
+      <div class="gab-title">✓ Resposta correta: C</div>
+      <div class="gab-body">
+        <p><strong>Tempo de subida</strong> (no ponto mais alto, \(v = 0\)):</p>
+        <p>$$v = v_0 - gt \Rightarrow 0 = 50 - 10t \Rightarrow t = 5 \text{ s}$$</p>
+        <p><strong>Altura máxima</strong> (Torricelli):</p>
+        <p>$$v^2 = v_0^2 - 2gH_{max} \Rightarrow 0 = 2500 - 20 H_{max} \Rightarrow H_{max} = 125 \text{ m}$$</p>
+        <p>O tempo total de voo (subida + descida) é \(2t = 10\) s, e o corpo volta ao solo com \(v = 50\) m/s.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 9 ══════════════ -->
+  <div class="question-block" id="q9" data-gabarito="D">
+    <div class="q-num">Questão 9 de 10</div>
+    <div class="q-text">
+      <p>Considere \(g = 10\) m/s² e despreze os atritos.</p>
+      <p><strong>(01)</strong> Um corpo é lançado horizontalmente do alto de uma torre de \(45\) m com \(v_0 = 40\) m/s. Determine o tempo de queda.</p>
+      <p><strong>(02)</strong> Um corpo é lançado horizontalmente de \(80\) m com \(v_0 = 40\) m/s. Determine o alcance horizontal.</p>
+      <p><strong>(03)</strong> Um corpo é lançado horizontalmente de \(80\) m com \(v_0 = 30\) m/s. Determine a velocidade resultante ao atingir o solo.</p>
+    </div>
+    <div class="options" id="opts9">
+      <button class="option" onclick="selecionar(9,'A')"><span class="opt-letter">A</span> (01) \(t_q = 6{,}0\) s · (02) \(A_h = 160\) m · (03) \(v_f = 30\) m/s</button>
+      <button class="option" onclick="selecionar(9,'B')"><span class="opt-letter">B</span> (01) \(t_q = 3{,}0\) s · (02) \(A_h = 120\) m · (03) \(v_f = 50\) m/s</button>
+      <button class="option" onclick="selecionar(9,'C')"><span class="opt-letter">C</span> (01) \(t_q = 3{,}0\) s · (02) \(A_h = 160\) m · (03) \(v_f = 40\) m/s</button>
+      <button class="option" onclick="selecionar(9,'D')"><span class="opt-letter">D</span> (01) \(t_q = 3{,}0\) s · (02) \(A_h = 160\) m · (03) \(v_f = 50\) m/s</button>
+    </div>
+    <button class="btn-confirm" id="btn9" onclick="confirmar(9)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab9">
+      <div class="gab-title">✓ Resposta correta: D</div>
+      <div class="gab-body">
+        <p>O lançamento horizontal decompõe-se em: <strong>eixo OX</strong> (M.R.U.) e <strong>eixo OY</strong> (queda livre, \(v_{0y}=0\)).</p>
+        <p><strong>(01)</strong> \(H = \frac{g t^2}{2} \Rightarrow 45 = 5t^2 \Rightarrow t_q = 3{,}0\) s</p>
+        <p><strong>(02)</strong> \(H=80\) m \(\Rightarrow t_q = 4{,}0\) s. Alcance: \(A_h = v_0 t_q = 40 \times 4 = 160\) m</p>
+        <p><strong>(03)</strong> \(H=80\) m \(\Rightarrow t_q = 4{,}0\) s. \(v_y = gt = 10\times4 = 40\) m/s.</p>
+        <p>$$v_R = \sqrt{v_{0x}^2 + v_y^2} = \sqrt{30^2 + 40^2} = \sqrt{900+1600} = \sqrt{2500} = 50 \text{ m/s}$$</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUESTÃO 10 ══════════════ -->
+  <div class="question-block" id="q10" data-gabarito="C">
+    <div class="q-num">Questão 10 de 10</div>
+    <div class="q-text">
+      <p>Um corpo é lançado obliquamente com velocidade inicial \(v_0 = 40\) m/s, formando ângulo \(\theta\) com a horizontal, onde \(\text{sen}\,\theta = 0{,}6\) (logo \(\cos\theta = 0{,}8\)). Adote \(g = 10\) m/s². Determine:</p>
+      <p><strong>(I)</strong> o tempo para atingir a altura máxima;</p>
+      <p><strong>(II)</strong> a altura máxima;</p>
+      <p><strong>(III)</strong> o alcance horizontal.</p>
+    </div>
+    <div class="options" id="opts10">
+      <button class="option" onclick="selecionar(10,'A')"><span class="opt-letter">A</span> \(t_s = 4{,}0\) s · \(h_{max} = 80\) m · \(A_H = 960\) m</button>
+      <button class="option" onclick="selecionar(10,'B')"><span class="opt-letter">B</span> \(t_s = 4{,}8\) s · \(h_{max} = 28{,}8\) m · \(A_H = 153{,}6\) m</button>
+      <button class="option" onclick="selecionar(10,'C')"><span class="opt-letter">C</span> \(t_s = 2{,}4\) s · \(h_{max} = 28{,}8\) m · \(A_H = 153{,}6\) m</button>
+      <button class="option" onclick="selecionar(10,'D')"><span class="opt-letter">D</span> \(t_s = 2{,}4\) s · \(h_{max} = 28{,}8\) m · \(A_H = 960\) m</button>
+    </div>
+    <button class="btn-confirm" id="btn10" onclick="confirmar(10)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab10">
+      <div class="gab-title">✓ Resposta correta: C</div>
+      <div class="gab-body">
+        <p>Componentes: \(v_{0y} = v_0 \text{sen}\,\theta = 40 \times 0{,}6 = 24\) m/s · \(v_{0x} = v_0 \cos\theta = 40 \times 0{,}8 = 32\) m/s</p>
+        <p><strong>(I) Tempo de subida</strong> (\(v_y = 0\) no topo):</p>
+        <p>$$t_s = \frac{v_{0y}}{g} = \frac{24}{10} = 2{,}4 \text{ s}$$</p>
+        <p><strong>(II) Altura máxima</strong> (Torricelli no eixo OY):</p>
+        <p>$$h_{max} = \frac{v_{0y}^2}{2g} = \frac{576}{20} = 28{,}8 \text{ m}$$</p>
+        <p><strong>(III) Alcance horizontal</strong> (tempo total = \(2t_s\)):</p>
+        <p>$$A_H = v_{0x} \cdot 2t_s = 32 \times 4{,}8 = 153{,}6 \text{ m}$$</p>
+        <p>Fórmula direta: \(A_H = \dfrac{v_0^2 \,\text{sen}(2\theta)}{g}\). O alcance é máximo para \(\theta = 45°\).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÃO FINALIZAR -->
+  <div style="text-align:center;margin-top:32px;">
+    <button id="btnFinalizar" onclick="finalizar()" style="
+      padding:14px 40px;background:var(--green);color:#000;border:none;
+      border-radius:50px;font-family:'DM Sans',sans-serif;font-size:1rem;
+      font-weight:700;cursor:pointer;transition:background 0.15s;
+    ">Finalizar simulado →</button>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:10px" id="msg-pendentes"></p>
+  </div>
+
+</main>
+
+<!-- ══ TELA DE RESULTADO ══ -->
+<div id="telaResultado">
+  <main style="max-width:900px;margin:0 auto;padding:40px 32px 80px;">
+
+    <div class="resultado-card">
+      <div class="resultado-emoji" id="resEmoji">🎯</div>
+      <div class="resultado-titulo" id="resTitulo">Simulado concluído!</div>
+      <div class="resultado-score" id="resScore">—</div>
+      <div class="resultado-detalhe" id="resDetalhe">— de 10 questões corretas</div>
+
+      <div class="resultado-grid">
+        <div class="res-cell">
+          <div class="res-cell-val" id="resAcertos">—</div>
+          <div class="res-cell-lbl">Acertos</div>
+        </div>
+        <div class="res-cell">
+          <div class="res-cell-val" id="resErros">—</div>
+          <div class="res-cell-lbl">Erros</div>
+        </div>
+        <div class="res-cell">
+          <div class="res-cell-val" id="resTempo">—</div>
+          <div class="res-cell-lbl">Tempo</div>
+        </div>
+      </div>
+
+      <div class="save-status" id="saveStatus"></div>
+
+      <button class="btn-revisar" onclick="mostrarRevisao()">Ver revisão completa ↓</button>
+      <a class="btn-novo" href="index.html">Fazer outro simulado →</a>
+    </div>
+
+    <!-- Revisão por questão -->
+    <div id="revisaoSection" style="display:none">
+      <div class="revisao-header">Revisão das questões</div>
+      <div id="revisaoLista"></div>
+    </div>
+
+  </main>
+</div>
+
+<footer style="border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:0.8rem;color:var(--muted);">
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br" style="color:var(--muted);">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
+</footer>
+
+<script>
+// ═══════════════════════════════
+//  SUPABASE
+// ═══════════════════════════════
+const SUPABASE_URL = 'https://debljvblrljehsscbtbo.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_CmhW_jV-uSxxcWcYRjGOzQ_1195fdpz'
+const { createClient } = supabase
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+// ═══════════════════════════════
+//  ESTADO DO SIMULADO
+// ═══════════════════════════════
+const TOTAL_Q    = 10
+const TEMPO_MAX  = 20 * 60  // 20 minutos em segundos
+const SIMULADO_ID = 'cinematica-01'
+
+const gabaritos = { 1:'B', 2:'C', 3:'A', 4:'A', 5:'B', 6:'C', 7:'C', 8:'C', 9:'D', 10:'C' }
+const respostas = {}    // { 1: 'A', 2: 'C', ... }
+const acertos   = {}    // { 1: true, 2: false, ... }
+
+let timerInterval = null
+let tempoRestante = TEMPO_MAX
+let simuladoAtivo = true
+
+// ═══════════════════════════════
+//  CRONÔMETRO
+// ═══════════════════════════════
+function iniciarTimer() {
+  renderTimer()
+  renderQmap()
+  timerInterval = setInterval(() => {
+    tempoRestante--
+    renderTimer()
+    if (tempoRestante <= 0) {
+      clearInterval(timerInterval)
+      finalizar(true)
+    }
+  }, 1000)
+}
+
+function renderTimer() {
+  const m = Math.floor(tempoRestante / 60).toString().padStart(2,'0')
+  const s = (tempoRestante % 60).toString().padStart(2,'0')
+  const el = document.getElementById('timerDisplay')
+  const fill = document.getElementById('progressFill')
+  el.textContent = `${m}:${s}`
+  const pct = (tempoRestante / TEMPO_MAX) * 100
+  fill.style.width = pct + '%'
+  const urgent = tempoRestante <= 120
+  el.classList.toggle('urgent', urgent)
+  fill.classList.toggle('urgent', urgent)
+}
+
+function renderQmap() {
+  const wrap = document.getElementById('qmap')
+  wrap.innerHTML = ''
+  for (let i = 1; i <= TOTAL_Q; i++) {
+    const dot = document.createElement('div')
+    dot.className = 'qmap-dot'
+    dot.textContent = i
+    dot.id = `dot${i}`
+    if (respostas[i]) dot.classList.add('answered')
+    dot.onclick = () => document.getElementById(`q${i}`).scrollIntoView({behavior:'smooth'})
+    wrap.appendChild(dot)
+  }
+}
+
+// ═══════════════════════════════
+//  SELECIONAR ALTERNATIVA
+// ═══════════════════════════════
+function selecionar(qNum, letra) {
+  if (!simuladoAtivo) return
+  if (acertos[qNum] !== undefined) return  // já confirmada
+
+  respostas[qNum] = letra
+  const opts = document.querySelectorAll(`#opts${qNum} .option`)
+  const letras = ['A','B','C','D','E']
+  opts.forEach((opt, i) => {
+    opt.classList.toggle('selected', letras[i] === letra)
+  })
+  document.getElementById(`btn${qNum}`).disabled = false
+}
+
+// ═══════════════════════════════
+//  CONFIRMAR RESPOSTA
+// ═══════════════════════════════
+function confirmar(qNum) {
+  const resp = respostas[qNum]
+  if (!resp) return
+
+  const gab = gabaritos[qNum]
+  const correto = resp === gab
+  acertos[qNum] = correto
+
+  const opts = document.querySelectorAll(`#opts${qNum} .option`)
+  const letras = ['A','B','C','D','E']
+
+  opts.forEach((opt, i) => {
+    opt.disabled = true
+    if (letras[i] === gab) {
+      opt.classList.add('correct')
+    } else if (letras[i] === resp && !correto) {
+      opt.classList.add('wrong-pick')
+    }
+    opt.classList.remove('selected')
+  })
+
+  // Mostra gabarito
+  const gabEl = document.getElementById(`gab${qNum}`)
+  gabEl.classList.add('show')
+  if (!correto) gabEl.classList.add('wrong-gab')
+
+  // Atualiza título do gabarito se errou
+  if (!correto) {
+    gabEl.querySelector('.gab-title').textContent = `✗ Você marcou ${resp} · Correto: ${gab}`
+  }
+
+  // Borda do bloco
+  const block = document.getElementById(`q${qNum}`)
+  block.classList.add(correto ? 'answered' : 'wrong')
+
+  // Oculta botão confirmar
+  document.getElementById(`btn${qNum}`).style.display = 'none'
+
+  // Atualiza mapa
+  const dot = document.getElementById(`dot${qNum}`)
+  if (dot) {
+    dot.classList.add('answered')
+    dot.style.background = correto
+      ? 'rgba(34,197,94,0.2)'
+      : 'rgba(248,113,113,0.15)'
+    dot.style.color = correto ? 'var(--green)' : 'var(--error)'
+    dot.style.borderColor = correto
+      ? 'rgba(34,197,94,0.4)'
+      : 'rgba(248,113,113,0.3)'
+  }
+
+  // Verifica se todas respondidas
+  const pendentes = TOTAL_Q - Object.keys(acertos).length
+  if (pendentes === 0) {
+    document.getElementById('msg-pendentes').textContent = 'Todas as questões respondidas. Clique em finalizar!'
+  }
+}
+
+// ═══════════════════════════════
+//  FINALIZAR
+// ═══════════════════════════════
+async function finalizar(tempoEsgotado = false) {
+  if (!simuladoAtivo) return
+
+  // Verifica pendentes
+  const respondidas = Object.keys(acertos).length
+  const pendentes = TOTAL_Q - respondidas
+  if (pendentes > 0 && !tempoEsgotado) {
+    const msg = document.getElementById('msg-pendentes')
+    msg.textContent = `Atenção: ${pendentes} questão(ões) ainda não confirmada(s).`
+    msg.style.color = 'var(--amber)'
+    // Pergunta se quer finalizar mesmo assim
+    if (!confirm(`Você ainda tem ${pendentes} questão(ões) sem resposta. Deseja finalizar mesmo assim?`)) return
+  }
+
+  simuladoAtivo = false
+  clearInterval(timerInterval)
+
+  const tempoGasto = TEMPO_MAX - tempoRestante
+  const totalAcertos = Object.values(acertos).filter(Boolean).length
+  const score = Math.round((totalAcertos / TOTAL_Q) * 100)
+  const acertosArr = Array.from({length: TOTAL_Q}, (_,i) => acertos[i+1] ?? false)
+
+  // Mostra tela de resultado
+  document.getElementById('timerBarWrap').style.display = 'none'
+  document.getElementById('telaSimulado').style.display = 'none'
+  document.getElementById('telaResultado').style.display = 'block'
+  window.scrollTo(0,0)
+
+  // Preenche resultado
+  const scoreEl = document.getElementById('resScore')
+  scoreEl.textContent = score + '%'
+  if (score >= 70) scoreEl.className = 'resultado-score'
+  else if (score >= 50) scoreEl.className = 'resultado-score medio'
+  else scoreEl.className = 'resultado-score baixo'
+
+  const emojis = score >= 80 ? '🏆' : score >= 60 ? '👍' : score >= 40 ? '📚' : '💪'
+  const titulos = score >= 80 ? 'Excelente!' : score >= 60 ? 'Bom trabalho!' : score >= 40 ? 'Continue praticando!' : 'Não desista!'
+  document.getElementById('resEmoji').textContent = emojis
+  document.getElementById('resTitulo').textContent = titulos
+  document.getElementById('resDetalhe').textContent = `${totalAcertos} de ${TOTAL_Q} questões corretas`
+  document.getElementById('resAcertos').textContent = totalAcertos
+  document.getElementById('resErros').textContent = TOTAL_Q - totalAcertos
+  document.getElementById('resTempo').textContent = formatarTempo(tempoGasto)
+
+  // Salva no Supabase
+  await salvarResultado(score, tempoGasto, acertosArr)
+
+  // Preenche revisão
+  preencherRevisao()
+}
+
+// ═══════════════════════════════
+//  SALVAR NO SUPABASE
+// ═══════════════════════════════
+async function salvarResultado(score, tempo, acertosArr) {
+  const statusEl = document.getElementById('saveStatus')
+
+  const { data: { session } } = await sb.auth.getSession()
+  if (!session) {
+    statusEl.className = 'save-status err'
+    statusEl.textContent = 'Resultado não salvo — faça login para registrar seu desempenho.'
+    return
+  }
+
+  const { error } = await sb.from('resultados').insert({
+    user_id:  session.user.id,
+    simulado: SIMULADO_ID,
+    score:    score,
+    tempo:    tempo,
+    acertos:  acertosArr
+  })
+
+  if (error) {
+    statusEl.className = 'save-status err'
+    statusEl.textContent = 'Erro ao salvar resultado. Tente novamente.'
+  } else {
+    statusEl.className = 'save-status ok'
+    statusEl.textContent = '✓ Resultado salvo no seu histórico.'
+  }
+}
+
+// ═══════════════════════════════
+//  REVISÃO
+// ═══════════════════════════════
+const enunciadosResumo = {
+  1:  'Ano-luz — unidade de medida',
+  2:  'Ano-luz — afirmativas V/F',
+  3:  'Velocidade média — duas situações',
+  4:  'Ondas sísmicas — distância do epicentro',
+  5:  'Queda livre — tipo de movimento',
+  6:  'Queda livre — torre de 45 m',
+  7:  'Queda livre — último segundo de queda',
+  8:  'Lançamento vertical para cima',
+  9:  'Lançamento horizontal — 3 partes',
+  10: 'Lançamento oblíquo'
+}
+
+function preencherRevisao() {
+  const lista = document.getElementById('revisaoLista')
+  let html = ''
+  for (let i = 1; i <= TOTAL_Q; i++) {
+    const ok = acertos[i]
+    const resp = respostas[i] || '—'
+    const gab = gabaritos[i]
+    html += `
+      <div class="revisao-item ${ok ? 'certo' : 'errado'}">
+        <span class="revisao-icon">${ok ? '✅' : '❌'}</span>
+        <div class="revisao-text">
+          <strong>Q${i} · ${enunciadosResumo[i]}</strong><br>
+          Sua resposta: <strong>${resp}</strong> · Gabarito: <strong>${gab}</strong>
+          ${!ok ? `<br><span style="color:var(--muted);font-size:0.8rem">Releia o gabarito na questão para entender o erro.</span>` : ''}
+        </div>
+      </div>`
+  }
+  lista.innerHTML = html
+}
+
+function mostrarRevisao() {
+  const sec = document.getElementById('revisaoSection')
+  sec.style.display = sec.style.display === 'none' ? 'block' : 'none'
+}
+
+// ═══════════════════════════════
+//  UTILS
+// ═══════════════════════════════
+function formatarTempo(seg) {
+  const m = Math.floor(seg / 60)
+  const s = seg % 60
+  return `${m}m ${s.toString().padStart(2,'0')}s`
+}
+
+// ═══════════════════════════════
+//  INIT
+// ═══════════════════════════════
+iniciarTimer()
+</script>
+</body>
+</html>
