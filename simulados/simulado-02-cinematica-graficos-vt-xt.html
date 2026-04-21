@@ -11,123 +11,53 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://mosmanlab.com.br/simulados/simulado-02-cinematica-graficos-vt-xt.html">
 <meta property="og:title" content="Simulado 02 — Cinemática: Gráficos v×t e x×t | MosmanLAB">
+<meta property="og:description" content="10 questões de Cinemática com interpretação de gráficos. Gabarito comentado com fórmulas. Prof. Edson Mosman.">
 <meta property="og:url" content="https://mosmanlab.com.br/simulados/simulado-02-cinematica-graficos-vt-xt.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="simulados.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-:root{
-  --green:#22c55e;--green-dark:#16a34a;--green-glow:rgba(34,197,94,0.12);
-  --bg:#0d0f10;--surface:#161a1d;--surface2:#1e2327;--surface3:#252b30;
-  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-  --text:#e8eaed;--muted:#6b7280;--error:#f87171;--amber:#fbbf24;
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+
+<!-- DADOS DO SIMULADO — únicos por arquivo -->
+<script>
+const SIMULADO_ID = 'cinematica-02'
+const TOTAL_Q     = 10
+const TEMPO_MAX   = 20 * 60
+
+const GABARITOS = {
+  1:'C', 2:'D', 3:'A', 4:'C', 5:'D',
+  6:'C', 7:'B', 8:'B', 9:'B', 10:'D'
 }
-body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:15px;min-height:100vh;}
-.urgency{background:#0057ff;color:#fff;text-align:center;padding:10px 20px;font-size:.82rem;font-weight:600;}
-.urgency strong{font-weight:800;}.urgency a{color:#fff;text-decoration:underline;}
-nav{background:rgba(13,15,16,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:13px 32px;max-width:900px;margin:0 auto;}
-.nav-logo{font-family:"Lora",serif;font-size:1.1rem;font-weight:600;color:var(--text);text-decoration:none;}
-.nav-logo span{color:var(--green);}
-.nav-back{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .15s;}
-.nav-back:hover{color:var(--text);}
-.timer-bar-wrap{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:52px;z-index:90;}
-.timer-bar{max-width:900px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:space-between;}
-.timer-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
-.timer-value{font-family:"Lora",serif;font-size:1.5rem;font-weight:700;color:var(--green);letter-spacing:.04em;transition:color .3s;}
-.timer-value.urgent{color:var(--error);}
-.progress-track{flex:1;height:4px;background:var(--surface3);border-radius:2px;margin:0 24px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--green);border-radius:2px;transition:width 1s linear,background .3s;}
-.progress-fill.urgent{background:var(--error);}
-.qmap{display:flex;gap:6px;flex-wrap:wrap;}
-.qmap-dot{width:26px;height:26px;border-radius:6px;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s;}
-.qmap-dot.answered{background:var(--green-glow);border-color:rgba(34,197,94,.3);color:var(--green);}
-main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
-.sim-header{margin-bottom:36px;}
-.sim-tag{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-.sim-tag::before{content:"";display:inline-block;width:20px;height:1px;background:var(--green);}
-.sim-header h1{font-family:"Lora",serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:8px;}
-.sim-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;}
-.sim-meta-pill{font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:4px 12px;border-radius:50px;}
-.question-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;margin-bottom:20px;scroll-margin-top:120px;transition:border-color .2s;}
-.question-block.answered{border-color:rgba(34,197,94,.2);}
-.question-block.wrong{border-color:rgba(248,113,113,.2);}
-.q-num{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.q-text{font-family:"Lora",serif;font-size:1rem;line-height:1.8;color:var(--text);margin-bottom:16px;}
-.q-text p{margin-bottom:10px;}.q-text p:last-child{margin-bottom:0;}
-.fig-wrap{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:20px;margin:16px 0;display:flex;justify-content:center;}
-.fig-wrap img{max-width:100%;height:auto;display:block;border-radius:4px;}
-.options{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
-.option{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .15s;font-size:.92rem;line-height:1.5;color:var(--text);text-align:left;width:100%;font-family:"DM Sans",sans-serif;}
-.option:hover:not(:disabled){border-color:rgba(34,197,94,.4);background:var(--surface3);}
-.option.selected{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.06);}
-.option.correct{border-color:rgba(34,197,94,.6);background:rgba(34,197,94,.1);color:var(--green);}
-.option.wrong-pick{border-color:rgba(248,113,113,.5);background:rgba(248,113,113,.08);color:var(--error);}
-.option:disabled{cursor:default;}
-.opt-letter{width:22px;height:22px;border-radius:6px;flex-shrink:0;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--muted);margin-top:1px;}
-.option.correct .opt-letter{background:var(--green);color:#000;border-color:var(--green);}
-.option.wrong-pick .opt-letter{background:var(--error);color:#fff;border-color:var(--error);}
-.gabarito{display:none;background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:16px 20px;margin-top:4px;animation:fadeIn .3s ease;}
-.gabarito.wrong-gab{border-left-color:var(--error);}
-.gabarito.show{display:block;}
-.gab-title{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
-.gabarito.wrong-gab .gab-title{color:var(--error);}
-.gab-body{font-size:.88rem;line-height:1.85;color:#9ca3af;}
-.gab-body p{margin-bottom:8px;}.gab-body p:last-child{margin-bottom:0;}
-.gab-body strong{color:var(--text);}
-@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
-.btn-confirm{padding:10px 24px;background:var(--green);color:#000;border:none;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:background .15s;}
-.btn-confirm:hover{background:var(--green-dark);}
-.btn-confirm:disabled{opacity:.4;cursor:default;}
-#telaResultado{display:none;}
-.resultado-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px 40px;text-align:center;max-width:580px;margin:40px auto 0;}
-.resultado-emoji{font-size:3.5rem;margin-bottom:16px;}
-.resultado-titulo{font-family:"Lora",serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:8px;}
-.resultado-score{font-family:"Lora",serif;font-size:4rem;font-weight:700;color:var(--green);line-height:1;margin-bottom:4px;}
-.resultado-score.medio{color:var(--amber);}.resultado-score.baixo{color:var(--error);}
-.resultado-detalhe{font-size:.85rem;color:var(--muted);margin-bottom:32px;}
-.resultado-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px;}
-.res-cell{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 10px;}
-.res-cell-val{font-family:"Lora",serif;font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;}
-.res-cell-lbl{font-size:.7rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.06em;}
-.save-status{font-size:.78rem;margin-bottom:16px;padding:8px 14px;border-radius:6px;display:none;}
-.save-status.ok{background:var(--green-glow);color:var(--green);border:1px solid rgba(34,197,94,.2);display:block;}
-.save-status.err{background:rgba(248,113,113,.08);color:var(--error);border:1px solid rgba(248,113,113,.2);display:block;}
-.btn-revisar{display:block;width:100%;padding:13px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:"DM Sans",sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;margin-bottom:10px;transition:all .15s;text-decoration:none;text-align:center;}
-.btn-revisar:hover{background:var(--surface3);border-color:var(--green);}
-.btn-novo{display:block;width:100%;padding:13px;background:var(--green);color:#000;border:none;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:background .15s;margin-bottom:10px;}
-.btn-novo:hover{background:var(--green-dark);}
-.next-sim{background:var(--surface2);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:16px 20px;margin-top:10px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;transition:border-color .15s;}
-.next-sim:hover{border-color:var(--green);}
-.next-sim-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
-.next-sim-title{font-size:.92rem;color:var(--text);font-weight:500;}
-.next-sim-arrow{color:var(--green);font-size:1.2rem;flex-shrink:0;margin-left:12px;}
-.revisao-header{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:48px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
-.revisao-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:10px;display:flex;align-items:center;gap:14px;}
-.revisao-item.certo{border-left:3px solid var(--green);}
-.revisao-item.errado{border-left:3px solid var(--error);}
-.revisao-text{font-size:.85rem;color:var(--muted);line-height:1.5;}
-.revisao-text strong{color:var(--text);}
-@media(max-width:640px){
-  .nav-inner{padding:12px 20px;}main{padding:28px 16px 60px;}
-  .timer-bar{padding:10px 20px;}.question-block{padding:20px 16px 16px;}
-  .resultado-card{padding:32px 20px;}.resultado-grid{grid-template-columns:1fr 1fr;}
+
+const ENUNCIADOS = {
+  1:  'Gráfico v×t (pico t=4s) — deslocamento, vm e aceleração em t=5s',
+  2:  'Gráfico v×t (pico t=4s) — acelerações em t=3s e t=6s',
+  3:  'Gráfico v×t (pico t=4s) — quantidade de movimento e energia cinética',
+  4:  'Gráfico v×t (pico t=5s) — velocidade escalar média',
+  5:  'Gráfico v×t (pico t=5s) — energia cinética e quantidade de movimento',
+  6:  'Gráfico x×t parabolico — velocidade inicial e aceleração (CEFET-MG)',
+  7:  'Gráfico x×t parabolico — função horária x(t) (CEFET-MG)',
+  8:  'Gráfico x×t parabolico — função da velocidade v(t) (CEFET-MG)',
+  9:  'Gráfico x×t parabolico — posição em t=3s (CEFET-MG)',
+  10: 'Gráfico x×t parabolico — módulo da velocidade em t=3s (CEFET-MG)'
 }
-</style>
+</script>
 </head>
 <body>
-<div class="urgency">&#9889; Nova turma começa em <strong>maio de 2026</strong> &#8212; <a href="../turma-maio-2026.html">garantir minha vaga &#8594;</a></div>
+
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — <a href="../turma-maio-2026.html">garantir minha vaga →</a></div>
+
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="../index.html">mosman<span>LAB</span></a>
-    <a class="nav-back" href="index.html">&#8592; Voltar aos simulados</a>
+    <a class="nav-back" href="index.html">← Voltar aos simulados</a>
   </div>
 </nav>
+
 <div class="timer-bar-wrap" id="timerBarWrap">
   <div class="timer-bar">
     <div><div class="timer-label">Tempo restante</div><div class="timer-value" id="timerDisplay">20:00</div></div>
@@ -135,10 +65,12 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     <div class="qmap" id="qmap"></div>
   </div>
 </div>
+
 <main id="telaSimulado">
+
   <div class="sim-header">
     <div class="sim-tag">Cinemática · Simulado 02</div>
-    <h1>Interpretação de Gráficos v&#215;t e x&#215;t</h1>
+    <h1>Interpretação de Gráficos v×t e x×t</h1>
     <div class="sim-meta">
       <span class="sim-meta-pill">10 questões</span>
       <span class="sim-meta-pill">20 minutos</span>
@@ -147,6 +79,7 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
   </div>
 
+  <!-- ══ Q1 ══ -->
   <div class="question-block" id="q1" data-gabarito="C">
     <div class="q-num">Questão 1 de 10</div>
     <div class="q-text"><p>Uma partícula move-se numa trajetória retilínea com a velocidade mostrada no gráfico a seguir.</p></div>
@@ -165,15 +98,16 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn1" onclick="confirmar(1)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab1">
-      <div class="gab-title">&#10003; Resposta correta: C</div>
+      <div class="gab-title">✓ Resposta correta: C</div>
       <div class="gab-body">
-        <p><strong>(I)</strong> O espaço percorrido \(\Delta S\) é igual à área sob o gráfico \(v \times t\) — triângulo de base 9 s e altura 10 m/s: $$\Delta S = \frac{9 \times 10}{2} = 45 \text{ m}$$</p>
-        <p><strong>(II)</strong> Velocidade escalar média: $$v_m = \frac{\Delta S}{\Delta t} = \frac{45}{9} = 5{,}0 \text{ m/s}$$</p>
-        <p><strong>(III)</strong> \(t=5\) s está no trecho descendente (\(t=4\) s a \(t=9\) s): $$\alpha = \tan\theta = \frac{\Delta v}{\Delta t} = \frac{0-10}{9-4} = -2{,}0 \text{ m/s}^2$$</p>
+        <p><strong>(I)</strong> Área do triângulo sob o gráfico: $$\Delta S = \frac{9\times10}{2} = 45\text{ m}$$</p>
+        <p><strong>(II)</strong> $$v_m = \frac{\Delta S}{\Delta t} = \frac{45}{9} = 5{,}0\text{ m/s}$$</p>
+        <p><strong>(III)</strong> Trecho descendente (4 a 9 s): $$\alpha = \frac{\Delta v}{\Delta t} = \frac{0-10}{9-4} = -2{,}0\text{ m/s}^2$$</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q2 ══ -->
   <div class="question-block" id="q2" data-gabarito="D">
     <div class="q-num">Questão 2 de 10</div>
     <div class="q-text"><p>Uma partícula move-se numa trajetória retilínea com a velocidade mostrada no gráfico a seguir.</p></div>
@@ -188,15 +122,15 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn2" onclick="confirmar(2)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab2">
-      <div class="gab-title">&#10003; Resposta correta: D</div>
+      <div class="gab-title">✓ Resposta correta: D</div>
       <div class="gab-body">
-        <p>A aceleração é a inclinação da reta em cada trecho.</p>
-        <p><strong>Trecho ascendente</strong> (0 a 4 s) — \(t=3\) s: $$\alpha = \frac{\Delta v}{\Delta t} = \frac{10-0}{4-0} = +2{,}5 \text{ m/s}^2$$</p>
-        <p><strong>Trecho descendente</strong> (4 a 9 s) — \(t=6\) s: $$\alpha = \frac{\Delta v}{\Delta t} = \frac{0-10}{9-4} = -2{,}0 \text{ m/s}^2$$</p>
+        <p><strong>Trecho ascendente</strong> (0 a 4 s) — \(t=3\) s: $$\alpha = \frac{10-0}{4-0} = +2{,}5\text{ m/s}^2$$</p>
+        <p><strong>Trecho descendente</strong> (4 a 9 s) — \(t=6\) s: $$\alpha = \frac{0-10}{9-4} = -2{,}0\text{ m/s}^2$$</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q3 ══ -->
   <div class="question-block" id="q3" data-gabarito="A">
     <div class="q-num">Questão 3 de 10</div>
     <div class="q-text"><p>Uma partícula, \(m=20\) g, move-se numa trajetória retilínea com a velocidade mostrada no gráfico a seguir.</p></div>
@@ -215,16 +149,16 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn3" onclick="confirmar(3)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab3">
-      <div class="gab-title">&#10003; Resposta correta: A</div>
+      <div class="gab-title">✓ Resposta correta: A</div>
       <div class="gab-body">
-        <p>Conversão: \(m = 20\text{ g} = 0{,}02\text{ kg}\).</p>
-        <p>Trecho ascendente: \(v(t) = 2{,}5t\). Em \(t=3\) s: \(v=7{,}5\) m/s. &nbsp; Em \(t=5\) s (descendente): \(v=8\) m/s.</p>
-        <p><strong>(I)</strong> $$Q = mv = 0{,}02 \times 7{,}5 = 0{,}15 \text{ kg·m/s}$$</p>
-        <p><strong>(II)</strong> $$E_c = \frac{mv^2}{2} = \frac{0{,}02 \times 64}{2} = 0{,}64 \text{ J}$$</p>
+        <p>\(m=0{,}02\text{ kg}\). Em \(t=3\) s: \(v=7{,}5\) m/s. Em \(t=5\) s: \(v=8\) m/s.</p>
+        <p><strong>(I)</strong> \(Q=mv=0{,}02\times7{,}5=0{,}15\text{ kg·m/s}\)</p>
+        <p><strong>(II)</strong> \(E_c=mv^2/2=0{,}02\times64/2=0{,}64\text{ J}\)</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q4 ══ -->
   <div class="question-block" id="q4" data-gabarito="C">
     <div class="q-num">Questão 4 de 10</div>
     <div class="q-text"><p>Um ponto material, \(m=20\) g, move-se ao longo de uma trajetória retilínea como mostra o gráfico.</p></div>
@@ -238,14 +172,14 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn4" onclick="confirmar(4)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab4">
-      <div class="gab-title">&#10003; Resposta correta: C</div>
+      <div class="gab-title">✓ Resposta correta: C</div>
       <div class="gab-body">
-        <p>O espaço percorrido é a área sob o gráfico \(v \times t\) — triângulo de base 9 s e altura 10 m/s: $$\Delta S = \frac{9 \times 10}{2} = 45 \text{ m}$$</p>
-        <p>$$v_m = \frac{\Delta S}{\Delta t} = \frac{45}{9} = 5 \text{ m/s}$$</p>
+        <p>$$\Delta S = \frac{9\times10}{2}=45\text{ m} \qquad v_m = \frac{45}{9}=5\text{ m/s}$$</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q5 ══ -->
   <div class="question-block" id="q5" data-gabarito="D">
     <div class="q-num">Questão 5 de 10</div>
     <div class="q-text"><p>Um ponto material, \(m=20\) g, move-se ao longo de uma trajetória retilínea como mostra o gráfico.</p></div>
@@ -263,15 +197,16 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn5" onclick="confirmar(5)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab5">
-      <div class="gab-title">&#10003; Resposta correta: D</div>
+      <div class="gab-title">✓ Resposta correta: D</div>
       <div class="gab-body">
-        <p>\(m = 0{,}02\text{ kg}\). Trecho ascendente: \(v(t)=2t\). Em \(t=4\) s: \(v=8\) m/s. Trecho descendente: em \(t=7\) s: \(v=5\) m/s.</p>
-        <p><strong>(I)</strong> $$E_c = \frac{mv^2}{2} = \frac{0{,}02 \times 64}{2} = 0{,}64 \text{ J}$$</p>
-        <p><strong>(II)</strong> $$Q = mv = 0{,}02 \times 5 = 0{,}10 \text{ kg·m/s}$$</p>
+        <p>\(m=0{,}02\text{ kg}\). Em \(t=4\) s: \(v=8\) m/s. Em \(t=7\) s: \(v=5\) m/s.</p>
+        <p><strong>(I)</strong> \(E_c=0{,}02\times64/2=0{,}64\text{ J}\)</p>
+        <p><strong>(II)</strong> \(Q=0{,}02\times5=0{,}10\text{ kg·m/s}\)</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q6 ══ -->
   <div class="question-block" id="q6" data-gabarito="C">
     <div class="q-num">Questão 6 de 10</div>
     <div class="q-text"><p>(CEFET MG) Um objeto tem a sua posição (\(x\)) em função do tempo (\(t\)) descrito pela parábola conforme o gráfico.</p></div>
@@ -286,16 +221,16 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn6" onclick="confirmar(6)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab6">
-      <div class="gab-title">&#10003; Resposta correta: C</div>
+      <div class="gab-title">✓ Resposta correta: C</div>
       <div class="gab-body">
-        <p>M.U.V.: \(x = x_0 + v_0 t + \dfrac{\alpha t^2}{2}\), com \(x_0=0\).</p>
-        <p>Pontos do gráfico: \((t=2,x=20)\) e \((t=4,x=0)\):</p>
-        <p>$$20 = 2v_0 + 2\alpha \quad \text{(I)} \qquad 0 = 4v_0 + 8\alpha \quad \text{(II)}$$</p>
-        <p>Resolvendo: \(v_0=20\) m/s e \(\alpha=-10\) m/s². Logo \(|v_0|=20\) m/s e \(|\alpha|=10\) m/s².</p>
+        <p>M.U.V.: \(x=x_0+v_0t+\alpha t^2/2\), \(x_0=0\). Pontos \((2,20)\) e \((4,0)\):</p>
+        <p>$$20=2v_0+2\alpha \quad(I) \qquad 0=4v_0+8\alpha \quad(II)$$</p>
+        <p>Resolvendo: \(v_0=20\text{ m/s}\) e \(\alpha=-10\text{ m/s}^2\).</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q7 ══ -->
   <div class="question-block" id="q7" data-gabarito="B">
     <div class="q-num">Questão 7 de 10</div>
     <div class="q-text"><p>(CEFET MG) Um objeto tem a sua posição (\(x\)) em função do tempo (\(t\)) descrito pela parábola conforme o gráfico.</p></div>
@@ -310,14 +245,15 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn7" onclick="confirmar(7)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab7">
-      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-title">✓ Resposta correta: B</div>
       <div class="gab-body">
-        <p>Com \(x_0=0\), \(v_0=20\) m/s e \(\alpha=-10\) m/s²: $$x = 0 + 20t + \frac{(-10)t^2}{2} = \boxed{20t - 5t^2}$$</p>
-        <p>Verificação: \(x(2)=40-20=20\) m &#10003; &nbsp;&middot;&nbsp; \(x(4)=80-80=0\) &#10003;</p>
+        <p>$$x = 0 + 20t + \frac{(-10)t^2}{2} = \boxed{20t - 5t^2}$$</p>
+        <p>Verificação: \(x(2)=20\) ✓ · \(x(4)=0\) ✓</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q8 ══ -->
   <div class="question-block" id="q8" data-gabarito="B">
     <div class="q-num">Questão 8 de 10</div>
     <div class="q-text"><p>(CEFET MG) Um objeto tem a sua posição (\(x\)) em função do tempo (\(t\)) descrito pela parábola conforme o gráfico.</p></div>
@@ -332,14 +268,15 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn8" onclick="confirmar(8)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab8">
-      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-title">✓ Resposta correta: B</div>
       <div class="gab-body">
-        <p>Da equação \(v = v_0 + \alpha t\), com \(v_0=20\) m/s e \(\alpha=-10\) m/s²: $$\boxed{v = 20 - 10t}$$</p>
-        <p>Verificação: \(v(0)=20\) &#10003; &nbsp;&middot;&nbsp; \(v(2)=0\) (pico de \(x\)) &#10003; &nbsp;&middot;&nbsp; \(v(4)=-20\) m/s (retorno) &#10003;</p>
+        <p>$$\boxed{v = 20 - 10t}$$</p>
+        <p>Verificação: \(v(0)=20\) ✓ · \(v(2)=0\) (pico de \(x\)) ✓ · \(v(4)=-20\) m/s ✓</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q9 ══ -->
   <div class="question-block" id="q9" data-gabarito="B">
     <div class="q-num">Questão 9 de 10</div>
     <div class="q-text"><p>(CEFET MG) Um objeto tem a sua posição (\(x\)) em função do tempo (\(t\)) descrito pela parábola conforme o gráfico.</p></div>
@@ -354,14 +291,14 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn9" onclick="confirmar(9)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab9">
-      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-title">✓ Resposta correta: B</div>
       <div class="gab-body">
-        <p>Substituindo \(t=3\) s em \(x=20t-5t^2\): $$x(3)=20\times3-5\times3^2=60-45=15\text{ m}$$</p>
-        <p>Em \(t=3\) s o objeto já passou pelo pico (\(t=2\) s) e está retornando, mas ainda à direita da origem.</p>
+        <p>$$x(3)=20\times3-5\times9=60-45=15\text{ m}$$</p>
       </div>
     </div>
   </div>
 
+  <!-- ══ Q10 ══ -->
   <div class="question-block" id="q10" data-gabarito="D">
     <div class="q-num">Questão 10 de 10</div>
     <div class="q-text"><p>(CEFET MG) Um objeto tem a sua posição (\(x\)) em função do tempo (\(t\)) descrito pela parábola conforme o gráfico.</p></div>
@@ -376,36 +313,38 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
     <button class="btn-confirm" id="btn10" onclick="confirmar(10)" disabled>Confirmar resposta</button>
     <div class="gabarito" id="gab10">
-      <div class="gab-title">&#10003; Resposta correta: D</div>
+      <div class="gab-title">✓ Resposta correta: D</div>
       <div class="gab-body">
-        <p>Substituindo \(t=3\) s em \(v=20-10t\): $$v(3)=20-10\times3=-10\text{ m/s}$$</p>
-        <p>O sinal negativo indica retorno. O <strong>módulo</strong> é: $$|v(3)|=10\text{ m/s}$$</p>
+        <p>$$v(3)=20-10\times3=-10\text{ m/s} \Rightarrow |v|=10\text{ m/s}$$</p>
+        <p>O sinal negativo indica retorno — o módulo é 10 m/s.</p>
       </div>
     </div>
   </div>
-  <div style="text-align:center;margin-top:32px;">
-    <button id="btnFinalizar" onclick="finalizar()" style="padding:14px 40px;background:var(--green);color:#000;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;">Finalizar simulado &#8594;</button>
-    <p style="font-size:.78rem;color:var(--muted);margin-top:10px" id="msg-pendentes"></p>
-  </div>
+
+  <button class="btn-finalizar" onclick="finalizar()">Finalizar simulado →</button>
+  <p class="msg-pendentes" id="msgPendentes"></p>
+
 </main>
+
+<!-- ══ TELA DE RESULTADO ══ -->
 <div id="telaResultado">
   <main style="max-width:900px;margin:0 auto;padding:40px 32px 80px;">
     <div class="resultado-card">
-      <div class="resultado-emoji" id="resEmoji">&#127919;</div>
+      <div class="resultado-emoji" id="resEmoji">🎯</div>
       <div class="resultado-titulo" id="resTitulo">Simulado concluído!</div>
-      <div class="resultado-score" id="resScore">&#8212;</div>
-      <div class="resultado-detalhe" id="resDetalhe">&#8212; de 10 questões corretas</div>
+      <div class="resultado-score" id="resScore">—</div>
+      <div class="resultado-detalhe" id="resDetalhe">— de 10 questões corretas</div>
       <div class="resultado-grid">
-        <div class="res-cell"><div class="res-cell-val" id="resAcertos">&#8212;</div><div class="res-cell-lbl">Acertos</div></div>
-        <div class="res-cell"><div class="res-cell-val" id="resErros">&#8212;</div><div class="res-cell-lbl">Erros</div></div>
-        <div class="res-cell"><div class="res-cell-val" id="resTempo">&#8212;</div><div class="res-cell-lbl">Tempo</div></div>
+        <div class="res-cell"><div class="res-cell-val" id="resAcertos">—</div><div class="res-cell-lbl">Acertos</div></div>
+        <div class="res-cell"><div class="res-cell-val" id="resErros">—</div><div class="res-cell-lbl">Erros</div></div>
+        <div class="res-cell"><div class="res-cell-val" id="resTempo">—</div><div class="res-cell-lbl">Tempo</div></div>
       </div>
       <div class="save-status" id="saveStatus"></div>
-      <button class="btn-revisar" onclick="mostrarRevisao()">Ver revisão completa &#8595;</button>
-      <a class="btn-novo" href="index.html">Fazer outro simulado &#8594;</a>
+      <button class="btn-revisar" onclick="mostrarRevisao()">Ver revisão completa ↓</button>
+      <a class="btn-novo" href="index.html">Fazer outro simulado →</a>
       <a class="next-sim" href="simulado-01-cinematica-MU-MUV-quedalivre-lancamentos.html">
-        <div><div class="next-sim-label">Ver também</div><div class="next-sim-title">Simulado 01 &#8212; MU, MUV, Queda Livre e Lançamentos</div></div>
-        <span class="next-sim-arrow">&#8594;</span>
+        <div><div class="next-sim-label">Ver também</div><div class="next-sim-title">Simulado 01 — MU, MUV, Queda Livre e Lançamentos</div></div>
+        <span class="next-sim-arrow">→</span>
       </a>
     </div>
     <div id="revisaoSection" style="display:none">
@@ -414,31 +353,12 @@ main{max-width:900px;margin:0 auto;padding:40px 32px 80px;}
     </div>
   </main>
 </div>
-<footer style="border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:.8rem;color:var(--muted);">
-  &copy; 2026 MosmanLAB &middot; Prof. Edson Mosman &middot; <a href="https://mosmanlab.com.br" style="color:var(--muted);">mosmanlab.com.br</a><br>
-  Praça Oswaldo Cruz, 124 &#8212; Sala 171 &middot; Bela Vista &middot; São Paulo &#8211; SP &middot; CEP 04004-903
+
+<footer class="sim-footer">
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
 </footer>
+
+<script src="simulados.js"></script>
 </body>
 </html>
-<script>
-const SUPABASE_URL='https://debljvblrljehsscbtbo.supabase.co'
-const SUPABASE_KEY='sb_publishable_CmhW_jV-uSxxcWcYRjGOzQ_1195fdpz'
-const {createClient}=supabase
-const sb=createClient(SUPABASE_URL,SUPABASE_KEY)
-const TOTAL_Q=10,TEMPO_MAX=20*60,SIMULADO_ID='cinematica-02'
-const gabaritos={1:'C',2:'D',3:'A',4:'C',5:'D',6:'C',7:'B',8:'B',9:'B',10:'D'}
-const respostas={},acertos={}
-let tempoRestante=TEMPO_MAX,simuladoAtivo=true,timerInterval=null
-function iniciarTimer(){renderTimer();renderQmap();timerInterval=setInterval(()=>{tempoRestante--;renderTimer();if(tempoRestante<=0){clearInterval(timerInterval);finalizar(true)}},1000)}
-function renderTimer(){const m=Math.floor(tempoRestante/60).toString().padStart(2,'0'),s=(tempoRestante%60).toString().padStart(2,'0'),el=document.getElementById('timerDisplay'),fill=document.getElementById('progressFill');el.textContent=`${m}:${s}`;fill.style.width=(tempoRestante/TEMPO_MAX*100)+'%';const u=tempoRestante<=120;el.classList.toggle('urgent',u);fill.classList.toggle('urgent',u)}
-function renderQmap(){const w=document.getElementById('qmap');w.innerHTML='';for(let i=1;i<=TOTAL_Q;i++){const d=document.createElement('div');d.className='qmap-dot';d.textContent=i;d.id=`dot${i}`;d.onclick=()=>document.getElementById(`q${i}`).scrollIntoView({behavior:'smooth'});w.appendChild(d)}}
-function selecionar(n,l){if(!simuladoAtivo||acertos[n]!==undefined)return;respostas[n]=l;const ls=['A','B','C','D','E'];document.querySelectorAll(`#opts${n} .option`).forEach((o,i)=>o.classList.toggle('selected',ls[i]===l));document.getElementById(`btn${n}`).disabled=false}
-function confirmar(n){const r=respostas[n];if(!r)return;const g=gabaritos[n],ok=r===g;acertos[n]=ok;const ls=['A','B','C','D','E'];document.querySelectorAll(`#opts${n} .option`).forEach((o,i)=>{o.disabled=true;if(ls[i]===g)o.classList.add('correct');else if(ls[i]===r&&!ok)o.classList.add('wrong-pick');o.classList.remove('selected')});const ge=document.getElementById(`gab${n}`);ge.classList.add('show');if(!ok){ge.classList.add('wrong-gab');ge.querySelector('.gab-title').textContent=`✗ Você marcou ${r} · Correto: ${g}`}document.getElementById(`q${n}`).classList.add(ok?'answered':'wrong');document.getElementById(`btn${n}`).style.display='none';const dot=document.getElementById(`dot${n}`);if(dot){dot.classList.add('answered');dot.style.background=ok?'rgba(34,197,94,.2)':'rgba(248,113,113,.15)';dot.style.color=ok?'var(--green)':'var(--error)';dot.style.borderColor=ok?'rgba(34,197,94,.4)':'rgba(248,113,113,.3)'}if(TOTAL_Q-Object.keys(acertos).length===0)document.getElementById('msg-pendentes').textContent='Todas as questões respondidas. Clique em finalizar!'}
-async function finalizar(te=false){if(!simuladoAtivo)return;const p=TOTAL_Q-Object.keys(acertos).length;if(p>0&&!te){document.getElementById('msg-pendentes').textContent=`Atenção: ${p} questão(ões) não confirmada(s).`;document.getElementById('msg-pendentes').style.color='var(--amber)';if(!confirm(`Você tem ${p} questão(ões) sem resposta. Finalizar mesmo assim?`))return}simuladoAtivo=false;clearInterval(timerInterval);const tg=TEMPO_MAX-tempoRestante,ta=Object.values(acertos).filter(Boolean).length,sc=Math.round(ta/TOTAL_Q*100),arr=Array.from({length:TOTAL_Q},(_,i)=>acertos[i+1]??false);document.getElementById('timerBarWrap').style.display='none';document.getElementById('telaSimulado').style.display='none';document.getElementById('telaResultado').style.display='block';window.scrollTo(0,0);const se=document.getElementById('resScore');se.textContent=sc+'%';se.className='resultado-score'+(sc<70?(sc<50?' baixo':' medio'):'');document.getElementById('resEmoji').textContent=sc>=80?'🏆':sc>=60?'👍':sc>=40?'📚':'💪';document.getElementById('resTitulo').textContent=sc>=80?'Excelente!':sc>=60?'Bom trabalho!':sc>=40?'Continue praticando!':'Não desista!';document.getElementById('resDetalhe').textContent=`${ta} de ${TOTAL_Q} questões corretas`;document.getElementById('resAcertos').textContent=ta;document.getElementById('resErros').textContent=TOTAL_Q-ta;document.getElementById('resTempo').textContent=fmt(tg);await salvar(sc,tg,arr);revisao()}
-async function salvar(sc,t,arr){const st=document.getElementById('saveStatus'),{data:{session}}=await sb.auth.getSession();if(!session){st.className='save-status err';st.textContent='Resultado não salvo — faça login para registrar seu desempenho.';return}const{error}=await sb.from('resultados').insert({user_id:session.user.id,simulado:SIMULADO_ID,score:sc,tempo:t,acertos:arr});st.className=error?'save-status err':'save-status ok';st.textContent=error?'Erro ao salvar resultado.':'✓ Resultado salvo no seu histórico.'}
-const res={1:'Gráfico v×t (pico t=4s) — deslocamento, vm e aceleração',2:'Gráfico v×t (pico t=4s) — acelerações em t=3s e t=6s',3:'Gráfico v×t (pico t=4s) — quantidade de movimento e Ec',4:'Gráfico v×t (pico t=5s) — velocidade escalar média',5:'Gráfico v×t (pico t=5s) — Ec e quantidade de movimento',6:'Gráfico x×t parabolico — v0 e aceleração (CEFET-MG)',7:'Gráfico x×t parabolico — função horária x(t) (CEFET-MG)',8:'Gráfico x×t parabolico — função v(t) (CEFET-MG)',9:'Gráfico x×t parabolico — posição em t=3s (CEFET-MG)',10:'Gráfico x×t parabolico — módulo de v em t=3s (CEFET-MG)'}
-function revisao(){let h='';for(let i=1;i<=TOTAL_Q;i++){const ok=acertos[i],r=respostas[i]||'—',g=gabaritos[i];h+=`<div class="revisao-item ${ok?'certo':'errado'}"><span style="font-size:1.1rem">${ok?'✅':'❌'}</span><div class="revisao-text"><strong>Q${i} · ${res[i]}</strong><br>Sua resposta: <strong>${r}</strong> · Gabarito: <strong>${g}</strong></div></div>`}document.getElementById('revisaoLista').innerHTML=h}
-function mostrarRevisao(){const s=document.getElementById('revisaoSection');s.style.display=s.style.display==='none'?'block':'none'}
-function fmt(s){return `${Math.floor(s/60)}m ${(s%60).toString().padStart(2,'0')}s`}
-iniciarTimer()
-</script>
