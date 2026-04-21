@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin — MosmanLAB Simulados</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#22c55e;--green-dark:#16a34a;--green-glow:rgba(34,197,94,0.12);
+  --bg:#0d0f10;--surface:#161a1d;--surface2:#1e2327;--surface3:#252b30;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#e8eaed;--muted:#6b7280;--error:#f87171;--amber:#fbbf24;--blue:#60a5fa;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;min-height:100vh;}
+
+/* ── LOGIN ── */
+#loginScreen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse 60% 60% at 50% 40%,rgba(34,197,94,0.06),transparent);
+}
+.login-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:48px 40px;width:100%;max-width:400px;text-align:center;
+}
+.login-logo{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;margin-bottom:6px;}
+.login-logo span{color:var(--green);}
+.login-sub{font-size:0.78rem;color:var(--muted);margin-bottom:32px;letter-spacing:0.08em;text-transform:uppercase;}
+.login-box input{
+  width:100%;padding:11px 14px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;
+  outline:none;margin-bottom:12px;transition:border-color 0.2s;
+}
+.login-box input:focus{border-color:rgba(34,197,94,0.5);}
+.login-box input::placeholder{color:#3d4349;}
+.btn-login{
+  width:100%;padding:12px;background:var(--green);color:#000;border:none;
+  border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:background 0.15s;
+}
+.btn-login:hover{background:var(--green-dark);}
+.login-err{font-size:12px;color:var(--error);margin-top:10px;min-height:16px;}
+
+/* ── DASHBOARD ── */
+#adminDash{display:none;}
+
+/* Topbar */
+.topbar{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:14px 32px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-logo{font-family:'Lora',serif;font-size:1rem;font-weight:600;}
+.topbar-logo span{color:var(--green);}
+.topbar-badge{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  background:rgba(34,197,94,0.15);color:var(--green);
+  padding:3px 10px;border-radius:50px;margin-left:10px;
+}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-email{font-size:12px;color:var(--muted);}
+.btn-logout{
+  padding:7px 14px;background:transparent;border:1px solid var(--border2);
+  border-radius:6px;color:var(--muted);font-family:'DM Sans',sans-serif;
+  font-size:12px;cursor:pointer;transition:all 0.15s;
+}
+.btn-logout:hover{border-color:var(--error);color:var(--error);}
+
+/* Layout */
+.dash-body{max-width:1200px;margin:0 auto;padding:32px;}
+
+/* Cards de métricas */
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.metric-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+}
+.metric-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
+.metric-value{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--text);line-height:1;}
+.metric-sub{font-size:11px;color:var(--muted);margin-top:5px;}
+.metric-card.green .metric-value{color:var(--green);}
+.metric-card.amber .metric-value{color:var(--amber);}
+.metric-card.blue  .metric-value{color:var(--blue);}
+.metric-card.red   .metric-value{color:var(--error);}
+
+/* Seção */
+.section{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;overflow:hidden;}
+.section-header{
+  padding:16px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.section-title{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.section-body{padding:20px;}
+
+/* Grid de gráficos */
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.chart-title{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+
+/* Filtros */
+.filters{display:flex;gap:10px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--border);}
+.filter-select{
+  padding:7px 12px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;
+  outline:none;cursor:pointer;
+}
+.filter-select:focus{border-color:rgba(34,197,94,0.4);}
+.search-input{
+  padding:7px 12px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;
+  outline:none;flex:1;min-width:200px;
+}
+.search-input::placeholder{color:var(--muted);}
+.search-input:focus{border-color:rgba(34,197,94,0.4);}
+.filter-count{font-size:12px;color:var(--muted);align-self:center;white-space:nowrap;}
+
+/* Tabela */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead th{
+  padding:10px 14px;text-align:left;font-size:0.65rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--border);background:var(--surface2);
+  white-space:nowrap;cursor:pointer;user-select:none;
+}
+thead th:hover{color:var(--text);}
+thead th.sorted{color:var(--green);}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.1s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--surface2);}
+tbody td{padding:10px 14px;color:var(--text);white-space:nowrap;}
+.td-muted{color:var(--muted);}
+
+/* Badge de score */
+.score-badge{
+  display:inline-block;padding:3px 10px;border-radius:50px;
+  font-size:11px;font-weight:700;
+}
+.score-a{background:rgba(34,197,94,0.15);color:var(--green);}
+.score-b{background:rgba(251,191,36,0.15);color:var(--amber);}
+.score-c{background:rgba(248,113,113,0.15);color:var(--error);}
+
+/* Barra de acertos por questão */
+.q-bars{display:flex;flex-direction:column;gap:8px;}
+.q-bar-row{display:flex;align-items:center;gap:10px;}
+.q-bar-label{font-size:12px;color:var(--muted);width:60px;flex-shrink:0;}
+.q-bar-track{flex:1;height:8px;background:var(--surface3);border-radius:4px;overflow:hidden;}
+.q-bar-fill{height:100%;border-radius:4px;transition:width 0.6s ease;}
+.q-bar-fill.ok{background:var(--green);}
+.q-bar-fill.mid{background:var(--amber);}
+.q-bar-fill.bad{background:var(--error);}
+.q-bar-pct{font-size:12px;font-weight:600;color:var(--text);min-width:38px;text-align:right;}
+.q-bar-n{font-size:11px;color:var(--muted);min-width:50px;}
+
+/* Ranking */
+.ranking-list{display:flex;flex-direction:column;gap:8px;}
+.ranking-item{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface2);border-radius:8px;padding:10px 14px;
+}
+.rank-pos{
+  font-family:'Lora',serif;font-size:1.1rem;font-weight:700;
+  color:var(--muted);width:24px;text-align:center;flex-shrink:0;
+}
+.rank-pos.gold{color:#fbbf24;}
+.rank-pos.silver{color:#9ca3af;}
+.rank-pos.bronze{color:#d97706;}
+.rank-info{flex:1;}
+.rank-email{font-size:13px;color:var(--text);}
+.rank-detail{font-size:11px;color:var(--muted);margin-top:2px;}
+.rank-score{font-family:'Lora',serif;font-size:1.2rem;font-weight:700;color:var(--green);}
+
+/* Loading / empty */
+.loading-msg{text-align:center;color:var(--muted);padding:40px;font-size:13px;}
+.empty-msg{text-align:center;color:var(--muted);padding:32px;font-size:13px;}
+
+/* Responsive */
+@media(max-width:900px){
+  .metrics-row{grid-template-columns:1fr 1fr;}
+  .charts-row{grid-template-columns:1fr;}
+  .topbar{padding:12px 20px;}
+  .dash-body{padding:20px 16px;}
+}
+@media(max-width:600px){
+  .metrics-row{grid-template-columns:1fr 1fr;}
+  .metric-value{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">mosman<span>LAB</span></div>
+    <div class="login-sub">Painel Administrativo</div>
+    <input type="email" id="adminEmail" placeholder="mosmanlab@gmail.com"/>
+    <input type="password" id="adminPass" placeholder="Senha"
+      onkeydown="if(event.key==='Enter') fazerLogin()"/>
+    <button class="btn-login" onclick="fazerLogin()">Entrar</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="adminDash">
+
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="topbar-logo">mosman<span>LAB</span></span>
+      <span class="topbar-badge">Admin</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-email" id="adminEmailDisplay"></span>
+      <button class="btn-logout" onclick="fazerLogout()">Sair</button>
+    </div>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- MÉTRICAS -->
+    <div class="metrics-row">
+      <div class="metric-card green">
+        <div class="metric-label">Total de simulados feitos</div>
+        <div class="metric-value" id="mTotal">—</div>
+        <div class="metric-sub">todas as tentativas</div>
+      </div>
+      <div class="metric-card blue">
+        <div class="metric-label">Alunos únicos</div>
+        <div class="metric-value" id="mAlunos">—</div>
+        <div class="metric-sub">com pelo menos 1 simulado</div>
+      </div>
+      <div class="metric-card amber">
+        <div class="metric-label">Média geral</div>
+        <div class="metric-value" id="mMedia">—</div>
+        <div class="metric-sub">% de acerto</div>
+      </div>
+      <div class="metric-card red">
+        <div class="metric-label">Questão mais difícil</div>
+        <div class="metric-value" id="mDificil">—</div>
+        <div class="metric-sub" id="mDificilSub">menor taxa de acerto</div>
+      </div>
+    </div>
+
+    <!-- GRÁFICOS -->
+    <div class="charts-row">
+      <div class="chart-wrap">
+        <div class="chart-title">Distribuição de scores</div>
+        <canvas id="chartScores" height="200"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Simulados por semana</div>
+        <canvas id="chartTempo" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- ACERTO POR QUESTÃO -->
+    <div class="section" id="secQuestoes">
+      <div class="section-header">
+        <span class="section-title">Taxa de acerto por questão</span>
+        <select class="filter-select" id="filterSimuladoQ" onchange="renderQuestoes()">
+          <option value="todos">Todos os simulados</option>
+        </select>
+      </div>
+      <div class="section-body">
+        <div class="q-bars" id="qBars"><div class="loading-msg">Carregando…</div></div>
+      </div>
+    </div>
+
+    <!-- RANKING -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Ranking de alunos</span>
+        <select class="filter-select" id="filterSimuladoR" onchange="renderRanking()">
+          <option value="todos">Todos os simulados</option>
+        </select>
+      </div>
+      <div class="section-body">
+        <div class="ranking-list" id="rankingList"><div class="loading-msg">Carregando…</div></div>
+      </div>
+    </div>
+
+    <!-- TABELA COMPLETA -->
+    <div class="section">
+      <div class="filters">
+        <input class="search-input" type="text" id="searchAluno" placeholder="Buscar por e-mail do aluno…" oninput="aplicarFiltros()"/>
+        <select class="filter-select" id="filterSimulado" onchange="aplicarFiltros()">
+          <option value="todos">Todos os simulados</option>
+        </select>
+        <select class="filter-select" id="filterScore" onchange="aplicarFiltros()">
+          <option value="todos">Todos os scores</option>
+          <option value="alto">≥ 70% (bom)</option>
+          <option value="medio">50–69% (médio)</option>
+          <option value="baixo">&lt; 50% (a melhorar)</option>
+        </select>
+        <span class="filter-count" id="filterCount"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="ordenar('created_at')">Data ↕</th>
+              <th onclick="ordenar('email')">Aluno ↕</th>
+              <th onclick="ordenar('simulado')">Simulado ↕</th>
+              <th onclick="ordenar('score')">Score ↕</th>
+              <th onclick="ordenar('tempo')">Tempo ↕</th>
+              <th>Acertos por questão</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaBody">
+            <tr><td colspan="6" class="loading-msg">Carregando…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── SUPABASE ────────────────────────────────────────────
+const SUPABASE_URL = 'https://debljvblrljehsscbtbo.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_CmhW_jV-uSxxcWcYRjGOzQ_1195fdpz'
+const ADMIN_EMAIL  = 'mosmanlab@gmail.com'
+const { createClient } = supabase
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+// ── ESTADO ──────────────────────────────────────────────
+let todosResultados = []
+let alunosMap = {}        // user_id → email
+let sortCol = 'created_at'
+let sortAsc = false
+let chartsInit = false
+
+// ── INIT ────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', async () => {
+  const { data: { session } } = await sb.auth.getSession()
+  if (session && session.user.email === ADMIN_EMAIL) {
+    entrarDashboard(session.user)
+  }
+})
+
+// ── LOGIN ────────────────────────────────────────────────
+async function fazerLogin() {
+  const email = document.getElementById('adminEmail').value.trim()
+  const pass  = document.getElementById('adminPass').value
+  document.getElementById('loginErr').textContent = ''
+
+  if (email !== ADMIN_EMAIL) {
+    document.getElementById('loginErr').textContent = 'Acesso restrito ao administrador.'
+    return
+  }
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass })
+  if (error) {
+    document.getElementById('loginErr').textContent = 'E-mail ou senha incorretos.'
+    return
+  }
+  entrarDashboard(data.user)
+}
+
+async function fazerLogout() {
+  await sb.auth.signOut()
+  location.reload()
+}
+
+// ── ENTRAR NO DASHBOARD ──────────────────────────────────
+async function entrarDashboard(user) {
+  document.getElementById('loginScreen').style.display = 'none'
+  document.getElementById('adminDash').style.display   = 'block'
+  document.getElementById('adminEmailDisplay').textContent = user.email
+
+  await carregarDados()
+}
+
+// ── CARREGAR DADOS ───────────────────────────────────────
+async function carregarDados() {
+  // Busca todos os resultados
+  const { data: resultados, error } = await sb
+    .from('resultados')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  if (error || !resultados) {
+    document.getElementById('tabelaBody').innerHTML =
+      '<tr><td colspan="6" class="empty-msg">Erro ao carregar dados.</td></tr>'
+    return
+  }
+
+  todosResultados = resultados
+
+  // Busca usuários para mapear user_id → email
+  const { data: users } = await sb.auth.admin?.listUsers?.() || { data: null }
+  // Se não tiver acesso admin, usamos os emails dos próprios resultados
+  // (Supabase não expõe emails via client key por padrão — mostramos user_id truncado)
+
+  popularFiltros()
+  renderMetricas()
+  renderGraficos()
+  renderQuestoes()
+  renderRanking()
+  aplicarFiltros()
+}
+
+// ── POPULAR FILTROS ──────────────────────────────────────
+function popularFiltros() {
+  const simulados = [...new Set(todosResultados.map(r => r.simulado))].sort()
+  const selects = ['filterSimulado','filterSimuladoQ','filterSimuladoR']
+  selects.forEach(id => {
+    const sel = document.getElementById(id)
+    simulados.forEach(s => {
+      const opt = document.createElement('option')
+      opt.value = s
+      opt.textContent = nomeSimulado(s)
+      sel.appendChild(opt)
+    })
+  })
+}
+
+function nomeSimulado(id) {
+  const nomes = {
+    'cinematica-01': 'Sim 01 — MU, MUV, Queda Livre',
+    'cinematica-02': 'Sim 02 — Gráficos v×t e x×t',
+    'cinematica-03': 'Sim 03 — MRU, Vel. Relativa',
+    'cinematica-04': 'Sim 04 — Queda Livre Aplicada',
+  }
+  return nomes[id] || id
+}
+
+// ── MÉTRICAS ─────────────────────────────────────────────
+function renderMetricas() {
+  const r = todosResultados
+  document.getElementById('mTotal').textContent  = r.length
+  document.getElementById('mAlunos').textContent = new Set(r.map(x => x.user_id)).size
+
+  if (r.length > 0) {
+    const media = Math.round(r.reduce((s,x) => s + x.score, 0) / r.length)
+    document.getElementById('mMedia').textContent = media + '%'
+  }
+
+  // Questão mais difícil (menor % de acerto)
+  const qAcertos = {}
+  const qTotal   = {}
+  r.forEach(res => {
+    if (!Array.isArray(res.acertos)) return
+    res.acertos.forEach((ok, i) => {
+      const k = `Q${i+1}`
+      qAcertos[k] = (qAcertos[k] || 0) + (ok ? 1 : 0)
+      qTotal[k]   = (qTotal[k]   || 0) + 1
+    })
+  })
+  let piorQ = null, piorPct = 101
+  Object.keys(qAcertos).forEach(k => {
+    const pct = Math.round(qAcertos[k] / qTotal[k] * 100)
+    if (pct < piorPct) { piorPct = pct; piorQ = k }
+  })
+  if (piorQ) {
+    document.getElementById('mDificil').textContent  = piorQ
+    document.getElementById('mDificilSub').textContent = piorPct + '% de acerto'
+  }
+}
+
+// ── GRÁFICOS ─────────────────────────────────────────────
+function renderGraficos() {
+  // Distribuição de scores
+  const buckets = [0,0,0,0,0] // 0-19, 20-39, 40-59, 60-79, 80-100
+  todosResultados.forEach(r => {
+    const b = Math.min(Math.floor(r.score / 20), 4)
+    buckets[b]++
+  })
+
+  new Chart(document.getElementById('chartScores'), {
+    type: 'bar',
+    data: {
+      labels: ['0–19%','20–39%','40–59%','60–79%','80–100%'],
+      datasets: [{
+        data: buckets,
+        backgroundColor: ['#ef4444','#f87171','#fbbf24','#60a5fa','#22c55e'],
+        borderRadius: 6, borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#6b7280' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+        y: { ticks: { color: '#6b7280' }, grid: { color: 'rgba(255,255,255,0.04)' } }
+      }
+    }
+  })
+
+  // Simulados por semana
+  const semanas = {}
+  todosResultados.forEach(r => {
+    const d = new Date(r.created_at)
+    const seg = Math.floor(d.getTime() / (7*24*3600*1000))
+    const ini = new Date(seg * 7*24*3600*1000)
+    const key = ini.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit' })
+    semanas[key] = (semanas[key] || 0) + 1
+  })
+  const semKeys = Object.keys(semanas).slice(-8)
+
+  new Chart(document.getElementById('chartTempo'), {
+    type: 'line',
+    data: {
+      labels: semKeys,
+      datasets: [{
+        data: semKeys.map(k => semanas[k]),
+        borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)',
+        tension: 0.3, fill: true, pointBackgroundColor: '#22c55e', pointRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true, plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#6b7280' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+        y: { ticks: { color: '#6b7280' }, grid: { color: 'rgba(255,255,255,0.04)' } }
+      }
+    }
+  })
+}
+
+// ── ACERTO POR QUESTÃO ───────────────────────────────────
+function renderQuestoes() {
+  const filtro = document.getElementById('filterSimuladoQ').value
+  const dados  = filtro === 'todos' ? todosResultados
+    : todosResultados.filter(r => r.simulado === filtro)
+
+  const qAcertos = {}
+  const qTotal   = {}
+  dados.forEach(res => {
+    if (!Array.isArray(res.acertos)) return
+    res.acertos.forEach((ok, i) => {
+      const k = i + 1
+      qAcertos[k] = (qAcertos[k] || 0) + (ok ? 1 : 0)
+      qTotal[k]   = (qTotal[k]   || 0) + 1
+    })
+  })
+
+  const qs = Object.keys(qTotal).sort((a,b) => +a - +b)
+  if (qs.length === 0) {
+    document.getElementById('qBars').innerHTML = '<div class="empty-msg">Sem dados para este filtro.</div>'
+    return
+  }
+
+  document.getElementById('qBars').innerHTML = qs.map(k => {
+    const pct = Math.round(qAcertos[k] / qTotal[k] * 100)
+    const cls  = pct >= 70 ? 'ok' : pct >= 50 ? 'mid' : 'bad'
+    return `<div class="q-bar-row">
+      <span class="q-bar-label">Questão ${k}</span>
+      <div class="q-bar-track"><div class="q-bar-fill ${cls}" style="width:${pct}%"></div></div>
+      <span class="q-bar-pct">${pct}%</span>
+      <span class="q-bar-n">${qAcertos[k]}/${qTotal[k]}</span>
+    </div>`
+  }).join('')
+}
+
+// ── RANKING ──────────────────────────────────────────────
+function renderRanking() {
+  const filtro = document.getElementById('filterSimuladoR').value
+  const dados  = filtro === 'todos' ? todosResultados
+    : todosResultados.filter(r => r.simulado === filtro)
+
+  const porAluno = {}
+  dados.forEach(r => {
+    if (!porAluno[r.user_id]) porAluno[r.user_id] = { scores: [], count: 0 }
+    porAluno[r.user_id].scores.push(r.score)
+    porAluno[r.user_id].count++
+  })
+
+  const ranking = Object.entries(porAluno).map(([uid, d]) => ({
+    uid,
+    media: Math.round(d.scores.reduce((s,x) => s+x, 0) / d.scores.length),
+    count: d.count,
+    max:   Math.max(...d.scores)
+  })).sort((a,b) => b.media - a.media).slice(0, 10)
+
+  if (ranking.length === 0) {
+    document.getElementById('rankingList').innerHTML = '<div class="empty-msg">Sem dados.</div>'
+    return
+  }
+
+  const medalhas = ['gold','silver','bronze']
+  document.getElementById('rankingList').innerHTML = ranking.map((r, i) => {
+    const cls   = medalhas[i] || ''
+    const label = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}º`
+    const uid   = r.uid.substring(0,8) + '…'
+    return `<div class="ranking-item">
+      <span class="rank-pos ${cls}">${label}</span>
+      <div class="rank-info">
+        <div class="rank-email">${uid}</div>
+        <div class="rank-detail">${r.count} simulado(s) &middot; máx ${r.max}%</div>
+      </div>
+      <span class="rank-score">${r.media}%</span>
+    </div>`
+  }).join('')
+}
+
+// ── TABELA ───────────────────────────────────────────────
+function aplicarFiltros() {
+  const search  = document.getElementById('searchAluno').value.toLowerCase()
+  const simFil  = document.getElementById('filterSimulado').value
+  const scorFil = document.getElementById('filterScore').value
+
+  let dados = todosResultados.filter(r => {
+    const uid = (r.user_id || '').toLowerCase()
+    if (search && !uid.includes(search)) return false
+    if (simFil !== 'todos' && r.simulado !== simFil) return false
+    if (scorFil === 'alto'  && r.score < 70)             return false
+    if (scorFil === 'medio' && (r.score < 50 || r.score >= 70)) return false
+    if (scorFil === 'baixo' && r.score >= 50)            return false
+    return true
+  })
+
+  // Ordenação
+  dados = dados.sort((a,b) => {
+    let va = a[sortCol], vb = b[sortCol]
+    if (typeof va === 'string') va = va.toLowerCase()
+    if (typeof vb === 'string') vb = vb.toLowerCase()
+    return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1)
+  })
+
+  document.getElementById('filterCount').textContent = `${dados.length} resultado(s)`
+  renderTabela(dados)
+}
+
+function ordenar(col) {
+  if (sortCol === col) sortAsc = !sortAsc
+  else { sortCol = col; sortAsc = false }
+  document.querySelectorAll('thead th').forEach(th => th.classList.remove('sorted'))
+  aplicarFiltros()
+}
+
+function renderTabela(dados) {
+  if (dados.length === 0) {
+    document.getElementById('tabelaBody').innerHTML =
+      '<tr><td colspan="6" class="empty-msg">Nenhum resultado encontrado.</td></tr>'
+    return
+  }
+
+  document.getElementById('tabelaBody').innerHTML = dados.map(r => {
+    const data  = new Date(r.created_at).toLocaleDateString('pt-BR')
+    const hora  = new Date(r.created_at).toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' })
+    const uid   = (r.user_id || '—').substring(0,12) + '…'
+    const tempo = r.tempo ? `${Math.floor(r.tempo/60)}m${(r.tempo%60).toString().padStart(2,'0')}s` : '—'
+    const scCls = r.score >= 70 ? 'score-a' : r.score >= 50 ? 'score-b' : 'score-c'
+
+    let acertosHtml = '—'
+    if (Array.isArray(r.acertos)) {
+      acertosHtml = r.acertos.map((ok, i) =>
+        `<span title="Q${i+1}" style="display:inline-block;width:18px;height:18px;border-radius:4px;
+          font-size:9px;font-weight:700;line-height:18px;text-align:center;margin:1px;
+          background:${ok ? 'rgba(34,197,94,0.2)' : 'rgba(248,113,113,0.2)'};
+          color:${ok ? '#22c55e' : '#f87171'};">${i+1}</span>`
+      ).join('')
+    }
+
+    return `<tr>
+      <td class="td-muted">${data} ${hora}</td>
+      <td style="font-family:monospace;font-size:12px;">${uid}</td>
+      <td class="td-muted">${nomeSimulado(r.simulado)}</td>
+      <td><span class="score-badge ${scCls}">${r.score}%</span></td>
+      <td class="td-muted">${tempo}</td>
+      <td>${acertosHtml}</td>
+    </tr>`
+  }).join('')
+}
+</script>
+</body>
+</html>
