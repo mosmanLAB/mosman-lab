@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<title>Simulado 04 &#8212; Cinem&#225;tica: Queda Livre e Lan&#231;amentos Aplicados | MosmanLAB</title>
+<meta name="description" content="Simulado de F&#237;sica &#8212; Queda livre, lan&#231;amento vertical e obl&#237;quo, encontro de corpos, persegui&#231;&#227;o e m&#233;todo de Galileu. 10 quest&#245;es com gabarito. UFRGS, Cesgranrio, PUCMG. Prof. Edson Mosman &middot; MosmanLAB."/>
+<meta name="author" content="Prof. Edson Mosman &middot; MosmanLAB"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://mosmanlab.com.br/simulados/simulado-04-cinematica-quedalivre-lancamentos-aplicados.html"/>
+<meta property="og:title" content="Simulado 04 &#8212; Queda Livre e Lan&#231;amentos Aplicados | MosmanLAB"/>
+<meta property="og:url" content="https://mosmanlab.com.br/simulados/simulado-04-cinematica-quedalivre-lancamentos-aplicados.html"/>
+<meta property="og:type" content="website"/><meta property="og:locale" content="pt_BR"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="simulados.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+</head>
+<body>
+
+<div class="urgency">&#9889; Nova turma em <strong>maio de 2026</strong> &#8212; <a href="../turma-maio-2026.html">garantir minha vaga &#8594;</a></div>
+<nav><div class="nav-inner">
+  <a class="nav-logo" href="../index.html">mosman<span>LAB</span></a>
+  <a class="nav-back" href="index.html">&#8592; Voltar aos simulados</a>
+</div></nav>
+<div class="timer-bar-wrap" id="timerBarWrap">
+  <div class="timer-bar">
+    <div><div class="timer-label">Tempo restante</div><div class="timer-value" id="timerDisplay">20:00</div></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:100%"></div></div>
+    <div class="qmap" id="qmap"></div>
+  </div>
+</div>
+<main id="telaSimulado">
+  <div class="sim-header">
+    <div class="sim-tag">Cinem&#225;tica &middot; Simulado 04</div>
+    <h1>Queda Livre e Lan&#231;amentos Aplicados</h1>
+    <div class="sim-meta">
+      <span class="sim-meta-pill">10 quest&#245;es</span>
+      <span class="sim-meta-pill">20 minutos</span>
+      <span class="sim-meta-pill">UFRGS &middot; Cesgranrio &middot; PUCMG</span>
+      <span class="sim-meta-pill">Prof. Edson Mosman</span>
+    </div>
+  </div>
+
+  <div class="question-block" id="q1" data-gabarito="B">
+    <div class="q-num">Quest&#227;o 1 de 10</div>
+    <div class="q-text"><p>(UFRGS) Autom&#243;vel A: 20 km de ida a 60 km/h, 20 km de volta a 40 km/h. Autom&#243;vel B: percurso total (40 km) a 50 km/h. A raz&#227;o \(t_A/t_B\) &#233;:</p></div>
+    <div class="options" id="opts1">
+      <button class="option" onclick="selecionar(1,'A')"><span class="opt-letter">A</span>\(5/4\)</button>
+      <button class="option" onclick="selecionar(1,'B')"><span class="opt-letter">B</span>\(25/24\)</button>
+      <button class="option" onclick="selecionar(1,'C')"><span class="opt-letter">C</span>\(1\)</button>
+      <button class="option" onclick="selecionar(1,'D')"><span class="opt-letter">D</span>\(25/28\)</button>
+      <button class="option" onclick="selecionar(1,'E')"><span class="opt-letter">E</span>\(5/6\)</button>
+    </div>
+    <button class="btn-confirm" id="btn1" onclick="confirmar(1)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab1">
+      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-body"><p>\(t_A=\frac{20}{60}+\frac{20}{40}=\frac{1}{3}+\frac{1}{2}=\frac{5}{6}\text{ h}\). &#160; \(t_B=\frac{40}{50}=\frac{4}{5}\text{ h}\).</p><p>$$\frac{t_A}{t_B}=\frac{5/6}{4/5}=\frac{5\times5}{6\times4}=\frac{25}{24}$$</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q2" data-gabarito="D">
+    <div class="q-num">Quest&#227;o 2 de 10</div>
+    <div class="q-text"><p>Determine a velocidade m&#233;dia de um autom&#243;vel que percorreu os primeiros \(150\text{ km}\) a \(50\text{ km/h}\) e os \(700\text{ km}\) seguintes a \(100\text{ km/h}\).</p></div>
+    <div class="options" id="opts2">
+      <button class="option" onclick="selecionar(2,'A')"><span class="opt-letter">A</span>\(55\text{ km/h}\)</button>
+      <button class="option" onclick="selecionar(2,'B')"><span class="opt-letter">B</span>\(60\text{ km/h}\)</button>
+      <button class="option" onclick="selecionar(2,'C')"><span class="opt-letter">C</span>\(65\text{ km/h}\)</button>
+      <button class="option" onclick="selecionar(2,'D')"><span class="opt-letter">D</span>\(85\text{ km/h}\)</button>
+      <button class="option" onclick="selecionar(2,'E')"><span class="opt-letter">E</span>\(70\text{ km/h}\)</button>
+    </div>
+    <button class="btn-confirm" id="btn2" onclick="confirmar(2)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab2">
+      <div class="gab-title">&#10003; Resposta correta: D</div>
+      <div class="gab-body"><p>\(\Delta t_1=150/50=3\text{ h}\) &#160; \(\Delta t_2=700/100=7\text{ h}\)</p><p>$$v_m=\frac{\Delta S_{total}}{\Delta t_{total}}=\frac{850}{10}=85\text{ km/h}$$</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q3" data-gabarito="A">
+    <div class="q-num">Quest&#227;o 3 de 10</div>
+    <div class="q-text"><p>Um corpo &#233; abandonado do alto de uma torre de \(45\text{ m}\). No mesmo instante, outro &#233; lan&#231;ado verticalmente para cima do solo com \(v_0=20\text{ m/s}\). Sistema orientado de baixo para cima.</p><div class="fig-wrap"><svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg" aria-label="Gráfico h×t: queda livre (azul) e lançamento vertical (vermelho) se encontram em t≈2.25s">
+  <defs>
+    <marker id="ah04" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="220" x2="310" y2="220" stroke="#9ca3af" stroke-width="2" marker-end="url(#ah04)"/>
+  <line x1="40" y1="240" x2="40" y2="20" stroke="#9ca3af" stroke-width="2" marker-end="url(#ah04)"/>
+  <text x="315" y="224" fill="#9ca3af" font-size="12" font-family="serif" font-style="italic">t(s)</text>
+  <text x="18" y="18" fill="#9ca3af" font-size="12" font-family="serif" font-style="italic">h(m)</text>
+  <!-- grade -->
+  <line x1="40" y1="45" x2="300" y2="45" stroke="#374151" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="40" y1="132" x2="300" y2="132" stroke="#374151" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <!-- escala t: 0,1,2,3,4,5 → x=40+t*50 -->
+  <text x="40"  y="236" fill="#9ca3af" font-size="10" text-anchor="middle">0</text>
+  <text x="90"  y="236" fill="#9ca3af" font-size="10" text-anchor="middle">1</text>
+  <text x="140" y="236" fill="#9ca3af" font-size="10" text-anchor="middle">2</text>
+  <text x="190" y="236" fill="#9ca3af" font-size="10" text-anchor="middle">3</text>
+  <text x="240" y="236" fill="#9ca3af" font-size="10" text-anchor="middle">4</text>
+  <!-- escala h: 0,25,45 → y=220-h*3.5 -->
+  <line x1="38" y1="220" x2="42" y2="220" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="34" y="224" fill="#9ca3af" font-size="10" text-anchor="end">0</text>
+  <line x1="38" y1="132" x2="42" y2="132" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="34" y="136" fill="#9ca3af" font-size="10" text-anchor="end">25</text>
+  <line x1="38" y1="62"  x2="42" y2="62" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="34" y="66"   fill="#9ca3af" font-size="10" text-anchor="end">45</text>
+  <!-- queda livre: h=45-5t², t=0..3, points: -->
+  <!-- t=0:h=45→y=62 | t=1:h=40→y=80 | t=2:h=25→y=132 | t=3:h=0→y=220 -->
+  <path d="M40,62 C80,70 110,100 140,132 C165,158 180,190 190,220" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+  <!-- lançamento: h=20t-5t², t=0..4 -->
+  <!-- t=0:h=0→y=220 | t=1:h=15→y=167 | t=2:h=20→y=150 | t=2.25:h≈19.7→y=151 | t=3:h=15→y=167 | t=4:h=0→y=220 -->
+  <path d="M40,220 C80,168 110,145 140,150 C170,157 200,180 240,220" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+  <!-- ponto de encontro: t≈2.25, h≈19.7 → x=40+2.25*50=152.5, y=220-19.7*3.5=151 -->
+  <circle cx="152" cy="151" r="4" fill="#6ee7b7"/>
+  <line x1="152" y1="151" x2="152" y2="220" stroke="#6ee7b7" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="40"  y1="151" x2="152" y2="151" stroke="#6ee7b7" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="156" y="148" fill="#6ee7b7" font-size="10">(2,25s; 19,7m)</text>
+  <!-- legenda -->
+  <rect x="170" y="28" width="120" height="44" rx="6" fill="#1e2327" stroke="#374151" stroke-width="0.5"/>
+  <line x1="178" y1="42" x2="198" y2="42" stroke="#3b82f6" stroke-width="2"/>
+  <text x="202" y="46" fill="#9ca3af" font-size="10">Queda livre</text>
+  <line x1="178" y1="60" x2="198" y2="60" stroke="#ef4444" stroke-width="2"/>
+  <text x="202" y="64" fill="#9ca3af" font-size="10">Lançamento</text>
+</svg></div><p>(I) Em qual instante os corpos se encontram? (II) Em qual altura?</p></div>
+    <div class="options" id="opts3">
+      <button class="option" onclick="selecionar(3,'A')"><span class="opt-letter">A</span>\(t_e=2{,}25\text{ s}\) e \(h_e\approx19{,}7\text{ m}\)</button>
+      <button class="option" onclick="selecionar(3,'B')"><span class="opt-letter">B</span>\(t_e=2{,}25\text{ s}\) e \(h_e=14{,}7\text{ m}\)</button>
+      <button class="option" onclick="selecionar(3,'C')"><span class="opt-letter">C</span>\(t_e=1{,}25\text{ s}\) e \(h_e=19{,}7\text{ m}\)</button>
+      <button class="option" onclick="selecionar(3,'D')"><span class="opt-letter">D</span>\(t_e=2{,}25\text{ s}\) e \(h_e=14{,}7\text{ m}\)</button>
+    </div>
+    <button class="btn-confirm" id="btn3" onclick="confirmar(3)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab3">
+      <div class="gab-title">&#10003; Resposta correta: A</div>
+      <div class="gab-body"><p>Queda: \(h_q=45-5t^2\) &#160; Lan&#231;amento: \(h_l=20t-5t^2\)</p><p>Encontro \(h_q=h_l\): \(45=20t\Rightarrow t_e=2{,}25\text{ s}\)</p><p>$$h_e=45-5\times(2{,}25)^2\approx19{,}7\text{ m}$$</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q4" data-gabarito="A">
+    <div class="q-num">Quest&#227;o 4 de 10</div>
+    <div class="q-text"><p>Um corpo \(m=20\text{ g}\) &#233; abandonado do alto de uma torre de \(80\text{ m}\). Despreze os atritos. Determine: (I) velocidade ao atingir o solo; (II) tempo de queda; (III) quantidade de movimento; (IV) energia mec&#226;nica.</p></div>
+    <div class="options" id="opts4">
+      <button class="option" onclick="selecionar(4,'A')"><span class="opt-letter">A</span>\(v=40\text{ m/s}\), \(t=4{,}0\text{ s}\), \(Q=0{,}8\text{ kg·m/s}\) e \(E_m=16\text{ J}\)</button>
+      <button class="option" onclick="selecionar(4,'B')"><span class="opt-letter">B</span>\(v=80\text{ m/s}\), \(t=8{,}0\text{ s}\), \(Q=0{,}4\text{ kg·m/s}\) e \(E_m=8\text{ J}\)</button>
+      <button class="option" onclick="selecionar(4,'C')"><span class="opt-letter">C</span>\(v=40\text{ m/s}\), \(t=8{,}0\text{ s}\), \(Q=0{,}4\text{ kg·m/s}\) e \(E_m=8\text{ J}\)</button>
+      <button class="option" onclick="selecionar(4,'D')"><span class="opt-letter">D</span>\(v=40\text{ m/s}\), \(t=8{,}0\text{ s}\), \(Q=0{,}8\text{ kg·m/s}\) e \(E_m=16\text{ J}\)</button>
+    </div>
+    <button class="btn-confirm" id="btn4" onclick="confirmar(4)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab4">
+      <div class="gab-title">&#10003; Resposta correta: A</div>
+      <div class="gab-body"><p>\(m=0{,}02\text{ kg}\).</p><p>(I) \(v^2=2gh=2\times10\times80=1600\Rightarrow v=40\text{ m/s}\)</p><p>(II) \(h=5t^2\Rightarrow 80=5t^2\Rightarrow t=4\text{ s}\)</p><p>(III) \(Q=mv=0{,}02\times40=0{,}8\text{ kg·m/s}\)</p><p>(IV) \(E_m=mgh=0{,}02\times10\times80=16\text{ J}\)</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q5" data-gabarito="B">
+    <div class="q-num">Quest&#227;o 5 de 10</div>
+    <div class="q-text"><p>Um corpo \(m=40\text{ g}\) &#233; lan&#231;ado verticalmente para cima com \(v_0=50\text{ m/s}\). Despreze atritos. Determine: (I) altura m&#225;xima; (II) tempo no ar; (III) quantidade de movimento em \(t=7\text{ s}\).</p></div>
+    <div class="options" id="opts5">
+      <button class="option" onclick="selecionar(5,'A')"><span class="opt-letter">A</span>\(h_m=125\text{ m}\), \(t=5\text{ s}\) e \(Q=0{,}8\text{ kg·m/s}\)</button>
+      <button class="option" onclick="selecionar(5,'B')"><span class="opt-letter">B</span>\(h_m=125\text{ m}\), \(t=10\text{ s}\) e \(Q=0{,}8\text{ kg·m/s}\)</button>
+      <button class="option" onclick="selecionar(5,'C')"><span class="opt-letter">C</span>\(h_m=125\text{ m}\), \(t=10\text{ s}\) e \(Q=8\text{ kg·m/s}\)</button>
+      <button class="option" onclick="selecionar(5,'D')"><span class="opt-letter">D</span>\(h_m=50\text{ m}\), \(t=5\text{ s}\) e \(Q=0{,}8\text{ kg·m/s}\)</button>
+    </div>
+    <button class="btn-confirm" id="btn5" onclick="confirmar(5)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab5">
+      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-body"><p>\(m=0{,}04\text{ kg}\).</p><p>(I) \(h_m=v_0^2/(2g)=2500/20=125\text{ m}\)</p><p>(II) \(t_{sub}=v_0/g=5\text{ s}\Rightarrow t_{total}=10\text{ s}\)</p><p>(III) \(v(7)=50-10\times7=-20\text{ m/s}\Rightarrow|Q|=0{,}04\times20=0{,}8\text{ kg·m/s}\)</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q6" data-gabarito="C">
+    <div class="q-num">Quest&#227;o 6 de 10</div>
+    <div class="q-text"><p>Um corpo &#233; lan&#231;ado obliquamente com \(v_{0y}=30\text{ m/s}\) e \(v_{0x}=40\text{ m/s}\). Determine: (I) instante da altura m&#225;xima; (II) altura m&#225;xima; (III) alcance horizontal.</p></div>
+    <div class="options" id="opts6">
+      <button class="option" onclick="selecionar(6,'A')"><span class="opt-letter">A</span>\(t=3{,}0\text{ s}\), \(h_m=30\text{ m}\) e \(A_H=240\text{ m}\)</button>
+      <button class="option" onclick="selecionar(6,'B')"><span class="opt-letter">B</span>\(t=6{,}0\text{ s}\), \(h_m=45\text{ m}\) e \(A_H=240\text{ m}\)</button>
+      <button class="option" onclick="selecionar(6,'C')"><span class="opt-letter">C</span>\(t=3{,}0\text{ s}\), \(h_m=45\text{ m}\) e \(A_H=240\text{ m}\)</button>
+      <button class="option" onclick="selecionar(6,'D')"><span class="opt-letter">D</span>\(t=3{,}0\text{ s}\), \(h_m=45\text{ m}\) e \(A_H=120\text{ m}\)</button>
+    </div>
+    <button class="btn-confirm" id="btn6" onclick="confirmar(6)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab6">
+      <div class="gab-title">&#10003; Resposta correta: C</div>
+      <div class="gab-body"><p>(I) \(t=v_{0y}/g=30/10=3\text{ s}\)</p><p>(II) \(h_m=v_{0y}^2/(2g)=900/20=45\text{ m}\)</p><p>(III) \(t_{total}=6\text{ s}\Rightarrow A_H=40\times6=240\text{ m}\)</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q7" data-gabarito="D">
+    <div class="q-num">Quest&#227;o 7 de 10</div>
+    <div class="q-text"><p>Um autom&#243;vel a 90 km/h passa por um guarda. A moto parte do repouso, atinge 108 km/h em 10 s e mant&#233;m essa velocidade at&#233; alcan&#231;ar o infrator. Pode-se afirmar que:</p></div>
+    <div class="options" id="opts7">
+      <button class="option" onclick="selecionar(7,'A')"><span class="opt-letter">A</span>o guarda levou 15 s para alcan&#231;ar o carro.</button>
+      <button class="option" onclick="selecionar(7,'B')"><span class="opt-letter">B</span>o guarda levou 60 s para alcan&#231;ar o carro.</button>
+      <button class="option" onclick="selecionar(7,'C')"><span class="opt-letter">C</span>a velocidade do guarda ao alcan&#231;ar era de 25 m/s.</button>
+      <button class="option" onclick="selecionar(7,'D')"><span class="opt-letter">D</span>o guarda percorreu 750 m desde que saiu at&#233; alcan&#231;ar o infrator.</button>
+      <button class="option" onclick="selecionar(7,'E')"><span class="opt-letter">E</span>nenhuma das respostas anteriores &#233; correta.</button>
+    </div>
+    <button class="btn-confirm" id="btn7" onclick="confirmar(7)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab7">
+      <div class="gab-title">&#10003; Resposta correta: D</div>
+      <div class="gab-body"><p>\(v_{carro}=25\text{ m/s}\), \(v_{guarda}=30\text{ m/s}\), \(a=3\text{ m/s}^2\).</p><p>Em 10 s: \(s_{g1}=150\text{ m}\), \(s_{c1}=250\text{ m}\Rightarrow\Delta s=100\text{ m}\).</p><p>Fase 2: \(v_{rel}=5\text{ m/s}\Rightarrow t_2=20\text{ s}\). Total: \(t=30\text{ s}\).</p><p>Dist&#226;ncia total: $$s=150+30\times20=\mathbf{750}\text{ m}$$</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q8" data-gabarito="B">
+    <div class="q-num">Quest&#227;o 8 de 10</div>
+    <div class="q-text"><p>(Cesgranrio) Um corpo em queda livre a partir do repouso possui velocidade \(v\) ap&#243;s percorrer altura \(h\). A velocidade ap&#243;s percorrer \(4h\) ser&#225;:</p></div>
+    <div class="options" id="opts8">
+      <button class="option" onclick="selecionar(8,'A')"><span class="opt-letter">A</span>\(v\)</button>
+      <button class="option" onclick="selecionar(8,'B')"><span class="opt-letter">B</span>\(2v\)</button>
+      <button class="option" onclick="selecionar(8,'C')"><span class="opt-letter">C</span>\(4v\)</button>
+      <button class="option" onclick="selecionar(8,'D')"><span class="opt-letter">D</span>\(8v\)</button>
+      <button class="option" onclick="selecionar(8,'E')"><span class="opt-letter">E</span>\(16v\)</button>
+    </div>
+    <button class="btn-confirm" id="btn8" onclick="confirmar(8)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab8">
+      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-body"><p>Queda livre: \(v^2=2gh\Rightarrow v\propto\sqrt{h}\).</p><p>$$v_{4h}=\sqrt{2g\cdot4h}=2\sqrt{2gh}=2v$$</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q9" data-gabarito="B">
+    <div class="q-num">Quest&#227;o 9 de 10</div>
+    <div class="q-text"><p>Um corpo &#233; abandonado do alto de uma torre de altura \(H\) desconhecida. Se percorreu \(15\text{ m}\) no &#250;ltimo segundo de queda, a altura da torre &#233;:</p></div>
+    <div class="options" id="opts9">
+      <button class="option" onclick="selecionar(9,'A')"><span class="opt-letter">A</span>\(H=5\text{ m}\)</button>
+      <button class="option" onclick="selecionar(9,'B')"><span class="opt-letter">B</span>\(H=20\text{ m}\)</button>
+      <button class="option" onclick="selecionar(9,'C')"><span class="opt-letter">C</span>\(H=45\text{ m}\)</button>
+      <button class="option" onclick="selecionar(9,'D')"><span class="opt-letter">D</span>\(H=80\text{ m}\)</button>
+      <button class="option" onclick="selecionar(9,'E')"><span class="opt-letter">E</span>\(H=125\text{ m}\)</button>
+    </div>
+    <button class="btn-confirm" id="btn9" onclick="confirmar(9)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab9">
+      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-body"><p><strong>M&#233;todo de Galileu</strong> (\(z=5\text{ m}\)):</p><p>1&#186; s: 5 m &middot; 2&#186; s: 15 m &middot; 3&#186; s: 25 m &middot; &#8230;</p><p>Alturas acumuladas: 5 &middot; <strong>20</strong> &middot; 45 &middot; 80 &middot; 125 m.</p><p>O &#250;ltimo espa&#231;o de 15 m &#233; o 2&#186; segundo \(\Rightarrow H=20\text{ m}\).</p></div>
+    </div>
+  </div>
+
+  <div class="question-block" id="q10" data-gabarito="B">
+    <div class="q-num">Quest&#227;o 10 de 10</div>
+    <div class="q-text"><p>Um corpo &#233; lan&#231;ado verticalmente para cima com \(v_0=40\text{ m/s}\). O tempo para atingir a altura m&#225;xima e a altura m&#225;xima s&#227;o:</p></div>
+    <div class="options" id="opts10">
+      <button class="option" onclick="selecionar(10,'A')"><span class="opt-letter">A</span>4 s e 40 m</button>
+      <button class="option" onclick="selecionar(10,'B')"><span class="opt-letter">B</span>4 s e 80 m</button>
+      <button class="option" onclick="selecionar(10,'C')"><span class="opt-letter">C</span>8 s e 80 m</button>
+      <button class="option" onclick="selecionar(10,'D')"><span class="opt-letter">D</span>8 s e 120 m</button>
+    </div>
+    <button class="btn-confirm" id="btn10" onclick="confirmar(10)" disabled>Confirmar resposta</button>
+    <div class="gabarito" id="gab10">
+      <div class="gab-title">&#10003; Resposta correta: B</div>
+      <div class="gab-body"><p>$$t=\frac{v_0}{g}=\frac{40}{10}=4\text{ s}$$</p><p>$$h_m=\frac{v_0^2}{2g}=\frac{1600}{20}=80\text{ m}$$</p></div>
+    </div>
+  </div>
+
+  <button class="btn-finalizar" onclick="finalizar()">Finalizar simulado &#8594;</button>
+  <p class="msg-pendentes" id="msgPendentes"></p>
+</main>
+<div id="telaResultado">
+  <main style="max-width:900px;margin:0 auto;padding:40px 32px 80px;">
+    <div class="resultado-card">
+      <div class="resultado-emoji" id="resEmoji">&#127919;</div>
+      <div class="resultado-titulo" id="resTitulo">Simulado conclu&#237;do!</div>
+      <div class="resultado-score" id="resScore">&#8212;</div>
+      <div class="resultado-detalhe" id="resDetalhe"></div>
+      <div class="resultado-grid">
+        <div class="res-cell"><div class="res-cell-val" id="resAcertos">&#8212;</div><div class="res-cell-lbl">Acertos</div></div>
+        <div class="res-cell"><div class="res-cell-val" id="resErros">&#8212;</div><div class="res-cell-lbl">Erros</div></div>
+        <div class="res-cell"><div class="res-cell-val" id="resTempo">&#8212;</div><div class="res-cell-lbl">Tempo</div></div>
+      </div>
+      <div class="save-status" id="saveStatus"></div>
+      <button class="btn-revisar" onclick="mostrarRevisao()">Ver revis&#227;o &#8595;</button>
+      <a class="btn-novo" href="index.html">Fazer outro simulado &#8594;</a>
+<a class="next-sim" href="simulado-03-cinematica-mru-velocidade-relativa-graficos.html" style="margin-top:8px"><div><div class="next-sim-label">&#8592; Anterior</div><div class="next-sim-title">Simulado 03 &#8212; MRU, Velocidade Relativa e Gr&#225;ficos</div></div><span class="next-sim-arrow">&#8592;</span></a>
+<a class="next-sim" href="simulado-01-cinematica-MU-MUV-quedalivre-lancamentos.html" style="margin-top:8px"><div><div class="next-sim-label">Pr&#243;ximo &#8594;</div><div class="next-sim-title">Simulado 01 &#8212; MU, MUV, Queda Livre e Lan&#231;amentos</div></div><span class="next-sim-arrow">&#8594;</span></a>
+
+    </div>
+    <div id="revisaoSection" style="display:none">
+      <div class="revisao-header">Revis&#227;o das quest&#245;es</div>
+      <div id="revisaoLista"></div>
+    </div>
+  </main>
+</div>
+<footer class="sim-footer">
+  &copy; 2026 MosmanLAB &middot; Prof. Edson Mosman &middot; <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Pra&#231;a Oswaldo Cruz, 124 &#8212; Sala 171 &middot; Bela Vista &middot; S&#227;o Paulo &#8211; SP &middot; CEP 04004-903
+</footer>
+
+<script>
+const SIMULADO_ID="cinematica-04",TOTAL_Q=10,TEMPO_MAX=20*60
+const GABARITOS={1:'B',2:'D',3:'A',4:'A',5:'B',6:'C',7:'D',8:'B',9:'B',10:'B'}
+const ENUNCIADOS={1:'Razao de tempos tA/tB (UFRGS)',2:'Velocidade media - dois trechos consecutivos',3:'Queda livre e lancamento simultaneos - encontro',4:'Queda livre - velocidade, tempo, quantidade de movimento e energia',5:'Lancamento vertical - altura maxima, tempo, quantidade de movimento',6:'Lancamento obliquo - tempo, altura maxima e alcance',7:'Perseguicao policial - distancia percorrida pelo guarda',8:'Queda livre - velocidade apos 4h (Cesgranrio)',9:'Queda livre - metodo de Galileu: 15 m no ultimo segundo',10:'Lancamento vertical - altura maxima e tempo'}
+</script>
+<script src="simulados.js"></script>
+</body></html>
