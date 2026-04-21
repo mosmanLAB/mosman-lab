@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- PÁGINAS RAIZ -->
+  <!-- ═══════════════════════════════════════════
+       PÁGINAS RAIZ
+  ═══════════════════════════════════════════ -->
   <url><loc>https://mosmanlab.com.br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://mosmanlab.com.br/turma-maio-2026.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://mosmanlab.com.br/depoimentos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://mosmanlab.com.br/professor.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- BLOG — ÍNDICE -->
+  <!-- ═══════════════════════════════════════════
+       BLOG — ÍNDICE
+  ═══════════════════════════════════════════ -->
   <url><loc>https://mosmanlab.com.br/blog/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- BLOG — ABRIL 2026 (novos artigos de simulações) -->
+  <url><loc>https://mosmanlab.com.br/blog/hidroeletricidade.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://mosmanlab.com.br/blog/energia-eolica.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://mosmanlab.com.br/blog/energia-solar.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://mosmanlab.com.br/blog/curva-iv-solar.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
   <!-- BLOG — ABRIL 2026 -->
   <url><loc>https://mosmanlab.com.br/blog/crise-energetica-2026-ormuz-choque-petroleo-resposta-governos.html</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
-
   <url><loc>https://mosmanlab.com.br/blog/futuro-energia-nuclear-brasil-mundo.html</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://mosmanlab.com.br/blog/nuclear-seguranca-aviacao.html</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://mosmanlab.com.br/blog/quatro-pilares-economia-real-amonia-concreto-aco-plastico.html</loc><lastmod>2026-04-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -51,15 +60,18 @@
   <url><loc>https://mosmanlab.com.br/blog/emissoes-co2-brasil-mundo.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mosmanlab.com.br/blog/matriz-eletrica-brasileira.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mosmanlab.com.br/blog/eletrificacao-economia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mosmanlab.com.br/blog/cesio-137-goiania-acidente-radiologico.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- SIMULAÇÕES -->
-  <url><loc>https://mosmanlab.com.br/simulacoes/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/energia-solar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/curva-iv-solar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/energia-eolica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mosmanlab.com.br/simulacoes/hidroeletrica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- ═══════════════════════════════════════════
+       SIMULADOS — ÍNDICE E QUESTÕES
+  ═══════════════════════════════════════════ -->
+  <url><loc>https://mosmanlab.com.br/simulados/</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mosmanlab.com.br/simulados/simulado-01-cinematica-MU-MUV-quedalivre-lancamentos.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://mosmanlab.com.br/simulados/simulado-02-cinematica-graficos-vt-xt.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
-  <!-- TEORIA -->
+  <!-- ═══════════════════════════════════════════
+       TEORIA
+  ═══════════════════════════════════════════ -->
   <url><loc>https://mosmanlab.com.br/teoria/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://mosmanlab.com.br/teoria/mecanica/cinematica-mru-mruv.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://mosmanlab.com.br/teoria/mecanica/gravitacao.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
