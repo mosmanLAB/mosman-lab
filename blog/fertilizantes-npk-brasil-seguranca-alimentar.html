@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DSKLS9JVB');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fertilizantes N, P, K: a cadeia invisível que alimenta o mundo e a vulnerabilidade do Brasil | MosmanLAB</title>
+<meta name="description" content="Nitrogênio, fósforo e potássio sustentam metade da alimentação humana. O Brasil importa 85% do que consome — e cada 10% de alta no preço do fertilizante comprime entre 1% e 3% da margem da soja. Dados completos, gráficos interativos e diagrama Sankey dos fluxos globais."/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/fertilizantes-npk-brasil-seguranca-alimentar.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<link rel="stylesheet" href="article.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<meta name="keywords" content="fertilizantes NPK, importação fertilizantes Brasil, ureia preço, DAP MAP fosfato, potássio MOP, segurança alimentar, custo fertilizante soja milho cana"/>
+<meta name="author" content="Edson Mosman — MosmanLAB"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Fertilizantes N, P, K: a cadeia invisível que alimenta o mundo e a vulnerabilidade do Brasil"/>
+<meta property="og:description" content="O Brasil importa 85% dos fertilizantes que usa. Cada 10% de alta no preço comprime a margem da soja em até 3%. Dados, gráficos e diagrama Sankey completo."/>
+<meta property="og:url" content="https://mosmanlab.com.br/blog/fertilizantes-npk-brasil-seguranca-alimentar.html"/>
+<meta property="og:site_name" content="MosmanLAB"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="article:published_time" content="2026-04-22"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Fertilizantes N, P, K: a cadeia invisível que alimenta o mundo"/>
+<meta name="twitter:description" content="O Brasil importa 85% dos fertilizantes — e é o maior importador de potássio do mundo. Análise completa com dados de 2024-2025."/>
+<meta name="twitter:site" content="@mosmanlab"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fertilizantes N, P, K: a cadeia invisível que alimenta o mundo e a vulnerabilidade do Brasil",
+  "description": "Nitrogênio, fósforo e potássio sustentam metade da alimentação humana. O Brasil importa 85% do que consome — análise completa com dados de 2024-2025.",
+  "url": "https://mosmanlab.com.br/blog/fertilizantes-npk-brasil-seguranca-alimentar.html",
+  "datePublished": "2026-04-22",
+  "dateModified": "2026-04-22",
+  "author": {"@type": "Person","name": "Edson Mosman","url": "https://mosmanlab.com.br/professor.html"},
+  "publisher": {"@type": "Organization","name": "MosmanLAB","url": "https://mosmanlab.com.br","logo": {"@type": "ImageObject","url": "https://mosmanlab.com.br/logo.png"}},
+  "inLanguage": "pt-BR"
+}
+</script>
+<style>
+/* ── SANKEY ── */
+.sankey-dark{background:linear-gradient(135deg,#0a1f12,#0f1c2e,#0d1a0d);border-radius:14px;padding:28px 24px 24px;margin:36px 0}
+.sankey-dark-header{margin-bottom:14px}
+.sankey-dark-header h3{font-family:'Lora',serif;color:#e0f0e8;font-size:1.1rem;margin:0 0 4px}
+.sankey-dark-header p{font-size:.78rem;color:rgba(224,240,232,.6);margin:0}
+.sankey-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.stab{padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.18);font-size:.78rem;cursor:pointer;color:rgba(255,255,255,.55);background:transparent;font-family:'DM Sans',sans-serif;transition:all .15s}
+.stab.active{background:#4caf80;color:#0a1f12;border-color:transparent;font-weight:600}
+.stab:hover:not(.active){background:rgba(255,255,255,.09)}
+#sankey-svg{width:100%;display:block}
+.sankey-legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.sleg{display:flex;align-items:center;gap:4px;font-size:.72rem;color:rgba(224,240,232,.55)}
+.sleg-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.sankey-author{margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);font-size:.72rem;color:rgba(224,240,232,.42);font-style:italic;line-height:1.6}
+
+/* ── NUTRIENTE CARD ROW ── */
+.ncard-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0}
+.ncard{border-radius:12px;padding:20px 22px;border:1px solid transparent;position:relative;overflow:hidden}
+.ncard.nc-n{background:#f0fdf4;border-color:#86efac}
+.ncard.nc-p{background:#fffbeb;border-color:#fcd34d}
+.ncard.nc-k{background:#eff6ff;border-color:#93c5fd}
+.ncard-sym{font-family:'Lora',serif;font-size:2.8rem;font-weight:700;line-height:1;margin-bottom:4px;opacity:.85}
+.nc-n .ncard-sym{color:#15803d}
+.nc-p .ncard-sym{color:#b45309}
+.nc-k .ncard-sym{color:#1d4ed8}
+.ncard-name{font-weight:600;font-size:.95rem;margin-bottom:4px;color:#0f1c2e}
+.ncard-role{font-size:.8rem;color:#64748b;line-height:1.55;margin-bottom:10px}
+.ncard-stats{display:flex;gap:12px;flex-wrap:wrap}
+.ncs{text-align:center}
+.ncs .nv{font-family:'DM Mono',monospace;font-size:1.05rem;font-weight:700}
+.nc-n .ncs .nv{color:#15803d}
+.nc-p .ncs .nv{color:#b45309}
+.nc-k .ncs .nv{color:#1d4ed8}
+.ncs .nl{font-size:.68rem;color:#94a3b8;margin-top:1px}
+.ncard-badge{position:absolute;top:14px;right:14px;font-size:.65rem;font-weight:700;padding:2px 9px;border-radius:20px}
+.nc-n .ncard-badge{background:#15803d;color:#fff}
+.nc-p .ncard-badge{background:#b45309;color:#fff}
+.nc-k .ncard-badge{background:#1d4ed8;color:#fff}
+
+/* ── BRASIL VULNERABILITY BOX ── */
+.br-vuln{background:linear-gradient(135deg,#1a0a00,#0f1c2e);border-radius:14px;padding:32px 28px;margin:36px 0;color:#e2e8f0}
+.br-vuln h3{font-family:'Lora',serif;color:#fbbf24;margin-bottom:20px;font-size:1.25rem}
+.br-stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-bottom:20px}
+.br-stat{background:rgba(255,255,255,.07);border-radius:10px;padding:14px;text-align:center}
+.br-stat .num{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:4px;color:#fbbf24}
+.br-stat .num.red{color:#f87171}
+.br-stat .num.green{color:#4ade80}
+.br-stat .lbl{font-size:.72rem;color:#94a3b8;line-height:1.4}
+
+/* ── SENSIBILIDADE TABLE ── */
+.sens-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:20px 0}
+.sens-table th{background:#0f1c2e;color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.04em}
+.sens-table th:not(:first-child){text-align:center}
+.sens-table td{padding:9px 14px;border-bottom:1px solid #f1f5f9;color:#374151}
+.sens-table td:not(:first-child){text-align:center;font-family:'DM Mono',monospace;font-size:.82rem}
+.sens-table tr:nth-child(even) td{background:#fafafa}
+.sens-table tr:last-child td{border-bottom:none}
+.impact-high{color:#b91c1c;font-weight:700}
+.impact-mid{color:#c2410c;font-weight:600}
+.impact-low{color:#15803d;font-weight:600}
+
+/* ── PRICE TIMELINE ── */
+.price-event{display:grid;grid-template-columns:80px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9}
+.price-event:last-child{border-bottom:none}
+.pe-date{font-family:'DM Mono',monospace;font-size:.75rem;font-weight:700;color:#64748b;padding-top:2px}
+.pe-body .pe-title{font-weight:600;font-size:.92rem;color:#0f1c2e;margin-bottom:2px}
+.pe-body .pe-desc{font-size:.83rem;color:#64748b;line-height:1.55}
+
+@media(max-width:640px){
+  .ncard-row{grid-template-columns:1fr}
+  .br-stat-row{grid-template-columns:1fr 1fr}
+  .sankey-dark{padding:18px 14px 18px}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+<div class="back-to-blog"><a href="index.html">Voltar ao Blog</a></div>
+
+<!-- HERO -->
+<header class="article-hero" style="background:linear-gradient(135deg,#0a1f12,#1a3d1a,#0f1c2e);">
+  <div class="article-tag">Agronomia · Geopolítica · Brasil</div>
+  <h1>Fertilizantes N, P, K: a cadeia invisível que alimenta o mundo — e a vulnerabilidade que o Brasil ignora</h1>
+  <p class="hero-lead">Metade da proteína que a humanidade consome depende do processo Haber-Bosch. O Brasil importa 85% dos fertilizantes que usa, é o maior importador mundial de potássio — e cada 10% de alta no preço do insumo comprime entre 1% e 3% da margem da soja. Uma análise com dados de 2024-2025.</p>
+  <div class="byline">
+    <span>📅 Abril 2026</span>
+    <span>👨‍🏫 Prof. Edson Mosman</span>
+    <span>⏱ 18 min de leitura</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>O debate sobre segurança alimentar raramente começa pelo insumo correto. Falamos de preços, de crédito rural, de câmbio — mas a variável que mais diretamente determina se um grão vai ser colhido com custo competitivo ou não é uma que vem de fora, em navios, de países que em muitos casos são adversários geopolíticos dos nossos maiores compradores: os <strong>fertilizantes minerais</strong>.</p>
+
+<p>Nitrogênio, fósforo e potássio — os três macronutrientes que a sigla NPK resume — são o alicerce bioquímico da produção agrícola moderna. Sem eles, a produtividade das lavouras brasileiras despencaria 40–60%. Com eles, o Brasil alimenta 10% do mundo a partir de 7,5% da terra cultivada do planeta.</p>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-num" style="color:#15803d">50%</div>
+    <div class="stat-label">da proteína humana global depende do processo Haber-Bosch (síntese de amônia)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#b45309">185 Mt</div>
+    <div class="stat-label">de nutrientes NPK usados na agricultura mundial em 2022 (FAO, 2024)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#1d4ed8">85%</div>
+    <div class="stat-label">dos fertilizantes consumidos no Brasil são importados</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:#dc2626">US$ 19 bi</div>
+    <div class="stat-label">gasto pelo Brasil em importação de fertilizantes em 2023 (MDIC)</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SANKEY — DESTAQUE LOGO NO INÍCIO
+═══════════════════════════════════════════ -->
+
+<h2>Os fluxos globais de fertilizantes — quem vende e quem compra</h2>
+
+<p>Antes de mergulhar nas funções de cada nutriente, é fundamental entender <em>de onde vem</em> o fertilizante que chega ao Brasil. O diagrama abaixo — elaborado pelo <strong>Prof. Edson Mosman</strong> a partir das referências indicadas ao final — mostra os fluxos inter-regionais de N, P e K em 2024, com a espessura proporcional ao volume (Mt). Navegue pelas abas para ver cada nutriente separadamente.</p>
+
+<div class="sankey-dark">
+  <div class="sankey-dark-header">
+    <h3>Fertilizantes — Fluxos inter-regionais 2024 (Mt produto bruto)</h3>
+    <p>Diagrama elaborado pelo Prof. Edson Mosman · MosmanLAB · Fontes: FAO Food Outlook (2025), IFA Short-Term Outlook (2024–2025), IFPRI Global Fertilizer Trade (2024), UNCTAD (2024)</p>
+  </div>
+  <div class="sankey-tabs">
+    <button class="stab active" onclick="switchSankey('todos',this)">Todos (N+P+K)</button>
+    <button class="stab" onclick="switchSankey('n',this)">Nitrogênio (N)</button>
+    <button class="stab" onclick="switchSankey('p',this)">Fosfato (P)</button>
+    <button class="stab" onclick="switchSankey('k',this)">Potássio (K)</button>
+  </div>
+  <svg id="sankey-svg" viewBox="0 0 660 420" role="img">
+    <title>Sankey fluxos de fertilizantes 2024</title>
+  </svg>
+  <div class="sankey-legend" id="sankey-legend"></div>
+  <div class="sankey-author">
+    Diagrama elaborado pelo Prof. Edson Mosman a partir de: <strong style="color:rgba(224,240,232,.7)">FAO Food Outlook Jun. 2025</strong> · <strong style="color:rgba(224,240,232,.7)">IFA Short-Term Outlook 2024–2025</strong> · <strong style="color:rgba(224,240,232,.7)">IFPRI Global Fertilizer Trade 2024</strong> · <strong style="color:rgba(224,240,232,.7)">UNCTAD Fertilizer Markets 2024</strong> · Global Trade Tracker (GTT) 2025. Valores estimados em Mt (produto bruto). O Brasil aparece absorvendo volumes expressivos de K, N e P de praticamente todos os exportadores — ilustrando sua dependência estrutural.
+  </div>
+</div>
+
+<div class="callout navy">
+  <strong>O que o diagrama revela:</strong> Três fatos estruturais saltam à vista. (1) Rússia e Bielorrússia dominam tanto o nitrogênio quanto o potássio — dois insumos distintos, duas vulnerabilidades que se somam. (2) Marrocos controla o fósforo com a mesma concentração que a Arábia Saudita controla o petróleo. (3) O Brasil aparece nos três lados direitos (importador) com volumes que fazem dele o país com maior exposição absoluta à volatilidade do mercado de fertilizantes no mundo.
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NITROGÊNIO
+═══════════════════════════════════════════ -->
+
+<h2>1 — Nitrogênio (N): o motor do crescimento vegetativo</h2>
+
+<p>O nitrogênio é o macronutriente mais consumido globalmente — responde por <strong>58% de todo o uso de fertilizantes</strong> (FAO, 2024). É componente central da clorofila, de todos os aminoácidos e, portanto, de toda proteína vegetal. Sua deficiência manifesta-se como clorose nas folhas mais velhas, crescimento retardado e queda drástica na produtividade.</p>
+
+<p>O paradoxo do nitrogênio é físico: o N₂ constitui 78% da atmosfera, mas é bioquimicamente inerte para a maioria das plantas. Precisa ser "fixado" em formas assimiláveis — amônia (NH₃), nitratos (NO₃⁻) ou ureia — um processo que, na natureza, ocorre por bactérias simbióticas (como as do gênero <em>Rhizobium</em> nas leguminosas) e, industrialmente, pelo <strong>processo Haber-Bosch</strong>.</p>
+
+<div class="callout azul">
+  <strong>Haber-Bosch — a invenção que alimenta metade da humanidade:</strong> Desenvolvido nos anos 1910 por Fritz Haber e Carl Bosch, o processo combina N₂ atmosférico com H₂ (derivado principalmente de gás natural) sob 150–300 atm e 400–500°C, com catalisador de ferro. Consome cerca de <strong>5% do gás natural global</strong>, gera ~1,5% das emissões globais de CO₂ e é responsável pela nutrição de ~4 bilhões de pessoas — metade da população terrestre.
+</div>
+
+<div class="chart-block">
+  <div class="chart-title">Maiores produtores de amônia — base do nitrogênio (2024, Mt NH₃)</div>
+  <div class="chart-sub">China lidera com ~30% da produção mundial · Fonte: IHS Markit, IFA (2024)</div>
+  <div style="height:280px"><canvas id="cN_prod"></canvas></div>
+</div>
+
+<div class="chart-block">
+  <div class="chart-title">Exportadores e importadores de nitrogênio (ureia + amônia, 2024, Mt)</div>
+  <div class="chart-sub">Rússia, China e Oriente Médio dominam as exportações. Índia, Brasil e Europa são os maiores compradores · Fonte: FAO Food Outlook Jun. 2025, GTT</div>
+  <div style="height:300px"><canvas id="cN_trade"></canvas></div>
+</div>
+
+<h3>Principais formas comerciais de fertilizante nitrogenado</h3>
+
+<div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Produto</th><th class="c">Fórmula</th><th class="c">Teor N (%)</th><th class="c">Participação global</th><th>Uso típico no Brasil</th></tr>
+    </thead>
+    <tbody>
+      <tr class="dest"><td><strong>Ureia</strong></td><td class="c mono">CO(NH₂)₂</td><td class="c mono">46</td><td class="c mono">~50%</td><td>Soja, milho, pastagens — granulado ou líquido</td></tr>
+      <tr><td>Nitrato de amônio (AN)</td><td class="c mono">NH₄NO₃</td><td class="c mono">33–35</td><td class="c mono">~10%</td><td>Pouco usado no BR (restrições regulatórias)</td></tr>
+      <tr><td>Sulfato de amônio (AS)</td><td class="c mono">(NH₄)₂SO₄</td><td class="c mono">21</td><td class="c mono">~5%</td><td>Cana-de-açúcar, solos com deficiência de S</td></tr>
+      <tr><td>UAN (solução 28/32)</td><td class="c mono">mistura</td><td class="c mono">28–32</td><td class="c mono">~4%</td><td>Fertirrigação, algodão</td></tr>
+      <tr><td>MAP nitrogenado</td><td class="c mono">NH₄H₂PO₄</td><td class="c mono">11</td><td class="c mono">—</td><td>Formulações NPK — ver fósforo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FÓSFORO
+═══════════════════════════════════════════ -->
+
+<h2>2 — Fósforo (P): energia, raízes e o recurso não renovável</h2>
+
+<p>O fósforo não pode ser obtido do ar — precisa ser extraído da rocha fosfática (apatita), um recurso mineral <strong>não renovável em escala humana</strong>. Participa da síntese de ATP (adenosina trifosfato), a "moeda energética" das células, é componente estrutural de DNA e RNA, e é indispensável para o desenvolvimento radicular e a frutificação. Sua deficiência produz folhagem com coloração purpúrea e sistema radicular fraco.</p>
+
+<div class="callout amber">
+  <strong>Concentração geopolítica do fósforo:</strong> Marrocos e Saara Ocidental detêm ~70% das reservas mundiais conhecidas de rocha fosfática — estimadas em 50 bilhões de toneladas (USGS, 2024). Essa concentração é frequentemente chamada de "o Oriente Médio do fósforo". China e Egito respondem por outros 15–20%. O Brasil, apesar de ter jazidas em Goiás, Minas Gerais e outros estados, importa cerca de 55% do fósforo que consome.
+</div>
+
+<div class="chart-block">
+  <div class="chart-title">Produção de rocha fosfática por país (2024, Mt)</div>
+  <div class="chart-sub">Quatro países controlam >70% da produção · Fonte: USGS Mineral Commodity Summaries 2025, IFA</div>
+  <div style="height:280px"><canvas id="cP_prod"></canvas></div>
+</div>
+
+<div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Produto</th><th class="c">Teor P₂O₅ (%)</th><th class="c">Teor N (%)</th><th>Uso no Brasil</th></tr>
+    </thead>
+    <tbody>
+      <tr class="dest"><td><strong>DAP</strong> — Di-amônio fosfato</td><td class="c mono">46</td><td class="c mono">18</td><td>Soja, milho, algodão — granulado de base</td></tr>
+      <tr><td><strong>MAP</strong> — Mono-amônio fosfato</td><td class="c mono">48–52</td><td class="c mono">10–11</td><td>Fertirrigação, formulações NPK premium</td></tr>
+      <tr><td>TSP — Superfosfato triplo</td><td class="c mono">46</td><td class="c mono">—</td><td>Pastagens, culturas perenes</td></tr>
+      <tr><td>SSP — Superfosfato simples</td><td class="c mono">18–20</td><td class="c mono">—</td><td>Solos com deficiência de S e Ca</td></tr>
+      <tr><td>Termofosfatos (Yoorin)</td><td class="c mono">17–18</td><td class="c mono">—</td><td>Solos ácidos tropicais — produção nacional</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     POTÁSSIO
+═══════════════════════════════════════════ -->
+
+<h2>3 — Potássio (K): eficiência, qualidade e o calcanhar de Aquiles do Brasil</h2>
+
+<p>O potássio é o "nutriente da qualidade". Regula a abertura e fechamento dos estômatos (eficiência no uso da água), ativa mais de 60 enzimas, aumenta a síntese de proteínas e amidos, melhora a qualidade pós-colheita e eleva a resistência a estresses hídricos, térmicos e a doenças. Culturas como soja, cana, banana, batata e citros são particularmente exigentes em K.</p>
+
+<p>O Brasil é <strong>o maior importador mundial de potássio</strong> — e um dos mais vulneráveis. Importamos mais de 95% do potássio que consumimos, com dependência concentrada em apenas três países: Canadá (~40%), Rússia (~18%) e Bielorrússia (~17%).</p>
+
+<div class="chart-block">
+  <div class="chart-title">Maiores exportadores de potássio (MOP — Muriato de Potássio, 2024, Mt K₂O)</div>
+  <div class="chart-sub">Canadá, Rússia e Bielorrússia controlam ~75% das exportações globais · Fonte: IFA, GTT 2025</div>
+  <div style="height:280px"><canvas id="cK_exp"></canvas></div>
+</div>
+
+<div class="chart-block">
+  <div class="chart-title">Maiores importadores de potássio (2024, Mt K₂O)</div>
+  <div class="chart-sub">Brasil ocupa o 1º lugar — importa mais que China e EUA · Fonte: GTT, MDIC 2024</div>
+  <div style="height:280px"><canvas id="cK_imp"></canvas></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PRODUTORES GLOBAIS
+═══════════════════════════════════════════ -->
+
+<h2>4 — Os grandes players: produção e comércio por nutriente</h2>
+
+<div class="chart-block">
+  <div class="chart-title">Participação no comércio global por nutriente — exportações 2024 (%)</div>
+  <div class="chart-sub">Clique nas abas para alternar entre N, P e K · Fonte: IFA, FAO, GTT 2025</div>
+  <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap" id="share-tabs">
+    <button class="regiao-btn active" onclick="showShare('N',this)">Nitrogênio</button>
+    <button class="regiao-btn" onclick="showShare('P',this)">Fosfato</button>
+    <button class="regiao-btn" onclick="showShare('K',this)">Potássio</button>
+  </div>
+  <div style="height:270px"><canvas id="cShare"></canvas></div>
+</div>
+
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th>#</th><th>País / Grupo</th><th class="c">N (Mt)</th><th class="c">P₂O₅ (Mt)</th><th class="c">K₂O (Mt)</th><th class="c">Total Estim.</th><th>Posição geopolítica</th></tr></thead>
+    <tbody>
+      <tr class="dest"><td>1</td><td><strong>China</strong></td><td class="c mono">20</td><td class="c mono">18</td><td class="c mono">8</td><td class="c mono">46 Mt</td><td>Exportações N e P sujeitas a restrições ad hoc</td></tr>
+      <tr><td>2</td><td><strong>Rússia</strong></td><td class="c mono">18</td><td class="c mono">6</td><td class="c mono">12</td><td class="c mono">36 Mt</td><td>Sanções financeiras; exportações mantidas mas com prêmio de risco</td></tr>
+      <tr><td>3</td><td><strong>Canadá</strong></td><td class="c mono">2</td><td class="c mono">1</td><td class="c mono">22</td><td class="c mono">25 Mt</td><td>Principal alternativa ao K russo/bielorrusso</td></tr>
+      <tr><td>4</td><td>Oriente Médio (Qatar, Arábia Saudita, EAU)</td><td class="c mono">14</td><td class="c mono">5</td><td class="c mono">—</td><td class="c mono">19 Mt</td><td>Exposição ao Estreito de Ormuz</td></tr>
+      <tr><td>5</td><td>Marrocos (OCP)</td><td class="c mono">—</td><td class="c mono">12</td><td class="c mono">—</td><td class="c mono">12 Mt</td><td>Reservas estratégicas; planos de expansão para 2030</td></tr>
+      <tr><td>6</td><td>Bielorrússia</td><td class="c mono">—</td><td class="c mono">—</td><td class="c mono">10</td><td class="c mono">10 Mt</td><td>Sanções UE/EUA; escoamento crescente via China</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PREÇOS
+═══════════════════════════════════════════ -->
+
+<h2>5 — A montanha-russa dos preços: 2019–2025</h2>
+
+<p>Nenhuma variável do custo agrícola sofreu volatilidade comparável à dos fertilizantes nos últimos seis anos. Entre 2021 e 2022, os preços de ureia, DAP e MOP multiplicaram-se por 2,5 a 3 vezes em menos de 18 meses — resultado da conjugação de quatro choques simultâneos: alta do gás natural europeu, restrições chinesas às exportações de fósforo, sanções à Rússia e Bielorrússia, e disrupção logística pós-COVID.</p>
+
+<div class="chart-block">
+  <div class="chart-title">Evolução de preços de fertilizantes 2019–2025 (USD/tonelada)</div>
+  <div class="chart-sub">Ureia FOB Oriente Médio · DAP FOB Tampa · MOP CFR Brasil · Fonte: CRU/Fertilizer Week, World Bank Commodity Prices</div>
+  <div style="height:300px"><canvas id="cPrice"></canvas></div>
+</div>
+
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Produto</th><th class="c">Mínimo 2019–20</th><th class="c">Pico 2022</th><th class="c">Preço Dez/2024</th><th class="c">Var. pico→atual</th></tr></thead>
+    <tbody>
+      <tr><td>Ureia FOB (USD/t)</td><td class="c mono">180–200</td><td class="c mono">801</td><td class="c mono">290</td><td class="c mono dest3">−64%</td></tr>
+      <tr><td>DAP FOB Tampa (USD/t)</td><td class="c mono">270–300</td><td class="c mono">1.132</td><td class="c mono">450</td><td class="c mono dest3">−60%</td></tr>
+      <tr class="dest2"><td>MOP CFR Brasil (USD/t)</td><td class="c mono">200–210</td><td class="c mono">712</td><td class="c mono">255</td><td class="c mono">−64%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout verde">
+  <strong>Preços em 2025:</strong> O índice de preços de fertilizantes do Banco Mundial retornou à banda de 2015–2019 no 2º semestre de 2024, impulsionado pela normalização do gás natural e pelo aumento de oferta (novas unidades na Rússia, expansão no Marrocos). Ureia em ~USD 285–310/t, DAP em ~USD 440–470/t, MOP em ~USD 250–270/t. O risco de reaceleração permanece — qualquer crise no Mar Negro ou restrição chinesa pode provocar novos picos em 90–120 dias.
+</div>
+
+<!-- ═══════════════════════════════════════════
+     BRASIL — SEÇÃO ESPECIAL
+═══════════════════════════════════════════ -->
+
+<h2>6 — O Brasil: campeão agrícola com 85% de dependência externa</h2>
+
+<p>O Brasil ocupa uma posição paradoxal no cenário global: é o 2º maior exportador mundial de produtos agrícolas (US$ 166 bilhões em 2023, MDIC) e, simultaneamente, um dos países mais dependentes de insumos importados. Essa assimetria não é coincidência — é o resultado de décadas de expansão da fronteira agrícola sobre solos que, nativos, são ácidos e pobres em nutrientes. O Cerrado, que sustenta a maior parte da produção de soja e milho, só se tornou produtivo graças à aplicação intensiva de calcário e fertilizantes.</p>
+
+<div class="br-vuln">
+  <h3>🇧🇷 Brasil: os números da dependência (2023–2024)</h3>
+  <div class="br-stat-row">
+    <div class="br-stat"><div class="num red">85%</div><div class="lbl">dos fertilizantes consumidos são importados</div></div>
+    <div class="br-stat"><div class="num red">#1</div><div class="lbl">maior importador mundial de potássio</div></div>
+    <div class="br-stat"><div class="num" style="color:#fbbf24">43,7 Mt</div><div class="lbl">consumo total de fertilizantes 2023 (ANDA)</div></div>
+    <div class="br-stat"><div class="num red">US$ 19 bi</div><div class="lbl">gasto em importação em 2023 (MDIC)</div></div>
+    <div class="br-stat"><div class="num" style="color:#fbbf24">3 países</div><div class="lbl">Rússia, Canada e Bielorrússia = 75% do K importado</div></div>
+    <div class="br-stat"><div class="num green">~2 Mt</div><div class="lbl">capacidade doméstica de K (Autazes/AM — 2030+)</div></div>
+  </div>
+  <p style="font-size:.82rem;color:#94a3b8;line-height:1.6">Fontes: ANDA (Associação Nacional para Difusão de Adubos) — Anuário 2023/2024; MDIC — Balança Comercial 2023; IBGE — Levantamento Sistemático da Produção Agrícola 2024.</p>
+</div>
+
+<h3>Participação dos fertilizantes no custo de produção por cultura</h3>
+
+<p>O dado mais revelador da dependência brasileira não é o volume importado — é quanto do custo de cada lavoura está nas mãos de exportadores estrangeiros. A tabela abaixo compila as estimativas de custo de produção por cultura, com base em levantamentos da <strong>Embrapa, CONAB e Imea 2023–2024</strong>:</p>
+
+<div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Cultura</th>
+        <th class="c">Custo total médio</th>
+        <th class="c">Gasto c/ fertiliz.</th>
+        <th class="c">% do custo total</th>
+        <th class="c">Nota</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="dest"><td><strong>Soja</strong> (safra 23/24, MT)</td><td class="c mono">R$ 5.200/ha</td><td class="c mono">R$ 1.560/ha</td><td class="c mono">30%</td><td class="c">Alta demanda de K e P</td></tr>
+      <tr><td><strong>Milho 2ª safra</strong> (safrinha, MT)</td><td class="c mono">R$ 4.800/ha</td><td class="c mono">R$ 1.344/ha</td><td class="c mono">28%</td><td class="c">Alta demanda de N</td></tr>
+      <tr><td><strong>Cana-de-açúcar</strong> (SP, reforma)</td><td class="c mono">R$ 9.400/ha</td><td class="c mono">R$ 1.880/ha</td><td class="c mono">20%</td><td class="c">Alta demanda de K</td></tr>
+      <tr><td><strong>Algodão</strong> (MT)</td><td class="c mono">R$ 12.500/ha</td><td class="c mono">R$ 3.875/ha</td><td class="c mono">31%</td><td class="c">Maior dose por ha</td></tr>
+      <tr><td><strong>Café</strong> (MG, arábica)</td><td class="c mono">R$ 14.000/ha</td><td class="c mono">R$ 3.360/ha</td><td class="c mono">24%</td><td class="c">Nutrição foliar intensiva</td></tr>
+      <tr><td><strong>Milho 1ª safra</strong> (PR)</td><td class="c mono">R$ 6.100/ha</td><td class="c mono">R$ 1.464/ha</td><td class="c mono">24%</td><td class="c">Menos intensivo que 2ª</td></tr>
+      <tr><td><strong>Trigo</strong> (PR/RS)</td><td class="c mono">R$ 3.800/ha</td><td class="c mono">R$ 836/ha</td><td class="c mono">22%</td><td class="c">Menor produtividade/ha</td></tr>
+    </tbody>
+  </table>
+</div>
+<p style="font-size:.75rem;color:#94a3b8;margin-top:-14px">Fontes: Embrapa Soja — Custos de Produção 2024; CONAB — Custos de Produção Safra 2023/24; Imea (Instituto Mato-Grossense de Economia Agropecuária); CNA/Ipea.</p>
+
+<h3>Sensibilidade: o que acontece com a margem quando o fertilizante sobe?</h3>
+
+<p>A tabela abaixo mostra o impacto de um aumento de 10% no preço dos fertilizantes sobre a margem operacional de cada cultura, assumindo preços de produto constantes (câmbio e commodity price fixos). O modelo considera a participação do fertilizante no custo total e a margem operacional típica de cada lavoura nas condições de 2023–2024.</p>
+
+<div class="chart-block">
+  <div class="chart-title">Sensibilidade da margem operacional a variações no preço do fertilizante</div>
+  <div class="chart-sub">Impacto em pontos percentuais na margem operacional para cada +10% no preço do fertilizante · Modelo: ΔMargem = −(participação_fertilizante × Δpreço × (1 − margem_atual)) / margem_atual</div>
+  <div style="height:280px"><canvas id="cSens"></canvas></div>
+</div>
+
+<table class="sens-table">
+  <thead>
+    <tr>
+      <th>Cultura</th>
+      <th>% Fertiliz. no custo</th>
+      <th>Margem Op. típica</th>
+      <th>Impacto +10% fertiliz.</th>
+      <th>Impacto +30% fertiliz.</th>
+      <th>Ponto de equilíbrio*</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Algodão</strong></td><td>31%</td><td>12–18%</td><td class="impact-high">−1,7 a −2,6 p.p.</td><td class="impact-high">−5,1 a −7,8 p.p.</td><td>+95–135%</td></tr>
+    <tr><td><strong>Soja</strong></td><td>30%</td><td>10–20%</td><td class="impact-high">−1,5 a −3,0 p.p.</td><td class="impact-high">−4,5 a −9,0 p.p.</td><td>+33–67%</td></tr>
+    <tr><td><strong>Milho 2ª safra</strong></td><td>28%</td><td>8–15%</td><td class="impact-high">−1,5 a −2,8 p.p.</td><td class="impact-high">−4,5 a −8,4 p.p.</td><td>+29–54%</td></tr>
+    <tr><td><strong>Milho 1ª safra</strong></td><td>24%</td><td>10–18%</td><td class="impact-mid">−1,3 a −2,4 p.p.</td><td class="impact-mid">−3,9 a −7,2 p.p.</td><td>+42–75%</td></tr>
+    <tr><td><strong>Café</strong></td><td>24%</td><td>15–30%</td><td class="impact-mid">−0,8 a −1,6 p.p.</td><td class="impact-mid">−2,4 a −4,8 p.p.</td><td>+63–125%</td></tr>
+    <tr><td><strong>Cana-de-açúcar</strong></td><td>20%</td><td>12–25%</td><td class="impact-mid">−0,8 a −1,7 p.p.</td><td class="impact-mid">−2,4 a −5,0 p.p.</td><td>+60–125%</td></tr>
+    <tr><td><strong>Trigo</strong></td><td>22%</td><td>5–12%</td><td class="impact-high">−1,0 a −2,2 p.p.</td><td class="impact-high">−3,0 a −6,6 p.p.</td><td>+23–55%</td></tr>
+  </tbody>
+</table>
+<p style="font-size:.75rem;color:#94a3b8;margin-top:-14px">* Alta de fertilizante necessária para zerar a margem operacional (pior caso). Modelo simplificado — não considera ajuste de câmbio nem substituição de produto. Baseado em: Embrapa, CONAB, Imea (2024).</p>
+
+<div class="callout verm">
+  <strong>O pior cenário recente aconteceu:</strong> Entre agosto de 2021 e março de 2022, o preço da ureia no Brasil subiu de ~USD 320/t para ~USD 800/t (+150%), o DAP de ~USD 400/t para ~USD 1.100/t (+175%), e o MOP de ~USD 240/t para ~USD 650/t (+171%). Para um produtor de soja com margem de 15%, aquele ciclo de alta <strong>eliminou toda a margem operacional</strong> e forçou redefinições de custo de produção que impactaram contratos de hedge e operações de crédito.
+</div>
+
+<h3>Origem das importações brasileiras: quem vende o que ao Brasil</h3>
+
+<div class="chart-block">
+  <div class="chart-title">Origem das importações de fertilizantes pelo Brasil (2023, % por volume)</div>
+  <div class="chart-sub">Distribuição por tipo de nutriente e país de origem · Fonte: MDIC/Comex Stat 2023, ANDA 2024</div>
+  <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap" id="br-import-tabs">
+    <button class="regiao-btn active" onclick="showBRImport('k',this)">Potássio</button>
+    <button class="regiao-btn" onclick="showBRImport('n',this)">Nitrogênio</button>
+    <button class="regiao-btn" onclick="showBRImport('p',this)">Fosfato</button>
+  </div>
+  <div style="height:270px"><canvas id="cBRimport"></canvas></div>
+</div>
+
+<h3>Por que o Brasil não produz mais?</h3>
+
+<p>A dependência estrutural do Brasil não é falta de recursos naturais — é resultado de escolhas históricas e de economias de escala da indústria global. Para o nitrogênio, o insumo-chave é o gás natural: o Brasil tem reservas (pré-sal), mas ainda carece de infraestrutura petroquímica integrada para transformar gás em amônia competitivamente. Para o fósforo, há reservas em GO, MG e TO — a produção nacional da Mosaic e Galvani cobre ~45% do consumo. Para o potássio, a situação é a mais crítica: as únicas jazidas economicamente viáveis identificadas estão em Autazes (AM) e Nova Olinda (AM) — com produção prevista para 2030–2035 a um custo de capital estimado em US$ 5–7 bilhões.</p>
+
+<!-- ═══════════════════════════════════════════
+     CONCLUSÃO
+═══════════════════════════════════════════ -->
+
+<div class="conclusao">
+  <h2>O que a cadeia NPK nos diz sobre o Brasil — cinco sínteses</h2>
+  <ul>
+    <li><strong>A dependência de fertilizantes é a maior vulnerabilidade silenciosa do agronegócio brasileiro.</strong> Enquanto debatemos câmbio e política monetária, um único evento geopolítico no Mar Negro ou no Estreito de Ormuz pode elevar o custo de produção da soja em 15–20% em 90 dias — sem qualquer contrapartida de política pública disponível no curto prazo.</li>
+    <li><strong>O potássio é o risco mais agudo — e o mais negligenciado.</strong> Importar 95% de um único insumo de três países com diferentes graus de instabilidade geopolítica (Rússia, Bielorrússia, Canadá com disputa de tarifas) é uma vulnerabilidade que nenhuma seguradora de portfólio aceitaria. O projeto Autazes precisa ser tratado como infraestrutura estratégica, não como empreendimento privado comum.</li>
+    <li><strong>A sensibilidade da margem agrícola ao preço do fertilizante é maior do que os modelos de crédito rural assumem.</strong> Bancos que financiam a safra com modelos de custo baseados em preços de fertilizante históricos estão sistematicamente sub-estimando o risco de inadimplência em anos de pico de preço.</li>
+    <li><strong>A amônia verde pode ser uma oportunidade, não apenas um custo.</strong> O Brasil tem condições naturais excepcionais para produzir amônia verde (eletrolítica, via H₂ renovável) a custos competitivos — irradiação solar, ventos do Nordeste, disponibilidade hídrica no Centro-Oeste. Ser exportador de amônia verde em 2040 não é ficção científica — mas exige decisão de política industrial hoje.</li>
+    <li><strong>A física e a química não negociam.</strong> Não existe transição para agricultura de baixo carbono sem fertilizantes — a questão é se eles serão sintéticos fósseis, sintéticos verdes, orgânicos reciclados ou alguma combinação. Quem dominar a produção de amônia de baixo carbono dominará a proteína do século XXI.</li>
+  </ul>
+</div>
+
+<div class="related-articles">
+  <div class="related-articles-title">📚 Leia também</div>
+  <ul>
+    <li><a href="estreito-ormuz-fluxo-petroleo-geopolitica.html">Estreito de Ormuz: o gargalo por onde passa 20% do petróleo mundial</a></li>
+    <li><a href="quatro-pilares-economia-real-amonia-concreto-aco-plastico.html">Os Quatro Pilares da Economia Real: amônia, concreto, aço e plástico</a></li>
+    <li><a href="biocombustiveis-brasil-mundo-eroi-co2.html">Biocombustíveis no Brasil e no Mundo: EROI, CO₂ e a lógica do etanol</a></li>
+    <li><a href="densidade-energetica-transicao-energetica.html">Densidade Energética: o desafio físico que ninguém menciona</a></li>
+    <li><a href="emissoes-desmatamento-brasil-seeg.html">Emissões e Desmatamento no Brasil: o que o SEEG revela</a></li>
+  </ul>
+</div>
+
+<div class="refs-section">
+  <div class="refs-title">Fontes e Referências</div>
+  <ul class="refs-list">
+    <li><strong>FAO</strong> — Food Outlook: Biannual Report on Global Food Markets. Rome: FAO, June 2025. <a href="https://openknowledge.fao.org" target="_blank">openknowledge.fao.org</a></li>
+    <li><strong>FAO</strong> — World Food and Agriculture — Statistical Yearbook 2024. Rome: FAO, 2024. <a href="https://www.fao.org/faostat/" target="_blank">fao.org/faostat</a></li>
+    <li><strong>IFA</strong> — International Fertilizer Association. Short-Term Fertilizer Outlook 2024–2025. Paris: IFA, Feb. 2025. <a href="https://www.fertilizer.org" target="_blank">fertilizer.org</a></li>
+    <li><strong>IFPRI</strong> — Global Fertilizer Trade 2021–2023: What Happened After War-Related Price Spikes. Washington: IFPRI, Sep. 2024. <a href="https://www.ifpri.org" target="_blank">ifpri.org</a></li>
+    <li><strong>Chowdhury, R.B. et al.</strong> — "Low-carbon ammonia production is essential for resilient and sustainable agriculture." <em>Nature Food</em>, Feb. 2025. DOI: 10.1038/s43016-025-01125-y</li>
+    <li><strong>USGS</strong> — Mineral Commodity Summaries 2025: Phosphate Rock. U.S. Geological Survey. <a href="https://www.usgs.gov/centers/national-minerals-information-center" target="_blank">usgs.gov</a></li>
+    <li><strong>ANDA</strong> — Associação Nacional para Difusão de Adubos. Anuário Estatístico do Setor de Fertilizantes 2023. São Paulo: ANDA, 2024.</li>
+    <li><strong>MDIC</strong> — Ministério do Desenvolvimento, Indústria, Comércio e Serviços. Comex Stat — Balança Comercial 2023. <a href="https://comexstat.mdic.gov.br" target="_blank">comexstat.mdic.gov.br</a></li>
+    <li><strong>Embrapa</strong> — Embrapa Soja / Embrapa Milho e Sorgo — Custo de Produção de Soja e Milho 2023/2024. Londrina: Embrapa, 2024.</li>
+    <li><strong>CONAB</strong> — Custos de Produção: Safra 2023/24. Brasília: CONAB, 2024. <a href="https://www.conab.gov.br" target="_blank">conab.gov.br</a></li>
+    <li><strong>Imea</strong> — Instituto Mato-Grossense de Economia Agropecuária. Custos de Produção — Soja e Milho Safrinha 2024. <a href="https://www.imea.com.br" target="_blank">imea.com.br</a></li>
+    <li><strong>UNCTAD</strong> — Recent Developments in Global Fertilizer Markets. Geneva: UNCTAD, Oct. 2024. <a href="https://unctad.org" target="_blank">unctad.org</a></li>
+    <li><strong>OECD-FAO</strong> — Agricultural Outlook 2024–2033. Paris: OECD Publishing, 2024. DOI: 10.1787/c4c30e7b-en</li>
+    <li><strong>Global Trade Tracker (GTT)</strong> — Fertilizer Trade Data 2024–2025. Kehrsatz: GTT, 2025. <a href="https://www.globaltradetracker.com" target="_blank">globaltradetracker.com</a></li>
+  </ul>
+</div>
+
+</article>
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  <p>© 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+  <p style="margin-top:6px">Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo — SP</p>
+</footer>
+
+<script>
+const gc='rgba(0,0,0,.06)', tc='#9ca3af';
+
+// ── SANKEY ──────────────────────────────────────────────
+const SDATA = {
+  todos:{flows:[
+    ['Rússia/Belarus','Europa',18,'#4CAF80'],['Rússia/Belarus','Brasil',9,'#4CAF80'],
+    ['Rússia/Belarus','Índia',7,'#4CAF80'],['Rússia/Belarus','Am. Norte',6,'#4CAF80'],
+    ['Rússia/Belarus','China',4,'#4CAF80'],
+    ['China','Índia',6,'#EF9F27'],['China','Brasil',5,'#EF9F27'],
+    ['China','Am. Norte',4,'#EF9F27'],['China','Ásia-Pac.',5,'#EF9F27'],
+    ['Or. Médio','Índia',8,'#E24B4A'],['Or. Médio','Brasil',6,'#E24B4A'],
+    ['Or. Médio','Europa',5,'#E24B4A'],['Or. Médio','Ásia-Pac.',4,'#E24B4A'],
+    ['Canadá','Am. Norte',12,'#378ADD'],['Canadá','Brasil',4,'#378ADD'],['Canadá','China',5,'#378ADD'],
+    ['Marrocos/Áfr.','Índia',4,'#9E6BCF'],['Marrocos/Áfr.','Brasil',3,'#9E6BCF'],['Marrocos/Áfr.','Europa',3,'#9E6BCF'],
+  ]},
+  n:{flows:[
+    ['Rússia','Europa',10,'#4CAF80'],['Rússia','Brasil',5,'#4CAF80'],
+    ['Rússia','Am. Norte',4,'#4CAF80'],['Rússia','Índia',4,'#4CAF80'],
+    ['China','Índia',5,'#EF9F27'],['China','Brasil',4,'#EF9F27'],['China','Ásia-Pac.',4,'#EF9F27'],
+    ['Or. Médio','Índia',6,'#E24B4A'],['Or. Médio','Brasil',4,'#E24B4A'],['Or. Médio','Europa',3,'#E24B4A'],
+    ['Egito','Europa',3,'#9E6BCF'],['Egito','Brasil',2,'#9E6BCF'],
+    ['Trinidad','Am. Norte',2,'#378ADD'],
+  ]},
+  p:{flows:[
+    ['China','Índia',4,'#EF9F27'],['China','Ásia-Pac.',3,'#EF9F27'],['China','Brasil',3,'#EF9F27'],
+    ['Marrocos','Europa',4,'#9E6BCF'],['Marrocos','Índia',3,'#9E6BCF'],['Marrocos','Brasil',2,'#9E6BCF'],
+    ['Rússia','Brasil',2,'#4CAF80'],['Rússia','Europa',2,'#4CAF80'],
+    ['Ar.Saudita','Índia',2,'#E24B4A'],['Ar.Saudita','Ásia-Pac.',2,'#E24B4A'],
+    ['EUA','Brasil',2,'#378ADD'],
+  ]},
+  k:{flows:[
+    ['Canadá','Am. Norte',10,'#378ADD'],['Canadá','Brasil',5,'#378ADD'],['Canadá','China',4,'#378ADD'],
+    ['Bielorrússia','China',5,'#E24B4A'],['Bielorrússia','Brasil',3,'#E24B4A'],['Bielorrússia','Índia',3,'#E24B4A'],
+    ['Rússia','Brasil',3,'#4CAF80'],['Rússia','China',3,'#4CAF80'],['Rússia','Europa',3,'#4CAF80'],
+    ['Israel/Jord.','Índia',2,'#9E6BCF'],['Israel/Jord.','Ásia-Pac.',2,'#9E6BCF'],
+  ]}
+};
+const SCOLORS={
+  'Rússia/Belarus':'#4CAF80','Rússia':'#4CAF80','Bielorrússia':'#6BC49A',
+  'China':'#EF9F27','Canadá':'#378ADD','Or. Médio':'#E24B4A','Ar.Saudita':'#E07070',
+  'Marrocos/Áfr.':'#9E6BCF','Marrocos':'#9E6BCF','Egito':'#BE8FE0',
+  'Trinidad':'#5BA3D9','EUA':'#6094CC','Israel/Jord.':'#C49E3A'
+};
+
+function switchSankey(key, btn){
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  drawSankey(key);
+}
+function drawSankey(key){
+  const flows=SDATA[key].flows;
+  const eT={},iT={};
+  flows.forEach(([f,t,v])=>{eT[f]=(eT[f]||0)+v;iT[t]=(iT[t]||0)+v;});
+  const exp=Object.entries(eT).sort((a,b)=>b[1]-a[1]);
+  const imp=Object.entries(iT).sort((a,b)=>b[1]-a[1]);
+  const tot=exp.reduce((s,[,v])=>s+v,0);
+  const SH=420,DH=360,SC=DH/tot*0.82,LX=8,RX=510,BW=118,GP=9,MH=7;
+  let uH=exp.reduce((s,[,v])=>s+Math.max(v*SC,MH),0)+GP*(exp.length-1);
+  let sy=(SH-uH)/2; const ep={}; let cy=sy;
+  exp.forEach(([n,v])=>{const h=Math.max(v*SC,MH);ep[n]={y:cy,h,mid:cy+h/2};cy+=h+GP;});
+  let uH2=imp.reduce((s,[,v])=>s+Math.max(v*SC,MH),0)+GP*(imp.length-1);
+  let sy2=(SH-uH2)/2; const ip={}; let cy2=sy2;
+  imp.forEach(([n,v])=>{const h=Math.max(v*SC,MH);ip[n]={y:cy2,h,mid:cy2+h/2};cy2+=h+GP;});
+  const eu={},iu={};
+  exp.forEach(([n])=>eu[n]=0);imp.forEach(([n])=>iu[n]=0);
+  let paths='',bars='',lbls='',legI={};
+  flows.forEach(([from,to,val,col])=>{
+    if(!ep[from]||!ip[to])return;
+    const fw=Math.max(val*SC*0.9,1.5);
+    const ey=ep[from].y+eu[from]+fw/2,iy=ip[to].y+iu[to]+fw/2;
+    eu[from]+=fw+1;iu[to]+=fw+1;
+    const x1=LX+BW,x2=RX,cx1=x1+(x2-x1)*0.42,cx2=x1+(x2-x1)*0.58;
+    paths+=`<path d="M${x1},${ey} C${cx1},${ey} ${cx2},${iy} ${x2},${iy}" fill="none" stroke="${col}55" stroke-width="${fw}" stroke-linecap="round"/>`;
+    legI[from]=col;
+  });
+  exp.forEach(([name,val])=>{
+    const{y,h}=ep[name];const col=SCOLORS[name]||'#555';
+    bars+=`<rect x="${LX}" y="${y}" width="${BW}" height="${h}" rx="3" fill="${col}" opacity=".92"/>`;
+    const ly=y+h/2,fs=h>=15?11:9;
+    bars+=`<text x="${LX+BW/2}" y="${ly}" text-anchor="middle" dominant-baseline="central" font-size="${fs}" font-weight="600" fill="white" font-family="DM Sans,sans-serif">${name}</text>`;
+    bars+=`<text x="${LX-3}" y="${ly}" text-anchor="end" dominant-baseline="central" font-size="9" fill="#7a9e88" font-family="DM Sans,sans-serif">${val}Mt</text>`;
+  });
+  imp.forEach(([name,val])=>{
+    const{y,h}=ip[name];
+    bars+=`<rect x="${RX}" y="${y}" width="${BW}" height="${h}" rx="3" fill="#1e3d2a" opacity=".9"/>`;
+    const ly=y+h/2,fs=h>=15?11:9;
+    bars+=`<text x="${RX+BW/2}" y="${ly}" text-anchor="middle" dominant-baseline="central" font-size="${fs}" font-weight="600" fill="#c8e8d8" font-family="DM Sans,sans-serif">${name}</text>`;
+    bars+=`<text x="${RX+BW+3}" y="${ly}" text-anchor="start" dominant-baseline="central" font-size="9" fill="#7a9e88" font-family="DM Sans,sans-serif">${val}Mt</text>`;
+  });
+  lbls+=`<text x="${LX+BW/2}" y="16" text-anchor="middle" font-size="11" font-weight="600" fill="#8ac8a8" font-family="DM Sans,sans-serif">Exportações</text>`;
+  lbls+=`<text x="${RX+BW/2}" y="16" text-anchor="middle" font-size="11" font-weight="600" fill="#8ac8a8" font-family="DM Sans,sans-serif">Importações</text>`;
+  document.getElementById('sankey-svg').innerHTML=paths+bars+lbls;
+  document.getElementById('sankey-legend').innerHTML=Object.entries(legI).map(([n,c])=>
+    `<span class="sleg"><span class="sleg-dot" style="background:${c}"></span>${n}</span>`).join('');
+}
+drawSankey('todos');
+
+// ── NITROGÊNIO PRODUÇÃO ──────────────────────────────────
+new Chart(document.getElementById('cN_prod'),{
+  type:'bar',
+  data:{
+    labels:['China','Rússia','Índia','EUA','Indonésia','Qatar','Trinid.','Paquistão','Nigéria','Outros'],
+    datasets:[{
+      data:[56,18,15,13,6,5,5,4,3,28],
+      backgroundColor:['#2d7a4f','#4caf80','#7dd4a8','#a8e6c0','#c5f0d4','#d8f7e4','#e4faf0','#edfdf6','#f4fef9','#b0c8b8'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} Mt NH₃`}}},
+    scales:{
+      y:{grid:{color:gc},ticks:{color:tc,callback:v=>v+' Mt'}},
+      x:{grid:{display:false},ticks:{color:'#374151',font:{size:11}}}
+    }
+  }
+});
+
+// ── NITROGÊNIO COMÉRCIO ──────────────────────────────────
+new Chart(document.getElementById('cN_trade'),{
+  type:'bar',
+  data:{
+    labels:['Rússia','China','Or. Médio','Egito','EUA','Nigeria','Trinidad','— ','Índia','Brasil','Europa','Am. Norte','Ásia-Pac.','África'],
+    datasets:[{
+      label:'Exportações (Mt)',
+      data:[18,14,12,4,4,3,2,0,0,0,0,0,0,0],
+      backgroundColor:'#2d7a4f',borderRadius:4,borderSkipped:false
+    },{
+      label:'Importações (Mt)',
+      data:[0,0,0,0,0,0,0,0,14,10,18,8,6,5],
+      backgroundColor:'#1d4ed8',borderRadius:4,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw} Mt`}}},
+    scales:{
+      y:{grid:{color:gc},ticks:{color:tc,callback:v=>v+' Mt'}},
+      x:{grid:{display:false},ticks:{color:'#374151',font:{size:10},maxRotation:35}}
+    }
+  }
+});
+
+// ── FOSFATO PRODUÇÃO ──────────────────────────────────
+new Chart(document.getElementById('cP_prod'),{
+  type:'bar',
+  data:{
+    labels:['China','Marrocos','EUA','Rússia','Jordânia','Egito','Brasil','Arábia Saud.','Outros'],
+    datasets:[{
+      data:[85,40,22,14,9,8,7,6,12],
+      backgroundColor:['#b45309','#d97706','#f59e0b','#fbbf24','#fcd34d','#fde68a','#fef3c7','#fffbeb','#d4a030'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} Mt`}}},
+    scales:{
+      y:{grid:{color:gc},ticks:{color:tc,callback:v=>v+' Mt'}},
+      x:{grid:{display:false},ticks:{color:'#374151',font:{size:11}}}
+    }
+  }
+});
+
+// ── POTÁSSIO EXPORTADORES ──────────────────────────────────
+new Chart(document.getElementById('cK_exp'),{
+  type:'bar',
+  data:{
+    labels:['Canadá','Rússia','Bielorrússia','Israel','Jordânia','Alemanha','Chile','Outros'],
+    datasets:[{
+      data:[22,12,11,3,2,2,1,5],
+      backgroundColor:['#1d4ed8','#2d7a4f','#4caf80','#9E6BCF','#c49e3a','#64748b','#0891b2','#b0bec5'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} Mt K₂O`}}},
+    scales:{
+      y:{grid:{color:gc},ticks:{color:tc,callback:v=>v+' Mt'}},
+      x:{grid:{display:false},ticks:{color:'#374151',font:{size:11}}}
+    }
+  }
+});
+
+// ── POTÁSSIO IMPORTADORES ──────────────────────────────────
+new Chart(document.getElementById('cK_imp'),{
+  type:'bar',
+  data:{
+    labels:['🇧🇷 Brasil','China','EUA','Índia','Indonésia','Malásia','Europa Leste','Outros'],
+    datasets:[{
+      data:[12,10,8,7,3,2,5,4],
+      backgroundColor:d=>d.dataIndex===0?'#dc2626':'#1d4ed8',
+      backgroundColor:['#dc2626','#1d4ed8','#2563eb','#3b82f6','#60a5fa','#93c5fd','#bfdbfe','#dbeafe'],
+      borderRadius:5,borderSkipped:false
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} Mt K₂O`}}},
+    scales:{
+      y:{grid:{color:gc},ticks:{color:tc,callback:v=>v+' Mt'}},
+      x:{grid:{display:false},ticks:{color:'#374151',font:{size:11}}}
+    }
+  }
+});
+
+// ── SHARE CHART ──────────────────────────────────
+const shareData={
+  N:{labels:['Rússia','China','Or. Médio','Egito','EUA','Nigéria','Outros'],
+     data:[26,20,17,6,6,4,21],
+     colors:['#4caf80','#ef9f27','#e24b4a','#9e6bcf','#1e5fa8','#c49e3a','#73726c']},
+  P:{labels:['China','Marrocos','EUA','Rússia','Arábia Saud.','Jordânia','Outros'],
+     data:[28,22,12,10,6,5,17],
+     colors:['#ef9f27','#9e6bcf','#1e5fa8','#4caf80','#e24b4a','#c49e3a','#73726c']},
+  K:{labels:['Canadá','Rússia','Bielorrússia','Israel','Jordânia','Alemanha','Outros'],
+     data:[40,18,17,6,4,4,11],
+     colors:['#1e5fa8','#4caf80','#6bc49a','#9e6bcf','#c49e3a','#73726c','#b0bec5']}
+};
+let shareChart=null;
+function showShare(k,btn){
+  document.querySelectorAll('#share-tabs .regiao-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const d=shareData[k];
+  if(shareChart)shareChart.destroy();
+  shareChart=new Chart(document.getElementById('cShare'),{
+    type:'doughnut',
+    data:{labels:d.labels,datasets:[{data:d.data,backgroundColor:d.colors,borderWidth:2,borderColor:'#fff'}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'right',labels:{font:{size:11},color:'#374151',boxWidth:12,padding:10}},
+        tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw}%`}}
+      },
+      cutout:'55%'
+    }
+  });
+}
+showShare('N',document.querySelector('#share-tabs .regiao-btn.active'));
+
+// ── PRICE CHART ──────────────────────────────────
+const meses=['Jan/19','Jul/19','Jan/20','Jul/20','Jan/21','Jul/21','Jan/22','Jul/22','Jan/23','Jul/23','Jan/24','Jul/24','Dez/24'];
+new Chart(document.getElementById('cPrice'),{
+  type:'line',
+  data:{labels:meses,datasets:[
+    {label:'Ureia FOB (USD/t)',data:[220,210,200,190,250,320,600,780,450,310,260,270,290],
+     borderColor:'#2d7a4f',backgroundColor:'rgba(45,122,79,.08)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5},
+    {label:'DAP FOB Tampa (USD/t)',data:[300,290,300,290,380,480,850,1100,650,480,420,430,450],
+     borderColor:'#b45309',backgroundColor:'rgba(180,83,9,.06)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5},
+    {label:'MOP CFR Brasil (USD/t)',data:[210,205,200,205,250,300,680,700,400,280,240,250,255],
+     borderColor:'#1d4ed8',backgroundColor:'rgba(29,78,216,.06)',fill:true,tension:.4,pointRadius:3,borderWidth:2.5},
+  ]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      tooltip:{callbacks:{label:c=>` ${c.dataset.label}: USD ${c.raw}`}}
+    },
+    scales:{
+      y:{grid:{color:gc},ticks:{color:tc,callback:v=>'USD '+v}},
+      x:{grid:{display:false},ticks:{color:tc,maxRotation:35,font:{size:10}}}
+    }
+  }
+});
+
+// ── SENSIBILIDADE ──────────────────────────────────
+new Chart(document.getElementById('cSens'),{
+  type:'bar',
+  data:{
+    labels:['Algodão (31%)','Soja (30%)','Milho 2ª (28%)','Milho 1ª (24%)','Trigo (22%)','Café (24%)','Cana (20%)'],
+    datasets:[
+      {label:'Impacto na margem (+10% fertilizante, pior caso)',data:[-2.6,-3.0,-2.8,-2.4,-2.2,-1.6,-1.7],
+       backgroundColor:['#dc2626','#dc2626','#dc2626','#c2410c','#c2410c','#15803d','#15803d'],
+       borderRadius:4,borderSkipped:false},
+      {label:'Impacto na margem (+10% fertilizante, melhor caso)',data:[-1.7,-1.5,-1.5,-1.3,-1.0,-0.8,-0.8],
+       backgroundColor:['rgba(220,38,38,.35)','rgba(220,38,38,.35)','rgba(220,38,38,.35)','rgba(194,65,12,.35)','rgba(194,65,12,.35)','rgba(21,128,61,.35)','rgba(21,128,61,.35)'],
+       borderRadius:4,borderSkipped:false}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{
+      legend:{labels:{font:{size:11},color:'#374151',boxWidth:14}},
+      tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw} p.p.`}}
+    },
+    scales:{
+      x:{grid:{color:gc},ticks:{color:tc,callback:v=>v+' p.p.'}},
+      y:{grid:{display:false},ticks:{color:'#374151',font:{size:11}}}
+    }
+  }
+});
+
+// ── BR IMPORTAÇÕES ──────────────────────────────────
+const brData={
+  k:{labels:['Canadá','Rússia','Bielorrússia','Israel','Jordânia','Outros'],
+     data:[40,18,17,8,5,12],
+     colors:['#1d4ed8','#2d7a4f','#4caf80','#9e6bcf','#c49e3a','#73726c']},
+  n:{labels:['Rússia','Or. Médio','China','Egito','Trinidad','Outros'],
+     data:[32,24,18,10,8,8],
+     colors:['#2d7a4f','#e24b4a','#ef9f27','#9e6bcf','#1d4ed8','#73726c']},
+  p:{labels:['Marrocos','China','EUA','Rússia','Arábia Saud.','Outros'],
+     data:[30,28,18,12,6,6],
+     colors:['#9e6bcf','#ef9f27','#1d4ed8','#2d7a4f','#e24b4a','#73726c']}
+};
+let brChart=null;
+function showBRImport(k,btn){
+  document.querySelectorAll('#br-import-tabs .regiao-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const d=brData[k];
+  if(brChart)brChart.destroy();
+  brChart=new Chart(document.getElementById('cBRimport'),{
+    type:'doughnut',
+    data:{labels:d.labels,datasets:[{data:d.data,backgroundColor:d.colors,borderWidth:2,borderColor:'#fff'}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'right',labels:{font:{size:12},color:'#374151',boxWidth:14,padding:10}},
+        tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw}%`}}
+      },
+      cutout:'50%'
+    }
+  });
+}
+showBRImport('k',document.querySelector('#br-import-tabs .regiao-btn.active'));
+</script>
+</body>
+</html>
