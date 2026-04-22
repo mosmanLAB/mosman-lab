@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/transicao-energetica-custos.html"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Custo da Transição Energética e a Segurança que Ninguém Quer Pagar | mosmanLAB</title>
+<meta name="description" content="Quanto custa realmente a transição energética? Como os juros, o CAPEX, o OPEX e a geopolítica de Ormuz moldam as escolhas de cada país — e por que o Brasil está num dilema único.">
+<meta name="author" content="Prof. Edson Mosman">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --ink: #0f1923;
+  --ink-soft: #2d3a47;
+  --muted: #607080;
+  --border: #dde3ea;
+  --bg: #ffffff;
+  --bg-warm: #f9f7f4;
+  --bg-cool: #f4f7fb;
+  --green: #1b6b42;
+  --green-light: #e6f4ec;
+  --green-dark: #0d4228;
+  --accent: #c8410a;
+  --accent-light: #fdf0ea;
+  --gold: #b8860b;
+  --gold-light: #fdf8e6;
+  --blue: #1a4a7a;
+  --blue-light: #e8f0fa;
+  --red: #8b1a1a;
+  --alert: #7a1a1a;
+  --alert-bg: #fdf0f0;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.82;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* ── URGENCY BAR ── */
+.urgency-bar {
+  background: var(--green-dark);
+  color: #e8f5ee;
+  text-align: center;
+  padding: 11px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.urgency-bar a { color: #a8e6c3; text-decoration: underline; margin-left: 8px; font-weight: 600; }
+
+/* ── NAV ── */
+nav {
+  background: var(--bg);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 12px rgba(15,25,35,0.07);
+}
+.nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 13px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--green-dark);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.logo em { color: var(--accent); font-style: normal; }
+.nav-links { display: flex; gap: 28px; list-style: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; }
+.nav-links a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--green); }
+.nav-cta {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--green);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, #0d1e2e 0%, #1a3a4a 50%, #0d2e1a 100%);
+  color: #fff;
+  padding: 80px 28px 68px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(27,107,66,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(200,65,10,0.15) 0%, transparent 60%);
+}
+.hero-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #7dd4a8;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-kicker::before { content: ''; display: block; width: 28px; height: 2px; background: #7dd4a8; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.12;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.hero h1 em { color: #f4a76b; font-style: italic; }
+.hero-deck {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+  max-width: 660px;
+  margin-bottom: 36px;
+}
+.hero-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ── ALERT BANNER ── */
+.alert-banner {
+  background: var(--alert-bg);
+  border-left: 5px solid var(--alert);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 32px 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.alert-banner .ab-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--alert);
+  margin-bottom: 6px;
+}
+.alert-banner p { font-size: 15px; line-height: 1.6; color: #3d0a0a; margin: 0; font-family: 'DM Sans', sans-serif; }
+.alert-banner strong { color: var(--alert); }
+
+/* ── CONTENT ── */
+.content-wrap { max-width: 860px; margin: 0 auto; padding: 60px 28px 90px; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--green-dark);
+  margin: 64px 0 20px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--green-light);
+}
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 36px 0 14px;
+}
+p { margin-bottom: 20px; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 50%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 10px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* ── PULL QUOTE ── */
+blockquote {
+  border-left: 5px solid var(--accent);
+  background: var(--accent-light);
+  padding: 20px 26px;
+  margin: 36px 0;
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.55;
+  color: #2a1205;
+}
+blockquote cite {
+  display: block;
+  font-style: normal;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  border-left: 4px solid var(--green);
+  background: var(--green-light);
+  padding: 18px 22px;
+  border-radius: 0 8px 8px 0;
+  margin: 28px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+.callout.gold { border-color: var(--gold); background: var(--gold-light); color: #3d2a00; }
+.callout.blue { border-color: var(--blue); background: var(--blue-light); color: #0d1e3a; }
+.callout.red  { border-color: var(--red);  background: #fdf0f0; color: #3a0000; }
+.callout-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .65;
+  margin-bottom: 6px;
+}
+
+/* ── CHART ── */
+.chart-wrap {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 26px 22px;
+  margin: 38px 0;
+}
+.chart-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.chart-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+.chart-box { position: relative; }
+.chart-box canvas { width: 100% !important; }
+.chart-source {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  color: #aaa;
+  margin-top: 13px;
+  font-style: italic;
+}
+
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: #f0f4f8;
+  border: 1px solid #c8d6e8;
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 28px 0;
+  text-align: center;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 16px;
+  color: var(--blue);
+}
+.formula-box .formula-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.formula-box .formula-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+  font-style: italic;
+  font-family: 'Source Serif 4', serif;
+}
+
+/* ── DATA TABLE ── */
+.tbl-wrap { overflow-x: auto; margin: 30px 0; border-radius: 10px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-family: 'DM Sans', sans-serif; font-size: 13.5px; }
+th { background: var(--green-dark); color: #fff; padding: 12px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: .03em; white-space: nowrap; }
+td { padding: 10px 14px; border-bottom: 1px solid #eee; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #f8f8f8; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11.5px; font-weight: 600; }
+.tag.g { background: #d4edda; color: #145a2a; }
+.tag.r { background: #f8d7da; color: #721c24; }
+.tag.y { background: #fff3cd; color: #856404; }
+.tag.b { background: #cfe2ff; color: #0a3d70; }
+
+/* ── BRAZIL SECTION ── */
+.brazil-wrap {
+  background: linear-gradient(135deg, #e8f4ef 0%, #e8f0fa 100%);
+  border: 2px solid var(--green);
+  border-radius: 16px;
+  padding: 44px 38px;
+  margin: 56px 0;
+}
+.brazil-wrap h2 {
+  border-bottom-color: rgba(27,107,66,0.3);
+  margin-top: 0;
+  padding-top: 0;
+}
+.brazil-wrap .chart-wrap { background: rgba(255,255,255,0.65); }
+
+/* ── STATS GRID ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+}
+.stat-card .stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--green-dark);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-card .stat-val.red { color: var(--red); }
+.stat-card .stat-val.gold { color: var(--gold); }
+.stat-card .stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── REFS ── */
+.refs-section {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px 32px;
+  margin-top: 72px;
+}
+.refs-section h2 { border-bottom: none; font-size: 22px; margin-top: 0; padding-top: 0; padding-bottom: 0; }
+.refs-list { list-style: none; counter-reset: r; margin-top: 20px; }
+.refs-list li {
+  counter-increment: r;
+  padding: 10px 0 10px 40px;
+  position: relative;
+  border-bottom: 1px solid #e8e8e8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #333;
+}
+.refs-list li:last-child { border-bottom: none; }
+.refs-list li::before {
+  content: counter(r);
+  position: absolute;
+  left: 0; top: 11px;
+  width: 26px; height: 26px;
+  background: var(--green-light);
+  color: var(--green-dark);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.refs-list em { font-style: italic; color: var(--green-dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: #8fa8b8;
+  text-align: center;
+  padding: 36px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+}
+footer strong { color: #fff; }
+footer a { color: #7dd4a8; }
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .brazil-wrap { padding: 24px 18px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  h2 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  ⚡ Nova turma de Física — Vestibular <strong>Maio 2026</strong>. Vagas limitadas. <a href="../turma-maio-2026.html">Garanta sua vaga →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulados/">Simulados</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Energia · Geopolítica · Economia</div>
+    <h1>O Custo da Transição Energética<br>e a Segurança que <em>Ninguém Quer Pagar</em></h1>
+    <p class="hero-deck">CAPEX, OPEX, juros, LCOE e o fechamento do Estreito de Ormuz: como a estrutura financeira de cada tecnologia e a geopolítica do petróleo moldam as escolhas de cada nação — e por que o Brasil está num dilema singular.</p>
+    <div class="hero-meta">
+      <span>✍️ Prof. Edson Mosman · mosmanLAB</span>
+      <span>📅 Abril de 2026</span>
+      <span>⏱ ~25 min de leitura</span>
+      <span>📊 9 gráficos interativos</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- INTRO -->
+  <p>Em 13 de abril de 2026, pela primeira vez na história, a Marinha dos EUA impôs um bloqueio naval ao Estreito de Ormuz — a passagem de 55 km de largura entre Irã e Omã por onde fluem <strong>20 milhões de barris de petróleo por dia</strong>, o equivalente a 20% de todo o consumo global de combustíveis líquidos. A Agência Internacional de Energia (IEA) classificou o evento como a <em>"maior disrupção de oferta na história do mercado global de petróleo"</em>.</p>
+
+  <p>O bloqueio de Ormuz não é apenas uma crise geopolítica. É a demonstração mais brutal e inequívoca de uma verdade que economistas e engenheiros de energia debatem há décadas: <strong>o custo real da energia não é apenas o preço por MWh</strong>. É também o custo da vulnerabilidade, da dependência, da concentração — e, quando tudo falha, o custo de não ter alternativa.</p>
+
+  <p>Este artigo examina a anatomia econômica da transição energética: CAPEX, OPEX, o papel devastador dos juros para países em desenvolvimento, e o que os dados reais dizem sobre o custo de cada tecnologia. Termina com um olhar preciso sobre o Brasil — um país com vantagens excepcionais e vulnerabilidades igualmente excepcionais, num momento em que as escolhas feitas hoje determinarão décadas de trajetória energética.</p>
+
+  <div class="alert-banner">
+    <div class="ab-label">⚠ Evento em Curso — Abril de 2026</div>
+    <p><strong>Estreito de Ormuz sob bloqueio naval desde 13 de abril de 2026.</strong> Aproximadamente 20 milhões de barris/dia — 20% do consumo global de petróleo e ~20% do comércio global de GNL — estão com trânsito interrompido ou severamente restrito. O Brent atingiu US$ 80–82/barril em março; analistas projetam US$ 100+ caso o bloqueio se prolongue. A IEA ativou reservas estratégicas pela terceira vez na história. China, Índia, Japão e Coreia do Sul são os mais afetados do lado importador.</p>
+  </div>
+
+  <!-- ═══════ SECTION 1 ═══════ -->
+  <h2><span class="section-badge">1</span> O Triângulo da Energia: Segurança, Sustentabilidade e Custo</h2>
+
+  <p>Todo sistema energético opera dentro de um triângulo de tensões permanentes. O <strong>triângulo energético</strong> — conceito popularizado pelo Conselho Mundial de Energia — identifica três objetivos que qualquer política energética precisa balancear simultaneamente:</p>
+
+  <p><strong>Segurança energética:</strong> garantia de fornecimento confiável, sem vulnerabilidade a choques externos — geopolíticos, climáticos ou de mercado. É a capacidade de manter as luzes acesas quando a cadeia global falha.</p>
+
+  <p><strong>Equidade e acessibilidade:</strong> o custo da energia deve ser acessível para indústrias, famílias e, especialmente, para populações mais pobres. Energia cara é imposto regressivo.</p>
+
+  <p><strong>Sustentabilidade ambiental:</strong> a geração de energia não deve comprometer os sistemas climáticos e ecológicos que sustentam a civilização de longo prazo.</p>
+
+  <p>O problema estrutural é que esses três objetivos frequentemente se contradizem. O gás natural é barato e firme (✓ custo, ✓ segurança local), mas emite CO₂ (✗ clima) e cria dependência de chokepoints como Ormuz (✗ segurança geopolítica). A energia solar é limpa e cada vez mais barata, mas é intermitente e requer armazenamento (✗ segurança de curto prazo) e tem CAPEX alto que pune países com juros elevados (✗ custo para economias emergentes).</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 1 — O Triângulo Energético: Posicionamento de Países Selecionados (2024)</div>
+    <div class="chart-subtitle">Índice de desempenho 0–100 em cada vértice. Dados: World Energy Council Energy Trilemma Index 2024. Países mais próximos do centro têm maior equilíbrio entre as três dimensões.</div>
+    <div class="chart-box" style="height:380px"><canvas id="c1"></canvas></div>
+    <div class="chart-source">Fonte: World Energy Council, Energy Trilemma Index 2024; IEA World Energy Outlook 2023.</div>
+  </div>
+
+  <!-- ═══════ SECTION 2 ═══════ -->
+  <h2><span class="section-badge">2</span> LCOE: A Métrica Fundamental e Seus Limites</h2>
+
+  <p>O <strong>LCOE — Levelized Cost of Energy</strong> (Custo Nivelado de Energia) é a métrica padrão para comparar tecnologias de geração elétrica. Ele responde à pergunta: qual preço mínimo por MWh gerado, durante toda a vida útil da usina, permite que o projeto pague seus custos de capital, operação e combustível, com a taxa de retorno exigida pelo investidor?</p>
+
+  <div class="formula-box">
+    <div class="formula-name">Fórmula do LCOE</div>
+    LCOE = [CAPEX × FRC + OPEX_fixo] / (8760 × FC) + OPEX_variável + C_combustível
+    <div class="formula-note">onde FRC = i(1+i)ⁿ / [(1+i)ⁿ – 1] é o Fator de Recuperação de Capital; FC = fator de capacidade; i = taxa de desconto (WACC); n = vida útil em anos</div>
+  </div>
+
+  <p>O LCOE captura bem os custos diretos de geração. Mas tem limitações importantes que precisam ser explicitadas antes de qualquer comparação:</p>
+
+  <p><strong>Não captura o valor da firmeza:</strong> 1 MWh de energia solar às 14h de um dia de verão e 1 MWh de uma termelétrica às 19h de uma noite de inverno têm valores de mercado radicalmente diferentes. O LCOE os trata como iguais.</p>
+
+  <p><strong>Não inclui custos de integração à rede:</strong> energia intermitente requer reforço de transmissão, reservas de backup e baterias — custos que recaem sobre o sistema, não sobre o projeto individual.</p>
+
+  <p><strong>É sensível à taxa de desconto:</strong> para tecnologias com CAPEX alto e OPEX baixo (solar, eólico, nuclear, hidro), uma mudança de 5% para 12% no custo de capital pode dobrar o LCOE. Isso é o mecanismo central de injustiça da transição para países emergentes.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 2 — LCOE por Tecnologia: Intervalo Global de Custos (2024, US$/MWh)</div>
+    <div class="chart-subtitle">Barra central = mediana global estimada. Intervalo = variação por localização, custo de capital e condições específicas. Dados: IRENA 2024 + Lazard LCOE v17 (2024).</div>
+    <div class="chart-box" style="height:400px"><canvas id="c2"></canvas></div>
+    <div class="chart-source">Fonte: IRENA, Renewable Power Generation Costs 2024; Lazard LCOE+ Analysis v17.0 (2024); IEA World Energy Outlook 2023.</div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 3 — Queda do LCOE Solar e Eólico Onshore (2010–2024)</div>
+    <div class="chart-subtitle">A queda de custos é o fenômeno mais importante da indústria de energia da última década. Solar PV caiu ~90% em 14 anos — nenhuma tecnologia energética na história apresentou redução de custo tão rápida.</div>
+    <div class="chart-box" style="height:340px"><canvas id="c3"></canvas></div>
+    <div class="chart-source">Fonte: IRENA, Renewable Power Generation Costs (edições 2015–2024); BloombergNEF New Energy Outlook 2024.</div>
+  </div>
+
+  <!-- ═══════ SECTION 3 ═══════ -->
+  <h2><span class="section-badge">3</span> CAPEX e OPEX: A Estrutura de Custos que Determina Tudo</h2>
+
+  <p>A diferença fundamental entre tecnologias de geração elétrica não é apenas o custo total — é <strong>como</strong> esses custos estão distribuídos no tempo. Isso tem implicações profundas para o financiamento, o risco e a competitividade em diferentes contextos econômicos.</p>
+
+  <p>Tecnologias como solar, eólico, nuclear e hidrelétrica são <strong>intensivas em capital</strong>: o grosso do custo total — frequentemente 80% a 95% — ocorre no momento da construção. Uma vez construída, a usina tem custos operacionais baixos e não depende de combustível (exceto nuclear, que tem custo de urânio baixo). São investimentos de longo prazo, sensíveis à taxa de juros e ao risco percebido do país.</p>
+
+  <p>Tecnologias como gás natural e carvão são <strong>intensivas em combustível</strong>: o CAPEX inicial é relativamente baixo, mas o custo operacional — especialmente o combustível — domina o custo total e é exposto à volatilidade de preços internacionais. Uma usina a gás construída num país sem reservas próprias está permanentemente exposta ao mercado global de GNL — e a choques como Ormuz.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 4 — Decomposição de Custos por Tecnologia: CAPEX vs. OPEX vs. Combustível</div>
+    <div class="chart-subtitle">Custo de ciclo de vida total estimado (US$/MWh), decomposto em três componentes. Tecnologias renováveis concentram custo no CAPEX; fósseis concentram no combustível — que é o vetor de risco geopolítico.</div>
+    <div class="chart-box" style="height:400px"><canvas id="c4"></canvas></div>
+    <div class="chart-source">Fonte: IEA World Energy Outlook 2023; NREL Annual Technology Baseline 2024; IRENA 2024.</div>
+  </div>
+
+  <p>A tabela abaixo sintetiza os parâmetros técnico-econômicos das principais tecnologias de geração elétrica com dados de 2023–2024:</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Tecnologia</th>
+          <th>CAPEX (US$/kW)</th>
+          <th>OPEX fixo (US$/kW/ano)</th>
+          <th>Custo combustível (US$/MWh)</th>
+          <th>Fator cap. típico</th>
+          <th>Vida útil (anos)</th>
+          <th>LCOE médio (US$/MWh)</th>
+          <th>Emissões (gCO₂/kWh)</th>
+          <th>Tempo construção</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Solar utility-scale</strong></td><td>750–1.100</td><td>15–20</td><td>0</td><td>15–30%</td><td>25–30</td><td><span class="tag g">43–92</span></td><td>~20–50</td><td>6–18 meses</td></tr>
+        <tr><td><strong>Eólico onshore</strong></td><td>1.100–1.600</td><td>30–45</td><td>0</td><td>25–50%</td><td>20–25</td><td><span class="tag g">34–73</span></td><td>~7–15</td><td>12–24 meses</td></tr>
+        <tr><td><strong>Eólico offshore</strong></td><td>2.800–5.000</td><td>80–120</td><td>0</td><td>35–55%</td><td>25–30</td><td><span class="tag y">75–150</span></td><td>~12–20</td><td>3–5 anos</td></tr>
+        <tr><td><strong>Hidrelétrica</strong></td><td>1.200–4.000</td><td>20–40</td><td>0</td><td>40–60%</td><td>50–80</td><td><span class="tag g">25–80</span></td><td>~4–30</td><td>5–15 anos</td></tr>
+        <tr><td><strong>Nuclear (Geração III+)</strong></td><td>5.000–12.000</td><td>100–150</td><td>4–8</td><td>85–95%</td><td>40–60</td><td><span class="tag y">90–180</span></td><td>~4–12</td><td>8–20 anos</td></tr>
+        <tr><td><strong>Gás natural (CCGT)</strong></td><td>800–1.200</td><td>15–25</td><td>20–60</td><td>50–70%</td><td>25–30</td><td><span class="tag y">45–108</span></td><td>~350–490</td><td>2–4 anos</td></tr>
+        <tr><td><strong>Carvão (ultra-supercrítico)</strong></td><td>2.000–3.500</td><td>40–60</td><td>15–40</td><td>60–80%</td><td>30–40</td><td><span class="tag r">69–168</span></td><td>~750–1.050</td><td>4–8 anos</td></tr>
+        <tr><td><strong>Bateria (4h, Li-ion)</strong></td><td>300–500/kWh</td><td>8–12</td><td>0 (carga)</td><td>—</td><td>15–20</td><td><span class="tag y">120–200</span></td><td>~0 (operação)</td><td>6–12 meses</td></tr>
+        <tr><td><strong>Hidrogênio verde (H₂)</strong></td><td>700–1.400/kW<sub>el</sub></td><td>20–35</td><td>—</td><td>—</td><td>20–25</td><td><span class="tag r">120–250</span></td><td>~0 (combustão)</td><td>2–5 anos</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:#999;margin-top:-20px">Fontes: IEA WEO 2023; NREL ATB 2024; IRENA 2024; Lazard LCOE+ v17 (2024). Valores em USD 2023.</p>
+
+  <!-- ═══════ SECTION 4 ═══════ -->
+  <h2><span class="section-badge">4</span> O Grande Diferencial: Como os Juros Destroem ou Viabilizam a Transição</h2>
+
+  <p>Aqui está o mecanismo econômico mais crítico — e mais injusto — da transição energética, que raramente aparece nos titulares: <strong>para tecnologias com alto CAPEX e baixo OPEX (solar, eólico, nuclear, hidro), o custo de capital é o principal determinante do LCOE</strong>. Não o custo da tecnologia em si, não os insumos, não a mão de obra — a taxa de juros.</p>
+
+  <p>Isso acontece pela estrutura do FRC (Fator de Recuperação de Capital): um projeto solar que custa US$ 1.000/kW instalado e tem 25 anos de vida útil precisa, a cada ano, recuperar uma parcela do investimento mais os juros. Se a taxa de desconto (WACC) for 5% ao ano (padrão europeu), o FRC é ~0,071 — o projeto precisa recuperar 7,1% do CAPEX por ano. Se o WACC for 12% (Brasil típico), o FRC sobe para ~0,128 — o projeto precisa recuperar 12,8% por ano. A tecnologia é a mesma. O sol brilha igual. Mas o custo de capital quase <em>dobrou</em>.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 5 — LCOE Solar e Eólico em Função da Taxa de Desconto (WACC)</div>
+    <div class="chart-subtitle">Impacto do custo de capital no LCOE de tecnologias renováveis (CAPEX: solar US$950/kW; eólico onshore US$1.350/kW; fator de capacidade: solar 22%, eólico 35%). O gás natural é mostrado como referência — seu LCOE é menos sensível ao WACC porque depende mais de combustível.</div>
+    <div class="chart-box" style="height:360px"><canvas id="c5"></canvas></div>
+    <div class="chart-source">Fonte: Cálculo próprio baseado em fórmula FRC; IRENA (2024) confirma: diferença de 1pp no WACC altera o LCOE solar em ~US$4–6/MWh; Climate Policy Initiative, Global Landscape of Climate Finance 2023.</div>
+  </div>
+
+  <p>Os dados da IRENA (2024) quantificam essa injustiça: <strong>o custo de capital varia de 3,8% na Europa a 12% na África</strong> — uma diferença que pode elevar o LCOE de um projeto solar idêntico em 80% a 120%. Países mais pobres, que precisam mais urgentemente de nova capacidade elétrica e que são mais vulneráveis às mudanças climáticas que causaram menos, pagam mais — muito mais — pela transição energética.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val">3,8%</div>
+      <div class="stat-label">WACC médio para renováveis na Europa (Alemanha, Dinamarca)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">12–14%</div>
+      <div class="stat-label">WACC típico para projetos de energia no Brasil (2024–2026)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">18–22%</div>
+      <div class="stat-label">WACC em mercados emergentes africanos de maior risco</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val gold">~2×</div>
+      <div class="stat-label">Multiplicador do LCOE solar: WACC 12% vs. 5% (tecnologia idêntica)</div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 5 ═══════ -->
+  <h2><span class="section-badge">5</span> Segurança Energética: O Que Ormuz Ensina ao Mundo</h2>
+
+  <p>Segurança energética é frequentemente tratada como uma preocupação abstrata — até o dia em que deixa de ser. O bloqueio do Estreito de Ormuz em abril de 2026 é o mais recente — e o mais dramático — episódio de uma longa história de choques que demonstram como a dependência energética pode paralisar economias inteiras.</p>
+
+  <h3>5.1 O Estreito de Ormuz: A Vulnerabilidade em Números</h3>
+
+  <p>Em 2025, aproximadamente 25 a 30% do comércio marítimo mundial de petróleo e cerca de 20% de todo o Gás Natural Liquefeito (GNL) transitava por essa passagem estreita — equivalente a 20 milhões de barris de petróleo e derivados por dia, além de mais de 110 bilhões de metros cúbicos de GNL anuais. Países como Irã, Iraque, Kuwait, Qatar e Bahrain dependem quase exclusivamente do Estreito para suas exportações de energia; apenas Arábia Saudita e Emirados têm capacidade limitada de redirecionar entre 3,5 e 5,5 milhões de barris por dia por oleodutos terrestres alternativos.</p>
+
+  <p>O bloqueio naval imposto em 13 de abril de 2026 afeta diretamente a China, cujas importações de petróleo bruto pelo Estreito de Ormuz respondem por cerca de um terço a 40% de seu consumo total de petróleo. A IEA caracterizou a situação como a "maior disrupção de oferta na história do mercado global de petróleo", e seu diretor descreveu o cenário como o "maior desafio de segurança energética global da história".</p>
+
+  <p>A crise de gás russo de 2022 revelou a hiperdependência da Europa de um único fornecedor; agora, a crise de Ormuz de 2026 revelou algo mais fundamental: o sistema energético global está criticamente dependente de um único ponto de trânsito. A tabela foi quebrada — o Estreito, que antes era considerado seguro justamente por sua importância para todas as partes, foi instrumentalizado como arma.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 6 — Fluxo de Petróleo pelo Estreito de Ormuz: Países Destino (2025, Mb/d)</div>
+    <div class="chart-subtitle">Distribuição dos 20 milhões de barris/dia que transitavam pelo Estreito antes do bloqueio de abril de 2026. China, Japão, Coreia do Sul e Índia são os principais afetados do lado importador.</div>
+    <div class="chart-box" style="height:340px"><canvas id="c6"></canvas></div>
+    <div class="chart-source">Fonte: EIA (U.S. Energy Information Administration), análise baseada em rastreamento de tankers Vortexa, Q1 2025; Middle East Monitor, abril 2026.</div>
+  </div>
+
+  <h3>5.2 Os Outros Chokepoints: Uma Arquitetura de Vulnerabilidades</h3>
+
+  <p>Ormuz é o mais crítico, mas não é o único ponto de estrangulamento energético global. O mundo opera um sistema de distribuição de energia cuja resiliência é dramaticamente menor do que sua aparente sofisticação sugere:</p>
+
+  <p><strong>Estreito de Malaca (Indonésia/Malásia/Singapura):</strong> 16–17 Mb/d de petróleo transitam diariamente — principal rota para refinarias do leste asiático. Um bloqueio afeta diretamente China, Japão, Coreia e Taiwan.</p>
+
+  <p><strong>Canal de Suez (Egito):</strong> ~10% do comércio marítimo global, incluindo petróleo e GNL. O encalhe do Ever Given em 2021 bloqueou o canal por seis dias e custou ~US$ 9 bilhões por dia ao comércio global — um aperitivo de vulnerabilidade.</p>
+
+  <p><strong>Estreito de Bab el-Mandeb (Iêmen/Djibuti):</strong> Passagem do Mar Vermelho para o Oceano Índico. Os ataques Houthi a navios comerciais em 2023–2024 já haviam desviado tráfego para o Cabo da Boa Esperança, elevando custos de frete em 200–400%.</p>
+
+  <p><strong>Minerais críticos — uma nova geopolítica:</strong> A transição energética cria uma nova camada de vulnerabilidade. Lítio (60% das reservas no "triângulo" Argentina-Bolívia-Chile), cobalto (70% no Congo), terras raras (85% processadas na China), cobre (40% nas Américas) — a concentração geográfica da cadeia de suprimentos de tecnologias limpas replica, em escala menor mas crescente, a vulnerabilidade do petróleo de Ormuz.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 7 — Concentração de Minerais Críticos para a Transição Energética</div>
+    <div class="chart-subtitle">Participação dos 3 maiores países produtores no total global de produção de minerais críticos para energia limpa (2023). Alta concentração = alto risco de disrupção de cadeia.</div>
+    <div class="chart-box" style="height:360px"><canvas id="c7"></canvas></div>
+    <div class="chart-source">Fonte: IEA, Critical Minerals Market Review 2024; USGS Mineral Commodity Summaries 2024.</div>
+  </div>
+
+  <!-- ═══════ SECTION 6 ═══════ -->
+  <h2><span class="section-badge">6</span> O Custo Global da Transição: Quanto é Necessário e de Onde Vem</h2>
+
+  <p>O cenário de emissões líquidas zero até 2050 (Net Zero Emissions — NZE) da IEA requer investimento anual em energia limpa de <strong>US$ 4 a 5 trilhões por ano</strong> entre 2026 e 2030, mais que o dobro do nível atual de ~US$ 1,8 trilhão em 2023. Para colocar em perspectiva: US$ 5 trilhões/ano é cerca de 5% do PIB global — maior do que o PIB do Japão.</p>
+
+  <p>O investimento global em energia limpa cresceu consistentemente nos últimos anos, mas permanece sistematicamente abaixo do necessário para os cenários de 1,5°C. E o problema não é apenas o volume — é a <strong>distribuição geográfica</strong>: em 2023, mais de 90% do investimento global em energia limpa ocorreu em economias avançadas e China. África Subsaariana, América Latina excluindo Brasil e Chile, e maior parte do Sul e Sudeste Asiático capturam menos de 5% do investimento total, apesar de abrigarem mais da metade da população global sem acesso adequado à energia limpa.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figura 8 — Investimento Global em Energia Limpa vs. Meta NZE (2015–2025, US$ bilhões)</div>
+    <div class="chart-subtitle">A linha tracejada vermelha indica o nível de investimento necessário para o cenário Net Zero 2050 da IEA. O gap entre o investimento real e o necessário é estrutural — não conjuntural.</div>
+    <div class="chart-box" style="height:360px"><canvas id="c8"></canvas></div>
+    <div class="chart-source">Fonte: BloombergNEF, Energy Transition Investment Trends 2024; IEA, World Energy Investment 2024; IEA Net Zero by 2050 (2021, atualizado 2023).</div>
+  </div>
+
+  <!-- ═══════ BRAZIL SECTION ═══════ -->
+  <div class="brazil-wrap">
+    <h2>🇧🇷 O Brasil: Vantagens Excepcionais, Dilemas Igualmente Excepcionais</h2>
+
+    <p>O Brasil é, simultaneamente, um dos países melhor posicionados do mundo para a transição energética e um dos que mais sofrem com a estrutura financeira que determina quem pode investir e a que custo. Entender esse paradoxo é essencial para qualquer debate sério sobre política energética brasileira.</p>
+
+    <h3>A Matriz Elétrica: A Joia da Coroa</h3>
+
+    <p>A matriz elétrica brasileira é extraordinária por qualquer métrica global. Com cerca de 90% de geração renovável — hidrelétricas (57%), eólica (14%), solar (12%), biomassa (10%) e outras —, o Brasil tem uma das matrizes elétricas mais limpas entre economias significativas. <strong>O LCOE eólico no Brasil (US$ 30/MWh em 2024) é um dos mais baixos do mundo</strong>, conforme confirmado pela IRENA, graças à abundância de ventos no Nordeste e ao avanço da cadeia industrial doméstica.</p>
+
+    <p>Isso representa uma vantagem competitiva geopolítica enorme no contexto pós-Ormuz: o Brasil não precisa importar combustível para gerar eletricidade. Enquanto Japão, Coreia do Sul e boa parte da Europa enfrentam crise existencial de fornecimento, o sistema elétrico brasileiro permanece operacionalmente isolado do choque de petróleo.</p>
+
+    <h3>A Segurança Primária: O Pré-Sal Como Escudo — e Como Dilema</h3>
+
+    <p>No que diz respeito à energia primária — petróleo e derivados para transporte, indústria e geração térmica de backup —, o Brasil tem uma situação diferente. A produção de petróleo do pré-sal ultrapassou 4 milhões de barris/dia em 2024, tornando o Brasil um exportador líquido. Isso provê isolamento do choque de Ormuz na dimensão do abastecimento doméstico de combustíveis.</p>
+
+    <p>O dilema, porém, é estrutural: <strong>o pré-sal é o financiador da transição ou o obstáculo a ela?</strong> Os royalties e participações especiais do petróleo financiam o Fundo Social, o BNDES e parte significativa do orçamento da União. Sem essa receita, o financiamento público da transição energética — em energia, transportes e indústria — torna-se muito mais difícil. Mas cada real investido em expandir a produção de petróleo é um real que não vai para hidrogênio verde, transmissão elétrica ou armazenamento.</p>
+
+    <h3>O Problema da Segurança Elétrica: A Vulnerabilidade Hídrica</h3>
+
+    <p>A dependência histórica de hidrelétricas — que foi a grande virtude da matriz brasileira — é também sua principal vulnerabilidade de segurança. As crises hídricas de 2001 e 2021 demonstraram que uma matriz dominada por hidro é exposta a variabilidade climática crescente. Com as mudanças climáticas alterando regimes de precipitação na Bacia do Prata e na Bacia Amazônica, a segurança elétrica brasileira depende criticamente de diversificação — especialmente de solar e eólico como complementos sazonais, e de armazenamento (baterias e hidro reversível) como buffer de curto prazo.</p>
+
+    <p>O gás natural — frequentemente chamado de "combustível de transição" — cumpre atualmente esse papel de backup no Brasil. Mas o gás importado (via Bolivia, em declínio) e o GNL de mercado spot expõem o Brasil, mesmo que marginalmente, à volatilidade global de preços — inclusive ao efeito indireto de Ormuz sobre o mercado global de GNL.</p>
+
+    <h3>O Custo de Capital no Brasil: O Maior Obstáculo Invisível</h3>
+
+    <p>Aqui está o problema mais subestimado do debate energético brasileiro. A taxa Selic — instrumento de política monetária do Banco Central — oscilou entre 13% e 14,75% ao ano em 2023–2026. Isso define um piso para qualquer investimento privado no país: nenhum projeto de geração elétrica consegue captar equity a menos do que a taxa livre de risco soberana.</p>
+
+    <p>O resultado: um projeto solar idêntico — mesma tecnologia, mesmo fabricante, mesmo fator de capacidade — custa em LCOE entre <strong>40% e 80% mais caro no Brasil do que na Alemanha</strong>, simplesmente pelo diferencial de custo de capital. O BNDES tenta mitigar isso oferecendo crédito subsidiado (TLP + spread), mas a escala dos recursos disponíveis é uma fração do que seria necessário para financiar toda a transição energética sem onerar o custo do capital privado.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Figura 9 — Impacto do Custo de Capital no LCOE Brasileiro vs. Referências Globais</div>
+      <div class="chart-subtitle">LCOE estimado (US$/MWh) para solar utility-scale e eólico onshore em diferentes países, com seus respectivos WACC de mercado. Tecnologia e recursos naturais controlados. A diferença é puramente financeira.</div>
+      <div class="chart-box" style="height:380px"><canvas id="c9"></canvas></div>
+      <div class="chart-source">Fonte: IRENA Renewable Power Generation Costs 2024 (dados para Brasil, China, Alemanha, EUA, África); Climate Policy Initiative, Global Landscape of Climate Finance 2023; estimativas próprias com fórmula FRC.</div>
+    </div>
+
+    <h3>Quem Deveria Financiar a Transição e a Segurança Energética Brasileira?</h3>
+
+    <p>Esta é a questão política central — e a mais honesta de formular. Existem quatro agentes que podem, em tese, financiar a transição energética e o reforço da segurança elétrica no Brasil. Cada um tem lógica, capacidade e limitações próprias:</p>
+
+    <p><strong>1. O setor privado nacional e internacional</strong> financia hoje a maior parte das novas renováveis no Brasil via leilões da ANEEL e projetos merchant. Funciona bem para projetos com retorno claro de mercado (eólico, solar). Mas não financia adequadamente infraestrutura de transmissão (externalidade de rede), armazenamento (payback longo e incerto), e projetos em regiões remotas ou de menor atratividade comercial.</p>
+
+    <p><strong>2. O BNDES e bancos públicos de desenvolvimento</strong> têm capacidade de emprestar abaixo do custo de mercado, subsidiando o spread de risco. O BNDES já é o maior financiador de energia renovável da América Latina. Mas sua capacidade de balanço é limitada — e empréstimos subsidiados para o setor privado têm custo fiscal implícito que precisa ser explicitado e democraticamente debatido.</p>
+
+    <p><strong>3. Financiamento climático internacional</strong> — aqui está o argumento mais legítimo e mais negligenciado. O Brasil contribui com ~2,5% das emissões históricas acumuladas, mas é responsável pela preservação de 60% da floresta tropical mais biodiversa do mundo. O Green Climate Fund, o Just Energy Transition Partnership (JETP) e o mecanismo de financiamento climático do Acordo de Paris preveem transferências de países ricos para países em desenvolvimento — mas os valores efetivamente desembolsados permanecem uma fração ridícula das promessas feitas. Países da OCDE prometeram US$ 100 bilhões/ano desde 2009; atingiram essa meta apenas em 2022 e com contabilidade criativa que inclui empréstimos a taxas de mercado como "financiamento climático".</p>
+
+    <p><strong>4. Receitas do petróleo como ponte</strong> — paradoxalmente, a resposta mais pragmaticamente disponível no curto prazo. Os royalties do pré-sal poderiam financiar, via Fundo Social e destinações específicas, a expansão da transmissão elétrica, o desenvolvimento de armazenamento por baterias e hidro reversível, e a pesquisa em hidrogênio verde. É a lógica do "usar a renda do combustível fóssil para financiar sua própria substituição" — controversa do ponto de vista de comprometimento climático, mas pragmaticamente necessária enquanto o financiamento climático internacional permanece aquém das promessas.</p>
+
+    <div class="callout red">
+      <span class="callout-label">⚡ O Argumento Central</span>
+      O Brasil não pode — e não deveria tentar — financiar sozinho, com seu custo de capital de 13–15% ao ano, a transição energética que o mundo precisa e que o planeta inteiro se beneficia. A estrutura atual de financiamento climático global é profundamente injusta: países que mais sofreram com os efeitos climáticos e que menos contribuíram para as emissões históricas são exatamente aqueles que pagam mais para se descarbonizar. Corrigir essa injustiça não é caridade — é a condição de viabilidade política e econômica da transição global.
+    </div>
+
+    <div class="callout gold">
+      <span class="callout-label">🌿 A Aposta Estratégica Brasileira</span>
+      O Brasil tem uma janela de oportunidade única: sua matriz elétrica limpa, seu potencial de hidrogênio verde, sua bioeconomia, seu etanol avançado e seu pré-sal como financiador de transição colocam o país numa posição de potência energética do século XXI — não apenas exportador de petróleo, mas exportador de energia limpa, créditos de carbono de alta integridade e tecnologia de baixo carbono. Aproveitar essa janela exige custo de capital mais baixo, instituições regulatórias estáveis, e um contrato social explícito sobre quem paga a conta da transição — e quem se beneficia dela.
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <h2><span class="section-badge">7</span> Conclusão: O Preço Verdadeiro da Energia</h2>
+
+  <p>O preço da energia nunca foi apenas o número na conta de luz ou no contrato de GNL. Sempre incluiu o custo invisível da vulnerabilidade geopolítica — que Ormuz tornou brutalmente visível em 2026. Sempre incluiu o custo diferido da degradação climática — que os eventos extremos tornam cada vez mais tangível. E sempre incluiu o custo financeiro diferencial imposto a países com moedas fracas e risco soberano elevado — que determina quem pode fazer a transição e quem fica para trás.</p>
+
+  <p>A análise dos dados de CAPEX, OPEX e LCOE por tecnologia revela uma conclusão clara: as energias renováveis já são as mais baratas na maioria dos mercados do mundo, em condições de custo de capital comparáveis às economias avançadas. O que impede sua adoção mais rápida em países emergentes não é a tecnologia — é o financiamento.</p>
+
+  <p>Para o Brasil, o caminho é exigente, mas não inalcançável. Significa usar as receitas do petróleo para financiar sua própria substituição, cobrar da comunidade internacional o financiamento climático que foi prometido e não entregue, reduzir o custo de capital via instituições de crédito público mais agressivas, e construir resiliência elétrica com armazenamento, diversificação e interligação regional.</p>
+
+  <p>A crise de Ormuz lembra ao mundo que segurança energética não é um custo opcional — é o custo de não ter uma alternativa quando tudo falha. Países que investirem agora na diversificação e descarbonização de seus sistemas de energia pagarão esse custo uma vez, no presente, com juros menores. Países que adiarem pagarão com juros compostos, em crises futuras, a preços que nenhum orçamento nacional conseguirá absorver.</p>
+
+  <!-- REFERENCES -->
+  <div class="refs-section">
+    <h2>Referências</h2>
+    <ul class="refs-list">
+      <li><strong>IEA — International Energy Agency</strong> (2023). <em>World Energy Outlook 2023</em>. Paris: IEA. Disponível em: iea.org/reports/world-energy-outlook-2023</li>
+      <li><strong>IEA</strong> (2021, atualizado 2023). <em>Net Zero by 2050: A Roadmap for the Global Energy Sector</em>. Paris: IEA.</li>
+      <li><strong>IEA</strong> (2024). <em>World Energy Investment 2024</em>. Paris: IEA.</li>
+      <li><strong>IEA</strong> (2024). <em>Critical Minerals Market Review 2024</em>. Paris: IEA.</li>
+      <li><strong>IRENA — International Renewable Energy Agency</strong> (2025). <em>Renewable Power Generation Costs in 2024</em>. Abu Dhabi: IRENA. [WACC 3,8% Europa a 12% África; LCOE eólico Brasil US$30/MWh]</li>
+      <li><strong>IRENA</strong> (2023). <em>World Energy Transitions Outlook 2023: 1.5°C Pathway</em>. Abu Dhabi: IRENA.</li>
+      <li><strong>Lazard</strong> (2024). <em>Levelized Cost of Energy+ Analysis, Version 17.0</em>. New York: Lazard. [LCOE solar US$29–92/MWh; eólico onshore US$27–73/MWh; nuclear US$89–198/MWh]</li>
+      <li><strong>NREL — National Renewable Energy Laboratory</strong> (2024). <em>Annual Technology Baseline 2024</em>. Golden, CO: NREL. Disponível em: atb.nrel.gov</li>
+      <li><strong>EIA — U.S. Energy Information Administration</strong> (2025). "Amid regional conflict, the Strait of Hormuz remains critical oil chokepoint." <em>Today in Energy</em>, 16 de junho de 2025. [20 milhões b/d; 20% consumo global]</li>
+      <li><strong>Middle East Monitor</strong> (2026). "How the closure of the Strait of Hormuz is reshaping global energy flows." Publicado em 16 de abril de 2026. [25–30% comércio marítimo; Qatar 93% GNL; "maior desafio de segurança energética da história"]</li>
+      <li><strong>Wikipedia</strong> (2026). "2026 Iran war fuel crisis." Última edição: abril 2026. [Brent US$80–82; bloqueio naval 13 abr. 2026; IEA reservas estratégicas]</li>
+      <li><strong>BloombergNEF</strong> (2024). <em>Energy Transition Investment Trends 2024</em>. New York: BloombergNEF.</li>
+      <li><strong>BloombergNEF</strong> (2024). <em>New Energy Outlook 2024</em>. New York: BloombergNEF.</li>
+      <li><strong>World Energy Council</strong> (2024). <em>World Energy Trilemma Index 2024</em>. London: WEC.</li>
+      <li><strong>Climate Policy Initiative</strong> (2023). <em>Global Landscape of Climate Finance 2023</em>. San Francisco: CPI. [Distribuição do financiamento climático; países emergentes sub-representados]</li>
+      <li><strong>Hirth, L., Ueckerdt, F., & Edenhofer, O.</strong> (2015). Integration costs revisited — An economic framework for wind and solar variability. <em>Renewable Energy</em>, 74, 925–939.</li>
+      <li><strong>Joskow, P.</strong> (2011). Comparing the costs of intermittent and dispatchable electricity generating technologies. <em>American Economic Review</em>, 101(3), 238–241.</li>
+      <li><strong>Ondraczek, J., Komendantova, N., & Patt, A.</strong> (2015). WACC the dog: The effect of financing costs on the levelized cost of solar PV power. <em>Renewable Energy</em>, 75, 888–898. [Demonstração quantitativa do impacto do WACC no LCOE solar]</li>
+      <li><strong>Steffen, B.</strong> (2020). Estimating the cost of capital for renewable energy projects. <em>Energy Economics</em>, 88, 104783.</li>
+      <li><strong>Stern, N.</strong> (2006). <em>The Stern Review: The Economics of Climate Change</em>. Cambridge University Press.</li>
+      <li><strong>USGS — U.S. Geological Survey</strong> (2024). <em>Mineral Commodity Summaries 2024</em>. Reston, VA: USGS.</li>
+      <li><strong>EPE — Empresa de Pesquisa Energética</strong> (2024). <em>Balanço Energético Nacional 2024</em>. Rio de Janeiro: EPE/MME.</li>
+      <li><strong>ANEEL — Agência Nacional de Energia Elétrica</strong> (2024). <em>Boletim de Informações Gerenciais — Capacidade Instalada de Geração Elétrica</em>. Brasília: ANEEL.</li>
+      <li><strong>BNDES — Banco Nacional de Desenvolvimento Econômico e Social</strong> (2024). <em>Relatório Anual 2023: Financiamento em Energia</em>. Rio de Janeiro: BNDES.</li>
+    </ul>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<footer>
+  <p><strong>mosmanLAB</strong> · Prof. Edson Mosman · São Paulo, Brasil</p>
+  <p style="margin-top:7px">Física para vestibular · Energia · Ciência · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+</footer>
+
+<!-- ═════════════════════ CHARTS ═════════════════════ -->
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.color = '#555';
+Chart.defaults.plugins.legend.labels.boxWidth = 14;
+
+// ── C1: Radar — Energy Trilemma ──
+(function(){
+  new Chart(document.getElementById('c1'), {
+    type: 'radar',
+    data: {
+      labels: ['Segurança\nEnergética', 'Equidade &\nAcesso', 'Sustentabilidade\nAmbiental'],
+      datasets: [
+        {label:'Suécia',       data:[82,88,91], borderColor:'#1a7a4a', backgroundColor:'rgba(26,122,74,0.1)', borderWidth:2, pointRadius:4},
+        {label:'Alemanha',     data:[74,85,79], borderColor:'#1a5276', backgroundColor:'rgba(26,82,118,0.1)', borderWidth:2, pointRadius:4},
+        {label:'EUA',          data:[80,72,56], borderColor:'#8b6914', backgroundColor:'rgba(139,105,20,0.1)', borderWidth:2, pointRadius:4},
+        {label:'China',        data:[68,65,48], borderColor:'#c0392b', backgroundColor:'rgba(192,57,43,0.1)', borderWidth:2, pointRadius:4},
+        {label:'Brasil',       data:[62,58,72], borderColor:'#e85d04', backgroundColor:'rgba(232,93,4,0.12)', borderWidth:2.5, pointRadius:5},
+        {label:'Índia',        data:[44,38,42], borderColor:'#7b2d8b', backgroundColor:'rgba(123,45,139,0.08)', borderWidth:2, pointRadius:4},
+        {label:'África Sub.',  data:[22,18,38], borderColor:'#555',   backgroundColor:'rgba(85,85,85,0.06)', borderWidth:1.5, pointRadius:3},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { r: { min: 0, max: 100, ticks: { stepSize: 20, font: { size: 10 } }, pointLabels: { font: { size: 11 } } } },
+      plugins: { legend: { position: 'right', labels: { font: { size: 12 } } } }
+    }
+  });
+})();
+
+// ── C2: LCOE por tecnologia (horizontal bar with ranges) ──
+(function(){
+  const techs = ['Eólico Onshore','Solar Utility','Hidrelétrica','Eólico Offshore','Gás Natural (CCGT)','Nuclear (Gen III+)','Carvão (USC)','Solar + Storage','Hidrogênio Verde'];
+  const lo    = [34,   43,  25,  75,  45,  90,  69, 60, 120];
+  const hi    = [73,   92,  80, 150, 108, 180, 168,140, 250];
+  const mid   = lo.map((l,i) => (l+hi[i])/2);
+  const colors= ['#1a7a4a','#f5a623','#1a5276','#0d6efd','#b8860b','#8b1a1a','#555','#e85d04','#7b2d8b'];
+
+  new Chart(document.getElementById('c2'), {
+    type: 'bar',
+    data: {
+      labels: techs,
+      datasets: [
+        { label: 'Mínimo (LCOE baixo)', data: lo,
+          backgroundColor: colors.map(c => c + '55'), borderColor: colors, borderWidth: 1.5, borderRadius: 4 },
+        { label: 'Adicional até máximo', data: hi.map((h,i) => h - lo[i]),
+          backgroundColor: colors.map(c => c + 'bb'), borderColor: colors, borderWidth: 1.5, borderRadius: 4 },
+      ]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (ctx) => {
+          const i = ctx.dataIndex;
+          return ctx.datasetIndex === 0
+            ? `Mínimo: US$${lo[i]}/MWh`
+            : `Máximo: US$${hi[i]}/MWh | Mediana: US$${mid[i].toFixed(0)}/MWh`;
+        }}}
+      },
+      scales: {
+        x: { stacked: true, title: { display: true, text: 'LCOE (US$/MWh, 2024)' }, min: 0, max: 270 },
+        y: { stacked: true }
+      }
+    }
+  });
+})();
+
+// ── C3: LCOE evolution solar + wind ──
+(function(){
+  const yrs = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+  const solar= [378, 310, 248, 200, 158, 126,  100,  86,  68,  57,  37,  36,  49,  44,  43];
+  const wind = [102,  99,  95,  90,  87,  82,   75,  68,  57,  53,  41,  38,  45,  34,  34];
+  const coal = [ 82,  83,  84,  85,  84,  82,   80,  79,  78,  77,  76,  75,  82,  74,  73];
+  const gas  = [105, 100,  96,  92,  90,  88,   85,  82,  78,  74,  70,  78,  95,  82,  85];
+
+  new Chart(document.getElementById('c3'), {
+    type: 'line',
+    data: {
+      labels: yrs,
+      datasets: [
+        { label: 'Solar PV utility', data: solar, borderColor: '#f5a623', backgroundColor: 'rgba(245,166,35,0.08)', fill: true, tension: 0.4, borderWidth: 3, pointRadius: 4 },
+        { label: 'Eólico onshore',   data: wind,  borderColor: '#1a7a4a', backgroundColor: 'rgba(26,122,74,0.08)',  fill: true, tension: 0.4, borderWidth: 3, pointRadius: 4 },
+        { label: 'Carvão (ref.)',    data: coal,  borderColor: '#888',    backgroundColor: 'transparent', borderDash: [6,4], tension: 0.3, borderWidth: 2, pointRadius: 3 },
+        { label: 'Gás natural (ref.)',data: gas,  borderColor: '#b8860b', backgroundColor: 'transparent', borderDash: [4,3], tension: 0.3, borderWidth: 2, pointRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        x: { title: { display: true, text: 'Ano' } },
+        y: { title: { display: true, text: 'LCOE médio global (US$/MWh)' }, min: 0, max: 420 }
+      }
+    }
+  });
+})();
+
+// ── C4: CAPEX / OPEX / Fuel decomposition ──
+(function(){
+  const techs = ['Solar PV','Eólico\nOnshore','Eólico\nOffshore','Hidre-\nlétrica','Nuclear','Gás\n(CCGT)','Carvão\n(USC)'];
+  const capex = [55, 58, 62, 55, 45, 20, 22];
+  const opex  = [18, 20, 22, 28, 22, 10, 12];
+  const fuel  = [ 0,  0,  0,  0, 13, 58, 54];
+  const other = [27, 22, 16, 17, 20, 12, 12]; // integration, T&D, etc.
+
+  new Chart(document.getElementById('c4'), {
+    type: 'bar',
+    data: {
+      labels: techs,
+      datasets: [
+        { label: 'CAPEX (% custo total)', data: capex, backgroundColor: '#1a5276cc', borderRadius: 4, stack: 's' },
+        { label: 'OPEX (% custo total)',  data: opex,  backgroundColor: '#1a7a4acc', borderRadius: 4, stack: 's' },
+        { label: 'Combustível (% custo total)', data: fuel, backgroundColor: '#c0392bcc', borderRadius: 4, stack: 's' },
+        { label: 'Outros / rede (% custo total)', data: other, backgroundColor: '#b8860baa', borderRadius: 4, stack: 's' },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+      },
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true, title: { display: true, text: '% do custo total de ciclo de vida' }, max: 110 }
+      }
+    }
+  });
+})();
+
+// ── C5: LCOE vs WACC curves ──
+(function(){
+  const wacc = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20];
+
+  function frc(i, n) {
+    const r = i / 100;
+    return (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+
+  // Solar: CAPEX 950 USD/kW, FC 22%, 25yr, OPEX 18 USD/MWh_gen equiv
+  const solarLCOE = wacc.map(w => {
+    const annualKWh = 0.22 * 8760; // kWh/kW/yr
+    const capexAnnual = 950 * frc(w, 25);
+    const opex = 17; // USD/MWh
+    return +(capexAnnual / annualKWh * 1000 + opex).toFixed(1);
+  });
+
+  // Wind: CAPEX 1350, FC 35%, 25yr, OPEX 12
+  const windLCOE = wacc.map(w => {
+    const annualKWh = 0.35 * 8760;
+    const capexAnnual = 1350 * frc(w, 25);
+    const opex = 12;
+    return +(capexAnnual / annualKWh * 1000 + opex).toFixed(1);
+  });
+
+  // Nuclear: CAPEX 7500, FC 90%, 50yr, OPEX 25, fuel 6
+  const nuclLCOE = wacc.map(w => {
+    const annualKWh = 0.90 * 8760;
+    const capexAnnual = 7500 * frc(w, 50);
+    return +(capexAnnual / annualKWh * 1000 + 31).toFixed(1);
+  });
+
+  // Gas CCGT: CAPEX 1000, FC 60%, 25yr, OPEX 12, fuel 40
+  const gasLCOE = wacc.map(w => {
+    const annualKWh = 0.60 * 8760;
+    const capexAnnual = 1000 * frc(w, 25);
+    return +(capexAnnual / annualKWh * 1000 + 52).toFixed(1);
+  });
+
+  new Chart(document.getElementById('c5'), {
+    type: 'line',
+    data: {
+      labels: wacc.map(w => w + '%'),
+      datasets: [
+        { label: 'Solar PV utility',    data: solarLCOE, borderColor: '#f5a623', backgroundColor: 'rgba(245,166,35,0.06)', fill: true, tension: 0.4, borderWidth: 3, pointRadius: 4 },
+        { label: 'Eólico onshore',      data: windLCOE,  borderColor: '#1a7a4a', backgroundColor: 'rgba(26,122,74,0.06)',  fill: true, tension: 0.4, borderWidth: 3, pointRadius: 4 },
+        { label: 'Nuclear',             data: nuclLCOE,  borderColor: '#8b1a1a', backgroundColor: 'rgba(139,26,26,0.05)', fill: false, tension: 0.4, borderWidth: 2.5, pointRadius: 3 },
+        { label: 'Gás Natural (CCGT)',  data: gasLCOE,   borderColor: '#b8860b', backgroundColor: 'transparent', borderDash: [7,4], tension: 0.3, borderWidth: 2.5, pointRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top' },
+        annotation: {},
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: US$${ctx.parsed.y}/MWh` } }
+      },
+      scales: {
+        x: { title: { display: true, text: 'WACC (Custo Médio Ponderado de Capital)' } },
+        y: { title: { display: true, text: 'LCOE estimado (US$/MWh)' }, min: 20, max: 280 }
+      }
+    },
+    plugins: [{
+      id: 'wacc-markers',
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const xScale = chart.scales.x;
+        const yScale = chart.scales.y;
+        const markers = [
+          { label: 'Europa\n~4%', wacc: '4%', color: '#1a5276' },
+          { label: 'Brasil\n~13%', wacc: '13%', color: '#c0392b' },
+          { label: 'África\n~18%', wacc: '18%', color: '#7b2d8b' },
+        ];
+        markers.forEach(m => {
+          const idx = wacc.map(w => w + '%').indexOf(m.wacc);
+          if (idx < 0) return;
+          const x = xScale.getPixelForTick(idx);
+          ctx.save();
+          ctx.setLineDash([4, 4]);
+          ctx.strokeStyle = m.color;
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(x, yScale.top);
+          ctx.lineTo(x, yScale.bottom);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.font = 'bold 11px DM Sans';
+          ctx.fillStyle = m.color;
+          ctx.textAlign = 'center';
+          m.label.split('\n').forEach((ln, li) => ctx.fillText(ln, x, yScale.top + 18 + li * 14));
+          ctx.restore();
+        });
+      }
+    }]
+  });
+})();
+
+// ── C6: Hormuz destinations ──
+(function(){
+  new Chart(document.getElementById('c6'), {
+    type: 'doughnut',
+    data: {
+      labels: ['China', 'Japão', 'Coreia do Sul', 'Índia', 'Outros Ásia', 'Europa', 'EUA & outros'],
+      datasets: [{
+        data: [5.35, 2.1, 1.8, 1.5, 4.5, 2.8, 2.05],
+        backgroundColor: ['#c0392b','#e85d04','#f5a623','#7b2d8b','#1a7a4a','#1a5276','#888'],
+        borderWidth: 2, borderColor: '#fff',
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 12 }, padding: 14 } },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed.toFixed(2)} Mb/d` } }
+      }
+    }
+  });
+})();
+
+// ── C7: Critical minerals concentration ──
+(function(){
+  const minerals = ['Lítio', 'Cobalto', 'Níquel', 'Terras Raras\n(produção)', 'Terras Raras\n(processamento)', 'Cobre', 'Grafite'];
+  const top3share = [88, 94, 72, 78, 92, 65, 97]; // % of global production by top 3 countries
+  const leaders  = ['Aus/Chi/Arg', 'Congo/Aus/Rus', 'Ind/Rus/Phi', 'Chi/USA/Aus', 'China (85%)', 'DRC/Chi/Per', 'China (80%)'];
+
+  new Chart(document.getElementById('c7'), {
+    type: 'bar',
+    data: {
+      labels: minerals,
+      datasets: [{
+        label: '% produção global pelos 3 maiores produtores',
+        data: top3share,
+        backgroundColor: top3share.map(v => v > 85 ? 'rgba(192,57,43,0.8)' : v > 70 ? 'rgba(184,134,11,0.8)' : 'rgba(26,122,74,0.8)'),
+        borderRadius: 6,
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          label: ctx => `Top 3: ${ctx.parsed.x}% da produção global`,
+          afterLabel: ctx => `Líderes: ${leaders[ctx.dataIndex]}`
+        }}
+      },
+      scales: {
+        x: { title: { display: true, text: '% da produção global (Top 3 países)' }, min: 0, max: 100 },
+        y: {}
+      }
+    },
+    plugins: [{
+      id: 'threshold',
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const x = chart.scales.x.getPixelForValue(70);
+        ctx.save();
+        ctx.setLineDash([5, 5]);
+        ctx.strokeStyle = 'rgba(192,57,43,0.6)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(x, chart.chartArea.top);
+        ctx.lineTo(x, chart.chartArea.bottom);
+        ctx.stroke();
+        ctx.font = '11px DM Sans';
+        ctx.fillStyle = '#c0392b';
+        ctx.fillText('Alto risco (>70%)', x + 4, chart.chartArea.top + 14);
+        ctx.restore();
+      }
+    }]
+  });
+})();
+
+// ── C8: Global clean energy investment vs NZE target ──
+(function(){
+  const yrs = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+  const inv  = [280, 300, 330, 370, 410, 420, 480, 700, 860, 940, 1000]; // BNEF, ~USD bn
+  // expanded to include all clean infra:
+  const invTotal = [540, 580, 620, 680, 750, 760, 900,1100,1340,1500,1800];
+  const nze  = [1800,1900,2000,2100,2200,2400,2600,2900,3300,3800,4200]; // IEA NZE required
+
+  new Chart(document.getElementById('c8'), {
+    type: 'bar',
+    data: {
+      labels: yrs,
+      datasets: [
+        { label: 'Invest. em energia renovável (US$ bi)', data: inv, backgroundColor: 'rgba(26,122,74,0.8)', borderRadius: 4, stack: 'a' },
+        { label: 'Outro invest. limpo (redes, eficiência, VE…)', data: invTotal.map((t,i)=>t-inv[i]), backgroundColor: 'rgba(26,82,118,0.7)', borderRadius: 4, stack: 'a' },
+        { label: 'Meta anual NZE 2050 (IEA)',
+          data: nze, type: 'line', borderColor: '#c0392b', borderWidth: 2.5,
+          borderDash: [8,4], pointRadius: 4, fill: false, backgroundColor: 'transparent', stack: undefined }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { font: { size: 12 } } } },
+      scales: {
+        x: { stacked: true, title: { display: true, text: 'Ano' } },
+        y: { stacked: true, title: { display: true, text: 'US$ bilhões / ano' }, min: 0 }
+      }
+    }
+  });
+})();
+
+// ── C9: LCOE comparison Brazil vs world ──
+(function(){
+  const countries = ['China', 'Índia', 'Brasil', 'EUA', 'Alemanha', 'África\nSub. (média)', 'Global\nmédio'];
+  const wacc      = [5.5,    8.0,   13.0,   7.7,   3.8,    20.0,          8.0  ];
+  const solarLCOE = [33,     38,     72,    61,    68,      140,           58   ];
+  const windLCOE  = [29,     42,     35,    50,    55,      110,           44   ];
+  // Note: Brazil wind is low because of excellent resource (FC ~45-50% NE)
+
+  new Chart(document.getElementById('c9'), {
+    type: 'bar',
+    data: {
+      labels: countries,
+      datasets: [
+        { label: 'Solar PV utility (US$/MWh)', data: solarLCOE, backgroundColor: 'rgba(245,166,35,0.82)', borderRadius: 5 },
+        { label: 'Eólico onshore (US$/MWh)',   data: windLCOE,  backgroundColor: 'rgba(26,122,74,0.82)',  borderRadius: 5 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top' },
+        tooltip: { callbacks: {
+          afterLabel: (ctx) => `WACC local: ~${wacc[ctx.dataIndex]}%`
+        }}
+      },
+      scales: {
+        x: { title: { display: true, text: 'País / Região' } },
+        y: { title: { display: true, text: 'LCOE estimado (US$/MWh, 2024)' }, min: 0, max: 165 }
+      }
+    },
+    plugins: [{
+      id: 'wacc-labels',
+      afterDatasetsDraw(chart) {
+        const ctx = chart.ctx;
+        const meta = chart.getDatasetMeta(0);
+        countries.forEach((c, i) => {
+          const bar = meta.data[i];
+          ctx.save();
+          ctx.font = 'bold 10px DM Sans';
+          ctx.fillStyle = '#1a4a7a';
+          ctx.textAlign = 'center';
+          ctx.fillText(`WACC ~${wacc[i]}%`, bar.x, chart.chartArea.bottom + 15);
+          ctx.restore();
+        });
+      }
+    }]
+  });
+})();
+</script>
+
+<section class="refs-section" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border,#e5e7eb);">
+  <h2 style="font-family:'Lora',serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--text,#1a1a1a);">Leia também</h2>
+  <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+    <li><a href="lcoe-custo-nivelado-eletricidade.html">LCOE: custo nivelado de eletricidade</a></li>
+    <li><a href="lcoh-hidrogenio-brasil-mundo.html">LCOH: custo do hidrogênio verde</a></li>
+    <li><a href="transicao-energetica-smil-fressoz.html">Transição energética: Smil vs. Fressoz</a></li>
+    <li><a href="estreito-ormuz-fluxo-petroleo-geopolitica.html">Estreito de Ormuz: fluxo de petróleo e geopolítica</a></li>
+    <li><a href="densidade-energetica-transicao-energetica.html">Densidade energética e a transição energética</a></li>
+  </ul>
+</section>
+</body>
+</html>

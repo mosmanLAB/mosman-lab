@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/biogas-matriz-brasileira.html"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biogás na Matriz Energética Brasileira | mosmanLAB</title>
+<meta name="description" content="Biogás no Brasil: processos de produção, parâmetros, tecnologias, potencial na matriz elétrica e simulador interativo de biodigestor.">
+<meta name="author" content="Prof. Edson Mosman">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#0e1a14;--ink2:#1e3028;--muted:#4a6a58;
+  --border:#c8ddd0;--bg:#f7faf8;--bgw:#ffffff;
+  --green:#1a7a42;--gl:#e2f4ea;--gd:#0a4a28;
+  --lime:#5a9a1a;--lime-l:#eef6e0;
+  --amber:#b87800;--amber-l:#fdf5dc;
+  --blue:#1a4878;--blue-l:#e4edf8;
+  --red:#9a2020;--red-l:#faeaea;
+  --teal:#0d7a6a;--teal-l:#e0f4f0;
+  --brown:#6a3a10;--brown-l:#f5ece0;
+  --sim-bg:#0a1a0f;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.78;color:var(--ink);background:var(--bg)}
+
+/* URGENCY */
+.urg{background:var(--gd);color:#c8ecd8;text-align:center;padding:10px 20px;font-size:13px;font-weight:500}
+.urg a{color:#80d4a0;text-decoration:underline;margin-left:8px;font-weight:600}
+
+/* NAV */
+nav{background:var(--bgw);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(10,74,40,.1)}
+.nav-i{max-width:1120px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--gd);text-decoration:none}
+.logo em{color:var(--amber);font-style:normal}
+.nl{display:flex;gap:26px;list-style:none;font-size:13.5px;font-weight:500}
+.nl a{color:var(--muted);text-decoration:none}.nl a:hover{color:var(--green)}
+.ncta{background:var(--green);color:#fff!important;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+
+/* HERO */
+.hero{background:linear-gradient(150deg,#071410 0%,#0d2a1a 40%,#112808 100%);color:#fff;padding:76px 28px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 50% at 85% 25%,rgba(26,122,66,.4) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 60% at 10% 80%,rgba(90,154,26,.2) 0%,transparent 55%),
+  radial-gradient(ellipse 30% 40% at 50% 50%,rgba(184,120,0,.1) 0%,transparent 60%)}
+/* bubbles */
+.hero::after{content:'CH₄  CO₂  H₂S  NH₃';position:absolute;bottom:20px;right:40px;font-family:'Fraunces',serif;font-size:13px;color:rgba(255,255,255,.12);letter-spacing:.2em}
+.hero-in{max-width:820px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#7dd4a0;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';display:block;width:28px;height:2px;background:#7dd4a0}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,52px);font-weight:900;line-height:1.1;margin-bottom:12px;color:#fff}
+.hero h1 em{color:#a8e87a;font-style:italic}
+.hero-sub{font-family:'Fraunces',serif;font-size:clamp(16px,2.5vw,21px);font-style:italic;color:rgba(255,255,255,.6);margin-bottom:26px;line-height:1.4}
+.hero-deck{font-size:16px;color:rgba(255,255,255,.7);max-width:640px;margin-bottom:32px;line-height:1.65}
+.hero-meta{font-size:12.5px;color:rgba(255,255,255,.4);display:flex;gap:20px;flex-wrap:wrap}
+
+/* CONTENT */
+.wrap{max-width:880px;margin:0 auto;padding:58px 26px 92px}
+
+h2{font-family:'Fraunces',serif;font-size:29px;font-weight:700;color:var(--gd);margin:62px 0 18px;padding-bottom:13px;border-bottom:3px solid var(--gl);line-height:1.25}
+h3{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--ink2);margin:34px 0 13px}
+h4{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:var(--ink2);margin:22px 0 9px;letter-spacing:.01em}
+p{margin-bottom:18px}
+p:last-child{margin-bottom:0}
+strong{font-weight:600}
+
+.sb{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--green);color:#fff;border-radius:50%;font-size:13px;font-weight:700;margin-right:8px;vertical-align:middle;flex-shrink:0}
+
+/* CALLOUTS */
+.box{border-left:4px solid var(--green);background:var(--gl);padding:18px 22px;border-radius:0 8px 8px 0;margin:26px 0;font-size:15.5px;line-height:1.65}
+.box.amber{border-color:var(--amber);background:var(--amber-l);color:#2a1800}
+.box.blue{border-color:var(--blue);background:var(--blue-l);color:#0a1a38}
+.box.red{border-color:var(--red);background:var(--red-l);color:#280000}
+.box.teal{border-color:var(--teal);background:var(--teal-l);color:#021a16}
+.box.brown{border-color:var(--brown);background:var(--brown-l);color:#1a0800}
+.blbl{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:7px}
+
+blockquote{border-left:5px solid var(--lime);background:var(--lime-l);padding:18px 24px;margin:32px 0;border-radius:0 8px 8px 0;font-family:'Fraunces',serif;font-size:19px;font-style:italic;color:#1a2a08;line-height:1.5}
+blockquote cite{display:block;font-style:normal;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);margin-top:8px}
+
+/* CHARTS */
+.cw{background:var(--bgw);border:1px solid var(--border);border-radius:12px;padding:26px 24px 20px;margin:36px 0;box-shadow:0 2px 8px rgba(10,74,40,.06)}
+.cw.dark{background:#0a1a0f;border-color:#1a3a20}
+.ct{font-family:'Fraunces',serif;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.cw.dark .ct{color:#c8ecd8}
+.cs{font-size:12.5px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+.cw.dark .cs{color:#4a8a5a}
+.cb{position:relative}
+.csrc{font-size:11.5px;color:#aaa;margin-top:12px;font-style:italic}
+
+/* FORMULA */
+.fbox{background:#f0f6f2;border:1px solid #b8d8c4;border-radius:10px;padding:20px 26px;margin:24px 0;text-align:center}
+.fbox .fn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.fbox .fm{font-family:'Courier New',monospace;font-size:15px;color:var(--gd);line-height:1.9}
+.fbox .fnote{font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--muted);margin-top:8px;font-style:italic}
+
+/* PROCESS DIAGRAM */
+.proc{background:var(--sim-bg);border-radius:14px;padding:30px;margin:36px 0;overflow-x:auto}
+.proc-title{font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:#7dd4a0;margin-bottom:24px;letter-spacing:.03em}
+.proc-flow{display:flex;align-items:stretch;gap:0;min-width:700px}
+.proc-step{flex:1;display:flex;flex-direction:column;align-items:center;position:relative}
+.proc-step::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:#3a7a5a;font-size:20px;font-weight:700;z-index:2}
+.proc-step:last-child::after{display:none}
+.proc-box{background:#0f2a1a;border:2px solid;border-radius:10px;padding:14px 10px;text-align:center;width:100%;flex:1}
+.proc-icon{font-size:26px;margin-bottom:6px}
+.proc-name{font-family:'Fraunces',serif;font-size:13px;font-weight:700;margin-bottom:6px;line-height:1.2}
+.proc-desc{font-size:11px;color:#6a9a7a;line-height:1.45}
+.proc-micro{font-size:10px;color:#4a7a5a;margin-top:5px;font-style:italic}
+.proc-arrow{display:flex;align-items:center;padding:0 4px;color:#3a7a5a;font-size:22px;font-weight:700;flex-shrink:0}
+
+/* STATS GRID */
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:26px 0}
+.sc{background:var(--bgw);border:1px solid var(--border);border-radius:10px;padding:16px 14px;text-align:center;box-shadow:0 1px 4px rgba(10,74,40,.05)}
+.sv{font-family:'Fraunces',serif;font-size:30px;font-weight:900;line-height:1;margin-bottom:5px;color:var(--gd)}
+.sv.a{color:var(--amber)}.sv.b{color:var(--blue)}.sv.r{color:var(--red)}.sv.l{color:var(--lime)}
+.sl{font-size:12px;color:var(--muted);line-height:1.4}
+
+/* TABLES */
+.tw{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--gd);color:#fff;padding:11px 14px;text-align:left;font-weight:500;font-size:12px;letter-spacing:.03em;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid #eee;vertical-align:middle;line-height:1.5}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#f5faf7}
+.tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:11.5px;font-weight:700}
+.tg{background:#d0eeda;color:#0a4a20}
+.ty{background:#fcedc0;color:#6a3a00}
+.tr{background:#f8d0d0;color:#5a0a0a}
+.tb{background:#d0e4f8;color:#0a2a5a}
+.tt{background:#d0f0ec;color:#0a3a34}
+
+/* ══════════ SIMULATOR ══════════ */
+.sim-wrap{background:var(--sim-bg);border-radius:16px;padding:36px 32px;margin:48px 0;border:1px solid #1a3a20}
+.sim-title{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#7dd4a0;margin-bottom:6px}
+.sim-sub{font-size:13.5px;color:#4a8a5a;margin-bottom:30px}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:700px){.sim-grid{grid-template-columns:1fr}}
+.sim-panel{background:#0f2218;border:1px solid #1e3a28;border-radius:12px;padding:22px}
+.sim-panel-title{font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:#7dd4a0;margin-bottom:18px;letter-spacing:.04em;text-transform:uppercase}
+.sim-field{margin-bottom:18px}
+.sim-label{font-size:12.5px;color:#8abaa0;margin-bottom:6px;font-weight:500;display:flex;justify-content:space-between}
+.sim-label span{color:#a8e87a;font-weight:700;font-family:'Fraunces',serif;font-size:13px}
+.sim-range{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:#1e3a28;outline:none;cursor:pointer}
+.sim-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#1a7a42;cursor:pointer;border:2px solid #a8e87a;box-shadow:0 0 6px rgba(168,232,122,.3)}
+.sim-select{width:100%;background:#1e3a28;color:#c8ecd8;border:1px solid #2a5a38;border-radius:6px;padding:8px 10px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer}
+.sim-select option{background:#0f2218}
+
+.sim-results{background:#0f2218;border:1px solid #1e3a28;border-radius:12px;padding:22px;margin-top:22px}
+.sim-res-title{font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:#7dd4a0;margin-bottom:16px;letter-spacing:.04em;text-transform:uppercase}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:18px}
+.res-card{background:#0a1a0f;border:1px solid #1a3020;border-radius:8px;padding:12px;text-align:center}
+.res-val{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#a8e87a;line-height:1;margin-bottom:4px}
+.res-unit{font-size:10px;color:#4a8a5a;margin-bottom:2px}
+.res-label{font-size:11px;color:#6a9a7a;line-height:1.3}
+
+/* COMPOSITION BAR */
+.comp-bar{margin:12px 0}
+.comp-bar-label{font-size:11.5px;color:#6a9a7a;margin-bottom:5px;display:flex;justify-content:space-between}
+.comp-bar-track{height:22px;background:#1a3020;border-radius:4px;overflow:hidden;display:flex}
+.comp-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;transition:width .5s ease;min-width:0;overflow:hidden;white-space:nowrap}
+
+/* WARNING / STATUS */
+.sim-status{padding:10px 14px;border-radius:7px;font-size:13px;font-weight:500;margin-top:14px;display:flex;align-items:center;gap:8px;transition:all .4s}
+.sim-status.ok{background:rgba(26,122,66,.2);color:#80d4a0;border:1px solid rgba(26,122,66,.3)}
+.sim-status.warn{background:rgba(184,120,0,.2);color:#f0c040;border:1px solid rgba(184,120,0,.3)}
+.sim-status.danger{background:rgba(154,32,32,.25);color:#f08080;border:1px solid rgba(154,32,32,.3)}
+
+/* REFS */
+.refs{background:var(--bgw);border:1px solid var(--border);border-radius:12px;padding:32px 28px;margin-top:70px}
+.refs h2{border-bottom:none;margin-top:0;padding:0;font-size:22px}
+.refs ul{list-style:none;counter-reset:r;margin-top:18px}
+.refs ul li{counter-increment:r;padding:9px 0 9px 38px;position:relative;border-bottom:1px solid #eee;font-size:13.5px;line-height:1.65;color:#333}
+.refs ul li:last-child{border-bottom:none}
+.refs ul li::before{content:counter(r);position:absolute;left:0;top:10px;width:25px;height:25px;background:var(--gl);color:var(--gd);border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.refs ul li em{font-style:italic;color:var(--gd)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#4a6a58;text-align:center;padding:32px 24px;font-size:13px}
+footer strong{color:#c8ecd8}footer a{color:#7dd4a0}
+
+@media(max-width:640px){
+  .nl{display:none}
+  .proc-flow{flex-direction:column;min-width:unset}
+  .proc-step::after{content:'↓';right:50%;top:unset;bottom:-16px;transform:translateX(50%)}
+  h2{font-size:23px}
+  .sim-wrap{padding:22px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  ⚡ Nova turma de Física — Vestibular <strong>Maio 2026</strong>. Vagas limitadas. <a href="../turma-maio-2026.html">Garanta sua vaga →</a>
+</div>
+
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulados/">Simulados</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="hero-tag">Bioenergia · Processos · Matriz Energética</div>
+    <h1>Biogás na Matriz<br>Energética <em>Brasileira</em></h1>
+    <div class="hero-sub">Do esterco à eletricidade: processos, parâmetros e potencial</div>
+    <p class="hero-deck">O Brasil tem um dos maiores potenciais de biogás do mundo — e aproveita uma fração mínima dele. Este artigo explica a bioquímica, os parâmetros críticos, as tecnologias disponíveis e por que o biogás pode ser a âncora de segurança energética que o país ainda não descobriu. Com simulador interativo de biodigestor.</p>
+    <div class="hero-meta">
+      <span>✍️ Prof. Edson Mosman · mosmanLAB</span>
+      <span>📅 Abril de 2026</span>
+      <span>⏱ ~25 min</span>
+      <span>⚗️ Simulador interativo incluso</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- INTRO -->
+<p>Em um país que importa fertilizantes nitrogenados, debate como descarbonizar o agronegócio, gera 800 bilhões de litros de vinhaça por ano, mantém o maior rebanho bovino comercial do mundo e ainda enfrenta crises hídricas que ameaçam sua matriz elétrica — o biogás aparece como resposta simultânea para vários desses problemas. E, ainda assim, representa menos de 0,5% da geração elétrica brasileira.</p>
+
+<p>Essa contradição — entre potencial enorme e aproveitamento mínimo — é o ponto de partida deste artigo. Para entendê-la, precisamos começar pela bioquímica fundamental: o que é, como se forma, o que o favorece e o que o destrói. Depois passamos pelas tecnologias, pelos números da matriz brasileira, e chegamos ao simulador interativo que permite experimentar como cada parâmetro afeta a produção de gás.</p>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">1</span> O que é Biogás — Definição e Composição</h2>
+
+<p>Biogás é a mistura gasosa produzida pela decomposição biológica de matéria orgânica em condições <strong>anaeróbicas</strong> — sem a presença de oxigênio livre. É um processo que ocorre naturalmente em pântanos, fundos de lagos, intestinos de ruminantes e aterros sanitários. Nos biodigestores industriais, esse processo é controlado, otimizado e escalado para produção energética.</p>
+
+<p>O componente de valor energético é o <strong>metano (CH₄)</strong> — o mesmo componente principal do gás natural fóssil. A diferença é que o metano do biogás vem de carbono que a planta captou da atmosfera recentemente (ciclo fechado), enquanto o gás natural fóssil libera carbono que estava sequestrado há milhões de anos.</p>
+
+<div class="cw">
+  <div class="ct">Figura 1 — Composição Típica do Biogás Bruto por Tipo de Substrato</div>
+  <div class="cs">% volumétrica dos principais componentes. A fração de CH₄ determina o poder calorífico. H₂S e siloxanos são as principais impurezas problemáticas para equipamentos.</div>
+  <div class="cb" style="height:340px"><canvas id="c1"></canvas></div>
+  <div class="csrc">Fonte: Petersson & Wellinger (2009), IEA Bioenergy; Allegue & Hinge (2012); EPE, Potencial de Biogás no Brasil (2022).</div>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Componente</th><th>% típica</th><th>Papel no biogás</th><th>Problema?</th></tr></thead>
+<tbody>
+<tr><td><strong>Metano (CH₄)</strong></td><td>50–75%</td><td>Combustível — valor energético</td><td><span class="tag tg">Desejado</span></td></tr>
+<tr><td><strong>CO₂</strong></td><td>25–45%</td><td>Diluente — reduz poder calorífico</td><td><span class="tag ty">Remover para biometano</span></td></tr>
+<tr><td><strong>Vapor d'água (H₂O)</strong></td><td>1–5%</td><td>Causa corrosão em motores</td><td><span class="tag ty">Remover</span></td></tr>
+<tr><td><strong>Ácido sulfídrico (H₂S)</strong></td><td>0,01–2%</td><td>Tóxico, corrosivo, odorífero</td><td><span class="tag tr">Crítico — remover</span></td></tr>
+<tr><td><strong>Amônia (NH₃)</strong></td><td>traços–1%</td><td>Inibitória e corrosiva</td><td><span class="tag ty">Monitorar</span></td></tr>
+<tr><td><strong>Siloxanos</strong></td><td>traços</td><td>Depõem SiO₂ em motores (RSU)</td><td><span class="tag tr">Remover em RSU/esgoto</span></td></tr>
+<tr><td><strong>N₂, O₂</strong></td><td>0–5%</td><td>Impurezas — indicam entradas de ar</td><td><span class="tag ty">Minimizar</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">2</span> As Quatro Etapas da Digestão Anaeróbica</h2>
+
+<p>A produção de biogás não é um processo simples — é uma cascata de reações bioquímicas realizadas por comunidades de micro-organismos distintos, cada um dependente dos produtos da etapa anterior. Essa interdependência é o que torna o processo ao mesmo tempo poderoso e delicado.</p>
+
+<div class="proc">
+  <div class="proc-title">⚗ Processo de Digestão Anaeróbica — Sequência Bioquímica</div>
+  <div class="proc-flow">
+    <div class="proc-step">
+      <div class="proc-box" style="border-color:#5a9a1a">
+        <div class="proc-icon">🌿</div>
+        <div class="proc-name" style="color:#a8e87a">1. HIDRÓLISE</div>
+        <div class="proc-desc">Enzimas extracelulares de bactérias hidrolíticas quebram polímeros:<br>
+        • Celulose → glicose<br>
+        • Proteínas → aminoácidos<br>
+        • Lipídios → ácidos graxos</div>
+        <div class="proc-micro">Bactérias: Clostridium, Bacteroides</div>
+      </div>
+    </div>
+    <div class="proc-arrow">→</div>
+    <div class="proc-step">
+      <div class="proc-box" style="border-color:#b87800">
+        <div class="proc-icon">🧪</div>
+        <div class="proc-name" style="color:#f0c040">2. ACIDOGÊNESE</div>
+        <div class="proc-desc">Bactérias fermentam os monômeros:<br>
+        • Produzem AGV (acético, propiônico, butírico)<br>
+        • Produzem CO₂, H₂<br>
+        • pH cai → risco de acidificação</div>
+        <div class="proc-micro">Bactérias: Lactobacillus, Streptococcus</div>
+      </div>
+    </div>
+    <div class="proc-arrow">→</div>
+    <div class="proc-step">
+      <div class="proc-box" style="border-color:#0d7a6a">
+        <div class="proc-icon">⚗️</div>
+        <div class="proc-name" style="color:#7dd4c8">3. ACETOGÊNESE</div>
+        <div class="proc-desc">Bactérias acetogênicas convertem AGV:<br>
+        • Propionato → acetato + H₂<br>
+        • Butirato → acetato + CO₂<br>
+        • Requer baixa pressão parcial de H₂</div>
+        <div class="proc-micro">Bactérias: Syntrophomonas, Syntrophobacter</div>
+      </div>
+    </div>
+    <div class="proc-arrow">→</div>
+    <div class="proc-step">
+      <div class="proc-box" style="border-color:#1a4878">
+        <div class="proc-icon">🔵</div>
+        <div class="proc-name" style="color:#80b4f0">4. METANOGÊNESE</div>
+        <div class="proc-desc">Archaea produzem CH₄:<br>
+        • Acetoclástica (70%): CH₃COOH → CH₄ + CO₂<br>
+        • Hidrogenotrófica (30%): CO₂ + 4H₂ → CH₄ + 2H₂O<br>
+        • pH ótimo: 6,8–7,4</div>
+        <div class="proc-micro">Archaea: Methanosaeta, Methanobacterium</div>
+      </div>
+    </div>
+    <div class="proc-arrow">→</div>
+    <div class="proc-step">
+      <div class="proc-box" style="border-color:#5a9a1a;background:#0d2a10">
+        <div class="proc-icon">💨</div>
+        <div class="proc-name" style="color:#a8e87a">BIOGÁS</div>
+        <div class="proc-desc">CH₄ + CO₂ + traços<br><br>
+        + DIGESTATO<br>
+        (biofertilizante rico em N, P, K)</div>
+        <div class="proc-micro">Poder calorífico: 5.000–6.500 kcal/Nm³</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Por que a Metanogênese é a Etapa Crítica?</h3>
+
+<p>As archaea metanogênicas são os micro-organismos mais sensíveis e de crescimento mais lento de todo o consórcio. Enquanto bactérias acidogênicas se multiplicam em horas, as metanogênicas levam dias a semanas. Isso cria um desequilíbrio potencial: se a produção de ácidos (etapas 1 e 2) supera a capacidade das metanogênicas de consumi-los, o pH cai, e as próprias metanogênicas são inibidas — num ciclo de retroalimentação negativa que colapsa o processo.</p>
+
+<p>Esse fenômeno — chamado <strong>"souring" ou acidificação do reator</strong> — é a falha mais comum em biodigestores mal operados. A recuperação é lenta e custosa. Daí a importância do monitoramento contínuo de pH, alcalinidade e concentração de ácidos graxos voláteis (AGV).</p>
+
+<div class="fbox">
+  <div class="fn">Reação Principal da Metanogênese Acetoclástica (70% do CH₄)</div>
+  <div class="fm">CH₃COOH → CH₄ + CO₂<br>
+  ΔG° = −31 kJ/mol (reação exergônica — libera energia)</div>
+  <div class="fnote">As archaea metanogênicas obtêm energia dessa reação — mas apenas 31 kJ/mol, muito pouco. Por isso crescem lentamente e são tão sensíveis a perturbações de pH e temperatura.</div>
+</div>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">3</span> Parâmetros Críticos do Processo</h2>
+
+<p>A produção de biogás é governada por um conjunto de parâmetros interligados. Controlar esses parâmetros é a diferença entre um biodigestor produtivo e estável e um sistema que acidifica, para de produzir gás ou entra em colapso biológico.</p>
+
+<h3>3.1 Temperatura — O Acelerador Metabólico</h3>
+
+<p>A temperatura é o parâmetro com maior impacto na taxa de produção de biogás. Os micro-organismos anaeróbicos operam em três faixas distintas:</p>
+
+<div class="cw">
+  <div class="ct">Figura 2 — Taxa de Produção de Biogás vs. Temperatura de Operação</div>
+  <div class="cs">Produção relativa (% do ótimo) em função da temperatura. As duas janelas de operação ótima — mesofílica (~37°C) e termofílica (~55°C) — correspondem às duas comunidades microbianas distintas.</div>
+  <div class="cb" style="height:320px"><canvas id="c2"></canvas></div>
+  <div class="csrc">Fonte: Metcalf & Eddy, Wastewater Engineering (2014); Chernicharo (2007), Reatores Anaeróbicos; Tchobanoglous et al. (2014).</div>
+</div>
+
+<div class="box teal">
+  <span class="blbl">🌡️ Faixas de Temperatura</span>
+  <strong>Psicrófila (10–20°C):</strong> lenta, baixa produção — usada apenas em climas muito frios sem aquecimento disponível.<br><br>
+  <strong>Mesofílica (30–42°C, ótimo ~37°C):</strong> a mais comum. Estável, robusta, menos sensível a perturbações. TRH de 20–40 dias. Padrão em biodigestores agrícolas e de esgoto.<br><br>
+  <strong>Termofílica (50–60°C, ótimo ~55°C):</strong> 30–50% mais produtiva. TRH de 10–20 dias. Maior grau de higienização (elimina patógenos). Mais instável — perturbações de temperatura de 1–2°C podem causar inibição. Requer aquecimento ativo — economicamente viável apenas onde há calor residual disponível.
+</div>
+
+<h3>3.2 pH e Alcalinidade — O Tampão do Sistema</h3>
+
+<p>O pH é o parâmetro mais crítico a monitorar. As archaea metanogênicas requerem pH entre <strong>6,8 e 7,4</strong> — qualquer desvio significativo inibe sua atividade. O pH do efluente de entrada raramente está nessa faixa, e a produção de ácidos na acidogênese naturalmente tende a baixar o pH.</p>
+
+<p>O que protege o sistema é a <strong>alcalinidade total (AT)</strong> — a capacidade tamponante do meio, principalmente na forma de bicarbonato (HCO₃⁻). Um biodigestor bem operado mantém AT entre 2.000 e 5.000 mg CaCO₃/L. A relação AGV/AT (ácidos graxos voláteis sobre alcalinidade total) é o indicador mais sensível de desequilíbrio: valores acima de 0,4 indicam sistema sob estresse; acima de 0,8, risco iminente de acidificação.</p>
+
+<div class="cw">
+  <div class="ct">Figura 3 — Efeito do pH na Atividade das Diferentes Populações Microbianas</div>
+  <div class="cs">Atividade relativa (0–100%) dos três grupos funcionais em função do pH. A janela ótima para metanogênese (6,8–7,4) é mais estreita que para os outros grupos — tornando-a o fator limitante do processo.</div>
+  <div class="cb" style="height:320px"><canvas id="c3"></canvas></div>
+  <div class="csrc">Fonte: Angelidaki et al. (2009), Bioresource Technology; Batstone et al. (2002), ADM1 — Anaerobic Digestion Model No.1.</div>
+</div>
+
+<h3>3.3 Relação C/N — A Nutrição do Consórcio Microbiano</h3>
+
+<p>Os micro-organismos anaeróbicos precisam de carbono como fonte de energia e nitrogênio para síntese de proteínas celulares. A relação ideal carbono/nitrogênio (C/N) está entre <strong>20:1 e 30:1</strong>:</p>
+
+<p><strong>C/N baixo (< 15:1):</strong> excesso de nitrogênio → produção de amônia (NH₃) → inibição das archaea metanogênicas → queda de produção e odor intenso. Substratos com C/N baixo: dejetos suínos (~10:1), lodo de esgoto (~8:1).</p>
+
+<p><strong>C/N alto (> 35:1):</strong> deficiência de nitrogênio → crescimento microbiano limitado → processo lento. Substratos com C/N alto: palha (~80:1), madeira (~500:1), celulose pura.</p>
+
+<p>A solução prática é a <strong>codigestão</strong> — mistura de substratos com diferentes C/N para atingir a faixa ótima. Esterco bovino (~20:1) + vinhaça (~60:1) + resíduos de abatedouro (~4:1) = mistura optimizada. Codigestão também melhora homogeneidade e dilui possíveis inibidores.</p>
+
+<h3>3.4 Tempo de Retenção Hidráulica (TRH) e Carga Orgânica Volumétrica (COV)</h3>
+
+<p>O <strong>TRH</strong> é o tempo médio que o substrato permanece no biodigestor — calculado pelo volume útil dividido pela vazão de alimentação. TRH muito curto = micro-organismos "lavados" do sistema antes de se multiplicarem. TRH muito longo = reator superdimensionado, custo desnecessário.</p>
+
+<p>A <strong>COV</strong> (kg de SV/m³·dia) é a taxa com que matéria orgânica é alimentada por unidade de volume de reator. Supercarga (COV muito alta) → excesso de ácidos → acidificação. Subcarga → reator subutilizado. O equilíbrio entre TRH e COV é o principal desafio de dimensionamento.</p>
+
+<div class="fbox">
+  <div class="fn">Relações Fundamentais de Dimensionamento</div>
+  <div class="fm">TRH (dias) = V_reator (m³) / Q_afluente (m³/dia)<br><br>
+  COV (kgSV/m³·dia) = Q × C_sv / V_reator<br><br>
+  Produção diária CH₄ = m_sv × Y_CH₄ × η_degradação</div>
+  <div class="fnote">Y_CH₄ = potencial específico de metano do substrato (L CH₄/g SV); η = eficiência de degradação (0,5–0,9 dependendo do substrato e condições)</div>
+</div>
+
+<h3>3.5 Inibidores — O que Mata o Processo</h3>
+
+<div class="tw">
+<table>
+<thead><tr><th>Inibidor</th><th>Fonte</th><th>Concentração Inibidora</th><th>Consequência</th><th>Mitigação</th></tr></thead>
+<tbody>
+<tr><td><strong>Amônia (NH₃ livre)</strong></td><td>Proteínas, urina</td><td>&gt; 150 mg/L NH₃ livre</td><td>Inibe metanogênese; odor</td><td>Reduzir pH; diluição</td></tr>
+<tr><td><strong>H₂S</strong></td><td>Proteínas, sulfatos</td><td>&gt; 200 mg/L H₂S livre</td><td>Tóxico para Archaea; corrosão</td><td>Precipitar com Fe²⁺; microaeração</td></tr>
+<tr><td><strong>AGV (ácidos graxos voláteis)</strong></td><td>Acidogênese descontrolada</td><td>&gt; 2.000 mg/L total</td><td>Acidificação; inibição metanogênese</td><td>Reduzir COV; adicionar tampão</td></tr>
+<tr><td><strong>Metais pesados</strong></td><td>Efluentes industriais</td><td>Variável por metal</td><td>Inibe enzimas microbianas</td><td>Pré-tratamento; precipitação</td></tr>
+<tr><td><strong>Antibióticos</strong></td><td>Dejetos de criação tratada</td><td>Baixa (µg/L)</td><td>Inibe comunidade microbiana</td><td>Período de carência; pré-tratamento</td></tr>
+<tr><td><strong>Detergentes/desinfetantes</strong></td><td>Limpeza de instalações</td><td>Baixa</td><td>Ruptura de membranas celulares</td><td>Separar efluentes de limpeza</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">4</span> Tipos de Biodigestores e Tecnologias</h2>
+
+<p>Não existe um tipo único de biodigestor adequado para todos os substratos, escalas e condições. A escolha da tecnologia depende da concentração de sólidos do substrato, da escala, do investimento disponível, da disponibilidade de energia para aquecimento e da robustez operacional necessária.</p>
+
+<div class="cw">
+  <div class="ct">Figura 4 — Tipos de Biodigestores: Características por Aplicação</div>
+  <div class="cs">Comparação de tecnologias por concentração de sólidos do substrato, tempo de retenção e faixa típica de potência. Cada tecnologia tem nicho de aplicação específico.</div>
+  <div class="cb" style="height:380px"><canvas id="c4"></canvas></div>
+  <div class="csrc">Fonte: Chernicharo (2007); van Lier et al. (2008); IEA Bioenergy Task 37; Abatzoglou & Boivin (2009).</div>
+</div>
+
+<h3>4.1 Modelo Indiano e Chinês — Pequena Escala Rural</h3>
+<p>Os modelos tradicionais — campânula flutuante (indiano) e cúpula fixa (chinês) — são biodigestores de mistura completa simples, operando em regime mesofílico sem controle ativo de temperatura. Adequados para propriedades rurais com 5–50 animais. CAPEX baixo (R$ 2.000–15.000). TRH de 30–60 dias. Produção de gás usada para cocção doméstica. Amplamente disseminados no Brasil via Programa Nacional de Biogás e Biometano (PNPB) e Programa Mais Ambiente.</p>
+
+<h3>4.2 CSTR — Continuously Stirred Tank Reactor</h3>
+<p>Tanque cilíndrico com agitação mecânica contínua (hélice, propulsor ou recirculação de lodo). Temperatura controlada por serpentinas de aquecimento. Padrão para substratos com 3–12% de sólidos totais — esterco, lodo de esgoto, resíduos orgânicos pastosos. TRH típico 15–30 dias (mesofílico) ou 10–20 dias (termofílico). Escala de 50 m³ a vários milhares de m³. É a tecnologia dominante em usinas de biogás de médio e grande porte na Europa.</p>
+
+<h3>4.3 UASB — Upflow Anaerobic Sludge Blanket</h3>
+<p>O reator UASB é a grande contribuição brasileira para a engenharia sanitária mundial — desenvolvido na Wageningen University (Holanda) nos anos 1970, mas amplamente aperfeiçoado e disseminado no Brasil pelo Prof. Carlos Chernicharo (UFMG). O substrato flui de baixo para cima através de uma "manta" de lodo granular denso — grânulos de 1–3 mm compostos por consórcios de micro-organismos muito ativos. O biogás sobe, é coletado por um separador trifásico no topo. Altamente eficiente para efluentes líquidos (DQO 500–15.000 mg/L). TRH de 4–8 horas para efluentes domésticos — muito mais compacto que o CSTR. Amplamente usado em ETEs brasileiras.</p>
+
+<h3>4.4 Lagoa Anaeróbica Coberta</h3>
+<p>Lagoa existente ou nova, coberta com geomembrana de PEAD (polietileno de alta densidade) para captura do biogás. Tecnologia de baixíssimo custo para suinocultura e bovinocultura. Sem controle de temperatura, sem agitação. TRH de 30–80 dias. Eficiência moderada (40–60% da produção potencial). Muito disseminada no Sul do Brasil (suinocultura) pelo Programa de Crédito de Carbono da Itaipu e pelo mercado voluntário de créditos de carbono.</p>
+
+<h3>4.5 Digestão a Seco (Dry Fermentation)</h3>
+<p>Para substratos com alto teor de sólidos (> 20% ST) — fração orgânica de RSU, resíduos agrícolas secos, bagaço. Reatores em batelada (garages/boxes) ou em pistão (plug flow). Sem necessidade de água de diluição. Tecnologia mais recente, ainda cara, mas em rápida expansão para aproveitamento de resíduos sólidos orgânicos urbanos.</p>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">5</span> Substratos: Potencial Específico e Aplicações no Brasil</h2>
+
+<div class="cw">
+  <div class="ct">Figura 5 — Potencial Específico de Metano por Substrato (L CH₄/kg SV)</div>
+  <div class="cs">Potencial Bioquímico de Metano (BMP) — quantidade máxima de metano produzível por kg de sólidos voláteis degradados. Varia com a composição do substrato (lipídios > proteínas > carboidratos em potencial específico).</div>
+  <div class="cb" style="height:360px"><canvas id="c5"></canvas></div>
+  <div class="csrc">Fonte: Angelidaki & Sanders (2004); Möller & Müller (2012); Chernicharo et al. (2019); EMBRAPA Suínos e Aves (2021).</div>
+</div>
+
+<div class="box brown">
+  <span class="blbl">🇧🇷 Brasil: Principais Substratos e Volumes</span>
+  <strong>Vinhaça de cana-de-açúcar:</strong> ~300 bilhões de litros/ano gerados nas usinas sucroalcooleiras. Potencial de 8–12 L CH₄/L vinhaça. Praticamente inexplorado para biogás — a maioria é fertirrigada diretamente.<br><br>
+  <strong>Esterco bovino:</strong> rebanho de ~230 milhões de cabeças. Potencial de 150–250 L CH₄/kg SV. Desafio logístico — animais dispersos em propriedades de pecuária extensiva.<br><br>
+  <strong>Esterco suíno:</strong> rebanho de ~50 milhões de animais, concentrado no Sul. Alta densidade = logística viável. Já parcialmente aproveitado pelo mercado de créditos de carbono.<br><br>
+  <strong>Lodo de ETE:</strong> apenas ~50% do esgoto brasileiro é tratado. As ETEs que tratam já geram biogás — mas a maioria o queima em flare sem aproveitamento energético.<br><br>
+  <strong>RSU (fração orgânica):</strong> ~130 mil toneladas/dia de resíduos sólidos urbanos, com 50–60% de fração orgânica. Potencial enorme, logística complexa, necessidade de coleta seletiva.
+</div>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">6</span> Do Biogás ao Biometano — Purificação e Upgrading</h2>
+
+<p>O biogás bruto, com 50–75% de CH₄, pode ser usado diretamente para geração de calor e eletricidade. Para usos mais nobres — injeção na rede de gás natural, GNV (gás natural veicular biológico), ou exportação — é necessário purificar até &gt;96% de CH₄. Esse processo é chamado de <em>upgrading</em> ou biometanização.</p>
+
+<div class="cw">
+  <div class="ct">Figura 6 — Tecnologias de Upgrading de Biogás para Biometano</div>
+  <div class="cs">Comparação das principais tecnologias de purificação por eficiência de remoção de CO₂, custo de CAPEX e OPEX, e adequação por escala. PSA = Pressure Swing Adsorption; PWS = Pressurized Water Scrubbing; MS = Membrane Separation; CS = Chemical Scrubbing (aminas).</div>
+  <div class="cb" style="height:360px"><canvas id="c6"></canvas></div>
+  <div class="csrc">Fonte: Bauer et al. (2013), Bioresource Technology; IEA Bioenergy Task 37 (2020); IRENA, Biogas for Road Vehicles (2018).</div>
+</div>
+
+<h3>Tratamento de H₂S — Obrigatório Antes do Uso</h3>
+<p>O H₂S, mesmo em concentrações de 0,01%, corrói motores, turbinas, queimadores e tubulações de aço em meses. Precisa ser removido antes de qualquer uso do biogás. As principais tecnologias são: <strong>microaeração</strong> (injeção controlada de ar no headspace — bactérias sulfoxidantes oxidam H₂S a S⁰ elementar; baixo custo, eficaz para concentrações médias); <strong>precipitação com cloreto ferroso</strong> (Fe²⁺ + H₂S → FeS↓; simples, barato); e <strong>lavagem com soluções de NaOH ou Fe(OH)₃</strong> para concentrações elevadas.</p>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">7</span> Biogás na Matriz Elétrica e Energética Brasileira</h2>
+
+<p>O biogás tem uma característica que o distingue fundamentalmente de solar e eólico: é uma fonte <strong>controlável e despachável</strong>. A produção de biogás pode ser regulada, armazenada (no gasômetro) e convertida em eletricidade exatamente quando o operador do sistema precisa — inclusive nas horas de pico, à noite, ou durante a "rampa da curva de pato" ao entardecer. Isso o torna complementar ideal às renováveis intermitentes.</p>
+
+<div class="cw">
+  <div class="ct">Figura 7 — Biogás na Matriz Elétrica Brasileira: Capacidade Instalada e Potencial (2024)</div>
+  <div class="cs">Capacidade instalada atual vs. potencial técnico estimado de geração elétrica a partir de biogás no Brasil, por fonte de substrato. O gap entre o atual e o potencial revela a magnitude da oportunidade desperdiçada.</div>
+  <div class="cb" style="height:380px"><canvas id="c7"></canvas></div>
+  <div class="csrc">Fonte: ANEEL/SIGA (capacidade instalada 2024); EPE, Potencial de Biogás no Brasil (2022); ABIOGÁS, Anuário do Biogás 2024.</div>
+</div>
+
+<div class="sg">
+  <div class="sc"><div class="sv">0,84</div><div class="sl">GW de biogás instalado no Brasil (2024) — apenas 0,4% da capacidade total</div></div>
+  <div class="sc"><div class="sv l">80+</div><div class="sl">GW de potencial técnico estimado — 100× o atual</div></div>
+  <div class="sc"><div class="sv a">300</div><div class="sl">bilhões de litros de vinhaça/ano — o maior potencial single não aproveitado</div></div>
+  <div class="sc"><div class="sv b">24/7</div><div class="sl">Biogás é despachável — gera quando o sistema precisa, não quando o sol brilha</div></div>
+</div>
+
+<div class="box">
+  <span class="blbl">🔋 Biogás como Âncora de Segurança Energética</span>
+  Num sistema elétrico com crescente penetração de solar e eólico, o biogás preenche o papel que o gás natural faz em outros países: fornece potência firme e controlável para garantir a segurança de abastecimento. Mas com uma vantagem crucial: a matéria-prima é resíduo nacional, a cadeia de suprimentos é doméstica, não há dependência de Ormuz ou de Xinjiang, e o subproduto (digestato) substitui fertilizantes importados. É segurança energética e segurança alimentar simultaneamente.
+</div>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">8</span> Tecnologias de Conversão Energética</h2>
+
+<div class="tw">
+<table>
+<thead><tr><th>Tecnologia</th><th>Eficiência elétrica</th><th>Eficiência térmica</th><th>Escala típica</th><th>H₂S máx.</th><th>Aplicação</th></tr></thead>
+<tbody>
+<tr><td><strong>Motor ciclo Otto (MCI)</strong></td><td>30–42%</td><td>40–50% (CHP)</td><td>10 kW–5 MW</td><td>~500 ppm</td><td>Padrão em biogás agropecuário</td></tr>
+<tr><td><strong>Microturbina</strong></td><td>25–33%</td><td>40–50% (CHP)</td><td>30–300 kW</td><td>&lt;70.000 ppm</td><td>Tolerante ao H₂S; manutenção simples</td></tr>
+<tr><td><strong>Turbina a gás (GT)</strong></td><td>25–35%</td><td>45–55% (CHP)</td><td>1–50 MW</td><td>&lt;20 ppm</td><td>Biometano; grande escala</td></tr>
+<tr><td><strong>Célula combustível (SOFC)</strong></td><td>45–65%</td><td>20–30%</td><td>1 kW–2 MW</td><td>&lt;1 ppm</td><td>Alta eficiência; sensível a impurezas</td></tr>
+<tr><td><strong>Caldeira + vapor (ORC)</strong></td><td>10–18%</td><td>70–80%</td><td>&gt; 500 kW</td><td>Tolerante</td><td>Quando calor é prioritário</td></tr>
+<tr><td><strong>Biometano → GNV/rede</strong></td><td>—</td><td>—</td><td>Qualquer</td><td>&lt;4 ppm (ANP)</td><td>Transporte; injeção na rede</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SIMULADOR -->
+<!-- ══════════════════════════════════════════ -->
+<h2><span class="sb">9</span> Simulador Interativo de Biodigestor</h2>
+
+<p>O simulador abaixo permite explorar como os principais parâmetros de operação afetam a produção de biogás, a composição do gás e o potencial energético do sistema. Os cálculos são baseados nos modelos cinéticos simplificados de Hashimoto (1981) e nas equações estequiométricas da digestão anaeróbica.</p>
+
+<div class="sim-wrap">
+  <div class="sim-title">⚗ Simulador de Biodigestor Anaeróbico</div>
+  <div class="sim-sub">Ajuste os parâmetros e veja o impacto em tempo real na produção de biogás, composição e energia gerada.</div>
+
+  <div class="sim-grid">
+    <!-- PAINEL ESQUERDO: SUBSTRATO -->
+    <div class="sim-panel">
+      <div class="sim-panel-title">🌿 Substrato &amp; Alimentação</div>
+
+      <div class="sim-field">
+        <div class="sim-label">Tipo de substrato <span id="lbl-sub">Esterco Bovino</span></div>
+        <select class="sim-select" id="sel-sub" onchange="simCalc()">
+          <option value="bovino">Esterco Bovino</option>
+          <option value="suino">Esterco Suíno</option>
+          <option value="vinhaça">Vinhaça de Cana</option>
+          <option value="lodo">Lodo de ETE</option>
+          <option value="rsu">Resíduos Sólidos Urbanos (RSU)</option>
+          <option value="abatedouro">Resíduos de Abatedouro</option>
+          <option value="mix">Codigestão (Bovino + Suíno)</option>
+        </select>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">Volume do reator (m³) <span id="lbl-vol">200 m³</span></div>
+        <input type="range" class="sim-range" id="sl-vol" min="10" max="2000" value="200" step="10" oninput="simCalc()">
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">Carga orgânica — COV (kgSV/m³·dia) <span id="lbl-cov">2,0</span></div>
+        <input type="range" class="sim-range" id="sl-cov" min="0.5" max="8" value="2" step="0.1" oninput="simCalc()">
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">Concentração de sólidos (% ST) <span id="lbl-st">6%</span></div>
+        <input type="range" class="sim-range" id="sl-st" min="1" max="25" value="6" step="0.5" oninput="simCalc()">
+      </div>
+    </div>
+
+    <!-- PAINEL DIREITO: CONDIÇÕES -->
+    <div class="sim-panel">
+      <div class="sim-panel-title">🌡️ Condições de Operação</div>
+
+      <div class="sim-field">
+        <div class="sim-label">Temperatura (°C) <span id="lbl-temp">37°C</span></div>
+        <input type="range" class="sim-range" id="sl-temp" min="10" max="65" value="37" step="1" oninput="simCalc()">
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">pH operação (estimado/controlado) <span id="lbl-ph">7,1</span></div>
+        <input type="range" class="sim-range" id="sl-ph" min="5.5" max="8.5" value="7.1" step="0.1" oninput="simCalc()">
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">Relação C/N do substrato <span id="lbl-cn">25</span></div>
+        <input type="range" class="sim-range" id="sl-cn" min="5" max="80" value="25" step="1" oninput="simCalc()">
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">Concentração de H₂S entrada (mg/L) <span id="lbl-h2s">200</span></div>
+        <input type="range" class="sim-range" id="sl-h2s" min="10" max="3000" value="200" step="10" oninput="simCalc()">
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-label">Tecnologia de conversão <span id="lbl-tech"></span></div>
+        <select class="sim-select" id="sel-tech" onchange="simCalc()">
+          <option value="mci">Motor ciclo Otto (MCI) — η=38%</option>
+          <option value="microturbina">Microturbina — η=30%</option>
+          <option value="chp">CHP Motor+Calor — η_el=38% + η_th=45%</option>
+          <option value="biometano">Upgrading → Biometano (>96% CH₄)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="sim-results">
+    <div class="sim-res-title">📊 Resultados do Simulador</div>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="res-val" id="r-trh">—</div>
+        <div class="res-unit">dias</div>
+        <div class="res-label">Tempo de Retenção Hidráulica (TRH)</div>
+      </div>
+      <div class="res-card">
+        <div class="res-val" id="r-gas">—</div>
+        <div class="res-unit">Nm³/dia</div>
+        <div class="res-label">Produção de Biogás</div>
+      </div>
+      <div class="res-card">
+        <div class="res-val" id="r-ch4">—</div>
+        <div class="res-unit">Nm³ CH₄/dia</div>
+        <div class="res-label">Produção de Metano</div>
+      </div>
+      <div class="res-card">
+        <div class="res-val" id="r-kwh">—</div>
+        <div class="res-unit">kWh/dia</div>
+        <div class="res-label">Energia Elétrica Gerada</div>
+      </div>
+      <div class="res-card">
+        <div class="res-val" id="r-pot">—</div>
+        <div class="res-unit">kW</div>
+        <div class="res-label">Potência Instalada Equivalente</div>
+      </div>
+      <div class="res-card">
+        <div class="res-val" id="r-digestato">—</div>
+        <div class="res-unit">kg/dia</div>
+        <div class="res-label">Digestato (biofertilizante)</div>
+      </div>
+    </div>
+
+    <!-- Composição do biogás -->
+    <div style="margin-bottom:14px">
+      <div style="font-size:12px;color:#6a9a7a;margin-bottom:8px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Composição estimada do biogás produzido</div>
+      <div class="comp-bar">
+        <div class="comp-bar-label"><span>CH₄ (metano)</span><span id="pct-ch4">—</span></div>
+        <div class="comp-bar-track">
+          <div class="comp-seg" id="bar-ch4" style="background:#1a7a42;width:60%">CH₄</div>
+          <div class="comp-seg" id="bar-co2" style="background:#4a6a58;width:35%">CO₂</div>
+          <div class="comp-seg" id="bar-h2s" style="background:#9a2020;width:2%"></div>
+          <div class="comp-seg" id="bar-oth" style="background:#2a3a30;width:3%"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
+        <span style="font-size:11px;color:#4a8a5a">🟢 CH₄: <strong id="txt-ch4">—</strong>%</span>
+        <span style="font-size:11px;color:#4a8a5a">⬜ CO₂: <strong id="txt-co2">—</strong>%</span>
+        <span style="font-size:11px;color:#8a4a4a">🔴 H₂S: <strong id="txt-h2s">—</strong>%</span>
+        <span style="font-size:11px;color:#4a6a5a">⬛ Outros: <strong id="txt-oth">—</strong>%</span>
+      </div>
+    </div>
+
+    <!-- Status / alertas -->
+    <div class="sim-status" id="sim-status">✅ Sistema operando em condições favoráveis.</div>
+
+    <!-- Mini chart de produção simulada ao longo do tempo -->
+    <div style="margin-top:20px">
+      <div style="font-size:12px;color:#6a9a7a;margin-bottom:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Perfil de produção ao longo do tempo de retenção</div>
+      <div style="height:180px;position:relative"><canvas id="c-sim-time"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">10</span> O Digestato — O Subproduto que Fecha o Ciclo</h2>
+
+<p>O digestato — o efluente líquido/semissólido que sai do biodigestor após a digestão anaeróbica — é frequentemente chamado de "ouro negro" da bioeconomia. Rico em nitrogênio amoniacal (prontamente assimilável pelas plantas), fósforo e potássio em formas solúveis, o digestato é um biofertilizante que pode substituir fertilizantes minerais sintéticos — produzidos com gás natural (nitrogênio via Haber-Bosch) ou minerados no exterior (fósforo, potássio).</p>
+
+<p>O Brasil importa mais de <strong>80% dos fertilizantes minerais</strong> que consome — principalmente da Rússia (potássio, nitrogênio), Canadá e Bielorrússia. O digestato dos biodigestores brasileiros poderia substituir uma fração significativa dessas importações, fechando o ciclo de nutrientes na agricultura e reduzindo uma vulnerabilidade geopolítica raramente discutida.</p>
+
+<!-- ══════════════════════════ -->
+<h2><span class="sb">11</span> Desafios e Perspectivas do Setor no Brasil</h2>
+
+<div class="cw">
+  <div class="ct">Figura 8 — Barreiras ao Desenvolvimento do Biogás no Brasil</div>
+  <div class="cs">Principais barreiras identificadas por empresas e pesquisadores do setor, ordenadas por frequência de citação. Múltiplas respostas permitidas em pesquisa com 120 agentes do setor.</div>
+  <div class="cb" style="height:360px"><canvas id="c8"></canvas></div>
+  <div class="csrc">Fonte: ABIOGÁS, Pesquisa Setorial de Biogás e Biometano no Brasil 2023; IGAS, Relatório Anual 2024; GIZ Brasil, Biogas in Brazil 2022.</div>
+</div>
+
+<div class="box amber">
+  <span class="blbl">🚀 O que mudaria o jogo</span>
+  <strong>1. Marco regulatório do biometano:</strong> a Resolução ANP nº 8/2021 definiu especificações, mas falta regulamentação de acesso à rede de gás natural para injeção de biometano — o que travou projetos de biometanodutos.<br><br>
+  <strong>2. Preço do CO₂:</strong> o mercado regulado de carbono brasileiro (SBCE, em discussão no Congresso desde 2021) daria receita adicional que tornaria projetos de biogás viáveis em escalas menores.<br><br>
+  <strong>3. Linha de crédito de longo prazo:</strong> projetos de biogás têm payback de 7–12 anos — incompatível com crédito rural de curto prazo. BNDES e BNB precisam de linhas específicas de 15–20 anos a custo de capital compatível.<br><br>
+  <strong>4. Assistência técnica rural:</strong> a maioria dos produtores rurais não tem capacidade técnica para operar biodigestores. Extensão rural especializada (EMATER, EMBRAPA) é essencial.
+</div>
+
+<!-- REFS -->
+<div class="refs">
+  <h2>Referências</h2>
+  <ul>
+    <li><strong>Chernicharo, C. A. L.</strong> (2007). <em>Reatores Anaeróbios — Princípios do Tratamento Biológico de Águas Residuárias</em>. 2ª ed. Belo Horizonte: DESA/UFMG. [Referência brasileira fundamental sobre UASB e digestão anaeróbica]</li>
+    <li><strong>Metcalf & Eddy / Tchobanoglous, G., Stensel, H. D., Tsuchihashi, R., & Burton, F.</strong> (2014). <em>Wastewater Engineering: Treatment and Resource Recovery</em>. 5ª ed. New York: McGraw-Hill. [Parâmetros de projeto de reatores anaeróbicos; faixas de temperatura]</li>
+    <li><strong>Batstone, D. J., et al.</strong> (2002). The IWA Anaerobic Digestion Model No 1 (ADM1). <em>Water Science and Technology</em>, 45(10), 65–73. [Modelo matemático de referência — efeitos de pH, inibidores, cinética]</li>
+    <li><strong>Angelidaki, I., Alves, M., Bolzonella, D., et al.</strong> (2009). Defining the biomethane potential (BMP) of solid organic wastes and energy crops. <em>Water Science and Technology</em>, 59(5), 927–934.</li>
+    <li><strong>Angelidaki, I., & Sanders, W.</strong> (2004). Assessment of the anaerobic biodegradability of macropollutants. <em>Reviews in Environmental Science and Bio/Technology</em>, 3(2), 117–129.</li>
+    <li><strong>Petersson, A., & Wellinger, A.</strong> (2009). <em>Biogas Upgrading Technologies — Developments and Innovations</em>. IEA Bioenergy Task 37. Paris: IEA.</li>
+    <li><strong>Bauer, F., Hulteberg, C., Persson, T., & Tamm, D.</strong> (2013). <em>Biogas Upgrading — Review of Commercial Technologies</em>. Malmö: Energiforsk.</li>
+    <li><strong>Hashimoto, A. G.</strong> (1981). Methane from swine manure: Effect of temperature and influent substrate concentration on kinetic parameter (μm). <em>Agricultural Wastes</em>, 3(2), 159–168. [Modelo cinético de referência — base do simulador]</li>
+    <li><strong>van Lier, J. B., Mahmoud, N., & Zeeman, G.</strong> (2008). Anaerobic wastewater treatment. In: <em>Biological Wastewater Treatment: Principles, Modelling and Design</em>. IWA Publishing.</li>
+    <li><strong>EPE — Empresa de Pesquisa Energética</strong> (2022). <em>Potencial de Biogás e Biometano no Brasil</em>. Nota Técnica NT EPE-DPG-SDB-2022-01. Rio de Janeiro: EPE/MME.</li>
+    <li><strong>ABIOGÁS — Associação Brasileira de Biogás</strong> (2024). <em>Anuário do Biogás e Biometano no Brasil 2024</em>. São Paulo: ABIOGÁS.</li>
+    <li><strong>ANEEL — Agência Nacional de Energia Elétrica</strong> (2024). <em>SIGA — Capacidade instalada de geração elétrica por fonte</em>. Brasília: ANEEL.</li>
+    <li><strong>ANP — Agência Nacional do Petróleo, Gás Natural e Biocombustíveis</strong> (2021). <em>Resolução ANP nº 8/2021 — Especificações do Biometano</em>. Brasília: ANP.</li>
+    <li><strong>EMBRAPA Suínos e Aves</strong> (2021). <em>Potencial de Produção de Biogás a partir de Dejetos de Suínos no Brasil</em>. Concórdia, SC: EMBRAPA.</li>
+    <li><strong>IEA Bioenergy Task 37</strong> (2020). <em>Country Reports on Biogas and Biomethane Statistics</em>. Paris: IEA. Disponível em: task37.ieabioenergy.com</li>
+    <li><strong>IRENA</strong> (2022). <em>Biogas for Road Vehicles: Technology Brief</em>. Abu Dhabi: IRENA.</li>
+    <li><strong>GIZ — Deutsche Gesellschaft für Internationale Zusammenarbeit</strong> (2022). <em>Biogas in Brazil: Potential, Status and Recommendations</em>. Brasília: GIZ Brasil.</li>
+    <li><strong>Möller, K., & Müller, T.</strong> (2012). Effects of anaerobic digestion on digestate nutrient availability and crop growth. <em>Engineering in Life Sciences</em>, 12(3), 242–257.</li>
+  </ul>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p><strong>mosmanLAB</strong> · Prof. Edson Mosman · São Paulo, Brasil</p>
+  <p style="margin-top:6px">Física para vestibular · Energia · Ciência · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a></p>
+</footer>
+
+<!-- ══════════ CHARTS + SIMULATOR ══════════ -->
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.color = '#4a6a58';
+
+// ── C1: Composição biogás por substrato ──
+(function(){
+  const subs=['Esterco\nBovino','Esterco\nSuíno','Vinhaça\nCana','Lodo\nETE','RSU\n(org.)','Abatedouro'];
+  new Chart(document.getElementById('c1'),{
+    type:'bar',
+    data:{labels:subs,datasets:[
+      {label:'CH₄ (%)',data:[60,65,57,63,55,68],backgroundColor:'rgba(26,122,66,0.82)',borderRadius:4,stack:'s'},
+      {label:'CO₂ (%)',data:[35,29,38,30,40,27],backgroundColor:'rgba(74,106,88,0.72)',borderRadius:4,stack:'s'},
+      {label:'H₂S (%)',data:[0.5,1.2,0.3,1.0,0.8,1.8],backgroundColor:'rgba(154,32,32,0.85)',borderRadius:4,stack:'s'},
+      {label:'Outros (%)',data:[4.5,4.8,4.7,6,4.2,3.2],backgroundColor:'rgba(30,58,40,0.6)',borderRadius:4,stack:'s'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top'}},
+      scales:{x:{stacked:true,title:{display:true,text:'Substrato'}},
+              y:{stacked:true,title:{display:true,text:'% volumétrica'},max:105}}}
+  });
+})();
+
+// ── C2: Produção vs temperatura ──
+(function(){
+  const T=Array.from({length:56},(_,i)=>i+10);
+  function rate(t){
+    const psi=Math.exp(-((t-37)**2)/60)+0.85*Math.exp(-((t-55)**2)/30);
+    const cold=t<15?0.1*(t-10)/5:1;
+    return Math.max(0,Math.min(1,psi*cold));
+  }
+  const y=T.map(t=>rate(t)*100);
+  new Chart(document.getElementById('c2'),{
+    type:'line',
+    data:{labels:T.map(v=>v+'°C'),datasets:[{
+      label:'Taxa relativa de produção (%)',data:y,
+      borderColor:'#1a7a42',backgroundColor:'rgba(26,122,66,0.12)',fill:true,tension:0.5,borderWidth:3,pointRadius:0
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        annotation:{annotations:{
+          m1:{type:'box',xMin:'35°C',xMax:'40°C',backgroundColor:'rgba(26,122,66,0.12)',borderColor:'rgba(26,122,66,0.4)',borderWidth:1},
+          m2:{type:'box',xMin:'52°C',xMax:'58°C',backgroundColor:'rgba(184,120,0,0.12)',borderColor:'rgba(184,120,0,0.4)',borderWidth:1},
+        }}},
+      scales:{
+        x:{title:{display:true,text:'Temperatura de operação (°C)'},ticks:{maxTicksLimit:10}},
+        y:{title:{display:true,text:'Produção relativa de biogás (%)'},min:0,max:105}}}
+  });
+})();
+
+// ── C3: pH vs atividade microbiana ──
+(function(){
+  const pH=Array.from({length:31},(_,i)=>+(5.0+i*0.1).toFixed(1));
+  const hidro=pH.map(p=>p<5?0:p>9?0:Math.max(0,100*Math.exp(-((p-6.5)**2)/2.5)));
+  const acido=pH.map(p=>Math.max(0,100*Math.exp(-((p-6.0)**2)/3.0)));
+  const metano=pH.map(p=>Math.max(0,100*Math.exp(-((p-7.1)**2)/0.4)));
+  new Chart(document.getElementById('c3'),{
+    type:'line',
+    data:{labels:pH.map(v=>v.toFixed(1)),datasets:[
+      {label:'Bactérias hidrolíticas/acidogênicas',data:hidro,borderColor:'#5a9a1a',borderWidth:2.5,tension:0.5,pointRadius:0,fill:false},
+      {label:'Bactérias acetogênicas',data:acido,borderColor:'#b87800',borderWidth:2.5,tension:0.5,pointRadius:0,fill:false,borderDash:[5,3]},
+      {label:'Archaea metanogênicas (CRÍTICO)',data:metano,borderColor:'#1a4878',backgroundColor:'rgba(26,72,120,0.08)',borderWidth:3,tension:0.5,pointRadius:0,fill:true},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top'}},
+      scales:{
+        x:{title:{display:true,text:'pH do meio reacional'},ticks:{maxTicksLimit:12}},
+        y:{title:{display:true,text:'Atividade relativa (%)'},min:0,max:110}}}
+  });
+})();
+
+// ── C4: Tipos de biodigestores ──
+(function(){
+  const techs=['Indiano/Chinês\n(rural)','Lagoa Coberta\n(PEAD)','CSTR\n(mesofílico)','CSTR\n(termofílico)','UASB\n(efluente líq.)','Dry Ferm.\n(alta sólidos)'];
+  new Chart(document.getElementById('c4'),{
+    type:'bar',
+    data:{labels:techs,datasets:[
+      {label:'Sólidos totais máx. (%)',data:[10,12,14,14,3,40],backgroundColor:'rgba(26,122,66,0.75)',borderRadius:4,yAxisID:'y'},
+      {label:'TRH típico (dias)',data:[45,55,25,15,0.3,21],backgroundColor:'rgba(184,120,0,0.75)',borderRadius:4,yAxisID:'y2'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top'}},
+      scales:{
+        x:{},
+        y:{title:{display:true,text:'% Sólidos Totais máx.'},position:'left',min:0,max:48},
+        y2:{title:{display:true,text:'TRH típico (dias)'},position:'right',min:0,max:65,grid:{drawOnChartArea:false}}}}
+  });
+})();
+
+// ── C5: BMP por substrato ──
+(function(){
+  const subs=['Esterco\nbovino','Esterco\nsuíno','Vinhaça','Lodo\nETE','RSU\norgânico','Resíduos\nabatedouro','Microalgas','Glicerina\nbiodiese','Bagaço\ncana'];
+  const bmp_lo=[150,250,8,200,250,400,300,300,140];
+  const bmp_hi=[280,420,12,350,450,600,500,420,200];
+  const bmp_mid=bmp_lo.map((l,i)=>(l+bmp_hi[i])/2);
+  const colors=['#1a7a42','#2a9a52','#5a9a1a','#0d7a6a','#1a4878','#9a2020','#6a2d8a','#b87800','#6a3a10'];
+  new Chart(document.getElementById('c5'),{
+    type:'bar',
+    data:{labels:subs,datasets:[
+      {label:'Mínimo (L CH₄/kgSV)',data:bmp_lo,backgroundColor:colors.map(c=>c+'88'),borderRadius:4,stack:'s'},
+      {label:'Adicional até máximo',data:bmp_hi.map((h,i)=>h-bmp_lo[i]),backgroundColor:colors.map(c=>c+'cc'),borderRadius:4,stack:'s'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>{
+          const i=ctx.dataIndex;
+          return ctx.datasetIndex===0?`Mínimo: ${bmp_lo[i]} L CH₄/kgSV`:`Máximo: ${bmp_hi[i]} | Médio: ${bmp_mid[i].toFixed(0)}`;
+        }}}},
+      scales:{
+        x:{stacked:true,title:{display:true,text:'Substrato'}},
+        y:{stacked:true,title:{display:true,text:'Potencial de Metano (L CH₄/kg SV)'},min:0}}}
+  });
+})();
+
+// ── C6: Tecnologias de upgrading ──
+(function(){
+  const techs=['PSA\n(Pressure Swing Ads.)','PWS\n(Water Scrubbing)','Membranas\n(Separação)','CS\n(Aminas)'];
+  new Chart(document.getElementById('c6'),{
+    type:'radar',
+    data:{labels:['Pureza CH₄ (%)','Recuperação CH₄ (%)','Custo CAPEX\n(inverso)','Simplicidade\nOperacional','Tolerância\nH₂S','Escala\n(flexibil.)'],
+      datasets:[
+        {label:'PSA',data:[99,97,70,65,60,80],borderColor:'#1a7a42',backgroundColor:'rgba(26,122,66,0.1)',borderWidth:2,pointRadius:3},
+        {label:'Water Scrubbing',data:[97,99,75,75,90,85],borderColor:'#1a4878',backgroundColor:'rgba(26,72,120,0.1)',borderWidth:2,pointRadius:3},
+        {label:'Membranas',data:[96,92,80,85,50,90],borderColor:'#b87800',backgroundColor:'rgba(184,120,0,0.1)',borderWidth:2,pointRadius:3},
+        {label:'Chemical Scrubbing',data:[99,99,55,50,95,70],borderColor:'#6a2d8a',backgroundColor:'rgba(106,45,138,0.1)',borderWidth:2,pointRadius:3},
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:100,ticks:{stepSize:20,font:{size:9}},pointLabels:{font:{size:10}}}},
+      plugins:{legend:{position:'right'}}}
+  });
+})();
+
+// ── C7: Capacidade instalada vs potencial ──
+(function(){
+  const fontes=['Esterco\nBovino','Esterco\nSuíno/Aves','Vinhaça\nCana','Lodo\nETE','RSU\n(aterros)','Outros'];
+  const atual=[0.05,0.25,0.02,0.35,0.12,0.05];
+  const potencial=[28,12,22,8,15,5];
+  new Chart(document.getElementById('c7'),{
+    type:'bar',
+    data:{labels:fontes,datasets:[
+      {label:'Capacidade instalada atual (GW)',data:atual,backgroundColor:'rgba(26,122,66,0.85)',borderRadius:5},
+      {label:'Potencial técnico adicional (GW)',data:potencial.map((p,i)=>p-atual[i]),backgroundColor:'rgba(90,154,26,0.35)',borderRadius:5,borderWidth:2,borderColor:'rgba(90,154,26,0.6)'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top'},
+        tooltip:{callbacks:{label:ctx=>ctx.datasetIndex===0?`Instalado: ${ctx.parsed.y.toFixed(2)} GW`:`Potencial adicional: ${ctx.parsed.y.toFixed(1)} GW`}}},
+      scales:{
+        x:{stacked:false,title:{display:true,text:'Fonte de substrato'}},
+        y:{title:{display:true,text:'GW de capacidade elétrica'},min:0}}}
+  });
+})();
+
+// ── C8: Barreiras ao biogás no Brasil ──
+(function(){
+  const barr=['Alto custo de capital\ne financiamento restrito','Falta de escala\nlogística (coleta substrato)','Insegurança regulatória\n(marco biometano)','Falta de assistência\ntécnica especializada','Preço competitivo\ndo gás natural','Falta de mercado\npara digestato','Distância de rede\nelétrica / gás','Burocracia de licença\nambiental'];
+  const pct=[82,74,68,62,58,45,42,38];
+  new Chart(document.getElementById('c8'),{
+    type:'bar',
+    data:{labels:barr,datasets:[{
+      label:'% citação por agentes do setor',
+      data:pct,
+      backgroundColor:pct.map(v=>v>70?'rgba(154,32,32,0.82)':v>55?'rgba(184,120,0,0.80)':'rgba(26,122,66,0.78)'),
+      borderRadius:6,borderWidth:0
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      indexAxis:'y',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.parsed.x}% dos respondentes citaram esta barreira`}}},
+      scales:{
+        x:{title:{display:true,text:'% de citação'},min:0,max:95},
+        y:{ticks:{font:{size:12}}}}}
+  });
+})();
+
+// ══════════════════════════════════════
+// SIMULATOR LOGIC
+// ══════════════════════════════════════
+const substratos={
+  bovino: {nome:'Esterco Bovino',bmp:210,svFrac:0.78,ch4_frac:0.60,h2s_base:300,cn:20},
+  suino:  {nome:'Esterco Suíno', bmp:340,svFrac:0.80,ch4_frac:0.65,h2s_base:800,cn:9},
+  'vinhaça':{nome:'Vinhaça de Cana',bmp:9,svFrac:0.90,ch4_frac:0.57,h2s_base:150,cn:60,isLiquid:true},
+  lodo:   {nome:'Lodo de ETE',   bmp:280,svFrac:0.72,ch4_frac:0.63,h2s_base:600,cn:8},
+  rsu:    {nome:'RSU (orgânico)',bmp:350,svFrac:0.82,ch4_frac:0.55,h2s_base:200,cn:30},
+  abatedouro:{nome:'Resíduos Abatedouro',bmp:490,svFrac:0.88,ch4_frac:0.68,h2s_base:1200,cn:4},
+  mix:    {nome:'Codigestão Bov+Suíno',bmp:275,svFrac:0.79,ch4_frac:0.62,h2s_base:500,cn:15},
+};
+const techs={
+  mci:{nome:'MCI Otto',eta_el:0.38,eta_th:0},
+  microturbina:{nome:'Microturbina',eta_el:0.30,eta_th:0},
+  chp:{nome:'CHP Motor+Calor',eta_el:0.38,eta_th:0.45},
+  biometano:{nome:'Biometano',eta_el:0,eta_th:0,isUpgrade:true},
+};
+
+let simChart=null;
+
+function simCalc(){
+  const sub=substratos[document.getElementById('sel-sub').value];
+  const vol=+document.getElementById('sl-vol').value;
+  const cov=+document.getElementById('sl-cov').value;
+  const st=+document.getElementById('sl-st').value;
+  const temp=+document.getElementById('sl-temp').value;
+  const ph=+document.getElementById('sl-ph').value;
+  const cn=+document.getElementById('sl-cn').value;
+  const h2s_in=+document.getElementById('sl-h2s').value;
+  const tech=techs[document.getElementById('sel-tech').value];
+
+  // Update labels
+  document.getElementById('lbl-sub').textContent=sub.nome;
+  document.getElementById('lbl-vol').textContent=vol+' m³';
+  document.getElementById('lbl-cov').textContent=cov.toFixed(1);
+  document.getElementById('lbl-st').textContent=st+'%';
+  document.getElementById('lbl-temp').textContent=temp+'°C';
+  document.getElementById('lbl-ph').textContent=ph.toFixed(1);
+  document.getElementById('lbl-cn').textContent=cn;
+  document.getElementById('lbl-h2s').textContent=h2s_in;
+
+  // ── Fatores de eficiência ──
+  // Temperatura
+  function tempFactor(t){
+    const m=Math.exp(-((t-37)**2)/60);
+    const th=0.88*Math.exp(-((t-55)**2)/28);
+    return Math.max(0.05,Math.min(1,Math.max(m,th)));
+  }
+  // pH (metanogênese)
+  function phFactor(p){return Math.max(0,Math.exp(-((p-7.1)**2)/0.35));}
+  // C/N
+  function cnFactor(c){
+    if(c<10) return 0.55+0.04*(c-5);
+    if(c<=30) return 0.85+0.015*(c-10);
+    if(c<=50) return 1.0-0.01*(c-30);
+    return Math.max(0.5,0.8-0.012*(c-50));
+  }
+  // H2S inibição
+  function h2sFactor(h){
+    if(h<300) return 1.0;
+    if(h<800) return 1.0-0.0006*(h-300);
+    if(h<2000) return 0.7-0.0003*(h-800);
+    return Math.max(0.1,0.34-0.0002*(h-2000));
+  }
+
+  const fT=tempFactor(temp);
+  const fPH=phFactor(ph);
+  const fCN=cnFactor(cn);
+  const fH2S=h2sFactor(h2s_in);
+  const effTotal=fT*fPH*fCN*fH2S;
+
+  // ── Cálculos ──
+  const Q_feed = vol*cov/((st/100)*sub.svFrac); // m³/dia de afluente
+  const TRH = vol/Math.max(0.1,Q_feed); // dias
+  const sv_day = vol*cov; // kgSV/dia alimentados
+  const ch4_prod = sv_day * (sub.bmp/1000) * effTotal; // Nm³ CH4/dia
+  const ch4_frac_adj = sub.ch4_frac*(0.85+0.15*effTotal);
+  const gas_prod = ch4_prod/Math.max(0.3,ch4_frac_adj); // Nm³ biogás/dia
+  // composição
+  const pct_ch4 = Math.min(80,Math.round(ch4_frac_adj*100));
+  const pct_h2s_gas = Math.min(3,+(h2s_in*0.0008*(1-effTotal*0.3)).toFixed(2));
+  const pct_co2 = Math.min(48,100-pct_ch4-pct_h2s_gas-2);
+  const pct_oth = 100-pct_ch4-pct_co2-pct_h2s_gas;
+
+  // Energia
+  const lhv_ch4=9.94; // kWh/Nm³
+  const e_ch4=ch4_prod*lhv_ch4;
+  let kwh_el=0, kw_pot=0, txt_extra='';
+  if(tech.isUpgrade){
+    const bm_vol=ch4_prod*0.97; // 97% recovery
+    txt_extra=`Biometano: ${bm_vol.toFixed(0)} Nm³ CH₄ puro/dia`;
+    kwh_el=0; kw_pot=0;
+  } else {
+    kwh_el=e_ch4*tech.eta_el;
+    kw_pot=kwh_el/24;
+  }
+
+  const digestato=Q_feed*(1-(st/100)*0.4)*1000; // kg/dia aprox
+
+  // ── Update DOM ──
+  document.getElementById('r-trh').textContent=TRH.toFixed(1);
+  document.getElementById('r-gas').textContent=gas_prod.toFixed(0);
+  document.getElementById('r-ch4').textContent=ch4_prod.toFixed(0);
+  document.getElementById('r-kwh').textContent=tech.isUpgrade?'—':kwh_el.toFixed(0);
+  document.getElementById('r-pot').textContent=tech.isUpgrade?'—':kw_pot.toFixed(1);
+  document.getElementById('r-digestato').textContent=(digestato/1000).toFixed(1)+'t';
+
+  document.getElementById('pct-ch4').textContent=pct_ch4+'%';
+  document.getElementById('txt-ch4').textContent=pct_ch4;
+  document.getElementById('txt-co2').textContent=pct_co2;
+  document.getElementById('txt-h2s').textContent=pct_h2s_gas.toFixed(2);
+  document.getElementById('txt-oth').textContent=pct_oth.toFixed(1);
+  document.getElementById('bar-ch4').style.width=pct_ch4+'%';
+  document.getElementById('bar-co2').style.width=pct_co2+'%';
+  document.getElementById('bar-h2s').style.width=Math.max(0.5,pct_h2s_gas)+'%';
+  document.getElementById('bar-oth').style.width=Math.max(0.5,pct_oth)+'%';
+
+  // Status
+  const st_el=document.getElementById('sim-status');
+  const warns=[];
+  if(fPH<0.4) warns.push('pH crítico — metanogênese severamente inibida!');
+  if(fH2S<0.6) warns.push('H₂S elevado — inibição e risco de corrosão!');
+  if(fCN<0.65) warns.push('C/N fora da faixa ótima — produção reduzida');
+  if(TRH<10) warns.push('TRH muito curto — risco de washout microbiano!');
+  if(cov>6) warns.push('Sobrecarga orgânica — risco de acidificação!');
+  if(effTotal>0.75 && warns.length===0){
+    st_el.className='sim-status ok';
+    st_el.textContent='✅ Sistema operando em condições favoráveis. Eficiência estimada: '+(effTotal*100).toFixed(0)+'%';
+  } else if(warns.length>0 && effTotal<0.4){
+    st_el.className='sim-status danger';
+    st_el.textContent='🚨 '+warns[0];
+  } else {
+    st_el.className='sim-status warn';
+    st_el.textContent='⚠️ '+warns[0]+' — Eficiência: '+(effTotal*100).toFixed(0)+'%';
+  }
+
+  // Mini time chart — perfil de produção acumulada vs TRH
+  const days=Array.from({length:Math.min(60,Math.ceil(TRH*2)+5)},(_,i)=>i+1);
+  const k_max=effTotal*sub.bmp/1000*0.07; // taxa
+  const cum=days.map(d=>{
+    const mu=0.3*effTotal;
+    return gas_prod*(1-Math.exp(-mu*d/TRH));
+  });
+
+  if(simChart) simChart.destroy();
+  simChart=new Chart(document.getElementById('c-sim-time'),{
+    type:'line',
+    data:{labels:days.map(d=>d+'d'),datasets:[{
+      label:'Produção acumulada relativa (%)',
+      data:cum.map(v=>Math.min(100,v/gas_prod*100)),
+      borderColor:'#a8e87a',backgroundColor:'rgba(168,232,122,0.1)',
+      fill:true,tension:0.5,borderWidth:2,pointRadius:0
+    },{
+      label:'TRH',
+      data:days.map(d=>d===Math.round(TRH)?75:null),
+      borderColor:'#f0c040',borderWidth:0,pointRadius:6,
+      pointBackgroundColor:'#f0c040',showLine:false,
+      tooltip:{callbacks:{label:()=>`TRH = ${TRH.toFixed(1)} dias`}}
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{ticks:{color:'#6a9a7a',font:{size:10},maxTicksLimit:10},grid:{color:'#1a3020'}},
+        y:{ticks:{color:'#6a9a7a',font:{size:10},callback:v=>v+'%'},grid:{color:'#1a3020'},min:0,max:105}}}
+  });
+}
+
+// Preset por substrato selecionado
+document.getElementById('sel-sub').addEventListener('change',function(){
+  const sub=substratos[this.value];
+  document.getElementById('sl-cn').value=sub.cn;
+  document.getElementById('sl-h2s').value=sub.h2s_base;
+  simCalc();
+});
+
+// Init
+simCalc();
+</script>
+
+<section class="refs-section" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border,#e5e7eb);">
+  <h2 style="font-family:'Lora',serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--text,#1a1a1a);">Leia também</h2>
+  <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+    <li><a href="biocombustiveis-brasil-mundo-eroi-co2.html">Biocombustíveis: EROI, CO₂ e o Brasil no mundo</a></li>
+    <li><a href="matrix-energetica-brasil-renovaveis.html">Matriz energética do Brasil e as renováveis</a></li>
+    <li><a href="emissoes-co2-brasil-mundo.html">Emissões de CO₂: Brasil e o mundo</a></li>
+    <li><a href="emissoes-desmatamento-brasil-seeg.html">Emissões e desmatamento no Brasil — dados SEEG</a></li>
+    <li><a href="fontes-energia-primaria-eletricidade-mundo.html">Fontes de energia primária e eletricidade no mundo</a></li>
+  </ul>
+</section>
+</body>
+</html>

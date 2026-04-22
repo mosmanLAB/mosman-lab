@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/article-estreitos.html"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Os Estreitos que Movem o Mundo — mosmanlab.com.br</title>
+<meta name="description" content="Um guia completo sobre os principais estreitos e canais comerciais do mundo: Ormuz, Malaca, Suez, Bab-el-Mandeb, Bósforo, Gibraltar e Panamá — seus fluxos, produtos críticos e vulnerabilidades geopolíticas.">
+<meta property="og:title" content="Os Estreitos que Movem o Mundo">
+<meta property="og:description" content="80% do comércio global vai pelo mar. Conheça os gargalos que controlam esse fluxo.">
+<meta property="og:site_name" content="mosmanlab.com.br">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0b1929;
+  --ocean: #1a3a5c;
+  --teal: #0d9488;
+  --amber: #d97706;
+  --red: #dc2626;
+  --paper: #fafaf7;
+  --cream: #f4f0e8;
+  --ink: #1c1c1e;
+  --muted: #6b7280;
+  --rule: #d1cdc4;
+  --serif: 'Playfair Display', Georgia, serif;
+  --body: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+  --max: 780px;
+  --wide: 1100px;
+}
+
+html { font-size: 18px; scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 300;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== SITE NAV ===== */
+.site-nav {
+  background: var(--navy);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--teal); }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: #8fa4b8;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 32px 64px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(13,148,136,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(217,119,6,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px);
+}
+.hero-inner {
+  position: relative;
+  max-width: var(--wide);
+  margin: 0 auto;
+}
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--teal);
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+.hero-title em { color: var(--teal); font-style: italic; }
+.hero-deck {
+  font-size: 1.05rem;
+  color: #8fa4b8;
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.hero-date {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: #6a7f92;
+  letter-spacing: 0.1em;
+}
+.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.tag-teal { background: rgba(13,148,136,0.15); color: var(--teal); border: 1px solid rgba(13,148,136,0.3); }
+.tag-amber { background: rgba(217,119,6,0.12); color: #fbbf24; border: 1px solid rgba(217,119,6,0.25); }
+.tag-red { background: rgba(220,38,38,0.1); color: #f87171; border: 1px solid rgba(220,38,38,0.2); }
+
+/* HERO STATS */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.hstat {
+  padding: 20px 24px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.hstat-val {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hstat-val.teal { color: var(--teal); }
+.hstat-val.amber { color: #fbbf24; }
+.hstat-val.red { color: #f87171; }
+.hstat-desc { font-family: var(--mono); font-size: 0.58rem; color: #6a7f92; letter-spacing: 0.07em; line-height: 1.5; }
+
+/* ===== ARTICLE LAYOUT ===== */
+.article-wrap {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ===== MAIN CONTENT ===== */
+.article-body { padding: 56px 0 80px; }
+
+/* TOC anchor targets */
+.section-anchor { scroll-margin-top: 80px; }
+
+/* Section label */
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--teal); }
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 40px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+h3 .strait-num {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: #fff;
+  background: var(--navy);
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+}
+
+p { margin-bottom: 1.3em; font-size: 1rem; }
+
+/* LEAD paragraph */
+.lead {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #3a3632;
+  line-height: 1.75;
+  margin-bottom: 2em;
+  border-left: 3px solid var(--teal);
+  padding-left: 20px;
+}
+
+/* PULL QUOTE */
+.pullquote {
+  margin: 40px -40px;
+  padding: 28px 40px;
+  background: var(--navy);
+  border-left: 4px solid var(--teal);
+  position: relative;
+}
+.pullquote p {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #d0dde8;
+  line-height: 1.6;
+  margin: 0;
+}
+.pullquote cite {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--teal);
+  letter-spacing: 0.1em;
+  margin-top: 12px;
+  font-style: normal;
+}
+
+/* STRAIT ENTRY */
+.strait-entry {
+  margin: 48px 0;
+  padding: 0;
+  border-top: 2px solid var(--navy);
+  padding-top: 32px;
+}
+.strait-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: start;
+}
+.strait-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+}
+.badge-critical { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
+.badge-high { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+.badge-medium { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
+.badge-low { background: #eff6ff; color: #1e40af; border: 1px solid #93c5fd; }
+
+.strait-stat { text-align: right; }
+.strait-stat-val {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.strait-stat-desc {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* LINKS GRID */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 16px 0 20px;
+}
+.ext-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.15s;
+  font-size: 0.78rem;
+}
+.ext-link:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11,25,41,0.15);
+}
+.ext-link .link-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.ext-link .link-text {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  color: inherit;
+}
+.ext-link .link-type {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  display: block;
+}
+.ext-link:hover .link-type { color: #8fa4b8; }
+
+/* PRODUCTS LIST */
+.products-list {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.products-list h4 {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.prod-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.prod-chip {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.chip-e { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
+.chip-f { background: #f0fdf4; color: #14532d; border-color: #86efac; }
+.chip-g { background: #eff6ff; color: #1e3a8a; border-color: #93c5fd; }
+.chip-c { background: #faf5ff; color: #581c87; border-color: #d8b4fe; }
+.chip-a { background: #fff7ed; color: #7c2d12; border-color: #fdba74; }
+.chip-r { background: #f0fdfa; color: #134e4a; border-color: #5eead4; }
+
+/* CALLOUT BOX */
+.callout {
+  margin: 28px 0;
+  padding: 20px 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.callout-warning {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-left: 4px solid var(--amber);
+}
+.callout-info {
+  background: #f0fdfa;
+  border: 1px solid #5eead4;
+  border-left: 4px solid var(--teal);
+}
+.callout-danger {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-left: 4px solid var(--red);
+}
+.callout strong { color: var(--navy); }
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 48px 0;
+}
+
+/* SECTION DIVIDER with text */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 56px 0 40px;
+}
+.section-divider::before, .section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.section-divider-text {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* EMBED WRAPPER */
+.embed-wrapper {
+  margin: 40px -32px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(11,25,41,0.1);
+}
+.embed-label {
+  background: var(--navy);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.embed-label-text {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+}
+.embed-label-hint {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: #4a6070;
+}
+.embed-wrapper iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+/* LIVE MONITOR SECTION */
+.monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.monitor-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.15s;
+}
+.monitor-card:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(11,25,41,0.2);
+}
+.monitor-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.monitor-icon { font-size: 1.3rem; }
+.monitor-name {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.monitor-desc {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.monitor-card:hover .monitor-desc { color: #8fa4b8; }
+.monitor-badge {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-top: 8px;
+  align-self: flex-start;
+  letter-spacing: 0.08em;
+}
+.mb-free { background: rgba(13,148,136,0.12); color: var(--teal); }
+.mb-paid { background: rgba(217,119,6,0.12); color: var(--amber); }
+.mb-official { background: rgba(30,64,175,0.1); color: #3b82f6; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  padding: 56px 0 80px;
+  position: sticky;
+  top: 80px;
+}
+.sidebar-section { margin-bottom: 36px; }
+.sidebar-title {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-list { list-style: none; }
+.toc-list li { margin-bottom: 4px; }
+.toc-list a {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  transition: color 0.15s;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+.toc-list a:hover { color: var(--navy); }
+.toc-list a::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--rule);
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.toc-list a:hover::before { background: var(--teal); }
+
+/* SOURCES SIDEBAR */
+.source-list { list-style: none; }
+.source-list li { margin-bottom: 6px; }
+.source-list a {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--teal);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.source-list a:hover { text-decoration: underline; }
+.source-org {
+  display: block;
+  font-size: 0.52rem;
+  color: var(--muted);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--navy);
+  color: #6a7f92;
+  padding: 40px 32px;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+}
+.footer-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-logo { color: #fff; font-weight: 600; letter-spacing: 0.1em; }
+.footer-logo span { color: var(--teal); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .article-wrap { grid-template-columns: 1fr; gap: 0; }
+  .sidebar { display: none; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .links-grid { grid-template-columns: repeat(2, 1fr); }
+  .monitor-grid { grid-template-columns: 1fr; }
+  .pullquote { margin: 32px 0; }
+  .embed-wrapper { margin: 32px 0; }
+}
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  .hero { padding: 48px 20px 40px; }
+  .article-wrap { padding: 0 20px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .links-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-kicker { animation: fadeUp 0.5s ease 0.1s both; }
+.hero-title { animation: fadeUp 0.5s ease 0.2s both; }
+.hero-deck { animation: fadeUp 0.5s ease 0.3s both; }
+.hero-meta { animation: fadeUp 0.5s ease 0.4s both; }
+.hero-stats { animation: fadeUp 0.5s ease 0.5s both; }
+</style>
+</head>
+<body>
+
+<div class="urgency-bar" style="background:#16a34a;color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500;">
+  ⚡ Nova turma de Física — Vestibular <strong>Maio 2026</strong>. Vagas limitadas. <a href="../turma-maio-2026.html" style="color:#fff;text-decoration:underline;">Garanta sua vaga →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulados/">Simulados</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">GEOPOLÍTICA &amp; COMÉRCIO GLOBAL</div>
+    <h1 class="hero-title">Os Estreitos que<br><em>Movem o Mundo</em></h1>
+    <p class="hero-deck">80% do comércio global vai pelo mar. Mas toda essa riqueza passa por um punhado de corredores com poucos quilômetros de largura — e qualquer crise neles reverbera no preço do seu combustível, da sua comida e do seu celular.</p>
+    <div class="hero-meta">
+      <span class="hero-date">ABRIL 2026 · MOSMANLAB.COM.BR</span>
+      <div class="hero-tags">
+        <span class="tag tag-teal">GEOPOLÍTICA</span>
+        <span class="tag tag-amber">COMÉRCIO GLOBAL</span>
+        <span class="tag tag-red">SEGURANÇA ENERGÉTICA</span>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-val teal">80%</div>
+        <div class="hstat-desc">do comércio mundial<br>transportado por mar</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val amber">70%</div>
+        <div class="hstat-desc">da demanda de petróleo<br>passa por choke points</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val red">25%</div>
+        <div class="hstat-desc">do óleo+gás global bloqueado<br>se Ormuz + Bab fecharem</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">24</div>
+        <div class="hstat-desc">choke points marítimos<br>identificados no mundo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <!-- MAIN -->
+  <main class="article-body">
+
+    <!-- INTRO -->
+    <div id="intro" class="section-anchor">
+      <div class="section-label">INTRODUÇÃO</div>
+      <h2>A geografia ainda manda</h2>
+      <p class="lead">Na era dos satélites, drones e comunicação instantânea, tendemos a imaginar que a geografia perdeu relevância. Os últimos anos provaram o contrário: um encalhe de navio no Egito, ataques de drones no Iêmen e tensões no Golfo Pérsico foram suficientes para fazer os preços do petróleo disparar, esvaziar prateleiras e paralisar fábricas na Europa e na Ásia.</p>
+
+      <p>O comércio global é, em sua essência, um sistema marítimo. Mais de 80% de tudo que é produzido e consumido no planeta — petróleo, grãos, semicondutores, automóveis, fertilizantes, roupas — chega ao seu destino em navios. E esses navios não navegam aleatoriamente: eles seguem rotas determinadas pela física (a Terra é redonda, a distância mais curta é a do grande círculo) e pela geografia (continentes estão no caminho).</p>
+
+      <p>O resultado é que imensos volumes de comércio são forçados a passar por um conjunto surpreendentemente pequeno de pontos estreitos: os <strong>choke points</strong> ou estreitos estratégicos. São corredores de poucos quilômetros de largura onde a quantidade de riqueza que transita a cada hora é de tirar o fôlego — e onde qualquer perturbação se transforma rapidamente numa crise global.</p>
+
+      <div class="callout callout-info">
+        <strong>O que é um choke point?</strong> É um trecho estreito de mar ou canal artificial onde a rota é obrigatória — não há alternativa viável — ou onde a alternativa implica um desvio tão grande (dias ou semanas de navegação) que tem impacto econômico imediato. Dos cerca de 200 estreitos existentes no mundo, apenas um punhado funciona como verdadeiro choke point global.
+      </div>
+
+      <p>Este artigo mapeia os principais estreitos comerciais do mundo, os produtos que passam por cada um deles, seu nível de risco geopolítico atual — e onde você pode acompanhar tudo isso em tempo real.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- DASHBOARD 1 -->
+    <div id="mapa" class="section-anchor">
+      <div class="section-label">VISUALIZAÇÃO INTERATIVA</div>
+      <h2>Mapa: Estreitos e Rotas Globais</h2>
+      <p>O painel abaixo mostra os principais estreitos no mapa global com suas rotas primárias e alternativas. Clique em qualquer ponto para ver detalhes, nível de risco e volume de comércio.</p>
+
+      <div class="embed-wrapper">
+        <div class="embed-label">
+          <span class="embed-label-text">⬡ PAINEL 1 — MAPA DE ESTREITOS E FLUXOS · DADOS EIA/UNCTAD 2024–2025</span>
+          <span class="embed-label-hint">Clique nos pontos para detalhes</span>
+        </div>
+        <iframe id="map-frame" src="about:blank" height="620" title="Mapa de Estreitos Comerciais"></iframe>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- OS ESTREITOS UM A UM -->
+    <div id="estreitos" class="section-anchor">
+      <div class="section-label">ANÁLISE DETALHADA</div>
+      <h2>Os principais estreitos, um a um</h2>
+
+      <!-- MALACA -->
+      <div class="strait-entry" id="malaca">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">01</span> Estreito de Malaca</h3>
+            <span class="strait-badge badge-high">⚠ RISCO ALTO</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">24%</div>
+            <div class="strait-stat-desc">DO COMÉRCIO GLOBAL</div>
+          </div>
+        </div>
+
+        <p>O Estreito de Malaca é o corredor marítimo mais movimentado do planeta. Situado entre a Península Malaia e a ilha de Sumatra (Indonésia), com apenas <strong>2,8 km de largura</strong> no seu ponto mais estreito — perto de Singapura —, por ele passam aproximadamente 94.000 navios por ano. É o principal elo entre o Oceano Índico e o Pacífico, e por consequência entre o Oriente Médio (fonte de energia) e a Ásia Oriental (maior polo manufatureiro do mundo).</p>
+
+        <p>A China é a nação mais dependente: 80% das suas importações de petróleo passam por Malaca. Pequim chama isso oficialmente de "<em>dilema de Malaca</em>" — e há décadas investe em alternativas (oleodutos pela Birmânia, o projeto do Canal de Kra na Tailândia) justamente para reduzir essa vulnerabilidade.</p>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-e">🛢 Petróleo bruto (45% do mundial)</span>
+            <span class="prod-chip chip-e">⛽ GNL (Golfo → Ásia)</span>
+            <span class="prod-chip chip-g">📦 Contêineres (eletrônicos, têxteis)</span>
+            <span class="prod-chip chip-a">🚗 Automóveis (26% mundial)</span>
+            <span class="prod-chip chip-r">⛏ Minério de ferro e carvão</span>
+            <span class="prod-chip chip-f">🌾 Arroz e óleo de palma</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Estreito_de_Malaca" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:103.8/centery:1.2/zoom:8" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Tráfego ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.google.com/maps/place/Strait+of+Malacca" target="_blank" rel="noopener">
+            <span class="link-icon">🗺</span>
+            <div><span class="link-text">Ver no Google Maps</span><span class="link-type">MAPA SATÉLITE</span></div>
+          </a>
+          <a class="ext-link" href="https://www.eia.gov/international/analysis/regions-of-interest/Strait_of_Malacca" target="_blank" rel="noopener">
+            <span class="link-icon">📊</span>
+            <div><span class="link-text">Análise da EIA</span><span class="link-type">DADOS ENERGÉTICOS</span></div>
+          </a>
+          <a class="ext-link" href="https://portwatch.imf.org" target="_blank" rel="noopener">
+            <span class="link-icon">📈</span>
+            <div><span class="link-text">Trânsitos diários</span><span class="link-type">IMF PORTWATCH</span></div>
+          </a>
+          <a class="ext-link" href="https://www.politicaexterior.com/articulo/mirar-un-mapa-el-estrecho-de-malaca-centro-de-gravedad-del-mundo/" target="_blank" rel="noopener">
+            <span class="link-icon">🌐</span>
+            <div><span class="link-text">Centro de gravidade do mundo</span><span class="link-type">ANÁLISE GEOPOLÍTICA</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ORMUZ -->
+      <div class="strait-entry" id="ormuz">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">02</span> Estreito de Ormuz</h3>
+            <span class="strait-badge badge-critical">🔴 RISCO CRÍTICO</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">~20%</div>
+            <div class="strait-stat-desc">DO PETRÓLEO GLOBAL</div>
+          </div>
+        </div>
+
+        <p>Ormuz é o choke point energético mais crítico do mundo. Situado entre o Irã e Omã, com 34 km de largura, é a <strong>única saída marítima do Golfo Pérsico</strong>. Cinco dos dez maiores exportadores mundiais de petróleo (Arábia Saudita, Iraque, Emirados, Kuwait e Irã) dependem exclusivamente dele para exportar por mar.</p>
+
+        <div class="callout callout-danger">
+          <strong>Crise de 2026:</strong> Em março de 2026, após ataques dos EUA e Israel ao Irã, Teerã efetivamente bloqueou o estreito, atacando navios que tentavam atravessá-lo. Foi o maior choque de oferta energética da história recente: o Brent disparou de cerca de US$ 70 para mais de US$ 100 por barril em duas semanas.
+        </div>
+
+        <p>Além do petróleo bruto — 20,5 milhões de barris por dia, ou 25,7% de todo o óleo marítimo global —, por Ormuz passa também cerca de 20% do GNL mundial (principalmente do Qatar, maior exportador global) e um terço dos fertilizantes comercializados mundialmente, o que significa que uma crise em Ormuz afeta não só os preços de energia, mas também a produção de alimentos no planeta inteiro.</p>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-e">🛢 Petróleo bruto (25,7% global)</span>
+            <span class="prod-chip chip-e">⛽ GNL Qatar (20% mundial)</span>
+            <span class="prod-chip chip-e">🔥 GLP (30% das exportações mundiais)</span>
+            <span class="prod-chip chip-c">🧪 Fertilizantes N, P, S (1/3 global)</span>
+            <span class="prod-chip chip-c">⚗️ Enxofre (50% das exportações mundiais)</span>
+            <span class="prod-chip chip-g">📦 Contêineres do Golfo</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Estreito_de_Ormuz" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:56.3/centery:26.5/zoom:8" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Tráfego ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.google.com/maps/place/Strait+of+Hormuz" target="_blank" rel="noopener">
+            <span class="link-icon">🗺</span>
+            <div><span class="link-text">Ver no Google Maps</span><span class="link-type">MAPA SATÉLITE</span></div>
+          </a>
+          <a class="ext-link" href="https://www.eia.gov/todayinenergy/detail.php?id=65504" target="_blank" rel="noopener">
+            <span class="link-icon">📊</span>
+            <div><span class="link-text">Fluxos 2024–2025</span><span class="link-type">EIA OFICIAL</span></div>
+          </a>
+          <a class="ext-link" href="https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-closure-how-would-that-affect-world-trade" target="_blank" rel="noopener">
+            <span class="link-icon">📰</span>
+            <div><span class="link-text">Crise de 2026</span><span class="link-type">AL JAZEERA</span></div>
+          </a>
+          <a class="ext-link" href="https://watchers.news/epicenter/how-disruption-in-the-strait-of-hormuz-threatens-fertilizer-supply-and-global-food-prices/" target="_blank" rel="noopener">
+            <span class="link-icon">🌾</span>
+            <div><span class="link-text">Impacto em fertilizantes</span><span class="link-type">ANÁLISE 2026</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- SUEZ / BAB -->
+      <div class="strait-entry" id="suez">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">03</span> Canal de Suez &amp; Bab-el-Mandeb</h3>
+            <span class="strait-badge badge-critical">🔴 RISCO CRÍTICO</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">12%</div>
+            <div class="strait-stat-desc">DO COMÉRCIO MUNDIAL</div>
+          </div>
+        </div>
+
+        <p>O <strong>Canal de Suez</strong> e o <strong>Bab-el-Mandeb</strong> funcionam como um sistema integrado: o canal, no Egito, conecta o Mar Vermelho ao Mediterrâneo e representa o maior atalho entre a Ásia e a Europa — economizando pelo menos 10 dias de navegação em relação à volta pelo Cabo da Boa Esperança. O Bab-el-Mandeb ("Portão das Lágrimas") é o estreito no extremo sul do Mar Vermelho, entre o Iêmen e o Chifre da África, e é a porta de entrada obrigatória para quem vem do Oceano Índico.</p>
+
+        <p>A parceria estratégica dos dois se tornou dolorosamente evidente em 2023–2025, quando os Houthis do Iêmen passaram a atacar navios comerciais no Bab-el-Mandeb em solidariedade ao Hamas em Gaza. O resultado foi uma queda de mais de 70% no tráfego pelo Canal de Suez — que normalmente processa 30% de todos os contêineres do mundo —, com navios preferindo o desvio pelo Cabo da Boa Esperança, que adiciona até 14 dias e 40% de custo.</p>
+
+        <div class="callout callout-warning">
+          <strong>Caso clássico de disrupção:</strong> Em março de 2021, o porta-contêineres <em>Ever Given</em> encalhou no Canal de Suez e bloqueou a via por 6 dias. Isso interrompeu aproximadamente US$ 10 bilhões em comércio por dia e criou filas de centenas de navios em ambos os lados do canal.
+        </div>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-g">📦 Contêineres Ásia→Europa (22-25% mundial)</span>
+            <span class="prod-chip chip-e">🛢 Petróleo (10% global)</span>
+            <span class="prod-chip chip-a">🚗 Automóveis (20% mundial)</span>
+            <span class="prod-chip chip-f">🌾 Cereais (trigo, milho)</span>
+            <span class="prod-chip chip-c">🧪 Fertilizantes Golfo→Américas</span>
+            <span class="prod-chip chip-g">💻 Eletrônicos e têxteis China→Europa</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Canal_de_Suez" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Canal de Suez — Wiki</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Estreito_de_Bab-el-Mandeb" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Bab-el-Mandeb — Wiki</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:32.5/centery:30.5/zoom:9" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Suez ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:43.3/centery:12.6/zoom:9" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Bab-el-Mandeb ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://portwatch.imf.org" target="_blank" rel="noopener">
+            <span class="link-icon">📈</span>
+            <div><span class="link-text">Dados FMI em tempo real</span><span class="link-type">IMF PORTWATCH</span></div>
+          </a>
+          <a class="ext-link" href="https://www.britannica.com/place/Bab-El-Mandeb-Strait" target="_blank" rel="noopener">
+            <span class="link-icon">🌐</span>
+            <div><span class="link-text">Bab-el-Mandeb — Britannica</span><span class="link-type">REFERÊNCIA</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- BÓSFORO -->
+      <div class="strait-entry" id="bosforo">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">04</span> Bósforo &amp; Dardanelos</h3>
+            <span class="strait-badge badge-medium">⚡ RISCO MÉDIO</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">3,1%</div>
+            <div class="strait-stat-desc">DO COMÉRCIO MARÍTIMO</div>
+          </div>
+        </div>
+
+        <p>Os Estreitos Turcos — Bósforo e Dardanelos, separados pelo Mar de Mármara — são a <strong>única saída marítima do Mar Negro</strong>. O Bósforo atravessa Istambul, tem 32 km de comprimento e apenas 700 metros de largura no ponto mais estreito — tornando-o o estreito internacional mais estreito usado por navios de grande porte. Passam por ele mais de 50.000 navios por ano.</p>
+
+        <p>Seu peso estratégico cresceu enormemente com a guerra na Ucrânia: por aqui escoam as exportações de trigo ucraniano e russo (responsáveis por cerca de 30% do comércio mundial), o óleo de girassol (a Ucrânia é a maior exportadora mundial) e os fertilizantes russos. A Turquia, pelo tratado de Montreux de 1936, tem autoridade legal para controlar a passagem — o que lhe dá enorme poder de barganha geopolítica.</p>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-f">🌾 Trigo Ucrânia/Rússia (20% mundial)</span>
+            <span class="prod-chip chip-f">🌻 Óleo de girassol</span>
+            <span class="prod-chip chip-e">🛢 Petróleo russo (Urais/CPC)</span>
+            <span class="prod-chip chip-c">🧪 Fertilizantes russos (ureia, potássio)</span>
+            <span class="prod-chip chip-r">🏗 Aço e metais (Ucrânia)</span>
+            <span class="prod-chip chip-f">🌽 Milho (Ucrânia → África/Ásia)</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Bósforo" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Bósforo — Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Dardanelos" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Dardanelos — Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:29.1/centery:41.0/zoom:11" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Bósforo ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.google.com/maps/place/Bosphorus" target="_blank" rel="noopener">
+            <span class="link-icon">🗺</span>
+            <div><span class="link-text">Ver no Google Maps</span><span class="link-type">MAPA SATÉLITE</span></div>
+          </a>
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Conven%C3%A7%C3%A3o_de_Montreux" target="_blank" rel="noopener">
+            <span class="link-icon">📜</span>
+            <div><span class="link-text">Convenção de Montreux</span><span class="link-type">TRATADO 1936</span></div>
+          </a>
+          <a class="ext-link" href="https://www.eia.gov/international/analysis/regions-of-interest/Turkish_Straits" target="_blank" rel="noopener">
+            <span class="link-icon">📊</span>
+            <div><span class="link-text">Estreitos Turcos — EIA</span><span class="link-type">DADOS ENERGÉTICOS</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- GIBRALTAR -->
+      <div class="strait-entry" id="gibraltar">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">05</span> Estreito de Gibraltar</h3>
+            <span class="strait-badge badge-low">✓ RISCO BAIXO</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">~10%</div>
+            <div class="strait-stat-desc">DO COMÉRCIO GLOBAL</div>
+          </div>
+        </div>
+
+        <p>O Estreito de Gibraltar separa a Europa da África por apenas <strong>14 km</strong> — a menor distância entre os dois continentes — e liga o Oceano Atlântico ao Mar Mediterrâneo. Por ele passam cerca de 100.000 navios por ano, com mais de 300 milhões de toneladas de carga. É controlado politicamente por três atores: Espanha a norte, Marrocos a sul e Gibraltar (território britânico ultramarino) na ponta mais estreita.</p>
+
+        <p>É historicamente o estreito mais estável da lista: não há alternativa, mas também há pouco risco geopolítico imediato. Sua importância estratégica para a OTAN é enorme — todo navio que entra ou sai do Mediterrâneo passa por ali. O Marrocos, ao sul, exporta por aqui 70% das reservas mundiais de fosfato, matéria-prima fundamental para fertilizantes.</p>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-e">🛢 Petróleo e derivados</span>
+            <span class="prod-chip chip-e">⛽ GNL (Argélia e EUA → Europa)</span>
+            <span class="prod-chip chip-g">📦 Contêineres (100.000 navios/ano)</span>
+            <span class="prod-chip chip-c">🧪 Fosfatos do Marrocos (70% das reservas mundiais)</span>
+            <span class="prod-chip chip-f">🌾 Cereais América→Mediterrâneo</span>
+            <span class="prod-chip chip-r">⛏ Minérios — África Sub-Saariana</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Estreito_de_Gibraltar" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:-5.5/centery:35.9/zoom:9" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Gibraltar ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.google.com/maps/place/Strait+of+Gibraltar" target="_blank" rel="noopener">
+            <span class="link-icon">🗺</span>
+            <div><span class="link-text">Ver no Google Maps</span><span class="link-type">MAPA SATÉLITE</span></div>
+          </a>
+          <a class="ext-link" href="https://www.eia.gov/international/analysis/regions-of-interest/Strait_of_Gibraltar" target="_blank" rel="noopener">
+            <span class="link-icon">📊</span>
+            <div><span class="link-text">Análise da EIA</span><span class="link-type">DADOS ENERGÉTICOS</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- PANAMA -->
+      <div class="strait-entry" id="panama">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">06</span> Canal do Panamá</h3>
+            <span class="strait-badge badge-medium">⚡ RISCO MÉDIO (CLIMA)</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">3,0%</div>
+            <div class="strait-stat-desc">DO COMÉRCIO GLOBAL</div>
+          </div>
+        </div>
+
+        <p>O Canal do Panamá é uma obra de engenharia do início do século XX que conecta o Oceano Atlântico ao Pacífico, cortando 80 km pelo istmo panamenho. Sua importância é maior do que os 3% de participação global sugerem: é o atalho que permite que grãos americanos cheguem ao Japão em 35 dias (em vez de 50+ pelo Cabo Horn), que carros japoneses alcancem a Costa Leste americana com eficiência, e que o GNL dos EUA chegue à Ásia.</p>
+
+        <div class="callout callout-warning">
+          <strong>Vulnerabilidade climática:</strong> Em 2023–2024, uma seca severa reduziu o nível do Lago Gatun — o reservatório de água doce que opera as eclusas — forçando a Autoridade do Canal a reduzir os trânsitos diários em 40%. Foi o maior exemplo registrado de como as mudanças climáticas podem paralisar infraestrutura de comércio global. Trump ameaçou "retomar" o canal em 2025, citando sua importância estratégica para os EUA.
+        </div>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-e">⛽ GNL dos EUA → Ásia</span>
+            <span class="prod-chip chip-f">🌽 Grãos EUA (milho, soja)</span>
+            <span class="prod-chip chip-a">🚗 Automóveis Ásia → Leste EUA</span>
+            <span class="prod-chip chip-g">📦 Contêineres (rota transpacífica)</span>
+            <span class="prod-chip chip-r">⛏ Carvão e minério EUA → Ásia</span>
+            <span class="prod-chip chip-c">🧪 Fertilizantes Golfo EUA → Ásia</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Canal_do_Panamá" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:-79.9/centery:9.1/zoom:10" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Canal ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.google.com/maps/place/Panama+Canal" target="_blank" rel="noopener">
+            <span class="link-icon">🗺</span>
+            <div><span class="link-text">Ver no Google Maps</span><span class="link-type">MAPA SATÉLITE</span></div>
+          </a>
+          <a class="ext-link" href="https://www.pancanal.com/eng/op/transit-stats/index.html" target="_blank" rel="noopener">
+            <span class="link-icon">📊</span>
+            <div><span class="link-text">Estatísticas oficiais</span><span class="link-type">AUTORIDADE DO CANAL</span></div>
+          </a>
+          <a class="ext-link" href="https://www.eia.gov/international/analysis/regions-of-interest/Panama_Canal" target="_blank" rel="noopener">
+            <span class="link-icon">📈</span>
+            <div><span class="link-text">Análise EIA</span><span class="link-type">DADOS ENERGÉTICOS</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- TAIWAN -->
+      <div class="strait-entry" id="taiwan">
+        <div class="strait-header">
+          <div>
+            <h3><span class="strait-num">07</span> Estreito de Taiwan</h3>
+            <span class="strait-badge badge-critical">🔴 RISCO CRÍTICO (GEO)</span>
+          </div>
+          <div class="strait-stat">
+            <div class="strait-stat-val">~6%</div>
+            <div class="strait-stat-desc">DO COMÉRCIO GLOBAL</div>
+          </div>
+        </div>
+
+        <p>O Estreito de Taiwan é único nesta lista: seu risco não é energético, mas <strong>tecnológico</strong>. Taiwan produz mais de 90% dos semicondutores avançados do mundo (via TSMC). Um bloqueio ou conflito no estreito não apenas paralisaria a rota marítima entre o Nordeste Asiático e o mundo — ele interromperia a fabricação dos chips que estão em todos os celulares, computadores, carros elétricos, equipamentos médicos e sistemas de inteligência artificial do planeta.</p>
+
+        <p>A China considera Taiwan uma província rebelde e nunca descartou o uso da força para a reunificação. Os EUA mantêm uma política de "ambiguidade estratégica" — não confirmam nem negam se defenderiam Taiwan militarmente. Este é, na avaliação de muitos analistas, o maior risco geopolítico único para a economia global nas próximas décadas.</p>
+
+        <div class="products-list">
+          <h4>PRINCIPAIS PRODUTOS EM TRÂNSITO</h4>
+          <div class="prod-chips">
+            <span class="prod-chip chip-g">💾 Semicondutores TSMC (90%+ avançados)</span>
+            <span class="prod-chip chip-g">💻 Eletrônicos e PCBs</span>
+            <span class="prod-chip chip-g">📦 Contêineres Japão/Coreia</span>
+            <span class="prod-chip chip-e">⛽ GNL → Japão, Coreia, China</span>
+            <span class="prod-chip chip-r">⛏ Minério Austrália → Coreia/Japão</span>
+            <span class="prod-chip chip-a">🚗 Peças automotivas (Toyota, Samsung)</span>
+          </div>
+        </div>
+
+        <div class="links-grid">
+          <a class="ext-link" href="https://pt.wikipedia.org/wiki/Estreito_de_Taiwan" target="_blank" rel="noopener">
+            <span class="link-icon">📖</span>
+            <div><span class="link-text">Wikipedia</span><span class="link-type">ENCICLOPÉDIA</span></div>
+          </a>
+          <a class="ext-link" href="https://www.marinetraffic.com/en/ais/home/centerx:120.5/centery:24.5/zoom:8" target="_blank" rel="noopener">
+            <span class="link-icon">🚢</span>
+            <div><span class="link-text">Estreito ao vivo</span><span class="link-type">MARINETRAFFIC</span></div>
+          </a>
+          <a class="ext-link" href="https://www.google.com/maps/place/Taiwan+Strait" target="_blank" rel="noopener">
+            <span class="link-icon">🗺</span>
+            <div><span class="link-text">Ver no Google Maps</span><span class="link-type">MAPA SATÉLITE</span></div>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /estreitos -->
+
+    <div class="section-divider"><span class="section-divider-text">PAINEL INTERATIVO</span></div>
+
+    <!-- DASHBOARD 2 -->
+    <div id="produtos" class="section-anchor">
+      <div class="section-label">VISUALIZAÇÃO INTERATIVA</div>
+      <h2>Produtos Críticos por Estreito</h2>
+      <p>O painel abaixo detalha os produtos que fluem por cada estreito, com volume relativo e nível de criticidade. Use os filtros por categoria para ver quais estreitos cada tipo de commodity depende.</p>
+
+      <div class="embed-wrapper">
+        <div class="embed-label">
+          <span class="embed-label-text">⬡ PAINEL 2 — PRODUTOS CRÍTICOS · FILTROS POR CATEGORIA · DADOS 2024–2026</span>
+          <span class="embed-label-hint">Use os botões de filtro para explorar</span>
+        </div>
+        <iframe id="products-frame" src="about:blank" height="900" title="Produtos Críticos por Estreito"></iframe>
+      </div>
+    </div>
+
+    <div class="section-divider"><span class="section-divider-text">MONITORAMENTO</span></div>
+
+    <!-- LIVE MONITORING -->
+    <div id="monitoramento" class="section-anchor">
+      <div class="section-label">ACOMPANHE EM TEMPO REAL</div>
+      <h2>Onde monitorar os navios ao vivo</h2>
+      <p>Todos os navios comerciais com mais de 300 toneladas de arqueação são obrigados a carregar um <strong>transponder AIS</strong> (Sistema de Identificação Automática), que transmite continuamente posição, velocidade, destino e tipo de carga. As plataformas abaixo agregam esses sinais em tempo real:</p>
+
+      <div class="monitor-grid">
+        <a class="monitor-card" href="https://www.marinetraffic.com" target="_blank" rel="noopener">
+          <div class="monitor-card-top">
+            <span class="monitor-icon">🚢</span>
+            <span class="monitor-name">MarineTraffic</span>
+          </div>
+          <p class="monitor-desc">O mais popular do mundo. Mostra posição em tempo real de todos os navios com AIS ativo. Filtros por tipo, destino, velocidade e calado. Gratuito com limitações.</p>
+          <span class="monitor-badge mb-free">GRATUITO / PAGO</span>
+        </a>
+        <a class="monitor-card" href="https://www.vesselfinder.com" target="_blank" rel="noopener">
+          <div class="monitor-card-top">
+            <span class="monitor-icon">📡</span>
+            <span class="monitor-name">VesselFinder</span>
+          </div>
+          <p class="monitor-desc">Interface limpa, boa alternativa ao MarineTraffic. Dados AIS em tempo real, busca por nome ou número IMO de navios específicos.</p>
+          <span class="monitor-badge mb-free">GRATUITO</span>
+        </a>
+        <a class="monitor-card" href="https://portwatch.imf.org" target="_blank" rel="noopener">
+          <div class="monitor-card-top">
+            <span class="monitor-icon">📈</span>
+            <span class="monitor-name">IMF PortWatch</span>
+          </div>
+          <p class="monitor-desc">Painel oficial do FMI com trânsitos diários nos principais choke points. Séries históricas para ver impacto de crises. Ideal para análise geopolítica.</p>
+          <span class="monitor-badge mb-official">OFICIAL · GRATUITO</span>
+        </a>
+        <a class="monitor-card" href="https://www.fleetmon.com" target="_blank" rel="noopener">
+          <div class="monitor-card-top">
+            <span class="monitor-icon">🏭</span>
+            <span class="monitor-name">FleetMon</span>
+          </div>
+          <p class="monitor-desc">Foco profissional e comercial. Excelente para rastrear frotas inteiras e configurar alertas por zona geográfica. Usado por operadores de logística.</p>
+          <span class="monitor-badge mb-paid">PROFISSIONAL</span>
+        </a>
+        <a class="monitor-card" href="https://www.kpler.com" target="_blank" rel="noopener">
+          <div class="monitor-card-top">
+            <span class="monitor-icon">🛢</span>
+            <span class="monitor-name">Kpler</span>
+          </div>
+          <p class="monitor-desc">Rastreia fluxos de petróleo, GNL e commodities por estreito em tempo quase real. Usado pela EIA, FMI e traders globais. Fonte dos dados deste artigo.</p>
+          <span class="monitor-badge mb-paid">PROFISSIONAL · PAGO</span>
+        </a>
+        <a class="monitor-card" href="https://ryanshook.org/chokepoints/" target="_blank" rel="noopener">
+          <div class="monitor-card-top">
+            <span class="monitor-icon">🗺</span>
+            <span class="monitor-name">Chokepoints Interactive</span>
+          </div>
+          <p class="monitor-desc">Mapa D3.js interativo com 18 estreitos estratégicos, análise detalhada de cada um, vulnerabilidades e contexto geopolítico. Projeto independente.</p>
+          <span class="monitor-badge mb-free">GRATUITO</span>
+        </a>
+      </div>
+
+      <div class="pullquote">
+        <p>"Mesmo na era dos aviões, mísseis e satélites, a geografia continua sendo determinante. O fechamento de qualquer um desses pontos pode adicionar milhares de milhas e semanas de navegação a uma viagem — com impacto direto em preços e inflação globais."</p>
+        <cite>— THE ECONOMIST / INFOBAE, MARÇO 2026</cite>
+      </div>
+    </div>
+
+    <div class="section-divider"><span class="section-divider-text">CONCLUSÃO</span></div>
+
+    <!-- CONCLUSÃO -->
+    <div id="conclusao" class="section-anchor">
+      <div class="section-label">CONCLUSÃO</div>
+      <h2>O mundo num fio de água</h2>
+
+      <p>Os estreitos que mapeamos neste artigo são, em conjunto, a espinha dorsal invisível da globalização. Eles não aparecem nas embalagens dos produtos que compramos, não são citados nos balanços das empresas — mas sem eles, nada chega a lugar nenhum.</p>
+
+      <p>O que os eventos de 2021 a 2026 deixaram claro é que essa infraestrutura crítica é simultaneamente indispensável e frágil: um navio encalhado no Egito, milícias no Iêmen, uma seca no Panamá ou uma crise diplomática no Golfo Pérsico são suficientes para criar ondas de choque que chegam às prateleiras dos supermercados e às bombas de combustível do mundo inteiro.</p>
+
+      <p>Para o Brasil — um país com enorme dependência de fertilizantes importados (do Golfo e da Rússia), de petróleo processado, e cujos grãos precisam competir em mercados globais com fretes determinados pelo estado desses estreitos —, entender essa geopolítica marítima não é luxo acadêmico. É leitura obrigatória para qualquer profissional de comércio exterior, logística, agronegócio ou política internacional.</p>
+
+      <div class="callout callout-info">
+        <strong>O maior risco dos próximos anos?</strong> Provavelmente o Estreito de Taiwan — não pela energia que passa por ali, mas pelos semicondutores. A TSMC sozinha produz mais de 90% dos chips avançados do mundo. Qualquer conflito no estreito paralisaria a produção de eletrônicos, carros elétricos, IA e equipamentos médicos globalmente por meses ou anos.
+      </div>
+
+      <p>Os painéis interativos neste artigo serão atualizados periodicamente conforme novos dados da EIA, UNCTAD e IMF PortWatch são publicados. Compartilhe com quem precisa entender como o mundo realmente funciona.</p>
+    </div>
+
+  
+<section class="refs-section" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border,#e5e7eb);">
+  <h2 style="font-family:'Lora',serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--text,#1a1a1a);">Leia também</h2>
+  <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+    <li><a href="estreito-ormuz-fluxo-petroleo-geopolitica.html">Estreito de Ormuz: fluxo de petróleo e geopolítica</a></li>
+    <li><a href="crise-energetica-2026-ormuz-choque-petroleo-resposta-governos.html">Crise energética 2026: choque de petróleo em Ormuz</a></li>
+    <li><a href="transicao-energetica-custos.html">O custo da transição energética</a></li>
+    <li><a href="gas-natural-brasil-mundo.html">Gás natural: Brasil e o mercado global</a></li>
+    <li><a href="lcoe-custo-nivelado-eletricidade.html">LCOE: custo nivelado de eletricidade</a></li>
+  </ul>
+</section>
+</main><!-- /article-body -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">NESTE ARTIGO</div>
+      <ul class="toc-list">
+        <li><a href="#intro">Introdução</a></li>
+        <li><a href="#mapa">Mapa interativo</a></li>
+        <li><a href="#malaca">Estreito de Malaca</a></li>
+        <li><a href="#ormuz">Estreito de Ormuz</a></li>
+        <li><a href="#suez">Canal de Suez / Bab-el-Mandeb</a></li>
+        <li><a href="#bosforo">Bósforo &amp; Dardanelos</a></li>
+        <li><a href="#gibraltar">Estreito de Gibraltar</a></li>
+        <li><a href="#panama">Canal do Panamá</a></li>
+        <li><a href="#taiwan">Estreito de Taiwan</a></li>
+        <li><a href="#produtos">Produtos por estreito</a></li>
+        <li><a href="#monitoramento">Monitoramento ao vivo</a></li>
+        <li><a href="#conclusao">Conclusão</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">FONTES PRIMÁRIAS</div>
+      <ul class="source-list">
+        <li><a href="https://www.eia.gov/international/analysis/regions-of-interest" target="_blank" rel="noopener">U.S. Energy Information Administration (EIA)<span class="source-org">Fluxos por estreito</span></a></li>
+        <li><a href="https://portwatch.imf.org" target="_blank" rel="noopener">IMF PortWatch<span class="source-org">Trânsitos diários em tempo real</span></a></li>
+        <li><a href="https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport" target="_blank" rel="noopener">UNCTAD Maritime Transport<span class="source-org">Revisão anual de transporte</span></a></li>
+        <li><a href="https://theconversation.com/from-the-strait-of-hormuz-to-malacca" target="_blank" rel="noopener">The Conversation<span class="source-org">Análise acadêmica, mar. 2026</span></a></li>
+        <li><a href="https://www.britannica.com/place/Bab-El-Mandeb-Strait" target="_blank" rel="noopener">Encyclopaedia Britannica<span class="source-org">Bab-el-Mandeb</span></a></li>
+        <li><a href="https://ryanshook.org/chokepoints/" target="_blank" rel="noopener">Ryan Shook — Chokepoints<span class="source-org">Mapa interativo 18 estreitos</span></div></a></li>
+        <li><a href="https://andamanpartners.com/2025/10/the-worlds-trade-choke-points-six-narrow-straits-that-move-the-global-economy/" target="_blank" rel="noopener">Andaman Partners<span class="source-org">Análise out. 2025</span></a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12644514/" target="_blank" rel="noopener">Nature / PMC — Systemic Impacts<span class="source-org">Estudo acadêmico 2025</span></a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">VISUALIZAÇÕES EXTERNAS</div>
+      <ul class="source-list">
+        <li><a href="https://www.visualcapitalist.com/mapped-the-worlds-oil-chokepoints/" target="_blank" rel="noopener">Visual Capitalist — Oil Chokepoints<span class="source-org">Infográfico EIA 2025</span></a></li>
+        <li><a href="https://www.hinrichfoundation.com/research/infographic/trade-geopolitics/major-maritime-chokepoints-in-global-trade" target="_blank" rel="noopener">Hinrich Foundation<span class="source-org">Infográfico abr. 2026</span></a></li>
+        <li><a href="https://porteconomicsmanagement.org/pemp/contents/part1/interoceanic-passages/main-maritime-shipping-routes/" target="_blank" rel="noopener">Port Economics Management<span class="source-org">Mapa acadêmico rotas</span></a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">mosman<span>lab</span>.com.br</span>
+    <span>Dados: EIA · UNCTAD · IMF PortWatch · Kpler · Vortexa · Britannica · Al Jazeera · The Conversation</span>
+    <span>Abril 2026</span>
+  </div>
+</footer>
+
+<script>
+// ===== EMBED BOTH DASHBOARDS AS SRCDOC =====
+
+// DASHBOARD 1: MAP
+const mapHTML = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/article-estreitos.html"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estreitos Comerciais Globais</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+  :root{--bg:#060b14;--panel:#0d1520;--border:#1a2a3a;--accent:#00d4ff;--accent2:#ff6b35;--accent3:#39ff14;--text:#c8dce8;--muted:#4a6070;--gold:#ffd700}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;min-height:100vh;overflow-x:hidden}
+  header{padding:16px 24px 12px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:16px;background:linear-gradient(180deg,#080f1a 0%,transparent 100%)}
+  header h1{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+  .tag{font-size:.6rem;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;letter-spacing:.1em}
+  .year{margin-left:auto;color:var(--muted);font-size:.65rem}
+  .layout{display:grid;grid-template-columns:280px 1fr;height:calc(100vh - 52px)}
+  .sidebar{border-right:1px solid var(--border);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+  .strait-item{padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+  .strait-item:hover{background:rgba(0,212,255,.04)}
+  .strait-item.active{background:rgba(0,212,255,.08);border-left:3px solid var(--accent)}
+  .strait-rank{font-size:.55rem;color:var(--muted);letter-spacing:.1em;margin-bottom:3px}
+  .strait-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#fff;margin-bottom:3px}
+  .strait-sub{font-size:.6rem;color:var(--muted);margin-bottom:6px}
+  .metric-row{display:flex;gap:6px;flex-wrap:wrap}
+  .metric-chip{font-size:.55rem;padding:2px 6px;border-radius:2px;letter-spacing:.05em;font-weight:700}
+  .chip-blue{background:rgba(0,212,255,.12);color:var(--accent);border:1px solid rgba(0,212,255,.25)}
+  .chip-orange{background:rgba(255,107,53,.12);color:var(--accent2);border:1px solid rgba(255,107,53,.25)}
+  .chip-green{background:rgba(57,255,20,.1);color:var(--accent3);border:1px solid rgba(57,255,20,.2)}
+  .chip-gold{background:rgba(255,215,0,.1);color:var(--gold);border:1px solid rgba(255,215,0,.2)}
+  .chip-red{background:rgba(255,50,50,.1);color:#ff6666;border:1px solid rgba(255,50,50,.2)}
+  .flow-bar-wrap{margin-top:6px;display:flex;align-items:center;gap:8px}
+  .flow-bar-bg{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+  .flow-bar-fill{height:100%;border-radius:2px;transition:width .5s ease}
+  .flow-pct{font-size:.6rem;color:var(--accent);min-width:30px;text-align:right}
+  .main{display:flex;flex-direction:column;overflow:hidden}
+  .map-area{flex:1;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 60%,rgba(0,212,255,.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 30%,rgba(255,107,53,.03) 0%,transparent 50%),var(--bg)}
+  svg#worldmap{width:100%;height:100%}
+  .detail-panel{height:200px;border-top:1px solid var(--border);background:var(--panel);padding:16px 20px;overflow-y:auto}
+  .detail-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin-bottom:3px}
+  .detail-location{font-size:.6rem;color:var(--accent);letter-spacing:.1em;margin-bottom:12px}
+  .detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+  .detail-stat-label{font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+  .detail-stat-value{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+  .detail-stat-unit{font-size:.55rem;color:var(--muted)}
+  .detail-desc{font-size:.65rem;line-height:1.7;color:#7a9ab0;margin-bottom:10px}
+  .alt-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .alt-label{font-size:.55rem;color:var(--muted);letter-spacing:.1em}
+  .alt-chip{font-size:.55rem;padding:3px 7px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.2);color:var(--gold);border-radius:2px}
+  .risk-meter{display:flex;gap:3px;margin-top:6px}
+  .risk-dot{width:7px;height:7px;border-radius:50%;background:var(--border)}
+  .risk-dot.on{background:#ff4444;box-shadow:0 0 5px #ff4444}
+  .tooltip{position:absolute;pointer-events:none;background:#0d1a26;border:1px solid var(--accent);padding:7px 10px;font-size:.6rem;color:var(--text);max-width:170px;z-index:100;display:none;line-height:1.6}
+  .tooltip strong{color:#fff;font-family:'Syne',sans-serif}
+  .legend{position:absolute;top:12px;right:12px;background:rgba(13,21,32,.85);border:1px solid var(--border);padding:10px 12px;font-size:.55rem;backdrop-filter:blur(8px)}
+  .legend-title{color:var(--muted);letter-spacing:.1em;margin-bottom:7px}
+  .legend-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;color:var(--text)}
+  .legend-line{width:20px;height:2px;border-radius:1px}
+  .legend-dot-s{width:7px;height:7px;border-radius:50%}
+  @keyframes pulse-ring{0%{r:6;opacity:1}100%{r:16;opacity:0}}
+  .pulse-ring{animation:pulse-ring 1.8s ease-out infinite}
+  .sidebar::-webkit-scrollbar{width:3px}
+  .sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+</style>
+</head>
+<body>
+<header>
+  <h1>ESTREITOS COMERCIAIS GLOBAIS</h1>
+  <span class="tag">CHOKE POINTS</span>
+  <span class="year">EIA / UNCTAD 2024–2025</span>
+</header>
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main">
+    <div class="map-area">
+      <svg id="worldmap" viewBox="0 0 900 450"></svg>
+      <div class="legend">
+        <div class="legend-title">LEGENDA</div>
+        <div class="legend-row"><div class="legend-line" style="background:var(--accent)"></div> Rota principal</div>
+        <div class="legend-row"><div class="legend-dot-s" style="background:var(--accent2)"></div> Choke point crítico</div>
+        <div class="legend-row"><div class="legend-dot-s" style="background:var(--accent)"></div> Canal / Estreito</div>
+      </div>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+    <div class="detail-panel" id="detail"></div>
+  </div>
+</div>
+<script>
+const STRAITS=[{id:'malaca',name:'Estreito de Malaca',location:'Malásia · Indonésia (Sumatra)',rank:'01',trade_pct:23.7,oil_mbd:23.2,oil_pct:29.1,transits:'94.000/ano',risk:4,color:'#00d4ff',cargo:['Contêineres','Petróleo','GNL','Manufaturados'],desc:'O estreito com maior tráfego do mundo. Metade de todo o comércio marítimo global passa por aqui. É a principal rota de petróleo e gás do Golfo Pérsico para China, Japão e Coreia do Sul. Em seu ponto mais estreito, próximo a Singapura, mede apenas 2,8 km de largura.',alternatives:['Estreito de Lombok','Estreito de Sunda','Canal de Kra (futuro)'],cx:700,cy:260},{id:'ormuz',name:'Estreito de Ormuz',location:'Irã · Omã · EAU',rank:'02',trade_pct:20,oil_mbd:20.5,oil_pct:25.7,transits:'42.000+/ano',risk:5,color:'#ff6b35',cargo:['Petróleo bruto','GLP','GNL','Produtos petrolíferos'],desc:'O ponto estratégico energético mais crítico do mundo. Única saída marítima do Golfo Pérsico. Em 2026 o Irã efetivamente bloqueou o estreito, fazendo o Brent disparar de US$70 para mais de US$100/barril.',alternatives:['Oleoduto Petroline (Arábia Saudita)','ADCO pipeline (EAU → Fujairah)','Sem alternativa marítima real'],cx:590,cy:215},{id:'suez',name:'Canal de Suez',location:'Egito · Mar Vermelho → Mediterrâneo',rank:'03',trade_pct:12,oil_mbd:5.1,oil_pct:6.4,transits:'25.000/ano',risk:4,color:'#ff6b35',cargo:['Contêineres (30%)','Petróleo','GNL','Cereais'],desc:'Canal artificial que conecta o Mar Vermelho ao Mediterrâneo. Em 2021 o cargueiro Ever Given encalhou e bloqueou o canal por 6 dias, interrompendo US$10 bi/dia em comércio.',alternatives:['Cabo da Boa Esperança (+14 dias)','Rota Ártica do Norte (emergente)'],cx:520,cy:195},{id:'bab',name:'Bab-el-Mandeb',location:'Iêmen · Djibuti · Eritreia',rank:'04',trade_pct:8.7,oil_mbd:3.8,oil_pct:4.8,transits:'21.000/ano',risk:5,color:'#ff4444',cargo:['Petróleo','GNL','Contêineres','Cereais','Fertilizantes'],desc:'"Portão das Lágrimas" — porta de entrada sul ao Canal de Suez. Em 2023-2025 ataques Houthi reduziram o tráfego de 9% para apenas 4% do comércio mundial.',alternatives:['Cabo da Boa Esperança'],cx:540,cy:245},{id:'bosforo',name:'Bósforo & Dardanelos',location:'Turquia · Mar Negro → Mediterrâneo',rank:'05',trade_pct:3.1,oil_mbd:null,oil_pct:null,transits:'50.000+/ano',risk:3,color:'#39ff14',cargo:['Cereais (20% mundial)','Petróleo russo','Fertilizantes','Aço'],desc:'Única saída marítima do Mar Negro. Controlado pela Turquia via Convenção de Montreux (1936). Por aqui passa ~20% das exportações mundiais de trigo.',alternatives:['Sem alternativa real','Canal de Istambul (proposto)'],cx:510,cy:160},{id:'gibraltar',name:'Estreito de Gibraltar',location:'Espanha / Reino Unido · Marrocos',rank:'06',trade_pct:10,oil_mbd:null,oil_pct:null,transits:'100.000/ano',risk:1,color:'#00d4ff',cargo:['Contêineres','Petróleo','Gás','Manufaturados'],desc:'Liga o Atlântico ao Mediterrâneo. Separação mínima de 14km entre Europa e África. 300+ milhões de toneladas/ano. Ponto estratégico para a OTAN.',alternatives:['Sem alternativa viável'],cx:430,cy:163},{id:'panama',name:'Canal do Panamá',location:'Panamá · Atlântico → Pacífico',rank:'07',trade_pct:3.0,oil_mbd:null,oil_pct:null,transits:'14.000/ano',risk:3,color:'#ffd700',cargo:['Contêineres','Grãos','Automóveis','Químicos','GNL'],desc:'Canal artificial que conecta Atlântico e Pacífico. Em 2023-24, uma seca severa reduziu os trânsitos em 40% — exemplo de vulnerabilidade climática.',alternatives:['Cabo Horn / Estreito de Magalhães','Corredores terrestres'],cx:220,cy:280}];
+const ROUTES=[{points:[[700,260],[650,240],[590,215],[555,220],[540,245],[530,230],[520,195],[490,175],[450,165],[430,163],[380,175],[320,180]],color:'#00d4ff',width:1.5},{points:[[590,215],[660,235],[700,260],[750,255],[800,240]],color:'#ff6b35',width:1.2},{points:[[700,260],[720,290],[730,330],[700,370],[650,400],[590,400],[540,380],[510,350],[490,320],[480,290],[490,265],[520,195]],color:'#4a6070',width:1,dashed:true},{points:[[510,160],[510,175],[510,185],[520,195]],color:'#39ff14',width:1},{points:[[300,180],[260,220],[220,280],[180,290],[150,270],[120,250]],color:'#ffd700',width:1.2},{points:[[750,255],[800,240],[850,220],[870,200]],color:'#00d4ff',width:0.8},{points:[[430,163],[390,155],[350,150],[300,160],[260,170],[220,200],[200,230],[220,280]],color:'#4a9aff',width:0.8}];
+function drawMap(){const svg=document.getElementById('worldmap');const W=900,H=450;const lands=['M 80,80 L 260,70 L 290,90 L 310,130 L 300,180 L 260,220 L 220,280 L 200,310 L 180,330 L 160,320 L 140,290 L 120,260 L 100,230 L 80,200 L 70,160 L 75,120 Z','M 200,310 L 230,300 L 260,310 L 280,340 L 290,370 L 280,400 L 260,420 L 240,430 L 220,430 L 205,415 L 195,390 L 190,360 L 195,330 Z','M 420,80 L 480,70 L 520,80 L 530,100 L 520,130 L 510,150 L 490,160 L 470,165 L 450,165 L 430,163 L 420,150 L 415,130 L 415,110 Z','M 430,163 L 470,165 L 510,170 L 540,185 L 550,220 L 545,260 L 540,300 L 530,340 L 510,370 L 490,390 L 470,400 L 450,395 L 430,380 L 415,360 L 405,330 L 400,300 L 400,260 L 405,230 L 415,200 L 420,180 Z','M 520,80 L 600,60 L 700,50 L 800,55 L 860,70 L 880,100 L 870,140 L 840,160 L 800,170 L 780,190 L 750,200 L 730,210 L 700,215 L 670,220 L 640,230 L 610,225 L 590,215 L 570,200 L 550,185 L 540,165 L 530,150 L 525,130 L 520,110 Z','M 640,230 L 680,240 L 700,260 L 720,275 L 710,290 L 690,295 L 670,285 L 650,270 L 640,255 Z','M 680,270 L 720,265 L 750,270 L 760,285 L 740,295 L 700,290 L 678,280 Z','M 730,310 L 790,300 L 840,305 L 870,330 L 875,360 L 855,390 L 820,405 L 785,405 L 755,390 L 735,365 L 725,340 Z','M 790,155 L 810,150 L 820,160 L 815,175 L 800,180 L 790,170 Z','M 415,105 L 420,95 L 430,95 L 432,105 L 425,112 Z','M 460,70 L 490,60 L 510,65 L 505,85 L 485,90 L 465,85 Z','M 270,40 L 320,35 L 340,50 L 335,70 L 310,80 L 285,75 L 268,60 Z'];let h='<defs><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';h+='<rect width="900" height="450" fill="#040810"/>';for(let x=0;x<W;x+=40)h+=\`<line x1="\${x}" y1="0" x2="\${x}" y2="\${H}" stroke="#0a1520" stroke-width="0.5"/>\`;for(let y=0;y<H;y+=40)h+=\`<line x1="0" y1="\${y}" x2="\${W}" y2="\${y}" stroke="#0a1520" stroke-width="0.5"/>\`;lands.forEach(d=>{h+=\`<path d="\${d}" fill="#0f1e2d" stroke="#1a3045" stroke-width="0.8"/>\`});ROUTES.forEach(r=>{const pts=r.points.map((p,i)=>\`\${i===0?'M':'L'}\${p[0]},\${p[1]}\`).join(' ');h+=\`<path d="\${pts}" fill="none" stroke="\${r.color}" stroke-width="\${r.width}" stroke-dasharray="\${r.dashed?'4,4':'none'}" opacity="\${r.dashed?.35:.55}" stroke-linecap="round"/>\`});STRAITS.forEach(s=>{const sz=6+(s.trade_pct/5);h+=\`<circle cx="\${s.cx}" cy="\${s.cy}" r="\${sz}" fill="none" stroke="\${s.color}" stroke-width="1" opacity="0.2" class="pulse-ring"/>\`;h+=\`<circle cx="\${s.cx}" cy="\${s.cy}" r="\${sz/2+2}" fill="\${s.color}" opacity="0.9" filter="url(#glow)" data-id="\${s.id}" class="strait-dot" style="cursor:pointer"/>\`;const lx=s.cx+(s.cx>500?12:-12);const anch=s.cx>500?'start':'end';h+=\`<text x="\${lx}" y="\${s.cy+4}" font-family="Space Mono" font-size="8" fill="\${s.color}" text-anchor="\${anch}" opacity="0.85" pointer-events="none">\${s.name.split(' ').pop()}</text>\`});svg.innerHTML=h;svg.querySelectorAll('.strait-dot').forEach(dot=>{dot.addEventListener('click',()=>selectStrait(dot.dataset.id));dot.addEventListener('mouseenter',(e)=>{const s=STRAITS.find(x=>x.id===dot.dataset.id);const t=document.getElementById('tooltip');t.innerHTML=\`<strong>\${s.name}</strong><br>\${s.location}<br><br>Comércio: <strong style="color:\${s.color}">\${s.trade_pct}%</strong> global\${s.oil_mbd?\`<br>Petróleo: <strong>\${s.oil_mbd}M bbl/dia</strong>\`:''}\`;const rect=document.querySelector('.map-area').getBoundingClientRect();t.style.left=(e.clientX-rect.left+12)+'px';t.style.top=(e.clientY-rect.top+12)+'px';t.style.display='block'});dot.addEventListener('mouseleave',()=>{document.getElementById('tooltip').style.display='none'})})}
+function renderSidebar(){const sb=document.getElementById('sidebar');sb.innerHTML=STRAITS.map((s,i)=>\`<div class="strait-item \${i===0?'active':''}" data-id="\${s.id}" onclick="selectStrait('\${s.id}')"><div class="strait-rank">/ \${s.rank}</div><div class="strait-name">\${s.name}</div><div class="strait-sub">\${s.location}</div><div class="metric-row"><span class="metric-chip chip-blue">\${s.trade_pct}% COMÉRCIO</span>\${s.oil_mbd?\`<span class="metric-chip chip-orange">\${s.oil_mbd}M bbl/dia</span>\`:''}<span class="metric-chip chip-\${s.risk>=4?'red':s.risk>=3?'gold':'green'}">RISCO \${['','BAIXO','BAIXO','MÉDIO','ALTO','CRÍTICO'][s.risk]}</span></div><div class="flow-bar-wrap"><div class="flow-bar-bg"><div class="flow-bar-fill" style="width:\${Math.min(s.trade_pct/25*100,100)}%;background:\${s.color}"></div></div><span class="flow-pct">\${s.trade_pct}%</span></div></div>\`).join('')}
+function selectStrait(id){const s=STRAITS.find(x=>x.id===id);if(!s)return;document.querySelectorAll('.strait-item').forEach(el=>el.classList.toggle('active',el.dataset.id===id));const riskDots=Array.from({length:5},(_,i)=>\`<div class="risk-dot \${i<s.risk?'on':''}"></div>\`).join('');const altChips=s.alternatives.map(a=>\`<span class="alt-chip">\${a}</span>\`).join('');document.getElementById('detail').innerHTML=\`<div style="display:grid;grid-template-columns:1fr auto;gap:16px"><div><div class="detail-title">\${s.name}</div><div class="detail-location">\${s.location}</div></div><div style="text-align:right"><div style="font-size:.5rem;color:var(--muted);letter-spacing:.1em;margin-bottom:5px">NÍVEL DE RISCO</div><div class="risk-meter" style="justify-content:flex-end">\${riskDots}</div></div></div><div class="detail-grid"><div><div class="detail-stat-label">Comércio global</div><div class="detail-stat-value" style="color:\${s.color}">\${s.trade_pct}%</div></div>\${s.oil_mbd?\`<div><div class="detail-stat-label">Petróleo/dia</div><div class="detail-stat-value">\${s.oil_mbd}M <span class="detail-stat-unit">bbl</span></div></div>\`:'<div></div>'}\${s.oil_pct?\`<div><div class="detail-stat-label">% óleo marítimo</div><div class="detail-stat-value">\${s.oil_pct}%</div></div>\`:'<div></div>'}<div><div class="detail-stat-label">Trânsitos</div><div class="detail-stat-value" style="font-size:.8rem">\${s.transits}</div></div></div><div class="detail-desc">\${s.desc}</div><div class="alt-row"><span class="alt-label">ALTERNATIVAS →</span>\${altChips}</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">\${s.cargo.map(c=>\`<span class="metric-chip chip-blue">\${c}</span>\`).join('')}</div>\`}
+drawMap();renderSidebar();selectStrait('malaca');
+<\/script>
+</body></html>`;
+
+// DASHBOARD 2: PRODUCTS
+const productsHTML = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/article-estreitos.html"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos Críticos por Estreito</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+:root{--bg:#f5f0e8;--ink:#1a1209;--muted:#7a6e5f;--rule:#c8bfad;--ae:#c0392b;--af:#27ae60;--ag:#2471a3;--ac:#8e44ad;--aa:#e67e22;--ar:#16a085;--cb:#fffcf5;--st:#ede8dc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Mono',monospace;min-height:100vh}
+header{background:var(--ink);color:var(--bg);padding:20px 32px 16px;display:grid;grid-template-columns:1fr auto;align-items:end}
+.h-title{font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1.1;margin-bottom:5px}
+.h-sub{font-size:.6rem;letter-spacing:.15em;color:#a89e8a}
+.h-meta{text-align:right;font-size:.55rem;color:#a89e8a;line-height:1.8}
+.legend-bar{display:flex;gap:0;padding:0 32px;border-bottom:2px solid var(--ink);background:var(--st);flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;padding:8px 16px 8px 0;font-size:.55rem;letter-spacing:.08em;color:var(--muted)}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.filter-row{display:flex;gap:0;padding:12px 32px;border-bottom:1px solid var(--rule);background:var(--cb);flex-wrap:wrap;gap:4px}
+.filter-btn{padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:600;letter-spacing:.1em;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--muted);transition:all .15s}
+.filter-btn:hover{background:var(--st);color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.summary-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);background:var(--ink)}
+.sum-cell{padding:14px 20px;border-right:1px solid #3a3020;color:var(--bg)}
+.sum-cell:last-child{border-right:none}
+.sum-val{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:2px}
+.sum-desc{font-size:.55rem;color:#a89e8a;letter-spacing:.07em;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,1fr)}
+.strait-card{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--cb)}
+.strait-card:nth-child(even){border-right:none}
+.card-header{padding:16px 20px 12px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;align-items:start;gap:10px}
+.card-num{font-size:.5rem;color:var(--muted);letter-spacing:.15em;margin-bottom:3px}
+.card-name{font-family:'DM Serif Display',serif;font-size:1.1rem;line-height:1.1;margin-bottom:2px}
+.card-loc{font-size:.55rem;color:var(--muted);letter-spacing:.05em}
+.stat-big{font-size:1.4rem;font-weight:700;line-height:1;color:var(--ink)}
+.stat-label{font-size:.5rem;color:var(--muted);letter-spacing:.1em}
+.prod-row{display:grid;grid-template-columns:14px 1fr auto 70px;gap:0 8px;align-items:center;padding:8px 20px;border-bottom:1px solid var(--st);transition:background .1s}
+.prod-row:last-child{border-bottom:none}
+.prod-row:hover{background:var(--st)}
+.prod-row.hidden{display:none}
+.prod-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.prod-name{font-size:.65rem;font-weight:600}
+.prod-vol{font-size:.58rem;color:var(--muted);text-align:right;white-space:nowrap}
+.prod-bar-bg{height:3px;background:var(--rule);border-radius:2px}
+.prod-bar-fill{height:100%;border-radius:2px}
+.card-footer{padding:10px 20px;background:var(--st);font-size:.58rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--rule)}
+.card-footer strong{color:var(--ink)}
+.risk-badge{display:inline-flex;align-items:center;gap:4px;font-size:.5rem;font-weight:600;letter-spacing:.1em;padding:2px 7px;border-radius:2px;margin-top:5px}
+.risk-critical{background:#fde8e8;color:#b91c1c;border:1px solid #fca5a5}
+.risk-high{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.risk-medium{background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7}
+.risk-low{background:#eff6ff;color:#1e40af;border:1px solid #93c5fd}
+.cat-energy{background:var(--ae)}.cat-food{background:var(--af)}.cat-goods{background:var(--ag)}.cat-chem{background:var(--ac)}.cat-auto{background:var(--aa)}.cat-raw{background:var(--ar)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.summary-strip{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="h-title">Produtos Críticos <em>por Estreito</em></div><div class="h-sub">CHOKE POINTS MARÍTIMOS · FLUXO DE MERCADORIAS GLOBAIS</div></div>
+  <div class="h-meta">FONTES: EIA · UNCTAD<br>BRITANNICA · AL JAZEERA<br>DADOS 2024–2026</div>
+</header>
+<div class="summary-strip">
+  <div class="sum-cell"><div class="sum-val">80%</div><div class="sum-desc">do comércio mundial<br>passa por via marítima</div></div>
+  <div class="sum-cell"><div class="sum-val">70%</div><div class="sum-desc">da demanda de petróleo<br>passa por choke points</div></div>
+  <div class="sum-cell"><div class="sum-val">25%</div><div class="sum-desc">do óleo+gás bloqueado<br>se Ormuz + Bab fecharem</div></div>
+  <div class="sum-cell"><div class="sum-val">24</div><div class="sum-desc">choke points marítimos<br>identificados no mundo</div></div>
+</div>
+<div class="legend-bar">
+  <div class="legend-item"><div class="leg-dot cat-energy"></div> ENERGIA</div>
+  <div class="legend-item"><div class="leg-dot cat-food"></div> ALIMENTOS</div>
+  <div class="legend-item"><div class="leg-dot cat-goods"></div> MANUFATURADOS</div>
+  <div class="legend-item"><div class="leg-dot cat-chem"></div> QUÍMICA/FERT.</div>
+  <div class="legend-item"><div class="leg-dot cat-auto"></div> AUTOMÓVEIS</div>
+  <div class="legend-item"><div class="leg-dot cat-raw"></div> MAT. PRIMAS</div>
+</div>
+<div class="filter-row">
+  <button class="filter-btn active" onclick="filter('all',this)">TODOS</button>
+  <button class="filter-btn" onclick="filter('energy',this)">ENERGIA</button>
+  <button class="filter-btn" onclick="filter('food',this)">ALIMENTOS</button>
+  <button class="filter-btn" onclick="filter('goods',this)">MANUFATURADOS</button>
+  <button class="filter-btn" onclick="filter('chem',this)">QUÍMICA/FERT.</button>
+  <button class="filter-btn" onclick="filter('auto',this)">AUTOMÓVEIS</button>
+  <button class="filter-btn" onclick="filter('raw',this)">MAT. PRIMAS</button>
+</div>
+<div class="grid" id="grid"></div>
+<script>
+const STRAITS=[{num:'01',name:'Estreito de Malaca',loc:'Malásia · Indonésia (Sumatra)',stat:'24%',sl:'DO COMÉRCIO GLOBAL',risk:'high',rl:'RISCO ALTO',products:[{name:'Petróleo Bruto',cat:'energy',vol:'23,2M bbl/dia · 45% do petróleo marítimo',pct:95},{name:'Gás Natural Liquefeito (GNL)',cat:'energy',vol:'GNL do Golfo para Ásia · ~15% mundial',pct:60},{name:'Contêineres (eletrônicos, têxteis)',cat:'goods',vol:'Maior hub de contêineres do mundo',pct:90},{name:'Automóveis e autopeças',cat:'auto',vol:'26% dos embarques mundiais de carros',pct:55},{name:'Minério de ferro e carvão',cat:'raw',vol:'Austrália → China, Japão, Coreia',pct:70},{name:'Alimentos (arroz, óleo de palma)',cat:'food',vol:'Indonésia e Malásia → mundo',pct:45}],footer:'<strong>80% das importações de petróleo da China</strong> passam por aqui — o "Dilema de Malaca". 94.000 navios/ano. Ponto mais estreito: <strong>2,8 km</strong>.'},
+{num:'02',name:'Estreito de Ormuz',loc:'Irã · Omã · Emirados Árabes',stat:'~20%',sl:'DO PETRÓLEO GLOBAL',risk:'critical',rl:'RISCO CRÍTICO',products:[{name:'Petróleo Bruto',cat:'energy',vol:'20,5M bbl/dia · 25,7% do óleo marítimo',pct:100},{name:'GNL do Qatar',cat:'energy',vol:'~19-20% do GNL global · Qatar = maior exportador',pct:80},{name:'Gás Liquefeito de Petróleo (GLP)',cat:'energy',vol:'30% das exportações mundiais de GLP',pct:75},{name:'Fertilizantes (N, P, S)',cat:'chem',vol:'~1/3 dos fertilizantes globais comercializados',pct:65},{name:'Enxofre (matéria-prima fosfato)',cat:'chem',vol:'50% das exportações mundiais de enxofre',pct:70},{name:'Contêineres do Golfo',cat:'goods',vol:'+26M contêineres/ano da região do Golfo',pct:40}],footer:'Março 2026: Irã bloqueou o estreito → <strong>maior choque energético da história</strong>. Brent de US$70 → US$100+. Sem alternativa marítima real.'},
+{num:'03',name:'Canal de Suez / Bab-el-Mandeb',loc:'Egito · Iêmen · Djibuti',stat:'12%',sl:'DO COMÉRCIO MUNDIAL',risk:'critical',rl:'RISCO CRÍTICO',products:[{name:'Contêineres (Ásia → Europa)',cat:'goods',vol:'22-25% do tráfego mundial de contêineres',pct:85},{name:'Petróleo Bruto e Derivados',cat:'energy',vol:'10% do petróleo marítimo global',pct:55},{name:'Automóveis',cat:'auto',vol:'20% dos embarques globais de automóveis',pct:50},{name:'Cereais (trigo, milho)',cat:'food',vol:'Europa→Ásia e Golfo→África/Europa',pct:60},{name:'Fertilizantes (Golfo → Americas)',cat:'chem',vol:'Rota árabe → EUA e Brasil',pct:55},{name:'Têxteis e eletrônicos',cat:'goods',vol:'China/Ásia → Europa (rota mais curta)',pct:75}],footer:'Ataques Houthis (2023-2025): <strong>tráfego -70%</strong>. Ever Given (2021): canal bloqueado 6 dias → US$10 bi/dia. Desvio pelo Cabo: <strong>+14 dias e +40% custo</strong>.'},
+{num:'04',name:'Bósforo & Dardanelos',loc:'Turquia · Mar Negro → Mediterrâneo',stat:'3,1%',sl:'DO COMÉRCIO MARÍTIMO',risk:'medium',rl:'RISCO MÉDIO',products:[{name:'Trigo e Cereais (Ucrânia/Rússia)',cat:'food',vol:'20% das exportações mundiais de trigo',pct:80},{name:'Óleo de girassol',cat:'food',vol:'Ucrânia = maior exportadora mundial',pct:75},{name:'Petróleo russo (Urais/CPC)',cat:'energy',vol:'Caspiano e Rússia → Mediterrâneo',pct:70},{name:'Fertilizantes russos (ureia, K)',cat:'chem',vol:'Rússia = maior exportador mundial',pct:65},{name:'Aço e metais (Ucrânia)',cat:'raw',vol:'Minério, ferro-gusa, aço laminado',pct:45},{name:'Milho (Ucrânia → Ásia/África)',cat:'food',vol:'Afeta segurança alimentar africana',pct:50}],footer:'Único acesso do Mar Negro. Convenção de Montreux (1936). Ponto mais estreito: 700m. Disrupção impacta <strong>segurança alimentar global</strong>.'},
+{num:'05',name:'Estreito de Gibraltar',loc:'Espanha · Reino Unido · Marrocos',stat:'~10%',sl:'DO COMÉRCIO GLOBAL',risk:'low',rl:'RISCO BAIXO',products:[{name:'Petróleo e derivados',cat:'energy',vol:'Oriente Médio/Nigéria → Europa',pct:65},{name:'GNL (Argélia, EUA → Europa)',cat:'energy',vol:'Principal rota GNL americano → EU',pct:55},{name:'Contêineres (tráfego de trânsito)',cat:'goods',vol:'100.000+ navios/ano · 300M ton/ano',pct:70},{name:'Fosfatos (Marrocos)',cat:'chem',vol:'Marrocos = 70%+ das reservas mundiais',pct:60},{name:'Cereais e alimentos',cat:'food',vol:'América do Sul e EUA → Mediterrâneo',pct:40},{name:'Minério e matérias-primas',cat:'raw',vol:'África Subsaariana → Europa',pct:35}],footer:'Apenas <strong>14 km</strong> entre Europa e África. 3 atores: Espanha, Marrocos e Gibraltar (RU). O estreito mais <strong>estável</strong> desta lista. Estratégico para a OTAN.'},
+{num:'06',name:'Canal do Panamá',loc:'Panamá · Atlântico → Pacífico',stat:'3,0%',sl:'DO COMÉRCIO GLOBAL',risk:'medium',rl:'RISCO MÉDIO (CLIMA)',products:[{name:'GNL dos EUA (→ Ásia)',cat:'energy',vol:'EUA → Japão, Coreia, China (Pacífico)',pct:70},{name:'Grãos (milho, soja dos EUA)',cat:'food',vol:'EUA → Japão/Coreia ~35 dias via Panamá',pct:80},{name:'Automóveis (Ásia → leste EUA)',cat:'auto',vol:'Japão/Coreia → Costa Leste americana',pct:75},{name:'Contêineres (rota transpacífica)',cat:'goods',vol:'Costa Leste EUA ↔ Ásia',pct:65},{name:'Carvão e minério',cat:'raw',vol:'EUA → Ásia, e Chile → EUA/Europa',pct:40},{name:'Fertilizantes (Golfo EUA → Ásia)',cat:'chem',vol:'Ureia e fosfatos americanos',pct:35}],footer:'Seca 2023-24: trânsitos <strong>-40%</strong> — maior exemplo de vulnerabilidade <strong>climática</strong>. Lago Gatun precisa de chuva para operar as eclusas.'},
+{num:'07',name:'Estreitos Dinamarqueses',loc:'Dinamarca · Suécia · Mar Báltico',stat:'~5%',sl:'DO PETRÓLEO GLOBAL',risk:'medium',rl:'RISCO MÉDIO (GEO)',products:[{name:'Petróleo russo (ESPO, Urais)',cat:'energy',vol:'4,9M bbl/dia no 1º sem. 2025',pct:85},{name:'Gás (gasodutos bálticos)',cat:'energy',vol:'Nord Stream destruído; rotas alternativas',pct:50},{name:'Madeira e papel (Escandinávia)',cat:'raw',vol:'Finlândia, Suécia → mundo',pct:55},{name:'Cereais e malte',cat:'food',vol:'Países bálticos e Alemanha exportam',pct:40},{name:'Maquinário industrial',cat:'goods',vol:'Alemanha, Suécia → mercados globais',pct:45},{name:'Potássio (Belarus/Rússia)',cat:'chem',vol:'Fertilizantes K do Báltico → mundo',pct:60}],footer:'Pós OTAN: Báltico virou "<strong>lago da OTAN</strong>". Explosões Nord Stream (2022) e ataques a cabos. Petróleo russo pelo Báltico = alvo constante de sanções.'},
+{num:'08',name:'Estreito de Taiwan',loc:'China (PRC) · Taiwan · Mar do Sul',stat:'~6%',sl:'DO COMÉRCIO GLOBAL',risk:'critical',rl:'RISCO CRÍTICO (GEO)',products:[{name:'Semicondutores e chips (TSMC)',cat:'goods',vol:'Taiwan = 90%+ chips avançados globais',pct:100},{name:'Eletrônicos e PCBs',cat:'goods',vol:'Taiwan, Coreia, Japão → mundo',pct:85},{name:'Contêineres (Japão/Coreia → mundo)',cat:'goods',vol:'Rota norte Ásia-Pacífico',pct:70},{name:'GNL (→ Japão, Coreia, China)',cat:'energy',vol:'Principal rota de GNL para NE Asiático',pct:65},{name:'Minério de ferro e carvão',cat:'raw',vol:'Austrália → Coreia do Sul e Japão',pct:60},{name:'Peças automotivas (Toyota, Samsung)',cat:'auto',vol:'Cadeias japonesas e coreanas',pct:45}],footer:'O risco <strong>não é energético, mas tecnológico</strong>: TSMC produz 90%+ dos chips avançados. Conflito paralisaria eletrônicos, IA e indústria automotiva global.'}];
+function getRiskClass(r){return{critical:'risk-critical',high:'risk-high',medium:'risk-medium',low:'risk-low'}[r]}
+function render(){const g=document.getElementById('grid');g.innerHTML=STRAITS.map(s=>{const prods=s.products.map(p=>\`<div class="prod-row" data-cat="\${p.cat}"><div class="prod-dot cat-\${p.cat}"></div><div class="prod-name">\${p.name}</div><div class="prod-vol">\${p.vol}</div><div><div class="prod-bar-bg"><div class="prod-bar-fill cat-\${p.cat}" style="width:\${p.pct}%"></div></div></div></div>\`).join('');return\`<div class="strait-card"><div class="card-header"><div><div class="card-num">/ \${s.num}</div><div class="card-name">\${s.name}</div><div class="card-loc">\${s.loc}</div><span class="risk-badge \${getRiskClass(s.risk)}">\${s.rl}</span></div><div style="text-align:right"><div class="stat-big">\${s.stat}</div><div class="stat-label">\${s.sl}</div></div></div><div>\${prods}</div><div class="card-footer">\${s.footer}</div></div>\`}).join('')}
+function filter(cat,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.prod-row').forEach(row=>{if(cat==='all'||row.dataset.cat===cat)row.classList.remove('hidden');else row.classList.add('hidden')})}
+render();
+<\/script>
+</body></html>`;
+
+// Inject into iframes
+window.addEventListener('DOMContentLoaded', () => {
+  const mapF = document.getElementById('map-frame');
+  const prodF = document.getElementById('products-frame');
+  if (mapF) mapF.srcdoc = mapHTML;
+  if (prodF) prodF.srcdoc = productsHTML;
+});
+</script>
+
+</body>
+</html>
