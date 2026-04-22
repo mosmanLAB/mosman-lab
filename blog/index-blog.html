@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Blog de Física e Energia | MosmanLAB</title>
+<meta name="description" content="Artigos sobre Física, Energia e Desenvolvimento: matrizes energéticas, transição energética, geopolítica, física do vestibular, simulações interativas e muito mais. Prof. Edson Mosman · MosmanLAB."/>
+<meta name="author" content="Prof. Edson Mosman · MosmanLAB"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://mosmanlab.com.br/blog/"/>
+<meta property="og:title" content="Blog de Física e Energia | MosmanLAB"/>
+<meta property="og:description" content="Artigos sobre Física, Energia e Desenvolvimento. Prof. Edson Mosman · MosmanLAB."/>
+<meta property="og:url" content="https://mosmanlab.com.br/blog/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<style>
+:root{--green:#1dbd5c;--green-dark:#17a34f;--blue:#0057ff;--black:#1a1a2e;--mid:#555;--border:#e8e8e8;--bg-light:#f6f8fb;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;color:var(--black);background:#fff;}
+
+/* URGENCY */
+.urgency{background:var(--blue);color:#fff;text-align:center;padding:11px 20px;font-size:.85rem;font-weight:600;letter-spacing:.02em;}
+.urgency strong{font-weight:800;}
+.urgency a{color:#fff;text-decoration:underline;}
+
+/* NAV — herdado de styles.css */
+
+/* HERO DO BLOG */
+.blog-hero{background:#f8fafc;border-bottom:1px solid var(--border);padding:48px 24px 40px;text-align:center;}
+.blog-hero-tag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;}
+.blog-hero-tag::before,.blog-hero-tag::after{content:'';display:inline-block;width:24px;height:1px;background:var(--green);}
+.blog-hero h1{font-family:'Lora',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.2;color:var(--black);margin-bottom:10px;}
+.blog-hero-sub{font-size:.95rem;color:var(--mid);max-width:520px;margin:0 auto;line-height:1.6;}
+
+/* FILTROS */
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:28px 24px 0;max-width:900px;margin:0 auto;}
+.filter-btn{padding:7px 18px;border:1px solid var(--border);border-radius:50px;background:#fff;color:var(--mid);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .15s;}
+.filter-btn:hover{border-color:var(--green);color:var(--green);}
+.filter-btn.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:600;}
+
+/* GRID */
+.articles-grid{
+  max-width:900px;margin:24px auto 0;
+  padding:0 24px 80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:18px;
+}
+
+/* CARDS */
+.art-card{
+  background:#fff;border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;
+  transition:border-color .18s,transform .18s,box-shadow .18s;
+  cursor:pointer;
+}
+.art-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07);}
+.art-card.hidden{display:none;}
+.art-thumb{
+  height:110px;display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;background:#f0f4f8;
+  border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.th-geo{background:linear-gradient(135deg,#fff8e1,#ffe082);}
+.th-energia{background:linear-gradient(135deg,#e8f5e9,#a5d6a7);}
+.th-solar{background:linear-gradient(135deg,#fff9c4,#fff176);}
+.th-eolica{background:linear-gradient(135deg,#e3f2fd,#90caf9);}
+.th-brasil{background:linear-gradient(135deg,#f3e5f5,#ce93d8);}
+.th-global{background:linear-gradient(135deg,#e0f2f1,#80cbc4);}
+.th-economico{background:linear-gradient(135deg,#fce4ec,#f48fb1);}
+.art-body{padding:16px;display:flex;flex-direction:column;flex:1;}
+.art-cat{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;display:block;}
+.cat-geo{color:#b45309;}
+.cat-brasil{color:#6d28d9;}
+.cat-economia{color:#0369a1;}
+.art-title{font-family:'Lora',serif;font-size:.95rem;font-weight:600;line-height:1.35;color:var(--black);margin-bottom:8px;flex:1;}
+.art-desc{font-size:.8rem;color:var(--mid);line-height:1.55;margin-bottom:12px;}
+.art-link{font-size:.78rem;font-weight:600;color:var(--green);margin-top:auto;}
+.badge-novo{background:#dcfce7;color:#166534;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:50px;margin-left:6px;vertical-align:middle;}
+
+/* CTA */
+.cta-box{background:#f0f9f4;border:1px solid #c6f0d8;border-radius:12px;padding:40px 32px;text-align:center;max-width:600px;margin:0 auto;}
+.cta-box h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;color:var(--black);margin-bottom:8px;}
+.cta-box p{font-size:.9rem;color:var(--mid);margin-bottom:20px;line-height:1.6;}
+.btn{display:inline-block;background:var(--green);color:#fff;font-weight:600;padding:12px 28px;border-radius:50px;text-decoration:none;font-size:.9rem;transition:background .15s;}
+.btn:hover{background:var(--green-dark);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--mid);}
+footer a{color:var(--mid);text-decoration:none;}
+
+@media(max-width:640px){
+  .articles-grid{grid-template-columns:1fr;padding:0 16px 60px;}
+  .blog-hero{padding:32px 20px;}
+  .filters{padding:20px 16px 0;}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — vagas limitadas. <a href="../turma-maio-2026.html">Garantir vaga →</a></div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a class="active" href="index.html">Blog</a>
+    <a href="../simulados/">Simulados</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="blog-hero-tag">MosmanLAB</div>
+  <h1>Física, Energia e Desenvolvimento</h1>
+  <p class="blog-hero-sub">Artigos de fundo sobre matrizes energéticas, transição energética, geopolítica, física do vestibular e muito mais.</p>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filtrar('todos',this)">Todos</button>
+  <button class="filter-btn" onclick="filtrar('fisica',this)">Física</button>
+  <button class="filter-btn" onclick="filtrar('energia',this)">Energia</button>
+  <button class="filter-btn" onclick="filtrar('brasil',this)">Brasil</button>
+  <button class="filter-btn" onclick="filtrar('global',this)">Global</button>
+  <button class="filter-btn" onclick="filtrar('geo',this)">Geopolítica</button>
+  <button class="filter-btn" onclick="filtrar('economia',this)">Economia</button>
+  <button class="filter-btn" onclick="filtrar('transicao',this)">Transição</button>
+  <button class="filter-btn" onclick="filtrar('simulacao',this)">Simulações</button>
+</div>
+
+<div class="articles-grid" id="grid-todos">
+
+  <a class="art-card" href="hidroeletricidade.html" data-cat="fisica">
+    <div class="art-thumb" style="background:linear-gradient(135deg,#e3f2fd,#90caf9)">💧</div>
+    <div class="art-body">
+      <span class="art-cat">Física · Hidroeletricidade <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Hidroeletricidade: como a água em queda se transforma em eletricidade</div>
+      <div class="art-desc">Da energia potencial gravitacional à fórmula P = ηρgQH — com o contexto do Brasil como potência hidrelétrica mundial e o exemplo de Itaipu.</div>
+      <span class="featured-link">Ler artigo →</span>
+      <span class="art-link">Ler artigo →</span>
+  </div>
+  </a>
+
+  <a class="art-card" href="energia-solar.html" data-cat="fisica">
+    <div class="art-thumb th-solar">☀️</div>
+    <div class="art-body">
+      <span class="art-cat cat-fisica">Física · Solar <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Energia Solar: do efeito fotoelétrico de Einstein à potência no seu telhado</div>
+      <div class="art-desc">Constante solar, irradiância, equação P = G·A·η e o Brasil como 4º maior mercado solar do mundo.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="curva-iv-solar.html" data-cat="fisica">
+    <div class="art-thumb th-eletro">📈</div>
+    <div class="art-body">
+      <span class="art-cat cat-eletro">Eletricidade · Solar <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Curva I×V do Painel Solar: MPP, fator de preenchimento e modelo de diodo único</div>
+      <div class="art-desc">O gráfico que todo engenheiro de fotovoltaica precisa entender — com a equação implícita completa da célula solar.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="transicao-energetica-custos.html" data-cat="energia global geo">
+    <div class="art-thumb th-geo">💸</div>
+    <div class="art-body">
+      <span class="art-cat cat-geo">Energia · Geopolítica <span class="badge-novo">Novo</span></span>
+      <div class="art-title">O Custo da Transição Energética e a Segurança que Ninguém Quer Pagar</div>
+      <div class="art-desc">Quanto custa realmente a transição? Como juros, CAPEX, OPEX e a geopolítica de Ormuz moldam as escolhas de cada país — e o papel do Brasil.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="solar-ev-ilusao.html" data-cat="energia global transicao">
+    <div class="art-thumb th-solar">☀️</div>
+    <div class="art-body">
+      <span class="art-cat cat-energia">Energia · Transição <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Solar no Telhado e Carro Elétrico Não Vão Salvar o Planeta</div>
+      <div class="art-desc">A promessa verde que pode apagar as luzes. Análise técnica, econômica, geopolítica e social da geração distribuída e dos EVs — o que falta no debate.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="kuznets-ambiental.html" data-cat="economia clima global">
+    <div class="art-thumb th-energia">📈</div>
+    <div class="art-body">
+      <span class="art-cat cat-economia">Economia · Clima <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Curva de Kuznets Ambiental: Poluir Agora, Limpar Depois?</div>
+      <div class="art-desc">A hipótese que promete que o crescimento resolve a poluição automaticamente. Os dados dizem outra coisa. Análise crítica com evidências empíricas globais.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="biogas-matriz-brasileira.html" data-cat="energia brasil renovavel">
+    <div class="art-thumb th-energia">🌿</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Energia · Brasil <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Biogás na Matriz Energética Brasileira</div>
+      <div class="art-desc">Processos de produção, parâmetros, tecnologias, potencial na matriz elétrica e simulador interativo de biodigestor. O que o Brasil ainda não aproveitou.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="article-estreitos.html" data-cat="global geo logistica">
+    <div class="art-thumb th-geo">🌊</div>
+    <div class="art-body">
+      <span class="art-cat cat-geo">Geopolítica · Logística <span class="badge-novo">Novo</span></span>
+      <div class="art-title">Os Estreitos que Movem o Mundo</div>
+      <div class="art-desc">Ormuz, Malaca, Suez, Bab-el-Mandeb, Bósforo, Gibraltar e Panamá — seus fluxos, vulnerabilidades e o que acontece quando um deles fecha.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="transicao-energetica-smil-fressoz.html" data-cat="global energia">
+    <div class="art-thumb th-global">🌍</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Transição</span>
+      <div class="art-title">Transição Energética: Smil vs. Fressoz — o debate que divide os especialistas</div>
+      <div class="art-desc">Dois cientistas, dois olhares opostos sobre a velocidade e a natureza das transições energéticas na história.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="taxa-investimento-brasil-fbcf-world-bank.html" data-cat="brasil economia">
+    <div class="art-thumb th-economia">📊</div>
+    <div class="art-body">
+      <span class="art-cat cat-economia">Brasil · Economia</span>
+      <div class="art-title">Taxa de Investimento no Brasil: FBCF e o que o Banco Mundial revela</div>
+      <div class="art-desc">Por que o Brasil investe pouco e o que isso significa para a transição energética e o crescimento de longo prazo.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="saude-energia-eletricidade-expectativa-vida.html" data-cat="global energia">
+    <div class="art-thumb th-global">🏥</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Saúde</span>
+      <div class="art-title">Saúde, Energia e Expectativa de Vida: a correlação que ilumina o desenvolvimento</div>
+      <div class="art-desc">Acesso à eletricidade e expectativa de vida: uma relação mais forte do que o PIB per capita.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="reforma-tributaria-conta-de-luz.html" data-cat="brasil economia">
+    <div class="art-thumb th-economia">💡</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Tributação</span>
+      <div class="art-title">Reforma Tributária e a Conta de Luz: o que muda para o consumidor brasileiro</div>
+      <div class="art-desc">Como o novo modelo tributário afeta a composição da tarifa de energia elétrica no Brasil.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="quatro-pilares-economia-real-amonia-concreto-aco-plastico.html" data-cat="global energia">
+    <div class="art-thumb th-global">🏗️</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Indústria</span>
+      <div class="art-title">Os Quatro Pilares da Economia Real: amônia, concreto, aço e plástico</div>
+      <div class="art-desc">Por que descarbonizar esses quatro materiais é o maior desafio industrial da transição energética.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="por-que-nem-todos-deveriam-comer-big-mac.html" data-cat="global economia">
+    <div class="art-thumb th-economia">🍔</div>
+    <div class="art-body">
+      <span class="art-cat cat-economia">Global · Economia</span>
+      <div class="art-title">Por que nem todos deveriam comer Big Mac: energia, dieta e desigualdade global</div>
+      <div class="art-desc">A cadeia alimentar como espelho do consumo energético e das assimetrias entre países ricos e pobres.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="pld-preco-liquidacao-diferencas-energia.html" data-cat="brasil energia">
+    <div class="art-thumb th-brasil">⚡</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Mercado</span>
+      <div class="art-title">PLD: o Preço de Liquidação das Diferenças e a Volatilidade do Mercado de Energia</div>
+      <div class="art-desc">Como funciona o preço spot de energia no Brasil e por que ele pode variar centenas de reais em dias.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="plano-clima-brasil-metas-setores-viabilidade.html" data-cat="brasil clima">
+    <div class="art-thumb th-clima">🌿</div>
+    <div class="art-body">
+      <span class="art-cat cat-clima">Brasil · Clima</span>
+      <div class="art-title">Plano Clima do Brasil: metas, setores e viabilidade</div>
+      <div class="art-desc">O que o Brasil se comprometeu a fazer no Acordo de Paris e o que os dados dizem sobre a trajetória real das emissões.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="paradoxo-carvao-energia-mundo.html" data-cat="global energia">
+    <div class="art-thumb th-global">🏭</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Carvão</span>
+      <div class="art-title">O Paradoxo do Carvão: por que o mineral mais poluente ainda cresce no mundo</div>
+      <div class="art-desc">A ascensão da Ásia e o colapso europeu do carvão — e o que isso revela sobre a transição energética real.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="nuclear-seguranca-aviacao.html" data-cat="nuclear energia">
+    <div class="art-thumb th-nuclear">⚛️</div>
+    <div class="art-body">
+      <span class="art-cat cat-nuclear">Nuclear · Segurança</span>
+      <div class="art-title">Nuclear e Segurança: por que a energia mais temida é estatisticamente a mais segura</div>
+      <div class="art-desc">Mortes por TWh, acidentes históricos e a comparação que derruba o senso comum sobre risco nuclear.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="matrizes-energeticas-continentes-mundo.html" data-cat="global energia">
+    <div class="art-thumb th-global">🌐</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Matrizes</span>
+      <div class="art-title">Matrizes Energéticas dos Continentes: um retrato das diferenças que separam o mundo</div>
+      <div class="art-desc">Como América do Norte, Europa, Ásia e África geram e consomem energia de formas completamente distintas.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="matriz-eletrica-brasileira.html" data-cat="brasil energia">
+    <div class="art-thumb th-brasil">🇧🇷</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Matriz Elétrica</span>
+      <div class="art-title">A Matriz Elétrica Brasileira: a mais renovável do G20 e seus paradoxos</div>
+      <div class="art-desc">Por que o Brasil tem uma das matrizes mais limpas do mundo — e ainda assim uma das tarifas mais caras.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="matrix-energetica-brasil-renovaveis.html" data-cat="brasil energia">
+    <div class="art-thumb th-energia">♻️</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Renováveis</span>
+      <div class="art-title">Matriz Energética do Brasil: o avanço das renováveis além da hidrelétrica</div>
+      <div class="art-desc">Solar, eólica e biomassa transformando a matriz primária brasileira na última década.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="lcoh-hidrogenio-brasil-mundo.html" data-cat="global energia economia">
+    <div class="art-thumb th-energia">🔬</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Hidrogênio</span>
+      <div class="art-title">LCOH: o Custo Nivelado do Hidrogênio Verde no Brasil e no Mundo</div>
+      <div class="art-desc">Por que o Brasil tem potencial para ser um dos maiores exportadores de hidrogênio verde — e quais são os obstáculos.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="lcoe-custo-nivelado-eletricidade.html" data-cat="global economia energia">
+    <div class="art-thumb th-economia">📉</div>
+    <div class="art-body">
+      <span class="art-cat cat-economia">Global · LCOE</span>
+      <div class="art-title">LCOE: o Custo Nivelado de Eletricidade e a Competitividade das Energias</div>
+      <div class="art-desc">Como comparar fontes de energia de forma justa — e por que solar e eólica ganharam a batalha econômica.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="indice-big-mac-salario-minimo-eletricidade-mundo.html" data-cat="global economia">
+    <div class="art-thumb th-economia">💱</div>
+    <div class="art-body">
+      <span class="art-cat cat-economia">Global · Economia</span>
+      <div class="art-title">Índice Big Mac, Salário Mínimo e Eletricidade: quanto custa viver no mundo</div>
+      <div class="art-desc">Uma comparação inusitada que revela as assimetrias de poder de compra entre países ricos e em desenvolvimento.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="identidade-kaya-brasil.html" data-cat="brasil clima energia">
+    <div class="art-thumb th-clima">🔢</div>
+    <div class="art-body">
+      <span class="art-cat cat-clima">Brasil · Identidade de Kaya</span>
+      <div class="art-title">Identidade de Kaya: decompondo as emissões de CO₂ do Brasil</div>
+      <div class="art-desc">A equação que desagrega as emissões em população, riqueza, intensidade energética e intensidade de carbono.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="geladeira-eficiencia-energetica-consumo-mundo.html" data-cat="global economia energia">
+    <div class="art-thumb th-economia">🌡️</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Eficiência</span>
+      <div class="art-title">A Geladeira como Termômetro: eficiência energética e consumo doméstico no mundo</div>
+      <div class="art-desc">Como o consumo elétrico de uma geladeira revela décadas de ganhos em eficiência tecnológica.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="gas-natural-brasil-mundo.html" data-cat="brasil global energia">
+    <div class="art-thumb th-energia">🔥</div>
+    <div class="art-body">
+      <span class="art-cat cat-energia">Energia · Gás Natural</span>
+      <div class="art-title">Gás Natural no Brasil e no Mundo: a ponte ou a armadilha da transição energética</div>
+      <div class="art-desc">O papel do gás natural na matriz energética global — de combustível de transição a obstáculo ao net zero.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="futuro-energia-nuclear-brasil-mundo.html" data-cat="nuclear global brasil">
+    <div class="art-thumb th-nuclear">⚛️</div>
+    <div class="art-body">
+      <span class="art-cat cat-nuclear">Nuclear · Futuro</span>
+      <div class="art-title">O Futuro da Energia Nuclear no Brasil e no Mundo: renascimento ou ocaso?</div>
+      <div class="art-desc">SMRs, Angra 3 e o retorno do interesse nuclear diante da crise climática e da demanda por baseload limpo.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="frota-vendas-carros-eletricos-mundo.html" data-cat="transporte global">
+    <div class="art-thumb th-transporte">🚗</div>
+    <div class="art-body">
+      <span class="art-cat cat-transporte">Transporte · Elétrico</span>
+      <div class="art-title">Frota e Vendas de Carros Elétricos no Mundo: onde o Brasil está nessa corrida</div>
+      <div class="art-desc">China domina, Europa acelera, Brasil patina — um mapa da eletrificação do transporte individual.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="frota-onibus-eletricos-mundo-china-europa-brasil.html" data-cat="transporte global brasil">
+    <div class="art-thumb th-transporte">🚌</div>
+    <div class="art-body">
+      <span class="art-cat cat-transporte">Transporte · Ônibus</span>
+      <div class="art-title">Frota de Ônibus Elétricos: China, Europa e o atraso brasileiro</div>
+      <div class="art-desc">O transporte coletivo como vetor de descarbonização — e por que algumas cidades brasileiras são exceção.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="frota-caminhoes-envelhecimento-eficiencia-energetica-rntrc.html" data-cat="transporte brasil">
+    <div class="art-thumb th-transporte">🚛</div>
+    <div class="art-body">
+      <span class="art-cat cat-transporte">Transporte · Caminhões</span>
+      <div class="art-title">Envelhecimento da Frota de Caminhões e Eficiência Energética no Brasil</div>
+      <div class="art-desc">A frota mais velha da América do Sul e os bilhões de litros de diesel desperdiçados a cada ano.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="fontes-energia-primaria-eletricidade-mundo.html" data-cat="global energia">
+    <div class="art-thumb th-global">⚡</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Fontes</span>
+      <div class="art-title">Fontes de Energia Primária e Eletricidade no Mundo: o retrato de 2024</div>
+      <div class="art-desc">A diferença crucial entre energia primária e eletricidade — e o que os números revelam sobre a transição real.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="estreito-ormuz-fluxo-petroleo-geopolitica.html" data-cat="global geo energia">
+    <div class="art-thumb th-geo">🛢️</div>
+    <div class="art-body">
+      <span class="art-cat cat-geo">Geopolítica · Petróleo</span>
+      <div class="art-title">Estreito de Ormuz: o gargalo por onde passa 20% do petróleo mundial</div>
+      <div class="art-desc">Por que 33 km de largura ameaçam a segurança energética de metade do planeta.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="emissoes-desmatamento-brasil-seeg.html" data-cat="brasil clima">
+    <div class="art-thumb th-clima">🌳</div>
+    <div class="art-body">
+      <span class="art-cat cat-clima">Brasil · Desmatamento</span>
+      <div class="art-title">Emissões e Desmatamento no Brasil: o que o SEEG revela sobre a origem do CO₂ brasileiro</div>
+      <div class="art-desc">Por que o uso da terra responde por mais da metade das emissões brasileiras — e como isso muda com o desmatamento zero.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="emissoes-co2-brasil-mundo.html" data-cat="brasil global clima">
+    <div class="art-thumb th-clima">🌫️</div>
+    <div class="art-body">
+      <span class="art-cat cat-clima">Brasil · CO₂</span>
+      <div class="art-title">Emissões de CO₂ do Brasil e do Mundo: quem emite, quanto e por quê</div>
+      <div class="art-desc">A posição do Brasil no ranking global de emissões — e os setores que mais contribuem para o aquecimento.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="eletrificacao-economia.html" data-cat="global economia energia">
+    <div class="art-thumb th-economia">💹</div>
+    <div class="art-body">
+      <span class="art-cat cat-economia">Global · Eletrificação</span>
+      <div class="art-title">Eletrificação e Economia: o elo entre energia elétrica e desenvolvimento econômico</div>
+      <div class="art-desc">Do kwh per capita ao PIB per capita — a correlação que explica por que energia é infraestrutura de desenvolvimento.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="desigualdade-energia-brasil-gini-matriz-eletrica.html" data-cat="brasil economia energia">
+    <div class="art-thumb th-brasil">⚖️</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Desigualdade</span>
+      <div class="art-title">Desigualdade Energética no Brasil: Gini, matriz elétrica e acesso à energia</div>
+      <div class="art-desc">Como a desigualdade de renda se traduz em desigualdade no acesso e no consumo de energia elétrica.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="desacoplamento-pib-co2-brasil.html" data-cat="brasil clima economia">
+    <div class="art-thumb th-clima">📈</div>
+    <div class="art-body">
+      <span class="art-cat cat-clima">Brasil · Desacoplamento</span>
+      <div class="art-title">Desacoplamento PIB–CO₂ no Brasil: crescimento econômico sem mais emissões?</div>
+      <div class="art-desc">O Brasil consegue crescer e emitir menos ao mesmo tempo? A evidência dos últimos 20 anos.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="densidade-energetica-transicao-energetica.html" data-cat="global energia">
+    <div class="art-thumb th-energia">🔋</div>
+    <div class="art-body">
+      <span class="art-cat cat-energia">Energia · Densidade</span>
+      <div class="art-title">Densidade Energética e Transição: por que substituir petróleo é tão difícil</div>
+      <div class="art-desc">A densidade de energia por kg e por litro como chave para entender os obstáculos físicos da transição energética.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="curva-do-pato-ons-seguranca-energetica-brasil.html" data-cat="brasil energia">
+    <div class="art-thumb th-brasil">🦆</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Grid</span>
+      <div class="art-title">A Curva do Pato e a Segurança Energética Brasileira no ONS</div>
+      <div class="art-desc">O problema que o excesso de solar cria para o operador da rede — e como o Brasil está lidando com ele.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="crise-energetica-2026-ormuz-choque-petroleo-resposta-governos.html" data-cat="global geo energia">
+    <div class="art-thumb th-geo">⚠️</div>
+    <div class="art-body">
+      <span class="art-cat cat-geo">Geopolítica · Crise</span>
+      <div class="art-title">Crise Energética 2026: Ormuz, choque de petróleo e a resposta dos governos</div>
+      <div class="art-desc">Um cenário de bloqueio no estreito de Ormuz e as consequências para a economia global e para o Brasil.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="cesio-137-goiania-acidente-radiologico.html" data-cat="nuclear brasil">
+    <div class="art-thumb th-nuclear">☢️</div>
+    <div class="art-body">
+      <span class="art-cat cat-nuclear">Nuclear · Brasil</span>
+      <div class="art-title">Goiânia 1987: o acidente radiológico com Césio-137 que chocou o mundo</div>
+      <div class="art-desc">A cronologia do maior acidente radiológico do hemisfério sul — e o que ele ensina sobre segurança nuclear e comunicação de risco.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="biocombustiveis-vs-alimentos-food-fuel-debate.html" data-cat="global energia economia">
+    <div class="art-thumb th-energia">🌽</div>
+    <div class="art-body">
+      <span class="art-cat cat-energia">Energia · Biocombustíveis</span>
+      <div class="art-title">Biocombustíveis vs. Alimentos: o debate food vs. fuel em números</div>
+      <div class="art-desc">Usar terra para etanol ou para comida? O dilema que divide economistas, ambientalistas e governos.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="biocombustiveis-brasil-mundo-eroi-co2.html" data-cat="brasil global energia">
+    <div class="art-thumb th-energia">🌿</div>
+    <div class="art-body">
+      <span class="art-cat cat-brasil">Brasil · Biocombustíveis</span>
+      <div class="art-title">Biocombustíveis no Brasil e no Mundo: EROI, CO₂ e a lógica energética do etanol</div>
+      <div class="art-desc">O etanol brasileiro tem um dos melhores ERóIs do mundo — o que isso significa e quais são seus limites.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="automoveis-grande-sao-paulo-frota-idade-emissoes.html" data-cat="brasil transporte clima">
+    <div class="art-thumb th-transporte">🚙</div>
+    <div class="art-body">
+      <span class="art-cat cat-transporte">São Paulo · Frota</span>
+      <div class="art-title">Automóveis na Grande São Paulo: frota, idade média e emissões</div>
+      <div class="art-desc">A frota que envelhece e polui — e o que os dados do DETRAN revelam sobre mobilidade e qualidade do ar em SP.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a class="art-card" href="acesso-eletricidade-exclusao-energetica.html" data-cat="global brasil energia">
+    <div class="art-thumb th-global">🕯️</div>
+    <div class="art-body">
+      <span class="art-cat cat-global">Global · Acesso</span>
+      <div class="art-title">Acesso à Eletricidade e Exclusão Energética: os 700 milhões sem luz no mundo</div>
+      <div class="art-desc">Quem são, onde estão e o que a falta de eletricidade significa para saúde, educação e desenvolvimento.</div>
+      <span class="art-link">Ler artigo →</span>
+    </div>
+  </a>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 24px 64px;">
+  <div class="cta-box">
+    <h2>Quer dominar a Física para o vestibular?</h2>
+    <p>Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+    <a class="btn" href="../turma-maio-2026.html">Conhecer a Turma de Maio 2026 →</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 MosmanLAB · Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Bela Vista · São Paulo – SP · CEP 04004-903
+</footer>
+
+<script>
+function filtrar(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.art-card').forEach(card => {
+    if (cat === 'todos') { card.classList.remove('hidden'); return; }
+    const cats = card.dataset.cat || '';
+    cats.includes(cat) ? card.classList.remove('hidden') : card.classList.add('hidden');
+  });
+}
+</script>
+
+</body>
+</html>

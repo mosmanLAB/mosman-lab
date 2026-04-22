@@ -106,15 +106,34 @@
     .brazil-section { padding: 22px 16px; }
   }
 </style>
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* ── SIM-CTA ── */
+.sim-cta{background:#f0f9f4;padding:48px 24px;text-align:center;border-top:1px solid #e0e0e0;}
+.sim-cta-label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:#111;margin-bottom:8px;line-height:1.3;}
+.sim-cta-text{font-size:.9rem;color:#555;max-width:440px;margin:0 auto 22px;line-height:1.6;}
+.sim-cta-btn{display:inline-block;background:#1dbd5c;color:#fff;font-weight:600;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:.9rem;transition:background .15s;}
+.sim-cta-btn:hover{background:#17a34f;}
+/* ── REFS / LEIA TAMBÉM ── */
+.refs-section{max-width:860px;margin:0 auto;padding:40px 40px 64px;}
+.refs-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:#333;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #e0e0e0;}
+.refs-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+.refs-list li{font-size:.83rem;color:#555;line-height:1.6;padding-left:16px;border-left:2px solid #e0e0e0;}
+.refs-list li strong{color:#222;}
+.refs-list a{color:#1a4a8a;text-decoration:none;}
+.refs-list a:hover{text-decoration:underline;}
+@media(max-width:768px){.refs-section{padding:32px 20px 48px;}}
+</style>
+<meta property="og:type" content="article"/>
+<meta property="og:locale" content="pt_BR"/>
 </head>
 <body>
-
-<div class="urgency-bar">
-  ⚡ Nova turma de Física — Vestibular <strong>Maio 2026</strong>. Vagas limitadas. <a href="../turma-maio-2026.html">Garanta sua vaga →</a>
-</div>
-
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — inscrições abertas, vagas limitadas. <a href="../turma-maio-2026.html" style="color:#fff;text-decoration:underline;">Garantir vaga →</a></div>
 <nav>
-  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
   <div class="nav-links">
     <a href="../index.html">Início</a>
     <a href="../turma-maio-2026.html">Turma de Maio</a>
@@ -682,9 +701,15 @@ Chart.defaults.color = '#555';
 })();
 </script>
 
-<section class="refs-section" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border,#e5e7eb);">
-  <h2 style="font-family:'Lora',serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--text,#1a1a1a);">Leia também</h2>
-  <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<section class="refs-section">
+  <h2 class="refs-title">Leia também</h2>
+  <ul class="refs-list">
     <li><a href="emissoes-co2-brasil-mundo.html">Emissões de CO₂: Brasil e o mundo</a></li>
     <li><a href="desacoplamento-pib-co2-brasil.html">Desacoplamento entre PIB e CO₂ no Brasil</a></li>
     <li><a href="identidade-kaya-brasil-mundo.html">Identidade de Kaya: Brasil e o mundo</a></li>

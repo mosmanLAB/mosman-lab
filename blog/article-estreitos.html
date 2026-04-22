@@ -663,16 +663,35 @@ footer {
 .hero-meta { animation: fadeUp 0.5s ease 0.4s both; }
 .hero-stats { animation: fadeUp 0.5s ease 0.5s both; }
 </style>
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* ── SIM-CTA ── */
+.sim-cta{background:#f0f9f4;padding:48px 24px;text-align:center;border-top:1px solid #e0e0e0;}
+.sim-cta-label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.sim-cta-title{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:#111;margin-bottom:8px;line-height:1.3;}
+.sim-cta-text{font-size:.9rem;color:#555;max-width:440px;margin:0 auto 22px;line-height:1.6;}
+.sim-cta-btn{display:inline-block;background:#1dbd5c;color:#fff;font-weight:600;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:.9rem;transition:background .15s;}
+.sim-cta-btn:hover{background:#17a34f;}
+/* ── REFS / LEIA TAMBÉM ── */
+.refs-section{max-width:860px;margin:0 auto;padding:40px 40px 64px;}
+.refs-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:#333;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #e0e0e0;}
+.refs-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+.refs-list li{font-size:.83rem;color:#555;line-height:1.6;padding-left:16px;border-left:2px solid #e0e0e0;}
+.refs-list li strong{color:#222;}
+.refs-list a{color:#1a4a8a;text-decoration:none;}
+.refs-list a:hover{text-decoration:underline;}
+@media(max-width:768px){.refs-section{padding:32px 20px 48px;}}
+</style>
+<meta property="og:type" content="article"/>
+<meta property="og:locale" content="pt_BR"/>
 </head>
 <body>
-
-<div class="urgency-bar" style="background:#16a34a;color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500;">
-  ⚡ Nova turma de Física — Vestibular <strong>Maio 2026</strong>. Vagas limitadas. <a href="../turma-maio-2026.html" style="color:#fff;text-decoration:underline;">Garanta sua vaga →</a>
-</div>
-
+<div class="urgency">⚡ Nova turma começa em <strong>maio de 2026</strong> — inscrições abertas, vagas limitadas. <a href="../turma-maio-2026.html" style="color:#fff;text-decoration:underline;">Garantir vaga →</a></div>
 <!-- NAV -->
 <nav>
-  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a>
+  </div>
   <div class="nav-links">
     <a href="../index.html">Início</a>
     <a href="../turma-maio-2026.html">Turma de Maio</a>
@@ -1254,18 +1273,7 @@ footer {
       <p>Os painéis interativos neste artigo serão atualizados periodicamente conforme novos dados da EIA, UNCTAD e IMF PortWatch são publicados. Compartilhe com quem precisa entender como o mundo realmente funciona.</p>
     </div>
 
-  
-<section class="refs-section" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border,#e5e7eb);">
-  <h2 style="font-family:'Lora',serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--text,#1a1a1a);">Leia também</h2>
-  <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
-    <li><a href="estreito-ormuz-fluxo-petroleo-geopolitica.html">Estreito de Ormuz: fluxo de petróleo e geopolítica</a></li>
-    <li><a href="crise-energetica-2026-ormuz-choque-petroleo-resposta-governos.html">Crise energética 2026: choque de petróleo em Ormuz</a></li>
-    <li><a href="transicao-energetica-custos.html">O custo da transição energética</a></li>
-    <li><a href="gas-natural-brasil-mundo.html">Gás natural: Brasil e o mercado global</a></li>
-    <li><a href="lcoe-custo-nivelado-eletricidade.html">LCOE: custo nivelado de eletricidade</a></li>
-  </ul>
-</section>
-</main><!-- /article-body -->
+  </main><!-- /article-body -->
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
@@ -1328,7 +1336,6 @@ footer {
 const mapHTML = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<link rel="canonical" href="https://mosmanlab.com.br/blog/article-estreitos.html"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Estreitos Comerciais Globais</title>
@@ -1420,13 +1427,29 @@ function renderSidebar(){const sb=document.getElementById('sidebar');sb.innerHTM
 function selectStrait(id){const s=STRAITS.find(x=>x.id===id);if(!s)return;document.querySelectorAll('.strait-item').forEach(el=>el.classList.toggle('active',el.dataset.id===id));const riskDots=Array.from({length:5},(_,i)=>\`<div class="risk-dot \${i<s.risk?'on':''}"></div>\`).join('');const altChips=s.alternatives.map(a=>\`<span class="alt-chip">\${a}</span>\`).join('');document.getElementById('detail').innerHTML=\`<div style="display:grid;grid-template-columns:1fr auto;gap:16px"><div><div class="detail-title">\${s.name}</div><div class="detail-location">\${s.location}</div></div><div style="text-align:right"><div style="font-size:.5rem;color:var(--muted);letter-spacing:.1em;margin-bottom:5px">NÍVEL DE RISCO</div><div class="risk-meter" style="justify-content:flex-end">\${riskDots}</div></div></div><div class="detail-grid"><div><div class="detail-stat-label">Comércio global</div><div class="detail-stat-value" style="color:\${s.color}">\${s.trade_pct}%</div></div>\${s.oil_mbd?\`<div><div class="detail-stat-label">Petróleo/dia</div><div class="detail-stat-value">\${s.oil_mbd}M <span class="detail-stat-unit">bbl</span></div></div>\`:'<div></div>'}\${s.oil_pct?\`<div><div class="detail-stat-label">% óleo marítimo</div><div class="detail-stat-value">\${s.oil_pct}%</div></div>\`:'<div></div>'}<div><div class="detail-stat-label">Trânsitos</div><div class="detail-stat-value" style="font-size:.8rem">\${s.transits}</div></div></div><div class="detail-desc">\${s.desc}</div><div class="alt-row"><span class="alt-label">ALTERNATIVAS →</span>\${altChips}</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">\${s.cargo.map(c=>\`<span class="metric-chip chip-blue">\${c}</span>\`).join('')}</div>\`}
 drawMap();renderSidebar();selectStrait('malaca');
 <\/script>
+
+<section class="sim-cta">
+  <p class="sim-cta-label">MosmanLAB</p>
+  <p class="sim-cta-title">Quer dominar a Física para o vestibular?</p>
+  <p class="sim-cta-text">Turmas reduzidas, acompanhamento individualizado. Presencial em São Paulo e online ao vivo.</p>
+  <a href="../turma-maio-2026.html" class="sim-cta-btn">Conhecer a Turma de Maio 2026 →</a>
+</section>
+<section class="refs-section">
+  <h2 class="refs-title">Leia também</h2>
+  <ul class="refs-list">
+    <li><a href="estreito-ormuz-fluxo-petroleo-geopolitica.html">Estreito de Ormuz: fluxo de petróleo e geopolítica</a></li>
+    <li><a href="crise-energetica-2026-ormuz-choque-petroleo-resposta-governos.html">Crise energética 2026: choque de petróleo e a resposta dos governos</a></li>
+    <li><a href="transicao-energetica-custos.html">O custo da transição energética e a segurança que ninguém quer pagar</a></li>
+    <li><a href="gas-natural-brasil-mundo.html">Gás natural: Brasil e o mercado global</a></li>
+    <li><a href="lcoe-custo-nivelado-eletricidade.html">LCOE: custo nivelado de eletricidade</a></li>
+  </ul>
+</section>
 </body></html>`;
 
 // DASHBOARD 2: PRODUCTS
 const productsHTML = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<link rel="canonical" href="https://mosmanlab.com.br/blog/article-estreitos.html"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produtos Críticos por Estreito</title>
