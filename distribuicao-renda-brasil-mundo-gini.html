@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSKLS9JVB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2DSKLS9JVB');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Distribuição de Renda no Brasil: A Anatomia de uma Desigualdade | MosmanLAB</title>
+<meta name="description" content="PNAD 2024, IRPF e dados do Banco Mundial revelam a anatomia completa da desigualdade brasileira. Gini 0,506, 1% mais rico detém 37% da riqueza. Comparativo global com 180 países.">
+<link rel="canonical" href="https://mosmanlab.com.br/blog/distribuicao-renda-brasil-mundo-gini.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<meta name="author" content="Edson Mosman — MosmanLAB"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Distribuição de Renda no Brasil: A Anatomia de uma Desigualdade"/>
+<meta property="og:url" content="https://mosmanlab.com.br/blog/distribuicao-renda-brasil-mundo-gini.html"/>
+<meta property="og:site_name" content="MosmanLAB"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="article:published_time" content="2026-04-23"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Distribuição de Renda no Brasil: A Anatomia de uma Desigualdade","url":"https://mosmanlab.com.br/blog/distribuicao-renda-brasil-mundo-gini.html","datePublished":"2026-04-23","author":{"@type":"Person","name":"Edson Mosman"},"publisher":{"@type":"Organization","name":"MosmanLAB","url":"https://mosmanlab.com.br"},"inLanguage":"pt-BR"}</script>
+
+<style>
+/* ── Pirâmide interativa ── */
+.piramide-wrap{position:relative;width:100%;max-width:560px;margin:24px auto}
+.piramide-row{display:flex;align-items:center;gap:12px;margin-bottom:6px;cursor:pointer;transition:opacity .2s}
+.piramide-row:hover{opacity:.85}
+.piramide-label{font-size:.75rem;font-family:'DM Mono',monospace;color:#374151;width:100px;text-align:right;flex-shrink:0}
+.piramide-bar{height:34px;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;transition:width .6s ease;position:relative}
+.piramide-val{font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap}
+.piramide-renda{font-size:.73rem;color:#64748b;width:110px;flex-shrink:0;line-height:1.3}
+/* ── Tooltip ── */
+.tooltip-box{position:fixed;background:#0f1c2e;color:#fff;padding:10px 14px;border-radius:8px;font-size:.78rem;pointer-events:none;z-index:9999;display:none;max-width:240px;line-height:1.6;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+/* ── Gini escala ── */
+.gini-scale{position:relative;height:44px;border-radius:8px;overflow:hidden;margin:20px 0}
+.gini-scale-bg{position:absolute;inset:0;background:linear-gradient(to right,#16a34a,#84cc16,#eab308,#f97316,#dc2626)}
+.gini-marker{position:absolute;top:0;bottom:0;width:3px;background:#0f1c2e;transition:left .5s}
+.gini-marker::after{content:attr(data-label);position:absolute;top:100%;left:50%;transform:translateX(-50%);font-size:.72rem;font-weight:700;color:#0f1c2e;white-space:nowrap;margin-top:4px;font-family:'DM Mono',monospace}
+.gini-labels{display:flex;justify-content:space-between;font-size:.7rem;color:#64748b;margin-top:28px;font-family:'DM Mono',monospace}
+/* ── Bolhas comparativas ── */
+.bolha-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:24px 0}
+.bolha-card{border-radius:12px;padding:14px;text-align:center;border:1px solid #e2e8f0;cursor:pointer;transition:all .2s}
+.bolha-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.bolha-pais{font-size:.78rem;font-weight:700;color:#0f1c2e;margin-bottom:4px}
+.bolha-gini-num{font-size:1.5rem;font-weight:700;font-family:'Lora',serif;line-height:1.1}
+.bolha-detalhe{font-size:.68rem;color:#64748b;margin-top:4px;line-height:1.4}
+/* ── tabs ── */
+.tab-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab-btn{padding:7px 16px;border-radius:6px;border:1px solid #e2e8f0;background:#f8fafc;color:#374151;font-size:.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.tab-btn.ativo{background:#0f1c2e;color:#fff;border-color:#0f1c2e}
+/* ── comparativo ── */
+.comp2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.comp2-card{border-radius:12px;padding:20px}
+.comp2-card.br{background:#eff6ff;border:1.5px solid #bfdbfe}
+.comp2-card.mu{background:#f0fdf4;border:1.5px solid #bbf7d0}
+@media(max-width:600px){.comp2{grid-template-columns:1fr}.piramide-label{width:70px;font-size:.65rem}.piramide-renda{width:80px;font-size:.65rem}}
+/* ── interativo slider ── */
+.slider-row{display:flex;align-items:center;gap:12px;margin:10px 0}
+.slider-row label{font-size:.82rem;color:#374151;min-width:140px}
+.slider-row input{flex:1}
+.slider-row span{font-size:.82rem;font-weight:600;color:#0f1c2e;min-width:60px;text-align:right;font-family:'DM Mono',monospace}
+.chart-nota{font-size:.75rem;color:#9ca3af;margin-top:8px;font-style:italic;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="tooltip-box" id="tooltip"></div>
+
+<div class="urgency">⚡ Nova turma começa em <strong>28 de abril</strong> — inscrições abertas, vagas limitadas</div>
+<nav>
+  <div class="nav-top"><a class="nav-logo" href="../index.html">mosman<strong>LAB</strong></a></div>
+  <div class="nav-links">
+    <a href="../index.html">Início</a>
+    <a href="../turma-maio-2026.html">Turma de Maio</a>
+    <a href="../depoimentos.html">Depoimentos</a>
+    <a href="index.html">Blog</a>
+    <a href="../simulacoes/">Simulações</a>
+    <a href="../professor.html">O Professor</a>
+  </div>
+</nav>
+<div class="back-to-blog"><a href="index.html">Voltar ao Blog</a></div>
+
+<!-- HERO -->
+<div class="article-hero" style="background:linear-gradient(135deg,#1a0533 0%,#0f1c4e 45%,#0a2a1a 100%)">
+  <span class="article-tag">Economia · Desigualdade · Política Social</span>
+  <h1>Distribuição de Renda no Brasil:<br>A Anatomia de uma Desigualdade Persistente</h1>
+  <p class="hero-lead">PNAD 2024 aponta Gini de 0,506 — mínimo histórico. Mas dados do IRPF revelam que o 1% mais rico concentra 24% da renda nacional e 37% de toda a riqueza declarada. As duas fontes estão certas. A contradição entre elas é o dado mais importante. E como o Brasil se compara ao mundo?</p>
+  <div class="byline">
+    <span>Prof. Edson Mosman</span>
+    <span>MosmanLAB</span>
+    <span>23 de abril de 2026</span>
+    <span>20 min de leitura</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <!-- SUMÁRIO -->
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;margin-bottom:40px">
+    <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:12px">Neste artigo</div>
+    <ol style="padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:#374151">
+      <li><a href="#gini" style="color:#2563eb;text-decoration:none">O índice de Gini: o que mede e como funciona</a></li>
+      <li><a href="#panorama" style="color:#2563eb;text-decoration:none">Panorama atual: os dados de 2024</a></li>
+      <li><a href="#piramide" style="color:#2563eb;text-decoration:none">A pirâmide de renda brasileira</a></li>
+      <li><a href="#historico" style="color:#2563eb;text-decoration:none">Evolução histórica: 2012–2024</a></li>
+      <li><a href="#topo" style="color:#2563eb;text-decoration:none">O problema invisível: concentração no topo (IRPF)</a></li>
+      <li><a href="#dimensoes" style="color:#2563eb;text-decoration:none">As múltiplas dimensões: raça, gênero e região</a></li>
+      <li><a href="#drivers" style="color:#2563eb;text-decoration:none">O que move a desigualdade: causas e motores</a></li>
+      <li><a href="#mundo" style="color:#2563eb;text-decoration:none">Comparativo global: Gini pelo mundo</a></li>
+      <li><a href="#conclusao" style="color:#2563eb;text-decoration:none">Conclusão</a></li>
+    </ol>
+  </div>
+
+  <p>Em maio de 2025, o IBGE divulgou os dados da PNAD Contínua referentes a 2024 com uma notícia que deveria ser manchete: o coeficiente de Gini da renda brasileira caiu para <strong>0,506</strong> — o menor valor desde que a pesquisa começou, em 2012. A distância entre os 10% mais ricos e os 40% mais pobres atingiu a menor razão da série histórica. A renda dos mais pobres cresceu mais do que a média.</p>
+
+  <p>Ao mesmo tempo, uma nota técnica da FGV baseada nas declarações do Imposto de Renda apontava para algo diferente: a participação do 1% mais rico na renda nacional havia crescido de 20% para 24% entre 2017 e 2023. O 0,1% mais rico — 160 mil pessoas — concentrava 12,5% de toda a renda nacional disponível.</p>
+
+  <p><strong>Ambas as afirmações são verdadeiras.</strong> E a contradição aparente entre elas é o ponto de partida mais honesto para entender a desigualdade brasileira: ela está diminuindo na base, mas se concentrando ainda mais no topo — num espaço que as pesquisas domiciliares simplesmente não conseguem enxergar.</p>
+
+  <!-- STATS CARDS -->
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num" style="color:#d97706">0,506</div><div class="stat-label">Gini 2024 — mínimo histórico da PNAD (série desde 2012)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">36,2×</div><div class="stat-label">Renda do 1% mais rico vs. 40% mais pobres (PNAD 2024)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">24,4%</div><div class="stat-label">da renda nacional detida pelo 1% mais rico (IRPF 2023)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#0f1c2e">37,3%</div><div class="stat-label">da riqueza declarada concentrada no 1% mais rico (IRPF/Fazenda)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#16a34a">R$ 3.613</div><div class="stat-label">renda média mensal dos ocupados (4º trim. 2025)</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#dc2626">R$ 154</div><div class="stat-label">renda per capita mensal dos 5% mais pobres</div></div>
+  </div>
+
+  <!-- ══ SEÇÃO 1: GINI ══ -->
+  <h2 id="gini">O índice de Gini: o que mede e o que esconde</h2>
+
+  <p>O coeficiente de Gini foi desenvolvido pelo estatístico italiano Corrado Gini em 1912 e permanece, mais de um século depois, o principal indicador global de desigualdade de renda. Sua lógica é elegante: ele compara, para todos os pares possíveis de indivíduos em uma população, a diferença de renda entre eles, normalizando o resultado numa escala de 0 a 1.</p>
+
+  <p><strong>Gini = 0</strong> significa igualdade perfeita: todos têm exatamente a mesma renda. <strong>Gini = 1</strong> significa desigualdade máxima: uma única pessoa detém toda a renda. Na prática, os países do mundo variam entre cerca de 0,24 (países nórdicos) e 0,65 (países mais desiguais do mundo).</p>
+
+  <!-- GRÁFICO INTERATIVO: Escala Gini com marcador animado -->
+  <div class="chart-block">
+    <div class="chart-title">Escala de Gini: posicione os países</div>
+    <div class="chart-sub">Arraste o marcador ou clique em um país para visualizar sua posição na escala global</div>
+    <div style="margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px" id="giniPaisBtn">
+      <button onclick="moverGini(0.27,'Noruega')" class="tab-btn">Noruega 0,27</button>
+      <button onclick="moverGini(0.30,'Alemanha')" class="tab-btn">Alemanha 0,30</button>
+      <button onclick="moverGini(0.37,'EUA')" class="tab-btn">EUA 0,37</button>
+      <button onclick="moverGini(0.42,'China')" class="tab-btn">China 0,42</button>
+      <button onclick="moverGini(0.49,'México')" class="tab-btn">México 0,49</button>
+      <button onclick="moverGini(0.506,'Brasil')" class="tab-btn ativo">Brasil 0,506</button>
+      <button onclick="moverGini(0.56,'África do Sul')" class="tab-btn">África do Sul 0,56</button>
+    </div>
+    <div class="gini-scale">
+      <div class="gini-scale-bg"></div>
+      <div class="gini-marker" id="giniMark" data-label="Brasil 0,506" style="left:calc((0.506 - 0.20) / 0.45 * 100%)"></div>
+    </div>
+    <div class="gini-labels">
+      <span>0,20 — Igualdade máxima</span>
+      <span>0,35 — Moderado</span>
+      <span>0,50 — Alto</span>
+      <span>0,65 — Extremo</span>
+    </div>
+    <p class="chart-nota">A escala vai de 0,20 a 0,65, cobrindo a amplitude real dos países com dados disponíveis. Fonte: Banco Mundial / IBGE PNAD 2024.</p>
+  </div>
+
+  <p>A elegância matemática do Gini tem um custo: ele é <strong>insensível à estrutura interna da distribuição</strong>. Dois países com Gini idêntico podem ter perfis radicalmente diferentes — um pode ter uma ampla classe média comprimida, o outro uma renda extremamente concentrada no topo com uma base pobre numerosa. Além disso, como veremos mais adiante, o Gini calculado a partir de pesquisas domiciliares sistematicamente <em>subestima</em> a desigualdade real porque não captura adequadamente a renda dos mais ricos.</p>
+
+  <div class="callout amber">
+    <strong>Por que o Gini do Brasil pode ser maior do que 0,506:</strong> pesquisas baseadas em autodeclaração domiciliar capturam mal a renda do topo. O 0,01% mais rico declarou renda média mensal de R$ 200 mil na PNAD — mas os dados do IRPF revelam R$ 2,5 milhões para o mesmo grupo. Corrigindo por esse viés, economistas estimam que o Gini "real" do Brasil pode estar entre 0,55 e 0,63.
+  </div>
+
+  <!-- ══ SEÇÃO 2: PANORAMA ══ -->
+  <h2 id="panorama">Panorama atual: os dados de 2024</h2>
+
+  <p>A PNAD Contínua de 2024 — publicada pelo IBGE em maio de 2025 e referente ao ano-calendário de 2024 — é a fonte mais abrangente e comparável para a distribuição de renda no Brasil. Ela entrevista mais de 200 mil domicílios, cobre todos os estados e produz estimativas desagregadas por renda, raça, gênero, escolaridade e região.</p>
+
+  <!-- GRÁFICO 1: Distribuição por décimos interativo -->
+  <div class="chart-block">
+    <div class="chart-title">Distribuição de Renda por Décimos — Brasil 2024</div>
+    <div class="chart-sub">Renda domiciliar per capita mensal média por décimo da população · PNAD Contínua 2024 · Passe o mouse sobre as barras para detalhes</div>
+    <canvas id="chart1" style="max-height:340px"></canvas>
+    <p class="chart-nota">O décimo mais rico tem renda média 28× maior que o décimo mais pobre. A razão P10/P90 coloca o Brasil entre os 15 países mais desiguais do mundo em distribuição interna. Fonte: IBGE PNAD 2024.</p>
+  </div>
+
+  <!-- GRÁFICO 2: Participação na massa de renda -->
+  <div class="chart-block">
+    <div class="chart-title">Participação na Massa Total de Renda por Grupo — Brasil 2024</div>
+    <div class="chart-sub">% da massa de renda domiciliar per capita detida por cada grupo · PNAD Contínua 2024 · Os dois gráficos mostram o mesmo dado de perspectivas diferentes</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="position:relative;height:260px"><canvas id="chart2a"></canvas></div>
+      <div style="position:relative;height:260px"><canvas id="chart2b"></canvas></div>
+    </div>
+    <p class="chart-nota">Esquerda: % da massa de renda por grupo. Direita: renda média mensal per capita por estrato. Fonte: IBGE PNAD 2024 / FGV Observatório Fiscal.</p>
+  </div>
+
+  <!-- ══ SEÇÃO 3: PIRÂMIDE ══ -->
+  <h2 id="piramide">A pirâmide de renda brasileira</h2>
+
+  <p>Uma forma intuitiva de visualizar a desigualdade é a pirâmide de renda: cada camada representa um estrato da população, com a base larga dos mais pobres e o topo estreito e altamente concentrado. No Brasil, a pirâmide tem uma forma particularmente acentuada — a distância entre a base e o ápice é uma das maiores do mundo entre países com mais de 50 milhões de habitantes.</p>
+
+  <!-- PIRÂMIDE INTERATIVA -->
+  <div class="chart-block">
+    <div class="chart-title">Pirâmide de Renda Interativa — Brasil 2024</div>
+    <div class="chart-sub">Clique em qualquer camada para ver detalhes do estrato · Renda domiciliar per capita mensal · PNAD 2024 + IRPF 2023 (topo)</div>
+    <div class="piramide-wrap" id="piramideWrap">
+      <!-- gerado via JS -->
+    </div>
+    <p style="font-size:.75rem;color:#64748b;text-align:center;margin-top:4px">* Os estratos do topo (1%, 0,1%) usam dados do IRPF/RFB, que captam melhor a renda do capital. Os demais usam PNAD 2024.</p>
+  </div>
+
+  <div class="callout roxo">
+    <strong>A distância real do topo:</strong> se colocássemos a renda mensal per capita dos brasileiros em ordem crescente e marcássemos cada centímetro como R$ 1, a base da pirâmide ficaria ao nível do chão. O 0,1% mais rico estaria a <strong>9 km de altura</strong> — enquanto a renda média estaria a menos de 1 metro.
+  </div>
+
+  <!-- ══ SEÇÃO 4: HISTÓRICO ══ -->
+  <h2 id="historico">Evolução histórica: o que mudou entre 2012 e 2024</h2>
+
+  <p>A série histórica da PNAD Contínua começa em 2012. Ela registra uma queda consistente do Gini até 2019, uma interrupção causada pela pandemia de COVID-19 em 2020 e uma forte recuperação a partir de 2022, culminando no mínimo histórico de 0,506 em 2024. Para ter uma perspectiva mais longa, podemos usar a PNAD anual (encerrada em 2015) e estudos retroativos do IPEA e IBGE.</p>
+
+  <!-- GRÁFICO 3: Gini histórico com controles -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução do Índice de Gini no Brasil — 2001 a 2024</div>
+    <div class="chart-sub">Gini da renda domiciliar per capita · PNAD anual (2001–2015) + PNAD Contínua (2012–2024) · Eventos marcantes destacados</div>
+    <canvas id="chart3" style="max-height:360px"></canvas>
+    <p class="chart-nota">Nota: há sobreposição entre as duas séries em 2012–2015. Os valores diferem levemente por diferenças metodológicas. Eventos marcados: BF = Bolsa Família; SM = reajuste real do salário mínimo; COV = pandemia COVID-19; LF = reativação do Bolsa Família (Lula III).</p>
+  </div>
+
+  <!-- GRÁFICO 4: Razão entre grupos ao longo do tempo -->
+  <div class="chart-block">
+    <div class="chart-title">Razão entre Rendas: 10% mais ricos vs. 40% mais pobres — 2012 a 2024</div>
+    <div class="chart-sub">Quantas vezes a renda média do décimo mais rico supera a renda média dos 40% mais pobres · PNAD Contínua · Menor valor = menor desigualdade</div>
+    <canvas id="chart4" style="max-height:300px"></canvas>
+    <p class="chart-nota">Em 2018 a razão atingiu 17,1× — o pico da série. Em 2024, caiu para 13,4×, o mínimo histórico. A queda de 2022–2024 reflete o crescimento real do salário mínimo e a expansão do Bolsa Família. Fonte: IBGE PNAD Contínua.</p>
+  </div>
+
+  <!-- GRÁFICO 5: Crescimento por estrato -->
+  <div class="chart-block">
+    <div class="chart-title">Crescimento Real da Renda por Estrato — 2019 a 2024 (%)</div>
+    <div class="chart-sub">Variação % real da renda domiciliar per capita por decil entre o pré-pandemia (2019) e 2024 · PNAD Contínua · Crescimento maior na base = compressão da desigualdade</div>
+    <canvas id="chart5" style="max-height:320px"></canvas>
+    <p class="chart-nota">O crescimento foi progressivo: a base cresceu mais. Os 5% mais pobres tiveram alta de 17,6% em 2024 vs. 2023 e mais de 40% vs. 2019. O 1% mais rico cresceu apenas 0,9% em 2024. Fonte: IBGE PNAD 2024.</p>
+  </div>
+
+  <!-- ══ SEÇÃO 5: TOPO / IRPF ══ -->
+  <h2 id="topo">O problema invisível: concentração no topo segundo o IRPF</h2>
+
+  <p>As pesquisas domiciliares têm uma limitação estrutural: elas dependem de autodeclaração. Quando um entrevistador pergunta a uma pessoa com renda de R$ 500 mil mensais quanto ela ganha, raramente obtém um número preciso — a pessoa pode não saber exatamente o valor de suas rendas de capital (dividendos, aluguéis, ganhos em renda variável), ou pode simplesmente subdeclarar.</p>
+
+  <p>Os dados das declarações do Imposto de Renda (IRPF) da Receita Federal contam uma história muito diferente. Eles revelam que a concentração de renda <em>no topo</em> não apenas não melhorou na última década — ela piorou significativamente.</p>
+
+  <!-- GRÁFICO 6: PNAD vs. IRPF no topo -->
+  <div class="chart-block">
+    <div class="chart-title">PNAD vs. IRPF: A Renda Invisível do Topo da Pirâmide</div>
+    <div class="chart-sub">Comparação da renda média mensal estimada por estrato — pesquisa domiciliar vs. declaração de IR · 2023 · O abismo cresce quanto mais alto o estrato</div>
+    <canvas id="chart6" style="max-height:340px"></canvas>
+    <p class="chart-nota">Para os 0,01% mais ricos, a renda na PNAD é 12× menor do que no IRPF. A subdeclaração é sistemática e cresce com a renda. Fontes: FGV Observatório de Política Fiscal / IBGE PNAD 2023.</p>
+  </div>
+
+  <!-- GRÁFICO 7: Participação do 1% na renda nacional -->
+  <div class="chart-block">
+    <div class="chart-title">Participação do 1% e 0,1% mais ricos na Renda Nacional — 2017 a 2023</div>
+    <div class="chart-sub">% da renda nacional disponível das famílias (RNDB) · Dados do IRPF/RFB · FGV Observatório de Política Fiscal 2025</div>
+    <canvas id="chart7" style="max-height:300px"></canvas>
+    <p class="chart-nota">Entre 2017 e 2023, a participação do 1% na renda nacional cresceu de 20,4% para 24,4% — um aumento de 4 pontos percentuais em apenas 6 anos. O 0,1% passou de 9,1% para 12,5%. Fonte: FGV / RFB 2025.</p>
+  </div>
+
+  <div class="callout vermelho">
+    <strong>Dividendos: o motor oculto da concentração:</strong> 90% do aumento da concentração no topo entre 2017 e 2023 é explicado por rendas do capital — especialmente lucros e dividendos. No Brasil, dividendos distribuídos por pessoas jurídicas são <em>isentos</em> de imposto de renda desde 1996. Isso cria um incentivo estrutural à "pejotização" e à concentração de riqueza no topo, que escapa à tributação progressiva.
+  </div>
+
+  <!-- GRÁFICO 8: Composição da renda por estrato -->
+  <div class="chart-block">
+    <div class="chart-title">Composição da Renda por Estrato: Trabalho vs. Capital — Brasil 2023</div>
+    <div class="chart-sub">% da renda total por tipo de fonte · IRPF 2023 + PNAD 2023 · A participação de rendas do capital cresce exponencialmente no topo</div>
+    <canvas id="chart8" style="max-height:300px"></canvas>
+    <p class="chart-nota">Na base da pirâmide, quase toda a renda vem do trabalho (salários, transferências). No topo, rendas do capital (dividendos, aluguéis, ganhos de capital) dominam — e são tributadas de forma muito mais favorável. Fontes: FGV / IBGE 2023.</p>
+  </div>
+
+  <!-- ══ SEÇÃO 6: DIMENSÕES ══ -->
+  <h2 id="dimensoes">As múltiplas dimensões da desigualdade: raça, gênero e região</h2>
+
+  <p>O coeficiente de Gini agrega toda a população num único número. Mas a desigualdade brasileira tem camadas sobrepostas que o número médio não revela: a desigualdade é estruturalmente maior entre negros e brancos, entre mulheres e homens, entre o Norte e o Sul, e entre o campo e a cidade. Essas dimensões se interagem — uma mulher negra no Nordeste enfrenta desvantagens cumulativas que nenhum grupo isolado experimenta.</p>
+
+  <!-- GRÁFICO 9: Renda por raça/gênero -->
+  <div class="chart-block">
+    <div class="chart-title">Renda Média por Raça e Gênero — Brasil 2024</div>
+    <div class="chart-sub">Rendimento domiciliar per capita médio mensal (R$) · PNAD Contínua 2024 · Homem branco = referência (100%)</div>
+    <canvas id="chart9" style="max-height:300px"></canvas>
+    <p class="chart-nota">Mulheres negras recebem em média 44% da renda de homens brancos. A interseção de raça e gênero produz a maior desvantagem — e ela é irredutível a qualquer uma das duas dimensões isoladas. Fonte: IBGE PNAD 2024.</p>
+  </div>
+
+  <!-- GRÁFICO 10: Gini por região -->
+  <div class="chart-block">
+    <div class="chart-title">Desigualdade Regional: Gini por Unidade da Federação — 2024</div>
+    <div class="chart-sub">Coeficiente de Gini do rendimento domiciliar per capita por UF · PNAD Contínua 2024 · Ordenado do maior para o menor</div>
+    <canvas id="chart10" style="max-height:420px"></canvas>
+    <p class="chart-nota">O Brasil mais desigual fica no Nordeste e Norte; o menos desigual, no Sul. Santa Catarina (0,41) e Rio Grande do Sul têm distribuição de renda comparável a países de renda média-alta. Ceará e Maranhão ultrapassam 0,56. Fonte: IBGE PNAD 2024.</p>
+  </div>
+
+  <!-- GRÁFICO 11: Renda por escolaridade -->
+  <div class="chart-block">
+    <div class="chart-title">Renda Média por Nível de Escolaridade — Brasil 2024</div>
+    <div class="chart-sub">Rendimento médio mensal do trabalho (R$) · PNAD Contínua 2024 · A educação é o maior preditor individual da renda no Brasil</div>
+    <canvas id="chart11" style="max-height:300px"></canvas>
+    <p class="chart-nota">No Brasil, o diferencial de renda por escolaridade é um dos maiores do mundo. Um trabalhador com ensino superior completo ganha em média 3,8× mais do que um sem instrução. Isso reflete tanto retornos genuinamente altos da educação quanto restrição de acesso ao ensino de qualidade. Fonte: IBGE PNAD 2024.</p>
+  </div>
+
+  <!-- ══ SEÇÃO 7: DRIVERS ══ -->
+  <h2 id="drivers">O que move a desigualdade: causas estruturais e políticas</h2>
+
+  <p>A desigualdade brasileira não é um acidente — é o resultado de escolhas históricas, institucionais e políticas acumuladas por séculos. Entendê-la exige ir além dos números e identificar os mecanismos que a reproduzem, geração após geração.</p>
+
+  <h3>1. O legado escravocrata e a concentração fundiária</h3>
+  <p>O Brasil foi o último país do hemisfério ocidental a abolir a escravidão (1888) e o único que importou cerca de 40% de todos os africanos escravizados nas Américas. A abolição aconteceu sem nenhuma política de redistribuição de terras ou reparação econômica — os libertos foram deixados sem terra, sem capital e sem acesso a crédito. O índice de Gini fundiário do Brasil é de aproximadamente 0,85, um dos mais altos do mundo: 1% dos proprietários detém 47% da área rural.</p>
+
+  <h3>2. A tributação regressiva</h3>
+  <p>O sistema tributário brasileiro é paradoxalmente regressivo: onera proporcionalmente mais os pobres do que os ricos. O ICMS e o IPI — impostos indiretos sobre consumo — representam a maior fatia da arrecadação e recaem sobre todos os consumidores independentemente de sua renda. Enquanto isso, dividendos são isentos de IR, ganhos de capital têm alíquotas progressivas mas com tectos baixos, e grandes fortunas são tributadas de forma muito mais branda do que na maioria dos países da OCDE.</p>
+
+  <!-- GRÁFICO INTERATIVO: Simulador de impacto do Bolsa Família -->
+  <div class="chart-block">
+    <div class="chart-title">Simulador: Impacto de Políticas sobre o Gini Estimado</div>
+    <div class="chart-sub">Ajuste os parâmetros abaixo e veja o impacto estimado sobre o Gini · Baseado em modelos do IPEA e PNAD 2024</div>
+    <div id="simControls">
+      <div class="slider-row">
+        <label>Valor médio do Bolsa Família (R$/mês):</label>
+        <input type="range" id="slBF" min="400" max="1200" value="680" step="20" oninput="atualizarSim()">
+        <span id="vlBF">R$ 680</span>
+      </div>
+      <div class="slider-row">
+        <label>Cobertura Bolsa Família (% pop.):</label>
+        <input type="range" id="slCob" min="10" max="35" value="21" step="1" oninput="atualizarSim()">
+        <span id="vlCob">21%</span>
+      </div>
+      <div class="slider-row">
+        <label>Tributação de dividendos (%):</label>
+        <input type="range" id="slDiv" min="0" max="25" value="0" step="1" oninput="atualizarSim()">
+        <span id="vlDiv">0%</span>
+      </div>
+      <div class="slider-row">
+        <label>Salário mínimo real (R$/mês):</label>
+        <input type="range" id="slSM" min="1200" max="2500" value="1518" step="50" oninput="atualizarSim()">
+        <span id="vlSM">R$ 1.518</span>
+      </div>
+    </div>
+    <div style="margin:20px 0;text-align:center">
+      <div style="font-size:.85rem;color:#64748b;margin-bottom:6px">Gini estimado com esses parâmetros</div>
+      <div id="giniSim" style="font-family:'Lora',serif;font-size:2.8rem;font-weight:700;color:#0f1c2e">0,506</div>
+      <div id="giniSimDelta" style="font-size:.82rem;color:#64748b;margin-top:4px">— valor atual (2024)</div>
+    </div>
+    <div style="position:relative;height:140px"><canvas id="chartSim"></canvas></div>
+    <p class="chart-nota">Simulação baseada em elasticidades estimadas pelo IPEA e IBRE/FGV para políticas de transferência de renda e tributação no Brasil. Valores aproximados — use para intuição, não como previsão precisa.</p>
+  </div>
+
+  <h3>3. A segmentação do mercado de trabalho</h3>
+  <p>O Brasil tem um mercado de trabalho com altíssima segmentação: trabalhadores formais com carteira assinada têm acesso a férias, 13º salário, FGTS e previdência; informais — que representam cerca de 40% da força de trabalho — não têm nenhuma dessas proteções. A informalidade é muito mais alta entre negros, mulheres, trabalhadores sem ensino superior e residentes no Norte e Nordeste.</p>
+
+  <!-- ══ SEÇÃO 8: MUNDO ══ -->
+  <h2 id="mundo">Comparativo global: o Gini pelo mundo</h2>
+
+  <p>O Brasil não está sozinho no problema da desigualdade — mas está entre os casos mais graves do mundo entre países de sua magnitude econômica. Para entender onde o Brasil se situa globalmente, precisamos olhar o Gini de cerca de 180 países e identificar os padrões regionais.</p>
+
+  <!-- GRÁFICO 12: Ranking mundial de Gini interativo -->
+  <div class="chart-block">
+    <div class="chart-title">Gini Global: Ranking dos 40 países com mais dados recentes disponíveis</div>
+    <div class="chart-sub">Clique nas abas para filtrar por região · Banco Mundial / SDSN 2023–2024 · Menor Gini = maior igualdade</div>
+    <div class="tab-nav" id="tabMundo">
+      <button class="tab-btn ativo" onclick="filtrarPaises('todos',this)">Todos</button>
+      <button class="tab-btn" onclick="filtrarPaises('europa',this)">Europa</button>
+      <button class="tab-btn" onclick="filtrarPaises('americas',this)">Américas</button>
+      <button class="tab-btn" onclick="filtrarPaises('asia',this)">Ásia</button>
+      <button class="tab-btn" onclick="filtrarPaises('africa',this)">África</button>
+    </div>
+    <div style="position:relative;height:480px"><canvas id="chart12"></canvas></div>
+    <p class="chart-nota">O Brasil (Gini 0,506) está no quartil superior da desigualdade global. Para sua dimensão econômica (10ª maior economia do mundo), esse nível é particularmente elevado. Fontes: Banco Mundial World Development Indicators 2024; IBGE 2025.</p>
+  </div>
+
+  <!-- GRÁFICO 13: Gini por região do mundo -->
+  <div class="chart-block">
+    <div class="chart-title">Gini Médio por Região do Mundo — Comparativo</div>
+    <div class="chart-sub">Média ponderada pela população · Banco Mundial / UNDP 2023 · América Latina tem a maior desigualdade regional do mundo</div>
+    <canvas id="chart13" style="max-height:320px"></canvas>
+    <p class="chart-nota">A América Latina é a região mais desigual do mundo por Gini médio ponderado pela população. A Europa, especialmente os países nórdicos, tem a menor desigualdade. A Ásia do Leste mostra a trajetória de queda mais expressiva desde 1990. Fonte: Banco Mundial.</p>
+  </div>
+
+  <!-- CARDS DE COMPARAÇÃO -->
+  <h3>Brasil em perspectiva: comparações selecionadas</h3>
+  <div class="bolha-grid" id="bolhaGrid">
+    <!-- JS -->
+  </div>
+
+  <!-- GRÁFICO 14: PIB per capita vs Gini (scatter) -->
+  <div class="chart-block">
+    <div class="chart-title">Riqueza vs. Igualdade: PIB per capita vs. Gini — 60 países</div>
+    <div class="chart-sub">Cada ponto = um país · Tamanho proporcional à população · O Brasil (destacado) combina PIB per capita médio com desigualdade muito acima do esperado para seu nível de renda</div>
+    <canvas id="chart14" style="max-height:400px"></canvas>
+    <p class="chart-nota">Países ricos tendem a ser mais igualitários — mas há exceções notáveis (EUA) e paradoxos (Qatar, Kuwait). O Brasil está acima da linha de tendência, indicando mais desigualdade do que se esperaria pelo seu nível de renda. Fontes: Banco Mundial / FMI 2023.</p>
+  </div>
+
+  <!-- GRÁFICO 15: Evolução Gini mundo -->
+  <div class="chart-block">
+    <div class="chart-title">Evolução do Gini: Brasil vs. Países Selecionados — 2000 a 2024</div>
+    <div class="chart-sub">Série histórica do Gini da renda · Banco Mundial + fontes nacionais · Linha vertical = crise financeira global (2008)</div>
+    <canvas id="chart15" style="max-height:360px"></canvas>
+    <p class="chart-nota">O Brasil foi o único BRICS que reduziu expressivamente sua desigualdade entre 2000 e 2019. A China aumentou sua desigualdade com o crescimento. A África do Sul permanece a mais desigual. A Alemanha manteve-se estável. Fontes: Banco Mundial / IBGE / nacionais.</p>
+  </div>
+
+  <!-- TABELA COMPARATIVA -->
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th class="c">Gini (2023–24)</th>
+          <th class="c">PIB pc (US$ PPP)</th>
+          <th class="c">1% detém</th>
+          <th class="c">Taxa top IR</th>
+          <th>Observação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="dest"><td>🇩🇰 Dinamarca</td><td class="c mono">0,28</td><td class="c mono">65.000</td><td class="c mono">~12%</td><td class="c mono">55%</td><td>Referência mundial em igualdade</td></tr>
+        <tr class="dest"><td>🇫🇮 Finlândia</td><td class="c mono">0,27</td><td class="c mono">55.000</td><td class="c mono">~13%</td><td class="c mono">56%</td><td>Menor Gini da Europa</td></tr>
+        <tr><td>🇩🇪 Alemanha</td><td class="c mono">0,30</td><td class="c mono">58.000</td><td class="c mono">~18%</td><td class="c mono">45%</td><td>Estado social robusto</td></tr>
+        <tr><td>🇫🇷 França</td><td class="c mono">0,31</td><td class="c mono">52.000</td><td class="c mono">~20%</td><td class="c mono">45%</td><td>Alta tributação de herança</td></tr>
+        <tr><td>🇨🇳 China</td><td class="c mono">0,38</td><td class="c mono">22.000</td><td class="c mono">~31%</td><td class="c mono">45%</td><td>Gini cresceu com o desenvolvimento</td></tr>
+        <tr><td>🇺🇸 EUA</td><td class="c mono">0,39</td><td class="c mono">80.000</td><td class="c mono">~22%</td><td class="c mono">37%</td><td>Mais desigual entre países ricos</td></tr>
+        <tr><td>🇮🇳 Índia</td><td class="c mono">0,35</td><td class="c mono">10.000</td><td class="c mono">~22%</td><td class="c mono">30%</td><td>Desigualdade subestimada</td></tr>
+        <tr><td>🇲🇽 México</td><td class="c mono">0,43</td><td class="c mono">22.000</td><td class="c mono">~29%</td><td class="c mono">35%</td><td>Similar ao Brasil em estrutura</td></tr>
+        <tr><td>🇦🇷 Argentina</td><td class="c mono">0,40</td><td class="c mono">28.000</td><td class="c mono">~26%</td><td class="c mono">35%</td><td>Crise fiscal comprime o meio</td></tr>
+        <tr><td>🇨🇴 Colômbia</td><td class="c mono">0,52</td><td class="c mono">18.000</td><td class="c mono">~27%</td><td class="c mono">39%</td><td>Uma das mais desiguais da AL</td></tr>
+        <tr class="dest3"><td>🇧🇷 Brasil</td><td class="c mono">0,506</td><td class="c mono">18.000</td><td class="c mono">~24%</td><td class="c mono">27,5%</td><td><strong>10ª economia, top 20 mais desigual</strong></td></tr>
+        <tr class="dest3"><td>🇿🇦 África do Sul</td><td class="c mono">0,63</td><td class="c mono">15.000</td><td class="c mono">~65%</td><td class="c mono">45%</td><td>Mais desigual do mundo (dados)</td></tr>
+        <tr class="dest3"><td>🇳🇦 Namíbia</td><td class="c mono">0,59</td><td class="c mono">11.000</td><td class="c mono">~60%</td><td class="c mono">37%</td><td>Legado colonial extremo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-nota">Fontes: Banco Mundial WDI 2024; IBGE PNAD 2024; FGV Observatório Fiscal 2025; IRPF/RFB. Taxa de IR = alíquota marginal máxima no IR de pessoa física.</p>
+
+  <!-- ══ CONCLUSÃO ══ -->
+  <div class="conclusao" id="conclusao">
+    <h2>Conclusão: duas verdades que precisam coexistir</h2>
+    <ul>
+      <li><strong>A desigualdade no Brasil está caindo pela base</strong> — e isso é genuíno. Bolsa Família, valorização do salário mínimo, formalização do emprego e redução do desemprego comprimiram a distância entre o fundo e o meio da pirâmide. O Gini de 0,506 é histórico.</li>
+      <li><strong>A desigualdade está crescendo no topo</strong> — e isso é invisível na PNAD. O 1% mais rico detém 24% da renda nacional e 37% da riqueza declarada. O 0,1% mais rico triplicou sua participação relativa em menos de uma geração. Isso o IRPF revela; a pesquisa domiciliar não captura.</li>
+      <li><strong>A tributação é o ponto cego central.</strong> Dividendos isentos, ganhos de capital com alíquotas baixas, Imposto de Herança residual e ICMS regressivo criam um sistema que redistribui da base para o topo — exatamente o contrário do que um Estado social deveria fazer.</li>
+      <li><strong>As dimensões de raça e gênero são irredutíveis.</strong> Mulheres negras ganham 44% dos homens brancos — e essa lacuna não é explicada só por diferenças de escolaridade ou experiência. Há discriminação estrutural que políticas universais não corrigem sozinhas.</li>
+      <li><strong>O Brasil é excepcional na escala global.</strong> Ser a 10ª maior economia do mundo e estar entre os 20 países mais desiguais não é inevitável — é uma escolha política que pode ser desfeita. Dinamarca, Finlândia e Coreia do Sul eram países de renda média com alta desigualdade há 60 anos. Mudaram com políticas fiscais, educacionais e trabalhistas consistentes por décadas.</li>
+      <li><strong>A janela de oportunidade existe.</strong> A trajetória de queda do Gini entre 2002 e 2014 e sua retomada pós-2022 mostram que políticas certas no Brasil produzem resultados rápidos. O problema é a inconsistência: dois passos à frente, dois passos atrás, a cada ciclo eleitoral.</li>
+    </ul>
+  </div>
+
+  <!-- REFERÊNCIAS -->
+  <div class="refs-section">
+    <div class="refs-title">Referências e fontes</div>
+    <ul class="refs-list">
+      <li>IBGE (2025). <em>Pesquisa Nacional por Amostra de Domicílios Contínua — Rendimento de Todas as Fontes 2024.</em> Rio de Janeiro: IBGE. Divulgado em 8 mai. 2025.</li>
+      <li>IBGE (2026). <em>PNAD Contínua — Rendimento Domiciliar per Capita 2025.</em> Agência Brasil / IBGE. Divulgado em 27 fev. 2026.</li>
+      <li>Gobetti, S.W. &amp; Orair, R. (2025). <em>Concentração de Renda no Brasil: Atualização com Base nos Dados do IRPF até 2023.</em> FGV — Observatório de Política Fiscal. Ago. 2025.</li>
+      <li>Secretaria de Política Econômica — SPE/MF (2025). <em>Relatório de Distribuição de Renda e Patrimônio — IRPF 2023.</em> Ministério da Fazenda. Dez. 2025.</li>
+      <li>Banco Mundial (2024). <em>World Development Indicators — Gini Index.</em> <a href="https://data.worldbank.org/indicator/SI.POV.GINI" target="_blank">data.worldbank.org</a></li>
+      <li>Hoffmann, R. (2024). <em>A Distribuição da Renda no Brasil conforme dados da PNAD Contínua 2012–2023.</em> IEPECDG, abr. 2024.</li>
+      <li>IPEA (2025). <em>Carta de Conjuntura — Retrato dos Rendimentos do Trabalho Q4/2024.</em> Brasília: IPEA.</li>
+      <li>Agência Brasil / EBC (2025). <em>Renda dos 10% mais ricos é 13,4 vezes maior que dos 40% mais pobres.</em> 8 mai. 2025.</li>
+      <li>CNN Brasil (2025). <em>Renda per capita soma recorde em 2024 e desigualdade cai, mostra IBGE.</em> 8 mai. 2025.</li>
+    </ul>
+  </div>
+
+  <!-- LEIA TAMBÉM -->
+  <div class="related-articles" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 26px;margin:40px 0">
+    <div style="font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:14px">Leia também no MosmanLAB</div>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+      <li><a href="ods-agenda-2030-progresso-brasil.html" style="font-size:.91rem;color:#1e40af;text-decoration:none;display:flex;align-items:center;gap:8px"><span style="color:#94a3b8;font-size:.82rem">→</span> ODS 2030: O Balanço de Uma Década — Onde o Mundo e o Brasil Realmente Estão</a></li>
+      <li><a href="desigualdade-energia-brasil-gini.html" style="font-size:.91rem;color:#1e40af;text-decoration:none;display:flex;align-items:center;gap:8px"><span style="color:#94a3b8;font-size:.82rem">→</span> Desigualdade Energética no Brasil: Um Índice de Gini para o Acesso à Eletricidade</a></li>
+      <li><a href="frota-caminhoes-envelhecimento-eficiencia-energetica-rntrc.html" style="font-size:.91rem;color:#1e40af;text-decoration:none;display:flex;align-items:center;gap:8px"><span style="color:#94a3b8;font-size:.82rem">→</span> Frota de Caminhões: Envelhecimento, Ineficiência e o Custo Invisível</a></li>
+    </ul>
+  </div>
+
+</div><!-- /article-body -->
+
+<footer>
+  <span class="footer-logo">mosman<strong>LAB</strong></span>
+  © 2026 Prof. Edson Mosman · <a href="https://mosmanlab.com.br">mosmanlab.com.br</a><br>
+  Praça Oswaldo Cruz, 124 — Sala 171 · Em frente ao Shopping Pátio Paulista · São Paulo – SP
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+const tf  = {family:'DM Sans,sans-serif',size:11};
+const tft = {family:'DM Sans,sans-serif',size:11,weight:'600'};
+const tooltip = document.getElementById('tooltip');
+
+// ── GINI SLIDER ──
+function moverGini(val, nome) {
+  const m = document.getElementById('giniMark');
+  const pct = ((val - 0.20) / 0.45 * 100).toFixed(1);
+  m.style.left = pct + '%';
+  m.setAttribute('data-label', nome + ' ' + val.toFixed(3));
+  document.querySelectorAll('#giniPaisBtn .tab-btn').forEach(b => b.classList.remove('ativo'));
+  event.target.classList.add('ativo');
+}
+
+// ── CHART 1: Décimos ──
+const decimos = ['1º décimo\n(mais pobre)','2º décimo','3º décimo','4º décimo','5º décimo','6º décimo','7º décimo','8º décimo','9º décimo','10º décimo\n(mais rico)'];
+const rendaDecimos = [150, 310, 450, 590, 740, 930, 1180, 1560, 2280, 8034];
+const cores1 = rendaDecimos.map((_,i) => i === 9 ? '#dc2626' : i >= 7 ? '#f97316' : i <= 1 ? '#16a34a' : '#2563eb');
+new Chart(document.getElementById('chart1'), {
+  type: 'bar',
+  data: {
+    labels: decimos,
+    datasets: [{
+      label: 'Renda média mensal (R$)',
+      data: rendaDecimos,
+      backgroundColor: cores1,
+      borderRadius: 5,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` R$ ${ctx.parsed.y.toLocaleString('pt-BR')}/mês` } }
+    },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 0 } },
+      y: { ticks: { font: tf, callback: v => 'R$' + v.toLocaleString('pt-BR') }, title: { display: true, text: 'Renda per capita mensal (R$)', font: tft } }
+    }
+  }
+});
+
+// ── CHART 2a: Participação na massa ──
+new Chart(document.getElementById('chart2a'), {
+  type: 'doughnut',
+  data: {
+    labels: ['5% mais pobres','40% mais pobres','50% do meio','9% abaixo do topo','1% mais rico (IRPF)'],
+    datasets: [{
+      data: [0.8, 9.2, 40.0, 26.0, 24.0],
+      backgroundColor: ['#16a34a','#4ade80','#60a5fa','#f97316','#dc2626'],
+      borderWidth: 2, borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '50%',
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { ...tf, size: 10 }, boxWidth: 10 } },
+      tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}% da massa` } }
+    }
+  }
+});
+
+// ── CHART 2b: Renda média por estrato ──
+new Chart(document.getElementById('chart2b'), {
+  type: 'bar',
+  data: {
+    labels: ['5% mais\npobres','40%\nmais pobres','50% do\nmeio','9% abaixo\ndo topo','1% mais\nrico (IRPF)'],
+    datasets: [{
+      label: 'Renda média per capita (R$/mês)',
+      data: [154, 601, 1650, 4800, 21767],
+      backgroundColor: ['#16a34a','#4ade80','#60a5fa','#f97316','#dc2626'],
+      borderRadius: 5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` R$ ${ctx.parsed.y.toLocaleString('pt-BR')}` } } },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 0 } },
+      y: { ticks: { font: tf, callback: v => 'R$' + v.toLocaleString('pt-BR') } }
+    }
+  }
+});
+
+// ── PIRÂMIDE INTERATIVA ──
+const estratos = [
+  { label: '0,01% mais rico', pop: '22 mil', renda: 'R$ 2.500.000', cor: '#7c0000', pct: 100, fonte: 'IRPF' },
+  { label: '0,1% mais rico',  pop: '220 mil', renda: 'R$ 441.000', cor: '#dc2626', pct: 88, fonte: 'IRPF' },
+  { label: '1% mais rico',    pop: '2,2 mi',  renda: 'R$ 21.767', cor: '#f97316', pct: 72, fonte: 'IRPF/PNAD' },
+  { label: '5% mais ricos',   pop: '11 mi',   renda: 'R$ 8.800',  cor: '#d97706', pct: 58, fonte: 'PNAD 2024' },
+  { label: '10% mais ricos',  pop: '22 mi',   renda: 'R$ 8.034',  cor: '#eab308', pct: 48, fonte: 'PNAD 2024' },
+  { label: '30% médio-alto',  pop: '66 mi',   renda: 'R$ 2.100',  cor: '#64748b', pct: 36, fonte: 'PNAD 2024' },
+  { label: '40% mais pobres', pop: '88 mi',   renda: 'R$ 601',    cor: '#475569', pct: 24, fonte: 'PNAD 2024' },
+  { label: '5% mais pobres',  pop: '11 mi',   renda: 'R$ 154',    cor: '#334155', pct: 14, fonte: 'PNAD 2024' },
+];
+const pw = document.getElementById('piramideWrap');
+estratos.forEach((e, i) => {
+  const row = document.createElement('div');
+  row.className = 'piramide-row';
+  row.innerHTML = `
+    <div class="piramide-label">${e.label}</div>
+    <div class="piramide-bar" style="width:${e.pct}%;background:${e.cor}">
+      <span class="piramide-val">${e.renda}</span>
+    </div>
+    <div class="piramide-renda">${e.pop}<br><span style="font-size:.65rem;color:#94a3b8">${e.fonte}</span></div>`;
+  row.addEventListener('mousemove', ev => {
+    tooltip.style.display = 'block';
+    tooltip.style.left = (ev.clientX + 14) + 'px';
+    tooltip.style.top = (ev.clientY - 20) + 'px';
+    tooltip.innerHTML = `<strong>${e.label}</strong><br>Renda per capita: ${e.renda}/mês<br>População: ${e.pop}<br>Fonte: ${e.fonte}`;
+  });
+  row.addEventListener('mouseleave', () => tooltip.style.display = 'none');
+  pw.appendChild(row);
+});
+
+// ── CHART 3: Gini histórico ──
+const anosGini = [2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const giniHist = [0.593,0.589,0.583,0.572,0.566,0.560,0.556,0.546,0.543,0.536,0.527,0.526,0.527,0.518,0.524,0.535,0.539,0.545,0.539,0.524,0.544,0.518,0.518,0.506];
+// Ajuste para PNAD Contínua (que tem escala levemente diferente)
+const giniCont = [null,null,null,null,null,null,null,null,null,null,null,0.544,0.540,0.527,0.524,0.535,0.539,0.545,0.539,0.524,0.544,0.518,0.518,0.506];
+new Chart(document.getElementById('chart3'), {
+  type: 'line',
+  data: {
+    labels: anosGini,
+    datasets: [
+      {
+        label: 'Gini — PNAD anual',
+        data: [0.593,0.589,0.583,0.572,0.566,0.560,0.556,0.546,0.543,0.536,0.527,0.526,0.522,0.515,null,null,null,null,null,null,null,null,null,null],
+        borderColor: '#0f1c2e', backgroundColor: 'rgba(15,28,46,.06)', fill: true,
+        borderWidth: 2.5, tension: .35, pointRadius: 3, pointBackgroundColor: '#0f1c2e'
+      },
+      {
+        label: 'Gini — PNAD Contínua',
+        data: giniCont,
+        borderColor: '#2563eb', backgroundColor: 'rgba(37,99,235,.06)', fill: true,
+        borderWidth: 2.5, tension: .35, pointRadius: 3, pointBackgroundColor: '#2563eb'
+      },
+      {
+        label: 'Tendência linear',
+        data: [0.593,0.586,0.580,0.573,0.566,0.560,0.553,0.546,0.540,0.533,0.526,0.520,0.513,0.507,0.500,0.500,0.499,0.500,0.499,0.497,0.500,0.496,0.495,0.489],
+        borderColor: '#94a3b8', borderDash: [5, 4], borderWidth: 1.5,
+        pointRadius: 0, fill: false, tension: .2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf, boxWidth: 12 } } },
+    scales: {
+      x: { ticks: { font: tf, maxTicksLimit: 12 } },
+      y: { min: 0.48, max: 0.62, ticks: { font: tf, callback: v => v.toFixed(3) }, title: { display: true, text: 'Coeficiente de Gini', font: tft } }
+    }
+  }
+});
+
+// ── CHART 4: Razão 10/40 ──
+const anos4 = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const razao = [16.2,16.0,15.8,16.0,16.5,16.8,17.1,16.9,16.0,16.7,14.8,14.2,13.4];
+new Chart(document.getElementById('chart4'), {
+  type: 'line',
+  data: {
+    labels: anos4,
+    datasets: [{
+      label: 'Razão 10% mais ricos / 40% mais pobres',
+      data: razao,
+      borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,.08)', fill: true,
+      borderWidth: 2.5, tension: .3, pointRadius: 5, pointBackgroundColor: razao.map((v,i) => i === razao.length-1 ? '#16a34a' : '#dc2626')
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf } }, tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y.toFixed(1)}× vezes mais` } } },
+    scales: {
+      x: { ticks: { font: tf } },
+      y: { min: 12, max: 18, ticks: { font: tf, callback: v => v + '×' }, title: { display: true, text: 'Razão (vezes)', font: tft } }
+    }
+  }
+});
+
+// ── CHART 5: Crescimento por decil ──
+const decLabels = ['5% mais\npobres','10% mais\npobres','2º dec.','3º dec.','4º dec.','5º dec.','6º dec.','7º dec.','8º dec.','9º dec.','10% mais\nricos','1% mais\nrico'];
+const crescPre  = [43.2, 38.8, 34.5, 29.8, 25.2, 21.6, 18.9, 15.4, 12.8, 10.1, 5.2, 0.9];
+new Chart(document.getElementById('chart5'), {
+  type: 'bar',
+  data: {
+    labels: decLabels,
+    datasets: [{
+      label: 'Crescimento real 2019–2024 (%)',
+      data: crescPre,
+      backgroundColor: crescPre.map((v, i) => i < 2 ? '#16a34a' : i < 6 ? '#60a5fa' : i < 9 ? '#94a3b8' : '#dc2626'),
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` +${ctx.parsed.y.toFixed(1)}%` } } },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 0 } },
+      y: { ticks: { font: tf, callback: v => v + '%' }, title: { display: true, text: 'Var. real da renda (%)', font: tft } }
+    }
+  }
+});
+
+// ── CHART 6: PNAD vs IRPF ──
+const estratosComp = ['Mediana\nda pop.', '10% mais\nricos', '5% mais\nricos', '1% mais\nrico', '0,1% mais\nrico', '0,01% mais\nrico'];
+const pnadVal  = [1100, 6000, 9000, 21767, 80000, 200000];
+const irpfVal  = [1100, 7200, 12000, 38000, 320000, 2500000];
+new Chart(document.getElementById('chart6'), {
+  type: 'bar',
+  data: {
+    labels: estratosComp,
+    datasets: [
+      { label: 'PNAD Contínua (autodeclarado)', data: pnadVal, backgroundColor: '#2563eb', borderRadius: 4 },
+      { label: 'IRPF/Receita Federal (declarado)', data: irpfVal, backgroundColor: '#dc2626', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf, boxWidth: 12 } }, tooltip: { callbacks: { label: ctx => ` R$ ${ctx.parsed.y.toLocaleString('pt-BR')}/mês` } } },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 0 } },
+      y: { type: 'logarithmic', ticks: { font: tf, callback: v => 'R$' + v.toLocaleString('pt-BR') }, title: { display: true, text: 'Renda média mensal per capita (escala log)', font: tft } }
+    }
+  }
+});
+
+// ── CHART 7: 1% na renda nacional ──
+const anos7 = [2017,2018,2019,2020,2021,2022,2023];
+const top1   = [20.4, 21.2, 22.0, 23.8, 25.2, 24.0, 24.4];
+const top01  = [9.1, 9.8, 10.3, 11.5, 12.8, 12.1, 12.5];
+new Chart(document.getElementById('chart7'), {
+  type: 'line',
+  data: {
+    labels: anos7,
+    datasets: [
+      { label: '1% mais rico — % da renda nacional', data: top1, borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,.08)', fill: true, borderWidth: 2.5, tension: .3, pointRadius: 5 },
+      { label: '0,1% mais rico — % da renda nacional', data: top01, borderColor: '#7c3aed', backgroundColor: 'rgba(124,58,237,.08)', fill: true, borderWidth: 2, tension: .3, pointRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf, boxWidth: 12 } }, tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y.toFixed(1)}% da renda nacional` } } },
+    scales: {
+      x: { ticks: { font: tf } },
+      y: { min: 5, max: 30, ticks: { font: tf, callback: v => v + '%' }, title: { display: true, text: '% da renda nacional disponível', font: tft } }
+    }
+  }
+});
+
+// ── CHART 8: Composição por estrato ──
+const estratos8 = ['5% mais\npobres','40%\nmédio-baixo','50%\nmédio','5% rico\n(sem topo)','1% mais\nrico','0,1% mais\nrico'];
+new Chart(document.getElementById('chart8'), {
+  type: 'bar',
+  data: {
+    labels: estratos8,
+    datasets: [
+      { label: 'Salário/trabalho', data: [60, 70, 65, 58, 38, 15], backgroundColor: '#2563eb', stack: 's' },
+      { label: 'Transferências sociais', data: [32, 18, 8, 3, 1, 0], backgroundColor: '#16a34a', stack: 's' },
+      { label: 'Aposentadoria/pensão', data: [7, 10, 18, 20, 15, 8], backgroundColor: '#60a5fa', stack: 's' },
+      { label: 'Dividendos e capital', data: [1, 2, 9, 19, 46, 77], backgroundColor: '#dc2626', stack: 's' },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf, boxWidth: 12 } }, tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } } },
+    scales: {
+      x: { stacked: true, ticks: { font: tf, maxRotation: 0 } },
+      y: { stacked: true, min: 0, max: 100, ticks: { font: tf, callback: v => v + '%' }, title: { display: true, text: '% da renda total do estrato', font: tft } }
+    }
+  }
+});
+
+// ── CHART 9: Raça e gênero ──
+new Chart(document.getElementById('chart9'), {
+  type: 'bar',
+  data: {
+    labels: ['Homem\nbranco\n(ref. 100%)', 'Mulher\nbranca', 'Homem\nnegro', 'Mulher\nnegra'],
+    datasets: [{
+      label: 'Renda média mensal (R$)',
+      data: [3800, 2900, 2280, 1680],
+      backgroundColor: ['#0f1c2e', '#60a5fa', '#d97706', '#dc2626'],
+      borderRadius: 5
+    }, {
+      label: '% do homem branco',
+      data: [100, 76, 60, 44],
+      type: 'line',
+      borderColor: '#16a34a',
+      backgroundColor: 'transparent',
+      borderWidth: 2.5,
+      pointRadius: 6,
+      pointBackgroundColor: '#16a34a',
+      yAxisID: 'y2'
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf, boxWidth: 12 } }, tooltip: { callbacks: { label: ctx => ctx.dataset.yAxisID === 'y2' ? ` ${ctx.parsed.y}% do hom. branco` : ` R$ ${ctx.parsed.y.toLocaleString('pt-BR')}/mês` } } },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 0 } },
+      y: { ticks: { font: tf, callback: v => 'R$' + v.toLocaleString('pt-BR') }, title: { display: true, text: 'Renda média (R$/mês)', font: tft } },
+      y2: { position: 'right', min: 0, max: 120, grid: { drawOnChartArea: false }, ticks: { font: tf, callback: v => v + '%' }, title: { display: true, text: '% relativo ao homem branco', font: tft } }
+    }
+  }
+});
+
+// ── CHART 10: Gini por UF ──
+const ufs = [
+  ['Ceará',0.568],['Maranhão',0.563],['Alagoas',0.560],['Piauí',0.552],['Bahia',0.548],
+  ['Pernambuco',0.543],['Pará',0.538],['Rio de Janeiro',0.534],['Minas Gerais',0.513],
+  ['Amazonas',0.510],['São Paulo',0.508],['Goiás',0.495],['Mato Grosso',0.490],
+  ['Rio Grande do Norte',0.488],['Espírito Santo',0.482],['Paraíba',0.478],
+  ['Acre',0.475],['Rondônia',0.468],['Mato Grosso do Sul',0.463],
+  ['Tocantins',0.458],['Amapá',0.455],['Roraima',0.451],
+  ['Paraná',0.448],['Rio Grande do Sul',0.445],['Santa Catarina',0.412]
+].sort((a,b)=>b[1]-a[1]);
+new Chart(document.getElementById('chart10'), {
+  type: 'bar',
+  data: {
+    labels: ufs.map(u=>u[0]),
+    datasets: [{
+      label: 'Gini', data: ufs.map(u=>u[1]),
+      backgroundColor: ufs.map(u=>u[1]>0.54?'#dc2626':u[1]>0.50?'#f97316':u[1]>0.46?'#eab308':'#16a34a'),
+      borderRadius: 3
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` Gini ${ctx.parsed.x.toFixed(3)}` } } },
+    scales: {
+      x: { min: 0.38, max: 0.60, ticks: { font: tf, callback: v => v.toFixed(2) } },
+      y: { ticks: { font: { ...tf, size: 10 } } }
+    }
+  }
+});
+
+// ── CHART 11: Escolaridade ──
+new Chart(document.getElementById('chart11'), {
+  type: 'bar',
+  data: {
+    labels: ['Sem instrução','Fund. incompleto','Fund. completo','Médio incompleto','Médio completo','Superior incompleto','Superior completo'],
+    datasets: [{
+      label: 'Renda média mensal (R$)',
+      data: [930, 1250, 1580, 1720, 2150, 2680, 5820],
+      backgroundColor: ['#dc2626','#f97316','#eab308','#84cc16','#22c55e','#0ea5e9','#2563eb'],
+      borderRadius: 5
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` R$ ${ctx.parsed.y.toLocaleString('pt-BR')}/mês` } } },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 35 } },
+      y: { ticks: { font: tf, callback: v => 'R$' + v.toLocaleString('pt-BR') }, title: { display: true, text: 'Renda média (R$/mês)', font: tft } }
+    }
+  }
+});
+
+// ── SIMULADOR ──
+let simChart = null;
+function atualizarSim() {
+  const bf  = +document.getElementById('slBF').value;
+  const cob = +document.getElementById('slCob').value;
+  const div = +document.getElementById('slDiv').value;
+  const sm  = +document.getElementById('slSM').value;
+  document.getElementById('vlBF').textContent  = 'R$ ' + bf.toLocaleString('pt-BR');
+  document.getElementById('vlCob').textContent = cob + '%';
+  document.getElementById('vlDiv').textContent = div + '%';
+  document.getElementById('vlSM').textContent  = 'R$ ' + sm.toLocaleString('pt-BR');
+  // Modelo simplificado de elasticidades
+  let g = 0.506;
+  g -= (bf - 680) / 680 * 0.018;     // BF maior → menos Gini
+  g -= (cob - 21) / 21 * 0.015;      // mais cobertura → menos Gini
+  g -= (div / 100) * 0.022;           // tributar dividendos → menos Gini
+  g -= (sm - 1518) / 1518 * 0.012;   // SM maior → menos Gini
+  g = Math.max(0.40, Math.min(0.56, g));
+  const delta = g - 0.506;
+  const el = document.getElementById('giniSim');
+  el.textContent = g.toFixed(3);
+  el.style.color = g < 0.506 ? '#16a34a' : g > 0.506 ? '#dc2626' : '#0f1c2e';
+  const dEl = document.getElementById('giniSimDelta');
+  if (Math.abs(delta) < 0.001) dEl.textContent = '— valor atual (2024)';
+  else dEl.textContent = (delta > 0 ? '+' : '') + delta.toFixed(3) + ' vs. 2024';
+  // Gráfico
+  const params = ['Bolsa Família\n(valor)', 'Bolsa Família\n(cobertura)', 'Tributação\ndividendos', 'Salário\nmínimo'];
+  const impactos = [
+    +(-(bf - 680) / 680 * 0.018).toFixed(4),
+    +(-(cob - 21) / 21 * 0.015).toFixed(4),
+    +(-div / 100 * 0.022).toFixed(4),
+    +(-(sm - 1518) / 1518 * 0.012).toFixed(4)
+  ];
+  if (!simChart) {
+    simChart = new Chart(document.getElementById('chartSim'), {
+      type: 'bar',
+      data: {
+        labels: params,
+        datasets: [{
+          label: 'Impacto no Gini',
+          data: impactos,
+          backgroundColor: impactos.map(v => v < 0 ? '#16a34a' : v > 0 ? '#dc2626' : '#94a3b8'),
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `Impacto: ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y.toFixed(4)} no Gini` } } },
+        scales: {
+          x: { ticks: { font: tf, maxRotation: 0 } },
+          y: { ticks: { font: tf, callback: v => v.toFixed(3) }, title: { display: true, text: 'Variação do Gini', font: tft } }
+        }
+      }
+    });
+  } else {
+    simChart.data.datasets[0].data = impactos;
+    simChart.data.datasets[0].backgroundColor = impactos.map(v => v < 0 ? '#16a34a' : v > 0 ? '#dc2626' : '#94a3b8');
+    simChart.update();
+  }
+}
+atualizarSim();
+
+// ── CHART 12: Ranking mundial ──
+const paisesData = [
+  // [nome, gini, regiao]
+  ['Finlândia',0.27,'europa'],['Noruega',0.27,'europa'],['Dinamarca',0.28,'europa'],
+  ['Eslovênia',0.25,'europa'],['Tchéquia',0.26,'europa'],['Eslováquia',0.24,'europa'],
+  ['Bélgica',0.27,'europa'],['Áustria',0.28,'europa'],['Países Baixos',0.28,'europa'],
+  ['Alemanha',0.30,'europa'],['Suécia',0.29,'europa'],['Suíça',0.33,'europa'],
+  ['França',0.31,'europa'],['Polônia',0.30,'europa'],['Espanha',0.33,'europa'],
+  ['Itália',0.34,'europa'],['Reino Unido',0.36,'europa'],['Portugal',0.33,'europa'],
+  ['Grécia',0.32,'europa'],['Hungria',0.29,'europa'],
+  ['Coreia do Sul',0.31,'asia'],['Japão',0.33,'asia'],['China',0.38,'asia'],
+  ['Tailândia',0.43,'asia'],['Índia',0.35,'asia'],['Malásia',0.41,'asia'],
+  ['Indonésia',0.38,'asia'],['Filipinas',0.42,'asia'],['Vietnam',0.35,'asia'],
+  ['EUA',0.39,'americas'],['Canadá',0.34,'americas'],['Chile',0.45,'americas'],
+  ['México',0.43,'americas'],['Argentina',0.40,'americas'],['Colômbia',0.52,'americas'],
+  ['Peru',0.42,'americas'],['Equador',0.46,'americas'],['Brasil',0.506,'americas'],
+  ['Bolívia',0.43,'americas'],['Honduras',0.48,'americas'],
+  ['África do Sul',0.63,'africa'],['Namíbia',0.59,'africa'],['Zâmbia',0.57,'africa'],
+  ['Moçambique',0.54,'africa'],['Nigéria',0.49,'africa'],['Etiópia',0.44,'africa'],
+  ['Gana',0.43,'africa'],['Marrocos',0.40,'africa'],['Egito',0.31,'africa'],['Tunísia',0.33,'africa'],
+].sort((a,b)=>a[1]-b[1]);
+
+let chart12 = null;
+function filtrarPaises(regiao, btn) {
+  document.querySelectorAll('#tabMundo .tab-btn').forEach(b => b.classList.remove('ativo'));
+  btn.classList.add('ativo');
+  const filtrado = regiao === 'todos' ? paisesData : paisesData.filter(p => p[2] === regiao);
+  const cores = filtrado.map(p => {
+    if (p[0] === 'Brasil') return '#dc2626';
+    if (p[2] === 'europa') return '#2563eb';
+    if (p[2] === 'americas') return '#d97706';
+    if (p[2] === 'asia') return '#16a34a';
+    return '#7c3aed';
+  });
+  if (!chart12) {
+    chart12 = new Chart(document.getElementById('chart12'), {
+      type: 'bar',
+      data: {
+        labels: filtrado.map(p=>p[0]),
+        datasets: [{ label: 'Gini', data: filtrado.map(p=>p[1]), backgroundColor: cores, borderRadius: 3 }]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` Gini ${ctx.parsed.x.toFixed(3)} — ${filtrado[ctx.dataIndex][2]}` } } },
+        scales: {
+          x: { min: 0.20, max: 0.67, ticks: { font: tf, callback: v => v.toFixed(2) } },
+          y: { ticks: { font: { ...tf, size: 10 } } }
+        }
+      }
+    });
+  } else {
+    chart12.data.labels = filtrado.map(p=>p[0]);
+    chart12.data.datasets[0].data = filtrado.map(p=>p[1]);
+    chart12.data.datasets[0].backgroundColor = cores;
+    chart12.update();
+  }
+}
+filtrarPaises('todos', document.querySelector('#tabMundo .tab-btn.ativo'));
+
+// ── CHART 13: Gini por região ──
+new Chart(document.getElementById('chart13'), {
+  type: 'bar',
+  data: {
+    labels: ['Europa\nOcidental','Europa\nLeste','Ásia\ndo Leste','Ásia\ndo Sul','Oriente\nMédio','África\ndo Norte','África\nSubsaari.','América\ndo Norte','América\nLatina'],
+    datasets: [{
+      label: 'Gini médio ponderado por população',
+      data: [0.30, 0.31, 0.38, 0.37, 0.40, 0.38, 0.45, 0.38, 0.46],
+      backgroundColor: [
+        '#2563eb','#60a5fa','#16a34a','#4ade80','#d97706','#eab308','#dc2626','#f97316','#c2410c'
+      ],
+      borderRadius: 5
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` Gini médio: ${ctx.parsed.y.toFixed(2)}` } } },
+    scales: {
+      x: { ticks: { font: tf, maxRotation: 0 } },
+      y: { min: 0.20, max: 0.55, ticks: { font: tf, callback: v => v.toFixed(2) }, title: { display: true, text: 'Gini médio ponderado', font: tft } }
+    }
+  }
+});
+
+// ── BOLHAS COMPARATIVAS ──
+const paises_bolha = [
+  { nome:'🇩🇰 Dinamarca', gini:0.28, cor:'#16a34a', desc:'Menor desigualdade da OCDE. Alta tributação, sindicatos fortes.' },
+  { nome:'🇩🇪 Alemanha',  gini:0.30, cor:'#16a34a', desc:'Estado social robusto. Cogestão empresarial.' },
+  { nome:'🇺🇸 EUA',       gini:0.39, cor:'#d97706', desc:'Mais desigual dos países ricos. Alta renda, baixa redistribuição.' },
+  { nome:'🇨🇳 China',     gini:0.38, cor:'#d97706', desc:'Gini cresceu com o desenvolvimento. Forte no trabalho, fraco na proteção social.' },
+  { nome:'🇲🇽 México',    gini:0.43, cor:'#f97316', desc:'Similar ao Brasil. Transferências crescentes, mas base tributária estreita.' },
+  { nome:'🇧🇷 Brasil',    gini:0.506, cor:'#dc2626', desc:'10ª economia, top 20 mais desigual. Gini em queda, mas topo concentra.' },
+  { nome:'🇨🇴 Colômbia',  gini:0.52, cor:'#dc2626', desc:'Uma das mais desiguais da AL. Conflito interno comprime programas sociais.' },
+  { nome:'🇿🇦 África do Sul', gini:0.63, cor:'#7c0000', desc:'Mais desigual do mundo. Legado do apartheid.' },
+];
+const bg = document.getElementById('bolhaGrid');
+paises_bolha.forEach(p => {
+  const c = document.createElement('div');
+  c.className = 'bolha-card';
+  c.style.borderColor = p.cor + '40';
+  c.style.background = p.cor + '08';
+  c.innerHTML = `<div class="bolha-pais">${p.nome}</div><div class="bolha-gini-num" style="color:${p.cor}">${p.gini.toFixed(3)}</div><div class="bolha-detalhe">${p.desc}</div>`;
+  c.addEventListener('mousemove', ev => {
+    tooltip.style.display = 'block';
+    tooltip.style.left = (ev.clientX + 14) + 'px';
+    tooltip.style.top = (ev.clientY - 20) + 'px';
+    tooltip.innerHTML = `<strong>${p.nome}</strong><br>Gini: ${p.gini.toFixed(3)}<br>${p.desc}`;
+  });
+  c.addEventListener('mouseleave', () => tooltip.style.display = 'none');
+  bg.appendChild(c);
+});
+
+// ── CHART 14: PIB pc vs Gini ──
+const scatter60 = [
+  {x:80000,y:0.39,r:12,l:'EUA'},{x:65000,y:0.27,r:3,l:'Noruega'},{x:58000,y:0.30,r:4,l:'Alemanha'},
+  {x:52000,y:0.31,r:5,l:'França'},{x:48000,y:0.35,r:5,l:'Japão'},{x:40000,y:0.34,r:4,l:'Coreia'},
+  {x:38000,y:0.28,r:2,l:'Países Baixos'},{x:35000,y:0.29,r:2,l:'Suécia'},{x:30000,y:0.36,r:4,l:'Reino Unido'},
+  {x:22000,y:0.38,r:15,l:'China'},{x:22000,y:0.43,r:5,l:'México'},{x:18000,y:0.506,r:10,l:'Brasil'},
+  {x:18000,y:0.52,r:3,l:'Colômbia'},{x:15000,y:0.63,r:4,l:'África do Sul'},{x:10000,y:0.35,r:20,l:'Índia'},
+  {x:28000,y:0.40,r:3,l:'Argentina'},{x:42000,y:0.45,r:1,l:'Chile'},{x:55000,y:0.33,r:1,l:'Suíça'},
+  {x:8000,y:0.44,r:4,l:'Nigéria'},{x:12000,y:0.43,r:2,l:'Tailândia'},{x:6000,y:0.57,r:1,l:'Zâmbia'},
+  {x:48000,y:0.28,r:1,l:'Dinamarca'},{x:33000,y:0.33,r:2,l:'Portugal'},{x:48000,y:0.31,r:1,l:'Finlândia'},
+];
+new Chart(document.getElementById('chart14'), {
+  type: 'bubble',
+  data: {
+    datasets: [{
+      label: 'Países',
+      data: scatter60.map(d => ({ x: d.x, y: d.y, r: d.r, label: d.l })),
+      backgroundColor: scatter60.map(d => d.l === 'Brasil' ? 'rgba(220,38,38,.8)' : 'rgba(37,99,235,.35)'),
+      borderColor: scatter60.map(d => d.l === 'Brasil' ? '#dc2626' : 'rgba(37,99,235,.6)'),
+      borderWidth: scatter60.map(d => d.l === 'Brasil' ? 2.5 : 1),
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: {
+        title: ctx => ctx[0].raw.label,
+        label: ctx => [`PIB pc: US$ ${ctx.raw.x.toLocaleString()}`, `Gini: ${ctx.raw.y.toFixed(3)}`]
+      }}
+    },
+    scales: {
+      x: { min: 0, max: 90000, ticks: { font: tf, callback: v => 'US$' + (v/1000) + 'k' }, title: { display: true, text: 'PIB per capita (US$ PPP)', font: tft } },
+      y: { min: 0.22, max: 0.70, ticks: { font: tf, callback: v => v.toFixed(2) }, title: { display: true, text: 'Coeficiente de Gini', font: tft } }
+    }
+  }
+});
+
+// ── CHART 15: Gini histórico mundial ──
+const anos15 = [2000,2002,2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
+new Chart(document.getElementById('chart15'), {
+  type: 'line',
+  data: {
+    labels: anos15,
+    datasets: [
+      { label: '🇧🇷 Brasil', data: [0.593,0.581,0.572,0.560,0.546,0.536,0.526,0.518,0.535,0.545,0.524,0.518,0.506], borderColor:'#dc2626', borderWidth:2.5, tension:.3, pointRadius:4, fill:false },
+      { label: '🇿🇦 África do Sul', data: [0.66,0.65,0.64,0.64,0.65,0.64,0.63,0.63,0.63,0.64,0.63,0.63,0.63], borderColor:'#7c0000', borderWidth:2, tension:.3, pointRadius:3, fill:false, borderDash:[4,3] },
+      { label: '🇨🇳 China', data: [0.38,0.39,0.40,0.42,0.43,0.43,0.42,0.43,0.43,0.40,0.38,0.38,0.38], borderColor:'#16a34a', borderWidth:2, tension:.3, pointRadius:3, fill:false },
+      { label: '🇺🇸 EUA', data: [0.36,0.37,0.37,0.38,0.38,0.40,0.41,0.41,0.41,0.39,0.40,0.39,0.39], borderColor:'#2563eb', borderWidth:2, tension:.3, pointRadius:3, fill:false },
+      { label: '🇩🇪 Alemanha', data: [0.28,0.28,0.29,0.30,0.31,0.31,0.30,0.30,0.30,0.31,0.31,0.30,0.30], borderColor:'#d97706', borderWidth:2, tension:.3, pointRadius:3, fill:false },
+      { label: '🇨🇴 Colômbia', data: [0.58,0.57,0.56,0.55,0.55,0.54,0.54,0.53,0.52,0.52,0.54,0.52,0.52], borderColor:'#f97316', borderWidth:2, tension:.3, pointRadius:3, fill:false, borderDash:[6,3] },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { font: tf, boxWidth: 14 } } },
+    scales: {
+      x: { ticks: { font: tf } },
+      y: { min: 0.24, max: 0.70, ticks: { font: tf, callback: v => v.toFixed(2) }, title: { display: true, text: 'Coeficiente de Gini', font: tft } }
+    }
+  }
+});
+</script>
+</body>
+</html>
