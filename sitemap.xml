@@ -10,6 +10,14 @@
   <!-- ═══ BLOG — ÍNDICE ═══ -->
   <url><loc>https://mosmanlab.com.br/blog/</loc><lastmod>2026-04-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
+  <!-- Artigo novo: trem-bala -->
+  <url>
+    <loc>https://mosmanlab.com.br/blog/trem-bala-china-carvao-paradoxo.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- BLOG — novo artigo abril 2026 (destaque) -->
   <url><loc>https://mosmanlab.com.br/blog/fertilizantes-npk-brasil-seguranca-alimentar.html</loc><lastmod>2026-04-22</lastmod><changefreq>monthly</changefreq><priority>0.92</priority></url>
 
